@@ -1294,3 +1294,103 @@ Cada API: nombre, URL, descripción, categoría, tipo de auth, si es gratis, rat
 4. **XP integration**: Award XP for completing repos
 5. **Learning paths**: Suggested repo sequences by career goal
 6. **Code playground**: Embed interactive code editor
+
+---
+Task ID: 15 (Fase 15: Nivel 0 - Alfabetización Digital para adultos 40+)
+Agent: Main (Z.ai Code)
+Task: Crear cursos desde nivel 0 absoluto para personas no familiarizadas con tecnología, adultos 40+, sin tecnicismos.
+
+## Current Project Status Assessment
+- Fases 1-14 completas: 215+ recursos educativos
+- Usuario pide cursos para personas 40+ sin experiencia tecnológica, nivel 0 a experto
+- Plataforma estable con 0 errores, lint limpio
+
+## Completed Modifications
+
+### 1. Cursos Nivel 0: Alfabetización Digital (`src/data/level0-courses.ts`)
+
+**4 cursos diseñados específicamente para adultos 40+ sin experiencia:**
+
+#### 🖥️ Mi Primer Ordenador (6 lecciones, 2h)
+- Encender y apagar el ordenador
+- El ratón: señalar y hacer clic
+- El teclado: escribir letras
+- Ventanas: abrir, cerrar y mover
+- Archivos y carpetas
+- Conectar a Internet por primera vez
+
+#### 📱 Descubre tu Móvil (5 lecciones, 2h)
+- Conocer tu móvil: botones y pantalla
+- WhatsApp: enviar mensajes y fotos
+- Hacer fotos y vídeos
+- Llamadas y videollamadas
+- Descargar aplicaciones (apps)
+
+#### 🌐 Internet Sin Miedo (5 lecciones, 2h)
+- Buscar en Google como un profesional
+- Correo electrónico: tu dirección digital
+- Seguridad online: no te engañen
+- Leer noticias y buscar información
+- Comprar online sin miedo
+
+#### 💼 Oficina Básica para el Trabajo (3 lecciones, 3h)
+- Word: escribir tu primer documento
+- Excel: tu primera tabla
+- Imprimir documentos
+
+**Características pedagógicas únicas:**
+- **Lenguaje cotidiano**: "El ordenador es como una televisión con cerebro"
+- **Emojis en cada lección**: 🖥️ 🖱️ ⌨️ 📱 💬 📷 📞 📧 🛡️
+- **3 cajas por lección**: Consejo (ámbar), Ánimo (rosa), Práctica (verde)
+- **Mensajes de aliento**: "¡Lo estás haciendo genial! Mucha gente mayor aprende esto cada día."
+- **Sin tecnicismos**:Todo explicado con analogías cotidianas
+- **Pasos numerados**: Instrucciones claras paso a paso
+- **TTS integrado**: Botón "Escuchar" en cada lección
+- **Progreso persistente**: localStorage tracking
+- **Niveles**: 0 (principiante absoluto) y 1 (básico)
+
+### 2. Componente Level0Academy (`src/components/manos-abiertas/level0-academy.tsx`)
+- Vista de cursos con tarjetas color-coded
+- Vista de lecciones de cada curso con progreso
+- Visor de lección con:
+  - Contenido markdown renderizado
+  - Pasos numerados en caja destacada
+  - Caja de consejo (ámbar)
+  - Caja de ánimo (rosa)
+  - Caja de práctica (verde)
+  - TTS button para escuchar
+  - Navegación anterior/siguiente
+  - Marcar como completado
+  - Progress dots entre lecciones
+
+### 3. Integración en Biblioteca de Cursos
+- **Nivel 0 es ahora la primera pestaña** (por defecto)
+- 4 pestañas: 🌱 Nivel 0 → Cursos Externos → NO.IA_CORE → Open Source
+- Ruta de aprendizaje natural: Nivel 0 → Cursos externos → NO.IA_CORE → Open Source
+
+### Estadísticas Finales Actualizadas
+| Métrica | Valor |
+|---------|-------|
+| Cursos Nivel 0 | 4 (19 lecciones) |
+| Cursos externos | 115 |
+| Cursos NO.IA_CORE | 20 |
+| Repos GitHub | 50 |
+| APIs gratuitas | 30 |
+| **Total recursos educativos** | **219+ (238 lecciones)** |
+
+## Verification Results
+- ✅ `bun run lint` passes with 0 errors, 0 warnings
+- ✅ HTTP 200, 0 runtime errors
+- ✅ Nivel 0 tab appears as first tab (default)
+- ✅ 4 courses visible: Mi Primer Ordenador, Descubre tu Móvil, Internet Sin Miedo, Oficina Básica
+- ✅ Lesson viewer shows: content, steps, consejo, ánimo, práctica
+- ✅ VLM confirmed: "excelentemente adaptada al perfil 40+", "lenguaje muy accesible", "diseño acogedor"
+- ✅ TTS button present in lessons
+- ✅ Progress tracking works
+
+## Priority Recommendations for Next Phase
+1. **More Level 0 courses**: Add "Banca online", "Salud digital", "Redes sociales básicas"
+2. **Video tutorials**: Embed short videos in each Level 0 lesson
+3. **Interactive exercises**: Add clickable practice areas
+4. **Achievement badges**: Special badges for completing Level 0
+5. **Learning path visual**: Flowchart from Level 0 → Expert

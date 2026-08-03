@@ -12,6 +12,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { EXTERNAL_COURSES, COURSE_CATEGORIES, getCourseStats, type ExternalCourse, type CourseCategory } from '@/data/external-courses';
 import { NoiaCoreAcademy } from './noia-core-academy';
 import { OpenSourceHub } from './open-source-hub';
+import { Level0Academy } from './level0-academy';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
@@ -52,7 +53,7 @@ export function CoursesLibrarySection() {
   const [certOnly, setCertOnly] = useState(false);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [progress, setProgress] = useState<CourseProgress>(loadProgress);
-  const [activeTab, setActiveTab] = useState<'external' | 'noia' | 'opensource'>('external');
+  const [activeTab, setActiveTab] = useState<'level0' | 'external' | 'noia' | 'opensource'>('level0');
 
   useEffect(() => {
     try {
@@ -121,13 +122,23 @@ export function CoursesLibrarySection() {
         </p>
       </div>
 
-      {/* Tab toggle: External Courses vs NO.IA_CORE Academy */}
+      {/* Tab toggle: Level 0 + External Courses + NO.IA_CORE + Open Source */}
       <div className="flex justify-center mb-6">
-        <div className="inline-flex p-1 bg-muted rounded-lg">
+        <div className="inline-flex p-1 bg-muted rounded-lg flex-wrap gap-1">
+          <button
+            onClick={() => setActiveTab('level0')}
+            className={cn(
+              'px-3 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              activeTab === 'level0' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
+            )}
+          >
+            <span className="text-base">🌱</span>
+            Nivel 0
+          </button>
           <button
             onClick={() => setActiveTab('external')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'px-3 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
               activeTab === 'external' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -156,6 +167,9 @@ export function CoursesLibrarySection() {
           </button>
         </div>
       </div>
+
+      {/* Nivel 0 */}
+      {activeTab === 'level0' && <Level0Academy />}
 
       {/* NO.IA_CORE Academy */}
       {activeTab === 'noia' && <NoiaCoreAcademy />}
