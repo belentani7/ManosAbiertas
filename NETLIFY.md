@@ -20,6 +20,7 @@
 - Tutor local para preguntas básicas cuando no hay conexión o no hay API configurada.
 - Exportación e importación del progreso en JSON.
 - Compartir un plan de avance mediante el sistema de compartir del dispositivo.
+- Foro con temas compartidos mediante Netlify Blobs, con respaldo local y límite básico de publicaciones.
 
 ## IA remota opcional
 
@@ -27,4 +28,4 @@ Las rutas `/api/*` se ejecutan como funciones serverless de Netlify cuando el ad
 
 ## Coordinación de usuarios
 
-La versión sin cuentas coordina mediante planes compartidos y archivos de progreso. Chat, perfiles, respuestas públicas y sincronización entre dispositivos requieren añadir almacenamiento serverless y autenticación en Netlify; no se deben simular con `localStorage`.
+El foro compartido usa almacenamiento serverless. Los perfiles, respuestas públicas completas, moderación avanzada y sincronización del progreso personal requieren autenticación y políticas de privacidad antes de abrirse a gran escala.

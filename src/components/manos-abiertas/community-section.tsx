@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Users, Heart, MessageSquare, Globe, MapPin, ChevronDown, ChevronRight,
@@ -50,6 +50,7 @@ interface ForumTopic {
   replies: number;
   lastActivity: string;
   hot?: boolean;
+  source?: 'editorial' | 'shared' | 'local';
 }
 
 const FORUM_TOPICS: ForumTopic[] = [
@@ -341,19 +342,141 @@ function StoriesWall() {
 // ─── FORUM SECTION ──────────────────────────────────────────────
 function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; setSearchQuery: (q: string) => void }) {
   const [filter, setFilter] = useState<string>('all');
+  const [sharedTopics, setSharedTopics] = useState<ForumTopic[]>([]);
+  const [communityMode, setCommunityMode] = useState<'loading' | 'shared' | 'local'>('loading');
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState<ForumTopic['category']>('tips');
+  const [publishing, setPublishing] = useState(false);
+  const [notice, setNotice] = useState('');
 
-  const filtered = FORUM_TOPICS.filter((t) => {
+  useEffect(() => {
+    let active = true;
+    fetch('/api/community')
+      .then(async (response) => {
+        const data = await response.json();
+        if (!active) return;
+        if (response.ok && data.mode === 'shared') {
+          setSharedTopics(data.posts.map((post: { id: string; title: string; category: ForumTopic['category']; replies: number; createdAt: string }) => ({
+            id: post.id,
+            title: post.title,
+            category: post.category,
+            replies: post.replies,
+            lastActivity: formatTopicDate(post.createdAt),
+            source: 'shared' as const,
+          })));
+          setCommunityMode('shared');
+        } else {
+          setCommunityMode('local');
+        }
+      })
+      .catch(() => active && setCommunityMode('local'));
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const allTopics = [...sharedTopics, ...FORUM_TOPICS];
+  const filtered = allTopics.filter((t) => {
     const matchesFilter = filter === 'all' || t.category === filter;
     const matchesSearch = !searchQuery || t.title.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
+
+  const publishTopic = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (title.trim().length < 5 || publishing) return;
+    setPublishing(true);
+    setNotice('');
+
+    const localTopic: ForumTopic = {
+      id: `local-${Date.now()}`,
+      title: title.trim(),
+      category,
+      replies: 0,
+      lastActivity: 'Ahora',
+      source: 'local',
+    };
+
+    try {
+      const response = await fetch('/api/community', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: title.trim(), category, author: author.trim() || 'Mi gente' }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'No disponible');
+      setSharedTopics((current) => [
+        { ...localTopic, id: data.post.id, source: 'shared' },
+        ...current,
+      ]);
+      setCommunityMode('shared');
+      setNotice('Publicado para la comunidad.');
+    } catch {
+      const drafts = JSON.parse(localStorage.getItem('manos-abiertas-community-drafts') || '[]');
+      localStorage.setItem('manos-abiertas-community-drafts', JSON.stringify([localTopic, ...drafts].slice(0, 20)));
+      setSharedTopics((current) => [localTopic, ...current]);
+      setCommunityMode('local');
+      setNotice('Guardado en este dispositivo. Se publicará cuando Netlify esté conectado.');
+    } finally {
+      setTitle('');
+      setAuthor('');
+      setPublishing(false);
+    }
+  };
 
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-2">
         <MessagesSquare className="h-5 w-5 text-blue-500" />
         <h2 className="text-xl font-bold">Foro comunitario</h2>
+        <Badge variant="outline" className="ml-auto text-[10px]">
+          {communityMode === 'shared' ? 'Nube activa' : communityMode === 'local' ? 'Modo local' : 'Conectando...'}
+        </Badge>
       </div>
+
+      <Card className="border-primary/20 bg-primary/5">
+        <CardContent className="p-4">
+          <form onSubmit={publishTopic} className="space-y-2">
+            <div className="text-sm font-semibold">Abrir un tema para mi gente</div>
+            <div className="grid gap-2 sm:grid-cols-[1fr_150px]">
+              <input
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                maxLength={140}
+                placeholder="¿Qué quieres preguntar o compartir?"
+                className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                aria-label="Título del tema"
+              />
+              <select
+                value={category}
+                onChange={(event) => setCategory(event.target.value as ForumTopic['category'])}
+                className="rounded-lg border border-border bg-card px-3 py-2 text-sm"
+                aria-label="Categoría"
+              >
+                {Object.entries(CATEGORY_CONFIG).map(([id, config]) => <option key={id} value={id}>{config.label}</option>)}
+              </select>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <input
+                value={author}
+                onChange={(event) => setAuthor(event.target.value)}
+                maxLength={40}
+                placeholder="Tu nombre o apodo (opcional)"
+                className="flex-1 min-w-[220px] rounded-lg border border-border bg-card px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-primary/30"
+                aria-label="Nombre o apodo"
+              />
+              <Button type="submit" size="sm" disabled={publishing || title.trim().length < 5}>
+                {publishing ? 'Publicando...' : 'Publicar tema'}
+              </Button>
+            </div>
+            <p className="text-[11px] text-muted-foreground" role="status">
+              {notice || 'No compartas documentos, teléfonos ni datos sensibles.'}
+            </p>
+          </form>
+        </CardContent>
+      </Card>
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-2">
@@ -435,11 +558,20 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
 
       <div className="text-center pt-2">
         <p className="text-xs text-muted-foreground">
-          💡 Foro comunitario — próximamente con registro y respuestas en vivo
+          💡 Los temas publicados en Netlify son compartidos; sin conexión quedan guardados localmente.
         </p>
       </div>
     </div>
   );
+}
+
+function formatTopicDate(value: string) {
+  const age = Date.now() - new Date(value).getTime();
+  const minutes = Math.max(1, Math.round(age / 60_000));
+  if (minutes < 60) return `Hace ${minutes} min`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `Hace ${hours}h`;
+  return `Hace ${Math.round(hours / 24)}d`;
 }
 
 // ─── LANGUAGE EXCHANGE ──────────────────────────────────────────

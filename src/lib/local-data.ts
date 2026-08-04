@@ -9,6 +9,7 @@ export const LOCAL_DATA_KEYS = [
   'manos-abiertas-reminders',
   'manos-abiertas-recent',
   'manos-abiertas-chat',
+  'manos-abiertas-community-drafts',
   'manos-accessibility',
   'manos-abiertas-onboarding',
 ] as const;
