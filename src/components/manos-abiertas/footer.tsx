@@ -119,7 +119,7 @@ export function Footer() {
         <div className="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <div>© 2025 Manos Abiertas · {t.footer_rights}</div>
           <div className="flex items-center gap-1.5">
-            Hecho con <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> para la comunidad inmigrante en España
+            Hecho con <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> para las comunidades latinoamericanas y migrantes en España
           </div>
         </div>
       </div>

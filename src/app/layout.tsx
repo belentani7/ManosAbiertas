@@ -16,15 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Manos Abiertas · IA, CV y Derechos para personas inmigrantes en España",
-  description: "Plataforma gratuita multilingüe para personas inmigrantes en España. Aprende inteligencia artificial (ChatGPT, Gemini, Copilot, DeepSeek), crea tu currículum con IA, curso completo de Office y 3000+ recursos verificados.",
-  keywords: ["inmigrantes España", "inteligencia artificial", "ChatGPT", "currículum", "CV", "NIE", "derechos", "recursos", "manos abiertas", "Office", "cursos gratis", "35 idiomas"],
+  title: "Manos Abiertas · IA, CV y Derechos para comunidades latinoamericanas",
+  description: "Plataforma gratuita multilingüe para personas latinoamericanas y comunidades migrantes en España. Aprende inteligencia artificial, crea tu currículum con IA, estudia Office y encuentra recursos verificados.",
+  keywords: ["latinoamericanos en España", "comunidades migrantes", "inteligencia artificial", "ChatGPT", "currículum", "CV", "NIE", "derechos", "recursos", "manos abiertas", "Office", "cursos gratis", "35 idiomas"],
   authors: [{ name: "Manos Abiertas" }],
   icons: {
     icon: "/logo.svg",
   },
   openGraph: {
-    title: "Manos Abiertas · IA, CV y Derechos para inmigrantes",
+    title: "Manos Abiertas · IA, CV y Derechos para comunidades latinoamericanas",
     description: "Aprende IA, crea tu CV y conoce tus derechos en España. Gratis y en 35 idiomas.",
     url: "https://manos-abiertas.es",
     siteName: "Manos Abiertas",
