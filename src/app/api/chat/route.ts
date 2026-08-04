@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ZAI from 'z-ai-web-dev-sdk';
+import { z } from 'zod';
+import { callConfiguredProvider } from '@/lib/ai-provider';
+import { getOfflineTutorReply } from '@/lib/offline-tutor';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -14,6 +17,12 @@ interface ChatRequest {
   language?: string;
   context?: string;
 }
+
+const chatRequestSchema = z.object({
+  messages: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().trim().min(1).max(12000) })).min(1).max(20),
+  language: z.string().max(12).optional(),
+  context: z.string().max(4000).optional(),
+});
 
 const LANG_INSTRUCTIONS: Record<string, string> = {
   es: 'Responde SIEMPRE en español de España, con lenguaje sencillo y claro.',
@@ -84,17 +93,30 @@ Eres parte de una plataforma con:
 - 41 contactos de emergencia`;
 
 export async function POST(req: NextRequest) {
+  let fallbackQuestion = '';
+  let fallbackLanguage = 'es';
   try {
-    const body: ChatRequest = await req.json();
+    const parsed = chatRequestSchema.safeParse(await req.json());
+    if (!parsed.success) return NextResponse.json({ ok: false, error: 'Solicitud no válida' }, { status: 400 });
+    const body: ChatRequest = parsed.data;
     const lang = body.language || 'es';
+    fallbackQuestion = body.messages.at(-1)?.content || '';
+    fallbackLanguage = lang;
     const langInstruction = LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.es;
 
     const zai = await ZAI.create();
 
     const messages = [
-      { role: 'system' as const, content: `${SYSTEM_PROMPT}\n\n${langInstruction}` },
+      { role: 'system' as const, content: `${SYSTEM_PROMPT}\n\n${langInstruction}${body.context ? `\n\nContexto actual: ${body.context}` : ''}` },
       ...body.messages.slice(-10), // Keep last 10 messages for context
     ];
+
+    try {
+      const configured = await callConfiguredProvider(messages);
+      if (configured) return NextResponse.json({ text: configured.text, ok: true, provider: configured.provider, model: configured.model });
+    } catch (providerError) {
+      console.warn('Configured AI provider unavailable; falling back:', providerError);
+    }
 
     const completion = await zai.chat.completions.create({
       messages,
@@ -103,13 +125,9 @@ export async function POST(req: NextRequest) {
 
     const text = completion.choices[0]?.message?.content?.trim() || '';
 
-    return NextResponse.json({ text, ok: true });
+    return NextResponse.json({ text, ok: true, provider: 'zai' });
   } catch (error: unknown) {
     console.error('Chat API error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return NextResponse.json(
-      { ok: false, error: message, text: 'Lo siento, tuve un problema. Inténtalo de nuevo.' },
-      { status: 500 }
-    );
+    return NextResponse.json({ ok: true, degraded: true, provider: 'local', text: getOfflineTutorReply(fallbackQuestion, fallbackLanguage) });
   }
 }

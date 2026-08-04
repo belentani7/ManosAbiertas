@@ -11,6 +11,7 @@ import { LANGUAGE_COUNT } from '@/i18n/languages';
 import { RESOURCES } from '@/data/resources';
 import { AI_COURSES } from '@/data/ai-courses';
 import { OFFICE_MODULES } from '@/data/office-course';
+import { SystemAwareness } from './system-awareness';
 
 const SHORTCUTS = [
   { keys: ['Cmd', 'K'], action: 'Abrir búsqueda rápida', icon: Search },
@@ -38,7 +39,7 @@ export function Footer() {
               </div>
               <div>
                 <div className="font-bold text-sm gradient-text">Manos Abiertas</div>
-                <div className="text-[10px] text-muted-foreground">{t.footer_rights}</div>
+                <div className="text-[10px] text-muted-foreground">NOIACORE · ecosistema madre</div>
               </div>
             </div>
             <p className="text-xs text-muted-foreground/90 leading-relaxed">
@@ -86,12 +87,12 @@ export function Footer() {
               </span>
             </div>
             <a
-              href="https://github.com"
+              href="https://github.com/belentani7/manosabiertas"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
             >
-              <ExternalLink className="h-3 w-3" /> Proyecto open-source
+              <ExternalLink className="h-3 w-3" /> Código de Manos Abiertas
             </a>
           </div>
 
@@ -110,14 +111,15 @@ export function Footer() {
               <PomodoroTimer />
             </div>
             <div className="text-[11px] text-muted-foreground/80 leading-relaxed">
-              ¿Necesitas ayuda? Escribe a:<br />
-              <a href="mailto:hola@manos-abiertas.es" className="text-primary hover:underline">hola@manos-abiertas.es</a>
+              ¿Necesitas ayuda? Escribe a NOIACORE:<br />
+              <a href="mailto:belentani7studio@proton.me" className="text-primary hover:underline">belentani7studio@proton.me</a>
             </div>
+            <SystemAwareness />
           </div>
         </div>
 
         <div className="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div>© 2025 Manos Abiertas · {t.footer_rights}</div>
+          <div>© 2026 NOIACORE · Manos Abiertas · {t.footer_rights}</div>
           <div className="flex items-center gap-1.5">
             Hecho con <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> para las comunidades latinoamericanas y migrantes en España
           </div>

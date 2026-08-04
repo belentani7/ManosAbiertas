@@ -14,6 +14,7 @@ import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';
 import { ResourceSubmissionForm } from './resource-submission-form';
 import { cn } from '@/lib/utils';
+import { LanguageResourceBank } from './language-resource-bank';
 
 const PAGE_SIZE = 24;
 const FAV_STORAGE_KEY = 'manos-abiertas-favorites';
@@ -160,6 +161,8 @@ Plataforma gratuita para personas inmigrantes en España
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base mb-3">{t.resources_subtitle}</p>
         <ResourceSubmissionForm />
       </div>
+
+      <LanguageResourceBank />
 
       {/* Search & filters */}
       <Card className="mb-5 border-border/60 sticky top-16 z-30 glass">

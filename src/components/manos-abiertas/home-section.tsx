@@ -15,6 +15,7 @@ import { ProgressDashboard } from './progress-dashboard';
 import { FirstSteps } from './first-steps';
 import { AnimatedCounter } from './animated-counter';
 import { RecentlyViewed } from './recently-viewed';
+import { PersonalRoute } from './personal-route';
 
 export function HomeSection() {
   const { language, setActiveSection } = useAppStore();
@@ -295,6 +296,9 @@ export function HomeSection() {
 
       {/* PROGRESS DASHBOARD - only shows if user has progress */}
       <ProgressDashboard />
+
+      {/* PERSONAL ROUTE - turns the library into a guided next step */}
+      <PersonalRoute />
 
       {/* RECENTLY VIEWED - horizontal scroll of recent items */}
       <RecentlyViewed />

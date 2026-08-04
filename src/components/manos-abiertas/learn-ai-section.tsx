@@ -15,6 +15,7 @@ import { AIPlayground } from './ai-playground';
 import { TTSButton, TTSPlayer } from './tts-button';
 import { AIStudyTools } from './ai-study-tools';
 import { cn } from '@/lib/utils';
+import { AIToolDirectory } from './ai-tool-directory';
 
 export function LearnAISection() {
   const { language } = useAppStore();
@@ -191,6 +192,8 @@ export function LearnAISection() {
         <h1 className="text-3xl md:text-4xl font-bold mb-2">{t.ai_title}</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">{t.ai_subtitle}</p>
       </div>
+
+      <AIToolDirectory />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {AI_COURSES.map((course, i) => {

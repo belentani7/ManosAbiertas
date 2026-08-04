@@ -12,6 +12,7 @@ export const LOCAL_DATA_KEYS = [
   'manos-abiertas-community-drafts',
   'manos-accessibility',
   'manos-abiertas-onboarding',
+  'manos-abiertas-personal-route',
 ] as const;
 
 const EXPORT_VERSION = 1;
