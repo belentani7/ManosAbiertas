@@ -374,6 +374,7 @@ function ResourceCard({ resource, isFavorite, onToggleFavorite, index, viewMode 
               {reg && <span className="flex items-center gap-0.5"><MapPin className="h-2.5 w-2.5" />{reg.label}</span>}
               <span className="truncate">{resource.source}</span>
               {resource.free && <span className="text-emerald-600 dark:text-emerald-400 font-medium">✓ Gratis</span>}
+              {resource.license && <span className="truncate">{resource.license}</span>}
             </div>
           </div>
           <button
@@ -458,12 +459,14 @@ function ResourceCard({ resource, isFavorite, onToggleFavorite, index, viewMode 
                 ✓ Gratis
               </Badge>
             )}
+            {resource.format && <Badge variant="outline" className="text-[9px] py-0 h-4">{resource.format}</Badge>}
           </div>
 
           <div className="text-[10px] text-foreground/70 mb-2 truncate flex items-center gap-1 font-medium">
             <Tag className="h-2.5 w-2.5 text-primary" />
             {resource.source}
           </div>
+          {resource.license && <div className="text-[10px] text-muted-foreground truncate">Licencia: {resource.license}</div>}
         </CardContent>
       </Card>
     </motion.div>

@@ -9,6 +9,7 @@ export type ResourceCategory =
   | 'github-learning' | 'transport' | 'family' | 'language-learning';
 
 export type ResourceRegion =
+  | 'worldwide' | 'europe' | 'africa' | 'americas' | 'asia-pacific' | 'middle-east'
   | 'national' | 'andalucia' | 'aragon' | 'asturias' | 'balears'
   | 'canarias' | 'cantabria' | 'castilla-la-mancha' | 'castilla-y-leon'
   | 'cataluna' | 'comunidad-valenciana' | 'extremadura' | 'galicia'
@@ -25,6 +26,10 @@ export interface Resource {
   language?: string;
   tags?: string[];
   free?: boolean;
+  license?: string;
+  format?: string;
+  audience?: string;
+  verifiedAt?: string;
 }
 
 export const RESOURCE_CATEGORIES: { value: ResourceCategory; label: string; icon: string }[] = [
@@ -48,6 +53,12 @@ export const RESOURCE_CATEGORIES: { value: ResourceCategory; label: string; icon
 ];
 
 export const REGIONS: { value: ResourceRegion; label: string }[] = [
+  { value: 'worldwide', label: 'Mundo' },
+  { value: 'europe', label: 'Europa' },
+  { value: 'africa', label: 'África' },
+  { value: 'americas', label: 'Américas' },
+  { value: 'asia-pacific', label: 'Asia-Pacífico' },
+  { value: 'middle-east', label: 'Oriente Medio' },
   { value: 'national', label: 'Nacional' },
   { value: 'andalucia', label: 'Andalucía' },
   { value: 'aragon', label: 'Aragón' },
@@ -67,6 +78,8 @@ export const REGIONS: { value: ResourceRegion; label: string }[] = [
   { value: 'navarra', label: 'Comunidad Foral de Navarra' },
   { value: 'pais-vasco', label: 'Euskadi' },
 ];
+
+import { GLOBAL_RESOURCES } from './global-resources';
 
 // ============================================================
 // NATIONAL GOVERNMENT RESOURCES (~120)
@@ -1113,6 +1126,7 @@ const aiGuides: Resource[] = [
 // FINAL COMBINED EXPORT
 // ============================================================
 export const RESOURCES: Resource[] = [
+  ...GLOBAL_RESOURCES,
   ...nationalGov,
   ...buildCommunityResources(),
   ...buildCityResources(),

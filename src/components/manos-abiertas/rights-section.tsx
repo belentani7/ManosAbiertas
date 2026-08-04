@@ -173,9 +173,9 @@ export function RightsSection() {
                 </button>
                 {RIGHTS_CATEGORIES.map((c) => (
                   <button
-                    key={c.value}
-                    onClick={() => setCategory(c.value)}
-                    className={cn('text-xs px-2.5 py-1 rounded-full border transition-colors capitalize flex items-center gap-1', category === c.value ? 'bg-primary text-primary-foreground border-primary' : 'border-border hover:bg-accent')}
+                    key={c.id}
+                    onClick={() => setCategory(c.id)}
+                    className={cn('text-xs px-2.5 py-1 rounded-full border transition-colors capitalize flex items-center gap-1', category === c.id ? 'bg-primary text-primary-foreground border-primary' : 'border-border hover:bg-accent')}
                   >
                     <span>{c.icon}</span>
                     {c.label}
@@ -188,7 +188,7 @@ export function RightsSection() {
           {/* Articles grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {filtered.map((article, i) => {
-              const cat = RIGHTS_CATEGORIES.find((c) => c.value === article.category);
+              const cat = RIGHTS_CATEGORIES.find((c) => c.id === article.category);
               return (
                 <motion.button
                   key={article.id}

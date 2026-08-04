@@ -100,10 +100,10 @@ export function CommandPalette() {
 
     // Rights categories
     RIGHTS_CATEGORIES.forEach((c) => {
-      const count = RIGHTS_ARTICLES.filter((a) => a.category === c.value).length;
+      const count = RIGHTS_ARTICLES.filter((a) => a.category === c.id).length;
       if (count > 0) {
         items.push({
-          id: `cat-${c.value}`,
+          id: `cat-${c.id}`,
           title: c.label,
           subtitle: `${count} artículos sobre ${c.label.toLowerCase()}`,
           icon: c.icon,

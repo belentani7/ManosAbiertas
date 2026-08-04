@@ -16,9 +16,11 @@ import { OnboardingWizard } from './onboarding-wizard';
 import { ToolsSection } from './tools-section';
 import { EventsSection } from './events-section';
 import { CoursesLibrarySection } from './courses-library-section';
+import { CommunitySection } from './community-section';
 import { Button } from '@/components/ui/button';
 import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { PWAStatus } from './pwa-status';
 
 export function ManosAbiertasApp() {
   const { activeSection, readingMode } = useAppStore();
@@ -39,6 +41,7 @@ export function ManosAbiertasApp() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <PWAStatus />
       {/* Skip to content link for screen readers */}
       <a
         href="#main-content"
@@ -65,6 +68,7 @@ export function ManosAbiertasApp() {
             {activeSection === 'tools' && <ToolsSection />}
             {activeSection === 'events' && <EventsSection />}
             {activeSection === 'courses' && <CoursesLibrarySection />}
+            {activeSection === 'community' && <CommunitySection />}
             {activeSection === 'contacts' && <ContactsSection />}
           </motion.div>
         </AnimatePresence>

@@ -14,7 +14,8 @@ export type SectionId =
   | 'contacts'
   | 'tools'
   | 'events'
-  | 'courses';
+  | 'courses'
+  | 'community';
 
 interface AppState {
   // Language

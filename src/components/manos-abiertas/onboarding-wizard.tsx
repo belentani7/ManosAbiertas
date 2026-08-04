@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, ArrowLeft, Check, Sparkles, Globe, Heart, Target } from 'lucide-react';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { LANGUAGES, type LanguageCode } from '@/i18n/languages';
@@ -193,6 +193,10 @@ export function OnboardingWizard() {
   return (
     <Dialog open={open} onOpenChange={(o) => !o && skip()}>
       <DialogContent className="max-w-md p-0 gap-0 overflow-hidden">
+        <DialogHeader className="sr-only">
+          <DialogTitle>Configuración inicial de Manos Abiertas</DialogTitle>
+          <DialogDescription>Elige idioma, situación y objetivo para personalizar tu ruta.</DialogDescription>
+        </DialogHeader>
         {/* Header with gradient */}
         <div className="gradient-brand p-5 text-white relative">
           <button

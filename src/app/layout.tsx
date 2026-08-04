@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   keywords: ["inmigrantes España", "inteligencia artificial", "ChatGPT", "currículum", "CV", "NIE", "derechos", "recursos", "manos abiertas", "Office", "cursos gratis", "35 idiomas"],
   authors: [{ name: "Manos Abiertas" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/logo.svg",
   },
   openGraph: {
     title: "Manos Abiertas · IA, CV y Derechos para inmigrantes",

@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
+import { getOfflineTutorReply } from '@/lib/offline-tutor';
 
 interface Message {
   id: string;
@@ -89,6 +90,12 @@ export function AIAssistant() {
     setLoading(true);
 
     try {
+      if (typeof navigator !== 'undefined' && !navigator.onLine) {
+        throw new Error('offline');
+      }
+
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 5000);
       const resp = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -96,7 +103,9 @@ export function AIAssistant() {
           messages: [...messages, userMsg].map((m) => ({ role: m.role, content: m.content })),
           language,
         }),
+        signal: controller.signal,
       });
+      window.clearTimeout(timeout);
       if (!resp.ok) throw new Error('Error en el chat');
       const data = await resp.json();
       const aiMsg: Message = {
@@ -108,9 +117,9 @@ export function AIAssistant() {
       setMessages((prev) => [...prev, aiMsg]);
     } catch {
       const errMsg: Message = {
-        id: `e-${Date.now()}`,
+        id: `local-${Date.now()}`,
         role: 'assistant',
-        content: '⚠️ Tuve un problema para responder. Revisa tu conexión a internet e inténtalo de nuevo.',
+        content: getOfflineTutorReply(text, language),
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, errMsg]);
@@ -188,7 +197,7 @@ export function AIAssistant() {
                   </div>
                   <div className="text-[11px] text-white/80 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                    En línea · 39 idiomas
+                    Netlify · modo local · 39 idiomas
                   </div>
                 </div>
               </div>

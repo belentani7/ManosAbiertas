@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Wrench, FolderOpen, Calculator, Coins, Trophy, MapPin, Bell, FileText } from 'lucide-react';
+import { Wrench, FolderOpen, Calculator, Trophy, MapPin, Bell, FileText, HardDrive } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -15,8 +15,9 @@ import { DocumentTemplates } from './document-templates';
 import { GAMIFICATION_BADGES } from '@/data/tools-data';
 import { useProgress } from '@/hooks/use-progress';
 import { cn } from '@/lib/utils';
+import { LocalDataPanel } from './local-data-panel';
 
-type ToolTab = 'documents' | 'processes' | 'templates' | 'cost' | 'reminders' | 'badges';
+type ToolTab = 'documents' | 'processes' | 'templates' | 'cost' | 'reminders' | 'badges' | 'data';
 
 const TOOLS: { id: ToolTab; emoji: string; icon: typeof FolderOpen; title: string; desc: string; color: string }[] = [
   { id: 'documents', emoji: '📋', icon: FolderOpen, title: 'Checklist de documentos', desc: 'Trámites esenciales para regularizarte', color: 'from-amber-400 to-orange-500' },
@@ -25,6 +26,7 @@ const TOOLS: { id: ToolTab; emoji: string; icon: typeof FolderOpen; title: strin
   { id: 'cost', emoji: '💰', icon: Calculator, title: 'Coste de vida y moneda', desc: 'Calcula gastos y convierte divisas', color: 'from-emerald-400 to-teal-500' },
   { id: 'reminders', emoji: '🔔', icon: Bell, title: 'Recordatorios', desc: 'No pierdas plazos importantes', color: 'from-rose-400 to-pink-500' },
   { id: 'badges', emoji: '🏆', icon: Trophy, title: 'Tus logros', desc: 'Insignias desbloqueadas', color: 'from-indigo-400 to-purple-500' },
+  { id: 'data', emoji: '💾', icon: HardDrive, title: 'Tu progreso', desc: 'Guarda, lleva y comparte tu plan', color: 'from-slate-400 to-slate-600' },
 ];
 
 export function ToolsSection() {
@@ -44,7 +46,7 @@ export function ToolsSection() {
       </div>
 
       {/* Tool selector */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-6">
         {TOOLS.map((tool, i) => {
           const Icon = tool.icon;
           const active = activeTool === tool.id;
@@ -95,6 +97,7 @@ export function ToolsSection() {
         {activeTool === 'cost' && <CostOfLifeTools />}
         {activeTool === 'reminders' && <SmartReminders />}
         {activeTool === 'badges' && <BadgesDisplay />}
+        {activeTool === 'data' && <LocalDataPanel />}
       </motion.div>
     </div>
   );
