@@ -38,7 +38,7 @@ yarn-error.log*
 /db/*.sqlite*
 /upload/
 /tool-results/
-/worklog.md
+/worklog*.md
 /docs/private/
 
 # vercel
