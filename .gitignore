@@ -33,6 +33,14 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local data and private working material
+/db/*.db
+/db/*.sqlite*
+/upload/
+/tool-results/
+/worklog.md
+/docs/private/
+
 # vercel
 .vercel
 
