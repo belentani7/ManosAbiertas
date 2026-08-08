@@ -79,9 +79,9 @@ export function PersonalRoute() {
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:w-[28rem]">
                 {GOALS.map((item) => {
                   const Icon = item.icon;
-                  return <Button key={item.id} variant="outline" className="h-auto justify-start gap-3 p-3 text-left" onClick={() => setRoute({ goal: item.id, completed: [] })}>
+                  return <Button key={item.id} variant="outline" className="h-auto min-w-0 justify-start gap-3 whitespace-normal p-3 text-left" onClick={() => setRoute({ goal: item.id, completed: [] })}>
                     <Icon className="h-5 w-5 shrink-0 text-primary" />
-                    <span><span className="block font-semibold">{item.label}</span><span className="block text-xs font-normal text-muted-foreground">{item.description}</span></span>
+                    <span className="min-w-0"><span className="block font-semibold">{item.label}</span><span className="block text-xs font-normal text-muted-foreground">{item.description}</span></span>
                   </Button>;
                 })}
               </div>
