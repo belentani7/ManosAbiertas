@@ -57,6 +57,7 @@ export function ATSAnalyzer() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const data = JSON.parse(stored);
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the CV state from external browser storage
         setHasCV(Boolean(data.fullName || data.profession || data.summary || data.skills?.length));
       }
     } catch { /* ignore */ }

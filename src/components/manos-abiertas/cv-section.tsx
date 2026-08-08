@@ -75,6 +75,7 @@ export function CVSection() {
       const stored = localStorage.getItem('manos-abiertas-cv');
       if (stored) {
         const data = JSON.parse(stored);
+        /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only CV from external browser storage */
         if (data.template) {
           const tpl = CV_TEMPLATES.find((t) => t.id === data.template);
           if (tpl) setTemplate(tpl);
@@ -90,6 +91,7 @@ export function CVSection() {
         if (data.skills?.length) setSkills(data.skills);
         if (data.languages?.length) setLanguages(data.languages);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
+        /* eslint-enable react-hooks/set-state-in-effect */
       }
     } catch { /* ignore */ }
   }, []);
@@ -406,7 +408,7 @@ export function CVSection() {
                         {skills.map((s) => (
                           <Badge key={s} variant="secondary" className="gap-1 pr-1">
                             {s}
-                            <button onClick={() => setSkills(skills.filter(x => x !== s))} className="hover:text-destructive">
+                            <button type="button" onClick={() => setSkills(skills.filter(x => x !== s))} className="hover:text-destructive" aria-label={`Eliminar habilidad: ${s}`}>
                               <Trash2 className="h-3 w-3" />
                             </button>
                           </Badge>
@@ -452,7 +454,7 @@ export function CVSection() {
                           <Badge key={l} variant="secondary" className="gap-1 pr-1">
                             <Languages className="h-3 w-3" />
                             {l}
-                            <button onClick={() => setLanguages(languages.filter(x => x !== l))} className="hover:text-destructive">
+                            <button type="button" onClick={() => setLanguages(languages.filter(x => x !== l))} className="hover:text-destructive" aria-label={`Eliminar idioma: ${l}`}>
                               <Trash2 className="h-3 w-3" />
                             </button>
                           </Badge>

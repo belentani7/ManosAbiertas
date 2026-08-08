@@ -45,6 +45,8 @@ export function AIAssistant() {
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
+          // Client-only history hydration after the deterministic server render.
+          // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is an external browser store
           setMessages(parsed);
         }
       }
