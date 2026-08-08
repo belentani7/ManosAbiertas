@@ -642,9 +642,9 @@ function CVPreview({
       <div className="p-8" style={{ fontFamily: 'Georgia, serif' }}>
         {/* Header */}
         <div className="border-b-2 pb-4 mb-4" style={{ borderColor: template.id === 'modern' ? '#c2410c' : '#000' }}>
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h2 className="text-3xl font-bold tracking-tight">
             {fullName || <span className="text-gray-400">Tu Nombre</span>}
-          </h1>
+          </h2>
           <p className="text-lg text-gray-700 mt-0.5">{profession || <span className="text-gray-400">Tu Profesión</span>}</p>
           <div className="flex flex-wrap gap-3 mt-2 text-xs text-gray-600">
             {email && <span>✉ {email}</span>}

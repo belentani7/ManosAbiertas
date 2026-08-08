@@ -5,5 +5,5 @@ interface SectionsLayoutProps {
 }
 
 export default function SectionsLayout({ children }: SectionsLayoutProps) {
-  return <>{children}</>;
+  return <main id="main-content">{children}</main>;
 }
