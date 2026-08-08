@@ -40,6 +40,11 @@ yarn-error.log*
 /tool-results/
 /worklog*.md
 /docs/private/
+/\.zscripts/
+/AUDITORIA-*.md
+/MASTER-PROMPT-*.md
+/PROMPT-*.md
+/LISTA-WINGET-*.md
 
 # vercel
 .vercel
