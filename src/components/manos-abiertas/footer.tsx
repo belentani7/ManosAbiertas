@@ -21,7 +21,7 @@ const SHORTCUTS = [
 ];
 
 export function Footer() {
-  const { language } = useAppStore();
+  const { language, setActiveSection } = useAppStore();
   const t = getTranslation(language);
   const [showShortcuts, setShowShortcuts] = useState(false);
 
@@ -110,10 +110,13 @@ export function Footer() {
               <ReadingModeToggle />
               <PomodoroTimer />
             </div>
-            <div className="text-[11px] text-muted-foreground/80 leading-relaxed">
-              ¿Necesitas ayuda? Escribe a NOIACORE:<br />
-              <a href="mailto:belentani7studio@proton.me" className="text-primary hover:underline">belentani7studio@proton.me</a>
-            </div>
+            <button
+              type="button"
+              onClick={() => setActiveSection('contacts')}
+              className="text-left text-[11px] leading-relaxed text-muted-foreground/80 hover:text-primary"
+            >
+              ¿Necesitas ayuda? Consulta los contactos verificados.
+            </button>
             <SystemAwareness />
           </div>
         </div>
