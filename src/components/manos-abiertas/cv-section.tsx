@@ -172,11 +172,11 @@ export function CVSection() {
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">{t.cv_subtitle}</p>
 
         {/* Tool toggle: CV vs Cover Letter */}
-        <div className="inline-flex p-1 bg-muted rounded-lg mt-4">
+        <div className="mt-4 grid w-full grid-cols-1 gap-1 rounded-lg bg-muted p-1 sm:inline-grid sm:w-auto sm:grid-cols-3">
           <button
             onClick={() => setActiveTool('cv')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'flex items-center justify-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
               activeTool === 'cv' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -186,7 +186,7 @@ export function CVSection() {
           <button
             onClick={() => setActiveTool('letter')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'flex items-center justify-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
               activeTool === 'letter' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -197,7 +197,7 @@ export function CVSection() {
           <button
             onClick={() => setActiveTool('ats')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'flex items-center justify-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
               activeTool === 'ats' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
