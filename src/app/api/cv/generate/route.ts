@@ -1,18 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-interface CVRequest {
-  field: 'summary' | 'experience';
-  fullName?: string;
-  profession?: string;
-  experiences?: { position: string; company: string; description: string; startDate: string; endDate: string }[];
-  education?: { title: string; institution: string; year: string; description: string }[];
-  skills?: string[];
-  language?: string;
-}
+const shortText = z.string().trim().max(200);
+const cvRequestSchema = z.object({
+  field: z.enum(['summary', 'experience']),
+  fullName: shortText.optional(),
+  profession: shortText.optional(),
+  experiences: z.array(z.object({
+    position: shortText,
+    company: shortText,
+    description: z.string().trim().max(3000),
+    startDate: z.string().trim().max(40),
+    endDate: z.string().trim().max(40),
+  })).max(20).optional(),
+  education: z.array(z.object({
+    title: shortText,
+    institution: shortText,
+    year: z.string().trim().max(40),
+    description: z.string().trim().max(2000),
+  })).max(20).optional(),
+  skills: z.array(z.string().trim().min(1).max(100)).max(30).optional(),
+  language: z.string().trim().max(12).optional(),
+});
+
+type CVRequest = z.infer<typeof cvRequestSchema>;
 
 const langInstruction: Record<string, string> = {
   es: 'Responde en español de España.',
@@ -57,7 +72,11 @@ function offlineExperience(body: CVRequest): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const body: CVRequest = await req.json();
+    const parsed = cvRequestSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: 'Solicitud no válida', text: '' }, { status: 400 });
+    }
+    const body: CVRequest = parsed.data;
     const lang = body.language || 'es';
     const langPrompt = langInstruction[lang] || langInstruction.es;
 
@@ -101,9 +120,8 @@ Reescribe en formato de viñetas (•) con logros concretos y verbos de acción.
     return NextResponse.json({ text: result.text, ok: true, provider: result.provider });
   } catch (error: unknown) {
     console.error('CV generation error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { ok: false, error: message, text: '' },
+      { ok: false, error: 'No se pudo generar el contenido del CV.', text: '' },
       { status: 500 }
     );
   }

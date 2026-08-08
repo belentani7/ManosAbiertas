@@ -1,20 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-interface ATSRequest {
-  fullName?: string;
-  profession?: string;
-  summary?: string;
-  experiences?: { position: string; company: string; description: string }[];
-  education?: { title: string; institution: string; year: string }[];
-  skills?: string[];
-  languages?: string[];
-  jobDescription?: string;
-  language?: string;
-}
+const atsShortText = z.string().trim().max(200);
+const atsRequestSchema = z.object({
+  fullName: atsShortText.optional(),
+  profession: atsShortText.optional(),
+  summary: z.string().trim().max(4000).optional(),
+  experiences: z.array(z.object({
+    position: atsShortText,
+    company: atsShortText,
+    description: z.string().trim().max(3000),
+  })).max(20).optional(),
+  education: z.array(z.object({
+    title: atsShortText,
+    institution: atsShortText,
+    year: z.string().trim().max(40),
+  })).max(20).optional(),
+  skills: z.array(z.string().trim().min(1).max(100)).max(30).optional(),
+  languages: z.array(z.string().trim().min(1).max(80)).max(20).optional(),
+  jobDescription: z.string().trim().min(20).max(12000),
+  language: z.string().trim().max(12).optional(),
+});
+
+type ATSRequest = z.infer<typeof atsRequestSchema>;
 
 interface ATSAnalysis {
   score: number;
@@ -51,16 +63,13 @@ function extractJson(text: string): ATSAnalysis | null {
 
 export async function POST(req: NextRequest) {
   try {
-    const body: ATSRequest = await req.json();
+    const parsed = atsRequestSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: 'Solicitud no válida', data: null }, { status: 400 });
+    }
+    const body: ATSRequest = parsed.data;
     const lang = body.language || 'es';
     const langInstruction = LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.es;
-
-    if (!body.jobDescription || !body.jobDescription.trim()) {
-      return NextResponse.json(
-        { ok: false, error: 'Falta la descripción de la oferta de trabajo.', data: null },
-        { status: 400 }
-      );
-    }
 
     const systemPrompt = `Eres un analizador experto de sistemas ATS (Applicant Tracking Systems) utilizados en España (InfoJobs, LinkedIn, Jobvite, Workday). Comparas el CV de un candidato contra una oferta de trabajo y devuelves una puntuación de compatibilidad, keywords detectadas y sugerencias accionables. ${langInstruction} Debes responder ÚNICAMENTE con un objeto JSON válido con esta forma exacta:
 {
@@ -133,7 +142,7 @@ Devuelve SOLO el objeto JSON con el análisis ATS.`;
 
     if (!analysis || typeof analysis.score !== 'number') {
       return NextResponse.json(
-        { ok: false, error: 'No se pudo parsear el análisis ATS.', data: null, raw: result.text },
+        { ok: false, error: 'No se pudo interpretar el análisis ATS.', data: null },
         { status: 500 }
       );
     }
@@ -150,9 +159,8 @@ Devuelve SOLO el objeto JSON con el análisis ATS.`;
     return NextResponse.json({ ok: true, data: safe });
   } catch (error: unknown) {
     console.error('ATS analysis error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { ok: false, error: message, data: null },
+      { ok: false, error: 'No se pudo analizar el CV.', data: null },
       { status: 500 }
     );
   }

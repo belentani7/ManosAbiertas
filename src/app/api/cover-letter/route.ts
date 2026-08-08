@@ -1,19 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-interface CoverLetterRequest {
-  fullName?: string;
-  profession?: string;
-  companyName?: string;
-  jobTitle?: string;
-  experience?: string;
-  skills?: string[];
-  language?: string;
-  tone?: 'formal' | 'friendly' | 'direct';
-}
+const coverLetterSchema = z.object({
+  fullName: z.string().trim().max(120).optional(),
+  profession: z.string().trim().max(160).optional(),
+  companyName: z.string().trim().max(160).optional(),
+  jobTitle: z.string().trim().max(160).optional(),
+  experience: z.string().trim().max(4000).optional(),
+  skills: z.array(z.string().trim().min(1).max(100)).max(20).optional(),
+  language: z.string().trim().max(12).optional(),
+  tone: z.enum(['formal', 'friendly', 'direct']).optional(),
+});
+
+type CoverLetterRequest = z.infer<typeof coverLetterSchema>;
 
 const LANG_INSTRUCTIONS: Record<string, string> = {
   es: 'Escribe la carta en español de España, con lenguaje formal pero cercano.',
@@ -50,7 +53,11 @@ ${fullName}`;
 
 export async function POST(req: NextRequest) {
   try {
-    const body: CoverLetterRequest = await req.json();
+    const parsed = coverLetterSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: 'Solicitud no válida', text: '' }, { status: 400 });
+    }
+    const body: CoverLetterRequest = parsed.data;
     const lang = body.language || 'es';
     const langInstruction = LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.es;
     const tone = body.tone || 'formal';
@@ -91,9 +98,8 @@ Devuelve SOLO el texto de la carta, lista para usar.`;
     return NextResponse.json({ text: result.text, ok: true, provider: result.provider });
   } catch (error: unknown) {
     console.error('Cover letter generation error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { ok: false, error: message, text: '' },
+      { ok: false, error: 'No se pudo generar la carta.', text: '' },
       { status: 500 }
     );
   }

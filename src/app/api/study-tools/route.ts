@@ -1,29 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-interface StudyToolsRequest {
-  tool: 'questions' | 'summary';
-  content: string;
-  title?: string;
-  language?: string;
-}
+const studyToolsSchema = z.object({
+  tool: z.enum(['questions', 'summary']),
+  content: z.string().trim().min(50).max(5000),
+  title: z.string().trim().max(200).optional(),
+  language: z.string().trim().max(12).optional(),
+});
+
+type StudyToolsRequest = z.infer<typeof studyToolsSchema>;
 
 export async function POST(req: NextRequest) {
   try {
-    const body: StudyToolsRequest = await req.json();
+    const parsed = studyToolsSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: 'Solicitud no válida', text: '' }, { status: 400 });
+    }
+    const body: StudyToolsRequest = parsed.data;
     const lang = body.language || 'es';
 
-    if (!body.content || body.content.trim().length < 50) {
-      return NextResponse.json(
-        { ok: false, error: 'El contenido es demasiado corto para analizar' },
-        { status: 400 }
-      );
-    }
-
-    const content = body.content.slice(0, 5000); // Limit to 5000 chars
+    const content = body.content;
 
     let systemPrompt = '';
     let userPrompt = '';
@@ -83,9 +83,8 @@ Formato: lista numerada, cada punto en una línea, máximo 15 palabras por punto
     return NextResponse.json({ text: result.text, ok: true, tool: body.tool, provider: result.provider });
   } catch (error: unknown) {
     console.error('Study tools API error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { ok: false, error: message, text: '' },
+      { ok: false, error: 'No se pudo procesar la solicitud.', text: '' },
       { status: 500 }
     );
   }
