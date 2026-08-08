@@ -226,7 +226,7 @@ export function CVSection() {
       {activeTool === 'cv' && (
         <div className="grid lg:grid-cols-2 gap-6 print:grid-cols-1 print:gap-0">
         {/* EDITOR */}
-        <div className="space-y-4 print:hidden">
+        <div className="min-w-0 space-y-4 print:hidden">
           <Tabs defaultValue="personal">
             <TabsList className="grid grid-cols-5 w-full h-auto">
               <TabsTrigger value="personal" className="flex-col gap-0.5 py-2 text-xs">
