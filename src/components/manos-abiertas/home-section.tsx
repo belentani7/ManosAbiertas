@@ -349,7 +349,7 @@ export function HomeSection() {
       <FirstSteps />
 
       {/* MISSION */}
-      <section className="container mx-auto max-w-7xl px-4">
+      <section className="container mx-auto max-w-7xl overflow-x-clip px-4">
         <div className="grid md:grid-cols-2 gap-6 items-center">
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, x: -20 }}
