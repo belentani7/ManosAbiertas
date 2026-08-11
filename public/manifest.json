@@ -15,25 +15,25 @@
     {
       "name": "Crear mi CV",
       "short_name": "CV",
-      "url": "/#/cv",
+      "url": "/es/cv",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Aprende IA",
       "short_name": "IA",
-      "url": "/#/learn-ai",
+      "url": "/es/ia",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Derechos y Ayudas",
       "short_name": "Derechos",
-      "url": "/#/rights",
+      "url": "/es/derechos",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Recursos",
       "short_name": "Recursos",
-      "url": "/#/resources",
+      "url": "/es/recursos",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],

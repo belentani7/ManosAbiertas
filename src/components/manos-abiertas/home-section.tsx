@@ -52,7 +52,7 @@ export function HomeSection() {
       emoji: '📚',
       icon: Database,
       title: t.nav_resources,
-      desc: `${RESOURCES.length.toLocaleString()}+ enlaces verificados`,
+      desc: `${RESOURCES.length.toLocaleString()}+ recursos recopilados`,
       gradient: 'from-teal-400 to-emerald-500',
     },
     {
@@ -124,7 +124,7 @@ export function HomeSection() {
                 <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              {LANGUAGE_COUNT} idiomas · {RESOURCES.length.toLocaleString()}+ recursos verificados
+              {LANGUAGE_COUNT} idiomas · {RESOURCES.length.toLocaleString()}+ recursos recopilados
             </Badge>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance">
@@ -154,6 +154,12 @@ export function HomeSection() {
                 <Sparkles className="h-5 w-5 text-primary" />
                 {t.hero_cta_learn}
               </Button>
+            </div>
+
+            <div className="mx-auto mt-6 max-w-3xl border-y border-border/70 py-3 text-sm text-muted-foreground">
+              <strong className="text-foreground">Proyecto independiente.</strong> No somos una administracion publica ni un despacho de abogados.
+              Ofrecemos informacion general y orientacion de mejor esfuerzo. Para una urgencia o decision legal, usa siempre un servicio oficial o profesional.
+              <button onClick={() => setActiveSection('contacts')} className="ml-1 font-medium text-primary hover:underline">Envia tu consulta y trataremos de orientarte.</button>
             </div>
 
             {/* Visual mockup - CV preview + AI chat */}

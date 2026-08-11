@@ -34,12 +34,12 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-3 md:col-span-1">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-lg gradient-brand flex items-center justify-center shadow-sm">
+              <a href="/ecosystem.html" className="w-9 h-9 rounded-lg gradient-brand flex items-center justify-center shadow-sm" aria-label="Abrir firma visual NOIACORE y Belentani" title="NOIACORE / Belentani">
                 <Heart className="h-5 w-5 text-white fill-white" />
-              </div>
+              </a>
               <div>
                 <div className="font-bold text-sm gradient-text">Manos Abiertas</div>
-                <div className="text-[10px] text-muted-foreground">NOIACORE · ecosistema madre</div>
+                <div className="text-[10px] text-muted-foreground">Proyecto de Belentani · ecosistema NOIACORE</div>
               </div>
             </div>
             <p className="text-xs text-muted-foreground/90 leading-relaxed">
@@ -77,7 +77,7 @@ export function Footer() {
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Garantías</div>
             <div className="flex flex-wrap gap-1.5">
               <span className="inline-flex items-center gap-1 text-[11px] bg-secondary/60 rounded-full px-2 py-1">
-                <Globe className="h-3 w-3" /> Fuentes oficiales
+                <Globe className="h-3 w-3" /> Fuentes identificadas
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] bg-secondary/60 rounded-full px-2 py-1">
                 <Shield className="h-3 w-3" /> Sin registro
@@ -122,11 +122,14 @@ export function Footer() {
         </div>
 
         <div className="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div>© 2026 NOIACORE · Manos Abiertas · {t.footer_rights}</div>
+          <div>© 2026 Belentani · NOIACORE · Manos Abiertas · {t.footer_rights}</div>
           <div className="flex items-center gap-1.5">
             Hecho con <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> para las comunidades latinoamericanas y migrantes en España
           </div>
         </div>
+        <p className="mx-auto mt-4 max-w-4xl text-center text-[11px] leading-relaxed text-muted-foreground">
+          Proyecto independiente y gratuito. No somos una administracion publica ni un despacho de abogados. La informacion es orientativa y no sustituye asesoramiento juridico, sanitario o de emergencia.
+        </p>
       </div>
 
       {/* Keyboard shortcuts dialog */}

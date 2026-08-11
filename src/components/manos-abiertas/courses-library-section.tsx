@@ -13,6 +13,7 @@ import { EXTERNAL_COURSES, COURSE_CATEGORIES, getCourseStats, type ExternalCours
 import { NoiaCoreAcademy } from './noia-core-academy';
 import { OpenSourceHub } from './open-source-hub';
 import { Level0Academy } from './level0-academy';
+import { GeneratedCoursesAcademy } from './generated-courses-academy';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
@@ -53,7 +54,7 @@ export function CoursesLibrarySection() {
   const [certOnly, setCertOnly] = useState(false);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [progress, setProgress] = useState<CourseProgress>(loadProgress);
-  const [activeTab, setActiveTab] = useState<'level0' | 'external' | 'noia' | 'opensource'>('level0');
+  const [activeTab, setActiveTab] = useState<'own' | 'level0' | 'external' | 'noia' | 'opensource'>('own');
 
   useEffect(() => {
     try {
@@ -114,21 +115,31 @@ export function CoursesLibrarySection() {
       <div className="text-center mb-4">
         <Badge variant="secondary" className="mb-2 gap-1.5">
           <GraduationCap className="h-3 w-3" />
-          {EXTERNAL_COURSES.length + 20} cursos en total
+          {EXTERNAL_COURSES.length + 29} cursos en total
         </Badge>
         <h1 className="text-3xl md:text-4xl font-bold mb-2">Biblioteca de Cursos</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-          Cursos online de Google, SEPE, universidades y más. Más la academia premium NO.IA_CORE.
+          Cursos propios y externos. Todo el contenido educativo de Manos Abiertas es gratuito.
         </p>
       </div>
 
       {/* Tab toggle: Level 0 + External Courses + NO.IA_CORE + Open Source */}
-      <div className="flex justify-center mb-6">
-        <div className="inline-flex p-1 bg-muted rounded-lg flex-wrap gap-1">
+      <div className="flex w-full justify-center mb-6">
+        <div className="grid w-full max-w-4xl grid-cols-2 gap-1 rounded-lg bg-muted p-1 sm:flex sm:flex-wrap sm:justify-center">
+          <button
+            onClick={() => setActiveTab('own')}
+            className={cn(
+              'min-w-0 px-2 sm:px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5',
+              activeTab === 'own' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
+            )}
+          >
+            <BookOpen className="h-3.5 w-3.5" />
+            Cursos propios (5)
+          </button>
           <button
             onClick={() => setActiveTab('level0')}
             className={cn(
-              'px-3 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'min-w-0 px-2 sm:px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5',
               activeTab === 'level0' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -138,7 +149,7 @@ export function CoursesLibrarySection() {
           <button
             onClick={() => setActiveTab('external')}
             className={cn(
-              'px-3 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'min-w-0 px-2 sm:px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5',
               activeTab === 'external' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -148,17 +159,17 @@ export function CoursesLibrarySection() {
           <button
             onClick={() => setActiveTab('noia')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'min-w-0 px-2 sm:px-4 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5',
               activeTab === 'noia' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
             <span className="text-base">👑</span>
-            NO.IA_CORE Academy (20)
+            NO.IA_CORE Academy (20, gratis)
           </button>
           <button
             onClick={() => setActiveTab('opensource')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'min-w-0 px-2 sm:px-4 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5',
               activeTab === 'opensource' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -170,6 +181,9 @@ export function CoursesLibrarySection() {
 
       {/* Nivel 0 */}
       {activeTab === 'level0' && <Level0Academy />}
+
+      {/* Cursos propios */}
+      {activeTab === 'own' && <GeneratedCoursesAcademy />}
 
       {/* NO.IA_CORE Academy */}
       {activeTab === 'noia' && <NoiaCoreAcademy />}

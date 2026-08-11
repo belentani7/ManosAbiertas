@@ -1,0 +1,102 @@
+[
+  {
+    "language": "es",
+    "topic": "cv",
+    "url": "/offline-assistants/es/cv.html"
+  },
+  {
+    "language": "es",
+    "topic": "courses",
+    "url": "/offline-assistants/es/courses.html"
+  },
+  {
+    "language": "es",
+    "topic": "ai",
+    "url": "/offline-assistants/es/ai.html"
+  },
+  {
+    "language": "es",
+    "topic": "rights",
+    "url": "/offline-assistants/es/rights.html"
+  },
+  {
+    "language": "es",
+    "topic": "digital",
+    "url": "/offline-assistants/es/digital.html"
+  },
+  {
+    "language": "en",
+    "topic": "cv",
+    "url": "/offline-assistants/en/cv.html"
+  },
+  {
+    "language": "en",
+    "topic": "courses",
+    "url": "/offline-assistants/en/courses.html"
+  },
+  {
+    "language": "en",
+    "topic": "ai",
+    "url": "/offline-assistants/en/ai.html"
+  },
+  {
+    "language": "en",
+    "topic": "rights",
+    "url": "/offline-assistants/en/rights.html"
+  },
+  {
+    "language": "en",
+    "topic": "digital",
+    "url": "/offline-assistants/en/digital.html"
+  },
+  {
+    "language": "pt",
+    "topic": "cv",
+    "url": "/offline-assistants/pt/cv.html"
+  },
+  {
+    "language": "pt",
+    "topic": "courses",
+    "url": "/offline-assistants/pt/courses.html"
+  },
+  {
+    "language": "pt",
+    "topic": "ai",
+    "url": "/offline-assistants/pt/ai.html"
+  },
+  {
+    "language": "pt",
+    "topic": "rights",
+    "url": "/offline-assistants/pt/rights.html"
+  },
+  {
+    "language": "pt",
+    "topic": "digital",
+    "url": "/offline-assistants/pt/digital.html"
+  },
+  {
+    "language": "fr",
+    "topic": "cv",
+    "url": "/offline-assistants/fr/cv.html"
+  },
+  {
+    "language": "fr",
+    "topic": "courses",
+    "url": "/offline-assistants/fr/courses.html"
+  },
+  {
+    "language": "fr",
+    "topic": "ai",
+    "url": "/offline-assistants/fr/ai.html"
+  },
+  {
+    "language": "fr",
+    "topic": "rights",
+    "url": "/offline-assistants/fr/rights.html"
+  },
+  {
+    "language": "fr",
+    "topic": "digital",
+    "url": "/offline-assistants/fr/digital.html"
+  }
+]
