@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Plus, Trash2, Sparkles, Download, Printer, Eye, User, Briefcase, GraduationCap, Award, Languages, Palette, Loader2, Check, Lightbulb, Save, RotateCcw, Mail } from 'lucide-react';
+import { FileText, Plus, Trash2, Sparkles, Download, Printer, Eye, User, Briefcase, GraduationCap, Award, Languages, Palette, Loader2, Check, Lightbulb, Save, RotateCcw, Mail, Target, Camera, ArrowLeft, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,6 +15,7 @@ import { toast } from 'sonner';
 import { CV_TEMPLATES, CV_GUIDES, ACTION_VERBS, SKILL_SUGGESTIONS } from '@/data/cv-templates';
 import { TemplatePreview } from './template-preview';
 import { CoverLetterBuilder } from './cover-letter-builder';
+import { ATSAnalyzer } from './ats-analyzer';
 import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';
 import { cn } from '@/lib/utils';
@@ -35,6 +36,36 @@ interface Education {
   description: string;
 }
 
+const QUICK_PROFILES = [
+  {
+    id: 'first-job',
+    label: 'Primer empleo',
+    profession: 'Auxiliar de comercio',
+    summary: 'Persona responsable y organizada, con facilidad para aprender, atender al publico y colaborar en equipo. Disponibilidad para incorporacion y desarrollar nuevas habilidades.',
+    experience: { id: '1', position: 'Voluntariado y apoyo comunitario', company: 'Entidad local', startDate: '2025', endDate: 'Actual', description: '• Atencion y orientacion a personas\n• Organizacion de materiales y actividades\n• Colaboracion con un equipo diverso' },
+    skills: ['Atencion al cliente', 'Organizacion', 'Trabajo en equipo', 'Aprendizaje rapido'],
+    templateId: 'classic-europass',
+  },
+  {
+    id: 'services',
+    label: 'Servicios y cuidados',
+    profession: 'Profesional de cuidados y atencion domiciliaria',
+    summary: 'Profesional empatica y responsable, con experiencia en acompanamiento, apoyo en tareas cotidianas y atencion centrada en la persona. Destaca por su puntualidad, paciencia y comunicacion cercana.',
+    experience: { id: '1', position: 'Cuidador/a y apoyo domiciliario', company: 'Familias particulares', startDate: '2022', endDate: 'Actual', description: '• Acompanamiento y apoyo en actividades diarias\n• Preparacion de comidas y organizacion del hogar\n• Coordinacion de citas y comunicacion con familiares' },
+    skills: ['Cuidados de personas mayores', 'Empatia', 'Organizacion', 'Primeros auxilios'],
+    templateId: 'sidebar-photo',
+  },
+  {
+    id: 'digital',
+    label: 'Perfil digital',
+    profession: 'Desarrollador/a frontend junior',
+    summary: 'Perfil digital orientado a crear interfaces web accesibles y responsive. Combina HTML, CSS y JavaScript con capacidad de aprendizaje, documentacion y resolucion de problemas.',
+    experience: { id: '1', position: 'Proyectos web propios', company: 'Portfolio personal', startDate: '2025', endDate: 'Actual', description: '• Desarrollo de interfaces responsive\n• Mejora de accesibilidad y rendimiento\n• Control de versiones con Git y documentacion tecnica' },
+    skills: ['HTML', 'CSS', 'JavaScript', 'Git', 'Accesibilidad web'],
+    templateId: 'two-column-tech',
+  },
+] as const;
+
 export function CVSection() {
   const { language } = useAppStore();
   const t = getTranslation(language);
@@ -44,6 +75,7 @@ export function CVSection() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [photo, setPhoto] = useState<string | null>(null);
   const [summary, setSummary] = useState('');
   const [experiences, setExperiences] = useState<Experience[]>([{ id: '1', position: '', company: '', startDate: '', endDate: '', description: '' }]);
   const [education, setEducation] = useState<Education[]>([{ id: '1', title: '', institution: '', year: '', description: '' }]);
@@ -54,11 +86,12 @@ export function CVSection() {
   const [showPreview, setShowPreview] = useState(false);
   const [aiLoading, setAiLoading] = useState<'summary' | 'experience' | null>(null);
   const [savedAt, setSavedAt] = useState<Date | null>(null);
-  const [activeTool, setActiveTool] = useState<'cv' | 'letter'>('cv');
+  const [activeTool, setActiveTool] = useState<'cv' | 'letter' | 'ats'>('cv');
+  const [guidedStep, setGuidedStep] = useState<number | null>(null);
 
   // Autosave to localStorage (debounced via effect)
   useEffect(() => {
-    const data = { template: template.id, fullName, profession, email, phone, address, summary, experiences, education, skills, languages };
+    const data = { template: template.id, fullName, profession, email, phone, address, photo, summary, experiences, education, skills, languages };
     const id = setTimeout(() => {
       try {
         localStorage.setItem('manos-abiertas-cv', JSON.stringify({ ...data, savedAt: new Date().toISOString() }));
@@ -66,7 +99,7 @@ export function CVSection() {
       } catch { /* ignore */ }
     }, 800);
     return () => clearTimeout(id);
-  }, [template, fullName, profession, email, phone, address, summary, experiences, education, skills, languages]);
+  }, [template, fullName, profession, email, phone, address, photo, summary, experiences, education, skills, languages]);
 
   // Load saved CV on mount
   useEffect(() => {
@@ -74,6 +107,7 @@ export function CVSection() {
       const stored = localStorage.getItem('manos-abiertas-cv');
       if (stored) {
         const data = JSON.parse(stored);
+        /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only CV from external browser storage */
         if (data.template) {
           const tpl = CV_TEMPLATES.find((t) => t.id === data.template);
           if (tpl) setTemplate(tpl);
@@ -83,12 +117,14 @@ export function CVSection() {
         if (data.email) setEmail(data.email);
         if (data.phone) setPhone(data.phone);
         if (data.address) setAddress(data.address);
+        if (data.photo) setPhoto(data.photo);
         if (data.summary) setSummary(data.summary);
         if (data.experiences?.length) setExperiences(data.experiences);
         if (data.education?.length) setEducation(data.education);
         if (data.skills?.length) setSkills(data.skills);
         if (data.languages?.length) setLanguages(data.languages);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
+        /* eslint-enable react-hooks/set-state-in-effect */
       }
     } catch { /* ignore */ }
   }, []);
@@ -118,6 +154,42 @@ export function CVSection() {
       setLanguages([...languages, langInput.trim()]);
       setLangInput('');
     }
+  }
+
+  function loadQuickProfile(profile: (typeof QUICK_PROFILES)[number]) {
+    setProfession(profile.profession);
+    setSummary(profile.summary);
+    setExperiences([{ ...profile.experience }]);
+    setSkills([...profile.skills]);
+    const nextTemplate = CV_TEMPLATES.find((item) => item.id === profile.templateId);
+    if (nextTemplate) setTemplate(nextTemplate);
+    toast.success(`Plantilla rapida cargada: ${profile.label}`);
+  }
+
+  function handlePhoto(file?: File) {
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      toast.error('Selecciona una imagen valida.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const image = new window.Image();
+      image.onload = () => {
+        const size = Math.min(720, Math.max(image.width, image.height));
+        const scale = Math.min(1, size / Math.max(image.width, image.height));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(image.width * scale));
+        canvas.height = Math.max(1, Math.round(image.height * scale));
+        const context = canvas.getContext('2d');
+        if (!context) return;
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        setPhoto(canvas.toDataURL('image/jpeg', 0.84));
+        toast.success('Foto anadida. Se guarda solo en este navegador.');
+      };
+      image.src = String(reader.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   async function generateWithAI(field: 'summary' | 'experience') {
@@ -169,11 +241,11 @@ export function CVSection() {
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">{t.cv_subtitle}</p>
 
         {/* Tool toggle: CV vs Cover Letter */}
-        <div className="inline-flex p-1 bg-muted rounded-lg mt-4">
+        <div className="mt-4 grid w-full grid-cols-1 gap-1 rounded-lg bg-muted p-1 sm:inline-grid sm:w-auto sm:grid-cols-3">
           <button
             onClick={() => setActiveTool('cv')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'flex items-center justify-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
               activeTool === 'cv' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
@@ -183,12 +255,23 @@ export function CVSection() {
           <button
             onClick={() => setActiveTool('letter')}
             className={cn(
-              'px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
+              'flex items-center justify-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
               activeTool === 'letter' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
             <Mail className="h-3.5 w-3.5" />
             Carta de presentación
+            <Badge variant="secondary" className="text-[9px] py-0 h-4">Nuevo</Badge>
+          </button>
+          <button
+            onClick={() => setActiveTool('ats')}
+            className={cn(
+              'flex items-center justify-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors',
+              activeTool === 'ats' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
+            )}
+          >
+            <Target className="h-3.5 w-3.5" />
+            Análisis ATS
             <Badge variant="secondary" className="text-[9px] py-0 h-4">Nuevo</Badge>
           </button>
         </div>
@@ -201,11 +284,92 @@ export function CVSection() {
         </div>
       )}
 
+      {/* ATS Analyzer */}
+      {activeTool === 'ats' && (
+        <div className="max-w-3xl mx-auto">
+          <ATSAnalyzer />
+        </div>
+      )}
+
       {/* CV Builder */}
       {activeTool === 'cv' && (
         <div className="grid lg:grid-cols-2 gap-6 print:grid-cols-1 print:gap-0">
         {/* EDITOR */}
-        <div className="space-y-4 print:hidden">
+        <div className="min-w-0 space-y-4 print:hidden">
+          <Card className="border-primary/30 bg-primary/[0.03]">
+            <CardContent className="p-4">
+              {guidedStep === null ? (
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 font-semibold"><Sparkles className="h-4 w-4 text-primary" /> CV guiado</div>
+                    <p className="mt-1 text-xs text-muted-foreground">Responde cuatro preguntas sencillas y recibe una base profesional editable.</p>
+                  </div>
+                  <Button onClick={() => setGuidedStep(0)} className="gap-2">
+                    Empezar <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>Paso {guidedStep + 1} de 4</span>
+                    <button onClick={() => setGuidedStep(null)} className="hover:text-foreground">Salir</button>
+                  </div>
+                  {guidedStep === 0 && (
+                    <div>
+                      <Label htmlFor="guided-name">¿Como te llamas?</Label>
+                      <Input id="guided-name" value={fullName} onChange={(event) => setFullName(event.target.value)} placeholder="Nombre y apellidos" className="mt-1" autoFocus />
+                    </div>
+                  )}
+                  {guidedStep === 1 && (
+                    <div>
+                      <Label htmlFor="guided-profession">¿Que trabajo buscas o sabes hacer?</Label>
+                      <Input id="guided-profession" value={profession} onChange={(event) => setProfession(event.target.value)} placeholder="Ej: auxiliar de cocina" className="mt-1" autoFocus />
+                    </div>
+                  )}
+                  {guidedStep === 2 && (
+                    <div>
+                      <Label htmlFor="guided-experience">¿Cual fue tu experiencia mas relevante?</Label>
+                      <Input
+                        id="guided-experience"
+                        value={experiences[0]?.position || ''}
+                        onChange={(event) => setExperiences((prev) => prev.map((item, index) => index === 0 ? { ...item, position: event.target.value } : item))}
+                        placeholder="Ej: atencion al cliente, practicas o voluntariado"
+                        className="mt-1"
+                        autoFocus
+                      />
+                    </div>
+                  )}
+                  {guidedStep === 3 && (
+                    <div>
+                      <Label htmlFor="guided-skill">¿Que habilidad quieres destacar?</Label>
+                      <Input id="guided-skill" value={skillInput} onChange={(event) => setSkillInput(event.target.value)} placeholder="Ej: organizacion" className="mt-1" autoFocus />
+                    </div>
+                  )}
+                  <div className="flex justify-between">
+                    <Button variant="ghost" onClick={() => setGuidedStep((step) => Math.max(0, (step || 0) - 1))} disabled={guidedStep === 0} className="gap-1">
+                      <ArrowLeft className="h-4 w-4" /> Atras
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        if (guidedStep < 3) {
+                          setGuidedStep(guidedStep + 1);
+                          return;
+                        }
+                        if (skillInput.trim() && !skills.includes(skillInput.trim())) setSkills((prev) => [...prev, skillInput.trim()]);
+                        setSkillInput('');
+                        setGuidedStep(null);
+                        setShowPreview(true);
+                        if (profession) void generateWithAI('summary');
+                      }}
+                      className="gap-1"
+                    >
+                      {guidedStep === 3 ? 'Crear base profesional' : 'Siguiente'} <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </CardContent>
+          </Card>
           <Tabs defaultValue="personal">
             <TabsList className="grid grid-cols-5 w-full h-auto">
               <TabsTrigger value="personal" className="flex-col gap-0.5 py-2 text-xs">
@@ -254,6 +418,24 @@ export function CVSection() {
                     <div className="sm:col-span-2">
                       <Label htmlFor="addr" className="text-xs">{t.cv_address}</Label>
                       <Input id="addr" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Madrid, España" className="mt-1" />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <Label htmlFor="cv-photo" className="text-xs">Foto opcional</Label>
+                      <div className="mt-1 flex items-center gap-3 rounded-md border p-3">
+                        <div
+                          className="h-16 w-16 shrink-0 rounded-md border bg-muted bg-cover bg-center"
+                          style={photo ? { backgroundImage: `url(${photo})` } : undefined}
+                          role={photo ? 'img' : undefined}
+                          aria-label={photo ? 'Foto seleccionada para el curriculum' : undefined}
+                        >
+                          {!photo && <Camera className="m-5 h-6 w-6 text-muted-foreground" />}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <Input id="cv-photo" type="file" accept="image/*" onChange={(event) => handlePhoto(event.target.files?.[0])} className="text-xs" />
+                          <p className="mt-1 text-[11px] text-muted-foreground">Se reduce y guarda solo en este navegador. Nunca se envia a la IA.</p>
+                        </div>
+                        {photo && <Button variant="ghost" size="sm" onClick={() => setPhoto(null)}>Quitar</Button>}
+                      </div>
                     </div>
                   </div>
 
@@ -314,8 +496,8 @@ export function CVSection() {
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-medium text-muted-foreground">Experiencia {i + 1}</span>
                       {experiences.length > 1 && (
-                        <Button size="icon" variant="ghost" onClick={() => removeExperience(exp.id)} className="h-7 w-7">
-                          <Trash2 className="h-3.5 w-3.5 text-destructive" />
+                    <Button size="icon" variant="ghost" onClick={() => removeExperience(exp.id)} className="h-7 w-7" aria-label="Eliminar experiencia">
+                      <Trash2 className="h-3.5 w-3.5 text-destructive" />
                         </Button>
                       )}
                     </div>
@@ -354,7 +536,7 @@ export function CVSection() {
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-medium text-muted-foreground">Educación {i + 1}</span>
                       {education.length > 1 && (
-                        <Button size="icon" variant="ghost" onClick={() => removeEducation(ed.id)} className="h-7 w-7">
+                        <Button size="icon" variant="ghost" onClick={() => removeEducation(ed.id)} className="h-7 w-7" aria-label="Eliminar formación">
                           <Trash2 className="h-3.5 w-3.5 text-destructive" />
                         </Button>
                       )}
@@ -380,14 +562,14 @@ export function CVSection() {
                     <Label className="text-xs">{t.cv_skills}</Label>
                     <div className="flex gap-2 mt-1">
                       <Input value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())} placeholder="Ej: Atención al cliente" className="h-9" />
-                      <Button size="icon" onClick={addSkill}><Plus className="h-4 w-4" /></Button>
+                      <Button size="icon" onClick={addSkill} aria-label="Añadir habilidad"><Plus className="h-4 w-4" /></Button>
                     </div>
                     {skills.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mt-2">
                         {skills.map((s) => (
                           <Badge key={s} variant="secondary" className="gap-1 pr-1">
                             {s}
-                            <button onClick={() => setSkills(skills.filter(x => x !== s))} className="hover:text-destructive">
+                            <button type="button" onClick={() => setSkills(skills.filter(x => x !== s))} className="hover:text-destructive" aria-label={`Eliminar habilidad: ${s}`}>
                               <Trash2 className="h-3 w-3" />
                             </button>
                           </Badge>
@@ -425,7 +607,7 @@ export function CVSection() {
                     <Label className="text-xs">{t.cv_languages}</Label>
                     <div className="flex gap-2 mt-1">
                       <Input value={langInput} onChange={(e) => setLangInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addLanguage())} placeholder="Ej: Español (nativo)" className="h-9" />
-                      <Button size="icon" onClick={addLanguage}><Plus className="h-4 w-4" /></Button>
+                      <Button size="icon" onClick={addLanguage} aria-label="Añadir idioma"><Plus className="h-4 w-4" /></Button>
                     </div>
                     {languages.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mt-2">
@@ -433,7 +615,7 @@ export function CVSection() {
                           <Badge key={l} variant="secondary" className="gap-1 pr-1">
                             <Languages className="h-3 w-3" />
                             {l}
-                            <button onClick={() => setLanguages(languages.filter(x => x !== l))} className="hover:text-destructive">
+                            <button type="button" onClick={() => setLanguages(languages.filter(x => x !== l))} className="hover:text-destructive" aria-label={`Eliminar idioma: ${l}`}>
                               <Trash2 className="h-3 w-3" />
                             </button>
                           </Badge>
@@ -449,36 +631,15 @@ export function CVSection() {
             <TabsContent value="design" className="space-y-3">
               <Card>
                 <CardContent className="p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <Label className="text-xs">{t.cv_template}</Label>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={() => {
-                        setFullName('María González Pérez');
-                        setProfession('Cuidadora de personas mayores');
-                        setEmail('maria.gonzalez@email.com');
-                        setPhone('+34 612 345 678');
-                        setAddress('Calle Mayor 15, 28013 Madrid');
-                        setSummary('Cuidadora con 5 años de experiencia en atención a personas mayores. Especializada en demencia, movilidad reducida y acompañamiento médico. Empática, responsable y con formación en primeros auxilios.');
-                        setExperiences([
-                          { id: '1', position: 'Cuidadora de personas mayores', company: 'Familia particular', startDate: 'Ene 2022', endDate: 'Actual', description: '• Atención integral a persona de 85 años con demencia\n• Administración de medicación y control de constantes\n• Acompañamiento a citas médicas y actividades\n• Preparación de comidas adaptadas a dieta especial' },
-                          { id: '2', position: 'Auxiliar de ayuda a domicilio', company: 'Cruz Roja Española', startDate: 'Sep 2020', endDate: 'Dic 2021', description: '• Atención a 15 familias con diferentes necesidades\n• Apoyo en tareas domésticas y compras\n• Companyamiento y apoyo emocional\n• Coordinación con trabajadores sociales' },
-                        ]);
-                        setEducation([
-                          { id: '1', title: 'Certificado de Profesionalidad - Atención Sociosanitaria', institution: 'IFTI Madrid', year: '2020', description: 'Formación profesional de grado 3' },
-                          { id: '2', title: 'Curso de Primeros Auxilios', institution: 'Cruz Roja', year: '2019', description: '' },
-                        ]);
-                        setSkills(['Cuidados de personas mayores', 'Administración de medicación', 'Primeros auxilios', 'Demencia y Alzheimer', 'Cocina adaptada', 'Empatía', 'Resolución de problemas', 'Español nativo']);
-                        setLanguages(['Español (nativo)', 'Inglés (básico)', 'Rumano (nativo)']);
-                        toast.success('Datos de ejemplo cargados ✨');
-                      }}
-                      className="h-7 gap-1 text-xs"
-                    >
-                      <Sparkles className="h-3 w-3 text-primary" />
-                      Ver ejemplo
-                    </Button>
+                  <Label className="text-xs">Plantillas rapidas medio rellenas</Label>
+                  <div className="mb-4 mt-2 grid gap-2 sm:grid-cols-3">
+                    {QUICK_PROFILES.map((profile) => (
+                      <Button key={profile.id} size="sm" variant="outline" onClick={() => loadQuickProfile(profile)} className="h-auto min-h-9 whitespace-normal text-xs">
+                        {profile.label}
+                      </Button>
+                    ))}
                   </div>
+                  <Label className="mb-2 block text-xs">{t.cv_template}</Label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {CV_TEMPLATES.map((tpl) => (
                       <TemplatePreview
@@ -549,7 +710,7 @@ export function CVSection() {
                   onClick={() => {
                     if (confirm('¿Borrar todos los datos del CV? Esta acción no se puede deshacer.')) {
                       localStorage.removeItem('manos-abiertas-cv');
-                      setFullName(''); setProfession(''); setEmail(''); setPhone(''); setAddress(''); setSummary('');
+                      setFullName(''); setProfession(''); setEmail(''); setPhone(''); setAddress(''); setPhoto(null); setSummary('');
                       setExperiences([{ id: '1', position: '', company: '', startDate: '', endDate: '', description: '' }]);
                       setEducation([{ id: '1', title: '', institution: '', year: '', description: '' }]);
                       setSkills([]); setLanguages([]);
@@ -594,6 +755,7 @@ export function CVSection() {
             email={email}
             phone={phone}
             address={address}
+            photo={photo}
             summary={summary}
             experiences={experiences.filter((e) => e.position || e.company)}
             education={education.filter((e) => e.title || e.institution)}
@@ -609,10 +771,11 @@ export function CVSection() {
 }
 
 function CVPreview({
-  template, fullName, profession, email, phone, address, summary, experiences, education, skills, languages, hasContent,
+  template, fullName, profession, email, phone, address, photo, summary, experiences, education, skills, languages, hasContent,
 }: {
   template: typeof CV_TEMPLATES[0];
   fullName: string; profession: string; email: string; phone: string; address: string;
+  photo: string | null;
   summary: string; experiences: Experience[]; education: Education[]; skills: string[]; languages: string[];
   hasContent: boolean;
 }) {
@@ -620,16 +783,26 @@ function CVPreview({
     <div className="bg-white text-black shadow-xl rounded-lg overflow-hidden print:shadow-none print:rounded-none min-h-[600px]">
       <div className="p-8" style={{ fontFamily: 'Georgia, serif' }}>
         {/* Header */}
-        <div className="border-b-2 pb-4 mb-4" style={{ borderColor: template.id === 'modern' ? '#c2410c' : '#000' }}>
-          <h1 className="text-3xl font-bold tracking-tight">
-            {fullName || <span className="text-gray-400">Tu Nombre</span>}
-          </h1>
-          <p className="text-lg text-gray-700 mt-0.5">{profession || <span className="text-gray-400">Tu Profesión</span>}</p>
-          <div className="flex flex-wrap gap-3 mt-2 text-xs text-gray-600">
-            {email && <span>✉ {email}</span>}
-            {phone && <span>☎ {phone}</span>}
-            {address && <span>📍 {address}</span>}
+        <div className="mb-4 flex items-start justify-between gap-4 border-b-2 pb-4" style={{ borderColor: template.layout === 'modern' ? '#0f766e' : '#334155' }}>
+          <div className="min-w-0">
+            <h2 className="text-3xl font-bold tracking-tight">
+              {fullName || <span className="text-gray-400">Tu Nombre</span>}
+            </h2>
+            <p className="text-lg text-gray-700 mt-0.5">{profession || <span className="text-gray-400">Tu Profesión</span>}</p>
+            <div className="flex flex-wrap gap-3 mt-2 text-xs text-gray-600">
+              {email && <span>✉ {email}</span>}
+              {phone && <span>☎ {phone}</span>}
+              {address && <span>📍 {address}</span>}
+            </div>
           </div>
+          {photo && (
+            <div
+              className="h-24 w-24 shrink-0 rounded-md border bg-cover bg-center"
+              style={{ backgroundImage: `url(${photo})` }}
+              role="img"
+              aria-label="Foto del curriculum"
+            />
+          )}
         </div>
 
         {/* Summary */}

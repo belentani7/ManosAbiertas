@@ -42,6 +42,7 @@ export function CoverLetterBuilder() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const data = JSON.parse(stored);
+        /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only form from external browser storage */
         if (data.fullName) setFullName(data.fullName);
         if (data.profession) setProfession(data.profession);
         if (data.companyName) setCompanyName(data.companyName);
@@ -51,6 +52,7 @@ export function CoverLetterBuilder() {
         if (data.tone) setTone(data.tone);
         if (data.letter) setLetter(data.letter);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
+        /* eslint-enable react-hooks/set-state-in-effect */
       }
     } catch { /* ignore */ }
   }, []);
@@ -221,8 +223,8 @@ export function CoverLetterBuilder() {
                     placeholder="Ej: Empatía"
                     className="text-sm h-9"
                   />
-                  <Button size="icon" onClick={addSkill} className="h-9 w-9">
-                    <Sparkles className="h-3.5 w-3.5" />
+                <Button size="icon" onClick={addSkill} className="h-9 w-9" aria-label="Añadir habilidad">
+                  <Sparkles className="h-3.5 w-3.5" />
                   </Button>
                 </div>
                 {skills.length > 0 && (
@@ -230,7 +232,7 @@ export function CoverLetterBuilder() {
                     {skills.map((s) => (
                       <Badge key={s} variant="secondary" className="gap-1 pr-1 text-xs">
                         {s}
-                        <button onClick={() => setSkills(skills.filter(x => x !== s))} className="hover:text-destructive">
+                        <button type="button" onClick={() => setSkills(skills.filter(x => x !== s))} className="hover:text-destructive" aria-label={`Eliminar habilidad: ${s}`}>
                           ×
                         </button>
                       </Badge>

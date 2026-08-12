@@ -1,30 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server';
-import ZAI from 'z-ai-web-dev-sdk';
+import { z } from 'zod';
+import { invokeAIText } from '@/lib/ai-provider';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
-interface StudyToolsRequest {
-  tool: 'questions' | 'summary';
-  content: string;
-  title?: string;
-  language?: string;
-}
+const studyToolsSchema = z.object({
+  tool: z.enum(['questions', 'summary']),
+  content: z.string().trim().min(50).max(5000),
+  title: z.string().trim().max(200).optional(),
+  language: z.string().trim().max(12).optional(),
+});
+
+type StudyToolsRequest = z.infer<typeof studyToolsSchema>;
 
 export async function POST(req: NextRequest) {
   try {
-    const body: StudyToolsRequest = await req.json();
+    const parsed = studyToolsSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return NextResponse.json({ ok: false, error: 'Solicitud no válida', text: '' }, { status: 400 });
+    }
+    const body: StudyToolsRequest = parsed.data;
     const lang = body.language || 'es';
 
-    if (!body.content || body.content.trim().length < 50) {
-      return NextResponse.json(
-        { ok: false, error: 'El contenido es demasiado corto para analizar' },
-        { status: 400 }
-      );
-    }
-
-    const zai = await ZAI.create();
-    const content = body.content.slice(0, 5000); // Limit to 5000 chars
+    const content = body.content;
 
     let systemPrompt = '';
     let userPrompt = '';
@@ -60,22 +59,32 @@ ${content}
 Formato: lista numerada, cada punto en una línea, máximo 15 palabras por punto.`;
     }
 
-    const completion = await zai.chat.completions.create({
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-      thinking: { type: 'disabled' },
+    const result = await invokeAIText(systemPrompt, userPrompt, {
+      offline: () => {
+        const sentences = content.split(/(?<=[.!?])\s+/).filter((s) => s.trim().length > 20);
+        if (body.tool === 'questions') {
+          const qs = (sentences.slice(0, 3).map((s, i) => ({
+            question: `¿Qué se dice sobre "${s.trim().slice(0, 60)}..."?`,
+            hint: 'Repasa el texto y busca la idea principal.',
+          })));
+          return JSON.stringify({ questions: qs });
+        }
+        return sentences.slice(0, 5).map((s, i) => `${i + 1}. ${s.trim().slice(0, 120)}`).join('\n');
+      },
     });
 
-    const text = completion.choices[0]?.message?.content?.trim() || '';
+    if (!result.text) {
+      return NextResponse.json(
+        { ok: false, error: 'No hay proveedor de IA configurado (GROQ_API_KEY o .z-ai-config).', text: '' },
+        { status: 500 }
+      );
+    }
 
-    return NextResponse.json({ text, ok: true, tool: body.tool });
+    return NextResponse.json({ text: result.text, ok: true, tool: body.tool, provider: result.provider });
   } catch (error: unknown) {
     console.error('Study tools API error:', error);
-    const message = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { ok: false, error: message, text: '' },
+      { ok: false, error: 'No se pudo procesar la solicitud.', text: '' },
       { status: 500 }
     );
   }

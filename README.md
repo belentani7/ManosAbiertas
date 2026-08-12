@@ -18,26 +18,25 @@ Plataforma web gratuita para pessoas brasileiras, latino-americanas e comunidade
 ### Desenvolvimento local
 
 ```bash
-bun install --frozen-lockfile
-bun run dev
+npm ci
+npm run dev
 ```
 
 Verificações:
 
 ```bash
-bun run lint
-bunx tsc --noEmit --skipLibCheck
-bun run build
+npm run lint
+npx tsc --noEmit --skipLibCheck
+npm run build
 ```
 
 ### Netlify
 
 O projeto está preparado para ser publicado a partir do GitHub através de `netlify.toml`:
 
-- Build command: `bun run build`
+- Build command: `npm run build`
 - Publish directory: `.next`
 - Node: `22`
-- Bun: `1.3.14`
 
 O Netlify executa as rotas `/api/*` como funções serverless. A aplicação continua útil sem IA remota, porque o tutor local, os cursos e o progresso funcionam no navegador.
 
