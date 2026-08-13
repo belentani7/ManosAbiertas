@@ -15,17 +15,14 @@ import { getTranslation } from '@/i18n/translations';
 import { ResourceSubmissionForm } from './resource-submission-form';
 import { cn } from '@/lib/utils';
 import { LanguageResourceBank } from './language-resource-bank';
+import { escapeHtml, isBoundedStringArray, parseStoredJson, safeHttpUrl } from '@/lib/safe-content';
 
 const PAGE_SIZE = 24;
 const FAV_STORAGE_KEY = 'manos-abiertas-favorites';
 
 function loadFavorites(): Set<string> {
   if (typeof window === 'undefined') return new Set();
-  try {
-    const stored = localStorage.getItem(FAV_STORAGE_KEY);
-    if (stored) return new Set(JSON.parse(stored));
-  } catch { /* ignore */ }
-  return new Set();
+  return new Set(parseStoredJson(localStorage.getItem(FAV_STORAGE_KEY), [], isBoundedStringArray));
 }
 
 export function ResourcesSection() {
@@ -75,6 +72,7 @@ export function ResourcesSection() {
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
 <title>Mis recursos favoritos - Manos Abiertas</title>
 <style>
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
@@ -101,18 +99,20 @@ ${favResources.map((r) => {
       ? 'Revisión vencida'
       : 'Pendiente de revisión';
   const trustText = `${trustLabel} · Fuente: ${trust.source || 'no documentada'}${trust.verifiedAt ? ` · Revisado: ${trust.verifiedAt}` : ''}${trust.reviewDueAt ? ` · Próxima revisión: ${trust.reviewDueAt}` : ''}${trust.reviewedBy ? ` · Responsable: ${trust.reviewedBy}` : ''}`;
-  const evidenceText = trust.evidenceUrl
-    ? `<br>Evidencia: <a href="${trust.evidenceUrl}" target="_blank" rel="noopener noreferrer">${trust.evidenceUrl}</a>`
+  const evidenceUrl = safeHttpUrl(trust.evidenceUrl);
+  const resourceUrl = safeHttpUrl(r.url);
+  const evidenceText = evidenceUrl
+    ? `<br>Evidencia: <a href="${escapeHtml(evidenceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(evidenceUrl)}</a>`
     : '';
   return `<div class="resource">
-<h3>${cat?.icon || '🔗'} ${r.title}</h3>
-<p>${r.description}</p>
-<p><a href="${r.url}" target="_blank">${r.url}</a></p>
+<h3>${escapeHtml(cat?.icon || '🔗')} ${escapeHtml(r.title)}</h3>
+<p>${escapeHtml(r.description)}</p>
+<p>${resourceUrl ? `<a href="${escapeHtml(resourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resourceUrl)}</a>` : 'URL no disponible'}</p>
 <div class="meta">
-<span class="badge">${cat?.label || r.category}</span>
-${reg ? `<span class="badge">${reg.label}</span>` : ''}
+<span class="badge">${escapeHtml(cat?.label || r.category)}</span>
+${reg ? `<span class="badge">${escapeHtml(reg.label)}</span>` : ''}
 ${r.free ? '<span class="badge">✓ Gratis</span>' : ''}
-${trustText}${evidenceText}
+${escapeHtml(trustText)}${evidenceText}
 </div>
 </div>`;
 }).join('')}

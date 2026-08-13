@@ -1,0 +1,35 @@
+MANOS ABIERTAS - ESTADO VERIFICADO - 2026-08-13
+
+PUBLICACION
+- Repositorio: belentani7/manosabiertas-vercel, rama main.
+- Produccion publica: https://manosabiertas-vercel.vercel.app
+- Vercel completo el deployment del commit 6082faf.
+
+BASELINE ANTES DEL NUEVO LOTE
+- 54 mejoras reales registradas: 34 verified y 20 applied.
+- 37/37 pruebas core.
+- Build: 441 paginas estaticas y 8 rutas API.
+- npm audit --omit=dev: 0 vulnerabilidades conocidas.
+- Secret scan del diff publicado: 0 coincidencias.
+
+LOTE VALIDADO LOCALMENTE
+- Escape HTML para impresion y exportacion.
+- CSP en documentos HTML descargables.
+- URLs HTTP(S) sin credenciales en sugerencias y exportaciones.
+- Nombres de descarga normalizados.
+- Lectura local acotada y validada por esquema.
+- Progreso, favoritos, cursos, accesibilidad, borradores, recordatorios y recientes endurecidos.
+- 41/41 pruebas core tras el lote.
+- Build exacto con VERCEL=1: 441 paginas estaticas, 8 rutas API, exit 0.
+- Runtime: 11 valores locales manipulados; cinco rutas sin crash ni desbordamiento horizontal.
+
+LIMITES ABIERTOS
+- 13 idiomas siguen en fallback espanol; solo es/en estan completos.
+- 3.647 recursos siguen pendientes de fecha de revision.
+- 16 señales de dialogo requieren runtime manual.
+- Falta matriz completa de teclado, contraste, reflow y lectores de pantalla.
+- Rate limit sigue siendo local por instancia.
+- El objetivo de 1.000 mejoras no esta completo.
+
+REGLA DE PUBLICACION
+No hacer push del lote hasta pasar build, seguridad, privacidad, accesibilidad, i18n, datos, pruebas, secretos y revision de cambios ajenos.

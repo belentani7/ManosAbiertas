@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { isIsoDate, isPlainRecord, parseStoredJson } from '@/lib/safe-content';
 
 const STORAGE_KEY = 'manos-abiertas-reminders';
 
@@ -42,11 +43,19 @@ const PRIORITIES = [
 
 function loadReminders(): Reminder[] {
   if (typeof window === 'undefined') return [];
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) return JSON.parse(stored);
-  } catch { /* ignore */ }
-  return [];
+  return parseStoredJson(localStorage.getItem(STORAGE_KEY), [], (value): value is Reminder[] => (
+    Array.isArray(value)
+    && value.length <= 200
+    && value.every((item) => isPlainRecord(item)
+      && typeof item.id === 'string'
+      && typeof item.title === 'string'
+      && item.title.length <= 140
+      && (item.description === undefined || (typeof item.description === 'string' && item.description.length <= 2_000))
+      && isIsoDate(item.date)
+      && CATEGORIES.some((category) => category.value === item.category)
+      && PRIORITIES.some((priority) => priority.value === item.priority)
+      && (item.completed === undefined || typeof item.completed === 'boolean'))
+  ));
 }
 
 function getDaysUntil(dateStr: string): number {

@@ -15,6 +15,7 @@ import { OpenSourceHub } from './open-source-hub';
 import { Level0Academy } from './level0-academy';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { isPlainRecord, parseStoredJson } from '@/lib/safe-content';
 
 const PAGE_SIZE = 12;
 const PROGRESS_KEY = 'manos-abiertas-course-progress';
@@ -25,11 +26,11 @@ interface CourseProgress {
 
 function loadProgress(): CourseProgress {
   if (typeof window === 'undefined') return {};
-  try {
-    const stored = localStorage.getItem(PROGRESS_KEY);
-    if (stored) return JSON.parse(stored);
-  } catch { /* ignore */ }
-  return {};
+  return parseStoredJson(localStorage.getItem(PROGRESS_KEY), {}, (value): value is CourseProgress => (
+    isPlainRecord(value)
+    && Object.keys(value).length <= 500
+    && Object.values(value).every((status) => status === 'started' || status === 'completed')
+  ));
 }
 
 const LEVEL_LABELS = {

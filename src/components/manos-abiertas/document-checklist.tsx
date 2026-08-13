@@ -10,6 +10,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { toast } from 'sonner';
 import { DOCUMENT_CHECKLIST, type DocumentItem } from '@/data/tools-data';
 import { cn } from '@/lib/utils';
+import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
 
 const STORAGE_KEY = 'manos-abiertas-documents';
 
@@ -31,11 +32,7 @@ const PRIORITY_LABELS: Record<string, { label: string; color: string }> = {
 
 function loadCompleted(): Set<string> {
   if (typeof window === 'undefined') return new Set();
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) return new Set(JSON.parse(stored));
-  } catch { /* ignore */ }
-  return new Set();
+  return new Set(parseStoredJson(localStorage.getItem(STORAGE_KEY), [], isBoundedStringArray));
 }
 
 export function DocumentChecklist() {

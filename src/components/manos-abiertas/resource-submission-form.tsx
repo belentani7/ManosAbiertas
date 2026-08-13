@@ -14,6 +14,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { RESOURCE_CATEGORIES, type ResourceCategory } from '@/data/resources';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { isPlainRecord, parseStoredJson, safeHttpUrl } from '@/lib/safe-content';
 
 const STORAGE_KEY = 'manos-abiertas-resource-suggestions';
 
@@ -29,11 +30,20 @@ export interface ResourceSuggestion {
 
 function loadSuggestions(): ResourceSuggestion[] {
   if (typeof window === 'undefined') return [];
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) return JSON.parse(stored);
-  } catch { /* ignore */ }
-  return [];
+  return parseStoredJson(localStorage.getItem(STORAGE_KEY), [], (value): value is ResourceSuggestion[] => (
+    Array.isArray(value)
+    && value.length <= 100
+    && value.every((item) => isPlainRecord(item)
+      && typeof item.id === 'string'
+      && typeof item.title === 'string'
+      && item.title.length <= 140
+      && safeHttpUrl(item.url) !== null
+      && typeof item.description === 'string'
+      && item.description.length <= 2_000
+      && RESOURCE_CATEGORIES.some((category) => category.value === item.category)
+      && typeof item.source === 'string'
+      && typeof item.submittedAt === 'string')
+  ));
 }
 
 export function ResourceSubmissionForm() {
@@ -66,16 +76,15 @@ export function ResourceSubmissionForm() {
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       url = 'https://' + url;
     }
-    try {
-      new URL(url);
-    } catch {
+    const safeUrl = safeHttpUrl(url);
+    if (!safeUrl) {
       toast.error('La URL no es válida');
       return;
     }
     const suggestion: ResourceSuggestion = {
       id: `sug-${Date.now()}`,
       title: form.title.trim(),
-      url,
+      url: safeUrl,
       description: form.description.trim() || 'Sin descripción',
       category: form.category,
       source: form.source.trim() || 'Sugerencia de usuario',

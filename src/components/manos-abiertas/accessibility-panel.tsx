@@ -13,6 +13,7 @@ import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { isPlainRecord, parseStoredJson } from '@/lib/safe-content';
 
 interface AccessibilitySettings {
   fontSize: number; // 80-150
@@ -46,11 +47,25 @@ const COLOR_FILTERS = [
 
 function loadSettings(): AccessibilitySettings {
   if (typeof window === 'undefined') return DEFAULT_SETTINGS;
-  try {
-    const stored = localStorage.getItem('manos-accessibility');
-    if (stored) return { ...DEFAULT_SETTINGS, ...JSON.parse(stored) };
-  } catch { /* ignore */ }
-  return DEFAULT_SETTINGS;
+  const stored = parseStoredJson(
+    localStorage.getItem('manos-accessibility'),
+    {},
+    isPlainRecord,
+    20_000,
+  );
+  const colorFilter = COLOR_FILTERS.some((filter) => filter.id === stored.colorFilter)
+    ? stored.colorFilter as AccessibilitySettings['colorFilter']
+    : DEFAULT_SETTINGS.colorFilter;
+  return {
+    fontSize: typeof stored.fontSize === 'number' && stored.fontSize >= 80 && stored.fontSize <= 150 ? stored.fontSize : DEFAULT_SETTINGS.fontSize,
+    lineHeight: typeof stored.lineHeight === 'number' && stored.lineHeight >= 1.2 && stored.lineHeight <= 2.2 ? stored.lineHeight : DEFAULT_SETTINGS.lineHeight,
+    letterSpacing: typeof stored.letterSpacing === 'number' && stored.letterSpacing >= 0 && stored.letterSpacing <= 3 ? stored.letterSpacing : DEFAULT_SETTINGS.letterSpacing,
+    dyslexicFont: typeof stored.dyslexicFont === 'boolean' ? stored.dyslexicFont : DEFAULT_SETTINGS.dyslexicFont,
+    reducedMotion: typeof stored.reducedMotion === 'boolean' ? stored.reducedMotion : DEFAULT_SETTINGS.reducedMotion,
+    enhancedFocus: typeof stored.enhancedFocus === 'boolean' ? stored.enhancedFocus : DEFAULT_SETTINGS.enhancedFocus,
+    colorFilter,
+    cursorSize: stored.cursorSize === 'large' ? 'large' : 'normal',
+  };
 }
 
 export function AccessibilityPanel() {

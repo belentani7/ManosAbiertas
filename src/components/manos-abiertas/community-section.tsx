@@ -14,6 +14,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
+import { parseStoredJson } from '@/lib/safe-content';
 
 // ─── SUCCESS STORIES ────────────────────────────────────────────
 interface SuccessStory {
@@ -420,7 +421,20 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
       setCommunityMode('shared');
       setNotice('Publicado para la comunidad.');
     } catch {
-      const drafts = JSON.parse(localStorage.getItem('manos-abiertas-community-drafts') || '[]');
+      const drafts = parseStoredJson<ForumTopic[]>(
+        localStorage.getItem('manos-abiertas-community-drafts'),
+        [],
+        (value): value is ForumTopic[] => Array.isArray(value)
+          && value.length <= 20
+          && value.every((topic) => topic
+            && typeof topic === 'object'
+            && typeof topic.id === 'string'
+            && typeof topic.title === 'string'
+            && topic.title.length <= 140
+            && ['legal', 'work', 'cities', 'tips'].includes(String(topic.category))
+            && topic.replies === 0
+            && topic.source === 'local'),
+      );
       localStorage.setItem('manos-abiertas-community-drafts', JSON.stringify([localTopic, ...drafts].slice(0, 20)));
       setSharedTopics((current) => [localTopic, ...current]);
       setCommunityMode('local');

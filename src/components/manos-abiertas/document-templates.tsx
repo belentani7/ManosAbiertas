@@ -12,6 +12,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { toast } from 'sonner';
 import { DOCUMENT_TEMPLATES, TEMPLATE_CATEGORIES, type DocumentTemplate } from '@/data/document-templates';
 import { cn } from '@/lib/utils';
+import { buildPrintableTextHtml, safeDownloadFilename } from '@/lib/safe-content';
 
 export function DocumentTemplates() {
   const [query, setQuery] = useState('');
@@ -48,7 +49,7 @@ export function DocumentTemplates() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${selectedTemplate?.title.replace(/\s+/g, '-').toLowerCase() || 'plantilla'}.txt`;
+    a.download = `${safeDownloadFilename(selectedTemplate?.title, 'plantilla').toLowerCase()}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -58,14 +59,14 @@ export function DocumentTemplates() {
 
   function printContent() {
     const printWindow = window.open('', '_blank');
-    if (!printWindow) return;
-    printWindow.document.write(`
-      <html><head><title>${selectedTemplate?.title}</title>
-      <style>body{font-family:Georgia,serif;max-width:800px;margin:40px auto;padding:20px;line-height:1.6;white-space:pre-wrap;}</style>
-      </head><body>${editedContent.replace(/\n/g, '<br>')}</body></html>
-    `);
+    if (!printWindow) {
+      toast.error('El navegador bloqueó la ventana de impresión. Permite ventanas emergentes y vuelve a intentarlo.');
+      return;
+    }
+    printWindow.opener = null;
+    printWindow.addEventListener('load', () => printWindow.print(), { once: true });
+    printWindow.document.write(buildPrintableTextHtml(selectedTemplate?.title || 'Plantilla', editedContent));
     printWindow.document.close();
-    printWindow.print();
   }
 
   function resetTemplate() {

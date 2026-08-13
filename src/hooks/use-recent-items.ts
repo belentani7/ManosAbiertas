@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { isPlainRecord, parseStoredJson, safeHttpUrl } from '@/lib/safe-content';
 
 const RECENT_KEY = 'manos-abiertas-recent';
 const MAX_RECENT = 8;
@@ -18,11 +19,19 @@ export interface RecentItem {
 
 function loadRecent(): RecentItem[] {
   if (typeof window === 'undefined') return [];
-  try {
-    const stored = localStorage.getItem(RECENT_KEY);
-    if (stored) return JSON.parse(stored);
-  } catch { /* ignore */ }
-  return [];
+  return parseStoredJson(localStorage.getItem(RECENT_KEY), [], (value): value is RecentItem[] => (
+    Array.isArray(value)
+    && value.length <= MAX_RECENT
+    && value.every((item) => isPlainRecord(item)
+      && typeof item.id === 'string'
+      && ['resource', 'lesson', 'article', 'event'].includes(String(item.type))
+      && typeof item.title === 'string'
+      && typeof item.section === 'string'
+      && typeof item.emoji === 'string'
+      && (item.url === undefined || safeHttpUrl(item.url) !== null)
+      && typeof item.timestamp === 'number'
+      && Number.isFinite(item.timestamp))
+  ));
 }
 
 function saveRecent(items: RecentItem[]) {

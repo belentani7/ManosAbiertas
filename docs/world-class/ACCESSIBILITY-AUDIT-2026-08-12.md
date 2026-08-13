@@ -1,5 +1,7 @@
 # Auditoría de accesibilidad estática — 2026-08-12
 
+> Informe histórico. Los 25 hallazgos automáticos fueron remediados. El estado vigente está en `ACCESSIBILITY-AUDIT-2026-08-13.md`.
+
 **Proyecto:** Manos Abiertas  
 **Estándar base:** WCAG 2.1 AA  
 **Gate adicional del proyecto:** 44 × 44 CSS px, basado en WCAG 2.1 2.5.5 (AAA)  

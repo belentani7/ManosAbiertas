@@ -12,6 +12,7 @@ import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';
 import { SimpleMarkdown as SharedMarkdown } from './simple-markdown';
 import { cn } from '@/lib/utils';
+import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
 
 export function OfficeSection() {
   const { language } = useAppStore();
@@ -20,11 +21,7 @@ export function OfficeSection() {
   const [selectedLesson, setSelectedLesson] = useState<OfficeLesson | null>(null);
   const [completed, setCompleted] = useState<Set<string>>(() => {
     if (typeof window === 'undefined') return new Set();
-    try {
-      const stored = localStorage.getItem('manos-abiertas-office-progress');
-      if (stored) return new Set(JSON.parse(stored));
-    } catch { /* ignore */ }
-    return new Set();
+    return new Set(parseStoredJson(localStorage.getItem('manos-abiertas-office-progress'), [], isBoundedStringArray));
   });
 
   // Persist completed lessons

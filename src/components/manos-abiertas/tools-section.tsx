@@ -16,6 +16,7 @@ import { GAMIFICATION_BADGES } from '@/data/tools-data';
 import { useProgress } from '@/hooks/use-progress';
 import { cn } from '@/lib/utils';
 import { LocalDataPanel } from './local-data-panel';
+import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
 
 type ToolTab = 'documents' | 'processes' | 'templates' | 'cost' | 'reminders' | 'badges' | 'data';
 
@@ -141,7 +142,7 @@ function BadgesGrid() {
     lessonsCompleted: stats.aiCompleted + stats.officeCompleted,
     hasCV: stats.hasCV,
     favoritesCount: typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('manos-abiertas-favorites') || '[]').length
+      ? parseStoredJson(localStorage.getItem('manos-abiertas-favorites'), [], isBoundedStringArray).length
       : 0,
     hasCoverLetter: typeof window !== 'undefined'
       ? Boolean(localStorage.getItem('manos-abiertas-cover-letter'))

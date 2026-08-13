@@ -11,16 +11,13 @@ import { LEVEL0_COURSES, type Level0Course, type Level0Lesson } from '@/data/lev
 import { SimpleMarkdown } from './simple-markdown';
 import { TTSButton } from './tts-button';
 import { cn } from '@/lib/utils';
+import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
 
 const STORAGE_KEY = 'manos-abiertas-level0-progress';
 
 function loadProgress(): Set<string> {
   if (typeof window === 'undefined') return new Set();
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) return new Set(JSON.parse(stored));
-  } catch { /* ignore */ }
-  return new Set();
+  return new Set(parseStoredJson(localStorage.getItem(STORAGE_KEY), [], isBoundedStringArray));
 }
 
 export function Level0Academy() {

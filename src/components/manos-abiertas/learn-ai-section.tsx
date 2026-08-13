@@ -16,6 +16,7 @@ import { TTSButton, TTSPlayer } from './tts-button';
 import { AIStudyTools } from './ai-study-tools';
 import { cn } from '@/lib/utils';
 import { AIToolDirectory } from './ai-tool-directory';
+import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
 
 export function LearnAISection() {
   const { language } = useAppStore();
@@ -24,11 +25,7 @@ export function LearnAISection() {
   const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(() => {
     if (typeof window === 'undefined') return new Set();
-    try {
-      const stored = localStorage.getItem('manos-abiertas-ai-progress');
-      if (stored) return new Set(JSON.parse(stored));
-    } catch { /* ignore */ }
-    return new Set();
+    return new Set(parseStoredJson(localStorage.getItem('manos-abiertas-ai-progress'), [], isBoundedStringArray));
   });
 
   // Persist completed lessons

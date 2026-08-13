@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "data": {
+    "manos-accessibility": "{\"fontSize\":999,\"lineHeight\":-5,\"letterSpacing\":99,\"dyslexicFont\":\"yes\",\"reducedMotion\":\"no\",\"enhancedFocus\":42,\"colorFilter\":\"invert(1)\",\"cursorSize\":\"huge\"}",
+    "manos-abiertas-favorites": "{\"not\":\"an array\"}",
+    "manos-abiertas-documents": "not-json",
+    "manos-abiertas-ai-progress": "[42]",
+    "manos-abiertas-level0-progress": "{\"bad\":true}",
+    "manos-abiertas-office-progress": "{\"bad\":true}",
+    "manos-abiertas-course-progress": "{\"course\":\"hacked\"}",
+    "manos-abiertas-community-drafts": "[{\"id\":\"x\",\"title\":\"bad\",\"category\":\"evil\",\"replies\":999,\"source\":\"shared\"}]",
+    "manos-abiertas-resource-suggestions": "[{\"id\":\"x\",\"title\":\"x\",\"url\":\"javascript:alert(1)\",\"description\":\"x\",\"category\":\"government\",\"source\":\"x\",\"submittedAt\":\"x\"}]",
+    "manos-abiertas-reminders": "[{\"id\":\"x\",\"title\":\"x\",\"date\":\"2026-02-30\",\"category\":\"evil\",\"priority\":\"urgent\"}]",
+    "manos-abiertas-recent": "[{\"id\":\"x\",\"type\":\"resource\",\"title\":\"x\",\"section\":\"x\",\"emoji\":\"x\",\"url\":\"javascript:alert(1)\",\"timestamp\":1}]",
+    "manos-abiertas-onboarded": "true"
+  }
+}
