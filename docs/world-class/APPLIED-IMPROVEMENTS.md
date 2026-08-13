@@ -5,7 +5,7 @@ Fuente: ledger versionado y workspace Git verificable del checkout publicado.
 
 ## Resultado
 
-- Total registrado: **89 mejoras reales**.
+- Total registrado: **115 mejoras reales**.
 - `verified`: se completa desde el JSONL tras ejecutar el verificador.
 - `applied`: se completa desde el JSONL tras ejecutar el verificador.
 - No se cuentan los 39 idiomas, las seis APIs, los contextos de usuario ni cada test como mejoras repetidas.
@@ -39,7 +39,7 @@ El verificador comprueba:
 
 ## Estado global actual
 
-`npm run test:core` produjo 48 tests aprobados de 48 y generó primero el paquete reproducible de 5.000 guías. El nuevo lote prueba normalización de datos personales, rollback de copias y salida ATS hostil. El scanner estático de accesibilidad terminó con cero hallazgos automáticos. El build exacto con `VERCEL=1` generó 441 páginas estáticas y ocho rutas API con exit 0. El runtime sembró 15 valores manipulados más onboarding y recorrió ocho rutas sin crash ni desbordamiento horizontal.
+`npm run test:core` produjo 59 tests aprobados de 59 y generó primero el paquete reproducible de 5.000 guías. El tercer lote prueba MIME, tamaño declarado y real con corte del stream, sintaxis JSON, cancelación, timeout, respuestas de dominio y configuración de proveedores. El build exacto con `VERCEL=1` generó 441 páginas estáticas y ocho rutas API con exit 0. En runtime local, seis APIs devolvieron JSON contractual y las rutas IA, CV y Comunidad renderizaron sin crash ni desbordamiento horizontal.
 
 Estos resultados habilitan continuar la auditoría; no declaran por sí solos conformidad WCAG completa ni el objetivo world-class, y no sustituyen revisión visual, navegador, secretos, dependencias y estado remoto del despliegue.
 

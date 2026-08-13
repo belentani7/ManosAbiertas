@@ -15,6 +15,7 @@ import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
 import { getLocalStorageItem, readStoredChat } from '@/lib/local-data';
 import { readApiText } from '@/lib/safe-content';
+import { requestJson } from '@/lib/network-json';
 
 interface Message {
   id: string;
@@ -80,12 +81,13 @@ export function AIAssistant() {
   }, [open]);
 
   const sendMessage = useCallback(async (text: string) => {
-    if (!text.trim() || loading) return;
+    const prompt = text.trim().slice(0, 12_000);
+    if (!prompt || loading) return;
 
     const userMsg: Message = {
       id: `u-${Date.now()}`,
       role: 'user',
-      content: text.trim(),
+      content: prompt,
       timestamp: Date.now(),
     };
     setMessages((prev) => [...prev, userMsg].slice(-20));
@@ -97,20 +99,14 @@ export function AIAssistant() {
         throw new Error('offline');
       }
 
-      const controller = new AbortController();
-      const timeout = window.setTimeout(() => controller.abort(), 5000);
-      const resp = await fetch('/api/chat', {
+      const data = await requestJson('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
           messages: [...messages.slice(-19), userMsg].map((m) => ({ role: m.role, content: m.content })),
           language,
         }, remoteAIConsent)),
-        signal: controller.signal,
-      });
-      window.clearTimeout(timeout);
-      if (!resp.ok) throw new Error('Error en el chat');
-      const data = await resp.json();
+      }, { timeoutMs: 8_000, maxResponseBytes: 64_000 });
       const responseText = readApiText(data, 12_000);
       if (!responseText) throw new Error('Respuesta no válida');
       const aiMsg: Message = {
@@ -124,7 +120,7 @@ export function AIAssistant() {
       const errMsg: Message = {
         id: `local-${Date.now()}`,
         role: 'assistant',
-        content: getOfflineTutorReply(text, language),
+        content: getOfflineTutorReply(prompt, language),
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, errMsg].slice(-20));

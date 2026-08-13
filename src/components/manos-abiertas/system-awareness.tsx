@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import { Activity, CheckCircle2, CloudOff, RefreshCw, Wifi } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { requestJson } from '@/lib/network-json';
+import { healthFromPayload, type HealthStatus } from '@/lib/client-response';
 
-type Health = { ok: boolean; provider?: string; capabilities?: string[] };
 type Status = 'checking' | 'healthy' | 'local' | 'offline';
 
 export function SystemAwareness() {
   const [status, setStatus] = useState<Status>('checking');
-  const [health, setHealth] = useState<Health | null>(null);
+  const [health, setHealth] = useState<HealthStatus | null>(null);
 
   async function check() {
     if (!navigator.onLine) {
@@ -19,8 +20,9 @@ export function SystemAwareness() {
     }
     setStatus('checking');
     try {
-      const response = await fetch('/api/health', { cache: 'no-store', signal: AbortSignal.timeout(4000) });
-      const data = await response.json() as Health;
+      const payload = await requestJson('/api/health', { cache: 'no-store' }, { timeoutMs: 4_000, maxResponseBytes: 16_000 });
+      const data = healthFromPayload(payload);
+      if (!data) throw new Error('Respuesta no válida');
       setHealth(data);
       setStatus(data.provider && data.provider !== 'local' ? 'healthy' : 'local');
     } catch {

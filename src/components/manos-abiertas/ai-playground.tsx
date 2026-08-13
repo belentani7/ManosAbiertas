@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils';
 import { useRemoteAIConsent } from '@/hooks/use-remote-ai-consent';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
+import { requestJson } from '@/lib/network-json';
+import { readApiText } from '@/lib/safe-content';
 
 interface AIPlaygroundProps {
   /** Title for the playground section */
@@ -44,43 +46,43 @@ export function AIPlayground({
   const [messages, setMessages] = useState<Message[]>([]);
 
   async function sendPrompt(text: string) {
-    if (!text.trim() || loading) return;
+    const prompt = text.trim().slice(0, 12_000);
+    if (!prompt || loading) return;
 
     const userMsg: Message = {
       id: `u-${Date.now()}`,
       role: 'user',
-      content: text.trim(),
+      content: prompt,
     };
-    setMessages((prev) => [...prev, userMsg]);
+    setMessages((prev) => [...prev, userMsg].slice(-20));
     setInput('');
     setLoading(true);
 
     try {
       const systemMsg = contextPrompt
-        ? `Contexto: ${contextPrompt}\n\nInstrucción: Responde de forma práctica y clara, en español sencillo, como si estuvieras ayudando a una persona que está aprendiendo a usar IA.`
+        ? `Contexto: ${contextPrompt}\n\nInstrucción: Responde de forma práctica y clara, en español sencillo, como si estuvieras ayudando a una persona que está aprendiendo a usar IA.`.slice(0, 12_000)
         : 'Eres un asistente que ayuda a una persona a aprender IA. Responde en español sencillo y práctico.';
 
-      const resp = await fetch('/api/chat', {
+      const data = await requestJson('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
           messages: [
             { role: 'assistant', content: systemMsg },
-            ...messages.map((m) => ({ role: m.role, content: m.content })),
-            { role: 'user', content: text.trim() },
+            ...messages.slice(-18).map((m) => ({ role: m.role, content: m.content })),
+            { role: 'user', content: prompt },
           ],
           language,
         }, remoteAIConsent)),
-      });
-
-      if (!resp.ok) throw new Error('Error en la IA');
-      const data = await resp.json();
+      }, { timeoutMs: 10_000, maxResponseBytes: 64_000 });
+      const responseText = readApiText(data, 12_000);
+      if (!responseText) throw new Error('Respuesta no válida');
       const aiMsg: Message = {
         id: `a-${Date.now()}`,
         role: 'assistant',
-        content: data.text || 'Lo siento, no pude responder. Inténtalo de nuevo.',
+        content: responseText,
       };
-      setMessages((prev) => [...prev, aiMsg]);
+      setMessages((prev) => [...prev, aiMsg].slice(-20));
     } catch {
       toast.error('No se pudo conectar con la IA. Inténtalo de nuevo.');
     } finally {
@@ -201,6 +203,7 @@ export function AIPlayground({
               <div className="flex gap-2 items-end">
                 <Textarea
                   value={input}
+                  maxLength={12_000}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Escribe tu prompt para la IA..."

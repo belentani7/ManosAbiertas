@@ -1,3 +1,6 @@
+import { readBoundedJson } from './network-json';
+import { boundedProviderText, providerTextFromPayload, safeMaxTokens, safeProviderEndpoint, safeProviderModel } from './provider-security';
+
 type ProviderMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
 type ProviderResult = { text: string; provider: 'groq' | 'nvidia' | 'zai' | 'offline'; model?: string };
@@ -10,18 +13,22 @@ async function callCompatibleProvider(
   messages: ProviderMessage[],
   maxTokens = 900,
 ): Promise<ProviderResult> {
-  const response = await fetch(`${baseUrl.replace(/\/$/, '')}/chat/completions`, {
+  const endpoint = safeProviderEndpoint(baseUrl);
+  const safeModel = safeProviderModel(model);
+  if (!endpoint || !safeModel) throw new Error(`${provider} configuration rejected`);
+  const tokenLimit = safeMaxTokens(maxTokens);
+  const response = await fetch(endpoint, {
     method: 'POST',
     headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model, messages, max_completion_tokens: maxTokens }),
+    body: JSON.stringify({ model: safeModel, messages, max_completion_tokens: tokenLimit }),
     signal: AbortSignal.timeout(45000),
   });
 
   if (!response.ok) throw new Error(`${provider} HTTP ${response.status}`);
-  const payload = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
-  const text = payload.choices?.[0]?.message?.content?.trim();
+  const payload = await readBoundedJson(response, 1_000_000);
+  const text = providerTextFromPayload(payload, Math.min(65_536, tokenLimit * 16));
   if (!text) throw new Error(`${provider} returned an empty response`);
-  return { text, provider, model };
+  return { text, provider, model: safeModel };
 }
 
 export async function callConfiguredProvider(
@@ -66,14 +73,14 @@ export async function invokeAIText(
     { role: 'system', content: systemPrompt },
     { role: 'user', content: userPrompt },
   ];
-  const maxTokens = options.maxTokens ?? 900;
+  const maxTokens = safeMaxTokens(options.maxTokens ?? 900);
 
   // 1) Env-configured provider (GROQ/NVIDIA)
   try {
     const configured = await callConfiguredProvider(messages, maxTokens);
     if (configured) return configured;
   } catch (error) {
-    console.warn('Configured AI provider unavailable:', error);
+    console.warn(`Configured AI provider unavailable (${error instanceof Error ? error.name : 'UnknownError'})`);
   }
 
   // 2) Z.ai SDK — may throw when .z-ai-config is missing
@@ -84,15 +91,15 @@ export async function invokeAIText(
       messages,
       thinking: { type: 'disabled' },
     });
-    const text = completion.choices?.[0]?.message?.content?.trim() || '';
+    const text = boundedProviderText(completion.choices?.[0]?.message?.content, maxTokens) || '';
     if (text) return { text, provider: 'zai' };
   } catch (error) {
-    console.warn('Z.ai provider unavailable:', error);
+    console.warn(`Z.ai provider unavailable (${error instanceof Error ? error.name : 'UnknownError'})`);
   }
 
   // 3) Offline fallback (deterministic, no external call)
   if (options.offline) {
-    return { text: options.offline(), provider: 'offline' };
+    return { text: boundedProviderText(options.offline(), maxTokens) || '', provider: 'offline' };
   }
 
   return { text: '', provider: 'offline' };

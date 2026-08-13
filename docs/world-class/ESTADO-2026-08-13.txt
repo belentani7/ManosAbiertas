@@ -35,6 +35,16 @@ SEGUNDO LOTE PUBLICADO Y VALIDADO - acbc691
 - Runtime: 15 valores manipulados mas onboarding; 8 rutas sin crash ni overflow.
 - Produccion: CV y rutas criticas con HTTP 200 y cabeceras de seguridad completas.
 
+TERCER LOTE VALIDADO PARA PUBLICACION
+- 115 mejoras reales registradas: 87 verified y 28 applied.
+- Ocho consumidores remotos comparten timeout, cancelacion, MIME y limite de respuesta.
+- Playground, estudio, comunidad y health validan estructura antes de renderizar.
+- Proveedores IA restringen HTTPS, credenciales, modelo, tokens, JSON y salida.
+- Prompts y contextos se recortan antes de estado y red.
+- 59/59 pruebas core, lint y typecheck aprobados.
+- Build exacto con VERCEL=1: 441 paginas estaticas, 8 rutas API, exit 0.
+- Runtime local: seis APIs con contrato JSON; IA, CV y Comunidad sin crash ni overflow.
+
 LIMITES ABIERTOS
 - 13 idiomas siguen en fallback espanol; solo es/en estan completos.
 - 3.647 recursos siguen pendientes de fecha de revision.

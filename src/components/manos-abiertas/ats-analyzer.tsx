@@ -14,6 +14,7 @@ import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { getLocalStorageItem, readStoredCV } from '@/lib/local-data';
 import { isPlainRecord } from '@/lib/safe-content';
 import { normalizeATSAnalysis, type ATSAnalysis } from '@/lib/ats-analysis';
+import { requestJson } from '@/lib/network-json';
 
 const STORAGE_KEY = 'manos-abiertas-cv';
 
@@ -47,7 +48,7 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
     try {
       const cvData = readStoredCV(getLocalStorageItem(STORAGE_KEY));
 
-      const resp = await fetch('/api/cv/ats', {
+      const data: unknown = await requestJson('/api/cv/ats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
@@ -61,11 +62,10 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
           jobDescription,
           language,
         }, remoteAIConsent)),
-      });
-      const data: unknown = await resp.json();
+      }, { timeoutMs: 15_000, maxResponseBytes: 128_000 });
       const payload = isPlainRecord(data) ? data : null;
       const analysis = payload ? normalizeATSAnalysis(payload.data) : null;
-      if (!resp.ok || payload?.ok !== true || !analysis) {
+      if (payload?.ok !== true || !analysis) {
         throw new Error('Respuesta de análisis no válida');
       }
       setResult(analysis);

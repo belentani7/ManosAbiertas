@@ -15,6 +15,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { parseStoredJson } from '@/lib/safe-content';
+import { requestJson } from '@/lib/network-json';
+import { communityPostsFromPayload, publishedCommunityPostFromPayload } from '@/lib/client-response';
 
 // ─── SUCCESS STORIES ────────────────────────────────────────────
 interface SuccessStory {
@@ -359,12 +361,13 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
 
   useEffect(() => {
     let active = true;
-    fetch('/api/community')
-      .then(async (response) => {
-        const data = await response.json();
+    const controller = new AbortController();
+    requestJson('/api/community', { signal: controller.signal }, { timeoutMs: 6_000, maxResponseBytes: 128_000 })
+      .then((data) => {
         if (!active) return;
-        if (response.ok && data.mode === 'shared') {
-          setSharedTopics(data.posts.map((post: { id: string; title: string; category: ForumTopic['category']; replies: number; createdAt: string }) => ({
+        const posts = communityPostsFromPayload(data);
+        if (posts) {
+          setSharedTopics(posts.map((post) => ({
             id: post.id,
             title: post.title,
             category: post.category,
@@ -381,6 +384,7 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
 
     return () => {
       active = false;
+      controller.abort();
     };
   }, []);
 
@@ -407,15 +411,15 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
     };
 
     try {
-      const response = await fetch('/api/community', {
+      const data = await requestJson('/api/community', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: title.trim(), category, author: author.trim() || 'Mi gente' }),
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'No disponible');
+      }, { timeoutMs: 8_000, maxResponseBytes: 64_000 });
+      const publishedPost = publishedCommunityPostFromPayload(data);
+      if (!publishedPost) throw new Error('Respuesta no válida');
       setSharedTopics((current) => [
-        { ...localTopic, id: data.post.id, source: 'shared' },
+        { ...localTopic, id: publishedPost.id, source: 'shared' },
         ...current,
       ]);
       setCommunityMode('shared');

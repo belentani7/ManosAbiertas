@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { getLocalStorageItem, readStoredCoverLetter } from '@/lib/local-data';
 import { readApiText } from '@/lib/safe-content';
+import { requestJson } from '@/lib/network-json';
 
 const STORAGE_KEY = 'manos-abiertas-cover-letter';
 
@@ -83,16 +84,15 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
     }
     setLoading(true);
     try {
-      const resp = await fetch('/api/cover-letter', {
+      const data = await requestJson('/api/cover-letter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
           fullName, profession, companyName, jobTitle, experience, skills, tone, language,
         }, remoteAIConsent)),
-      });
-      const data = await resp.json();
+      }, { timeoutMs: 15_000, maxResponseBytes: 128_000 });
       const generatedLetter = readApiText(data, 50_000);
-      if (!resp.ok || !generatedLetter) throw new Error('Error');
+      if (!generatedLetter) throw new Error('Error');
       setLetter(generatedLetter);
       toast.success('Carta generada con IA ✨');
     } catch {

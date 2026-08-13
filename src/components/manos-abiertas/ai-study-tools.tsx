@@ -12,22 +12,20 @@ import { cn } from '@/lib/utils';
 import { useRemoteAIConsent } from '@/hooks/use-remote-ai-consent';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
+import { requestJson } from '@/lib/network-json';
+import { studyQuestionsFromPayload, type StudyQuestion } from '@/lib/client-response';
+import { readApiText } from '@/lib/safe-content';
 
 interface AIStudyToolsProps {
   content: string;
   title?: string;
 }
 
-interface Question {
-  question: string;
-  hint: string;
-}
-
 export function AIStudyTools({ content, title }: AIStudyToolsProps) {
   const { language } = useAppStore();
   const { remoteAIConsent } = useRemoteAIConsent();
   const [loading, setLoading] = useState<'questions' | 'summary' | null>(null);
-  const [questions, setQuestions] = useState<Question[] | null>(null);
+  const [questions, setQuestions] = useState<StudyQuestion[] | null>(null);
   const [summary, setSummary] = useState<string | null>(null);
   const [showResults, setShowResults] = useState(false);
 
@@ -35,22 +33,14 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
     setLoading('questions');
     setSummary(null);
     try {
-      const resp = await fetch('/api/study-tools', {
+      const data = await requestJson('/api/study-tools', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(withRemoteAIConsent({ tool: 'questions', content, title, language }, remoteAIConsent)),
-      });
-      if (!resp.ok) throw new Error('Error');
-      const data = await resp.json();
-      // Try to parse JSON from text
-      try {
-        const parsed = JSON.parse(data.text);
-        setQuestions(parsed.questions || []);
-      } catch {
-        // If not JSON, create simple questions from text
-        const lines = data.text.split('\n').filter((l: string) => l.trim());
-        setQuestions(lines.slice(0, 3).map((q: string) => ({ question: q.replace(/^\d+\.\s*/, ''), hint: '' })));
-      }
+        body: JSON.stringify(withRemoteAIConsent({ tool: 'questions', content: content.slice(0, 5_000), title: title?.slice(0, 200), language }, remoteAIConsent)),
+      }, { timeoutMs: 10_000, maxResponseBytes: 64_000 });
+      const generatedQuestions = studyQuestionsFromPayload(data);
+      if (!generatedQuestions) throw new Error('Respuesta no válida');
+      setQuestions(generatedQuestions);
       setShowResults(true);
       toast.success('Preguntas generadas con IA 🧠');
     } catch {
@@ -64,14 +54,14 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
     setLoading('summary');
     setQuestions(null);
     try {
-      const resp = await fetch('/api/study-tools', {
+      const data = await requestJson('/api/study-tools', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(withRemoteAIConsent({ tool: 'summary', content, title, language }, remoteAIConsent)),
-      });
-      if (!resp.ok) throw new Error('Error');
-      const data = await resp.json();
-      setSummary(data.text);
+        body: JSON.stringify(withRemoteAIConsent({ tool: 'summary', content: content.slice(0, 5_000), title: title?.slice(0, 200), language }, remoteAIConsent)),
+      }, { timeoutMs: 10_000, maxResponseBytes: 64_000 });
+      const generatedSummary = readApiText(data, 20_000);
+      if (!generatedSummary) throw new Error('Respuesta no válida');
+      setSummary(generatedSummary);
       setShowResults(true);
       toast.success('Resumen generado con IA 📝');
     } catch {

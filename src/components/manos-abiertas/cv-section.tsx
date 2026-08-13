@@ -24,6 +24,7 @@ import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
 import { getLocalStorageItem, readStoredCV } from '@/lib/local-data';
 import { readApiText } from '@/lib/safe-content';
+import { requestJson } from '@/lib/network-json';
 
 interface Experience {
   id: string;
@@ -129,7 +130,7 @@ export function CVSection() {
   async function generateWithAI(field: 'summary' | 'experience') {
     setAiLoading(field);
     try {
-      const resp = await fetch('/api/cv/generate', {
+      const data = await requestJson('/api/cv/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
@@ -141,10 +142,9 @@ export function CVSection() {
           skills,
           language,
         }, remoteAIConsent)),
-      });
-      const data = await resp.json();
+      }, { timeoutMs: 15_000, maxResponseBytes: 64_000 });
       const generatedText = readApiText(data, 20_000);
-      if (!resp.ok || !generatedText) throw new Error('Error en la generación');
+      if (!generatedText) throw new Error('Error en la generación');
       if (field === 'summary') {
         setSummary(generatedText);
         toast.success('Resumen generado con IA ✨');
