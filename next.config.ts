@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: process.env.NEXT_OUTPUT_MODE === "netlify" ? undefined : "standalone",
+  output:
+    process.env.VERCEL === "1" || process.env.NEXT_OUTPUT_MODE === "netlify"
+      ? undefined
+      : "standalone",
   /* config options here */
   reactStrictMode: true,
   typescript: {
