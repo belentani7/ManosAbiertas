@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Download, HardDrive, RefreshCw, Trash2, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -15,15 +15,20 @@ export function LocalDataPanel() {
   const [keys, setKeys] = useState<string[]>([]);
   const [status, setStatus] = useState('');
 
-  const refresh = () => {
+  const refresh = useCallback(() => {
     if (typeof window === 'undefined') return;
     const next = Object.keys(localStorage).filter(isAppKey).sort();
     setKeys(next);
-  };
+  }, []);
 
   useEffect(() => {
-    refresh();
-  }, []);
+    const timer = window.setTimeout(refresh, 0);
+    window.addEventListener('storage', refresh);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('storage', refresh);
+    };
+  }, [refresh]);
 
   const exportPayload = useMemo(() => {
     if (typeof window === 'undefined') return {};
