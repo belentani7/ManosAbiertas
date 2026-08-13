@@ -13,6 +13,8 @@ import { getOfflineTutorReply } from '@/lib/offline-tutor';
 import { useRemoteAIConsent } from '@/hooks/use-remote-ai-consent';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
+import { getLocalStorageItem, readStoredChat } from '@/lib/local-data';
+import { readApiText } from '@/lib/safe-content';
 
 interface Message {
   id: string;
@@ -44,17 +46,12 @@ export function AIAssistant() {
 
   // Load chat history from localStorage on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Client-only history hydration after the deterministic server render.
-          // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is an external browser store
-          setMessages(parsed);
-        }
-      }
-    } catch { /* ignore */ }
+    const parsed = readStoredChat(getLocalStorageItem(STORAGE_KEY));
+    if (parsed.length > 0) {
+      // Client-only history hydration after the deterministic server render.
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is an external browser store
+      setMessages(parsed);
+    }
   }, []);
 
   // Persist chat history
@@ -91,7 +88,7 @@ export function AIAssistant() {
       content: text.trim(),
       timestamp: Date.now(),
     };
-    setMessages((prev) => [...prev, userMsg]);
+    setMessages((prev) => [...prev, userMsg].slice(-20));
     setInput('');
     setLoading(true);
 
@@ -106,7 +103,7 @@ export function AIAssistant() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
-          messages: [...messages, userMsg].map((m) => ({ role: m.role, content: m.content })),
+          messages: [...messages.slice(-19), userMsg].map((m) => ({ role: m.role, content: m.content })),
           language,
         }, remoteAIConsent)),
         signal: controller.signal,
@@ -114,13 +111,15 @@ export function AIAssistant() {
       window.clearTimeout(timeout);
       if (!resp.ok) throw new Error('Error en el chat');
       const data = await resp.json();
+      const responseText = readApiText(data, 12_000);
+      if (!responseText) throw new Error('Respuesta no válida');
       const aiMsg: Message = {
         id: `a-${Date.now()}`,
         role: 'assistant',
-        content: data.text || 'Lo siento, no pude responder. Inténtalo de nuevo.',
+        content: responseText,
         timestamp: Date.now(),
       };
-      setMessages((prev) => [...prev, aiMsg]);
+      setMessages((prev) => [...prev, aiMsg].slice(-20));
     } catch {
       const errMsg: Message = {
         id: `local-${Date.now()}`,
@@ -128,7 +127,7 @@ export function AIAssistant() {
         content: getOfflineTutorReply(text, language),
         timestamp: Date.now(),
       };
-      setMessages((prev) => [...prev, errMsg]);
+      setMessages((prev) => [...prev, errMsg].slice(-20));
     } finally {
       setLoading(false);
     }
@@ -311,6 +310,7 @@ export function AIAssistant() {
                 <Textarea
                   ref={inputRef}
                   value={input}
+                  maxLength={12_000}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Escribe tu pregunta..."

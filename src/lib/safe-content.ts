@@ -61,6 +61,12 @@ export function parseStoredJson<T>(
   }
 }
 
+export function readApiText(value: unknown, maxChars: number) {
+  if (!isPlainRecord(value) || typeof value.text !== 'string') return null;
+  const text = value.text.trim();
+  return text && text.length <= maxChars ? text : null;
+}
+
 export function buildPrintableTextHtml(title: unknown, content: unknown) {
   return `<!doctype html>
 <html lang="es"><head><meta charset="utf-8">

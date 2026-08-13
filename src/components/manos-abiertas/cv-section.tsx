@@ -22,6 +22,8 @@ import { cn } from '@/lib/utils';
 import { useRemoteAIConsent } from '@/hooks/use-remote-ai-consent';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
+import { getLocalStorageItem, readStoredCV } from '@/lib/local-data';
+import { readApiText } from '@/lib/safe-content';
 
 interface Experience {
   id: string;
@@ -75,10 +77,8 @@ export function CVSection() {
 
   // Load saved CV on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('manos-abiertas-cv');
-      if (stored) {
-        const data = JSON.parse(stored);
+    const data = readStoredCV(getLocalStorageItem('manos-abiertas-cv'));
+    if (data) {
         /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only CV from external browser storage */
         if (data.template) {
           const tpl = CV_TEMPLATES.find((t) => t.id === data.template);
@@ -96,32 +96,31 @@ export function CVSection() {
         if (data.languages?.length) setLanguages(data.languages);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
         /* eslint-enable react-hooks/set-state-in-effect */
-      }
-    } catch { /* ignore */ }
+    }
   }, []);
 
   const hasContent = Boolean(fullName || profession || summary || email || experiences.some((e) => e.position || e.company) || education.some((e) => e.title) || skills.length || languages.length);
 
   function addExperience() {
-    setExperiences([...experiences, { id: Date.now().toString(), position: '', company: '', startDate: '', endDate: '', description: '' }]);
+    if (experiences.length < 20) setExperiences([...experiences, { id: Date.now().toString(), position: '', company: '', startDate: '', endDate: '', description: '' }]);
   }
   function removeExperience(id: string) {
     setExperiences(experiences.filter((e) => e.id !== id));
   }
   function addEducation() {
-    setEducation([...education, { id: Date.now().toString(), title: '', institution: '', year: '', description: '' }]);
+    if (education.length < 20) setEducation([...education, { id: Date.now().toString(), title: '', institution: '', year: '', description: '' }]);
   }
   function removeEducation(id: string) {
     setEducation(education.filter((e) => e.id !== id));
   }
   function addSkill() {
-    if (skillInput.trim()) {
+    if (skillInput.trim() && skills.length < 30) {
       setSkills([...skills, skillInput.trim()]);
       setSkillInput('');
     }
   }
   function addLanguage() {
-    if (langInput.trim()) {
+    if (langInput.trim() && languages.length < 20) {
       setLanguages([...languages, langInput.trim()]);
       setLangInput('');
     }
@@ -143,14 +142,15 @@ export function CVSection() {
           language,
         }, remoteAIConsent)),
       });
-      if (!resp.ok) throw new Error('Error en la generación');
       const data = await resp.json();
+      const generatedText = readApiText(data, 20_000);
+      if (!resp.ok || !generatedText) throw new Error('Error en la generación');
       if (field === 'summary') {
-        setSummary(data.text);
+        setSummary(generatedText);
         toast.success('Resumen generado con IA ✨');
       } else {
         setExperiences((prev) =>
-          prev.map((e, i) => (i === 0 ? { ...e, description: data.text } : e))
+          prev.map((e, i) => (i === 0 ? { ...e, description: generatedText } : e))
         );
         toast.success('Descripción mejorada con IA ✨');
       }
@@ -264,23 +264,23 @@ export function CVSection() {
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
                       <Label htmlFor="name" className="text-xs">{t.cv_fullName}</Label>
-                      <Input id="name" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="María González" className="mt-1" />
+                      <Input id="name" value={fullName} onChange={(e) => setFullName(e.target.value)} maxLength={200} placeholder="María González" className="mt-1" />
                     </div>
                     <div>
                       <Label htmlFor="prof" className="text-xs">{t.cv_profession}</Label>
-                      <Input id="prof" value={profession} onChange={(e) => setProfession(e.target.value)} placeholder="Cuidadora de personas mayores" className="mt-1" />
+                      <Input id="prof" value={profession} onChange={(e) => setProfession(e.target.value)} maxLength={200} placeholder="Cuidadora de personas mayores" className="mt-1" />
                     </div>
                     <div>
                       <Label htmlFor="email" className="text-xs">{t.cv_email}</Label>
-                      <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="maria@email.com" className="mt-1" />
+                      <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={500} placeholder="maria@email.com" className="mt-1" />
                     </div>
                     <div>
                       <Label htmlFor="phone" className="text-xs">{t.cv_phone}</Label>
-                      <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+34 600 000 000" className="mt-1" />
+                      <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={200} placeholder="+34 600 000 000" className="mt-1" />
                     </div>
                     <div className="sm:col-span-2">
                       <Label htmlFor="addr" className="text-xs">{t.cv_address}</Label>
-                      <Input id="addr" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Madrid, España" className="mt-1" />
+                      <Input id="addr" value={address} onChange={(e) => setAddress(e.target.value)} maxLength={2_000} placeholder="Madrid, España" className="mt-1" />
                     </div>
                   </div>
 
@@ -306,6 +306,7 @@ export function CVSection() {
                       id="summary"
                       value={summary}
                       onChange={(e) => setSummary(e.target.value)}
+                      maxLength={500}
                       placeholder="Profesional con experiencia en... (la IA puede ayudarte)"
                       className="min-h-[100px] text-sm"
                     />
@@ -347,10 +348,10 @@ export function CVSection() {
                       )}
                     </div>
                     <div className="grid sm:grid-cols-2 gap-2">
-                      <Input value={exp.position} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, position: e.target.value } : x))} placeholder="Puesto" className="text-sm h-9" />
-                      <Input value={exp.company} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, company: e.target.value } : x))} placeholder="Empresa" className="text-sm h-9" />
-                      <Input value={exp.startDate} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, startDate: e.target.value } : x))} placeholder="Desde (ej: Ene 2022)" className="text-sm h-9" />
-                      <Input value={exp.endDate} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, endDate: e.target.value } : x))} placeholder="Hasta (o Actual)" className="text-sm h-9" />
+                      <Input value={exp.position} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, position: e.target.value } : x))} maxLength={200} placeholder="Puesto" className="text-sm h-9" />
+                      <Input value={exp.company} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, company: e.target.value } : x))} maxLength={200} placeholder="Empresa" className="text-sm h-9" />
+                      <Input value={exp.startDate} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, startDate: e.target.value } : x))} maxLength={40} placeholder="Desde (ej: Ene 2022)" className="text-sm h-9" />
+                      <Input value={exp.endDate} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, endDate: e.target.value } : x))} maxLength={40} placeholder="Hasta (o Actual)" className="text-sm h-9" />
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-1">
@@ -362,7 +363,7 @@ export function CVSection() {
                           </Button>
                         )}
                       </div>
-                      <Textarea value={exp.description} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, description: e.target.value } : x))} placeholder="• Tareas realizadas&#10;• Logros conseguidos" className="text-sm min-h-[80px]" />
+                      <Textarea value={exp.description} onChange={(e) => setExperiences(prev => prev.map(x => x.id === exp.id ? { ...x, description: e.target.value } : x))} maxLength={3_000} placeholder="• Tareas realizadas&#10;• Logros conseguidos" className="text-sm min-h-[80px]" />
                     </div>
                   </CardContent>
                 </Card>
@@ -386,10 +387,10 @@ export function CVSection() {
                         </Button>
                       )}
                     </div>
-                    <Input value={ed.title} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, title: e.target.value } : x))} placeholder="Título (ej: Bachillerato)" className="text-sm h-9" />
-                    <Input value={ed.institution} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, institution: e.target.value } : x))} placeholder="Institución" className="text-sm h-9" />
-                    <Input value={ed.year} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, year: e.target.value } : x))} placeholder="Año (ej: 2018-2020)" className="text-sm h-9" />
-                    <Textarea value={ed.description} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, description: e.target.value } : x))} placeholder="Notas, menciones..." className="text-sm min-h-[60px]" />
+                    <Input value={ed.title} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, title: e.target.value } : x))} maxLength={200} placeholder="Título (ej: Bachillerato)" className="text-sm h-9" />
+                    <Input value={ed.institution} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, institution: e.target.value } : x))} maxLength={200} placeholder="Institución" className="text-sm h-9" />
+                    <Input value={ed.year} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, year: e.target.value } : x))} maxLength={40} placeholder="Año (ej: 2018-2020)" className="text-sm h-9" />
+                    <Textarea value={ed.description} onChange={(e) => setEducation(prev => prev.map(x => x.id === ed.id ? { ...x, description: e.target.value } : x))} maxLength={2_000} placeholder="Notas, menciones..." className="text-sm min-h-[60px]" />
                   </CardContent>
                 </Card>
               ))}
@@ -406,7 +407,7 @@ export function CVSection() {
                   <div>
                     <Label className="text-xs">{t.cv_skills}</Label>
                     <div className="flex gap-2 mt-1">
-                      <Input value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())} placeholder="Ej: Atención al cliente" className="h-9" />
+                      <Input value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())} maxLength={100} placeholder="Ej: Atención al cliente" className="h-9" />
                       <Button size="icon" onClick={addSkill} aria-label="Añadir habilidad"><Plus className="h-4 w-4" /></Button>
                     </div>
                     {skills.length > 0 && (
@@ -451,7 +452,7 @@ export function CVSection() {
                   <div>
                     <Label className="text-xs">{t.cv_languages}</Label>
                     <div className="flex gap-2 mt-1">
-                      <Input value={langInput} onChange={(e) => setLangInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addLanguage())} placeholder="Ej: Español (nativo)" className="h-9" />
+                      <Input value={langInput} onChange={(e) => setLangInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addLanguage())} maxLength={80} placeholder="Ej: Español (nativo)" className="h-9" />
                       <Button size="icon" onClick={addLanguage} aria-label="Añadir idioma"><Plus className="h-4 w-4" /></Button>
                     </div>
                     {languages.length > 0 && (

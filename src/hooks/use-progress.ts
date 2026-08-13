@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { AI_COURSES } from '@/data/ai-courses';
 import { OFFICE_MODULES } from '@/data/office-course';
+import { getLocalStorageItem, readStoredCV, readStringSet } from '@/lib/local-data';
 
 export interface ProgressStats {
   aiCompleted: number;
@@ -43,12 +44,12 @@ export function useProgress() {
 
     function compute() {
       try {
-        const aiStored = localStorage.getItem('manos-abiertas-ai-progress');
-        const officeStored = localStorage.getItem('manos-abiertas-office-progress');
-        const cvStored = localStorage.getItem('manos-abiertas-cv');
+        const aiStored = getLocalStorageItem('manos-abiertas-ai-progress');
+        const officeStored = getLocalStorageItem('manos-abiertas-office-progress');
+        const cvStored = getLocalStorageItem('manos-abiertas-cv');
 
-        const aiCompletedSet: Set<string> = aiStored ? new Set(JSON.parse(aiStored)) : new Set();
-        const officeCompletedSet: Set<string> = officeStored ? new Set(JSON.parse(officeStored)) : new Set();
+        const aiCompletedSet = readStringSet(aiStored);
+        const officeCompletedSet = readStringSet(officeStored);
 
         const aiTotal = AI_COURSES.reduce((acc, c) => acc + c.lessons.length, 0);
         const officeTotal = OFFICE_MODULES.reduce((acc, m) => acc + m.lessons.length, 0);
@@ -79,13 +80,8 @@ export function useProgress() {
         const officePercent = officeTotal > 0 ? Math.round((officeCompleted / officeTotal) * 100) : 0;
         const totalPercent = aiTotal + officeTotal > 0 ? Math.round(((aiCompleted + officeCompleted) / (aiTotal + officeTotal)) * 100) : 0;
 
-        let hasCV = false;
-        if (cvStored) {
-          try {
-            const cv = JSON.parse(cvStored);
-            hasCV = Boolean(cv.fullName || cv.profession || cv.summary);
-          } catch { /* ignore */ }
-        }
+        const cv = readStoredCV(cvStored);
+        const hasCV = Boolean(cv && (cv.fullName || cv.profession || cv.summary));
 
         setStats({
           aiCompleted,

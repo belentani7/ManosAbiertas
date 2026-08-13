@@ -9,6 +9,7 @@ import {
   isBoundedStringArray,
   isIsoDate,
   parseStoredJson,
+  readApiText,
   safeDownloadFilename,
   safeHttpUrl,
 } from '../../src/lib/safe-content.ts';
@@ -36,6 +37,9 @@ test('stored JSON requires bounded size and the expected shape', () => {
   assert.equal(isBoundedStringArray(Array.from({ length: 1_001 }, () => 'x')), false);
   assert.equal(isIsoDate('2026-02-28'), true);
   assert.equal(isIsoDate('2026-02-30'), false);
+  assert.equal(readApiText({ text: ' respuesta ' }, 20), 'respuesta');
+  assert.equal(readApiText({ text: { unsafe: true } }, 20), null);
+  assert.equal(readApiText({ text: 'demasiado largo' }, 5), null);
 });
 
 test('print, export and local-state consumers retain the safe-content boundary', () => {

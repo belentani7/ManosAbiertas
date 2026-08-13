@@ -24,6 +24,16 @@ LOTE PUBLICADO Y VALIDADO
 - Runtime: 11 valores locales manipulados; cinco rutas sin crash ni desbordamiento horizontal.
 - Produccion: cinco rutas criticas con HTTP 200, CSP, nosniff, HSTS y proteccion de framing.
 
+SEGUNDO LOTE VALIDADO LOCALMENTE
+- 89 mejoras reales registradas: 61 verified y 28 applied.
+- CV, carta, chat y ruta personal restauran solo datos acotados y tipados.
+- Backups versionados con limites y rollback si falla una escritura.
+- Entrada y salida ATS validadas antes de alcanzar React.
+- Chat limitado a 20 mensajes y 12.000 caracteres por entrada.
+- 48/48 pruebas core, lint y typecheck aprobados.
+- Build exacto con VERCEL=1: 441 paginas estaticas, 8 rutas API, exit 0.
+- Runtime: 15 valores manipulados mas onboarding; 8 rutas sin crash ni overflow.
+
 LIMITES ABIERTOS
 - 13 idiomas siguen en fallback espanol; solo es/en estan completos.
 - 3.647 recursos siguen pendientes de fecha de revision.

@@ -14,6 +14,8 @@ import { toast } from 'sonner';
 import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
+import { getLocalStorageItem, readStoredCoverLetter } from '@/lib/local-data';
+import { readApiText } from '@/lib/safe-content';
 
 const STORAGE_KEY = 'manos-abiertas-cover-letter';
 
@@ -39,10 +41,8 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
 
   // Load saved data
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const data = JSON.parse(stored);
+    const data = readStoredCoverLetter(getLocalStorageItem(STORAGE_KEY));
+    if (data) {
         /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only form from external browser storage */
         if (data.fullName) setFullName(data.fullName);
         if (data.profession) setProfession(data.profession);
@@ -54,8 +54,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
         if (data.letter) setLetter(data.letter);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
         /* eslint-enable react-hooks/set-state-in-effect */
-      }
-    } catch { /* ignore */ }
+    }
   }, []);
 
   // Autosave
@@ -71,7 +70,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
   }, [fullName, profession, companyName, jobTitle, experience, skills, tone, letter]);
 
   function addSkill() {
-    if (skillInput.trim() && !skills.includes(skillInput.trim())) {
+    if (skillInput.trim() && skills.length < 20 && !skills.includes(skillInput.trim())) {
       setSkills([...skills, skillInput.trim()]);
       setSkillInput('');
     }
@@ -91,9 +90,10 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
           fullName, profession, companyName, jobTitle, experience, skills, tone, language,
         }, remoteAIConsent)),
       });
-      if (!resp.ok) throw new Error('Error');
       const data = await resp.json();
-      setLetter(data.text);
+      const generatedLetter = readApiText(data, 50_000);
+      if (!resp.ok || !generatedLetter) throw new Error('Error');
+      setLetter(generatedLetter);
       toast.success('Carta generada con IA ✨');
     } catch {
       toast.error('No se pudo generar. Inténtalo de nuevo.');
@@ -163,6 +163,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                     id="cl-name"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
+                    maxLength={120}
                     placeholder="María González"
                     className="mt-1 text-sm h-9"
                   />
@@ -175,6 +176,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                     id="cl-prof"
                     value={profession}
                     onChange={(e) => setProfession(e.target.value)}
+                    maxLength={160}
                     placeholder="Cuidadora de mayores"
                     className="mt-1 text-sm h-9"
                   />
@@ -187,6 +189,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                     id="cl-company"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
+                    maxLength={160}
                     placeholder="Residencia La Paz"
                     className="mt-1 text-sm h-9"
                   />
@@ -197,6 +200,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                     id="cl-job"
                     value={jobTitle}
                     onChange={(e) => setJobTitle(e.target.value)}
+                    maxLength={160}
                     placeholder="Cuidadora nocturna"
                     className="mt-1 text-sm h-9"
                   />
@@ -209,6 +213,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                   id="cl-exp"
                   value={experience}
                   onChange={(e) => setExperience(e.target.value)}
+                  maxLength={4_000}
                   placeholder="5 años cuidando personas mayores con demencia. Experiencia en administración de medicación y apoyo emocional."
                   className="mt-1 text-sm min-h-[70px]"
                 />
@@ -220,6 +225,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                   <Input
                     value={skillInput}
                     onChange={(e) => setSkillInput(e.target.value)}
+                    maxLength={100}
                     onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addSkill(); } }}
                     placeholder="Ej: Empatía"
                     className="text-sm h-9"

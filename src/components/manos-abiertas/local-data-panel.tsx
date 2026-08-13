@@ -4,19 +4,15 @@ import { useMemo, useState, useSyncExternalStore } from 'react';
 import { Download, HardDrive, RefreshCw, Trash2, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { isAppLocalDataKey, parseLocalDataBackup, restoreLocalData } from '@/lib/local-data';
 
-const PREFIXES = ['manos-abiertas-', 'manosabiertas-'];
 const LOCAL_DATA_CHANGE_EVENT = 'manos-abiertas-local-data-change';
 const MAX_BACKUP_BYTES = 1_000_000;
-
-function isAppKey(key: string) {
-  return PREFIXES.some((prefix) => key.startsWith(prefix));
-}
 
 function getAppDataSnapshot() {
   if (typeof window === 'undefined') return '[]';
   const entries = Object.keys(localStorage)
-    .filter(isAppKey)
+    .filter(isAppLocalDataKey)
     .sort()
     .map((key) => [key, localStorage.getItem(key)]);
   return JSON.stringify(entries);
@@ -67,17 +63,20 @@ export function LocalDataPanel() {
         setStatus('La copia supera 1 MB y no se puede importar de forma segura.');
         return;
       }
-      const parsed = JSON.parse(await file.text());
-      const data = parsed?.data && typeof parsed.data === 'object' ? parsed.data : parsed;
-      let restored = 0;
-      for (const [key, value] of Object.entries(data)) {
-        if (isAppKey(key) && typeof value === 'string') {
-          localStorage.setItem(key, value);
-          restored += 1;
-        }
+      const entriesToRestore = parseLocalDataBackup(JSON.parse(await file.text()));
+      if (!entriesToRestore) {
+        setStatus('La copia no tiene un formato compatible o supera los límites seguros.');
+        return;
+      }
+      const restoreResult = restoreLocalData(localStorage, entriesToRestore);
+      if (restoreResult !== 'restored') {
+        setStatus(restoreResult === 'rolled-back'
+          ? 'No se pudo restaurar la copia. Los datos anteriores se han conservado.'
+          : 'No se pudo restaurar la copia ni recuperar todos los datos anteriores. Conserva el archivo y revisa el espacio del navegador.');
+        return;
       }
       refresh();
-      setStatus(`${restored} elementos restaurados correctamente.`);
+      setStatus(`${entriesToRestore.length} elementos restaurados correctamente.`);
     } catch {
       setStatus('No se pudo importar el archivo. Comprueba que sea una copia válida de Manos Abiertas.');
     }
@@ -85,7 +84,7 @@ export function LocalDataPanel() {
 
   const clearData = () => {
     if (!window.confirm('¿Eliminar el progreso guardado de Manos Abiertas en este dispositivo?')) return;
-    Object.keys(localStorage).filter(isAppKey).forEach((key) => localStorage.removeItem(key));
+    Object.keys(localStorage).filter(isAppLocalDataKey).forEach((key) => localStorage.removeItem(key));
     refresh();
     setStatus('Datos locales eliminados de este dispositivo.');
   };

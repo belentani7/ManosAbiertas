@@ -11,33 +11,11 @@ import { toast } from 'sonner';
 import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
+import { getLocalStorageItem, readStoredCV } from '@/lib/local-data';
+import { isPlainRecord } from '@/lib/safe-content';
+import { normalizeATSAnalysis, type ATSAnalysis } from '@/lib/ats-analysis';
 
 const STORAGE_KEY = 'manos-abiertas-cv';
-
-interface Experience {
-  id: string;
-  position: string;
-  company: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-}
-interface Education {
-  id: string;
-  title: string;
-  institution: string;
-  year: string;
-  description: string;
-}
-
-interface ATSAnalysis {
-  score: number;
-  matchedKeywords: string[];
-  missingKeywords: string[];
-  strengths: string[];
-  suggestions: string[];
-  summary: string;
-}
 
 function scoreColor(score: number) {
   if (score >= 80) return { text: 'text-emerald-600 dark:text-emerald-400', bar: 'bg-emerald-500', label: 'Muy buena compatibilidad', emoji: '🎯' };
@@ -54,48 +32,43 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
 
   // Detect if the CV builder has saved data
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const data = JSON.parse(stored);
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the CV state from external browser storage
-        setHasCV(Boolean(data.fullName || data.profession || data.summary || data.skills?.length));
-      }
-    } catch { /* ignore */ }
+    const data = readStoredCV(getLocalStorageItem(STORAGE_KEY));
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the CV state from external browser storage
+    setHasCV(Boolean(data && (data.fullName || data.profession || data.summary || data.skills.length)));
   }, []);
 
   async function analyze() {
-    if (!jobDescription.trim()) {
-      toast.error('Pega o escribe la descripción de la oferta primero');
+    if (jobDescription.trim().length < 20) {
+      toast.error('Escribe al menos 20 caracteres de la oferta para poder compararla');
       return;
     }
     setLoading(true);
     setResult(null);
     try {
-      let cvData: any = {};
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) cvData = JSON.parse(stored);
-      } catch { /* ignore */ }
+      const cvData = readStoredCV(getLocalStorageItem(STORAGE_KEY));
 
       const resp = await fetch('/api/cv/ats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({
-          fullName: cvData.fullName || '',
-          profession: cvData.profession || '',
-          summary: cvData.summary || '',
-          experiences: (cvData.experiences || []).map((e: Experience) => ({ position: e.position, company: e.company, description: e.description })),
-          education: (cvData.education || []).map((e: Education) => ({ title: e.title, institution: e.institution, year: e.year })),
-          skills: cvData.skills || [],
-          languages: cvData.languages || [],
+          fullName: cvData?.fullName || '',
+          profession: cvData?.profession || '',
+          summary: cvData?.summary || '',
+          experiences: (cvData?.experiences || []).map((e) => ({ position: e.position, company: e.company, description: e.description })),
+          education: (cvData?.education || []).map((e) => ({ title: e.title, institution: e.institution, year: e.year })),
+          skills: cvData?.skills || [],
+          languages: cvData?.languages || [],
           jobDescription,
           language,
         }, remoteAIConsent)),
       });
-      const data = await resp.json();
-      if (!resp.ok || !data.ok || !data.data) throw new Error(data.error || 'Error analizando');
-      setResult(data.data);
+      const data: unknown = await resp.json();
+      const payload = isPlainRecord(data) ? data : null;
+      const analysis = payload ? normalizeATSAnalysis(payload.data) : null;
+      if (!resp.ok || payload?.ok !== true || !analysis) {
+        throw new Error('Respuesta de análisis no válida');
+      }
+      setResult(analysis);
       toast.success('Análisis ATS completado ✨');
     } catch (e) {
       toast.error('No se pudo analizar. Inténtalo de nuevo.');
@@ -118,6 +91,7 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
             <Textarea
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
+              maxLength={12_000}
               placeholder="Pega aquí la descripción del puesto (de InfoJobs, LinkedIn, una empresa...). La IA la comparará con tu CV."
               className="min-h-[140px] text-sm"
             />

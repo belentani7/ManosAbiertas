@@ -12,6 +12,10 @@
     "manos-abiertas-resource-suggestions": "[{\"id\":\"x\",\"title\":\"x\",\"url\":\"javascript:alert(1)\",\"description\":\"x\",\"category\":\"government\",\"source\":\"x\",\"submittedAt\":\"x\"}]",
     "manos-abiertas-reminders": "[{\"id\":\"x\",\"title\":\"x\",\"date\":\"2026-02-30\",\"category\":\"evil\",\"priority\":\"urgent\"}]",
     "manos-abiertas-recent": "[{\"id\":\"x\",\"type\":\"resource\",\"title\":\"x\",\"section\":\"x\",\"emoji\":\"x\",\"url\":\"javascript:alert(1)\",\"timestamp\":1}]",
+    "manos-abiertas-cv": "{\"fullName\":{},\"profession\":[\"bad\"],\"experiences\":{\"bad\":true},\"education\":[42],\"skills\":{\"bad\":true},\"savedAt\":\"not-a-date\"}",
+    "manos-abiertas-cover-letter": "{\"fullName\":{},\"skills\":{\"bad\":true},\"tone\":\"hostile\",\"letter\":[]}",
+    "manos-abiertas-chat": "[{\"id\":\"x\",\"role\":\"system\",\"content\":{},\"timestamp\":\"never\"}]",
+    "manos-abiertas-personal-route": "{\"goal\":\"admin\",\"completed\":[\"unknown\"]}",
     "manos-abiertas-onboarded": "true"
   }
 }

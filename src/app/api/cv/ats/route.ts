@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
 import { apiError, apiJson, enforceRateLimit, hasRemoteAIConsent, readJsonBody, reportServerError } from '@/lib/api-security';
+import { parseATSAnalysisText } from '@/lib/ats-analysis';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -32,15 +33,6 @@ const atsRequestSchema = z.object({
 
 type ATSRequest = z.infer<typeof atsRequestSchema>;
 
-interface ATSAnalysis {
-  score: number;
-  matchedKeywords: string[];
-  missingKeywords: string[];
-  strengths: string[];
-  suggestions: string[];
-  summary: string;
-}
-
 const LANG_INSTRUCTIONS: Record<string, string> = {
   es: 'Responde en español de España.',
   en: 'Respond in English.',
@@ -51,19 +43,6 @@ const LANG_INSTRUCTIONS: Record<string, string> = {
   zh: '用中文回答.',
   hi: 'हिंदी में उत्तर दें.',
 };
-
-function extractJson(text: string): ATSAnalysis | null {
-  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  const candidate = fenced ? fenced[1] : text;
-  const start = candidate.indexOf('{');
-  const end = candidate.lastIndexOf('}');
-  if (start === -1 || end === -1 || end <= start) return null;
-  try {
-    return JSON.parse(candidate.slice(start, end + 1)) as ATSAnalysis;
-  } catch {
-    return null;
-  }
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -147,22 +126,11 @@ Devuelve SOLO el objeto JSON con el análisis ATS.`;
       return apiError('AI_UNAVAILABLE', 'El servicio de análisis no está disponible.', 503, { data: null });
     }
 
-    const analysis = extractJson(result.text);
-
-    if (!analysis || typeof analysis.score !== 'number') {
+    const analysis = parseATSAnalysisText(result.text);
+    if (!analysis) {
       return apiError('INVALID_AI_RESPONSE', 'No se pudo interpretar el análisis ATS.', 502, { data: null });
     }
-
-    const safe: ATSAnalysis = {
-      score: Math.max(0, Math.min(100, Math.round(analysis.score))),
-      matchedKeywords: Array.isArray(analysis.matchedKeywords) ? analysis.matchedKeywords.slice(0, 30) : [],
-      missingKeywords: Array.isArray(analysis.missingKeywords) ? analysis.missingKeywords.slice(0, 30) : [],
-      strengths: Array.isArray(analysis.strengths) ? analysis.strengths.slice(0, 5) : [],
-      suggestions: Array.isArray(analysis.suggestions) ? analysis.suggestions.slice(0, 6) : [],
-      summary: typeof analysis.summary === 'string' ? analysis.summary : '',
-    };
-
-    return apiJson({ ok: true, data: safe, provider: result.provider, degraded: result.provider === 'offline' });
+    return apiJson({ ok: true, data: analysis, provider: result.provider, degraded: result.provider === 'offline' });
   } catch (error: unknown) {
     reportServerError('cv-ats-api', error);
     return apiError('INTERNAL_ERROR', 'No se pudo analizar el CV.', 500, { data: null });

@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useAppStore, type SectionId } from '@/stores/app-store';
+import { isPlainRecord, parseStoredJson } from '@/lib/safe-content';
+import { getLocalStorageItem } from '@/lib/local-data';
 
 type GoalId = 'work' | 'digital' | 'rights' | 'community';
 type RouteStep = { id: string; title: string; description: string; section: SectionId };
@@ -40,15 +42,13 @@ const GOALS: Goal[] = [
 type SavedRoute = { goal: GoalId; completed: string[] };
 
 function readRoute(): SavedRoute | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const value = JSON.parse(raw) as Partial<SavedRoute>;
-    if (!GOALS.some((goal) => goal.id === value.goal) || !Array.isArray(value.completed)) return null;
-    return { goal: value.goal as GoalId, completed: value.completed.filter((id): id is string => typeof id === 'string') };
-  } catch {
-    return null;
-  }
+  const value = parseStoredJson(getLocalStorageItem(STORAGE_KEY), null, isPlainRecord, 10_000);
+  if (!value) return null;
+  const goal = GOALS.find((item) => item.id === value.goal);
+  if (!goal || !Array.isArray(value.completed) || value.completed.length > goal.steps.length) return null;
+  const allowed = new Set(goal.steps.map((step) => step.id));
+  if (!value.completed.every((id) => typeof id === 'string' && allowed.has(id))) return null;
+  return { goal: goal.id, completed: [...new Set(value.completed as string[])] };
 }
 
 export function PersonalRoute() {
