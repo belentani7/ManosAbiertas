@@ -115,7 +115,7 @@ export function Footer() {
               onClick={() => setActiveSection('contacts')}
               className="text-left text-[11px] leading-relaxed text-muted-foreground/80 hover:text-primary"
             >
-              ¿Necesitas ayuda? Consulta los contactos verificados.
+              ¿Necesitas ayuda? Consulta el directorio y confirma la vigencia antes de llamar.
             </button>
             <SystemAwareness />
           </div>

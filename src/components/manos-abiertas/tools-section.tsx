@@ -33,7 +33,7 @@ export function ToolsSection() {
   const [activeTool, setActiveTool] = useState<ToolTab>('documents');
 
   return (
-    <div className="container mx-auto max-w-5xl px-4 py-8">
+    <div className="container mx-auto max-w-7xl px-4 py-8">
       <div className="text-center mb-6">
         <Badge variant="secondary" className="mb-2 gap-1.5">
           <Wrench className="h-3 w-3" />
@@ -46,18 +46,20 @@ export function ToolsSection() {
       </div>
 
       {/* Tool selector */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-6">
+      <div className="grid grid-cols-1 gap-3 mb-6 min-[420px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
         {TOOLS.map((tool, i) => {
           const Icon = tool.icon;
           const active = activeTool === tool.id;
           return (
             <motion.button
               key={tool.id}
+              type="button"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
               onClick={() => setActiveTool(tool.id)}
-              className="group text-left"
+              className="group min-h-11 text-left"
+              aria-pressed={active}
             >
               <Card className={cn(
                 'card-hover overflow-hidden h-full transition-all',

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle, Star, Quote, Heart, CheckCircle2, Clock } from 'lucide-react';
+import { ChevronDown, HelpCircle, Quote, Heart, CheckCircle2, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { FAQ_ITEMS, TESTIMONIALS } from '@/data/home-content';
@@ -112,10 +112,10 @@ export function TestimonialsSection() {
       <div className="text-center mb-8">
         <Badge variant="secondary" className="mb-2 gap-1.5">
           <Heart className="h-3 w-3 text-primary fill-primary" />
-          Historias reales
+          Casos ilustrativos
         </Badge>
-        <h2 className="text-2xl md:text-3xl font-bold mb-2">Personas que cambiaron su vida</h2>
-        <p className="text-muted-foreground text-sm">Inmigrantes como tú que aprendieron IA, consiguieron empleo y conocieron sus derechos</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">Ejemplos de rutas posibles</h2>
+        <p className="text-muted-foreground text-sm">Perfiles ficticios creados para explicar usos de la plataforma; no son testimonios de usuarios.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -139,18 +139,10 @@ export function TestimonialsSection() {
                         {t.name}
                         <span className="text-base">{t.flag}</span>
                       </div>
-                      <div className="text-xs text-muted-foreground">{t.role}</div>
+                      <div className="text-xs text-muted-foreground">{t.role} · ejemplo ficticio</div>
                     </div>
                   </div>
                   <Quote className="h-5 w-5 text-primary/30 flex-shrink-0" />
-                </div>
-                <div className="flex gap-0.5 mb-2">
-                  {Array.from({ length: 5 }).map((_, idx) => (
-                    <Star
-                      key={idx}
-                      className={cn('h-3.5 w-3.5', idx < t.rating ? 'fill-amber-400 text-amber-400' : 'text-muted-foreground/30')}
-                    />
-                  ))}
                 </div>
                 <p className="text-sm text-foreground/80 leading-relaxed italic">"{t.story}"</p>
 
@@ -159,7 +151,7 @@ export function TestimonialsSection() {
                   <div className="mt-3 p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
                     <div className="flex items-center gap-1.5 text-xs text-emerald-700 dark:text-emerald-400">
                       <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" />
-                      <span className="font-medium">{t.outcome}</span>
+                      <span className="font-medium">Meta ilustrativa: {t.outcome}</span>
                     </div>
                   </div>
                 )}

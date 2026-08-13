@@ -8,6 +8,7 @@
     "start": "node scripts/start-standalone.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --pretty false",
+    "pretest:core": "node scripts/generate-platform-tools.mjs",
     "test:core": "node scripts/test-core.mjs",
     "i18n:verify": "node scripts/verify-i18n.mjs",
     "trust:verify": "node scripts/verify-resource-trust.mjs",

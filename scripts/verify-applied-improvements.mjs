@@ -50,25 +50,13 @@ function safeProjectPath(value) {
   return { normalized, destination };
 }
 
-function changedPaths() {
+function workspacePaths() {
   const output = execFileSync(
     'git',
-    ['status', '--porcelain=v1', '-z', '--untracked-files=all'],
+    ['ls-files', '-z', '--cached', '--others', '--exclude-standard'],
     { cwd: root, encoding: 'utf8' },
   );
-  const records = output.split('\0').filter(Boolean);
-  const paths = new Set();
-  for (let index = 0; index < records.length; index += 1) {
-    const record = records[index];
-    const status = record.slice(0, 2);
-    const path = normalizePath(record.slice(3));
-    paths.add(path);
-    if (status.includes('R') || status.includes('C')) {
-      index += 1;
-      if (records[index]) paths.add(normalizePath(records[index]));
-    }
-  }
-  return paths;
+  return new Set(output.split('\0').filter(Boolean).map(normalizePath));
 }
 
 function semanticTokens(value) {
@@ -106,7 +94,7 @@ const entries = lines.map((line, index) => {
 
 const ids = new Set();
 const descriptions = new Set();
-const diffPaths = changedPaths();
+const projectPaths = workspacePaths();
 const semantic = [];
 
 for (const [index, entry] of entries.entries()) {
@@ -146,7 +134,9 @@ for (const [index, entry] of entries.entries()) {
     if (uniqueFiles.has(projectPath.normalized)) fail(`${entry.id}: duplicate file ${projectPath.normalized}`);
     uniqueFiles.add(projectPath.normalized);
     if (!existsSync(projectPath.destination)) fail(`${entry.id}: missing file ${projectPath.normalized}`);
-    if (!diffPaths.has(projectPath.normalized)) fail(`${entry.id}: file is not part of the current diff: ${projectPath.normalized}`);
+    if (!projectPaths.has(projectPath.normalized)) {
+      fail(`${entry.id}: file is not tracked or visible to Git: ${projectPath.normalized}`);
+    }
   }
   if ([...uniqueFiles].every((path) => nonCountableFiles.has(path))) {
     fail(`${entry.id}: the ledger cannot count itself as an applied improvement`);

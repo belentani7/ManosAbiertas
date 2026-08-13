@@ -39,7 +39,7 @@ export function StaticHomeFallback() {
           <div className="space-y-4">
             <article>
               <h3 className="font-medium mb-1">¿Manos Abiertas es realmente gratis?</h3>
-              <p>Sí, 100% gratis. No necesitas registrarte ni pagar nada. No recogemos tus datos personales.</p>
+              <p>El acceso es gratuito y no requiere registro. El progreso se guarda localmente; la IA externa requiere consentimiento explícito.</p>
             </article>
             <article>
               <h3 className="font-medium mb-1">¿Necesito saber informática para usarlo?</h3>

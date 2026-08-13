@@ -52,7 +52,7 @@ export function HomeSection() {
       emoji: '📚',
       icon: Database,
       title: t.nav_resources,
-      desc: `${RESOURCES.length.toLocaleString()}+ enlaces verificados`,
+      desc: `${RESOURCES.length.toLocaleString()} fichas · ${RESOURCES.filter((resource) => resource.verifiedAt).length} con revisión fechada`,
       gradient: 'from-teal-400 to-emerald-500',
     },
     {

@@ -272,26 +272,29 @@ function StoriesWall() {
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-2">
         <Star className="h-5 w-5 text-amber-500" />
-        <h2 className="text-xl font-bold">Historias reales de éxito</h2>
+        <h2 className="text-xl font-bold">Casos ilustrativos de integración</h2>
       </div>
       <p className="text-sm text-muted-foreground mb-4">
-        Personas inmigrantes que encontraron su camino en España. Sus historias son inspiración para todos.
+        Perfiles ficticios creados para mostrar rutas posibles. No representan personas ni resultados reales.
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {SUCCESS_STORIES.map((story, i) => (
-          <motion.div
+          <motion.button
             key={story.id}
+            type="button"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
+            onClick={() => setExpanded(expanded === story.id ? null : story.id)}
+            aria-expanded={expanded === story.id}
+            className="min-h-11 text-left"
           >
             <Card
               className={cn(
-                'overflow-hidden cursor-pointer card-hover group',
+                'overflow-hidden card-hover group',
                 expanded === story.id && 'ring-2 ring-primary/30'
               )}
-              onClick={() => setExpanded(expanded === story.id ? null : story.id)}
             >
               <CardContent className="p-4">
                 {/* Avatar & Name */}
@@ -317,6 +320,9 @@ function StoriesWall() {
                 <Badge variant="secondary" className="text-xs mb-2">
                   {story.profession}
                 </Badge>
+                <Badge variant="outline" className="ml-2 text-[10px] mb-2">
+                  Perfil ficticio
+                </Badge>
 
                 {/* Quote */}
                 <p className={cn(
@@ -332,7 +338,7 @@ function StoriesWall() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </motion.button>
         ))}
       </div>
     </div>
@@ -435,6 +441,9 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
           {communityMode === 'shared' ? 'Nube activa' : communityMode === 'local' ? 'Modo local' : 'Conectando...'}
         </Badge>
       </div>
+      <p className="text-xs text-muted-foreground">
+        Los temas marcados como ejemplo editorial no tienen autores, respuestas ni actividad reales.
+      </p>
 
       <Card className="border-primary/20 bg-primary/5">
         <CardContent className="p-4">
@@ -512,6 +521,7 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
         {filtered.map((topic, i) => {
           const cat = CATEGORY_CONFIG[topic.category];
           const CatIcon = cat.icon;
+          const editorial = !topic.source || topic.source === 'editorial';
           return (
             <motion.div
               key={topic.id}
@@ -523,7 +533,7 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
                 <CardContent className="p-3 flex items-center gap-3">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      {topic.hot && (
+                      {topic.hot && !editorial && (
                         <Badge variant="destructive" className="text-[10px] px-1.5 py-0">
                           🔥 Popular
                         </Badge>
@@ -532,10 +542,13 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
                         <CatIcon className="h-2.5 w-2.5 mr-0.5" />
                         {cat.label}
                       </Badge>
+                      {editorial && <Badge variant="outline" className="text-[10px] px-1.5 py-0">Ejemplo editorial</Badge>}
                     </div>
                     <h3 className="text-sm font-medium truncate">{topic.title}</h3>
                   </div>
-                  <div className="text-right flex-shrink-0">
+                  {editorial ? (
+                    <div className="text-right text-[10px] text-muted-foreground flex-shrink-0">Sin actividad real</div>
+                  ) : <div className="text-right flex-shrink-0">
                     <div className="flex items-center gap-1 text-xs text-muted-foreground">
                       <MessageSquare className="h-3 w-3" />
                       <span>{topic.replies}</span>
@@ -544,7 +557,7 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
                       <Clock className="h-2.5 w-2.5" />
                       <span>{topic.lastActivity}</span>
                     </div>
-                  </div>
+                  </div>}
                 </CardContent>
               </Card>
             </motion.div>
@@ -582,10 +595,10 @@ function LanguageExchangeBoard() {
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-2">
         <Languages className="h-5 w-5 text-emerald-500" />
-        <h2 className="text-xl font-bold">Intercambio de idiomas</h2>
+        <h2 className="text-xl font-bold">Perfiles de práctica lingüística</h2>
       </div>
       <p className="text-sm text-muted-foreground mb-4">
-        Conecta con personas que quieren aprender tu idioma mientras tú aprendes el suyo. ¡Gratis y entre amigos!
+        Perfiles ficticios para visualizar cómo funcionaría un intercambio. No son personas contactables.
       </p>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -632,9 +645,9 @@ function LanguageExchangeBoard() {
                   </div>
                 </div>
 
-                <Button size="sm" variant="outline" className="w-full mt-3 text-xs h-11">
+                <Button size="sm" variant="outline" className="w-full mt-3 text-xs h-11" disabled>
                   <Globe className="h-3 w-3 mr-1" />
-                  Contactar
+                  Perfil ilustrativo
                 </Button>
               </CardContent>
             </Card>

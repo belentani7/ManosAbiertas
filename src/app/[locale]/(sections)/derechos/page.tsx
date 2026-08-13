@@ -3,10 +3,10 @@ import { RightsSection } from '@/components/manos-abiertas/rights-section';
 
 export const metadata: Metadata = {
   title: 'Derechos y Ayudas',
-  description: 'Guías paso a paso sobre NIE, extranjería, asilo, nacionalidad, vivienda, SMI, prestaciones, violencia de género. 61 artículos verificados con plantillas de documentos.',
+  description: 'Guías paso a paso sobre NIE, extranjería, asilo, nacionalidad, vivienda, SMI, prestaciones y violencia de género. Confirma la vigencia en las fuentes oficiales.',
   openGraph: {
     title: 'Derechos y Ayudas · Manos Abiertas',
-    description: 'Guías verificadas de derechos y trámites para personas inmigrantes en España',
+    description: 'Guías de derechos y trámites con fuentes visibles para personas inmigrantes en España',
     type: 'website',
   },
 };

@@ -128,7 +128,7 @@ export function RightsSection() {
     <div className="container mx-auto max-w-7xl px-4 py-8">
       <div className="text-center mb-6">
         <Badge variant="secondary" className="mb-2 gap-1.5">
-          <Shield className="h-3 w-3" /> Información verificada 2024-2025
+          <Shield className="h-3 w-3" /> Fuentes 2024-2025 · confirma la vigencia
         </Badge>
         <h1 className="text-3xl md:text-4xl font-bold mb-2">{t.rights_title}</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">{t.rights_subtitle}</p>

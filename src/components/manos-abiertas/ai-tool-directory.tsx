@@ -21,7 +21,7 @@ export function AIToolDirectory() {
               <h2 id="ai-world-title" className="text-2xl font-bold md:text-3xl">Aprende con la herramienta adecuada</h2>
               <p className="mt-2 text-sm text-muted-foreground">No necesitas una API para empezar. Abre un servicio externo, prueba una tarea y vuelve aquí para entender qué has aprendido. NOIACORE orienta; cada plataforma mantiene su propia cuenta y condiciones.</p>
             </div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground"><ShieldCheck className="h-4 w-4 text-emerald-600" /> No guardamos tus conversaciones externas</div>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground"><ShieldCheck className="h-4 w-4 text-emerald-600" /> Revisa la privacidad de cada proveedor antes de compartir contenido</div>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {AI_TOOLS.map((tool) => {

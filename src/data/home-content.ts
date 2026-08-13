@@ -23,7 +23,7 @@ export const FAQ_ITEMS: FAQItem[] = [
     id: 'faq-1',
     category: 'general',
     question: '¿Manos Abiertas es realmente gratis?',
-    answer: 'Sí, 100% gratis. No necesitas registrarte ni pagar nada. Toda la plataforma es de acceso libre: cursos, CV builder, recursos y guía de derechos. No recogemos tus datos personales.',
+    answer: 'El acceso a la plataforma es gratuito y no requiere registro. Algunas herramientas guardan progreso en tu navegador; las funciones de IA externa solo envían contenido al proveedor configurado cuando das consentimiento explícito.',
   },
   {
     id: 'faq-2',
@@ -59,13 +59,13 @@ export const FAQ_ITEMS: FAQItem[] = [
     id: 'faq-7',
     category: 'cv',
     question: '¿La IA que genera mi CV guarda mis datos?',
-    answer: 'No. La IA genera el texto solo en ese momento y no se guarda en ningún servidor. Tu información permanece en tu navegador. Cuando cierras la página, los datos se borran.',
+    answer: 'El borrador se mantiene en tu navegador. Si activas IA externa, el contenido puede enviarse al proveedor configurado para generar la respuesta; revisa su política y no incluyas datos sensibles. Puedes mantener el modo protegido para evitar ese reenvío.',
   },
   {
     id: 'faq-8',
     category: 'rights',
     question: '¿La información legal está actualizada?',
-    answer: 'Sí, está verificada con datos oficiales de 2024-2025 (SMI, leyes de extranjería, reformas). Pero las leyes cambian: siempre confirma con la fuente oficial (enlace incluido en cada artículo) o consulta con un abogado.',
+    answer: 'La colección indica fuentes y fechas cuando están disponibles, pero parte del contenido procede de 2024-2025. Las leyes cambian: confirma siempre la vigencia en la fuente oficial o consulta con un profesional.',
   },
   {
     id: 'faq-9',
@@ -107,7 +107,7 @@ export const FAQ_ITEMS: FAQItem[] = [
     id: 'faq-15',
     category: 'technical',
     question: '¿Se borran mis datos si cierro la página?',
-    answer: 'Tu CV y tus respuestas se guardan solo en tu dispositivo (navegador), nunca en nuestros servidores. Puedes borrarlos tú mismo desde los ajustes o vaciando los datos del navegador. No pedimos registro ni correo electrónico.',
+    answer: 'El progreso local puede persistir en este navegador después de cerrar la página. Puedes exportarlo o borrarlo desde Tu progreso. Las publicaciones comunitarias y las funciones de IA externa pueden usar servicios remotos cuando decides utilizarlas.',
   },
   {
     id: 'faq-16',
@@ -131,6 +131,7 @@ export interface Testimonial {
   section?: string; // which section helped most
 }
 
+// Perfiles compuestos ficticios para ilustrar posibles usos; no son testimonios de usuarios.
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',

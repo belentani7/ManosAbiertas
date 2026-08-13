@@ -1,43 +1,51 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useMemo, useState, useSyncExternalStore } from 'react';
 import { Download, HardDrive, RefreshCw, Trash2, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 const PREFIXES = ['manos-abiertas-', 'manosabiertas-'];
+const LOCAL_DATA_CHANGE_EVENT = 'manos-abiertas-local-data-change';
+const MAX_BACKUP_BYTES = 1_000_000;
 
 function isAppKey(key: string) {
   return PREFIXES.some((prefix) => key.startsWith(prefix));
 }
 
+function getAppDataSnapshot() {
+  if (typeof window === 'undefined') return '[]';
+  const entries = Object.keys(localStorage)
+    .filter(isAppKey)
+    .sort()
+    .map((key) => [key, localStorage.getItem(key)]);
+  return JSON.stringify(entries);
+}
+
+function subscribeToLocalData(onStoreChange: () => void) {
+  window.addEventListener('storage', onStoreChange);
+  window.addEventListener(LOCAL_DATA_CHANGE_EVENT, onStoreChange);
+  return () => {
+    window.removeEventListener('storage', onStoreChange);
+    window.removeEventListener(LOCAL_DATA_CHANGE_EVENT, onStoreChange);
+  };
+}
+
+function announceLocalDataChange() {
+  window.dispatchEvent(new Event(LOCAL_DATA_CHANGE_EVENT));
+}
+
 export function LocalDataPanel() {
-  const [keys, setKeys] = useState<string[]>([]);
+  const dataSnapshot = useSyncExternalStore(subscribeToLocalData, getAppDataSnapshot, () => '[]');
+  const entries = useMemo(() => JSON.parse(dataSnapshot) as Array<[string, string]>, [dataSnapshot]);
+  const keys = useMemo(() => entries.map(([key]) => key), [entries]);
   const [status, setStatus] = useState('');
 
-  const refresh = useCallback(() => {
-    if (typeof window === 'undefined') return;
-    const next = Object.keys(localStorage).filter(isAppKey).sort();
-    setKeys(next);
-  }, []);
+  const refresh = () => {
+    announceLocalDataChange();
+  };
 
-  useEffect(() => {
-    const timer = window.setTimeout(refresh, 0);
-    window.addEventListener('storage', refresh);
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener('storage', refresh);
-    };
-  }, [refresh]);
-
-  const exportPayload = useMemo(() => {
-    if (typeof window === 'undefined') return {};
-    return keys.reduce<Record<string, string>>((acc, key) => {
-      const value = localStorage.getItem(key);
-      if (value !== null) acc[key] = value;
-      return acc;
-    }, {});
-  }, [keys]);
+  const exportPayload = useMemo(() => Object.fromEntries(entries), [entries]);
 
   const exportData = () => {
     const blob = new Blob(
@@ -55,6 +63,10 @@ export function LocalDataPanel() {
 
   const importData = async (file: File) => {
     try {
+      if (file.size > MAX_BACKUP_BYTES) {
+        setStatus('La copia supera 1 MB y no se puede importar de forma segura.');
+        return;
+      }
       const parsed = JSON.parse(await file.text());
       const data = parsed?.data && typeof parsed.data === 'object' ? parsed.data : parsed;
       let restored = 0;
@@ -115,7 +127,7 @@ export function LocalDataPanel() {
                   event.currentTarget.value = '';
                 }}
               />
-              <span className="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+              <span className="inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
                 <Upload className="h-4 w-4" />
                 Restaurar copia
               </span>

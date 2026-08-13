@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, CornerDownLeft, ArrowRight, Sparkles, FileText, BookOpen, Database, Shield, Phone, Home as HomeIcon, X, Command } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { useAppStore, type SectionId } from '@/stores/app-store';
@@ -64,7 +64,7 @@ export function CommandPalette() {
       { id: 'sec-ai', title: 'Aprende IA', subtitle: 'Cursos de inteligencia artificial', icon: '🤖', section: 'learn-ai', category: 'section' },
       { id: 'sec-cv', title: 'Crea tu CV', subtitle: 'Constructor de currículum con IA', icon: '📝', section: 'cv', category: 'section' },
       { id: 'sec-office', title: 'Office Pack', subtitle: 'Curso de Word, Excel, PowerPoint', icon: '📊', section: 'office', category: 'section' },
-      { id: 'sec-resources', title: 'Recursos', subtitle: `${RESOURCES.length}+ enlaces verificados`, icon: '📚', section: 'resources', category: 'section' },
+      { id: 'sec-resources', title: 'Recursos', subtitle: `${RESOURCES.length} fichas · ${RESOURCES.filter((resource) => resource.verifiedAt).length} con revisión fechada`, icon: '📚', section: 'resources', category: 'section' },
       { id: 'sec-rights', title: 'Derechos y Ayudas', subtitle: 'Guía legal y de derechos', icon: '⚖️', section: 'rights', category: 'section' },
       { id: 'sec-tools', title: 'Herramientas', subtitle: 'Checklist trámites, coste de vida, conversor', icon: '🛠️', section: 'tools', category: 'section' },
       { id: 'sec-events', title: 'Eventos', subtitle: 'Ferias de empleo, jornadas, cursos', icon: '📅', section: 'events', category: 'section' },
@@ -175,21 +175,21 @@ export function CommandPalette() {
   }
 
   return (
-    <>
+    <Dialog open={open} onOpenChange={setOpen}>
       {/* Trigger button - shown in nav on desktop */}
-      <button
-        onClick={() => setOpen(true)}
-        className="hidden min-h-11 md:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-muted/30 hover:bg-muted/60 text-xs text-muted-foreground transition-colors"
-        aria-label="Abrir búsqueda (Cmd+K)"
-      >
-        <Search className="h-3.5 w-3.5" />
-        <span>Buscar...</span>
-        <kbd className="ml-2 inline-flex h-4 items-center gap-0.5 rounded border border-border bg-background px-1 text-[10px] font-medium">
-          <Command className="h-2.5 w-2.5" />K
-        </kbd>
-      </button>
+      <DialogTrigger asChild>
+        <button
+          className="hidden min-h-11 md:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-muted/30 hover:bg-muted/60 text-xs text-muted-foreground transition-colors"
+          aria-label="Abrir búsqueda (Cmd+K)"
+        >
+          <Search className="h-3.5 w-3.5" />
+          <span>Buscar...</span>
+          <kbd className="ml-2 inline-flex h-4 items-center gap-0.5 rounded border border-border bg-background px-1 text-[10px] font-medium">
+            <Command className="h-2.5 w-2.5" />K
+          </kbd>
+        </button>
+      </DialogTrigger>
 
-      <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl p-0 gap-0 overflow-hidden">
           <DialogHeader className="sr-only">
             <DialogTitle>Buscar en Manos Abiertas</DialogTitle>
@@ -268,7 +268,6 @@ export function CommandPalette() {
             <span>{results.length} resultados</span>
           </div>
         </DialogContent>
-      </Dialog>
-    </>
+    </Dialog>
   );
 }

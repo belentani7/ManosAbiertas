@@ -1,11 +1,11 @@
 # Ledger de mejoras aplicadas
 
-Fecha de corte: 2026-08-12  
-Fuente: diff sin commit del checkout canónico frente a `HEAD` (`6a413cc`).
+Fecha de corte: 2026-08-13
+Fuente: ledger versionado y workspace Git verificable del checkout publicado.
 
 ## Resultado
 
-- Total registrado: **41 mejoras reales**.
+- Total registrado: **53 mejoras reales**.
 - `verified`: se completa desde el JSONL tras ejecutar el verificador.
 - `applied`: se completa desde el JSONL tras ejecutar el verificador.
 - No se cuentan los 39 idiomas, las seis APIs, los contextos de usuario ni cada test como mejoras repetidas.
@@ -17,7 +17,7 @@ La fuente canónica es [`applied-improvements.jsonl`](./applied-improvements.jso
 - `id`: secuencia estable `MA-APPLIED-NNN`.
 - `descripcion`: comportamiento o artefacto concreto, contado una sola vez.
 - `categoria`: dominio principal de la mejora.
-- `archivos`: archivos existentes y presentes en el diff actual.
+- `archivos`: archivos existentes y presentes en el workspace Git, estén ya versionados o pendientes de commit.
 - `evidencia`: comando, test o inspección con resultado explícito.
 - `estado`: `verified` solo con prueba o comando exitoso; `applied` cuando la evidencia disponible es inspección o existe un gate pendiente.
 
@@ -32,19 +32,16 @@ El verificador comprueba:
 1. JSONL válido y esquema exacto.
 2. IDs únicos, secuenciales y estados permitidos.
 3. Categorías y tipos de evidencia conocidos.
-4. Rutas relativas seguras, existentes y pertenecientes al diff actual.
+4. Rutas relativas seguras, existentes y visibles para Git en clones limpios o trabajo pendiente.
 5. Evidencia no vacía y prueba ejecutable para cada estado `verified`.
 6. Descripciones idénticas o con similitud semántica básica excesiva.
 7. Prohibición de contar el propio ledger como mejora.
 
-## Gate global pendiente
+## Estado global actual
 
-`node scripts/test-core.mjs` produjo 27 tests aprobados de 28. El scanner estático de accesibilidad detectó 27 hallazgos: cuatro P0 por controles sin etiqueta asociada y 23 P1, principalmente por objetivos menores de 44 píxeles. Por ello:
+`npm run test:core` produjo 36 tests aprobados de 36 en un clon limpio y generó primero el paquete reproducible de 5.000 guías. El scanner estático de accesibilidad terminó con cero hallazgos automáticos. El build de producción generó 441 páginas estáticas y ocho rutas API con exit 0.
 
-- la existencia del scanner consta como `applied`;
-- no se declara accesibilidad global verificada;
-- no se declara el proyecto world-class;
-- este ledger no autoriza commit, push ni deploy.
+Estos resultados habilitan continuar la auditoría; no declaran por sí solos conformidad WCAG completa ni el objetivo world-class, y no sustituyen revisión visual, navegador, secretos, dependencias y estado remoto del despliegue.
 
 ## Límites
 

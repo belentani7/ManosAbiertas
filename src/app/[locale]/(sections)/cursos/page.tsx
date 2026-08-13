@@ -3,10 +3,10 @@ import { CoursesLibrarySection } from '@/components/manos-abiertas/courses-libra
 
 export const metadata: Metadata = {
   title: 'Cursos Externos',
-  description: 'Biblioteca de cursos gratuitos verificados de entidades públicas, ONGs y universidades. Filtrados por tema, idioma, nivel y modalidad (online/presencial).',
+  description: 'Biblioteca de cursos gratuitos de entidades públicas, ONGs y universidades con procedencia visible. Confirma disponibilidad y condiciones en la fuente.',
   openGraph: {
     title: 'Cursos · Manos Abiertas',
-    description: 'Directorio de cursos gratuitos verificados para personas inmigrantes',
+    description: 'Directorio de cursos gratuitos con procedencia visible para personas inmigrantes',
     type: 'website',
   },
 };
