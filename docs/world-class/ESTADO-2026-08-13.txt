@@ -35,7 +35,7 @@ SEGUNDO LOTE PUBLICADO Y VALIDADO - acbc691
 - Runtime: 15 valores manipulados mas onboarding; 8 rutas sin crash ni overflow.
 - Produccion: CV y rutas criticas con HTTP 200 y cabeceras de seguridad completas.
 
-TERCER LOTE VALIDADO PARA PUBLICACION
+TERCER LOTE PUBLICADO Y VALIDADO - 8dce99c
 - 115 mejoras reales registradas: 87 verified y 28 applied.
 - Ocho consumidores remotos comparten timeout, cancelacion, MIME y limite de respuesta.
 - Playground, estudio, comunidad y health validan estructura antes de renderizar.
@@ -44,6 +44,8 @@ TERCER LOTE VALIDADO PARA PUBLICACION
 - 59/59 pruebas core, lint y typecheck aprobados.
 - Build exacto con VERCEL=1: 441 paginas estaticas, 8 rutas API, exit 0.
 - Runtime local: seis APIs con contrato JSON; IA, CV y Comunidad sin crash ni overflow.
+- Produccion: IA, CV y Comunidad HTTP 200; health y chat HTTP 200 con JSON contractual.
+- Cabeceras: CSP, HSTS, nosniff y framing DENY presentes en produccion.
 
 LIMITES ABIERTOS
 - 13 idiomas siguen en fallback espanol; solo es/en estan completos.
@@ -51,6 +53,7 @@ LIMITES ABIERTOS
 - 16 señales de dialogo requieren runtime manual.
 - Falta matriz completa de teclado, contraste, reflow y lectores de pantalla.
 - Rate limit sigue siendo local por instancia.
+- Comunidad compartida devuelve 503 en Vercel sin Netlify Blob y activa el fallback local.
 - El objetivo de 1.000 mejoras no esta completo.
 
 REGLA DE PUBLICACION
