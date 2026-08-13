@@ -5,7 +5,7 @@ Fuente: ledger versionado y workspace Git verificable del checkout publicado.
 
 ## Resultado
 
-- Total registrado: **115 mejoras reales**.
+- Total registrado: **135 mejoras reales**.
 - `verified`: se completa desde el JSONL tras ejecutar el verificador.
 - `applied`: se completa desde el JSONL tras ejecutar el verificador.
 - No se cuentan los 39 idiomas, las seis APIs, los contextos de usuario ni cada test como mejoras repetidas.
@@ -39,7 +39,7 @@ El verificador comprueba:
 
 ## Estado global actual
 
-`npm run test:core` produjo 59 tests aprobados de 59 y generó primero el paquete reproducible de 5.000 guías. El tercer lote prueba MIME, tamaño declarado y real con corte del stream, sintaxis JSON, cancelación, timeout, respuestas de dominio y configuración de proveedores. El build exacto con `VERCEL=1` generó 441 páginas estáticas y ocho rutas API con exit 0. En runtime local, seis APIs devolvieron JSON contractual y las rutas IA, CV y Comunidad renderizaron sin crash ni desbordamiento horizontal. El commit `8dce99c` quedó publicado con deployment Vercel exitoso; las rutas críticas, health y chat respondieron desde producción.
+`npm run test:core` produjo 63 tests aprobados de 63 y generó primero el paquete reproducible de 5.000 guías. El cuarto lote corta también los streams de entrada, valida Content-Length e IP, acota el rate-limit, endurece respuestas JSON y formaliza el fallback comunitario local. El build exacto con `VERCEL=1` generó 441 páginas estáticas y ocho rutas API con exit 0. En runtime local, `/api`, health y comunidad respondieron HTTP 200 con CSP y referrer específicos; 260 KB produjeron 413 y la cuota agotada produjo 429 con metadatos.
 
 Estos resultados habilitan continuar la auditoría; no declaran por sí solos conformidad WCAG completa ni el objetivo world-class, y no sustituyen revisión visual, navegador, secretos, dependencias y estado remoto del despliegue.
 

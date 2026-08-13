@@ -24,6 +24,7 @@ export function middleware(request: NextRequest) {
 
   // Don't redirect for API routes, files, or special Next.js paths
   if (
+    pathname === '/api' ||
     pathname.startsWith('/api/') ||
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/public/') ||

@@ -56,9 +56,11 @@ export async function GET(request: Request) {
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
     });
   } catch {
-    return apiError('COMMUNITY_UNAVAILABLE', 'La comunidad compartida no está disponible todavía.', 503, {
+    return apiJson({
+      ok: true,
       mode: 'local',
       posts: [],
+      degraded: true,
     });
   }
 }
@@ -103,6 +105,9 @@ export async function POST(request: Request) {
 
     return apiJson({ ok: true, mode: 'shared', post, published: true }, 201);
   } catch {
-    return apiError('COMMUNITY_UNAVAILABLE', 'La comunidad compartida no está disponible todavía.', 503);
+    return apiError('COMMUNITY_UNAVAILABLE', 'La comunidad compartida no está disponible todavía.', 503, {
+      mode: 'local',
+      published: false,
+    });
   }
 }

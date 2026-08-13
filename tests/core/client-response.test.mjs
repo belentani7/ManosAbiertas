@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  communityFeedFromPayload,
   communityPostsFromPayload,
   healthFromPayload,
   publishedCommunityPostFromPayload,
@@ -27,6 +28,15 @@ test('community response contracts reject partial or excessive shared data', () 
   assert.equal(communityPostsFromPayload({ ok: true, mode: 'shared', posts: Array(101).fill(post) }), null);
   assert.deepEqual(publishedCommunityPostFromPayload({ ok: true, mode: 'shared', published: true, post }), post);
   assert.equal(publishedCommunityPostFromPayload({ ok: true, mode: 'shared', published: false, post }), null);
+  assert.deepEqual(
+    communityFeedFromPayload({ ok: true, mode: 'shared', posts: [post] }),
+    { mode: 'shared', posts: [post] },
+  );
+  assert.deepEqual(
+    communityFeedFromPayload({ ok: true, mode: 'local', degraded: true, posts: [] }),
+    { mode: 'local', posts: [] },
+  );
+  assert.equal(communityFeedFromPayload({ ok: true, mode: 'local', degraded: false, posts: [] }), null);
 });
 
 test('health response requires a bounded provider and capability list', () => {

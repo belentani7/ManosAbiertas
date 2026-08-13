@@ -62,6 +62,15 @@ export function communityPostsFromPayload(value: unknown) {
   return value.posts;
 }
 
+export function communityFeedFromPayload(value: unknown) {
+  if (!isPlainRecord(value) || value.ok !== true || !Array.isArray(value.posts)) return null;
+  if (value.mode === 'local' && value.degraded === true && value.posts.length === 0) {
+    return { mode: 'local' as const, posts: [] as SharedCommunityPost[] };
+  }
+  const posts = communityPostsFromPayload(value);
+  return posts ? { mode: 'shared' as const, posts } : null;
+}
+
 export function publishedCommunityPostFromPayload(value: unknown) {
   if (!isPlainRecord(value) || value.ok !== true || value.mode !== 'shared' || value.published !== true) return null;
   return isCommunityPost(value.post) ? value.post : null;

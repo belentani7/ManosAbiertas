@@ -16,7 +16,7 @@ import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { parseStoredJson } from '@/lib/safe-content';
 import { requestJson } from '@/lib/network-json';
-import { communityPostsFromPayload, publishedCommunityPostFromPayload } from '@/lib/client-response';
+import { communityFeedFromPayload, publishedCommunityPostFromPayload } from '@/lib/client-response';
 
 // ─── SUCCESS STORIES ────────────────────────────────────────────
 interface SuccessStory {
@@ -365,9 +365,9 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
     requestJson('/api/community', { signal: controller.signal }, { timeoutMs: 6_000, maxResponseBytes: 128_000 })
       .then((data) => {
         if (!active) return;
-        const posts = communityPostsFromPayload(data);
-        if (posts) {
-          setSharedTopics(posts.map((post) => ({
+        const feed = communityFeedFromPayload(data);
+        if (feed?.mode === 'shared') {
+          setSharedTopics(feed.posts.map((post) => ({
             id: post.id,
             title: post.title,
             category: post.category,
@@ -376,8 +376,10 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
             source: 'shared' as const,
           })));
           setCommunityMode('shared');
-        } else {
+        } else if (feed?.mode === 'local') {
           setCommunityMode('local');
+        } else {
+          throw new Error('Respuesta comunitaria no válida');
         }
       })
       .catch(() => active && setCommunityMode('local'));
@@ -442,7 +444,7 @@ function ForumSection({ searchQuery, setSearchQuery }: { searchQuery: string; se
       localStorage.setItem('manos-abiertas-community-drafts', JSON.stringify([localTopic, ...drafts].slice(0, 20)));
       setSharedTopics((current) => [localTopic, ...current]);
       setCommunityMode('local');
-      setNotice('Guardado en este dispositivo. Se publicará cuando Netlify esté conectado.');
+      setNotice('Guardado en este dispositivo. La publicación compartida no está disponible ahora.');
     } finally {
       setTitle('');
       setAuthor('');
