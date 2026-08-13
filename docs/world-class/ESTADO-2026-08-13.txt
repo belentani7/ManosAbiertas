@@ -47,7 +47,7 @@ TERCER LOTE PUBLICADO Y VALIDADO - 8dce99c
 - Produccion: IA, CV y Comunidad HTTP 200; health y chat HTTP 200 con JSON contractual.
 - Cabeceras: CSP, HSTS, nosniff y framing DENY presentes en produccion.
 
-CUARTO LOTE VALIDADO PARA PUBLICACION
+CUARTO LOTE PUBLICADO Y VALIDADO - d752890
 - 135 mejoras reales registradas: 107 verified y 28 applied.
 - Lectura JSON de entrada corta y cancela streams al superar el limite.
 - Content-Length, limites, ventanas e IP de cliente se normalizan antes de usarse.
@@ -62,6 +62,9 @@ CUARTO LOTE VALIDADO PARA PUBLICACION
 - Runtime local: /api, health y comunidad HTTP 200 con CSP/referrer especificos.
 - Runtime defensivo: 260 KB devuelve 413 y cuota agotada devuelve 429 con metadatos.
 - Comunidad cliente renderiza el fallback local sin crash ni overflow horizontal.
+- Produccion: /api, health, comunidad, chat y paginas criticas HTTP 200.
+- Produccion defensiva: 260 KB devuelve 413 y MIME incorrecto devuelve 415.
+- Produccion API: CSP sin ejecucion, referrer nulo y nosniff presentes.
 
 LIMITES ABIERTOS
 - 13 idiomas siguen en fallback espanol; solo es/en estan completos.
@@ -69,7 +72,7 @@ LIMITES ABIERTOS
 - 16 señales de dialogo requieren runtime manual.
 - Falta matriz completa de teclado, contraste, reflow y lectores de pantalla.
 - Rate limit sigue siendo local por instancia.
-- Comunidad compartida devuelve 503 en Vercel sin Netlify Blob y activa el fallback local.
+- Lectura comunitaria usa fallback local HTTP 200; publicacion compartida sigue 503 sin backend persistente.
 - El objetivo de 1.000 mejoras no esta completo.
 
 REGLA DE PUBLICACION

@@ -39,7 +39,7 @@ El verificador comprueba:
 
 ## Estado global actual
 
-`npm run test:core` produjo 63 tests aprobados de 63 y generó primero el paquete reproducible de 5.000 guías. El cuarto lote corta también los streams de entrada, valida Content-Length e IP, acota el rate-limit, endurece respuestas JSON y formaliza el fallback comunitario local. El build exacto con `VERCEL=1` generó 441 páginas estáticas y ocho rutas API con exit 0. En runtime local, `/api`, health y comunidad respondieron HTTP 200 con CSP y referrer específicos; 260 KB produjeron 413 y la cuota agotada produjo 429 con metadatos.
+`npm run test:core` produjo 63 tests aprobados de 63 y generó primero el paquete reproducible de 5.000 guías. El cuarto lote corta también los streams de entrada, valida Content-Length e IP, acota el rate-limit, endurece respuestas JSON y formaliza el fallback comunitario local. El build exacto con `VERCEL=1` generó 441 páginas estáticas y ocho rutas API con exit 0. El commit `d752890` quedó publicado con deployment Vercel exitoso: `/api`, health, comunidad y chat respondieron HTTP 200; 260 KB produjeron 413 y MIME incorrecto produjo 415 con JSON contractual.
 
 Estos resultados habilitan continuar la auditoría; no declaran por sí solos conformidad WCAG completa ni el objetivo world-class, y no sustituyen revisión visual, navegador, secretos, dependencias y estado remoto del despliegue.
 
