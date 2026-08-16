@@ -137,8 +137,12 @@ export function CVSection() {
           field,
           fullName,
           profession,
-          experiences: experiences.filter((e) => e.position || e.company),
-          education: education.filter((e) => e.title || e.institution),
+          experiences: experiences
+            .filter((e) => e.position || e.company)
+            .map(({ position, company, description, startDate, endDate }) => ({ position, company, description, startDate, endDate })),
+          education: education
+            .filter((e) => e.title || e.institution)
+            .map(({ title, institution, year, description }) => ({ title, institution, year, description })),
           skills,
           language,
         }, remoteAIConsent)),

@@ -66,6 +66,17 @@ CUARTO LOTE PUBLICADO Y VALIDADO - d752890
 - Produccion defensiva: 260 KB devuelve 413 y MIME incorrecto devuelve 415.
 - Produccion API: CSP sin ejecucion, referrer nulo y nosniff presentes.
 
+QUINTO LOTE VALIDADO EN PRUEBAS
+- 155 mejoras reales registradas: 127 verified y 28 applied.
+- Chat, carta, CV, ATS, estudio y comunidad usan contratos centrales estrictos.
+- Idiomas API se limitan exactamente a los 39 codigos registrados.
+- Prompts IA reciben instruccion explicita para cada idioma registrado.
+- Chat exige turno final de usuario y maximo agregado de 48.000 caracteres.
+- CV y ATS aplican presupuestos agregados de 32.000 y 48.000 caracteres.
+- Payload CV excluye identificadores locales antes de red o servidor.
+- Consentimiento remoto string, claves extra y objetos anidados ambiguos se rechazan.
+- 69/69 pruebas core y typecheck aprobados.
+
 LIMITES ABIERTOS
 - 13 idiomas siguen en fallback espanol; solo es/en estan completos.
 - 3.647 recursos siguen pendientes de fecha de revision.

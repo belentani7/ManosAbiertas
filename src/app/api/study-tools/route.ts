@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
-import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
+import { aiLanguageInstruction } from '@/lib/ai-language';
+import { studyToolsSchema, type StudyToolsRequest } from '@/lib/api-request-schemas';
 import { apiError, apiJson, enforceRateLimit, hasRemoteAIConsent, readJsonBody, reportServerError } from '@/lib/api-security';
 
 export const runtime = 'nodejs';
@@ -8,15 +9,6 @@ export const maxDuration = 60;
 
 const MAX_BODY_BYTES = 16_000;
 const RATE_LIMIT = { limit: 12, windowMs: 5 * 60_000 };
-
-const studyToolsSchema = z.object({
-  tool: z.enum(['questions', 'summary']),
-  content: z.string().trim().min(50).max(5000),
-  title: z.string().trim().max(200).optional(),
-  language: z.string().trim().max(12).optional(),
-});
-
-type StudyToolsRequest = z.infer<typeof studyToolsSchema>;
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,12 +27,13 @@ export async function POST(req: NextRequest) {
     const lang = body.language || 'es';
 
     const content = body.content;
+    const langInstruction = aiLanguageInstruction(lang);
 
     let systemPrompt = '';
     let userPrompt = '';
 
     if (body.tool === 'questions') {
-      systemPrompt = `Eres un profesor experto que crea preguntas de comprensión lectora para adultos. Las preguntas deben ser claras, prácticas y ayudar a retener la información. ${lang === 'es' ? 'Responde en español.' : 'Respond in the user language.'}`;
+      systemPrompt = `Eres un profesor experto que crea preguntas de comprensión lectora para adultos. Las preguntas deben ser claras, prácticas y ayudar a retener la información. ${langInstruction}`;
 
       userPrompt = `Basándote en el siguiente contenido, genera 3 preguntas de comprensión lectora. Las preguntas deben cubrir los puntos más importantes del texto.
 
@@ -58,7 +51,7 @@ Formato de respuesta (devuelve SOLO el JSON, sin markdown):
   ]
 }`;
     } else if (body.tool === 'summary') {
-      systemPrompt = `Eres un experto en síntesis de información para adultos. Creas resúmenes claros y concisos que capturan las ideas principales. ${lang === 'es' ? 'Responde en español.' : 'Respond in the user language.'}`;
+      systemPrompt = `Eres un experto en síntesis de información para adultos. Creas resúmenes claros y concisos que capturan las ideas principales. ${langInstruction}`;
 
       userPrompt = `Resume el siguiente contenido en máximo 5 puntos clave. Cada punto debe ser una frase corta y accionable.
 

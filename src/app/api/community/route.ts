@@ -1,18 +1,12 @@
 import { getStore } from '@netlify/blobs';
-import { z } from 'zod';
 import { apiError, apiJson, communityContentRisk, enforceRateLimit, readJsonBody } from '@/lib/api-security';
+import { communityPostSchema, storedCommunityPostSchema } from '@/lib/api-request-schemas';
 
 const STORE_NAME = 'manos-abiertas-community';
 const POST_PREFIX = 'post:';
 const MAX_BODY_BYTES = 12_000;
 const READ_RATE_LIMIT = { limit: 60, windowMs: 5 * 60_000 };
 const POST_RATE_LIMIT = { limit: 3, windowMs: 60 * 60_000 };
-
-const postSchema = z.object({
-  title: z.string().trim().min(5).max(140),
-  category: z.enum(['legal', 'work', 'cities', 'tips']),
-  author: z.string().trim().min(2).max(40).default('Mi gente'),
-});
 
 type CommunityPost = {
   id: string;
@@ -23,13 +17,6 @@ type CommunityPost = {
   createdAt: string;
   source: 'community';
 };
-
-const storedPostSchema = postSchema.extend({
-  id: z.string().uuid(),
-  replies: z.number().int().min(0),
-  createdAt: z.string().datetime(),
-  source: z.literal('community'),
-});
 
 export async function GET(request: Request) {
   const limited = await enforceRateLimit(request, 'community-read', READ_RATE_LIMIT);
@@ -42,7 +29,7 @@ export async function GET(request: Request) {
     const posts = await Promise.all(
       blobs.slice(-100).map(async ({ key }) => {
         const value = await store.get(key, { type: 'json', consistency: 'strong' }) as unknown;
-        const parsed = storedPostSchema.safeParse(value);
+        const parsed = storedCommunityPostSchema.safeParse(value);
         if (!parsed.success || communityContentRisk(parsed.data.title, parsed.data.author)) return null;
         return parsed.data as CommunityPost;
       })
@@ -73,7 +60,7 @@ export async function POST(request: Request) {
     const json = await readJsonBody(request, MAX_BODY_BYTES);
     if (!json.ok) return json.response;
 
-    const parsed = postSchema.safeParse(json.data);
+    const parsed = communityPostSchema.safeParse(json.data);
     if (!parsed.success) {
       return apiError('VALIDATION_ERROR', 'Tema no válido. Revisa el título, categoría y nombre.', 400);
     }

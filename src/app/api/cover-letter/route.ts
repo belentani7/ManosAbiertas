@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
-import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
+import { aiLanguageInstruction } from '@/lib/ai-language';
+import { coverLetterSchema, type CoverLetterRequest } from '@/lib/api-request-schemas';
 import { apiError, apiJson, enforceRateLimit, hasRemoteAIConsent, readJsonBody, reportServerError } from '@/lib/api-security';
 
 export const runtime = 'nodejs';
@@ -8,32 +9,6 @@ export const maxDuration = 60;
 
 const MAX_BODY_BYTES = 32_000;
 const RATE_LIMIT = { limit: 8, windowMs: 10 * 60_000 };
-
-const coverLetterSchema = z.object({
-  fullName: z.string().trim().max(120).optional(),
-  profession: z.string().trim().max(160).optional(),
-  companyName: z.string().trim().max(160).optional(),
-  jobTitle: z.string().trim().max(160).optional(),
-  experience: z.string().trim().max(4000).optional(),
-  skills: z.array(z.string().trim().min(1).max(100)).max(20).optional(),
-  language: z.string().trim().max(12).optional(),
-  tone: z.enum(['formal', 'friendly', 'direct']).optional(),
-});
-
-type CoverLetterRequest = z.infer<typeof coverLetterSchema>;
-
-const LANG_INSTRUCTIONS: Record<string, string> = {
-  es: 'Escribe la carta en español de España, con lenguaje formal pero cercano.',
-  en: 'Write the cover letter in English, formal but warm.',
-  ca: 'Escriu la carta en català, formal però proper.',
-  'pt-BR': 'Escreva a carta em português brasileiro, formal mas próximo.',
-  fr: 'Écris la lettre en français, formel mais chaleureux.',
-  ar: 'اكتب الرسالة بالعربية، رسمية ولكن دافئة.',
-  zh: '用中文写信，正式但亲切。',
-  hi: 'हिंदी में पत्र लिखें, औपचारिक लेकिन गर्मजोशी से।',
-  ro: 'Scrie scrisoarea în română, formal dar cald.',
-  uk: 'Напиши лист українською мовою, формально, але тепло.',
-};
 
 function offlineLetter(body: CoverLetterRequest): string {
   const fullName = body.fullName || '[Tu nombre]';
@@ -70,7 +45,7 @@ export async function POST(req: NextRequest) {
     }
     const body: CoverLetterRequest = parsed.data;
     const lang = body.language || 'es';
-    const langInstruction = LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.es;
+    const langInstruction = aiLanguageInstruction(lang, true);
     const tone = body.tone || 'formal';
 
     const toneInstructions = {

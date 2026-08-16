@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
-import { z } from 'zod';
 import { invokeAIText } from '@/lib/ai-provider';
+import { aiLanguageInstruction } from '@/lib/ai-language';
+import { atsRequestSchema, type ATSRequest } from '@/lib/api-request-schemas';
 import { apiError, apiJson, enforceRateLimit, hasRemoteAIConsent, readJsonBody, reportServerError } from '@/lib/api-security';
 import { parseATSAnalysisText } from '@/lib/ats-analysis';
 
@@ -9,40 +10,6 @@ export const maxDuration = 60;
 
 const MAX_BODY_BYTES = 128_000;
 const RATE_LIMIT = { limit: 6, windowMs: 10 * 60_000 };
-
-const atsShortText = z.string().trim().max(200);
-const atsRequestSchema = z.object({
-  fullName: atsShortText.optional(),
-  profession: atsShortText.optional(),
-  summary: z.string().trim().max(4000).optional(),
-  experiences: z.array(z.object({
-    position: atsShortText,
-    company: atsShortText,
-    description: z.string().trim().max(3000),
-  })).max(20).optional(),
-  education: z.array(z.object({
-    title: atsShortText,
-    institution: atsShortText,
-    year: z.string().trim().max(40),
-  })).max(20).optional(),
-  skills: z.array(z.string().trim().min(1).max(100)).max(30).optional(),
-  languages: z.array(z.string().trim().min(1).max(80)).max(20).optional(),
-  jobDescription: z.string().trim().min(20).max(12000),
-  language: z.string().trim().max(12).optional(),
-});
-
-type ATSRequest = z.infer<typeof atsRequestSchema>;
-
-const LANG_INSTRUCTIONS: Record<string, string> = {
-  es: 'Responde en español de España.',
-  en: 'Respond in English.',
-  ca: 'Respon en català.',
-  'pt-BR': 'Responda em português brasileiro.',
-  fr: 'Réponds en français.',
-  ar: 'أجب بالعربية.',
-  zh: '用中文回答.',
-  hi: 'हिंदी में उत्तर दें.',
-};
 
 export async function POST(req: NextRequest) {
   try {
@@ -59,7 +26,7 @@ export async function POST(req: NextRequest) {
     }
     const body: ATSRequest = parsed.data;
     const lang = body.language || 'es';
-    const langInstruction = LANG_INSTRUCTIONS[lang] || LANG_INSTRUCTIONS.es;
+    const langInstruction = aiLanguageInstruction(lang);
 
     const systemPrompt = `Eres un analizador experto de sistemas ATS (Applicant Tracking Systems) utilizados en España (InfoJobs, LinkedIn, Jobvite, Workday). Comparas el CV de un candidato contra una oferta de trabajo y devuelves una puntuación de compatibilidad, keywords detectadas y sugerencias accionables. ${langInstruction} Debes responder ÚNICAMENTE con un objeto JSON válido con esta forma exacta:
 {
