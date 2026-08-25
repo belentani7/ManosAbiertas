@@ -1,0 +1,91 @@
+{
+  "version": "3.0.0",
+  "updated": "2026-08-25",
+  "courses": [
+    {
+      "id": "tu-primer-ordenador",
+      "title": "Tu Primer Ordenador",
+      "category": "digital",
+      "level": "beginner",
+      "duration": "8h",
+      "lessons": 12,
+      "content": [
+        {
+          "lesson": 1,
+          "title": "¿Qué es un ordenador?",
+          "duration": "30min",
+          "content": "Un ordenador es una máquina que ayuda a hacer tareas. Tiene tres partes: pantalla (lo que ves), teclado (lo que escribes), ratón (lo que mueves)."
+        },
+        {
+          "lesson": 2,
+          "title": "El ratón",
+          "duration": "45min",
+          "content": "El ratón es como tu dedo. Mueve el puntero en la pantalla. Un clic = presionar una vez. Doble clic = presionar dos veces rápido.",
+          "exercise": "Haz clic en el botón de 'Siguiente'"
+        },
+        {
+          "lesson": 3,
+          "title": "El teclado",
+          "duration": "45min",
+          "content": "El teclado es para escribir letras y números. Las letras están en orden alfabético. Los números están en la fila superior.",
+          "exercise": "Escribe tu nombre usando el teclado"
+        }
+      ],
+      "certificate": true
+    },
+    {
+      "id": "buscar-en-google",
+      "title": "Buscar en Google",
+      "category": "digital",
+      "level": "beginner",
+      "duration": "6h",
+      "lessons": 10,
+      "content": [
+        {
+          "lesson": 1,
+          "title": "Abrir Google",
+          "duration": "20min",
+          "content": "Google es un buscador. Te ayuda a encontrar información en internet. Escribe en la caja de búsqueda y presiona Enter."
+        },
+        {
+          "lesson": 2,
+          "title": "Buscar por palabras clave",
+          "duration": "30min",
+          "content": "Para buscar algo, escribe las palabras más importantes. Ej: 'receta de paella' no 'cómo se hace la comida española'",
+          "exercise": "Busca '39 idiomas del mundo' y cuéntame 3 idiomas"
+        }
+      ],
+      "certificate": true
+    },
+    {
+      "id": "email-gmail",
+      "title": "Email en Gmail",
+      "category": "digital",
+      "level": "beginner",
+      "duration": "6h",
+      "lessons": 9,
+      "content": [
+        {
+          "lesson": 1,
+          "title": "Crear tu email",
+          "duration": "25min",
+          "content": "Un email es como una carta digital. Tu dirección de email es única. Ejemplo: miombre@gmail.com"
+        },
+        {
+          "lesson": 2,
+          "title": "Recibir emails",
+          "duration": "20min",
+          "content": "Otras personas te envían mensajes. Aparecen en tu bandeja de entrada. Puedes leerlos, responder o guardar."
+        },
+        {
+          "lesson": 3,
+          "title": "Enviar emails",
+          "duration": "25min",
+          "content": "Presiona 'Redactar'. Escribe quién lo recibirá, el asunto (tema) y el mensaje. Luego 'Enviar'.",
+          "exercise": "Envía un email a support@mismanosabiertas.com diciendo hola"
+        }
+      ],
+      "certificate": true
+    }
+  ]
+}
