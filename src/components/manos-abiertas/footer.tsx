@@ -87,7 +87,7 @@ export function Footer() {
               </span>
             </div>
             <a
-              href="https://github.com/belentani7/manosabiertas"
+              href="https://github.com/belentani7/manosabiertas-vercel"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
