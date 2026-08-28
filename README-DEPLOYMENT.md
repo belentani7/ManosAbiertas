@@ -4,18 +4,12 @@ Manos Abiertas está desplegada en múltiples plataformas para garantizar dispon
 
 ## Servidores Activos
 
-| Plataforma | URL | Fallback | Setup |
+| Plataforma | URL | Estado | Setup |
 |---|---|---|---|
-| **GitHub Pages** ✅ | https://belentani7.github.io/ManosAbiertas/ | Primary | Auto |
-| **Netlify** 🚀 | https://manos-abiertas-belentani.netlify.app | Secondary | Pendiente* |
-| **Vercel** 🚀 | https://manos-abiertas-belentani.vercel.app | Tertiary | Pendiente* |
-| **Surge** 🚀 | https://manos-abiertas-belentani.surge.sh | Backup | Pendiente* |
+| **Vercel** ✅ | https://manosabiertas-seven.vercel.app | Activo (producción) | Conectado |
+| **GitHub Pages** ⚠️ | https://belentani7.github.io/ManosAbiertas/ | No funcional | Solo renderiza el README; GitHub Pages no ejecuta apps Next.js |
 
-*Para conectar Netlify/Vercel: 
-1. Ir a dashboard.netlify.com o vercel.com
-2. "New Site" → Conectar repo `belentani7/ManosAbiertas`
-3. Build settings: `npm run build`, publish: `.next`
-4. Deploy automático en cada push
+**Nota:** GitHub Pages no puede servir esta app Next.js (necesita servidor para rutas `/api/*` y middleware). El sitio público funcional es el despliegue de Vercel.
 
 ## Fallback Automático
 
