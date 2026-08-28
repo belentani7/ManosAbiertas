@@ -3,10 +3,10 @@ import { boundedProviderText, providerTextFromPayload, safeMaxTokens, safeProvid
 
 type ProviderMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
-type ProviderResult = { text: string; provider: 'groq' | 'nvidia' | 'zai' | 'offline'; model?: string };
+type ProviderResult = { text: string; provider: 'groq' | 'nvidia' | 'qwen' | 'zai' | 'offline'; model?: string };
 
 async function callCompatibleProvider(
-  provider: 'groq' | 'nvidia',
+  provider: 'groq' | 'nvidia' | 'qwen',
   apiKey: string,
   baseUrl: string,
   model: string,
@@ -45,12 +45,18 @@ export async function callConfiguredProvider(
     return callCompatibleProvider('nvidia', nvidiaKey, process.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1', process.env.NVIDIA_MODEL || 'meta/llama-3.3-70b-instruct', messages, maxTokens);
   }
 
+  const qwenKey = process.env.QWEN_API_KEY || process.env.DASHSCOPE_API_KEY;
+  if (qwenKey) {
+    return callCompatibleProvider('qwen', qwenKey, process.env.QWEN_BASE_URL || 'https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1', process.env.QWEN_MODEL || 'qwen3.8-max', messages, maxTokens);
+  }
+
   return null;
 }
 
-export function configuredProvider(): 'groq' | 'nvidia' | 'zai' | 'local' {
+export function configuredProvider(): 'groq' | 'nvidia' | 'qwen' | 'zai' | 'local' {
   if (process.env.GROQ_API_KEY) return 'groq';
   if (process.env.NVIDIA_API_KEY || process.env.NVIDIA_NIM_API_KEY || process.env.NVIDIA_ALT_KEY) return 'nvidia';
+  if (process.env.QWEN_API_KEY || process.env.DASHSCOPE_API_KEY) return 'qwen';
   if (process.env.ZAI_API_KEY || process.env.Z_AI_API_KEY) return 'zai';
   return 'local';
 }

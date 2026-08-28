@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Sparkles, Loader2, RotateCcw, Bot, User, Lightbulb } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, Loader2, RotateCcw, Bot, User, Lightbulb, Mic, MicOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
@@ -11,8 +11,10 @@ import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { getOfflineTutorReply } from '@/lib/offline-tutor';
 import { useRemoteAIConsent } from '@/hooks/use-remote-ai-consent';
+import { useSpeechRecognition } from '@/hooks/use-speech-recognition';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
+import { TTSButton } from './tts-button';
 import { getLocalStorageItem, readStoredChat } from '@/lib/local-data';
 import { readApiText } from '@/lib/safe-content';
 import { requestJson } from '@/lib/network-json';
@@ -38,12 +40,19 @@ const STORAGE_KEY = 'manos-abiertas-chat';
 export function AIAssistant() {
   const { language } = useAppStore();
   const { remoteAIConsent } = useRemoteAIConsent();
+  const { supported: sttSupported, listening, start: startListening, stop: stopListening, transcript } = useSpeechRecognition(language);
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // Push recognized speech into the input
+  useEffect(() => {
+    if (transcript) setInput((prev) => (listening ? transcript : prev));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transcript]);
 
   // Load chat history from localStorage on mount
   useEffect(() => {
@@ -198,7 +207,7 @@ export function AIAssistant() {
                   </div>
                   <div className="text-[11px] text-white/80 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                    Netlify · modo local · 39 idiomas
+                    Tutor IA · responde en tu idioma · es · pt · en
                   </div>
                 </div>
               </div>
@@ -277,6 +286,11 @@ export function AIAssistant() {
                         : 'bg-card border border-border rounded-tl-sm'
                     )}>
                       <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                      {msg.role === 'assistant' && (
+                        <div className="mt-1.5 -mb-0.5 flex items-center justify-end">
+                          <TTSButton text={msg.content} label="" size="sm" variant="ghost" />
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 ))
@@ -303,6 +317,22 @@ export function AIAssistant() {
             <div className="p-3 border-t border-border bg-card flex-shrink-0">
               <RemoteAIConsent compact className="mb-2" />
               <div className="flex gap-2 items-end">
+                {sttSupported && (
+                  <Button
+                    size="icon"
+                    type="button"
+                    onClick={listening ? stopListening : startListening}
+                    disabled={loading}
+                    className={cn(
+                      'h-11 w-11 flex-shrink-0',
+                      listening ? 'bg-red-500 text-white animate-pulse' : 'bg-muted text-muted-foreground hover:bg-accent hover:text-foreground'
+                    )}
+                    aria-label={listening ? 'Dejar de escuchar' : 'Hablar por micrófono'}
+                    title={listening ? 'Escuchando... toca para parar' : 'Dicta tu pregunta por micrófono'}
+                  >
+                    {listening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+                  </Button>
+                )}
                 <Textarea
                   ref={inputRef}
                   value={input}

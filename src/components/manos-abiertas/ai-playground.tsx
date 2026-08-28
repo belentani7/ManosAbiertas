@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils';
 import { useRemoteAIConsent } from '@/hooks/use-remote-ai-consent';
 import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
+import { TTSButton } from './tts-button';
+import { aiLanguageInstruction } from '@/lib/ai-language';
 import { requestJson } from '@/lib/network-json';
 import { readApiText } from '@/lib/safe-content';
 
@@ -59,9 +61,10 @@ export function AIPlayground({
     setLoading(true);
 
     try {
+      const langInstruction = aiLanguageInstruction(language);
       const systemMsg = contextPrompt
-        ? `Contexto: ${contextPrompt}\n\nInstrucción: Responde de forma práctica y clara, en español sencillo, como si estuvieras ayudando a una persona que está aprendiendo a usar IA.`.slice(0, 12_000)
-        : 'Eres un asistente que ayuda a una persona a aprender IA. Responde en español sencillo y práctico.';
+        ? `Contexto: ${contextPrompt}\n\n${langInstruction}\nInstrucción: Responde de forma práctica y clara, como profesor paciente: explica paso a paso, da un ejemplo concreto y ofrece una pregunta breve de repaso.`.slice(0, 12_000)
+        : `${langInstruction}\nEres un tutor que ayuda a una persona a aprender a usar IA. Responde claro y práctico: explica paso a paso, da un ejemplo y haz una pregunta de repaso al final.`;
 
       const data = await requestJson('/api/chat', {
         method: 'POST',
@@ -159,6 +162,11 @@ export function AIPlayground({
                           : 'bg-muted text-foreground rounded-tl-sm'
                       )}>
                         <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                        {msg.role === 'assistant' && (
+                          <div className="mt-1 -mb-1 flex items-center justify-end">
+                            <TTSButton text={msg.content} label="" size="sm" variant="ghost" />
+                          </div>
+                        )}
                       </div>
                     </motion.div>
                   ))}
