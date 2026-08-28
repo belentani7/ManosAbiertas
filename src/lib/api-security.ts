@@ -243,6 +243,32 @@ export function reportServerError(scope: string, error: unknown) {
   console.error(`[${scope}] request failed (${kind})`);
 }
 
+export function apiStream(stream: AsyncIterable<any>) {
+  const encoder = new TextEncoder();
+  const readable = new ReadableStream({
+    async start(controller) {
+      try {
+        for await (const chunk of stream) {
+          const data = JSON.stringify(chunk);
+          controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+        }
+        controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+        controller.close();
+      } catch (error) {
+        controller.error(error);
+      }
+    }
+  });
+
+  return new Response(readable, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Connection': 'keep-alive',
+      ...RESPONSE_HEADERS
+    }
+  });
+}
+
 const EMAIL_PATTERN = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
 const PHONE_PATTERN = /(?:\+?\d[\s().-]*){9,}/;
 const ID_PATTERN = /\b(?:[XYZ]\d{7}[A-Z]|\d{8}[A-Z])\b/i;

@@ -683,13 +683,20 @@ export function getAIRegistry(): AIProviderRegistry {
 export async function invokeAIText(
   systemPrompt: string,
   userPrompt: string,
-  options: { maxTokens?: number; model?: string; temperature?: number; stream?: boolean; tools?: ToolDefinition[] } = {}
+  options: { maxTokens?: number; model?: string; temperature?: number; stream?: boolean; tools?: ToolDefinition[]; offline?: () => string } = {}
 ): Promise<{ text: string; provider: string; model: string; usage?: any; toolCalls?: ToolCall[]; finishReason: string }> {
-  return aiRegistry.chat({
-    systemPrompt,
-    messages: [{ role: 'user', content: userPrompt }],
-    ...options
-  });
+  try {
+    return await aiRegistry.chat({
+      systemPrompt,
+      messages: [{ role: 'user', content: userPrompt }],
+      ...options
+    });
+  } catch (error) {
+    if (options.offline) {
+      return { text: options.offline(), provider: 'offline', model: 'fallback', finishReason: 'stop' };
+    }
+    throw error;
+  }
 }
 
 export async function* invokeAIStream(

@@ -28,11 +28,26 @@ export const chatRequestSchema = z.object({
   language: languageCodeSchema.optional(),
   context: z.string().trim().max(4_000).optional(),
   consentToRemoteAI: optionalConsent,
+  userLocation: z.object({
+    lat: z.number(),
+    lng: z.number(),
+    city: z.string().optional()
+  }).optional(),
+  tools: z.array(z.string()).optional(),
+  stream: z.boolean().optional(),
+  model: z.string().optional(),
+  maxTokens: z.number().optional(),
+  temperature: z.number().min(0).max(2).optional(),
+  topP: z.number().min(0).max(1).optional(),
+  toolChoice: z.union([
+    z.enum(['auto', 'none', 'required']),
+    z.object({ type: z.literal('function'), function: z.object({ name: z.string() }) })
+  ]).optional()
 }).strict().superRefine((value, context) => {
   if (value.messages.at(-1)?.role !== 'user') {
     context.addIssue({ code: 'custom', path: ['messages'], message: 'Last message must be from the user' });
   }
-  if (textLength(value.messages) + textLength(value.context) > 48_000) {
+  if (textLength(value.messages) + textLength(value.context || '') > 48_000) {
     context.addIssue({ code: 'custom', path: ['messages'], message: 'Conversation text budget exceeded' });
   }
 });
