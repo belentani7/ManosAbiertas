@@ -7,7 +7,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const app = express();
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 const LEADS_FILE = path.join(__dirname, 'leads.json');
