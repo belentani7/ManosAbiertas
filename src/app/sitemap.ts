@@ -1,38 +1,43 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://manosabiertas.space-z.ai";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://manosabiertas.space-z.ai";
+const LOCALES = ["es", "en", "pt", "ca", "fr", "it", "de", "zh", "ar", "pt-BR"];
 
-// All public sections of the app. Sections are navigable via hash deep-links
-// (#/recursos, #/derechos...) so search engines and users can reach them.
-const SECTIONS: { path: string; changefreq: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] = [
-  { path: "/", changefreq: "weekly", priority: 1.0 },
-  { path: "/#/learn-ai", changefreq: "weekly", priority: 0.9 },
-  { path: "/#/cv", changefreq: "weekly", priority: 0.9 },
-  { path: "/#/office", changefreq: "weekly", priority: 0.8 },
-  { path: "/#/resources", changefreq: "weekly", priority: 0.9 },
-  { path: "/#/rights", changefreq: "weekly", priority: 0.9 },
-  { path: "/#/tools", changefreq: "weekly", priority: 0.8 },
-  { path: "/#/events", changefreq: "daily", priority: 0.7 },
-  { path: "/#/courses", changefreq: "weekly", priority: 0.8 },
-  { path: "/#/community", changefreq: "weekly", priority: 0.7 },
-  { path: "/#/contacts", changefreq: "monthly", priority: 0.6 },
+const SECTIONS = [
+  { path: "", priority: 1.0, changefreq: "daily" as const },
+  { path: "/ia", priority: 0.9, changefreq: "weekly" as const },
+  { path: "/cv", priority: 0.9, changefreq: "weekly" as const },
+  { path: "/office", priority: 0.8, changefreq: "weekly" as const },
+  { path: "/recursos", priority: 0.9, changefreq: "daily" as const },
+  { path: "/derechos", priority: 0.9, changefreq: "weekly" as const },
+  { path: "/herramientas", priority: 0.8, changefreq: "weekly" as const },
+  { path: "/eventos", priority: 0.7, changefreq: "daily" as const },
+  { path: "/cursos", priority: 0.8, changefreq: "weekly" as const },
+  { path: "/comunidad", priority: 0.7, changefreq: "daily" as const },
+  { path: "/contactos", priority: 0.6, changefreq: "monthly" as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return SECTIONS.map((s) => ({
-    url: `${SITE_URL}${s.path}`,
-    lastModified: new Date(),
-    changeFrequency: s.changefreq,
-    priority: s.priority,
-    alternates: {
-      languages: {
-        es: `${SITE_URL}/`,
-        en: `${SITE_URL}/en`,
-        zh: `${SITE_URL}/zh`,
-        pt: `${SITE_URL}/pt`,
-        fr: `${SITE_URL}/fr`,
-      },
-    },
-  }));
+  const urls: MetadataRoute.Sitemap = [];
+
+  for (const locale of LOCALES) {
+    for (const section of SECTIONS) {
+      const url = `${SITE_URL}/${locale}${section.path}`;
+      const alternates: Record<string, string> = {};
+      
+      for (const altLocale of LOCALES) {
+        alternates[altLocale] = `${SITE_URL}/${altLocale}${section.path}`;
+      }
+
+      urls.push({
+        url,
+        lastModified: new Date(),
+        changeFrequency: section.changefreq,
+        priority: section.priority,
+        alternates: { languages: alternates },
+      });
+    }
+  }
+
+  return urls;
 }
