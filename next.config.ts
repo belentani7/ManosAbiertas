@@ -4,7 +4,18 @@ const nextConfig: NextConfig = {
   output:
     process.env.VERCEL === "1" || process.env.NEXT_OUTPUT_MODE === "netlify"
       ? undefined
+      : process.env.NEXT_OUTPUT_MODE === "export"
+      ? "export"
       : "standalone",
+  images: {
+    unoptimized: true,
+  },
+  // Disable API routes for static export
+  ...(process.env.NEXT_OUTPUT_MODE === "export" && {
+    experimental: {
+      appDir: true,
+    },
+  }),
   /* config options here */
   reactStrictMode: true,
   typescript: {
