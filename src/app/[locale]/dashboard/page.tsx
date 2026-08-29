@@ -31,7 +31,7 @@ export default async function DashboardPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {user.enrollments.map((enrollment) => {
           // Calculate progress
-          const totalLessons = enrollment.course.lessons?.length || 2; // Default to 2 for seed
+          const totalLessons = 2; // Default for seed
           const completedLessons = enrollment.lessonProgress.filter(p => p.completed).length;
           const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
 

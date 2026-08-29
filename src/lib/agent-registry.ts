@@ -391,12 +391,12 @@ ${config.systemPrompt || ''}`;
     };
   }
 
-  private async executeToolCall(toolCall: any): Promise<any> {
+  private async executeToolCall(toolCall: any, options?: { locale?: string }): Promise<any> {
     try {
       const result = await functionRegistry.execute(
         toolCall.function.name,
         JSON.parse(toolCall.function.arguments),
-        { locale: 'es', permissions: [], metadata: {} }
+        { locale: options?.locale || 'es', permissions: [], metadata: {} }
       );
       return { success: true, result: result.result, metadata: result.metadata };
     } catch (error) {
@@ -648,8 +648,6 @@ for (const [id, config] of Object.entries(PREDEFINED_AGENTS)) {
   agentRegistry.register(config);
 }
 
-export const agentRegistry = new AgentRegistry();
-
 export function createAgent(config: any): any {
   return agentRegistry.register(config);
 }
@@ -706,4 +704,3 @@ export function createAgentConfig(overrides: any = {}): any {
 }
 
 export { agentRegistry, PREDEFINED_AGENTS };
-export type { AgentRegistry, Agent, AgentConfig };

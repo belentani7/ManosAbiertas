@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { PlazosCalculator } from '@/components/manos-abiertas/PlazosCalculator';
-import { IMVCalculator } from '@/components/manos-abiertas/IMVCalculator';
-import { LetterGenerator } from '@/components/manos-abiertas/LetterGenerator';
-import { ChecklistManager } from '@/components/manos-abiertas/ChecklistManager';
-import { AdminDictionary } from '@/components/manos-abiertas/AdminDictionary';
-import { GradeConverter } from '@/components/manos-abiertas/GradeConverter';
-import { PhoneDirectory } from '@/components/manos-abiertas/PhoneDirectory';
+import PlazosCalculator from '@/components/manos-abiertas/PlazosCalculator';
+import IMVCalculator from '@/components/manos-abiertas/IMVCalculator';
+import LetterGenerator from '@/components/manos-abiertas/LetterGenerator';
+import ChecklistManager from '@/components/manos-abiertas/ChecklistManager';
+import AdminDictionary from '@/components/manos-abiertas/AdminDictionary';
+import GradeConverter from '@/components/manos-abiertas/GradeConverter';
+import PhoneDirectory from '@/components/manos-abiertas/PhoneDirectory';
 
 export default function HerramientasPage() {
   const [activeTab, setActiveTab] = useState<'plazos' | 'imv' | 'carta' | 'checklist' | 'diccionario' | 'notas' | 'telefonos'>('plazos');
@@ -30,15 +30,7 @@ export default function HerramientasPage() {
       </header>
 
       <nav className="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Herramientas">
-        {[
-          { id: 'plazos', label: '⏱️ Plazos', icon: '⏱️' },
-          { id: 'imv', label: '🧮 IMV', icon: '🧮' },
-          { id: 'carta', label: '✍️ Cartas', icon: '✍️' },
-          { id: 'checklist', label: '✅ Checklist', icon: '✅' },
-          { id: 'diccionario', label: '📖 Diccionario', icon: '📖' },
-          { id: 'notas', label: '🎓 Notas', icon: '🎓' },
-          { id: 'telefonos', label: '📞 Teléfonos', icon: '📞' },
-        ].map((tab) => (
+        {tabs.map((tab) => (
           <button
             key={tab.id}
             role="tab"

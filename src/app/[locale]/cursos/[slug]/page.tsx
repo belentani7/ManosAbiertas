@@ -24,7 +24,7 @@ export default async function CoursePage({ params }: { params: { slug: string } 
   // Hardcode user for MVP
   const user = await prisma.user.findFirst({ where: { email: 'student@manosabiertas.org' } });
   
-  let enrollment = null;
+  let enrollment: { lessonProgress: { lessonId: string; completed: boolean }[] } | null = null;
   let progresses: Record<string, boolean> = {};
 
   if (user) {

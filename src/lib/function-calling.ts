@@ -131,7 +131,7 @@ functionRegistry.register(
       properties: {
         query: { type: 'string', description: 'Tema o pregunta sobre derechos' },
         topic: { type: 'string', description: 'Tema específico de derechos' },
-        limit: { type: 'number', default: 5, maximum: 20 }
+        limit: { type: 'number', description: 'Máximo número de resultados', default: 5, maximum: 20 }
       },
       required: []
     }
@@ -209,8 +209,8 @@ functionRegistry.register(
             required: ['language', 'level']
           }
         },
-        template: { type: 'string', enum: ['europass', 'modern', 'minimal', 'creative', 'ats'], default: 'europass' },
-        language: { type: 'string', default: 'es' }
+        template: { type: 'string', description: 'Plantilla de CV', enum: ['europass', 'modern', 'minimal', 'creative', 'ats'], default: 'europass' },
+        language: { type: 'string', description: 'Idioma del CV', default: 'es' }
       },
       required: ['personalData']
     }
@@ -231,8 +231,8 @@ functionRegistry.register(
         company: { type: 'string', description: 'Nombre de la empresa' },
         jobDescription: { type: 'string', description: 'Descripción del puesto' },
         candidateProfile: { type: 'string', description: 'Perfil del candidato' },
-        language: { type: 'string', default: 'es' },
-        tone: { type: 'string', enum: ['formal', 'professional', 'enthusiastic', 'creative'], default: 'professional' }
+        language: { type: 'string', description: 'Idioma de la carta', default: 'es' },
+        tone: { type: 'string', description: 'Tono de la carta', enum: ['formal', 'professional', 'enthusiastic', 'creative'], default: 'professional' }
       },
       required: ['jobTitle', 'company', 'jobDescription', 'candidateProfile']
     }
@@ -251,7 +251,7 @@ functionRegistry.register(
       properties: {
         cvText: { type: 'string', description: 'Texto completo del CV' },
         jobDescription: { type: 'string', description: 'Descripción de la oferta de empleo' },
-        language: { type: 'string', default: 'es' }
+        language: { type: 'string', description: 'Idioma del análisis', default: 'es' }
       },
       required: ['cvText', 'jobDescription']
     }
@@ -270,9 +270,9 @@ functionRegistry.register(
       properties: {
         lat: { type: 'number', description: 'Latitud' },
         lng: { type: 'number', description: 'Longitud' },
-        radiusKm: { type: 'number', default: 10 },
-        type: { type: 'string', enum: ['extranjeria', 'sepe', 'ayuntamiento', 'ong', 'salud', 'educacion', 'vivienda', 'todos'], default: 'todos' },
-        limit: { type: 'number', default: 10, maximum: 50 }
+        radiusKm: { type: 'number', description: 'Radio de búsqueda en km', default: 10 },
+        type: { type: 'string', description: 'Tipo de oficina', enum: ['extranjeria', 'sepe', 'ayuntamiento', 'ong', 'salud', 'educacion', 'vivienda', 'todos'], default: 'todos' },
+        limit: { type: 'number', description: 'Máximo número de resultados', default: 10, maximum: 50 }
       },
       required: ['lat', 'lng']
     }
@@ -290,8 +290,8 @@ functionRegistry.register(
       type: 'object',
       properties: {
         city: { type: 'string', description: 'Ciudad' },
-        householdSize: { type: 'number', default: 1 },
-        lifestyle: { type: 'string', enum: ['economico', 'moderado', 'confortable'], default: 'moderado' }
+        householdSize: { type: 'number', description: 'Tamaño del hogar', default: 1 },
+        lifestyle: { type: 'string', description: 'Estilo de vida', enum: ['economico', 'moderado', 'confortable'], default: 'moderado' }
       },
       required: ['city']
     }
@@ -308,9 +308,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        documentType: { type: 'string', enum: ['NIE', 'TIE', 'pasaporte', 'DNI', 'permiso_trabajo'] },
-        expiryDate: { type: 'string' },
-        nationality: { type: 'string' }
+        documentType: { type: 'string', description: 'Tipo de documento', enum: ['NIE', 'TIE', 'pasaporte', 'DNI', 'permiso_trabajo'] },
+        expiryDate: { type: 'string', description: 'Fecha de expiración (YYYY-MM-DD)' },
+        nationality: { type: 'string', description: 'Nacionalidad del titular' }
       },
       required: ['documentType', 'expiryDate']
     }
@@ -327,9 +327,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        text: { type: 'string' },
-        targetLanguage: { type: 'string' },
-        sourceLanguage: { type: 'string' }
+        text: { type: 'string', description: 'Texto a traducir' },
+        targetLanguage: { type: 'string', description: 'Idioma destino' },
+        sourceLanguage: { type: 'string', description: 'Idioma origen (auto-detecta si se omite)' }
       },
       required: ['text', 'targetLanguage']
     }
@@ -346,9 +346,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        procedure: { type: 'string', enum: ['nie_primera_vez', 'nie_renovacion', 'arraigo_familiar', 'asilo', 'nacionalidad', 'empadronamiento', 'tarjeta_sanitaria', 'permiso_trabajo'] },
-        city: { type: 'string' },
-        language: { type: 'string', default: 'es' }
+        procedure: { type: 'string', description: 'Trámite para la guía', enum: ['nie_primera_vez', 'nie_renovacion', 'arraigo_familiar', 'asilo', 'nacionalidad', 'empadronamiento', 'tarjeta_sanitaria', 'permiso_trabajo'] },
+        city: { type: 'string', description: 'Ciudad donde se realiza el trámite' },
+        language: { type: 'string', description: 'Idioma de la guía', default: 'es' }
       },
       required: ['procedure']
     }
@@ -366,8 +366,8 @@ functionRegistry.register(
       type: 'object',
       properties: {
         goal: { type: 'string', description: 'Objetivo' },
-        timeline: { type: 'string', enum: ['urgente', '1_semana', '1_mes', '3_meses', 'flexible'], default: 'flexible' },
-        language: { type: 'string', default: 'es' }
+        timeline: { type: 'string', description: 'Plazo para completar', enum: ['urgente', '1_semana', '1_mes', '3_meses', 'flexible'], default: 'flexible' },
+        language: { type: 'string', description: 'Idioma de la checklist', default: 'es' }
       },
       required: ['goal']
     }
@@ -384,9 +384,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        type: { type: 'string', enum: ['emergencia', 'violencia_genero', 'salud_mental', 'denuncia', 'embajada', 'consulado', 'ong_apoyo', 'todos'], default: 'todos' },
-        country: { type: 'string', default: 'España' },
-        city: { type: 'string' }
+        type: { type: 'string', description: 'Tipo de contacto', enum: ['emergencia', 'violencia_genero', 'salud_mental', 'denuncia', 'embajada', 'consulado', 'ong_apoyo', 'todos'], default: 'todos' },
+        country: { type: 'string', description: 'País', default: 'España' },
+        city: { type: 'string', description: 'Ciudad' }
       },
       required: []
     }
@@ -408,12 +408,12 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        query: { type: 'string' },
-        category: { type: 'string', enum: ['ia', 'office', 'nivel0', 'externos', 'idiomas', 'tecnologia', 'marketing', 'diseño', 'negocios'] },
-        level: { type: 'string', enum: ['basico', 'intermedio', 'avanzado'] },
-        language: { type: 'string' },
-        maxDuration: { type: 'number' },
-        freeOnly: { type: 'boolean', default: true }
+        query: { type: 'string', description: 'Palabras clave de búsqueda' },
+        category: { type: 'string', description: 'Categoría del curso', enum: ['ia', 'office', 'nivel0', 'externos', 'idiomas', 'tecnologia', 'marketing', 'diseño', 'negocios'] },
+        level: { type: 'string', description: 'Nivel del curso', enum: ['basico', 'intermedio', 'avanzado'] },
+        language: { type: 'string', description: 'Idioma del curso' },
+        maxDuration: { type: 'number', description: 'Duración máxima en horas' },
+        freeOnly: { type: 'boolean', description: 'Solo cursos gratuitos', default: true }
       },
       required: []
     }
@@ -432,7 +432,7 @@ functionRegistry.register(
       properties: {
         courseId: { type: 'string', description: 'ID del curso' },
         lessonId: { type: 'string', description: 'ID de la lección' },
-        language: { type: 'string', default: 'es' }
+        language: { type: 'string', description: 'Idioma del contenido', default: 'es' }
       },
       required: ['courseId', 'lessonId']
     }
@@ -443,5 +443,3 @@ functionRegistry.register(
 );
 
 export const functions = functionRegistry;
-export { createFunctionContext };
-export type { FunctionDefinition, FunctionResult, FunctionContext, FunctionHandler };

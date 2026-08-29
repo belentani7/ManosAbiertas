@@ -87,9 +87,10 @@ class InMemoryVectorStore {
         for (const [key, value] of Object.entries(filter)) {
           const metaValue = (chunk.metadata as any)[key];
           if (Array.isArray(value)) {
-            if (!value.includes(metaValue)) { return false; }
+            if (!value.includes(metaValue)) { match = false; break; }
           } else if (metaValue !== value) {
-            return false;
+            match = false;
+            break;
           }
         }
         if (!match) continue;
@@ -98,10 +99,10 @@ class InMemoryVectorStore {
       if (!embedding) continue;
       const score = this.cosineSimilarity(queryEmbedding, embedding);
       if (score >= 0.5) {
-        return { chunk, score, rank: 0 };
+        results.push({ chunk, score });
       }
     }
-    return [];
+    return results.sort((a, b) => b.score - a.score).slice(0, topK).map((r, i) => ({ chunk: r.chunk, score: r.score, rank: i }));
   }
 
   async delete(ids: string[]): Promise<void> {
@@ -200,9 +201,7 @@ export const ragEngine = {
   indexResources: async () => 0,
   indexGuides: async () => 0,
   generateContext: async () => ({ context: '', sources: [] }),
-  search: async () => [],
   healthCheck: async () => ({ healthy: true, latencyMs: 0, details: { store: 'InMemoryVectorStore' } })
 };
 
 export { InMemoryVectorStore };
-export type { DocumentChunk, SearchResult, RAGConfig };
