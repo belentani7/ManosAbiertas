@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
   // Disable API routes for static export
   ...(process.env.NEXT_OUTPUT_MODE === "export" && {
     experimental: {
-      appDir: true,
     },
   }),
   /* config options here */

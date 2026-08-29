@@ -57,11 +57,16 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
     bubbleTimeoutRef.current = setTimeout(() => setPhrase(''), 6000);
   }, [getRandomPhrase]);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [chatLog, setChatLog] = useState<{role: 'user' | 'agent', text: string}[]>([{
+    role: 'agent', text: 'Soy el Agente IA Potente de Manos Abiertas. ¿En qué puedo ayudarte hoy?'
+  }]);
+  const [inputValue, setInputValue] = useState('');
+
   // Draw loop
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -72,10 +77,8 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
     canvas.height = 120;
 
     const draw = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-
-      const ctx = canvas.getContext('2d');
+      if (!canvasRef.current) return;
+      const ctx = canvasRef.current.getContext('2d');
       if (!ctx) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -86,92 +89,62 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
 
       // Anillo exterior pulsante
       const pulse = Math.sin(Date.now() / 500) * 5;
-      ctx.strokeStyle = '#ff1a4a';
+      ctx.strokeStyle = '#3b82f6'; // Azul más tecnológico
       ctx.lineWidth = 3;
       ctx.shadowBlur = 20;
-      ctx.shadowColor = '#ff1a4a';
+      ctx.shadowColor = '#3b82f6';
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius + pulse, 0, Math.PI * 2);
       ctx.stroke();
       ctx.shadowBlur = 0;
 
       // Anillo interior
-      ctx.strokeStyle = 'rgba(255, 26, 74, 0.6)';
+      ctx.strokeStyle = 'rgba(59, 130, 246, 0.6)';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius - 10, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Núcleo oscuro
+      // Núcleo
       const gradient = ctx.createRadialGradient(60, 60, 0, 60, 60, 30);
-      gradient.addColorStop(0, '#1a0008');
-      gradient.addColorStop(1, '#0a0003');
+      gradient.addColorStop(0, '#0f172a');
+      gradient.addColorStop(1, '#020617');
       ctx.fillStyle = gradient;
       ctx.beginPath();
       ctx.arc(60, 60, 30, 0, Math.PI * 2);
       ctx.fill();
 
       // Ojo que sigue al cursor
-      const eyeX = 60;
-      const eyeY = 60;
-
       const dx = mousePos.x - position.x - 60;
       const dy = mousePos.y - position.y - 60;
       const angle = Math.atan2(dy, dx);
-      const pupilOffset = Math.min(8, Math.sqrt(dx * dx + dy * dy) / 50);
+      
+      const pupilX = 60 + Math.cos(angle) * Math.min(8, Math.sqrt(dx * dx + dy * dy) / 50);
+      const pupilY = 60 + Math.sin(angle) * Math.min(8, Math.sqrt(dx * dx + dy * dy) / 50);
 
-      const pupilX = eyeX + Math.cos(angle) * Math.min(8, Math.sqrt(dx * dx + dy * dy) / 50);
-      const pupilY = eyeY + Math.sin(angle) * Math.min(8, Math.sqrt(dx * dx + dy * dy) / 50);
-
-      // Iris rojo
-      ctx.fillStyle = '#ff1a4a';
+      // Iris azul
+      ctx.fillStyle = '#3b82f6';
       ctx.shadowBlur = 10;
-      ctx.shadowColor = '#ff1a4a';
+      ctx.shadowColor = '#3b82f6';
       ctx.beginPath();
-      ctx.arc(eyeX, eyeY, 15, 0, Math.PI * 2);
+      ctx.arc(60, 60, 15, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;
 
       // Pupila
-      ctx.fillStyle = '#000';
+      ctx.fillStyle = '#fff';
       ctx.beginPath();
-      ctx.arc(pupilX, pupilY, 8, 0, Math.PI * 2);
+      ctx.arc(pupilX, pupilY, 6, 0, Math.PI * 2);
       ctx.fill();
-
-      // Brillo
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-      ctx.beginPath();
-      ctx.arc(pupilX - 3, pupilY - 3, 3, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Líneas de escaneo rotantes
-      const scanAngle = Date.now() / 1000;
-      for (let i = 0; i < 3; i++) {
-        const lineAngle = scanAngle + (i * Math.PI * 2) / 3;
-        const lineX1 = 60 + Math.cos(lineAngle) * 20;
-        const lineY1 = 60 + Math.sin(lineAngle) * 20;
-        const lineX2 = 60 + Math.cos(lineAngle) * 35;
-        const lineY2 = 60 + Math.sin(lineAngle) * 35;
-
-        ctx.strokeStyle = 'rgba(255, 26, 74, 0.4)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(lineX1, lineY1);
-        ctx.lineTo(lineX2, lineY2);
-        ctx.stroke();
-      }
 
       animationRef.current = requestAnimationFrame(draw);
     };
-
     draw();
   }, [mousePos, position]);
 
-  // Mouse tracking & drag
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
-
       if (isDragging) {
         setPosition({
           x: e.clientX - dragOffset.current.x,
@@ -179,14 +152,10 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
         });
       }
     };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
+    const handleMouseUp = () => setIsDragging(false);
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
-
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
@@ -201,29 +170,29 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
     };
   }, [position]);
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      showPhrase();
-    } else if (e.key === 'Escape') {
-      setPhrase('');
-    }
-  }, [showPhrase]);
+  const handleCanvasClick = (e: React.MouseEvent) => {
+    if (isDragging) return;
+    setIsOpen(!isOpen);
+    setPhrase("");
+  };
 
-  // Auto-speak
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!phrase) showPhrase();
-    }, 38000);
-    return () => clearInterval(interval);
-  }, [phrase, showPhrase]);
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+    
+    const newLog = [...chatLog, { role: 'user' as const, text: inputValue }];
+    setChatLog(newLog);
+    setInputValue('');
+    
+    // Simulate AI response
+    setTimeout(() => {
+      setChatLog([...newLog, { 
+        role: 'agent', 
+        text: 'Soy un agente integrado en tu plataforma. Todavía estoy en entrenamiento, pero pronto podré guiarte por tus cursos de Office, trámites y herramientas HTML.' 
+      }]);
+    }, 1000);
+  };
 
-  // Initial phrase
-  useEffect(() => {
-    showPhrase();
-  }, [showPhrase]);
-
-  // Cleanup animation on unmount
   useEffect(() => {
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
@@ -235,48 +204,78 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
       <canvas
         ref={canvasRef}
         onMouseDown={handleMouseDown}
-        onKeyDown={handleKeyDown}
+        onClick={handleCanvasClick}
         tabIndex={0}
         role="button"
-        aria-label="Agente Belentani - Click para frase, arrastra para mover, Enter para hablar"
+        aria-label="Agente IA Potente"
         style={{
           position: 'fixed',
           left: position.x,
           top: position.y,
           width: 120,
           height: 120,
-          cursor: isDragging ? 'grabbing' : 'grab',
-          zIndex: zIndex,
+          cursor: isDragging ? 'grabbing' : 'pointer',
+          zIndex: zIndex + 1,
         }}
       />
-      {phrase && (
-        <div
-          id="agent-bubble"
-          style={{
-            position: 'fixed',
-            bottom: 150,
-            right: 30,
-            maxWidth: 280,
-            padding: '12px 16px',
-            background: 'rgba(8, 5, 10, 0.9)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 26, 74, 0.6)',
-            borderRadius: '16px',
-            color: '#fff',
-            fontFamily: 'Space Mono, monospace',
-            fontSize: '0.85rem',
-            zIndex: 9999,
-            boxShadow: '0 8px 32px rgba(255, 26, 74, 0.3)',
-            animation: 'fadeIn 0.3s ease',
-          }}
-        >
-          {phrase}
+      
+      {isOpen && (
+        <div style={{
+          position: 'fixed',
+          left: position.x - 300,
+          top: position.y - 320,
+          width: 350,
+          height: 400,
+          background: 'rgba(15, 23, 42, 0.95)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(59, 130, 246, 0.5)',
+          borderRadius: '16px',
+          zIndex: zIndex,
+          display: 'flex',
+          flexDirection: 'column',
+          boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+          animation: 'fadeIn 0.2s ease',
+          overflow: 'hidden'
+        }}>
+          <div style={{ padding: '16px', borderBottom: '1px solid rgba(255,255,255,0.1)', fontWeight: 'bold', color: '#fff', display: 'flex', justifyContent: 'space-between' }}>
+            <span>Agente IA Potente</span>
+            <button onClick={() => setIsOpen(false)} style={{ color: '#aaa', cursor: 'pointer', background: 'transparent', border: 'none' }}>✕</button>
+          </div>
+          
+          <div style={{ flex: 1, padding: '16px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {chatLog.map((msg, i) => (
+              <div key={i} style={{
+                alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                background: msg.role === 'user' ? '#3b82f6' : '#334155',
+                color: '#fff',
+                padding: '10px 14px',
+                borderRadius: '12px',
+                maxWidth: '85%',
+                fontSize: '0.9rem'
+              }}>
+                {msg.text}
+              </div>
+            ))}
+          </div>
+
+          <form onSubmit={handleSendMessage} style={{ padding: '16px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', gap: '8px' }}>
+            <input 
+              type="text" 
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Pregúntame algo..." 
+              style={{ flex: 1, background: '#1e293b', border: '1px solid #475569', borderRadius: '8px', padding: '8px 12px', color: '#fff', outline: 'none' }}
+            />
+            <button type="submit" style={{ background: '#3b82f6', color: '#fff', border: 'none', borderRadius: '8px', padding: '8px 16px', cursor: 'pointer', fontWeight: 'bold' }}>
+              Enviar
+            </button>
+          </form>
         </div>
       )}
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; transform: translateY(10px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
       `}</style>
     </>

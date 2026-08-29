@@ -313,10 +313,6 @@ const DEFAULT_CONFIG: AIProviderConfig = {
   timeout: 60000
 };
 
-function getApiKey(envKey: string): string | undefined {
-  return process.env[envKey];
-}
-
 function buildHeaders(apiKey: string): Record<string, string> {
   return {
     'Authorization': `Bearer ${apiKey}`,
@@ -717,4 +713,8 @@ export function configuredProvider(): string {
   if (process.env.QWEN_API_KEY || process.env.DASHSCOPE_API_KEY) return 'qwen';
   if (process.env.ZAI_API_KEY || process.env.Z_AI_API_KEY) return 'zai';
   return 'local';
+}
+
+export function getApiKey(envKey: string): string | undefined {
+  return process.env[envKey];
 }

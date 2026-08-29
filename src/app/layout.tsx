@@ -91,7 +91,9 @@ export const metadata: Metadata = {
   applicationName: "Manos Abiertas",
   category: "education",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" }
+    ],
     apple: "/apple-touch-icon.png",
     shortcut: "/logo.svg",
   },
