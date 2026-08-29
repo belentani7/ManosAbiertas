@@ -1,3 +1,5 @@
+'use client';
+
 import { ToolDefinition, ToolCall, ProviderMessage } from './ai-provider';
 import { functionRegistry } from './function-calling';
 import { ragEngine } from './rag-engine';
@@ -115,6 +117,8 @@ class AgentRegistry {
 
     const { functionRegistry } = await import('./function-calling');
     const { aiRegistry, getApiKey } = await import('./ai-provider');
+
+    const context = { locale: request.context?.locale || config.personality.language };
 
     const systemPrompt = this.buildSystemPrompt(config);
 
@@ -387,13 +391,12 @@ ${config.systemPrompt || ''}`;
     };
   }
 
-  private async executeToolCall(toolCall: any, context?: any): Promise<any> {
+  private async executeToolCall(toolCall: any): Promise<any> {
     try {
-      const contextObj = context || { locale: 'es', permissions: [], metadata: {} };
       const result = await functionRegistry.execute(
         toolCall.function.name,
         JSON.parse(toolCall.function.arguments),
-        contextObj
+        { locale: 'es', permissions: [], metadata: {} }
       );
       return { success: true, result: result.result, metadata: result.metadata };
     } catch (error) {
@@ -644,6 +647,8 @@ const PREDEFINED_AGENTS = {
 for (const [id, config] of Object.entries(PREDEFINED_AGENTS)) {
   agentRegistry.register(config);
 }
+
+export const agentRegistry = new AgentRegistry();
 
 export function createAgent(config: any): any {
   return agentRegistry.register(config);

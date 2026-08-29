@@ -1,6 +1,6 @@
 import { ToolDefinition } from './ai-provider';
 
-interface FunctionContext {
+export interface FunctionContext {
   userId?: string;
   sessionId?: string;
   locale: string;
@@ -18,7 +18,7 @@ export function createFunctionContext(overrides: Partial<FunctionContext> = {}):
   };
 }
 
-interface FunctionDefinition {
+export interface FunctionDefinition {
   name: string;
   description: string;
   parameters: {
@@ -38,7 +38,7 @@ interface FunctionDefinition {
   };
 }
 
-interface FunctionResult {
+export interface FunctionResult {
   success: boolean;
   result: any;
   error?: string;
@@ -234,7 +234,7 @@ functionRegistry.register(
         language: { type: 'string', default: 'es' },
         tone: { type: 'string', enum: ['formal', 'professional', 'enthusiastic', 'creative'], default: 'professional' }
       },
-      required: ['jobTitle', 'company', 'candidateProfile']
+      required: ['jobTitle', 'company', 'jobDescription', 'candidateProfile']
     }
   },
   async (args, context) => {
@@ -270,9 +270,9 @@ functionRegistry.register(
       properties: {
         lat: { type: 'number', description: 'Latitud' },
         lng: { type: 'number', description: 'Longitud' },
-        radiusKm: { type: 'number', default: 10, description: 'Radio en kilómetros' },
+        radiusKm: { type: 'number', default: 10 },
         type: { type: 'string', enum: ['extranjeria', 'sepe', 'ayuntamiento', 'ong', 'salud', 'educacion', 'vivienda', 'todos'], default: 'todos' },
-        limit: { type: 'number', default: 10, maximum: 50, description: 'Máximo número de resultados' }
+        limit: { type: 'number', default: 10, maximum: 50 }
       },
       required: ['lat', 'lng']
     }
@@ -290,8 +290,8 @@ functionRegistry.register(
       type: 'object',
       properties: {
         city: { type: 'string', description: 'Ciudad' },
-        householdSize: { type: 'number', default: 1, description: 'Tamaño del hogar' },
-        lifestyle: { type: 'string', enum: ['economico', 'moderado', 'confortable'], default: 'moderado', description: 'Estilo de vida' }
+        householdSize: { type: 'number', default: 1 },
+        lifestyle: { type: 'string', enum: ['economico', 'moderado', 'confortable'], default: 'moderado' }
       },
       required: ['city']
     }
@@ -308,9 +308,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        documentType: { type: 'string', enum: ['NIE', 'TIE', 'pasaporte', 'DNI', 'permiso_trabajo'], description: 'Tipo de documento' },
-        expiryDate: { type: 'string', description: 'Fecha de caducidad (YYYY-MM-DD)' },
-        nationality: { type: 'string', description: 'Nacionalidad' }
+        documentType: { type: 'string', enum: ['NIE', 'TIE', 'pasaporte', 'DNI', 'permiso_trabajo'] },
+        expiryDate: { type: 'string' },
+        nationality: { type: 'string' }
       },
       required: ['documentType', 'expiryDate']
     }
@@ -327,9 +327,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        text: { type: 'string', description: 'Texto a traducir' },
-        targetLanguage: { type: 'string', description: 'Código de idioma destino' },
-        sourceLanguage: { type: 'string', description: 'Idioma origen (auto si se omite)' }
+        text: { type: 'string' },
+        targetLanguage: { type: 'string' },
+        sourceLanguage: { type: 'string' }
       },
       required: ['text', 'targetLanguage']
     }
@@ -346,9 +346,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        procedure: { type: 'string', enum: ['nie_primera_vez', 'nie_renovacion', 'arraigo_familiar', 'asilo', 'nacionalidad', 'empadronamiento', 'tarjeta_sanitaria', 'permiso_trabajo'], description: 'Trámite específico' },
-        city: { type: 'string', description: 'Ciudad para info local' },
-        language: { type: 'string', default: 'es', description: 'Idioma de la respuesta' }
+        procedure: { type: 'string', enum: ['nie_primera_vez', 'nie_renovacion', 'arraigo_familiar', 'asilo', 'nacionalidad', 'empadronamiento', 'tarjeta_sanitaria', 'permiso_trabajo'] },
+        city: { type: 'string' },
+        language: { type: 'string', default: 'es' }
       },
       required: ['procedure']
     }
@@ -365,9 +365,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        goal: { type: 'string', description: 'Objetivo del checklist' },
-        timeline: { type: 'string', enum: ['urgente', '1_semana', '1_mes', '3_meses', 'flexible'], default: 'flexible', description: 'Plazo estimado' },
-        language: { type: 'string', default: 'es', description: 'Idioma de la checklist' }
+        goal: { type: 'string', description: 'Objetivo' },
+        timeline: { type: 'string', enum: ['urgente', '1_semana', '1_mes', '3_meses', 'flexible'], default: 'flexible' },
+        language: { type: 'string', default: 'es' }
       },
       required: ['goal']
     }
@@ -384,9 +384,9 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        type: { type: 'string', enum: ['emergencia', 'violencia_genero', 'salud_mental', 'denuncia', 'embajada', 'ong_apoyo', 'todos'], default: 'todos', description: 'Tipo de contacto' },
-        country: { type: 'string', default: 'España', description: 'País' },
-        city: { type: 'string', description: 'Ciudad' }
+        type: { type: 'string', enum: ['emergencia', 'violencia_genero', 'salud_mental', 'denuncia', 'embajada', 'consulado', 'ong_apoyo', 'todos'], default: 'todos' },
+        country: { type: 'string', default: 'España' },
+        city: { type: 'string' }
       },
       required: []
     }
@@ -408,12 +408,12 @@ functionRegistry.register(
     parameters: {
       type: 'object',
       properties: {
-        query: { type: 'string', description: 'Término de búsqueda' },
-        category: { type: 'string', enum: ['ia', 'office', 'nivel0', 'externos', 'idiomas', 'tecnologia', 'marketing', 'diseño', 'negocios'], description: 'Categoría' },
-        level: { type: 'string', enum: ['basico', 'intermedio', 'avanzado'], description: 'Nivel del curso' },
-        language: { type: 'string', description: 'Idioma del curso' },
-        maxDuration: { type: 'number', description: 'Duración máxima en horas' },
-        freeOnly: { type: 'boolean', default: true, description: 'Solo cursos gratuitos' }
+        query: { type: 'string' },
+        category: { type: 'string', enum: ['ia', 'office', 'nivel0', 'externos', 'idiomas', 'tecnologia', 'marketing', 'diseño', 'negocios'] },
+        level: { type: 'string', enum: ['basico', 'intermedio', 'avanzado'] },
+        language: { type: 'string' },
+        maxDuration: { type: 'number' },
+        freeOnly: { type: 'boolean', default: true }
       },
       required: []
     }
@@ -432,7 +432,7 @@ functionRegistry.register(
       properties: {
         courseId: { type: 'string', description: 'ID del curso' },
         lessonId: { type: 'string', description: 'ID de la lección' },
-        language: { type: 'string', default: 'es', description: 'Idioma' }
+        language: { type: 'string', default: 'es' }
       },
       required: ['courseId', 'lessonId']
     }
@@ -443,4 +443,5 @@ functionRegistry.register(
 );
 
 export const functions = functionRegistry;
+export { createFunctionContext };
 export type { FunctionDefinition, FunctionResult, FunctionContext, FunctionHandler };

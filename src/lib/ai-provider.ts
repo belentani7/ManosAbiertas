@@ -21,7 +21,7 @@ export interface ToolDefinition {
 export interface AIModelConfig {
   id: string;
   name: string;
-  provider: 'groq' | 'nvidia' | 'qwen' | 'zai' | 'openai' | 'anthropic' | 'openai-compatible' | 'local';
+  provider: 'groq' | 'nvidia' | 'qwen' | 'zai' | 'openai' | 'anthropic' | 'openai-compatible' | 'local' | 'xiaomi' | 'openrouter';
   baseUrl: string;
   model: string;
   apiKeyEnv: string;
@@ -292,9 +292,67 @@ const DEFAULT_CONFIG: AIProviderConfig = {
       supportsAudio: false,
       modalities: { text: false, video: true },
       pricing: { inputPer1k: 0, outputPer1k: 0 }
+    },
+    {
+      id: 'xiaomi-mix-4b',
+      name: 'Xiaomi Mixture 4B',
+      provider: 'xiaomi',
+      baseUrl: 'https://api.mi.com/v1',
+      model: 'xiaomi-mix-4b',
+      apiKeyEnv: 'XIAOMI_API_KEY',
+      maxTokens: 8192,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.0001, outputPer1k: 0.0002 }
+    },
+    {
+      id: 'xiaomi-mix-8b',
+      name: 'Xiaomi Mixture 8B',
+      provider: 'xiaomi',
+      baseUrl: 'https://api.mi.com/v1',
+      model: 'xiaomi-mix-8b',
+      apiKeyEnv: 'XIAOMI_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.00015, outputPer1k: 0.0003 }
+    },
+    {
+      id: 'xiaomi-mix-32b',
+      name: 'Xiaomi Mixture 32B',
+      provider: 'xiaomi',
+      baseUrl: 'https://api.mi.com/v1',
+      model: 'xiaomi-mix-32b',
+      apiKeyEnv: 'XIAOMI_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: true,
+      modalities: { text: true, image: true, audio: true },
+      pricing: { inputPer1k: 0.0003, outputPer1k: 0.0006 }
     }
   ],
   fallbackChain: [
+    'openrouter-claude-3.5-sonnet',
+    'openrouter-gpt-4o',
+    'openrouter-gpt-4o-mini',
+    'openrouter-llama-3.1-405b',
+    'openrouter-llama-3.1-70b',
+    'openrouter-qwen2.5-72b',
+    'openrouter-deepseek-v3',
+    'openrouter-deepseek-r1',
+    'openrouter-gemini-2.0-flash',
+    'openrouter-gemma-2-27b',
+    'xiaomi-mix-32b',
+    'xiaomi-mix-8b',
+    'xiaomi-mix-4b',
     'qwen3.8-max',
     'qwen3.7-plus',
     'qwen3.8-flash',
@@ -548,7 +606,188 @@ export class AIProviderRegistry {
           messages: [
             ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
             ...request.messages
-          ],
+},
+    {
+      id: 'openrouter-claude-3.5-sonnet',
+      name: 'Claude 3.5 Sonnet (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'anthropic/claude-3.5-sonnet',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 8192,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.003, outputPer1k: 0.015 }
+    },
+    {
+      id: 'openrouter-claude-3-opus',
+      name: 'Claude 3 Opus (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'anthropic/claude-3-opus',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 4096,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.015, outputPer1k: 0.075 }
+    },
+    {
+      id: 'openrouter-gpt-4o',
+      name: 'GPT-4o (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'openai/gpt-4o',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 4096,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.005, outputPer1k: 0.015 }
+    },
+    {
+      id: 'openrouter-gpt-4o-mini',
+      name: 'GPT-4o Mini (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'openai/gpt-4o-mini',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 16384,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.00015, outputPer1k: 0.0006 }
+    },
+    {
+      id: 'openrouter-llama-3.1-405b',
+      name: 'Llama 3.1 405B (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'meta-llama/llama-3.1-405b-instruct',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.005, outputPer1k: 0.005 }
+    },
+    {
+      id: 'openrouter-llama-3.1-70b',
+      name: 'Llama 3.1 70B (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'meta-llama/llama-3.1-70b-instruct',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.0009, outputPer1k: 0.0009 }
+    },
+    {
+      id: 'openrouter-llama-3.1-8b',
+      name: 'Llama 3.1 8B (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'meta-llama/llama-3.1-8b-instruct',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 8192,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.0001, outputPer1k: 0.0001 }
+    },
+    {
+      id: 'openrouter-qwen2.5-72b',
+      name: 'Qwen 2.5 72B (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'qwen/qwen-2.5-72b-instruct',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.00035, outputPer1k: 0.00035 }
+    },
+    {
+      id: 'openrouter-deepseek-v3',
+      name: 'DeepSeek V3 (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'deepseek/deepseek-chat',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.00014, outputPer1k: 0.00028 }
+    },
+    {
+      id: 'openrouter-deepseek-r1',
+      name: 'DeepSeek R1 (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'deepseek/deepseek-r1',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 32768,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.00055, outputPer1k: 0.0022 }
+    },
+    {
+      id: 'openrouter-gemini-2.0-flash',
+      name: 'Gemini 2.0 Flash (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'google/gemini-2.0-flash-exp',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 8192,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: true,
+      supportsAudio: false,
+      modalities: { text: true, image: true },
+      pricing: { inputPer1k: 0.000075, outputPer1k: 0.0003 }
+    },
+    {
+      id: 'openrouter-gemma-2-27b',
+      name: 'Gemma 2 27B (OpenRouter)',
+      provider: 'openrouter',
+      baseUrl: 'https://openrouter.ai/api/v1',
+      model: 'google/gemma-2-27b-it',
+      apiKeyEnv: 'OPENROUTER_API_KEY',
+      maxTokens: 8192,
+      supportsStreaming: true,
+      supportsTools: true,
+      supportsVision: false,
+      supportsAudio: false,
+      modalities: { text: true },
+      pricing: { inputPer1k: 0.00014, outputPer1k: 0.00042 }
+    }
+  ],
           max_completion_tokens: Math.min(request.maxTokens || 900, model.maxTokens),
           temperature: request.temperature ?? 0.7,
           top_p: request.topP ?? 0.95,
@@ -711,6 +950,8 @@ export function configuredProvider(): string {
   if (process.env.GROQ_API_KEY) return 'groq';
   if (process.env.NVIDIA_API_KEY || process.env.NVIDIA_NIM_API_KEY || process.env.NVIDIA_ALT_KEY) return 'nvidia';
   if (process.env.QWEN_API_KEY || process.env.DASHSCOPE_API_KEY) return 'qwen';
+  if (process.env.XIAOMI_API_KEY) return 'xiaomi';
+  if (process.env.OPENROUTER_API_KEY) return 'openrouter';
   if (process.env.ZAI_API_KEY || process.env.Z_AI_API_KEY) return 'zai';
   return 'local';
 }
