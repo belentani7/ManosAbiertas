@@ -26,7 +26,8 @@ Verificações:
 
 ```bash
 bun run lint
-bunx tsc --noEmit --skipLibCheck
+bun run typecheck
+bun test
 bun run build
 ```
 
