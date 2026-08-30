@@ -18,11 +18,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string; modulo: string }>;
 }): Promise<Metadata> {
   const { modulo } = await params;
-  const module = getCurriculumModule(modulo);
-  if (!module) return { title: 'Currículo Manos Abiertas' };
+  const currentModule = getCurriculumModule(modulo);
+  if (!currentModule) return { title: 'Currículo Manos Abiertas' };
   return {
-    title: `${module.titles.es} — Currículo Manos Abiertas`,
-    description: module.descriptions.es,
+    title: `${currentModule.titles.es} — Currículo Manos Abiertas`,
+    description: currentModule.descriptions.es,
   };
 }
 
@@ -32,15 +32,15 @@ export default async function CurriculumModulePage({
   params: Promise<{ locale: string; modulo: string }>;
 }) {
   const { locale, modulo } = await params;
-  const module = getCurriculumModule(modulo);
-  if (!module) notFound();
+  const currentModule = getCurriculumModule(modulo);
+  if (!currentModule) notFound();
 
   const ui = resolveCurriculumUiLocale(locale);
   const defaultLang = resolveCurriculumContentLang(locale);
 
   return (
     <section
-      aria-label={module.titles[ui]}
+      aria-label={currentModule.titles[ui]}
       className="mx-auto w-full max-w-6xl px-0 py-10 sm:px-6 sm:py-14"
     >
       <header className="mx-auto mb-8 w-full max-w-4xl px-4 sm:px-0">
@@ -48,17 +48,17 @@ export default async function CurriculumModulePage({
           Currículo Manos Abiertas
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
-          <span aria-hidden="true">{module.icon} </span>
-          {module.titles[ui]}
+          <span aria-hidden="true">{currentModule.icon} </span>
+          {currentModule.titles[ui]}
         </h1>
         <p className="mt-3 text-base leading-relaxed text-stone-600">
-          {module.descriptions[ui]}
+          {currentModule.descriptions[ui]}
         </p>
       </header>
       <CurriculumModuleViewer
         locale={locale}
-        moduleDir={module.dir}
-        moduleTitle={module.titles[ui]}
+        moduleDir={currentModule.dir}
+        moduleTitle={currentModule.titles[ui]}
         defaultLang={defaultLang}
       />
     </section>

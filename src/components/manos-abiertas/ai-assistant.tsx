@@ -51,7 +51,7 @@ export function AIAssistant() {
   // Push recognized speech into the input
   useEffect(() => {
     if (transcript) setInput((prev) => (listening ? transcript : prev));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [transcript]);
 
   // Load chat history from localStorage on mount
@@ -59,7 +59,7 @@ export function AIAssistant() {
     const parsed = readStoredChat(getLocalStorageItem(STORAGE_KEY));
     if (parsed.length > 0) {
       // Client-only history hydration after the deterministic server render.
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is an external browser store
+       
       setMessages(parsed);
     }
   }, []);

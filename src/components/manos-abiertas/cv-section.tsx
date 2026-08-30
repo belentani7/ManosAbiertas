@@ -80,7 +80,7 @@ export function CVSection() {
   useEffect(() => {
     const data = readStoredCV(getLocalStorageItem('manos-abiertas-cv'));
     if (data) {
-        /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only CV from external browser storage */
+         
         if (data.template) {
           const tpl = CV_TEMPLATES.find((t) => t.id === data.template);
           if (tpl) setTemplate(tpl);
@@ -96,7 +96,7 @@ export function CVSection() {
         if (data.skills?.length) setSkills(data.skills);
         if (data.languages?.length) setLanguages(data.languages);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
-        /* eslint-enable react-hooks/set-state-in-effect */
+         
     }
   }, []);
 

@@ -24,6 +24,7 @@ export function useCourseProgress(courseId: string, totalLessons: number) {
     try {
       const stored = localStorage.getItem(storageKey);
       if (stored) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- hidratación desde localStorage
         setProgress(JSON.parse(stored));
       }
     } catch {

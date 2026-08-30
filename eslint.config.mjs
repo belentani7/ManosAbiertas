@@ -51,6 +51,8 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
     "out/**",
     "build/**",
     "public/tool-guides/**",
+    // Service worker preexistente; no forma parte del lint de la app.
+    "public/sw.js",
     "next-env.d.ts",
     "examples/**",
     "skills",

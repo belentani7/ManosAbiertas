@@ -52,6 +52,7 @@ export function useGamification() {
       if (stored) {
         const parsed = JSON.parse(stored);
         parsed.level = calculateLevel(parsed.xp);
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- hidratación desde localStorage
         setState(parsed);
       }
     } catch {

@@ -44,7 +44,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
   useEffect(() => {
     const data = readStoredCoverLetter(getLocalStorageItem(STORAGE_KEY));
     if (data) {
-        /* eslint-disable react-hooks/set-state-in-effect -- restores a client-only form from external browser storage */
+         
         if (data.fullName) setFullName(data.fullName);
         if (data.profession) setProfession(data.profession);
         if (data.companyName) setCompanyName(data.companyName);
@@ -54,7 +54,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
         if (data.tone) setTone(data.tone);
         if (data.letter) setLetter(data.letter);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
-        /* eslint-enable react-hooks/set-state-in-effect */
+         
     }
   }, []);
 

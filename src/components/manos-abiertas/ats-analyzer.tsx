@@ -34,7 +34,7 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
   // Detect if the CV builder has saved data
   useEffect(() => {
     const data = readStoredCV(getLocalStorageItem(STORAGE_KEY));
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- reads the CV state from external browser storage
+     
     setHasCV(Boolean(data && (data.fullName || data.profession || data.summary || data.skills.length)));
   }, []);
 
