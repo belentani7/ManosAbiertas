@@ -7,6 +7,7 @@ Plataforma web gratuita para pessoas brasileiras, latino-americanas e comunidade
 ### Inclui
 
 - Cursos de IA e Office com progresso guardado localmente.
+- Currículo oficial Manos Abiertas: 8 módulos de IA com 26 níveis em ES, PT, CA e EN (`/pt/curriculum`).
 - Criador de currículo, carta de apresentação e modelos.
 - Guias de direitos, documentos e procedimentos.
 - Biblioteca mundial de recursos educativos e sociais.
@@ -53,6 +54,7 @@ Plataforma web gratuita para personas brasileñas, latinoamericanas y comunidade
 ### Incluye
 
 - Cursos de IA y Office con progreso local.
+- Currículo oficial Manos Abiertas: 8 módulos de IA con 26 niveles en ES, PT, CA y EN (`/es/curriculum`).
 - Creador de CV, carta de presentación y plantillas.
 - Guías de derechos, documentos y procesos.
 - Biblioteca mundial de recursos educativos y sociales.
@@ -76,6 +78,7 @@ Free web platform for Brazilian and Latin American people and migrant communitie
 ### Includes
 
 - AI and Office courses with local progress tracking.
+- Official Manos Abiertas curriculum: 8 AI modules with 26 levels in ES, PT, CA and EN (`/en/curriculum`).
 - CV builder, cover letter and templates.
 - Rights, documents and process guides.
 - A worldwide library of educational and social resources.

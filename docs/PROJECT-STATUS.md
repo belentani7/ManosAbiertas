@@ -1,5 +1,14 @@
 # Manos Abiertas · estado del proyecto
 
+## Actualización 2026-08-30 — currículo completo publicado
+
+- Contenido didáctico íntegro en el repo y servido por la web: `public/contenido/curriculum/` con los 8 módulos de IA (m01–m08), 26 niveles por módulo en ES, PT, CA y EN (832 archivos) + documentación del currículo en `_docs`.
+- Visor público del currículo: `/{locale}/curriculum` (índice) y `/{locale}/curriculum/{modulo}` (lector de niveles con selector de idioma, anterior/siguiente, progreso guardado localmente y marcado de nivel completado).
+- Banner de acceso al currículo añadido en `/{locale}/cursos`.
+- Componentes didácticos reutilizables en `src/components/manos-abiertas/course-ui/` (CourseLayout, FlashCard, GamificationPanel, QuizQuestion, useCourseProgress, useGamification).
+- Snapshots internos preservados fuera de la carpeta pública: `contenido/curriculum-interno/preserved-20260819`.
+- Revisión de privacidad del material antes de publicarlo: sin claves, sin datos personales (solo ejemplos didácticos).
+
 ## Identidad
 
 Manos Abiertas es una experiencia de aprendizaje y orientación de NOIACORE, el ecosistema madre de Belentani. Está dirigida a comunidades latinoamericanas, brasileñas, migrantes y personas que necesitan aprender tecnología, preparar su vida laboral y encontrar información fiable en España.
