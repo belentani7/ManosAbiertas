@@ -20,6 +20,8 @@ jobs:
       
       - name: Build
         run: npm run build
+        env:
+          NEXT_OUTPUT_MODE: netlify
       
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
