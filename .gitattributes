@@ -1,0 +1,9 @@
+# Los .docx/.xlsx son contenido curricular legítimo. Se marcan binarios para
+# evitar el textconv astextplain del sistema (exige docx2txt.exe ausente),
+# que rompía el scan de gitleaks del hook pre-push global.
+*.docx -diff
+*.doc -diff
+*.xlsx -diff
+*.xls -diff
+*.pptx -diff
+*.pdf -diff
