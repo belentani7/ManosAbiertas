@@ -37,6 +37,8 @@ yarn-error.log*
 # local data and private working material
 /db/*.db
 /db/*.sqlite*
+/prisma/*.db
+/prisma/*.sqlite*
 /upload/
 /tool-results/
 /worklog*.md
