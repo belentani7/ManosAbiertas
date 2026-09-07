@@ -4,11 +4,6 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
-import MatrixRain from "@/components/manos-abiertas/MatrixRain";
-import WaterRain from "@/components/manos-abiertas/WaterRain";
-import DigitalInsects from "@/components/manos-abiertas/DigitalInsects";
-import FloatingAgent from "@/components/manos-abiertas/FloatingAgent";
-import SpaceShipTrail from "@/components/manos-abiertas/SpaceShipTrail";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -166,21 +161,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
-        {/* Canvas 2D effects - layered backgrounds */}
-        <div style={{ position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none' }}>
-          <SpaceShipTrail />
-          <MatrixRain />
-          <WaterRain />
-          <DigitalInsects />
-        </div>
-        
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
           {children}
-          <FloatingAgent />
           <Toaster />
           <SonnerToaster position="top-center" richColors />
         </ThemeProvider>

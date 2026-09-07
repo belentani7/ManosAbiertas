@@ -105,6 +105,98 @@ export interface UITranslations {
   rights_education: string;
   rights_emergency: string;
 
+  // Home extras (were hardcoded ES)
+  home_desc_ai: string;
+  home_desc_cv: string;
+  home_desc_office: string;
+  home_desc_rights: string;
+  home_desc_tools: string;
+  home_title_tools: string;
+  home_desc_events: string;
+  home_title_events: string;
+  home_title_courses: string;
+  home_desc_courses: string;
+  home_desc_contacts: string;
+  home_choose_start: string;
+  home_generated_ai: string;
+  home_ai_available: string;
+  home_cv_minutes: string;
+  home_ai_explained: string;
+  home_ai_free_practical: string;
+  home_start_today: string;
+  home_no_prior_knowledge: string;
+  home_ai_typing: string;
+  home_ai_assistant_label: string;
+  home_for_who_question: string;
+  home_for_who_1: string;
+  home_for_who_2: string;
+  home_for_who_3: string;
+  home_for_who_4: string;
+  home_for_who_5: string;
+  home_for_who_6: string;
+  home_resources_reviewed: string;
+
+  // Progress dashboard
+  progress_title: string;
+  progress_continue: string;
+  progress_saved_auto: string;
+  progress_completed: string;
+  progress_of_lessons: string;
+  progress_finished: string;
+  progress_cv_created: string;
+  progress_cv_none: string;
+  progress_achievements: string;
+  progress_unlocked: string;
+  progress_keep_learning: string;
+  progress_loading: string;
+  progress_continue_ai: string;
+  progress_continue_office: string;
+  achievement_first_step: string;
+  achievement_first_step_desc: string;
+  achievement_ai_explorer: string;
+  achievement_ai_explorer_desc: string;
+  achievement_cv_created: string;
+  achievement_cv_created_desc: string;
+  achievement_ai_master: string;
+  achievement_ai_master_desc: string;
+  achievement_office_pro: string;
+  achievement_office_pro_desc: string;
+
+  // Home Coursera-style keys
+  home_explore_catalog: string;
+  home_all_categories: string;
+  home_lessons_count: string;
+  home_continue_learning: string;
+  home_popular_now: string;
+  home_category_ai: string;
+  home_category_employment: string;
+  home_category_digital: string;
+  home_category_rights: string;
+  home_category_community: string;
+  home_start_course: string;
+  home_trusted_sources: string;
+  home_no_signup: string;
+  home_works_mobile: string;
+
+  // Footer extras (were hardcoded ES)
+  footer_stats_title: string;
+  footer_lessons: string;
+  footer_guarantees: string;
+  footer_official_sources: string;
+  footer_no_registration: string;
+  footer_free_access: string;
+  footer_source_code: string;
+  footer_help: string;
+  footer_shortcuts: string;
+  footer_shortcuts_title: string;
+  footer_need_help: string;
+  footer_community: string;
+  footer_shortcut_search: string;
+  footer_shortcut_close: string;
+  footer_shortcut_navigate: string;
+  footer_shortcut_select: string;
+  footer_shortcut_tip: string;
+
   // Footer
   footer_madeWith: string;
   footer_disclaimer: string;
@@ -206,6 +298,94 @@ const es: UITranslations = {
   rights_education: 'Educación',
   rights_emergency: 'Emergencias',
 
+  home_desc_ai: 'ChatGPT, Gemini, Copilot, DeepSeek y más',
+  home_desc_cv: 'CV profesional con IA en minutos',
+  home_desc_office: 'Word, Excel, PowerPoint desde cero',
+  home_desc_rights: 'Derechos, ayudas y supervivencia',
+  home_desc_tools: 'Checklist trámites, coste de vida, conversor',
+  home_title_tools: 'Herramientas',
+  home_desc_events: 'Ferias de empleo, jornadas, cursos',
+  home_title_events: 'Eventos',
+  home_title_courses: 'Biblioteca de Cursos',
+  home_desc_courses: '115+ cursos gratuitos online con certificado',
+  home_desc_contacts: 'Emergencias, ONGs, embajadas',
+  home_choose_start: 'Elige dónde empezar',
+  home_generated_ai: 'Generado con IA',
+  home_ai_available: 'IA disponibles',
+  home_cv_minutes: 'CV en 5 minutos',
+  home_ai_explained: 'Las mejores IA, explicadas paso a paso',
+  home_ai_free_practical: 'Gratis, en tu idioma, con ejemplos prácticos',
+  home_start_today: 'Empieza hoy tu camino',
+  home_no_prior_knowledge: 'No necesitas conocimientos previos. Si sabes usar WhatsApp, puedes usar esta web. Todo es gratis.',
+  home_ai_typing: 'IA escribiendo...',
+  home_ai_assistant_label: 'Asistente IA',
+  home_for_who_question: '¿Para quién es Manos Abiertas?',
+  home_for_who_1: 'Personas recién llegadas a España',
+  home_for_who_2: 'Quienes buscan empleo o mejor trabajo',
+  home_for_who_3: 'Adultos que quieren aprender IA y Office',
+  home_for_who_4: 'Personas mayores que se inician en lo digital',
+  home_for_who_5: 'Quienes necesitan conocer sus derechos',
+  home_for_who_6: 'Personas que prefieren su idioma materno',
+  home_resources_reviewed: 'fichas · {n} con revisión fechada',
+
+  progress_title: 'Tu progreso',
+  progress_continue: 'Continúa donde lo dejaste',
+  progress_saved_auto: 'Tu avance se guarda automáticamente en este dispositivo',
+  progress_completed: 'completado',
+  progress_of_lessons: 'de {total} lecciones',
+  progress_finished: 'Completados',
+  progress_cv_created: '✓ Creado',
+  progress_cv_none: 'Sin crear',
+  progress_achievements: 'Logros',
+  progress_unlocked: 'Logros desbloqueados',
+  progress_keep_learning: 'Sigue aprendiendo para desbloquear más logros',
+  progress_loading: 'Cargando progreso...',
+  progress_continue_ai: 'Continuar IA',
+  progress_continue_office: 'Continuar Office',
+  achievement_first_step: 'Primer paso',
+  achievement_first_step_desc: 'Completa tu primera lección',
+  achievement_ai_explorer: 'Explorador IA',
+  achievement_ai_explorer_desc: 'Empieza un curso de IA',
+  achievement_cv_created: 'CV Creado',
+  achievement_cv_created_desc: 'Crea tu currículum',
+  achievement_ai_master: 'Maestro IA',
+  achievement_ai_master_desc: 'Completa un curso de IA entero',
+  achievement_office_pro: 'Office Pro',
+  achievement_office_pro_desc: 'Completa un módulo de Office entero',
+
+  home_explore_catalog: 'Explora el catálogo',
+  home_all_categories: 'Todas',
+  home_lessons_count: '{n} lecciones',
+  home_continue_learning: 'Continúa aprendiendo',
+  home_popular_now: 'Popular ahora',
+  home_category_ai: 'Inteligencia artificial',
+  home_category_employment: 'Empleo',
+  home_category_digital: 'Habilidades digitales',
+  home_category_rights: 'Derechos y ayudas',
+  home_category_community: 'Comunidad',
+  home_start_course: 'Empezar',
+  home_trusted_sources: 'Fuentes oficiales verificadas',
+  home_no_signup: 'Sin registro',
+  home_works_mobile: 'Funciona en móvil',
+
+  footer_stats_title: 'En cifras',
+  footer_lessons: 'Lecciones',
+  footer_guarantees: 'Garantías',
+  footer_official_sources: 'Fuentes oficiales',
+  footer_no_registration: 'Sin registro',
+  footer_free_access: 'Acceso libre',
+  footer_source_code: 'Código de Manos Abiertas',
+  footer_help: 'Ayuda',
+  footer_shortcuts: 'Atajos',
+  footer_shortcuts_title: 'Atajos de teclado',
+  footer_need_help: '¿Necesitas ayuda? Consulta el directorio y confirma la vigencia antes de llamar.',
+  footer_community: 'Hecho con {heart} para las comunidades latinoamericanas y migrantes en España',
+  footer_shortcut_search: 'Abrir búsqueda rápida',
+  footer_shortcut_close: 'Cerrar diálogo / búsqueda',
+  footer_shortcut_navigate: 'Navegar en listas',
+  footer_shortcut_select: 'Seleccionar elemento',
+  footer_shortcut_tip: 'Usa {keys} en cualquier momento para buscar rápidamente entre secciones, cursos, recursos y artículos de derechos.',
+
   footer_madeWith: 'Hecho con cariño para la comunidad inmigrante',
   footer_disclaimer: 'Cada ficha indica fuente y fecha cuando existen. No es asesoramiento legal.',
   footer_rights: 'Manos Abiertas © 2025 · Acceso libre y gratuito',
@@ -306,6 +486,94 @@ const en: UITranslations = {
   rights_education: 'Education',
   rights_emergency: 'Emergencies',
 
+  home_desc_ai: 'ChatGPT, Gemini, Copilot, DeepSeek and more',
+  home_desc_cv: 'Professional CV with AI in minutes',
+  home_desc_office: 'Word, Excel, PowerPoint from scratch',
+  home_desc_rights: 'Rights, aid and survival',
+  home_desc_tools: 'Procedure checklist, cost of living, converter',
+  home_title_tools: 'Tools',
+  home_desc_events: 'Job fairs, workshops, courses',
+  home_title_events: 'Events',
+  home_title_courses: 'Course Library',
+  home_desc_courses: '115+ free online courses with certificate',
+  home_desc_contacts: 'Emergencies, NGOs, embassies',
+  home_choose_start: 'Choose where to start',
+  home_generated_ai: 'Generated with AI',
+  home_ai_available: 'AIs available',
+  home_cv_minutes: 'CV in 5 minutes',
+  home_ai_explained: 'The best AIs, explained step by step',
+  home_ai_free_practical: 'Free, in your language, with practical examples',
+  home_start_today: 'Start your journey today',
+  home_no_prior_knowledge: 'No prior knowledge needed. If you can use WhatsApp, you can use this website. Everything is free.',
+  home_ai_typing: 'AI typing...',
+  home_ai_assistant_label: 'AI Assistant',
+  home_for_who_question: 'Who is Manos Abiertas for?',
+  home_for_who_1: 'People who recently arrived in Spain',
+  home_for_who_2: 'Those looking for a job or better work',
+  home_for_who_3: 'Adults who want to learn AI and Office',
+  home_for_who_4: 'Older adults getting started with digital',
+  home_for_who_5: 'Those who need to know their rights',
+  home_for_who_6: 'People who prefer their native language',
+  home_resources_reviewed: 'entries · {n} with dated review',
+
+  progress_title: 'Your progress',
+  progress_continue: 'Pick up where you left off',
+  progress_saved_auto: 'Your progress is saved automatically on this device',
+  progress_completed: 'completed',
+  progress_of_lessons: 'of {total} lessons',
+  progress_finished: 'Completed',
+  progress_cv_created: '✓ Created',
+  progress_cv_none: 'Not created',
+  progress_achievements: 'Achievements',
+  progress_unlocked: 'Achievements unlocked',
+  progress_keep_learning: 'Keep learning to unlock more achievements',
+  progress_loading: 'Loading progress...',
+  progress_continue_ai: 'Continue AI',
+  progress_continue_office: 'Continue Office',
+  achievement_first_step: 'First step',
+  achievement_first_step_desc: 'Complete your first lesson',
+  achievement_ai_explorer: 'AI Explorer',
+  achievement_ai_explorer_desc: 'Start an AI course',
+  achievement_cv_created: 'CV Created',
+  achievement_cv_created_desc: 'Create your CV',
+  achievement_ai_master: 'AI Master',
+  achievement_ai_master_desc: 'Complete a full AI course',
+  achievement_office_pro: 'Office Pro',
+  achievement_office_pro_desc: 'Complete a full Office module',
+
+  home_explore_catalog: 'Explore the catalog',
+  home_all_categories: 'All',
+  home_lessons_count: '{n} lessons',
+  home_continue_learning: 'Continue learning',
+  home_popular_now: 'Popular now',
+  home_category_ai: 'Artificial intelligence',
+  home_category_employment: 'Employment',
+  home_category_digital: 'Digital skills',
+  home_category_rights: 'Rights & support',
+  home_category_community: 'Community',
+  home_start_course: 'Start',
+  home_trusted_sources: 'Verified official sources',
+  home_no_signup: 'No sign-up',
+  home_works_mobile: 'Works on mobile',
+
+  footer_stats_title: 'In numbers',
+  footer_lessons: 'Lessons',
+  footer_guarantees: 'Guarantees',
+  footer_official_sources: 'Official sources',
+  footer_no_registration: 'No sign-up',
+  footer_free_access: 'Free access',
+  footer_source_code: 'Manos Abiertas source code',
+  footer_help: 'Help',
+  footer_shortcuts: 'Shortcuts',
+  footer_shortcuts_title: 'Keyboard shortcuts',
+  footer_need_help: 'Need help? Check the directory and verify availability before calling.',
+  footer_community: 'Made with {heart} for Latin American and migrant communities in Spain',
+  footer_shortcut_search: 'Open quick search',
+  footer_shortcut_close: 'Close dialog / search',
+  footer_shortcut_navigate: 'Navigate lists',
+  footer_shortcut_select: 'Select item',
+  footer_shortcut_tip: 'Use {keys} any time to quickly search sections, courses, resources and rights articles.',
+
   footer_madeWith: 'Made with love for the immigrant community',
   footer_disclaimer: 'Each entry shows its source and date when available. Not legal advice.',
   footer_rights: 'Manos Abiertas © 2025 · Free and open access',
@@ -365,6 +633,94 @@ const ptBR: UITranslations = {
   office_subtitle: 'Domine Word, Excel e PowerPoint do zero',
   resources_title: 'Diretório de Recursos',
   rights_title: 'Direitos e Ajuda',
+
+  home_desc_ai: 'ChatGPT, Gemini, Copilot, DeepSeek e mais',
+  home_desc_cv: 'CV profissional com IA em minutos',
+  home_desc_office: 'Word, Excel, PowerPoint do zero',
+  home_desc_rights: 'Direitos, ajuda e sobrevivência',
+  home_desc_tools: 'Checklist trâmites, custo de vida, conversor',
+  home_title_tools: 'Ferramentas',
+  home_desc_events: 'Feiras de emprego, jornadas, cursos',
+  home_title_events: 'Eventos',
+  home_title_courses: 'Biblioteca de Cursos',
+  home_desc_courses: '115+ cursos gratuitos online com certificado',
+  home_desc_contacts: 'Emergências, ONGs, embaixadas',
+  home_choose_start: 'Escolha por onde começar',
+  home_generated_ai: 'Gerado com IA',
+  home_ai_available: 'IAs disponíveis',
+  home_cv_minutes: 'CV em 5 minutos',
+  home_ai_explained: 'As melhores IAs, explicadas passo a passo',
+  home_ai_free_practical: 'Grátis, no seu idioma, com exemplos práticos',
+  home_start_today: 'Comece hoje seu caminho',
+  home_no_prior_knowledge: 'Não precisa de conhecimentos prévios. Se você sabe usar WhatsApp, pode usar este site. Tudo é grátis.',
+  home_ai_typing: 'IA escrevendo...',
+  home_ai_assistant_label: 'Assistente IA',
+  home_for_who_question: 'Para quem é Manos Abiertas?',
+  home_for_who_1: 'Pessoas recém-chegadas à Espanha',
+  home_for_who_2: 'Quem busca emprego ou trabalho melhor',
+  home_for_who_3: 'Adultos que querem aprender IA e Office',
+  home_for_who_4: 'Pessoas mais velhas iniciando no digital',
+  home_for_who_5: 'Quem precisa conhecer seus direitos',
+  home_for_who_6: 'Pessoas que preferem seu idioma materno',
+  home_resources_reviewed: 'fichas · {n} com revisão datada',
+
+  progress_title: 'Seu progresso',
+  progress_continue: 'Continue de onde parou',
+  progress_saved_auto: 'Seu progresso é salvo automaticamente neste dispositivo',
+  progress_completed: 'concluído',
+  progress_of_lessons: 'de {total} lições',
+  progress_finished: 'Concluídos',
+  progress_cv_created: '✓ Criado',
+  progress_cv_none: 'Não criado',
+  progress_achievements: 'Conquistas',
+  progress_unlocked: 'Conquistas desbloqueadas',
+  progress_keep_learning: 'Continue aprendendo para desbloquear mais conquistas',
+  progress_loading: 'Carregando progresso...',
+  progress_continue_ai: 'Continuar IA',
+  progress_continue_office: 'Continuar Office',
+  achievement_first_step: 'Primeiro passo',
+  achievement_first_step_desc: 'Complete sua primeira lição',
+  achievement_ai_explorer: 'Explorador IA',
+  achievement_ai_explorer_desc: 'Comece um curso de IA',
+  achievement_cv_created: 'Currículo criado',
+  achievement_cv_created_desc: 'Crie seu currículo',
+  achievement_ai_master: 'Mestre IA',
+  achievement_ai_master_desc: 'Complete um curso de IA inteiro',
+  achievement_office_pro: 'Office Pro',
+  achievement_office_pro_desc: 'Complete um módulo de Office inteiro',
+
+  home_explore_catalog: 'Explore o catálogo',
+  home_all_categories: 'Todas',
+  home_lessons_count: '{n} lições',
+  home_continue_learning: 'Continue aprendendo',
+  home_popular_now: 'Popular agora',
+  home_category_ai: 'Inteligência artificial',
+  home_category_employment: 'Emprego',
+  home_category_digital: 'Habilidades digitais',
+  home_category_rights: 'Direitos e apoio',
+  home_category_community: 'Comunidade',
+  home_start_course: 'Começar',
+  home_trusted_sources: 'Fontes oficiais verificadas',
+  home_no_signup: 'Sem cadastro',
+  home_works_mobile: 'Funciona no celular',
+
+  footer_stats_title: 'Em números',
+  footer_lessons: 'Lições',
+  footer_guarantees: 'Garantias',
+  footer_official_sources: 'Fontes oficiais',
+  footer_no_registration: 'Sem cadastro',
+  footer_free_access: 'Acesso livre',
+  footer_source_code: 'Código de Manos Abiertas',
+  footer_help: 'Ajuda',
+  footer_shortcuts: 'Atalhos',
+  footer_shortcuts_title: 'Atalhos de teclado',
+  footer_need_help: 'Precisa de ajuda? Consulte o diretório e confirme a disponibilidade antes de ligar.',
+  footer_community: 'Feito com {heart} para as comunidades latino-americanas e migrantes na Espanha',
+  footer_shortcut_search: 'Abrir busca rápida',
+  footer_shortcut_close: 'Fechar diálogo / busca',
+  footer_shortcut_navigate: 'Navegar em listas',
+  footer_shortcut_select: 'Selecionar item',
+  footer_shortcut_tip: 'Use {keys} a qualquer momento para buscar rapidamente entre seções, cursos, recursos e artigos de direitos.',
 };
 
 const fr: UITranslations = {
