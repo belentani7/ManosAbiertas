@@ -70,3 +70,15 @@ server.log
 /skills/
 # Generated during build from scripts/generate-platform-tools.mjs
 /public/tool-guides/
+
+# BELENTANI legacy — seguridad
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+node_modules/
+dist/
+build/
+.next/
+.vercel/
