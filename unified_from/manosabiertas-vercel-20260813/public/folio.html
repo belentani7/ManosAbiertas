@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOLIO · Estudio de escritura profesional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d2e32; --ink2:#0a2427; --ink3:#123c41;
+  --brass:#d9a441; --brass2:#b8862e; --brass-soft:rgba(217,164,65,.18);
+  --paper:#fffdf8; --ribbon:#f2eee3; --ribbon-ink:#24312f;
+  --txt:#ece7d9; --muted:#8fa8a5; --line:rgba(217,164,65,.22);
+  --danger:#c4552f; --ok:#4d9e6a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Instrument Sans',sans-serif; background:var(--ink2); color:var(--txt);
+  overflow:hidden; -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(217,164,65,.35)}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit}
+#app{display:flex;flex-direction:column;height:100vh}
+.topbar{
+  display:flex;align-items:center;gap:18px;padding:10px 20px;
+  background:linear-gradient(180deg,#10363b,#0b272b);
+  border-bottom:1px solid var(--line); position:relative; z-index:40;
+  animation:dropIn .5s cubic-bezier(.2,.9,.3,1) both;
+}
+@keyframes dropIn{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+.brand{display:flex;align-items:center;gap:11px;min-width:230px}
+.brand-nib{width:36px;height:36px;flex:none;display:grid;place-items:center;
+  background:radial-gradient(circle at 30% 25%,#f0c265,var(--brass2));border-radius:9px;
+  box-shadow:0 3px 10px rgba(217,164,65,.35), inset 0 -2px 4px rgba(0,0,0,.25);
+  animation:nibGlow 3.5s ease-in-out infinite}
+@keyframes nibGlow{0%,100%{box-shadow:0 3px 10px rgba(217,164,65,.3),inset 0 -2px 4px rgba(0,0,0,.25)}50%{box-shadow:0 3px 18px rgba(217,164,65,.6),inset 0 -2px 4px rgba(0,0,0,.25)}}
+.brand-nib svg{width:20px;height:20px;stroke:#1c1608;fill:none;stroke-width:1.8}
+.brand-name{font-family:'Space Grotesk';font-weight:700;font-size:20px;letter-spacing:5px;color:#f3ead4;line-height:1}
+.brand-sub{font-size:10px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.doc-title{flex:1;display:flex;justify-content:center}
+#docTitle{
+  background:transparent;border:none;border-bottom:1px dashed transparent;color:#e8e0cc;
+  font-size:14px;font-weight:500;padding:6px 14px;text-align:center;max-width:380px;width:100%;
+  transition:.25s;border-radius:6px 6px 0 0;
+}
+#docTitle:hover{border-bottom-color:var(--brass)}
+#docTitle:focus{outline:none;background:rgba(255,255,255,.05);border-bottom:1px solid var(--brass)}
+.top-actions{display:flex;align-items:center;gap:8px}
+.tbtn{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:8px;
+  font-size:12.5px;font-weight:600;color:#d8d2c0;border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.03);transition:.2s;
+}
+.tbtn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.9}
+.tbtn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:var(--line);box-shadow:0 6px 14px rgba(0,0,0,.3)}
+.tbtn.primary{
+  background:linear-gradient(160deg,#eec263,var(--brass2));color:#221a06;border-color:transparent;
+  box-shadow:0 4px 14px rgba(217,164,65,.35);
+}
+.tbtn.primary:hover{box-shadow:0 8px 22px rgba(217,164,65,.5);filter:brightness(1.06)}
+.ribbon{
+  display:flex;align-items:center;gap:4px;padding:7px 16px;background:var(--ribbon);
+  border-bottom:1px solid #d8d1bd;overflow-x:auto;position:relative;z-index:35;
+  animation:dropIn .55s .06s cubic-bezier(.2,.9,.3,1) both;
+}
+.rgroup{display:flex;align-items:center;gap:3px;padding:0 8px;position:relative}
+.rgroup + .rgroup::before{content:"";position:absolute;left:-1px;top:5px;bottom:5px;width:1px;background:#d3cbb5}
+.tb{
+  min-width:30px;height:30px;padding:0 6px;display:grid;place-items:center;border-radius:7px;
+  color:var(--ribbon-ink);font-size:13px;font-weight:600;transition:.16s;position:relative;
+}
+.tb:hover{background:rgba(14,48,53,.1);transform:translateY(-1.5px)}
+.tb:active{transform:translateY(0)}
+.tb.on{background:var(--ink);color:#f0e6cd;box-shadow:0 2px 6px rgba(13,46,50,.35)}
+.tb svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round}
+.tb .glyph{font-size:14px;line-height:1}
+.rsel{
+  height:30px;border:1px solid #cfc7b0;border-radius:7px;background:#fffdf6;color:var(--ribbon-ink);
+  font-size:12.5px;padding:0 8px;outline:none;transition:.2s;
+}
+.rsel:hover{border-color:var(--brass2)}
+.rsel:focus{border-color:var(--brass2);box-shadow:0 0 0 3px var(--brass-soft)}
+.workspace{flex:1;display:flex;min-height:0;position:relative}
+.desk{
+  flex:1;overflow:auto;position:relative;
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgba(217,164,65,.10), transparent 60%),
+    radial-gradient(900px 700px at 85% 110%, rgba(77,158,106,.08), transparent 55%),
+    linear-gradient(165deg,#123c41 0%, #0d2e32 45%, #0a2427 100%);
+}
+.zoom-box{position:relative;padding:34px 40px 90px;display:flex;flex-direction:column;align-items:center;width:max-content;margin:0 auto}
+.ruler{
+  width:794px;height:20px;border-radius:4px 4px 0 0;margin-bottom:-1px;position:relative;z-index:2;
+  background:
+    repeating-linear-gradient(90deg, rgba(20,40,38,.55) 0 1px, transparent 1px 9.5px),
+    repeating-linear-gradient(90deg, rgba(20,40,38,.8) 0 1.5px, transparent 1.5px 75.5px),
+    linear-gradient(180deg,#e9e2cf,#d9d0b6);
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+.page{
+  width:794px;min-height:1123px;background:var(--paper);color:#1c1c1a;
+  padding:95px 88px;box-shadow:0 2px 4px rgba(0,0,0,.25), 0 24px 60px rgba(0,0,0,.45);
+  font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.7;
+  outline:none;caret-color:var(--brass2);position:relative;
+}
+.page::after{content:"";position:absolute;left:88px;right:88px;bottom:44px;border-bottom:1px dashed rgba(0,0,0,.08)}
+#page h1{font-size:30px;color:var(--ink);margin:18px 0 10px;font-family:'Space Grotesk',Georgia,sans-serif;letter-spacing:.5px;line-height:1.25}
+#page h2{font-size:22px;color:#14555a;margin:16px 0 8px;font-family:'Space Grotesk',Georgia,sans-serif}
+#page h3{font-size:18px;color:#333;margin:14px 0 6px}
+#page blockquote{border-left:3px solid var(--brass);margin:12px 24px;padding:6px 16px;color:#4a4a44;font-style:italic;background:rgba(217,164,65,.06)}
+#page table{border-collapse:collapse}
+#page td,#page th{border:1px solid #b9b9b0}
+#page img{max-width:100%;border-radius:4px}
+#page a{color:#14555a}
+.statusbar{
+  display:flex;align-items:center;gap:20px;padding:7px 20px;background:#081e21;
+  border-top:1px solid var(--line);font-size:11.5px;color:#9db4b1;z-index:40;
+}
+.sb-item{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.sb-item b{color:#e8e0cc;font-weight:700}
+#zoomRange{width:110px;accent-color:var(--brass)}
+.sb-spacer{flex:1}
+.toast-wrap{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);z-index:200;display:flex;flex-direction:column;gap:8px;align-items:center}
+.toast{
+  background:#10363b;border:1px solid var(--line);border-left:3px solid var(--brass);color:#eee;
+  padding:11px 20px;border-radius:10px;font-size:13px;font-weight:600;box-shadow:0 14px 34px rgba(0,0,0,.5);
+  animation:toastIn .35s cubic-bezier(.3,1.3,.4,1) both;display:flex;gap:9px;align-items:center;
+}
+@keyframes toastIn{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.toast.bye{animation:toastOut .3s forwards}
+@keyframes toastOut{to{transform:translateY(16px);opacity:0}}
+@media print{
+  @page{size:A4;margin:2cm 2.2cm}
+  body{overflow:visible;background:#fff}
+  .topbar,.ribbon,.statusbar{display:none!important}
+  .desk{overflow:visible;background:#fff}
+  .zoom-box{padding:0;width:auto;transform:none!important;height:auto!important}
+  .page{width:auto;min-height:0;padding:0;box-shadow:none;font-size:12pt}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-nib">
+        <svg viewBox="0 0 24 24"><path d="M12 2c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><circle cx="12" cy="13" r="1.6"/><path d="M12 15v6"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">FOLIO</div>
+        <div class="brand-sub">estudio de escritura</div>
+      </div>
+    </div>
+    <div class="doc-title"><input id="docTitle" value="Documento sin título" spellcheck="false"></div>
+    <nav class="top-actions">
+      <button class="tbtn" onclick="newDoc()" title="Documento nuevo"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>Nuevo</button>
+      <button class="tbtn primary" onclick="saveWord()" title="Guardar como Word"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Guardar Word</button>
+      <button class="tbtn" onclick="window.print()" title="Imprimir / PDF"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg></button>
+    </nav>
+  </header>
+
+  <div class="ribbon" id="ribbon">
+    <div class="rgroup">
+      <button class="tb" data-cmd="undo" title="Deshacer"><span class="glyph">↶</span></button>
+      <button class="tb" data-cmd="redo" title="Rehacer"><span class="glyph">↷</span></button>
+    </div>
+    <div class="rgroup">
+      <select class="rsel" id="selBlock" title="Estilo"><option value="p">Párrafo</option><option value="h1">Título 1</option><option value="h2">Título 2</option><option value="h3">Título 3</option><option value="blockquote">Cita</option></select>
+      <select class="rsel" id="selFont" title="Fuente"><option>Georgia</option><option>Times New Roman</option><option>Arial</option><option>Helvetica</option></select>
+      <select class="rsel" id="selSize" title="Tamaño"><option value="3" selected>12</option><option value="4">14</option><option value="5">18</option><option value="6">24</option></select>
+    </div>
+    <div class="rgroup">
+      <button class="tb" data-cmd="bold" title="Negrita"><b>N</b></button>
+      <button class="tb" data-cmd="italic" title="Cursiva"><i>K</i></button>
+      <button class="tb" data-cmd="underline" title="Subrayado"><u>S</u></button>
+      <button class="tb" data-cmd="insertUnorderedList" title="Lista"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="1.4" fill="currentColor"/><circle cx="5" cy="12" r="1.4" fill="currentColor"/><circle cx="5" cy="18" r="1.4" fill="currentColor"/><path d="M10 6h10M10 12h10M10 18h10"/></svg></button>
+      <button class="tb" data-cmd="insertOrderedList" title="Numerado"><svg viewBox="0 0 24 24"><text x="3" y="8" font-size="7" fill="currentColor" stroke="none">1</text><text x="3" y="15" font-size="7" fill="currentColor" stroke="none">2</text><text x="3" y="22" font-size="7" fill="currentColor" stroke="none">3</text><path d="M10 6h10M10 13h10M10 20h10"/></svg></button>
+    </div>
+  </div>
+
+  <main class="workspace">
+    <div class="desk" id="desk">
+      <div class="zoom-box" id="zoomBox">
+        <div class="ruler"></div>
+        <div id="sheetWrap">
+          <div class="page" id="page" contenteditable="true" spellcheck="true">
+            <h1>Bienvenido a FOLIO ✒</h1>
+            <p>Tu estudio de escritura profesional. Edita, formatea, exporta a Word (.doc) y PDF. Autoguardado en tu navegador.</p>
+            <h2>Cómo usar</h2>
+            <ul>
+              <li>Usa la cinta superior para <strong>formato</strong>: fuente, tamaño, negrita, cursiva, listas.</li>
+              <li>El botón <strong>Guardar Word</strong> descarga el documento en formato .doc (A4, márgenes 3 cm).</li>
+              <li>Imprime o usa <strong>Guardar como PDF</strong> desde el diálogo de impresión.</li>
+              <li>Tu progreso se <strong>guarda automáticamente</strong> en este navegador.</li>
+            </ul>
+            <blockquote>Consejo: presiona Ctrl+S para descargar rápidamente en Word.</blockquote>
+            <p>Que fluya la tinta. 🖋</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="statusbar">
+    <div class="sb-item"><span style="width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block;animation:pulse 2s infinite"></span>Guardado</div>
+    <div class="sb-item">Palabras: <b id="stWords">0</b></div>
+    <div class="sb-item">Caracteres: <b id="stChars">0</b></div>
+    <div class="sb-spacer"></div>
+    <div class="sb-item">Zoom <input type="range" id="zoomRange" min="60" max="160" value="100"> <b id="stZoom">100%</b></div>
+  </footer>
+</div>
+
+<div class="toast-wrap" id="toasts"></div>
+
+<script>
+const page=document.getElementById('page'),SIZE_MAP={3:'16px',4:'18px',5:'24px',6:'32px'};
+document.execCommand('styleWithCSS',false,true);
+document.execCommand('defaultParagraphSeparator',false,'p');
+function $id(id){return document.getElementById(id)}
+function exec(cmd,val){page.focus();document.execCommand(cmd,false,val||null);updateCounts();scheduleSave()}
+function updateCounts(){
+  const t=page.innerText;
+  $id('stWords').textContent=((t.trim().match(/\S+/g)||[]).length).toLocaleString('es');
+  $id('stChars').textContent=t.replace(/\n/g,'').length.toLocaleString('es');
+}
+function toast(msg){
+  const t=document.createElement('div');t.className='toast';t.innerHTML=msg;$id('toasts').appendChild(t);
+  setTimeout(()=>{t.classList.add('bye');setTimeout(()=>t.remove(),300)},3200);
+}
+function scheduleSave(){
+  clearTimeout(window.saveTimer);
+  window.saveTimer=setTimeout(()=>{
+    localStorage.setItem('folioDoc',JSON.stringify({html:page.innerHTML,title:$id('docTitle').value,t:Date.now()}));
+  },900);
+}
+(function restore(){
+  try{const d=JSON.parse(localStorage.getItem('folioDoc'));if(d&&d.html){page.innerHTML=d.html;$id('docTitle').value=d.title||'Documento sin título'}}catch(e){}
+})();
+page.addEventListener('input',()=>{updateCounts();scheduleSave()});
+$id('docTitle').addEventListener('input',scheduleSave);
+
+document.querySelectorAll('[data-cmd]').forEach(b=>b.addEventListener('click',()=>exec(b.dataset.cmd)));
+$id('selBlock').addEventListener('change',e=>exec('formatBlock','<'+e.target.value+'>'));
+$id('selFont').addEventListener('change',e=>exec('fontName',e.target.value));
+$id('selSize').addEventListener('change',e=>exec('fontSize',e.target.value));
+
+function newDoc(){
+  if(page.innerText.trim()&&!confirm('¿Nuevo documento? Se reemplazará el contenido.'))return;
+  page.innerHTML='<p><br></p>';$id('docTitle').value='Documento sin título';updateCounts();page.focus();toast('Documento nuevo');
+}
+
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function buildWordDoc(){
+  return`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8"><title>${esc($id('docTitle').value)}</title>
+<style>
+@page Section1{size:595.45pt 841.7pt;margin:70.9pt 3cm 70.9pt 3cm}
+body{font-family:Georgia,serif;font-size:12pt;color:#1c1c1a;line-height:1.6}
+h1{font-size:20pt;color:#0e3035;margin:14pt 0 6pt}h2{font-size:16pt;color:#14555a;margin:12pt 0 6pt}
+table{border-collapse:collapse}td,th{border:1pt solid #a9a494;padding:5pt 8pt}
+</style></head>
+<body><div class="Section1">${page.innerHTML}</div></body></html>`;
+}
+function saveWord(){
+  const blob=new Blob(['﻿',buildWordDoc()],{type:'application/msword'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=($id('docTitle').value.trim()||'documento').replace(/[\\/:*?"<>|]/g,'')+'.doc';a.click();
+  URL.revokeObjectURL(a.href);toast('📄 Documento Word descargado (A4)');
+}
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveWord()}});
+
+$id('zoomRange').addEventListener('input',e=>{
+  const z=e.target.value/100;$id('sheetWrap').style.transform=`scale(${z})`;$id('sheetWrap').style.transformOrigin='top center';
+  $id('zoomBox').style.height=($id('sheetWrap').offsetHeight*z+130)+'px';$id('stZoom').textContent=e.target.value+'%';
+});
+
+updateCounts();page.focus();
+</script>
+</body>
+</html>

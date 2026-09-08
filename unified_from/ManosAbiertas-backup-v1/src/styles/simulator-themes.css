@@ -1,0 +1,27 @@
+/*
+ * Skins de simuladores — identidades visuales FIJAS de productos reales.
+ * NO heredan dark mode ni filtros de tema: replican el look original a propósito.
+ * Consumo en TSX: clases arbitrarias tipo bg-[var(--sim-xxx)].
+ */
+:root {
+  /* ChatGPT */
+  --sim-chatgpt-bg: #212121;
+  --sim-chatgpt-bubble: #10a37f;
+  --sim-chatgpt-accent: #10a37f;
+
+  /* Claude */
+  --sim-claude-bg: #faf9f5;
+  --sim-claude-bubble: #c96442;
+  --sim-claude-accent: #c96442;
+
+  /* Copilot / GitHub dark */
+  --sim-copilot-bg: #0d1117;
+  --sim-copilot-bubble: #2563eb;
+  --sim-copilot-accent: #3b82f6;
+
+  /* Windows PowerShell */
+  --sim-ps-bg: #012456;
+
+  /* Linux terminal */
+  --sim-linux-bg: #020617;
+}

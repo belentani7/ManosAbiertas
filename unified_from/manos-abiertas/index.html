@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manos Abiertas — plataforma gratuita de recursos, cursos de IA, CV y derechos para la comunidad inmigrante en España.">
+  <meta name="theme-color" content="#7a4a2b">
+  <title>Manos Abiertas — Ayuda para la comunidad inmigrante en España</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <div id="app">
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a href="#inicio" class="brand" data-nav="inicio">
+          <span class="brand-mark" aria-hidden="true">🤝</span>
+          <span class="brand-name">Manos <span>Abiertas</span></span>
+        </a>
+        <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+          <button class="nav-link" data-nav="inicio" data-i18n="nav.home">Inicio</button>
+          <button class="nav-link" data-nav="ia" data-i18n="nav.ai">Aprende IA</button>
+          <button class="nav-link" data-nav="cv" data-i18n="nav.cv">Crea tu CV</button>
+          <button class="nav-link" data-nav="office" data-i18n="nav.office">Office</button>
+          <button class="nav-link" data-nav="recursos" data-i18n="nav.resources">Recursos</button>
+          <button class="nav-link" data-nav="derechos" data-i18n="nav.rights">Derechos</button>
+        </nav>
+        <div class="header-tools">
+          <div class="lang-switch">
+            <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+              <span id="langCurrent">🇪🇸 Español</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="lang-menu" id="langMenu" role="listbox" aria-label="Idioma"></div>
+          </div>
+          <button class="icon-btn" id="themeBtn" title="Modo claro / oscuro" aria-label="Cambiar tema">
+            <span id="themeIcon">🌙</span>
+          </button>
+        </div>
+      </div>
+      <div class="progress-bar" id="scrollProgress" aria-hidden="true"></div>
+    </header>
+
+    <main id="main">
+      <!-- SECCIÓN INICIO -->
+      <section class="section hero" id="seccion-inicio" data-section="inicio">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow" data-i18n="hero.eyebrow">Plataforma gratuita · 39 idiomas · Sin registro</p>
+              <h1><span class="serif" data-i18n="hero.titleA">Manos Abiertas</span><br>
+                <span data-i18n="hero.titleB">para tu nueva vida en España</span></h1>
+              <p class="hero-sub" data-i18n="hero.sub">Aprende a usar la inteligencia artificial, crea un currículum profesional en minutos y conoce todos tus derechos y ayudas. Todo gratis, sencillo y en tu idioma.</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" data-nav="ia" data-i18n="hero.ctaAi">🚀 Empezar con la IA</button>
+                <button class="btn btn-ghost" data-nav="cv" data-i18n="hero.ctaCv">📄 Hacer mi CV</button>
+              </div>
+              <div class="hero-stats">
+                <div class="stat"><strong id="statResources">3.600+</strong><span data-i18n="hero.statRes">recursos</span></div>
+                <div class="stat"><strong id="statLang">39</strong><span data-i18n="hero.statLang">idiomas</span></div>
+                <div class="stat"><strong id="statCourses">10+</strong><span data-i18n="hero.statCourses">cursos gratis</span></div>
+                <div class="stat"><strong>0 €</strong><span data-i18n="hero.statFree">siempre gratis</span></div>
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="art-card art-cv">
+                <div class="art-avatar">👩🏽</div>
+                <div class="art-lines"><i style="width:70%"></i><i style="width:55%"></i><i style="width:40%"></i></div>
+                <span class="art-badge">✓ CV con IA</span>
+              </div>
+              <div class="art-card art-chat">
+                <div class="chat-bubble">¡Hola! ¿En qué puedo ayudarte hoy?</div>
+                <div class="chat-bubble reply">Quiero aprender a usar ChatGPT</div>
+                <span class="art-badge">✨ 8 IAs gratis</span>
+              </div>
+            </div>
+          </div>
+          <div class="quick-grid" id="quickLinks">
+            <a href="#" data-nav="ia" class="quick-card"><span>🤖</span><strong data-i18n="quick.ai">Aprende IA</strong><small data-i18n="quick.aiSub">ChatGPT, Gemini, DeepSeek…</small></a>
+            <a href="#" data-nav="cv" class="quick-card"><span>📄</span><strong data-i18n="quick.cv">Currículum</strong><small data-i18n="quick.cvSub">Listo en 5 minutos</small></a>
+            <a href="#" data-nav="office" class="quick-card"><span>📊</span><strong data-i18n="quick.office">Curso Office</strong><small data-i18n="quick.officeSub">Word, Excel, PowerPoint</small></a>
+            <a href="#" data-nav="recursos" class="quick-card"><span>🗺️</span><strong data-i18n="quick.resources">Recursos</strong><small data-i18n="quick.resourcesSub">Gobierno, ONGs, ayudas</small></a>
+            <a href="#" data-nav="derechos" class="quick-card"><span>⚖️</span><strong data-i18n="quick.rights">Derechos</strong><small data-i18n="quick.rightsSub">NIE, sanidad, vivienda</small></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN APRENDE IA -->
+      <section class="section hidden" id="seccion-ia" data-section="ia">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="ai.eyebrow">Cursos prácticos y en español</p>
+            <h2 data-i18n="ai.title">Aprende Inteligencia Artificial paso a paso</h2>
+            <p class="section-sub" data-i18n="ai.sub">Todas las herramientas más conocidas, explicadas de forma sencilla. Crea tu cuenta gratis, escribe tu primer texto y consigue trabajo más rápido.</p>
+            <div class="progress-chip"><span data-i18n="ai.progress">Tu progreso:</span> <b id="aiProgress">0 / 0</b></div>
+          </div>
+          <div class="course-grid" id="courseGrid"><!-- generado por JS --></div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN CV -->
+      <section class="section hidden" id="seccion-cv" data-section="cv">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="cv.eyebrow">Conseguir trabajo</p>
+            <h2 data-i18n="cv.title">Crea tu currículum profesional</h2>
+            <p class="section-sub" data-i18n="cv.sub">Rellena el formulario, elige una plantilla y exporta tu CV en PDF para imprimir o enviar por WhatsApp.</p>
+          </div>
+          <div class="cv-layout">
+            <form class="cv-form card" id="cvForm">
+              <div class="field">
+                <label for="cvName" data-i18n="cv.name">Nombre y apellidos</label>
+                <input id="cvName" type="text" placeholder="María González Pérez" autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="cvTitle" data-i18n="cv.titleField">Título profesional</label>
+                <input id="cvTitle" type="text" placeholder="Cuidadora de personas mayores" data-i18n-ph="cv.titlePh">
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="cvPhone" data-i18n="cv.phone">Teléfono</label>
+                  <input id="cvPhone" type="tel" placeholder="+34 600 000 000">
+                </div>
+                <div class="field">
+                  <label for="cvEmail" data-i18n="cv.email">Correo</label>
+                  <input id="cvEmail" type="email" placeholder="maria@correo.com">
+                </div>
+              </div>
+              <div class="field">
+                <label for="cvLocation" data-i18n="cv.location">Ciudad / provincia</label>
+                <input id="cvLocation" type="text" placeholder="Madrid">
+              </div>
+              <div class="field">
+                <label for="cvSummary" data-i18n="cv.summary">Resumen profesional</label>
+                <textarea id="cvSummary" rows="3" placeholder="Persona responsable y con experiencia en cuidado de mayores…"></textarea>
+                <button type="button" class="btn btn-sm" id="aiSummaryBtn">✨ <span data-i18n="cv.aiSummary">Mejorar con IA</span></button>
+              </div>
+              <div class="field">
+                <label for="cvExp" data-i18n="cv.experience">Experiencia (una por línea: puesto · empresa · años)</label>
+                <textarea id="cvExp" rows="3" placeholder="Cuidadora · Residencia El Sol · 2021-2024&#10;Auxiliar de hogar · Familia particular · 2019-2021"></textarea>
+              </div>
+              <div class="field">
+                <label for="cvEdu" data-i18n="cv.education">Formación (una por línea)</label>
+                <textarea id="cvEdu" rows="2" placeholder="Atención Sociosanitaria · 480h · Cruz Roja"></textarea>
+              </div>
+              <div class="field">
+                <label for="cvSkills" data-i18n="cv.skills">Habilidades (separadas por coma)</label>
+                <input id="cvSkills" type="text" placeholder="Empatía, Comunicación, Paciencia, Higiene">
+                <div class="chip-row" id="skillSuggestions"></div>
+              </div>
+              <div class="field">
+                <label for="cvLanguages" data-i18n="cv.languages">Idiomas (idioma: nivel)</label>
+                <input id="cvLanguages" type="text" placeholder="Español: nativo, Inglés: básico">
+              </div>
+              <div class="field">
+                <label data-i18n="cv.template">Plantilla</label>
+                <div class="template-row" id="templateRow"></div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="loadSample" data-i18n="cv.sample">✨ Cargar ejemplo</button>
+                <button type="button" class="btn btn-primary" id="printCv">🖨️ <span data-i18n="cv.print">Guardar / Imprimir PDF</span></button>
+              </div>
+            </form>
+            <div class="cv-preview-wrap">
+              <div id="cvPreview" class="cv-sheet template-classic"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN OFFICE -->
+      <section class="section hidden" id="seccion-office" data-section="office">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="office.eyebrow">Empleo y formación</p>
+            <h2 data-i18n="office.title">Curso completo de Office</h2>
+            <p class="section-sub" data-i18n="office.sub">Word, Excel, PowerPoint y las herramientas de Google. Con estos conocimientos encontrarás trabajo más fácil y podrás hacer cursos gratis de SEPE.</p>
+          </div>
+          <div class="office-grid" id="officeGrid"><!-- generado por JS --></div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN RECURSOS -->
+      <section class="section hidden" id="seccion-recursos" data-section="recursos">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="res.eyebrow">Todo en un solo sitio</p>
+            <h2 data-i18n="res.title">Directorio de recursos útiles</h2>
+            <p class="section-sub" data-i18n="res.sub">Enlaces oficiales de gobierno, ONGs, ayudas, empleo, sanidad, vivienda y herramientas gratuitas.</p>
+          </div>
+          <div class="search-bar card">
+            <input id="resSearch" type="search" placeholder="🔍 Buscar: NIE, empleo, vivienda, SEPE…" data-i18n-ph="res.searchPh" aria-label="Buscar recursos">
+            <div class="filter-row" id="resFilters"></div>
+            <p class="res-count" id="resCount"></p>
+          </div>
+          <div class="resource-grid" id="resourceGrid"><!-- generado por JS --></div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN DERECHOS -->
+      <section class="section hidden" id="seccion-derechos" data-section="derechos">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="rights.eyebrow">Conoce tus derechos</p>
+            <h2 data-i18n="rights.title">Guía de derechos y ayudas</h2>
+            <p class="section-sub" data-i18n="rights.sub">Información clara y verificada. Las leyes cambian, así que cada artículo muestra su fecha de revisión.</p>
+          </div>
+          <div class="rights-layout">
+            <div class="accordion card" id="rightsAccordion"><!-- generado por JS --></div>
+            <aside class="emergency card">
+              <h3>🆘 <span data-i18n="rights.emergency">Emergencias</span></h3>
+              <ul id="emergencyList" class="emergency-list"></ul>
+              <p class="emergency-note" data-i18n="rights.emergencyNote">Llamadas gratuitas, 24 horas.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <strong>🤝 Manos Abiertas</strong>
+          <p data-i18n="footer.tagline">Conocimiento gratuito para una vida digna en España.</p>
+        </div>
+        <div class="footer-links">
+          <strong data-i18n="footer.sections">Secciones</strong>
+          <a href="#" data-nav="ia" data-i18n="nav.ai">Aprende IA</a>
+          <a href="#" data-nav="cv" data-i18n="nav.cv">Crea tu CV</a>
+          <a href="#" data-nav="recursos" data-i18n="nav.resources">Recursos</a>
+        </div>
+        <div class="footer-links">
+          <strong data-i18n="footer.help">Ayuda</strong>
+          <a href="#" data-nav="derechos" data-i18n="nav.rights">Derechos</a>
+          <a href="#" data-nav="office" data-i18n="nav.office">Office</a>
+          <a href="#" data-nav="inicio" data-i18n="nav.home">Inicio</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span data-i18n="footer.note">Proyecto gratuito y comunitario. Los enlaces oficiales pertenecen a sus instituciones.</span>
+      </div>
+    </footer>
+
+    <!-- Acompañante Manos -->
+    <div class="companion" id="companion" aria-live="polite">
+      <button class="companion-toggle" id="companionToggle" aria-label="Abrir asistente Manos">
+        <span class="companion-emoji" id="companionEmoji">🤝</span>
+      </button>
+      <div class="companion-panel hidden" id="companionPanel">
+        <div class="companion-head">
+          <strong>🤝 Manos</strong>
+          <div class="companion-controls">
+            <button class="mini-btn" id="companionMute" title="Activar/desactivar voz">🔊</button>
+            <button class="mini-btn" id="companionClose" title="Cerrar">✕</button>
+          </div>
+        </div>
+        <div class="companion-chat" id="companionChat"></div>
+        <div class="companion-actions">
+          <button class="btn btn-sm" data-nav="cv">📄 Mi CV</button>
+          <button class="btn btn-sm" data-nav="ia">🤖 Aprender IA</button>
+          <button class="btn btn-sm" id="companionEncourage">💪 Ánimo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status"></div>
+  </div>
+
+  <noscript><p style="padding:2rem;text-align:center">Esta plataforma necesita JavaScript. Actívalo en tu navegador.</p></noscript>
+
+  <script src="i18n.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

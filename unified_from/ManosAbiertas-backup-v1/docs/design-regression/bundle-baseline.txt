@@ -1,0 +1,14 @@
+
+Name                              KB
+----                              --
+557-0c560147c44eae83.js       3642,6
+b536a0f1.b42a10a78370a8e6.js   339,8
+3794-3e83b3cf84e1ed3c.js       234,3
+bd904a5c.8ef2c812b4c6658b.js     223
+6837-47044b6dfbac4331.js       205,4
+4bd1b696-8a4ab4fdf0ae305a.js   196,3
+framework-666c53740fc261c8.js  185,2
+946-7ba9107100501187.js        180,1
+
+
+

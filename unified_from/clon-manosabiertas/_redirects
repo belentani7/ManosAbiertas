@@ -1,0 +1,9 @@
+# Redirect rules for SPA
+/*  /index.html  200
+
+# API pass-through
+/api/*  /api/:splat  200
+
+# Legacy URLs
+/v1/*  /index.html  200
+/admin/*  /index.html  200

@@ -1,0 +1,9 @@
+{
+  "name": "Campus ManosAbiertas",
+  "short_name": "ManosAbiertas",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c1018",
+  "theme_color": "#0c1018",
+  "icons": []
+}
