@@ -13,19 +13,17 @@ import { AI_COURSES } from '@/data/ai-courses';
 import { OFFICE_MODULES } from '@/data/office-course';
 import { SystemAwareness } from './system-awareness';
 
-// Shortcut definitions are built inside the component so they use translated labels.
+const SHORTCUTS = [
+  { keys: ['Cmd', 'K'], action: 'Abrir búsqueda rápida', icon: Search },
+  { keys: ['Esc'], action: 'Cerrar diálogo / búsqueda', icon: Command },
+  { keys: ['↑', '↓'], action: 'Navegar en listas', icon: ArrowUp },
+  { keys: ['Enter'], action: 'Seleccionar elemento', icon: Command },
+];
 
 export function Footer() {
   const { language, setActiveSection } = useAppStore();
   const t = getTranslation(language);
   const [showShortcuts, setShowShortcuts] = useState(false);
-
-  const SHORTCUTS = [
-    { keys: ['Cmd', 'K'], action: t.footer_shortcut_search, icon: Search },
-    { keys: ['Esc'], action: t.footer_shortcut_close, icon: Command },
-    { keys: ['↑', '↓'], action: t.footer_shortcut_navigate, icon: ArrowUp },
-    { keys: ['Enter'], action: t.footer_shortcut_select, icon: Command },
-  ];
 
   const totalLessons = AI_COURSES.reduce((acc, c) => acc + c.lessons.length, 0) + OFFICE_MODULES.reduce((acc, m) => acc + m.lessons.length, 0);
 
@@ -53,39 +51,39 @@ export function Footer() {
 
           {/* Stats */}
           <div className="space-y-2 md:col-span-1">
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.footer_stats_title}</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">En cifras</div>
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-lg bg-card border border-border p-2.5 text-center">
                 <div className="text-lg font-bold text-primary">{LANGUAGE_COUNT}</div>
-                <div className="text-[10px] text-muted-foreground">{t.cv_languages}</div>
+                <div className="text-[10px] text-muted-foreground">Idiomas</div>
               </div>
               <div className="rounded-lg bg-card border border-border p-2.5 text-center">
                 <div className="text-lg font-bold text-primary">{RESOURCES.length.toLocaleString()}</div>
-                <div className="text-[10px] text-muted-foreground">{t.nav_resources}</div>
+                <div className="text-[10px] text-muted-foreground">Recursos</div>
               </div>
               <div className="rounded-lg bg-card border border-border p-2.5 text-center">
                 <div className="text-lg font-bold text-primary">{totalLessons}</div>
-                <div className="text-[10px] text-muted-foreground">{t.footer_lessons}</div>
+                <div className="text-[10px] text-muted-foreground">Lecciones</div>
               </div>
               <div className="rounded-lg bg-card border border-border p-2.5 text-center">
                 <div className="text-lg font-bold text-primary">100%</div>
-                <div className="text-[10px] text-muted-foreground">{t.free}</div>
+                <div className="text-[10px] text-muted-foreground">Gratis</div>
               </div>
             </div>
           </div>
 
           {/* Trust badges */}
           <div className="space-y-2 md:col-span-1">
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.footer_guarantees}</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Garantías</div>
             <div className="flex flex-wrap gap-1.5">
               <span className="inline-flex items-center gap-1 text-[11px] bg-secondary/60 rounded-full px-2 py-1">
-                <Globe className="h-3 w-3" /> {t.footer_official_sources}
+                <Globe className="h-3 w-3" /> Fuentes oficiales
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] bg-secondary/60 rounded-full px-2 py-1">
-                <Shield className="h-3 w-3" /> {t.footer_no_registration}
+                <Shield className="h-3 w-3" /> Sin registro
               </span>
               <span className="inline-flex items-center gap-1 text-[11px] bg-secondary/60 rounded-full px-2 py-1">
-                <Heart className="h-3 w-3" /> {t.footer_free_access}
+                <Heart className="h-3 w-3" /> Acceso libre
               </span>
             </div>
             <a
@@ -94,20 +92,20 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
             >
-              <ExternalLink className="h-3 w-3" /> {t.footer_source_code}
+              <ExternalLink className="h-3 w-3" /> Código de Manos Abiertas
             </a>
           </div>
 
           {/* Help & shortcuts */}
           <div className="space-y-2 md:col-span-1">
-            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t.footer_help}</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Ayuda</div>
             <div className="flex flex-wrap gap-1.5">
               <button
                 onClick={() => setShowShortcuts(true)}
                 className="inline-flex items-center gap-1.5 text-[11px] bg-secondary/60 hover:bg-secondary rounded-full px-2 py-1 transition-colors"
               >
                 <Keyboard className="h-3 w-3" />
-                {t.footer_shortcuts}
+                Atajos
               </button>
               <ReadingModeToggle />
               <PomodoroTimer />
@@ -117,7 +115,7 @@ export function Footer() {
               onClick={() => setActiveSection('contacts')}
               className="text-left text-[11px] leading-relaxed text-muted-foreground/80 hover:text-primary"
             >
-              {t.footer_need_help}
+              ¿Necesitas ayuda? Consulta el directorio y confirma la vigencia antes de llamar.
             </button>
             <SystemAwareness />
           </div>
@@ -126,7 +124,7 @@ export function Footer() {
         <div className="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <div>© 2026 NOIACORE · Manos Abiertas · {t.footer_rights}</div>
           <div className="flex items-center gap-1.5">
-            {t.footer_community.split('{heart}')[0]}<Heart className="h-3.5 w-3.5 text-primary fill-primary" />{t.footer_community.split('{heart}')[1]}
+            Hecho con <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> para las comunidades latinoamericanas y migrantes en España
           </div>
         </div>
       </div>
@@ -137,7 +135,7 @@ export function Footer() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Keyboard className="h-5 w-5 text-primary" />
-              {t.footer_shortcuts_title}
+              Atajos de teclado
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-2">
@@ -160,7 +158,7 @@ export function Footer() {
               );
             })}
             <div className="mt-3 p-3 rounded-lg bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-              <strong className="text-primary">💡</strong> {t.footer_shortcut_tip.replace('{keys}', 'Cmd+K')}
+              <strong className="text-primary">💡 Consejo:</strong> Usa <kbd className="border border-border rounded px-1 mx-0.5">Cmd</kbd>+<kbd className="border border-border rounded px-1 mx-0.5">K</kbd> en cualquier momento para buscar rápidamente entre secciones, cursos, recursos y artículos de derechos.
             </div>
           </div>
         </DialogContent>

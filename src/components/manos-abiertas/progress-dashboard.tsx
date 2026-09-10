@@ -6,29 +6,30 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useProgress } from '@/hooks/use-progress';
-import { useAppStore } from '@/stores/app-store';
-import { getTranslation } from '@/i18n/translations';
+import { useAppStore, type SectionId } from '@/stores/app-store';
+import { AI_COURSES } from '@/data/ai-courses';
+import { OFFICE_MODULES } from '@/data/office-course';
 import { cn } from '@/lib/utils';
 
 export function ProgressDashboard() {
   const { stats, ready } = useProgress();
-  const { language, setActiveSection } = useAppStore();
-  const t = getTranslation(language);
+  const { setActiveSection } = useAppStore();
 
+  // Don't show dashboard if user has no progress at all
   const hasAnyProgress = stats.aiCompleted > 0 || stats.officeCompleted > 0 || stats.hasCV;
   if (!hasAnyProgress) return null;
 
-  const achievements = getAchievements(stats, t);
+  const achievements = getAchievements(stats);
 
   return (
     <section className="container mx-auto max-w-7xl px-4 py-8">
       <div className="text-center mb-6">
         <Badge variant="secondary" className="mb-2 gap-1.5">
           <TrendingUp className="h-3 w-3" />
-          {t.progress_title}
+          Tu progreso
         </Badge>
-        <h2 className="text-2xl md:text-3xl font-bold mb-1">{t.progress_continue}</h2>
-        <p className="text-muted-foreground text-sm">{t.progress_saved_auto}</p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-1">Continúa donde lo dejaste</h2>
+        <p className="text-muted-foreground text-sm">Tu avance se guarda automáticamente en este dispositivo</p>
       </div>
 
       <Card className="border-border/60 overflow-hidden">
@@ -41,15 +42,15 @@ export function ProgressDashboard() {
                   <Trophy className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="font-bold text-lg">{stats.totalPercent}% {t.progress_completed}</div>
+                  <div className="font-bold text-lg">{stats.totalPercent}% completado</div>
                   <div className="text-xs text-muted-foreground">
-                    {stats.aiCompleted + stats.officeCompleted} {t.progress_of_lessons.replace('{total}', String(stats.aiTotal + stats.officeTotal))}
+                    {stats.aiCompleted + stats.officeCompleted} de {stats.aiTotal + stats.officeTotal} lecciones
                   </div>
                 </div>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-bold gradient-text">{stats.coursesCompleted + stats.modulesCompleted}</div>
-                <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{t.progress_finished}</div>
+                <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Completados</div>
               </div>
             </div>
             <div className="h-2.5 bg-muted rounded-full overflow-hidden">
@@ -66,7 +67,7 @@ export function ProgressDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-border">
             <StatCard
               icon={Sparkles}
-              label={`${t.course}s IA`}
+              label="Cursos IA"
               value={`${stats.aiCompleted}/${stats.aiTotal}`}
               percent={stats.aiPercent}
               color="text-fuchsia-600"
@@ -84,8 +85,8 @@ export function ProgressDashboard() {
             />
             <StatCard
               icon={FileText}
-              label={t.nav_cv}
-              value={stats.hasCV ? t.progress_cv_created : t.progress_cv_none}
+              label="Tu CV"
+              value={stats.hasCV ? '✓ Creado' : 'Sin crear'}
               percent={stats.hasCV ? 100 : 0}
               color="text-amber-600"
               bg="bg-amber-50 dark:bg-amber-950/30"
@@ -93,7 +94,7 @@ export function ProgressDashboard() {
             />
             <StatCard
               icon={Target}
-              label={t.progress_achievements}
+              label="Logros"
               value={`${achievements.filter((a) => a.earned).length}/${achievements.length}`}
               percent={Math.round((achievements.filter((a) => a.earned).length / achievements.length) * 100)}
               color="text-emerald-600"
@@ -105,7 +106,7 @@ export function ProgressDashboard() {
           <div className="p-4 border-t border-border bg-muted/20">
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-1.5">
               <Trophy className="h-3.5 w-3.5 text-amber-500" />
-              {t.progress_unlocked}
+              Logros desbloqueados
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
               {achievements.map((a, i) => (
@@ -128,7 +129,7 @@ export function ProgressDashboard() {
                     {a.earned && (
                       <div className="text-[9px] text-amber-600 dark:text-amber-400 flex items-center gap-0.5">
                         <CheckCircle2 className="h-2.5 w-2.5" />
-                        ✓
+                        Desbloqueado
                       </div>
                     )}
                   </div>
@@ -140,17 +141,17 @@ export function ProgressDashboard() {
           {/* Continue learning CTA */}
           <div className="p-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2">
             <div className="text-sm text-muted-foreground">
-              {ready ? t.progress_keep_learning : t.progress_loading}
+              {ready ? 'Sigue aprendiendo para desbloquear más logros' : 'Cargando progreso...'}
             </div>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" onClick={() => setActiveSection('learn-ai')} className="gap-1.5">
                 <Sparkles className="h-3.5 w-3.5" />
-                {t.progress_continue_ai}
+                Continuar IA
                 <ArrowRight className="h-3 w-3" />
               </Button>
               <Button size="sm" variant="outline" onClick={() => setActiveSection('office')} className="gap-1.5">
                 <BookOpen className="h-3.5 w-3.5" />
-                {t.progress_continue_office}
+                Continuar Office
                 <ArrowRight className="h-3 w-3" />
               </Button>
             </div>
@@ -213,42 +214,40 @@ interface Achievement {
   earned: boolean;
 }
 
-type TranslationObject = ReturnType<typeof getTranslation>;
-
-function getAchievements(stats: ProgressStats, t: TranslationObject): Achievement[] {
+function getAchievements(stats: ProgressStats): Achievement[] {
   return [
     {
       id: 'first-step',
-      title: t.achievement_first_step,
-      description: t.achievement_first_step_desc,
+      title: 'Primer paso',
+      description: 'Completa tu primera lección',
       emoji: '👣',
       earned: stats.aiCompleted + stats.officeCompleted >= 1,
     },
     {
       id: 'ai-explorer',
-      title: t.achievement_ai_explorer,
-      description: t.achievement_ai_explorer_desc,
+      title: 'Explorador IA',
+      description: 'Empieza un curso de IA',
       emoji: '🤖',
       earned: stats.coursesStarted >= 1,
     },
     {
       id: 'cv-created',
-      title: t.achievement_cv_created,
-      description: t.achievement_cv_created_desc,
+      title: 'CV Creado',
+      description: 'Crea tu currículum',
       emoji: '📝',
       earned: stats.hasCV,
     },
     {
       id: 'ai-master',
-      title: t.achievement_ai_master,
-      description: t.achievement_ai_master_desc,
+      title: 'Maestro IA',
+      description: 'Completa un curso de IA entero',
       emoji: '🎓',
       earned: stats.coursesCompleted >= 1,
     },
     {
       id: 'office-pro',
-      title: t.achievement_office_pro,
-      description: t.achievement_office_pro_desc,
+      title: 'Office Pro',
+      description: 'Completa un módulo de Office entero',
       emoji: '🏆',
       earned: stats.modulesCompleted >= 1,
     },

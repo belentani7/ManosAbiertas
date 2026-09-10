@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manos Abiertas - Educación Global Inclusiva</title>
+    <meta name="description" content="115 cursos en 39 idiomas. Educación gratuita para migrantes e inmigrantes.">
+    <meta name="theme-color" content="#FF6B35">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🤝</text></svg>">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #1A6FC4;
+            --success: #22A06B;
+            --warn: #FF9500;
+            --danger: #E34935;
+            --text: #1a1a1a;
+            --light: #f5f5f5;
+            --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* ACCESSIBILITY */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        a:focus, button:focus { outline: 3px solid var(--primary); outline-offset: 2px; }
+
+        /* HEADER */
+        header {
+            background: white;
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover { background: #e55a28; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover { background: #154fa8; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* COURSES GRID */
+        .courses {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .courses h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #ff8c42 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .course-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .course-desc {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-level {
+            display: inline-block;
+            background: var(--light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .course-badge {
+            background: var(--success);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* STATS */
+        .stats {
+            background: var(--light);
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* LOADING */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="/" class="logo">🤝 Manos Abiertas</a>
+        <nav>
+            <a href="#courses">Cursos</a>
+            <a href="#stats">Impacto</a>
+            <a href="#contact">Contacto</a>
+            <button class="btn btn-primary" onclick="scrollToCourses()">Empezar</button>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Educación Global para Todos</h1>
+        <p>115 cursos en 39 idiomas. Gratis. Accesible. Para migrantes e inmigrantes en España y el mundo.</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="scrollToCourses()">Ver Cursos</button>
+            <button class="btn" style="background: white; color: var(--primary);" onclick="alert('Más info próximamente')">Más Info</button>
+        </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="courses" id="courses">
+        <h2>Primeros Cursos (Nivel 0 - Alfabetización)</h2>
+        <div class="course-grid" id="courseGrid"></div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" id="stats">
+        <div class="stat">
+            <div class="stat-number">115</div>
+            <div class="stat-label">Cursos</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">39</div>
+            <div class="stat-label">Idiomas</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Recursos</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Accesible</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <p>&copy; 2026 Manos Abiertas. Educación es un derecho, no un privilegio.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">
+            <a href="#privacy">Privacidad</a> |
+            <a href="#terms">Términos</a> |
+            <a href="https://github.com/belentani7/ManosAbiertas">GitHub</a>
+        </p>
+    </footer>
+
+    <script>
+        // Sample Level 0 Courses
+        const courses = [
+            {
+                emoji: '🖥️',
+                title: 'Tu Primer Ordenador',
+                duration: '8h',
+                lessons: 12,
+                desc: 'Aprende a usar un ordenador desde cero. Ratón, teclado, escritorio.',
+                level: 'Principiante',
+                cert: true
+            },
+            {
+                emoji: '🔍',
+                title: 'Buscar en Google',
+                duration: '6h',
+                lessons: 10,
+                desc: 'Cómo buscar información segura en internet. Trucos y consejos.',
+                level: 'Principiante',
+                cert: true
+            },
+            {
+                emoji: '📧',
+                title: 'Email en Gmail',
+                duration: '6h',
+                lessons: 9,
+                desc: 'Crear email, enviar, recibir, adjuntos. Paso a paso.',
+                level: 'Principiante',
+                cert: true
+            },
+            {
+                emoji: '📁',
+                title: 'Carpetas y Archivos',
+                duration: '4h',
+                lessons: 7,
+                desc: 'Organizar tus documentos. Crear, guardar, buscar archivos.',
+                level: 'Principiante',
+                cert: true
+            },
+            {
+                emoji: '🔐',
+                title: 'Internet Seguro',
+                duration: '5h',
+                lessons: 8,
+                desc: 'Protege tu información. Contraseñas, phishing, privacidad.',
+                level: 'Principiante',
+                cert: true
+            }
+        ];
+
+        // Render courses
+        function renderCourses() {
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = courses.map(course => `
+                <div class="course-card">
+                    <div class="course-header">${course.emoji}</div>
+                    <div class="course-body">
+                        <div class="course-title">${course.title}</div>
+                        <div class="course-meta">⏱️ ${course.duration} • 📚 ${course.lessons} lecciones</div>
+                        <div class="course-desc">${course.desc}</div>
+                        <div class="course-footer">
+                            <span class="course-level">${course.level}</span>
+                            ${course.cert ? '<span class="course-badge">✓ Certificado</span>' : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Smooth scroll
+        function scrollToCourses() {
+            document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', renderCourses);
+
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>

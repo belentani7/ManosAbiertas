@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es" data-guide-id="MA-TOOL-4836">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#b45309">
+  <title>Tareas programadas: reforzar seguridad para equipo compartido | Manos Abiertas</title>
+  <meta name="description" content="Guia basica offline de Linux para reforzar seguridad Tareas programadas.">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <style>:root{--accent:#b45309;--tint:#fff4df}</style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="masthead"><span>Manos Abiertas / Herramientas basicas</span><strong>Linux</strong></header>
+  <main id="contenido" class="shell">
+    <p class="eyebrow">Automatizacion · equipo compartido</p>
+    <h1>Tareas programadas</h1>
+    <p class="lede">Objetivo: <strong>reforzar seguridad</strong>. Reduce permisos y conserva solo accesos necesarios.</p>
+    <section aria-labelledby="pasos">
+      <h2 id="pasos">Ruta segura</h2>
+      <ol class="checklist">
+        <li><label><input type="checkbox"> Anota estado, version y problema observado.</label></li>
+        <li><label><input type="checkbox"> Ejecuta primero la comprobacion sin cambios.</label></li>
+        <li><label><input type="checkbox"> Guarda resultado y elimina datos personales antes de compartir.</label></li>
+        <li><label><input type="checkbox"> Confirma que el objetivo se cumple y documenta como volver atras.</label></li>
+      </ol>
+    </section>
+    <section class="command" aria-labelledby="comando">
+      <h2 id="comando">Comprobacion basica</h2>
+      <pre><code>crontab -l 2&gt;/dev/null || true</code></pre>
+      <button type="button" data-copy>Copiar comprobacion</button>
+      <p class="status" role="status" aria-live="polite"></p>
+    </section>
+    <aside><strong>Limite:</strong> esta pagina ensena una comprobacion basica. Revisa documentacion oficial antes de cambiar seguridad, cifrado, permisos o datos.</aside>
+    <footer><span>MA-TOOL-4836</span><span>linux/cron/secure/shared-device</span></footer>
+  </main>
+  <script src="../assets/app.js" defer></script>
+</body>
+</html>

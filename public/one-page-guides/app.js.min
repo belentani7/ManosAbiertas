@@ -1,0 +1,1 @@
+document.querySelector("[data-print]")?.addEventListener("click",()=>window.print()),document.querySelector("[data-reset]")?.addEventListener("click",()=>{document.querySelectorAll("input").forEach(e=>e.checked=!1),document.querySelectorAll("[contenteditable]").forEach(e=>e.textContent="")});
