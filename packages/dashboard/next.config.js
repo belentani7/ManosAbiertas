@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@belentani/ui'],
   images: {
     domains: ['images.unsplash.com', 'lh3.googleusercontent.com'],
   },
