@@ -1,0 +1,106 @@
+{
+  "tema": "empleo-y-paro",
+  "portal": "manosabiertas",
+  "registros": [
+    {
+      "fuente": "World Bank",
+      "spec": "worldbank:SL.UEM.TOTL.ZS:Desempleo (% poblacion activa)",
+      "ok": true,
+      "datos": [
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2025",
+          "valor": 5.97
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2024",
+          "valor": 6.801
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2023",
+          "valor": 7.947
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2022",
+          "valor": 9.231
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2021",
+          "valor": 13.158
+        },
+        {
+          "indicador": "Desempleo (% poblacion activa)",
+          "pais": "Brazil",
+          "anio": "2020",
+          "valor": 13.697
+        }
+      ]
+    },
+    {
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:empleo",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": [
+            {
+              "_value": "Ofertas de empleo público y convocatorias del Ayuntamiento",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/l01281317-ofertas-de-empleo-publico-y-convocatorias-del-ayuntamiento",
+          "descripcion": "Relación de ofertas de empleo público y convocatorias realizadas por el Ayuntamiento de San Lorenzo de El Escorial. "
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Estudio de satisfacción de las personas usuarias del Programa Camino al Empleo",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/l01280796-estudio-de-satisfaccion-de-las-personas-usuarias-del-programa-camino-al-empleo",
+          "descripcion": "El Ayuntamiento de Madrid, a través de la Agencia para el Empleo, ha puesto en marcha el programa Camino al Empleo, orientado a mejorar la empleabilidad de las "
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Afiliaciones medias mensuales en empleo público según ámbito territorial y sexos. Provincias de Canarias y sexos",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a05003423-afiliaciones-medias-mensuales-en-empleo-publico-segun-ambito-territorial-y-sexos-provincias-de-canarias-y-sexos",
+          "descripcion": "En esta tabla se ofrecen mensualmente desde enero de 2013 datos de afiliaciones medias mensuales en empleo público por sexos y ámbito territorial. La informació"
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Afiliaciones según situaciones en el empleo, actividades características del turismo y nacionalidades. Lugar de cotización. Canarias y meses",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a05003423-afiliaciones-segun-situaciones-en-el-empleo-actividades-caracteristicas-del-turismo-y-nacionalidades-lugar-de-cotizacion-canarias-y-meses",
+          "descripcion": "En esta tabla se ofrecen mensualmente desde marzo de 2012 datos de afiliaciones a la Seguridad Social según lugar de cotización, situaciones en el empleo, activ"
+        },
+        {
+          "titulo": [
+            {
+              "_value": "Afiliaciones según situaciones en el empleo, actividades características del turismo y nacionalidades. Lugar de cotización. Islas de Canarias y meses",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a05003423-afiliaciones-segun-situaciones-en-el-empleo-actividades-caracteristicas-del-turismo-y-nacionalidades-lugar-de-cotizacion-islas-de-canarias-y-meses",
+          "descripcion": "En esta tabla se ofrecen mensualmente desde marzo de 2012 datos de afiliaciones a la Seguridad Social según lugar de cotización, situaciones en el empleo, activ"
+        }
+      ]
+    }
+  ]
+}

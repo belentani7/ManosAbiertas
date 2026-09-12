@@ -1,0 +1,100 @@
+{
+  "tema": "educacion-y-formacion",
+  "portal": "manosabiertas",
+  "registros": [
+    {
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:educacion",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": [
+            {
+              "_value": "Emakumeen eta gizonen arteko orduko soldata-aldea eta batez besteko irabaziak, hezkuntza-mailaren arabera. EAE eta Espainia. 2002 eta 2006",
+              "_lang": "eu"
+            },
+            {
+              "_value": "Ganancia media y brecha salarial por hora entre mujeres y hombres según nivel de educacion. CAE y España. 2002 y 2006",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a16003011-ganancia-media-y-brecha-salarial-por-hora-entre-mujeres-y-hombres-segunnivel-de-educacion-cae-y-espana-2002-y-20061",
+          "descripcion": "Emakumeen eta gizonen arteko orduko soldata-aldea eta batez besteko irabaziak, hezkuntza-mailaren arabera. EAE eta Espainia. 2002 eta 2006."
+        },
+        {
+          "titulo": [
+            {
+              "_value": "2020ko Bizkaiko osabide hezkuntzarako partzuergoa kontratuen erregistroa",
+              "_lang": "eu"
+            },
+            {
+              "_value": "Registro de contratos de Consorcio para la educacion compensatoria de Bizkaia del 2020",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/a16003011-registro-de-contratos-de-consorcio-para-la-educacion-compensatoria-de-bizkaia-del-2020",
+          "descripcion": "El Registro de Contratos del Sector Público constituye el sistema oficial central de información sobre la contratación pública y, como tal, el soporte para el c"
+        },
+        {
+          "titulo": [
+            {
+              "_value": "centros de educacion",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/l03380010-centros-de-educacion",
+          "descripcion": "Encuesta de Infraestructuras de Equipamiento Local (EIEL) - Datos sociosanitarios Año 2016"
+        },
+        {
+          "titulo": [
+            {
+              "_value": "centros de educacion",
+              "_lang": "es"
+            }
+          ],
+          "url": "https://datos.gob.es/catalogo/l03380010-centros-de-educacion1",
+          "descripcion": "**Encuesta de Infraestructuras de Equipamiento Local (EIEL)** **- Año 2014****Datos sociosanitarios**  \nLa Encuesta de Infraestructura y Equipamientos Locales ("
+        }
+      ]
+    },
+    {
+      "fuente": "OpenStax",
+      "spec": "openstax:english",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": "Additive Manufacturing Essentials",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "Algebra 1",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "Algebra and Trigonometry",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "Algebra and Trigonometry 2e",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "American Government",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "American Government 2e",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "American Government 3e",
+          "url": "https://openstax.org/details/books/None"
+        },
+        {
+          "titulo": "American Government 4e",
+          "url": "https://openstax.org/details/books/None"
+        }
+      ]
+    }
+  ]
+}

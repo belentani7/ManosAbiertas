@@ -1,0 +1,72 @@
+{
+  "portal": "manosabiertas",
+  "repo": "belentani7/ManosAbiertas",
+  "dominio": "Integracion, derechos y tramites (ES)",
+  "generado_utc": "2026-09-12T21:24:28+00:00",
+  "orden_idiomas": [
+    "pt",
+    "es",
+    "en",
+    "ca"
+  ],
+  "fuentes": [
+    {
+      "tema": "empleo-y-paro",
+      "fuente": "World Bank",
+      "spec": "worldbank:SL.UEM.TOTL.ZS:Desempleo (% poblacion activa)",
+      "ok": true
+    },
+    {
+      "tema": "empleo-y-paro",
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:empleo",
+      "ok": true
+    },
+    {
+      "tema": "educacion-y-formacion",
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:educacion",
+      "ok": true
+    },
+    {
+      "tema": "educacion-y-formacion",
+      "fuente": "OpenStax",
+      "spec": "openstax:english",
+      "ok": true
+    },
+    {
+      "tema": "vivienda-y-servicios",
+      "fuente": "datos.gob.es",
+      "spec": "datosgob:vivienda",
+      "ok": true
+    },
+    {
+      "tema": "contexto-demografico-ue",
+      "fuente": "Eurostat",
+      "spec": "eurostat_demo",
+      "ok": true
+    }
+  ],
+  "temas": [
+    {
+      "tema": "empleo-y-paro",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "educacion-y-formacion",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "vivienda-y-servicios",
+      "fuentes_ok": 1,
+      "fuentes_total": 1
+    },
+    {
+      "tema": "contexto-demografico-ue",
+      "fuentes_ok": 1,
+      "fuentes_total": 1
+    }
+  ]
+}
