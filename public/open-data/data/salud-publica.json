@@ -1,0 +1,44 @@
+{
+  "tema": "salud-publica",
+  "portal": "manosabiertas",
+  "registros": [
+    {
+      "fuente": "PubMed",
+      "spec": "pubmed:public health migration",
+      "ok": true,
+      "datos": [
+        {
+          "titulo": "Association between delivery-food consumption frequency and urinary bisphenol concentrations among Korean adults: a nationally representative study (Korean National Environmental Health Survey cycle 5, 2021-2023).",
+          "revista": "Annals of occupational and environmental medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42740345/"
+        },
+        {
+          "titulo": "State of the Art in Neuromodulation or Spinal Cord Stimulation Therapy.",
+          "revista": "Journal of clinical medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42739579/"
+        },
+        {
+          "titulo": "The Dual Face of Gingival Mesenchymal Stem Cell Paracrine Signalling in Oral Squamous Cell Carcinoma: A Pro-Tumour Transcriptional Programme and a Hypothesis-Generating Drug-Repurposing Screen.",
+          "revista": "Cells",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42738835/"
+        },
+        {
+          "titulo": "MAP3K1 Integrates Genetic and Environmental Signals in Eyelid Morphogenesis.",
+          "revista": "Cells",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42738802/"
+        },
+        {
+          "titulo": "Green Analytical Workflows: Recent Advances in Sample Preparation and Instrumental Analysis of Food Contact Materials.",
+          "revista": "Molecules (Basel, Switzerland)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42738722/"
+        }
+      ]
+    },
+    {
+      "fuente": "World Bank",
+      "spec": "worldbank:SH.XPD.CHEX.GD.ZS:Gasto en salud (% PIB)",
+      "ok": false,
+      "error": "The read operation timed out"
+    }
+  ]
+}

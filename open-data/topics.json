@@ -2,7 +2,7 @@
   "portal": "manosabiertas",
   "repo": "belentani7/ManosAbiertas",
   "dominio": "Integracion, derechos y tramites (ES)",
-  "generado_utc": "2026-09-12T22:14:55+00:00",
+  "generado_utc": "2026-09-15T14:34:04+00:00",
   "orden_idiomas": [
     "pt",
     "es",
@@ -45,6 +45,31 @@
       "fuente": "Eurostat",
       "spec": "eurostat_demo",
       "ok": true
+    },
+    {
+      "tema": "salud-publica",
+      "fuente": "PubMed",
+      "spec": "pubmed:public health migration",
+      "ok": true
+    },
+    {
+      "tema": "salud-publica",
+      "fuente": "World Bank",
+      "spec": "worldbank:SH.XPD.CHEX.GD.ZS:Gasto en salud (% PIB)",
+      "ok": false,
+      "error": "The read operation timed out"
+    },
+    {
+      "tema": "derechos-y-asilo",
+      "fuente": "Wikipedia ES",
+      "spec": "mediawiki:es.wikipedia.org:derecho de asilo",
+      "ok": true
+    },
+    {
+      "tema": "derechos-y-asilo",
+      "fuente": "REST Countries",
+      "spec": "restcountries",
+      "ok": true
     }
   ],
   "temas": [
@@ -67,6 +92,16 @@
       "tema": "contexto-demografico-ue",
       "fuentes_ok": 1,
       "fuentes_total": 1
+    },
+    {
+      "tema": "salud-publica",
+      "fuentes_ok": 1,
+      "fuentes_total": 2
+    },
+    {
+      "tema": "derechos-y-asilo",
+      "fuentes_ok": 2,
+      "fuentes_total": 2
     }
   ]
 }
