@@ -12,31 +12,32 @@
   "idiomas": {
     "pt": {
       "voz": "pt-BR-FranciscaNeural",
-      "guion": "Bem-vindo ao portal de referência manosabiertas. Domínio: Integracion, derechos y tramites (ES). Reúne 4 temas construídos a partir de 4 fontes de dados abertos verificadas: empleo y paro, educacion y formacion, vivienda y servicios, contexto demografico ue. Tudo gratuito, sem credenciais, e funciona sem ligação à Internet.",
+      "guion": "Bem-vindo ao portal de referência manosabiertas. Domínio: Integração, direitos e trâmites (ES). Reúne 4 temas construídos a partir de 4 fontes de dados abertos verificadas: emprego e desemprego, educação e formação, habitação e serviços, contexto demográfico da UE. Tudo gratuito, sem credenciais, e funciona sem ligação à Internet.",
       "archivo": "voces/pt/bienvenida.mp3",
-      "bytes": 147456,
-      "sha256": "58c1e6ebd5a61780eaf120a4ca01a590085bc041bead14da8070b4a46b0fbe46"
+      "bytes": 141120,
+      "sha256": "3428e55c8cc077c1f8195535982eca2c0d6115b1614b3f53daf214a9ba7870c3"
     },
     "es": {
       "voz": "es-ES-ElviraNeural",
-      "guion": "Bienvenido al portal de referencia manosabiertas. Dominio: Integracion, derechos y tramites (ES). Reúne 4 temas construidos a partir de 4 fuentes de datos abiertos verificadas: empleo y paro, educacion y formacion, vivienda y servicios, contexto demografico ue. Todo gratuito, sin credenciales, y funciona sin conexión.",
+      "guion": "Bienvenido al portal de referencia manosabiertas. Dominio: Integración, derechos y trámites (ES). Reúne 4 temas construidos a partir de 4 fuentes de datos abiertos verificadas: empleo y paro, educación y formación, vivienda y servicios, contexto demográfico UE. Todo gratuito, sin credenciales, y funciona sin conexión.",
       "archivo": "voces/es/bienvenida.mp3",
-      "bytes": 135648,
-      "sha256": "e0bd822f00cf678ad4f422a535db747668e5ce976d34648bf3c770514f9e4254"
+      "bytes": 135504,
+      "sha256": "5fcf4131af3c70b19929f288baaf8c33d7764166855a8148c098fde43b197a29"
     },
     "en": {
       "voz": "en-US-AriaNeural",
-      "guion": "Welcome to the manosabiertas reference portal. Domain: Integracion, derechos y tramites (ES). It brings together 4 topics built from 4 verified open data sources: empleo y paro, educacion y formacion, vivienda y servicios, contexto demografico ue. All free, no credentials, and it works offline.",
+      "guion": "Welcome to the manosabiertas reference portal. Domain: Integration, rights and procedures (ES). It brings together 4 topics built from 4 verified open data sources: employment and unemployment, education and training, housing and services, EU demographic context. All free, no credentials, and it works offline.",
       "archivo": "voces/en/bienvenida.mp3",
-      "bytes": 143136,
-      "sha256": "19ed4953f598b6c4de22044323a70bfd043270d2dd02c1d2b749a24edce5759a"
+      "bytes": 140256,
+      "sha256": "c4db96e9bc64a4328b88d4c8e7e91d98c74d9d6f8b224a5ceb299a73eec76ef1"
     },
     "ca": {
       "voz": "ca-ES-JoanaNeural",
-      "guion": "Benvingut al portal de referència manosabiertas. Domini: Integracion, derechos y tramites (ES). Aplega 4 temes construïts a partir de 4 fonts de dades obertes verificades: empleo y paro, educacion y formacion, vivienda y servicios, contexto demografico ue. Tot gratuït, sense credencials, i funciona sense connexió.",
+      "guion": "Benvingut al portal de referència manosabiertas. Domini: Integració, drets i tràmits (ES). Aplega 4 temes construïts a partir de 4 fonts de dades obertes verificades: ocupació i atur, educació i formació, habitatge i serveis, context demogràfic de la UE. Tot gratuït, sense credencials, i funciona sense connexió.",
       "archivo": "voces/ca/bienvenida.mp3",
-      "bytes": 181296,
-      "sha256": "d8286cb43d892cee1b7d1b98880a8bdc03b2cbb245e01571c29ad92f03649d67"
+      "bytes": 172512,
+      "sha256": "0ddfda71ff257c4488593344adc76f5c02ca87249acf8b6d05ed9f4641303242"
     }
-  }
+  },
+  "nota_correccion": "2026-09-15: guiones PT/EN/CA contenian dominio y temas en espanol; traducidos a cada idioma (con tildes) y audio regenerado."
 }
