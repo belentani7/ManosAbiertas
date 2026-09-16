@@ -28,7 +28,7 @@
             box-sizing: border-box;
         }
 
-        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -159,7 +159,6 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s;
-            cursor: pointer;
         }
 
         .course-card:hover {
@@ -318,7 +317,7 @@
             <a href="#courses">Cursos</a>
             <a href="#stats">Impacto</a>
             <a href="#contact">Contacto</a>
-            <button class="btn btn-primary" onclick="scrollToCourses()">Empezar</button>
+            <button class="btn btn-primary" data-scroll-courses>Empezar</button>
         </nav>
     </header>
 
@@ -327,14 +326,14 @@
         <h1>Educación Global para Todos</h1>
         <p>115 cursos en 39 idiomas. Gratis. Accesible. Para migrantes e inmigrantes en España y el mundo.</p>
         <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="scrollToCourses()">Ver Cursos</button>
-            <button class="btn" style="background: white; color: var(--primary);" onclick="alert('Más info próximamente')">Más Info</button>
+            <button class="btn btn-primary" data-scroll-courses>Ver Cursos</button>
+            <a class="btn" style="background: white; color: var(--primary);" href="https://github.com/belentani7/ManosAbiertas" rel="noopener">Ver en GitHub</a>
         </div>
     </section>
 
     <!-- COURSES -->
     <section class="courses" id="courses">
-        <h2>Primeros Cursos (Nivel 0 - Alfabetización)</h2>
+        <h2>Muestra de cursos (Nivel 0 · Alfabetización)</h2>
         <div class="course-grid" id="courseGrid"></div>
     </section>
 
@@ -358,13 +357,25 @@
         </div>
     </section>
 
+    <!-- PRIVACY -->
+    <section id="privacy" style="max-width:1200px;margin:2rem auto 0;padding:0 2rem;">
+        <h2>Privacidad</h2>
+        <p>Web estática y educativa. No hay cuentas ni cookies de seguimiento. El progreso, si existe, se guarda solo en tu navegador (almacenamiento local) y no se envía a ningún servidor.</p>
+    </section>
+
+    <!-- TERMS -->
+    <section id="terms" style="max-width:1200px;margin:2rem auto 0;padding:0 2rem;">
+        <h2>Términos de uso</h2>
+        <p>Los cursos y recursos son gratuitos y de uso educativo. Verifica siempre la información importante en una fuente oficial. El material de terceros conserva su licencia original.</p>
+    </section>
+
     <!-- FOOTER -->
     <footer id="contact">
         <p>&copy; 2026 Manos Abiertas. Educación es un derecho, no un privilegio.</p>
         <p style="margin-top: 1rem; font-size: 0.9rem;">
             <a href="#privacy">Privacidad</a> |
             <a href="#terms">Términos</a> |
-            <a href="https://github.com/belentani7/ManosAbiertas">GitHub</a>
+            <a href="https://github.com/belentani7/ManosAbiertas" rel="noopener">GitHub</a>
         </p>
     </footer>
 
@@ -418,18 +429,25 @@
             }
         ];
 
+        // Escape untrusted values before inserting into the DOM
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+        }
+
         // Render courses
         function renderCourses() {
             const grid = document.getElementById('courseGrid');
             grid.innerHTML = courses.map(course => `
                 <div class="course-card">
-                    <div class="course-header">${course.emoji}</div>
+                    <div class="course-header">${escapeHtml(course.emoji)}</div>
                     <div class="course-body">
-                        <div class="course-title">${course.title}</div>
-                        <div class="course-meta">⏱️ ${course.duration} • 📚 ${course.lessons} lecciones</div>
-                        <div class="course-desc">${course.desc}</div>
+                        <div class="course-title">${escapeHtml(course.title)}</div>
+                        <div class="course-meta">⏱️ ${escapeHtml(course.duration)} • 📚 ${escapeHtml(course.lessons)} lecciones</div>
+                        <div class="course-desc">${escapeHtml(course.desc)}</div>
                         <div class="course-footer">
-                            <span class="course-level">${course.level}</span>
+                            <span class="course-level">${escapeHtml(course.level)}</span>
                             ${course.cert ? '<span class="course-badge">✓ Certificado</span>' : ''}
                         </div>
                     </div>
@@ -443,7 +461,12 @@
         }
 
         // Init
-        document.addEventListener('DOMContentLoaded', renderCourses);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCourses();
+            document.querySelectorAll('[data-scroll-courses]').forEach(btn => {
+                btn.addEventListener('click', scrollToCourses);
+            });
+        });
 
         // Service Worker
         if ('serviceWorker' in navigator) {

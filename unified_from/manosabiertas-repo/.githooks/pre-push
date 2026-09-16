@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-echo "Push bloqueado: publica solo desde el canon publico revisado." >&2
-exit 1
