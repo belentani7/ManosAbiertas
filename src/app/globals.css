@@ -53,94 +53,94 @@
 :root {
   --radius: 0.75rem;
 
-  /* Warm, welcoming palette - light mode */
-  --background: oklch(0.99 0.008 80);
-  --foreground: oklch(0.22 0.02 50);
+  /* White + Orange — Manos Abiertas brand */
+  --background: oklch(0.995 0.002 90);
+  --foreground: oklch(0.20 0.02 50);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.02 50);
+  --card-foreground: oklch(0.20 0.02 50);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.02 50);
+  --popover-foreground: oklch(0.20 0.02 50);
 
-  /* Terracota warm - main brand */
-  --primary: oklch(0.55 0.16 45);
-  --primary-foreground: oklch(0.99 0.01 80);
+  /* Vibrant orange — #ff6a1f */
+  --primary: oklch(0.65 0.22 42);
+  --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.96 0.02 75);
-  --secondary-foreground: oklch(0.30 0.04 50);
+  --secondary: oklch(0.97 0.01 70);
+  --secondary-foreground: oklch(0.25 0.03 50);
 
-  --muted: oklch(0.96 0.01 80);
-  --muted-foreground: oklch(0.50 0.02 60);
+  --muted: oklch(0.97 0.005 80);
+  --muted-foreground: oklch(0.48 0.02 55);
 
-  /* Saffron/amber accent */
-  --accent: oklch(0.92 0.05 75);
-  --accent-foreground: oklch(0.30 0.06 50);
+  /* Warm amber — #ffb347 */
+  --accent: oklch(0.82 0.13 72);
+  --accent-foreground: oklch(0.22 0.04 50);
 
-  --destructive: oklch(0.58 0.22 25);
-  --border: oklch(0.90 0.015 70);
-  --input: oklch(0.92 0.015 70);
-  --ring: oklch(0.55 0.16 45);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.92 0.008 70);
+  --input: oklch(0.94 0.008 70);
+  --ring: oklch(0.65 0.22 42);
 
-  --chart-1: oklch(0.60 0.18 45);
-  --chart-2: oklch(0.70 0.15 70);
+  --chart-1: oklch(0.65 0.22 42);
+  --chart-2: oklch(0.82 0.13 72);
   --chart-3: oklch(0.55 0.13 160);
-  --chart-4: oklch(0.65 0.16 280);
-  --chart-5: oklch(0.72 0.14 30);
+  --chart-4: oklch(0.60 0.16 280);
+  --chart-5: oklch(0.70 0.14 30);
 
-  --sidebar: oklch(0.98 0.01 75);
-  --sidebar-foreground: oklch(0.22 0.02 50);
-  --sidebar-primary: oklch(0.55 0.16 45);
-  --sidebar-primary-foreground: oklch(0.99 0.01 80);
-  --sidebar-accent: oklch(0.95 0.02 75);
-  --sidebar-accent-foreground: oklch(0.30 0.04 50);
-  --sidebar-border: oklch(0.90 0.015 70);
-  --sidebar-ring: oklch(0.55 0.16 45);
+  --sidebar: oklch(0.99 0.003 80);
+  --sidebar-foreground: oklch(0.20 0.02 50);
+  --sidebar-primary: oklch(0.65 0.22 42);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.96 0.02 70);
+  --sidebar-accent-foreground: oklch(0.25 0.03 50);
+  --sidebar-border: oklch(0.92 0.008 70);
+  --sidebar-ring: oklch(0.65 0.22 42);
 
   /* Brand colors */
-  --brand-warm: oklch(0.55 0.16 45);
-  --brand-clay: oklch(0.62 0.12 55);
-  --brand-saffron: oklch(0.75 0.15 75);
+  --brand-warm: oklch(0.65 0.22 42);
+  --brand-clay: oklch(0.72 0.17 52);
+  --brand-saffron: oklch(0.82 0.13 72);
   --brand-olive: oklch(0.55 0.10 110);
   --brand-teal: oklch(0.55 0.10 180);
 }
 
 .dark {
-  --background: oklch(0.18 0.015 50);
+  --background: oklch(0.16 0.01 50);
   --foreground: oklch(0.96 0.01 80);
-  --card: oklch(0.23 0.02 50);
+  --card: oklch(0.21 0.015 50);
   --card-foreground: oklch(0.96 0.01 80);
-  --popover: oklch(0.23 0.02 50);
+  --popover: oklch(0.21 0.015 50);
   --popover-foreground: oklch(0.96 0.01 80);
-  --primary: oklch(0.70 0.16 50);
-  --primary-foreground: oklch(0.18 0.015 50);
-  --secondary: oklch(0.30 0.02 55);
+  --primary: oklch(0.72 0.20 45);
+  --primary-foreground: oklch(0.14 0.01 50);
+  --secondary: oklch(0.28 0.015 55);
   --secondary-foreground: oklch(0.96 0.01 80);
-  --muted: oklch(0.30 0.02 55);
-  --muted-foreground: oklch(0.72 0.02 70);
-  --accent: oklch(0.35 0.04 60);
-  --accent-foreground: oklch(0.96 0.01 80);
-  --destructive: oklch(0.68 0.20 25);
+  --muted: oklch(0.28 0.015 55);
+  --muted-foreground: oklch(0.70 0.02 70);
+  --accent: oklch(0.78 0.14 65);
+  --accent-foreground: oklch(0.14 0.01 50);
+  --destructive: oklch(0.65 0.20 25);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.70 0.16 50);
-  --chart-1: oklch(0.70 0.18 45);
-  --chart-2: oklch(0.75 0.15 70);
+  --ring: oklch(0.72 0.20 45);
+  --chart-1: oklch(0.72 0.20 45);
+  --chart-2: oklch(0.78 0.14 65);
   --chart-3: oklch(0.65 0.13 160);
   --chart-4: oklch(0.70 0.16 280);
   --chart-5: oklch(0.75 0.14 30);
-  --sidebar: oklch(0.23 0.02 50);
+  --sidebar: oklch(0.21 0.015 50);
   --sidebar-foreground: oklch(0.96 0.01 80);
-  --sidebar-primary: oklch(0.70 0.16 50);
-  --sidebar-primary-foreground: oklch(0.18 0.015 50);
-  --sidebar-accent: oklch(0.30 0.02 55);
+  --sidebar-primary: oklch(0.72 0.20 45);
+  --sidebar-primary-foreground: oklch(0.14 0.01 50);
+  --sidebar-accent: oklch(0.28 0.015 55);
   --sidebar-accent-foreground: oklch(0.96 0.01 80);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.70 0.16 50);
+  --sidebar-ring: oklch(0.72 0.20 45);
 
-  --brand-warm: oklch(0.70 0.16 50);
-  --brand-clay: oklch(0.68 0.12 55);
-  --brand-saffron: oklch(0.78 0.15 75);
+  --brand-warm: oklch(0.72 0.20 45);
+  --brand-clay: oklch(0.70 0.15 55);
+  --brand-saffron: oklch(0.80 0.14 72);
   --brand-olive: oklch(0.68 0.10 110);
   --brand-teal: oklch(0.68 0.10 180);
 }
@@ -225,16 +225,16 @@
 
   .gradient-hero {
     background:
-      radial-gradient(ellipse at top left, oklch(0.92 0.08 70 / 0.6), transparent 50%),
-      radial-gradient(ellipse at bottom right, oklch(0.88 0.10 50 / 0.5), transparent 50%),
-      linear-gradient(180deg, oklch(0.99 0.008 80), oklch(0.97 0.015 75));
+      radial-gradient(ellipse at top left, oklch(0.90 0.10 50 / 0.25), transparent 50%),
+      radial-gradient(ellipse at bottom right, oklch(0.85 0.12 72 / 0.20), transparent 50%),
+      linear-gradient(180deg, oklch(0.995 0.002 90), oklch(0.98 0.005 80));
   }
 
   .dark .gradient-hero {
     background:
-      radial-gradient(ellipse at top left, oklch(0.35 0.08 50 / 0.4), transparent 50%),
-      radial-gradient(ellipse at bottom right, oklch(0.30 0.10 70 / 0.4), transparent 50%),
-      linear-gradient(180deg, oklch(0.18 0.015 50), oklch(0.20 0.02 55));
+      radial-gradient(ellipse at top left, oklch(0.35 0.10 45 / 0.3), transparent 50%),
+      radial-gradient(ellipse at bottom right, oklch(0.30 0.08 65 / 0.3), transparent 50%),
+      linear-gradient(180deg, oklch(0.16 0.01 50), oklch(0.18 0.015 55));
   }
 
   .card-hover {
@@ -242,7 +242,7 @@
   }
   .card-hover:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -8px oklch(0.55 0.16 45 / 0.18);
+    box-shadow: 0 12px 24px -8px oklch(0.65 0.22 42 / 0.18);
   }
 
   .glass {
