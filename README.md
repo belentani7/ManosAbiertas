@@ -1,3 +1,5 @@
+[![Open in VS Code](https://img.shields.io/badge/Open_in-VS_Code-007ACC?logo=visualstudiocode&logoColor=white)](https://github.dev/belentani7/ManosAbiertas)
+
 # ManosAbiertas
 
 Proyecto ManosAbiertas del ecosistema Belentani.
