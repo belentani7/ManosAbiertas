@@ -1,1 +1,97 @@
-<!DOCTYPE html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Manos Abiertas</title><style>body{font-family:system-ui,Segoe UI,Arial;background:#0b0b12;color:#eaeaf0;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0}a{color:#7dd3fc}</style></head><body><main style='text-align:center;max-width:640px'><h1>Manos Abiertas</h1><p><a href="campus.html">Campus</a> · <a href="ecosistema.html">Ecosistema</a></p><p><a href="https://manos-abiertas-psi.vercel.app">App (Vercel)</a></p></main></body></html>
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c1018">
+<title>Manos Abiertas - Formacao gratuita para quem chega</title>
+<meta name="description" content="Formacao gratuita e sem registo: alfabetizacao em IA, ofimatica e idiomas. Funciona sem conexao e nao pede dados pessoais.">
+<link rel="canonical" href="https://belentani7.github.io/ManosAbiertas/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manos Abiertas - Formacao gratuita para quem chega">
+<meta property="og:description" content="Alfabetizacao em IA, ofimatica e idiomas. Gratuito, sem registo e offline-first.">
+<meta property="og:url" content="https://belentani7.github.io/ManosAbiertas/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c1018'/%3E%3Cpath d='M8 20c4-8 12-8 16 0' fill='none' stroke='%237dd3fc' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./campus/tokens.css">
+<style>
+.env{width:min(66rem,100% - 2rem);margin:0 auto;padding:clamp(2rem,6vw,5rem) 0}
+.eyebrow{font-family:var(--font-mono);font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:.6rem 0 1rem;font-weight:800}
+.lead{font-size:var(--fs-lg);color:var(--text-2);max-width:56ch;line-height:1.6}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(19rem,100%),1fr));margin:3rem 0}
+.card{display:block;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;text-decoration:none;color:inherit}
+.card:hover{border-color:var(--accent)}
+.card h2{font-size:var(--fs-lg);margin:0 0 .5rem}
+.card p{color:var(--text-2);font-size:var(--fs-sm);line-height:1.55;margin:0 0 1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;font-family:var(--font-mono);font-size:var(--fs-xs)}
+.tag{border:1px solid var(--border);border-radius:999px;padding:.15rem .6rem;color:var(--text-3)}
+.acciones{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:var(--r-md);background:var(--accent);color:#0c1018;font-weight:700;text-decoration:none}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-1)}
+.meta{color:var(--text-3);font-size:var(--fs-sm);line-height:1.6}
+footer{border-top:1px solid var(--border);margin-top:4rem;padding-top:1.5rem;color:var(--text-3);font-size:var(--fs-sm)}
+</style>
+</head>
+<body>
+<main class="env">
+  <p class="eyebrow">Manos Abiertas</p>
+  <h1>Formacao gratuita para quem acaba de chegar</h1>
+  <p class="lead">Tres cursos completos para aprender o que faz falta no primeiro ano:
+  inteligencia artificial sem humo, ofimatica para o trabalho, e os falsos amigos entre
+  portugues e espanhol. Sem matricula, sem datos personales, e funciona sem conexao.</p>
+  <div class="acciones">
+    <a class="btn" href="./campus/">Abrir o campus</a>
+    <a class="btn ghost" href="./ecosistema.html">Ecosistema</a>
+  </div>
+  <section>
+    <h2 style="font-size:var(--fs-xl);margin:3rem 0 .6rem">Quem somos</h2>
+    <p class="meta">Quem somos: uma plataforma aberta e sem fins lucrativos para quem
+    chega a um pais novo e precisa de ferramentas praticas. Nao pedimos conta nem correio,
+    nao ha publicidade e nao ha seguimento. O progresso guarda-se no teu proprio navegador.
+    Todo o material tem licenca aberta e cita as suas fontes.</p>
+  </section>
+  <h2 style="font-size:var(--fs-xl);margin:3rem 0 .6rem">Cursos</h2>
+  <section class="grid">
+    <a class="card" href="campus/cursos/alfabetizacion-ia/index.html">
+      <h2>Alfabetizacion en IA</h2>
+      <p>Entender que hace y que no hace la inteligencia artificial, sin humo y sin miedo.</p>
+      <div class="tags">
+        <span class="tag">LLM</span>
+        <span class="tag">Sesgos</span>
+        <span class="tag">Verificacion</span>
+        <span class="tag">Uso responsable</span>
+      </div>
+    </a>
+    <a class="card" href="campus/cursos/office-sin-miedo/index.html">
+      <h2>Office sin miedo</h2>
+      <p>Ofimatica practica para el trabajo diario: documentos, hojas de calculo y presentaciones.</p>
+      <div class="tags">
+        <span class="tag">Documentos</span>
+        <span class="tag">Hojas</span>
+        <span class="tag">Presentaciones</span>
+        <span class="tag">Tramites</span>
+      </div>
+    </a>
+    <a class="card" href="campus/cursos/falsos-amigos-pt-es/index.html">
+      <h2>Falsos amigos PT-ES</h2>
+      <p>Las palabras que enganan a quien habla portugues y aprende espanol. Con ejemplos reales.</p>
+      <div class="tags">
+        <span class="tag">Portugues</span>
+        <span class="tag">Espanol</span>
+        <span class="tag">Vocabulario</span>
+        <span class="tag">Practica</span>
+      </div>
+    </a>
+  </section>
+  <h2 style="font-size:var(--fs-xl);margin:3rem 0 .6rem">Como funciona</h2>
+  <p class="meta">Cada curso tem semanas com leitura, pratica guiada e um caso real, mais
+  um quiz, um laboratorio com evidencia e um projeto final. O material vive no
+  <a href="./campus/">campus</a> e abre-se sem ligacao a internet.</p>
+  <footer>
+    <p>Manos Abiertas - material educativo aberto. <a href="./campus/">Campus</a> &middot;
+    <a href="https://github.com/belentani7/ManosAbiertas">Codigo fonte</a></p>
+  </footer>
+</main>
+</body>
+</html>
