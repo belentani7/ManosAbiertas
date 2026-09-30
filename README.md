@@ -1,62 +1,27 @@
-[![Open in VS Code](https://img.shields.io/badge/Open_in-VS_Code-007ACC?logo=visualstudiocode&logoColor=white)](https://github.dev/belentani7/ManosAbiertas)
-
 # ManosAbiertas
 
-Proyecto ManosAbiertas del ecosistema Belentani.
+Plataforma educativa gratuita: cursos de IA y Office, creador de CV y recursos para migrantes.
 
-## Estado
+## Qué es
 
-| Campo | Valor |
-|---|---|
-| Stack | `next` |
-| Creado | 2026-09-07 |
-| Autor | Pedro Belentani |
-| Licencia | MIT |
+Formación **gratuita y práctica** para personas que llegan y necesitan herramientas concretas:
+ofimática, inteligencia artificial aplicada, un currículum que funcione. Sin registro, sin
+coste, sin barreras innecesarias.
 
-## Instalacion
+En línea: <https://manos-abiertas-psi.vercel.app>
 
-```bash
-npm install
-```
+## Qué incluye
 
-## Uso
+- Cursos de IA y Office
+- Creador de currículums
+- Guías de derechos
+- Recursos para comunidades migrantes
 
-```bash
-npm run dev
-```
+## Accesibilidad
 
-## Tests
-
-```bash
-npm test
-```
-
-## Estructura
-
-```
-.claude, .github, backend, contenido, data, docs, download, drive-extracted
-```
-
-## Variables de entorno
-
-Copia `.env.example` a `.env` y rellena los valores. Nunca comitees `.env`.
+Es parte del objetivo, no un extra: el público incluye personas con poca familiaridad digital
+y distintas lenguas. **PT > ES > EN > CA.**
 
 ## Licencia
 
-MIT - ver [LICENSE](LICENSE).
-
-## Datos abiertos
-
-El directorio [open-data/](open-data/) ya trae un portal de datos abiertos
-(temas, fuentes y licencias en open-data/topics.json). Se regenera con
-`python enrich_portals.py <portal>` en el proyecto `edu-open-data`.
-
-Ver [open-data/README.md](open-data/README.md).
-
-## Proyectos open similares
-
-- [Open edX](https://github.com/openedx/openedx-platform)
-- [Moodle](https://github.com/moodle/moodle)
-- [Kolibri](https://github.com/learningequality/kolibri)
-- [Oppia](https://github.com/oppia/oppia)
-- [Sugar Labs](https://github.com/sugarlabs)
+Sin licencia declarada.
