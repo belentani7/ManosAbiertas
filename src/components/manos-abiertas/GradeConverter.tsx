@@ -102,9 +102,10 @@ export default function GradeConverter() {
 
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-medium mb-2">Nota a convertir</label>
+          <label htmlFor="nota-convertir" className="block text-sm font-medium mb-2">Nota a convertir</label>
           <input
             type="text"
+            id="nota-convertir"
             value={inputGrade}
             onChange={(e) => setInputGrade(e.target.value)}
             placeholder="Ej: 7.5, 85, B+, 14/20..."

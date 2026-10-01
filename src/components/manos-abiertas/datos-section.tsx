@@ -255,7 +255,8 @@ export function DatosSection() {
   const { resolvedTheme } = useTheme();
 
   const ActiveTab = TABS.find((t) => t.id === tab)!;
-  const Chart = ActiveTab.chart;
+  // Solo EmpleoChart usa lang; el union de TABS se estrecha a la firma comun.
+  const Chart: (props: { lang: string }) => ReturnType<typeof EmpleoChart> = ActiveTab.chart;
 
   return (
     <section id="datos" className="min-h-screen py-16 px-4">
@@ -304,7 +305,7 @@ export function DatosSection() {
               {ActiveTab.src}
             </span>
           </div>
-          <Chart />
+          <Chart lang={language} />
         </div>
 
         {/* Footer note */}

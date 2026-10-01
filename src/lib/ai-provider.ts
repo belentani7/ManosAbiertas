@@ -615,7 +615,8 @@ export class AIProviderRegistry {
         signal: AbortSignal.timeout(DEFAULT_CONFIG.timeout)
       });
 
-      const payload = await response.json();
+      const payload = await readBoundedJson(response, 1_000_000) as {
+        choices?: { message?: { content?: string; tool_calls?: ToolCall[] }; finish_reason?: string }[];         usage?: Record<string, number>;       };
       const text = payload.choices?.[0]?.message?.content || '';
       const toolCalls = payload.choices?.[0]?.message?.tool_calls;
       const finishReason = payload.choices?.[0]?.finish_reason || 'stop';
@@ -640,7 +641,7 @@ export class AIProviderRegistry {
         const result = await attemptModel(modelId);
         return { ...result, latencyMs: Date.now() - startTime };
       } catch (error) {
-        console.warn(`Model ${modelId} failed:`, error);
+        console.warn(`Model ${modelId} failed: ${error instanceof Error ? error.message : String(error)}`);
         continue;
       }
     }

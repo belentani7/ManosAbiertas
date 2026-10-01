@@ -71,6 +71,7 @@ export function NavBar() {
     contacts: t.nav_contacts,
     community: 'Comunidad',
     pricing: 'Planes',
+    datos: 'Datos',
   };
 
   return (

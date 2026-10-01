@@ -167,6 +167,24 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
           {children}
+          <a
+            href="/conceptos/index.html"
+            style={{
+              position: "fixed",
+              left: 12,
+              bottom: 12,
+              zIndex: 9999,
+              font: "600 12px system-ui, sans-serif",
+              background: "#ff6a1f",
+              color: "#fff",
+              padding: "8px 12px",
+              borderRadius: 999,
+              textDecoration: "none",
+              boxShadow: "0 4px 14px rgba(0,0,0,.35)",
+            }}
+          >
+            📖 Conceptos de Manos Abiertas
+          </a>
           <Toaster />
           <SonnerToaster position="top-center" richColors />
         </ThemeProvider>

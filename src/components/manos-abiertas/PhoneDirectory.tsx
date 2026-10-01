@@ -55,6 +55,7 @@ export default function PhoneDirectory() {
         <input
           type="text"
           placeholder="Buscar por nombre, teléfono, descripción..."
+          aria-label="Buscar por nombre, teléfono, descripción"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none"

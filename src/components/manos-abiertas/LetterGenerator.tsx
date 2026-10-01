@@ -155,6 +155,7 @@ export default function LetterGenerator() {
             <label className="block text-sm font-medium mb-1 text-gray-700">{field}</label>
             <input
               type="text"
+              aria-label={field}
               value={formData[field] || ''}
               onChange={(e) => handleChange(field, e.target.value)}
               placeholder={`Escribe ${field.toLowerCase()}`}
@@ -191,6 +192,7 @@ export default function LetterGenerator() {
             </div>
             <textarea
               readOnly
+              aria-label="Carta generada"
               value={generated}
               className="w-full h-64 p-4 bg-gray-50 border border-gray-300 rounded-lg font-mono text-sm resize-y focus:ring-2 focus:ring-red-500 focus:border-red-500"
             />

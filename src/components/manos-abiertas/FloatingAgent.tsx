@@ -368,6 +368,7 @@ export default function FloatingAgent({ zIndex = 9999 }: FloatingAgentProps) {
           >
             <input
               type="text"
+              aria-label="Escribe tu pregunta"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Escribe tu pregunta..."

@@ -80,9 +80,10 @@ ${cumple ? '✅ Cumples el requisito de ingresos' : '❌ Superas el límite de i
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Ingresos mensuales netos (€)</label>
+          <label htmlFor="ingresos-netos" className="block text-sm font-medium mb-2">Ingresos mensuales netos (€)</label>
           <input
             type="number"
+            id="ingresos-netos"
             value={ingresos}
             onChange={(e) => setIngresos(e.target.value)}
             placeholder="Ej: 800"
