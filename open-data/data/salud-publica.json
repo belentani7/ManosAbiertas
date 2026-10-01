@@ -1,44 +1,229 @@
 {
   "tema": "salud-publica",
   "portal": "manosabiertas",
+  "generado_utc": "2026-10-01T04:24:09.334299+00:00",
   "registros": [
     {
-      "fuente": "PubMed",
-      "spec": "pubmed:public health migration",
-      "ok": true,
-      "datos": [
-        {
-          "titulo": "Association between delivery-food consumption frequency and urinary bisphenol concentrations among Korean adults: a nationally representative study (Korean National Environmental Health Survey cycle 5, 2021-2023).",
-          "revista": "Annals of occupational and environmental medicine",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42740345/"
-        },
-        {
-          "titulo": "State of the Art in Neuromodulation or Spinal Cord Stimulation Therapy.",
-          "revista": "Journal of clinical medicine",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42739579/"
-        },
-        {
-          "titulo": "The Dual Face of Gingival Mesenchymal Stem Cell Paracrine Signalling in Oral Squamous Cell Carcinoma: A Pro-Tumour Transcriptional Programme and a Hypothesis-Generating Drug-Repurposing Screen.",
-          "revista": "Cells",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42738835/"
-        },
-        {
-          "titulo": "MAP3K1 Integrates Genetic and Environmental Signals in Eyelid Morphogenesis.",
-          "revista": "Cells",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42738802/"
-        },
-        {
-          "titulo": "Green Analytical Workflows: Recent Advances in Sample Preparation and Instrumental Analysis of Food Contact Materials.",
-          "revista": "Molecules (Basel, Switzerland)",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42738722/"
-        }
-      ]
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Colombia",
+      "anio": "2024",
+      "valor": 8.141
     },
     {
       "fuente": "World Bank",
-      "spec": "worldbank:SH.XPD.CHEX.GD.ZS:Gasto en salud (% PIB)",
-      "ok": false,
-      "error": "The read operation timed out"
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Colombia",
+      "anio": "2023",
+      "valor": 8.158
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Colombia",
+      "anio": "2022",
+      "valor": 7.59
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Spain",
+      "anio": "2023",
+      "valor": 9.221
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Spain",
+      "anio": "2022",
+      "valor": 9.68
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Morocco",
+      "anio": "2023",
+      "valor": 6.064
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Morocco",
+      "anio": "2022",
+      "valor": 5.753
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Venezuela, RB",
+      "anio": "2023",
+      "valor": 3.776
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Gasto en salud (% PIB)",
+      "pais": "Venezuela, RB",
+      "anio": "2022",
+      "valor": 4.55
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Colombia",
+      "anio": "2024",
+      "valor": 77.913
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Colombia",
+      "anio": "2023",
+      "valor": 77.725
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Colombia",
+      "anio": "2022",
+      "valor": 76.508
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Spain",
+      "anio": "2024",
+      "valor": 83.888
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Spain",
+      "anio": "2023",
+      "valor": 83.934
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Spain",
+      "anio": "2022",
+      "valor": 83.134
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Morocco",
+      "anio": "2024",
+      "valor": 75.493
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Morocco",
+      "anio": "2023",
+      "valor": 75.313
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Morocco",
+      "anio": "2022",
+      "valor": 75.161
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Venezuela, RB",
+      "anio": "2024",
+      "valor": 72.673
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Venezuela, RB",
+      "anio": "2023",
+      "valor": 72.514
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Esperanza de vida al nacer",
+      "pais": "Venezuela, RB",
+      "anio": "2022",
+      "valor": 72.566
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Médicos por 1.000 personas",
+      "pais": "Colombia",
+      "anio": "2023",
+      "valor": 2.535
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Médicos por 1.000 personas",
+      "pais": "Colombia",
+      "anio": "2021",
+      "valor": 2.467
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Médicos por 1.000 personas",
+      "pais": "Spain",
+      "anio": "2022",
+      "valor": 4.294
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Médicos por 1.000 personas",
+      "pais": "Spain",
+      "anio": "2021",
+      "valor": 4.457
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Médicos por 1.000 personas",
+      "pais": "Morocco",
+      "anio": "2021",
+      "valor": 0.74
+    },
+    {
+      "fuente": "PubMed",
+      "tipo": "articulo_cientifico",
+      "pmid": "42742591",
+      "titulo": "Evidence-based atlas of risk and protective factors for psychotic disorders: an umbrella review to inform personalized prognosis and prevention.",
+      "fecha": "2026 Oct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42742591/"
+    },
+    {
+      "fuente": "PubMed",
+      "tipo": "articulo_cientifico",
+      "pmid": "42705247",
+      "titulo": "Global, regional, and national prevalence of second-hand smoke and attributable disease burden in 204 countries and territories, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023.",
+      "fecha": "2026 Oct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42705247/"
+    },
+    {
+      "fuente": "PubMed",
+      "tipo": "articulo_cientifico",
+      "pmid": "42699676",
+      "titulo": "Implementation and Access Gaps in Infectious Disease Screening for Migrants in Europe: A Structured Review with Thematic Synthesis From the ESGITM Group.",
+      "fecha": "2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42699676/"
+    },
+    {
+      "fuente": "PubMed",
+      "tipo": "articulo_cientifico",
+      "pmid": "42684657",
+      "titulo": "Beyond race and ethnicity: a scoping review of supportive care needs and barriers for immigrant AYA cancer survivors.",
+      "fecha": "2026 Sep 2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42684657/"
+    },
+    {
+      "fuente": "PubMed",
+      "tipo": "articulo_cientifico",
+      "pmid": "42612648",
+      "titulo": "Global and regional progress towards reduced burden of oral conditions between 2019 and 2023: a systematic analysis for the Global Burden of Disease Study 2023.",
+      "fecha": "2026 Sep",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42612648/"
     }
   ]
 }

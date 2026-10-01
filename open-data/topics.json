@@ -2,7 +2,7 @@
   "portal": "manosabiertas",
   "repo": "belentani7/ManosAbiertas",
   "dominio": "Integracion, derechos y tramites (ES)",
-  "generado_utc": "2026-09-15T14:34:04+00:00",
+  "generado_utc": "2026-10-01T04:24:12.831277+00:00",
   "orden_idiomas": [
     "pt",
     "es",
@@ -13,95 +13,57 @@
     {
       "tema": "empleo-y-paro",
       "fuente": "World Bank",
-      "spec": "worldbank:SL.UEM.TOTL.ZS:Desempleo (% poblacion activa)",
       "ok": true
     },
     {
       "tema": "empleo-y-paro",
       "fuente": "datos.gob.es",
-      "spec": "datosgob:empleo",
-      "ok": true
+      "ok": false
     },
     {
       "tema": "educacion-y-formacion",
-      "fuente": "datos.gob.es",
-      "spec": "datosgob:educacion",
+      "fuente": "World Bank",
       "ok": true
     },
     {
       "tema": "educacion-y-formacion",
       "fuente": "OpenStax",
-      "spec": "openstax:english",
-      "ok": true
+      "ok": false
     },
     {
       "tema": "vivienda-y-servicios",
       "fuente": "datos.gob.es",
-      "spec": "datosgob:vivienda",
-      "ok": true
+      "ok": false
     },
     {
       "tema": "contexto-demografico-ue",
       "fuente": "Eurostat",
-      "spec": "eurostat_demo",
+      "ok": true
+    },
+    {
+      "tema": "contexto-demografico-ue",
+      "fuente": "CountriesNow",
       "ok": true
     },
     {
       "tema": "salud-publica",
       "fuente": "PubMed",
-      "spec": "pubmed:public health migration",
       "ok": true
     },
     {
       "tema": "salud-publica",
       "fuente": "World Bank",
-      "spec": "worldbank:SH.XPD.CHEX.GD.ZS:Gasto en salud (% PIB)",
-      "ok": false,
-      "error": "The read operation timed out"
+      "ok": true
+    },
+    {
+      "tema": "derechos-y-asilo",
+      "fuente": "World Bank",
+      "ok": true
     },
     {
       "tema": "derechos-y-asilo",
       "fuente": "Wikipedia ES",
-      "spec": "mediawiki:es.wikipedia.org:derecho de asilo",
-      "ok": true
-    },
-    {
-      "tema": "derechos-y-asilo",
-      "fuente": "REST Countries",
-      "spec": "restcountries",
-      "ok": true
-    }
-  ],
-  "temas": [
-    {
-      "tema": "empleo-y-paro",
-      "fuentes_ok": 2,
-      "fuentes_total": 2
-    },
-    {
-      "tema": "educacion-y-formacion",
-      "fuentes_ok": 2,
-      "fuentes_total": 2
-    },
-    {
-      "tema": "vivienda-y-servicios",
-      "fuentes_ok": 1,
-      "fuentes_total": 1
-    },
-    {
-      "tema": "contexto-demografico-ue",
-      "fuentes_ok": 1,
-      "fuentes_total": 1
-    },
-    {
-      "tema": "salud-publica",
-      "fuentes_ok": 1,
-      "fuentes_total": 2
-    },
-    {
-      "tema": "derechos-y-asilo",
-      "fuentes_ok": 2,
-      "fuentes_total": 2
+      "ok": false
     }
   ]
 }

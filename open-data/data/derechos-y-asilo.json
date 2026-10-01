@@ -1,44 +1,51 @@
 {
   "tema": "derechos-y-asilo",
   "portal": "manosabiertas",
+  "generado_utc": "2026-10-01T04:24:12.830592+00:00",
   "registros": [
     {
-      "fuente": "Wikipedia ES",
-      "spec": "mediawiki:es.wikipedia.org:derecho de asilo",
-      "ok": true,
-      "datos": [
-        {
-          "titulo": "Derecho de asilo",
-          "url": "https://es.wikipedia.org/wiki/Derecho_de_asilo",
-          "fragmento": "artículo 14 de la Declaración Universal de Derechos Humanos reconoce este derecho: En caso de persecución, toda persona tiene derecho a buscar asilo, y a disfrutar"
-        },
-        {
-          "titulo": "Derecho de asilo en la Unión Europea",
-          "url": "https://es.wikipedia.org/wiki/Derecho_de_asilo_en_la_Uni%C3%B3n_Europea",
-          "fragmento": "El derecho de asilo en la Unión Europea se formó a mitad del siglo XX entre sus Estados miembros tras la aplicación de la Convención sobre el Estatuto"
-        },
-        {
-          "titulo": "Derecho de asilo (película)",
-          "url": "https://es.wikipedia.org/wiki/Derecho_de_asilo_%28pel%C3%ADcula%29",
-          "fragmento": "Nacional UNEAC de Cine, Radio y Televisión.[cita requerida] Derecho de asilo en Internet Movie Database (en inglés) Derecho de Asilo en la página de su protagonista"
-        },
-        {
-          "titulo": "Asilo político",
-          "url": "https://es.wikipedia.org/wiki/Asilo_pol%C3%ADtico",
-          "fragmento": "El asilo político es el derecho que tiene una persona a no ser extraditada de un país a otro que lo requiere para juzgarle por delitos políticos.​ Cuando"
-        },
-        {
-          "titulo": "Asilo humanitario",
-          "url": "https://es.wikipedia.org/wiki/Asilo_humanitario",
-          "fragmento": "disponen de la suficiente protección por parte del gobierno de su propio país. El antecedente del derecho de asilo territorial, es el asilo sagrado, promovido"
-        }
-      ]
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2024",
+      "valor": 18.5
     },
     {
-      "fuente": "REST Countries",
-      "spec": "restcountries",
-      "ok": true,
-      "datos": []
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2020",
+      "valor": 15
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2015",
+      "valor": 12.6
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2010",
+      "valor": 13.4
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2005",
+      "valor": 9.9
+    },
+    {
+      "fuente": "CURIA/BOE",
+      "tipo": "referencia_legislacion",
+      "titulo": "Marco legal de extranjería en España",
+      "ley_principal": "LO 4/2000 — Ley Orgánica sobre derechos y libertades de los extranjeros en España",
+      "url_boe": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544",
+      "url_curia": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX%3A32003L0109",
+      "nota": "Actualizado según reforma 2022 (Ley 14/2003)"
     }
   ]
 }
