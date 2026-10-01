@@ -1,0 +1,88 @@
+{
+  "tema": "educacion-y-formacion",
+  "portal": "manosabiertas",
+  "generado_utc": "2026-10-01T04:24:05.815424+00:00",
+  "registros": [
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Colombia",
+      "iso3": "COL",
+      "anio": "2022",
+      "valor": 59.29,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Spain",
+      "iso3": "ESP",
+      "anio": "2024",
+      "valor": 93.77,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Spain",
+      "iso3": "ESP",
+      "anio": "2023",
+      "valor": 93.73,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Spain",
+      "iso3": "ESP",
+      "anio": "2022",
+      "valor": 95.03,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Morocco",
+      "iso3": "MAR",
+      "anio": "2024",
+      "valor": 48.18,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Morocco",
+      "iso3": "MAR",
+      "anio": "2023",
+      "valor": 47.47,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Morocco",
+      "iso3": "MAR",
+      "anio": "2022",
+      "valor": 45.94,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Romania",
+      "iso3": "ROU",
+      "anio": "2023",
+      "valor": 55.17,
+      "unidad": "%"
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Matrícula bruta educación terciaria (%)",
+      "pais": "Romania",
+      "iso3": "ROU",
+      "anio": "2022",
+      "valor": 58.24,
+      "unidad": "%"
+    }
+  ]
+}

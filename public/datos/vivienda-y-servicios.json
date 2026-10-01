@@ -1,0 +1,217 @@
+{
+  "tema": "vivienda-y-servicios",
+  "portal": "manosabiertas",
+  "generado_utc": "2026-10-01T04:24:06.812944+00:00",
+  "registros": [
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Colombia",
+      "anio": "2024",
+      "valor": 98.9
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Colombia",
+      "anio": "2023",
+      "valor": 98.7
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Colombia",
+      "anio": "2022",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Spain",
+      "anio": "2024",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Spain",
+      "anio": "2023",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Spain",
+      "anio": "2022",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Morocco",
+      "anio": "2024",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Morocco",
+      "anio": "2023",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Morocco",
+      "anio": "2022",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Romania",
+      "anio": "2024",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Romania",
+      "anio": "2023",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Romania",
+      "anio": "2022",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Venezuela, RB",
+      "anio": "2024",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Venezuela, RB",
+      "anio": "2023",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a electricidad (% población)",
+      "pais": "Venezuela, RB",
+      "anio": "2022",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Colombia",
+      "anio": "2024",
+      "valor": 97.1
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Colombia",
+      "anio": "2023",
+      "valor": 96.95
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Colombia",
+      "anio": "2022",
+      "valor": 96.74
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Spain",
+      "anio": "2024",
+      "valor": 99.92
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Spain",
+      "anio": "2023",
+      "valor": 99.92
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Spain",
+      "anio": "2022",
+      "valor": 99.93
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Morocco",
+      "anio": "2024",
+      "valor": 92.21
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Morocco",
+      "anio": "2023",
+      "valor": 91.23
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Morocco",
+      "anio": "2022",
+      "valor": 90.15
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Romania",
+      "anio": "2024",
+      "valor": 100.0
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Romania",
+      "anio": "2023",
+      "valor": 100.0
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Romania",
+      "anio": "2022",
+      "valor": 100
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Venezuela, RB",
+      "anio": "2024",
+      "valor": 93.33
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Venezuela, RB",
+      "anio": "2023",
+      "valor": 93.33
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Acceso a agua potable básica (%)",
+      "pais": "Venezuela, RB",
+      "anio": "2022",
+      "valor": 93.33
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "tema": "derechos-y-asilo",
+  "portal": "manosabiertas",
+  "generado_utc": "2026-10-01T04:24:12.830592+00:00",
+  "registros": [
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2024",
+      "valor": 18.5
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2020",
+      "valor": 15
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2015",
+      "valor": 12.6
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2010",
+      "valor": 13.4
+    },
+    {
+      "fuente": "World Bank",
+      "indicador": "Stock de inmigrantes internacionales (% población)",
+      "pais": "Spain",
+      "anio": "2005",
+      "valor": 9.9
+    },
+    {
+      "fuente": "CURIA/BOE",
+      "tipo": "referencia_legislacion",
+      "titulo": "Marco legal de extranjería en España",
+      "ley_principal": "LO 4/2000 — Ley Orgánica sobre derechos y libertades de los extranjeros en España",
+      "url_boe": "https://www.boe.es/buscar/act.php?id=BOE-A-2000-544",
+      "url_curia": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX%3A32003L0109",
+      "nota": "Actualizado según reforma 2022 (Ley 14/2003)"
+    }
+  ]
+}

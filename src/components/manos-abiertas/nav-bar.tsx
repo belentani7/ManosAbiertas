@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Menu, X, Heart, Sparkles, FileText, BookOpen, Database, Shield, Phone, Home as HomeIcon, Moon, Sun, Wrench, Calendar, GraduationCap, Users, CreditCard } from 'lucide-react';
+import { Menu, X, Heart, Sparkles, FileText, BookOpen, Database, Shield, Phone, Home as HomeIcon, Moon, Sun, Wrench, Calendar, GraduationCap, Users, CreditCard, BarChart2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useAppStore, type SectionId } from '@/stores/app-store';
@@ -25,6 +25,7 @@ const NAV_ITEMS: { id: SectionId; icon: typeof HomeIcon; emoji: string }[] = [
   { id: 'community', icon: Users, emoji: '👥' },
   { id: 'pricing', icon: CreditCard, emoji: '💳' },
   { id: 'contacts', icon: Phone, emoji: '📞' },
+  { id: 'datos', icon: BarChart2, emoji: '📊' },
 ];
 
 function ThemeToggle() {

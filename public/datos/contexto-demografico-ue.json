@@ -1,0 +1,112 @@
+{
+  "tema": "contexto-demografico-ue",
+  "portal": "manosabiertas",
+  "generado_utc": "2026-10-01T04:24:08.182782+00:00",
+  "registros": [
+    {
+      "fuente": "Eurostat",
+      "dataset": "migr_imm1ctz",
+      "descripcion": "Inmigración a España por ciudadanía — valores no nulos de la matriz",
+      "total_filas_no_nulas": 16730,
+      "suma_total": 108316572,
+      "url": "https://ec.europa.eu/eurostat/databrowser/view/migr_imm1ctz/default/table",
+      "nota": "Dataset completo disponible en Eurostat API; se incluye resumen para evitar payload excesivo"
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Argentina",
+      "iso3": "ARG",
+      "poblacion_reciente": 44494502,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Bangladesh",
+      "iso3": "BGD",
+      "poblacion_reciente": 161356039,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Bolivia",
+      "iso3": "BOL",
+      "poblacion_reciente": 11353142,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "China",
+      "iso3": "CHN",
+      "poblacion_reciente": 1392730000,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Colombia",
+      "iso3": "COL",
+      "poblacion_reciente": 49648685,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Ecuador",
+      "iso3": "ECU",
+      "poblacion_reciente": 17084357,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Morocco",
+      "iso3": "MAR",
+      "poblacion_reciente": 36029138,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Pakistan",
+      "iso3": "PAK",
+      "poblacion_reciente": 212215030,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Peru",
+      "iso3": "PER",
+      "poblacion_reciente": 31989256,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Senegal",
+      "iso3": "SEN",
+      "poblacion_reciente": 15854360,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Ukraine",
+      "iso3": "UKR",
+      "poblacion_reciente": 44622516,
+      "anio_poblacion": 2018
+    },
+    {
+      "fuente": "CountriesNow",
+      "tipo": "pais_origen_inmigrante",
+      "pais": "Venezuela, RB",
+      "iso3": "VEN",
+      "poblacion_reciente": 28870195,
+      "anio_poblacion": 2018
+    }
+  ]
+}

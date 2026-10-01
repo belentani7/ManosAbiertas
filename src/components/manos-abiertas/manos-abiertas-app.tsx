@@ -25,6 +25,7 @@ const EventsSection = dynamic(() => import('./events-section').then((m) => m.Eve
 const CoursesLibrarySection = dynamic(() => import('./courses-library-section').then((m) => m.CoursesLibrarySection));
 const CommunitySection = dynamic(() => import('./community-section').then((m) => m.CommunitySection));
 const PricingSection = dynamic(() => import('./pricing-section').then((m) => m.PricingSection));
+const DatosSection = dynamic(() => import('./datos-section').then((m) => m.DatosSection));
 
 export function ManosAbiertasApp() {
   const { activeSection, setActiveSection, readingMode } = useAppStore();
@@ -93,6 +94,7 @@ export function ManosAbiertasApp() {
             {activeSection === 'community' && <CommunitySection />}
             {activeSection === 'contacts' && <ContactsSection />}
             {activeSection === 'pricing' && <PricingSection />}
+            {activeSection === 'datos' && <DatosSection />}
           </motion.div>
         </AnimatePresence>
       </main>
