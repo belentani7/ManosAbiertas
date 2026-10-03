@@ -24,7 +24,7 @@ y distintas lenguas. **PT > ES > EN > CA.**
 
 ## Licencia
 
-Sin licencia declarada.
+MIT (ver [`LICENSE`](LICENSE)).
 
 ---
 
