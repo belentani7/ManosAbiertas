@@ -38,7 +38,7 @@ class CatalanChallenge:
                 r = int(input("Respuesta (1/2/3): "))
                 if opciones[r - 1] == p["es"]:
                     self.puntos += 15
-                    print(f"Correcto! +15")
+                    print("Correcto! +15")
                 else:
                     print(f"Incorrecto. {p['ca']} = {p['es']}")
             except (ValueError, IndexError):

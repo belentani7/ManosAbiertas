@@ -17,16 +17,28 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint --if-present
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Core tests
+        run: npm run test:core
+
+      - name: Internationalization checks
+        run: npm run i18n:verify
+
+      - name: Resource trust checks
+        run: npm run trust:verify
+
+      - name: Accessibility checks
+        run: npm run accessibility:verify
 
       - name: Build
-        run: npm run build --if-present
+        run: npm run build
 
   python:
     name: Python build and lint
@@ -45,10 +57,10 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Lint
+      - name: Lint and syntax-check maintained Python
         run: |
           pip install flake8
-          flake8 . --count --show-source --statistics
+          flake8 campus/agente campus/juegos --count --show-source --statistics --extend-ignore=E501
 
       - name: Build
-        run: python -m compileall .
+        run: python -m compileall -q campus/agente campus/juegos

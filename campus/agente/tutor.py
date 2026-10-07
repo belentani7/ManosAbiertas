@@ -72,7 +72,8 @@ def tutor_issue() -> None:
                     .read_text(encoding="utf-8"))
     issue = ev.get("issue") or ev.get("pull_request")
     if not issue:
-        print("sin issue en el evento"); return
+        print("sin issue en el evento")
+        return
     numero = issue["number"]
     cuerpo = issue.get("body") or ""
     if not cuerpo.strip():
@@ -100,7 +101,8 @@ def capsula_diaria() -> None:
     texto = CAPSULAS[lang]
     archivo = carpeta / f"{hoy}.md"
     if archivo.exists():
-        print("[capsula] ya existe para hoy"); return
+        print("[capsula] ya existe para hoy")
+        return
     archivo.write_text(
         f"# Cápsula {hoy} [{lang.upper()}]\n\n{texto}\n\n"
         f"*Generada por el agente tutor que vive en GitHub Actions.*\n",
