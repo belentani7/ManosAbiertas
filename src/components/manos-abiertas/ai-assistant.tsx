@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Sparkles, Loader2, RotateCcw, Bot, User, Lightbulb, Mic, MicOff } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles, Loader2, RotateCcw, Bot, User, Lightbulb, Mic, MicOff, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
@@ -16,14 +16,20 @@ import { withRemoteAIConsent } from '@/lib/remote-ai-consent';
 import { RemoteAIConsent } from './remote-ai-consent';
 import { TTSButton } from './tts-button';
 import { getLocalStorageItem, readStoredChat } from '@/lib/local-data';
-import { readApiText } from '@/lib/safe-content';
+import { readApiText, isPlainRecord } from '@/lib/safe-content';
 import { requestJson } from '@/lib/network-json';
+import {
+  MAIA_DAILY_AI_BUDGET, canUseMaiaAI, composeResourceAnswer, consumeMaiaAI,
+  maiaSourcesFromPayload, readMaiaBudget, searchVerifiedResources,
+  writeMaiaBudget, type MaiaSource,
+} from '@/lib/maia';
 
 interface Message {
   id: string;
   role: 'user' | 'assistant';
   content: string;
   timestamp: number;
+  sources?: MaiaSource[];
 }
 
 const SUGGESTIONS = [
@@ -45,6 +51,7 @@ export function AIAssistant() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [aiUsedToday, setAiUsedToday] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -62,6 +69,7 @@ export function AIAssistant() {
        
       setMessages(parsed);
     }
+    setAiUsedToday(readMaiaBudget(typeof window === 'undefined' ? null : window.localStorage, new Date()).used);
   }, []);
 
   // Persist chat history
@@ -103,7 +111,30 @@ export function AIAssistant() {
     setInput('');
     setLoading(true);
 
+    // MAIA — paso determinista local: fuentes verificadas del catálogo
+    // empaquetado en la app. Funciona sin red y sin IA.
+    const localSources = searchVerifiedResources(prompt, { limit: 5 });
+
+    const localAnswer = (contentExtra?: string): Message => ({
+      id: `local-${Date.now()}`,
+      role: 'assistant',
+      content: contentExtra
+        ? `${getOfflineTutorReply(prompt, language)}\n\n${contentExtra}`
+        : getOfflineTutorReply(prompt, language),
+      timestamp: Date.now(),
+      sources: localSources,
+    });
+
     try {
+      // Presupuesto diario de IA (local): agotado, MAIA responde con
+      // recursos verificados y tutor offline sin consumir IA.
+      const store = typeof window === 'undefined' ? null : window.localStorage;
+      const budget = readMaiaBudget(store, new Date());
+      if (remoteAIConsent && !canUseMaiaAI(budget)) {
+        setMessages((prev) => [...prev, localAnswer(composeResourceAnswer(localSources, language))].slice(-20));
+        return;
+      }
+
       if (typeof navigator !== 'undefined' && !navigator.onLine) {
         throw new Error('offline');
       }
@@ -118,21 +149,25 @@ export function AIAssistant() {
       }, { timeoutMs: 8_000, maxResponseBytes: 64_000 });
       const responseText = readApiText(data, 12_000);
       if (!responseText) throw new Error('Respuesta no válida');
+
+      const serverSources = isPlainRecord(data) ? maiaSourcesFromPayload(data.sources) : [];
       const aiMsg: Message = {
         id: `a-${Date.now()}`,
         role: 'assistant',
         content: responseText,
         timestamp: Date.now(),
+        sources: serverSources.length > 0 ? serverSources : localSources,
       };
       setMessages((prev) => [...prev, aiMsg].slice(-20));
+
+      // Solo consume presupuesto cuando hubo inferencia IA real.
+      if (remoteAIConsent && isPlainRecord(data) && data.degraded === false) {
+        const consumed = consumeMaiaAI(readMaiaBudget(store, new Date()), new Date());
+        writeMaiaBudget(store, consumed);
+        setAiUsedToday(consumed.used);
+      }
     } catch {
-      const errMsg: Message = {
-        id: `local-${Date.now()}`,
-        role: 'assistant',
-        content: getOfflineTutorReply(prompt, language),
-        timestamp: Date.now(),
-      };
-      setMessages((prev) => [...prev, errMsg].slice(-20));
+      setMessages((prev) => [...prev, localAnswer(composeResourceAnswer(localSources, language))].slice(-20));
     } finally {
       setLoading(false);
     }
@@ -161,7 +196,7 @@ export function AIAssistant() {
         whileTap={{ scale: 0.95 }}
         onClick={() => setOpen(!open)}
         className="fixed bottom-4 right-4 z-40 w-14 h-14 rounded-full gradient-brand shadow-xl flex items-center justify-center text-white print:hidden group"
-        aria-label="Asistente IA de Manos Abiertas"
+        aria-label="MAIA, asistente de Manos Abiertas"
       >
         <AnimatePresence mode="wait">
           {open ? (
@@ -179,7 +214,7 @@ export function AIAssistant() {
         {/* Tooltip when closed */}
         {!open && (
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap bg-card border border-border rounded-lg px-3 py-1.5 text-xs font-medium shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            Pregúntame lo que quieras ✨
+            Pregúntale a MAIA ✨
           </span>
         )}
       </motion.button>
@@ -202,12 +237,14 @@ export function AIAssistant() {
                 </div>
                 <div>
                   <div className="font-bold text-sm flex items-center gap-1.5">
-                    Asistente IA
-                    <Badge variant="secondary" className="text-[9px] py-0 h-4 bg-white/20 text-white border-0">Beta</Badge>
+                    MAIA
+                    <Badge variant="secondary" className="text-[9px] py-0 h-4 bg-white/20 text-white border-0">Manos Abiertas</Badge>
                   </div>
                   <div className="text-[11px] text-white/80 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                    Tutor IA · responde en tu idioma · es · pt · en
+                    {remoteAIConsent
+                      ? `IA hoy: ${Math.max(0, MAIA_DAILY_AI_BUDGET - aiUsedToday)}/${MAIA_DAILY_AI_BUDGET} · respuestas con fuentes`
+                      : 'Modo sin IA · recursos verificados · es · pt · en · ca'}
                   </div>
                 </div>
               </div>
@@ -243,9 +280,9 @@ export function AIAssistant() {
                   <div className="w-16 h-16 rounded-2xl gradient-brand flex items-center justify-center mb-3 shadow-md">
                     <Bot className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="font-bold text-base mb-1">¡Hola! 👋 Soy tu asistente</h3>
+                  <h3 className="font-bold text-base mb-1">¡Hola! 👋 Soy MAIA</h3>
                   <p className="text-xs text-muted-foreground mb-4 max-w-xs">
-                    Pregúntame sobre IA, tu CV, derechos, recursos... ¡lo que necesites! Estoy aquí para ayudarte en tu idioma.
+                    Pregúntame sobre IA, tu CV, derechos, recursos... Te respondo con fuentes verificadas y, si quieres, con IA (tú decides). En tu idioma.
                   </p>
                   <div className="w-full space-y-1.5">
                     <div className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1 flex items-center gap-1 justify-center">
@@ -286,6 +323,26 @@ export function AIAssistant() {
                         : 'bg-card border border-border rounded-tl-sm'
                     )}>
                       <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                      {msg.role === 'assistant' && msg.sources && msg.sources.length > 0 && (
+                        <ul className="mt-2 space-y-1 border-t border-border/60 pt-1.5" aria-label="Fuentes verificadas citadas">
+                          {msg.sources.map((s) => (
+                            <li key={s.id}>
+                              <a
+                                href={s.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[11px] text-primary hover:underline flex items-start gap-1"
+                              >
+                                <ExternalLink className="h-3 w-3 mt-0.5 shrink-0" aria-hidden="true" />
+                                <span>
+                                  {s.title} <span className="text-muted-foreground">· {s.label}</span>
+                                  {s.verifiedAt ? <span className="text-muted-foreground"> · {s.verifiedAt}</span> : null}
+                                </span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                       {msg.role === 'assistant' && (
                         <div className="mt-1.5 -mb-0.5 flex items-center justify-end">
                           <TTSButton text={msg.content} label="" size="sm" variant="ghost" />
