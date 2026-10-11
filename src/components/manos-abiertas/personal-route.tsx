@@ -1,88 +1,93 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowRight, BriefcaseBusiness, Check, Circle, Compass, GraduationCap, HeartHandshake, RotateCcw, ShieldCheck, Sparkles } from 'lucide-react';
+import {
+  ArrowRight, Baby, BriefcaseBusiness, Check, Circle, Compass, FileText, GraduationCap,
+  HeartHandshake, Languages, RotateCcw, ShieldCheck, Sparkles, Wrench,
+} from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { useAppStore, type SectionId } from '@/stores/app-store';
-import { isPlainRecord, parseStoredJson } from '@/lib/safe-content';
+import { useAppStore } from '@/stores/app-store';
 import { getLocalStorageItem } from '@/lib/local-data';
-
-type GoalId = 'work' | 'digital' | 'rights' | 'community';
-type RouteStep = { id: string; title: string; description: string; section: SectionId };
-type Goal = { id: GoalId; label: string; description: string; icon: typeof BriefcaseBusiness; steps: RouteStep[] };
+import {
+  JOURNEYS, type Journey, type SavedRoute,
+  parseSavedRoute, pickPair, pickText, serializeSavedRoute,
+} from '@/data/journeys';
 
 const STORAGE_KEY = 'manos-abiertas-personal-route';
 
-const GOALS: Goal[] = [
-  { id: 'work', label: 'Encontrar trabajo', description: 'Prepara tu perfil y busca oportunidades con método.', icon: BriefcaseBusiness, steps: [
-    { id: 'work-profile', title: 'Crea tu CV', description: 'Pon tu experiencia en una presentación profesional.', section: 'cv' },
-    { id: 'work-ai', title: 'Aprende a usar la IA', description: 'Practica cómo pedir ayuda para buscar empleo.', section: 'learn-ai' },
-    { id: 'work-courses', title: 'Elige una formación', description: 'Añade una habilidad que puedas demostrar.', section: 'courses' },
-  ] },
-  { id: 'digital', label: 'Manejarme mejor en internet', description: 'Aprende lo esencial para usar móvil y ordenador con confianza.', icon: GraduationCap, steps: [
-    { id: 'digital-basics', title: 'Empieza desde cero', description: 'Correo, archivos, búsquedas y seguridad explicados paso a paso.', section: 'office' },
-    { id: 'digital-ai', title: 'Prueba un asistente IA', description: 'Haz tu primera pregunta útil en tu idioma.', section: 'learn-ai' },
-    { id: 'digital-tools', title: 'Organiza tus trámites', description: 'Guarda una lista clara de lo que tienes pendiente.', section: 'tools' },
-  ] },
-  { id: 'rights', label: 'Resolver mis trámites', description: 'Entiende tus derechos y reúne documentos sin perderte.', icon: ShieldCheck, steps: [
-    { id: 'rights-guide', title: 'Busca una guía', description: 'Encuentra una explicación sencilla para tu situación.', section: 'rights' },
-    { id: 'rights-checklist', title: 'Haz una checklist', description: 'Convierte la información en pasos concretos.', section: 'tools' },
-    { id: 'rights-help', title: 'Encuentra apoyo', description: 'Localiza una entidad o servicio cercano.', section: 'contacts' },
-  ] },
-  { id: 'community', label: 'Conectar con mi gente', description: 'Aprende acompañado y comparte recursos con cuidado.', icon: HeartHandshake, steps: [
-    { id: 'community-learn', title: 'Elige algo para aprender', description: 'Una meta pequeña hace más fácil empezar.', section: 'courses' },
-    { id: 'community-share', title: 'Lee a la comunidad', description: 'Encuentra experiencias y respuestas de otras personas.', section: 'community' },
-    { id: 'community-contribute', title: 'Comparte un recurso', description: 'Ayuda a otra persona sin publicar datos sensibles.', section: 'community' },
-  ] },
-];
-
-type SavedRoute = { goal: GoalId; completed: string[] };
+const JOURNEY_ICONS: Record<string, typeof Compass> = {
+  'primeras-24h': Baby,
+  'independencia-digital': GraduationCap,
+  'primera-candidatura': BriefcaseBusiness,
+  'primer-cv': FileText,
+  'catalan-100': Languages,
+  'digital-cero': Compass,
+  'office-ia-empleo': Wrench,
+  'reskilling-tech': Sparkles,
+  'entender-documentos': ShieldCheck,
+  'negocio-propio': BriefcaseBusiness,
+  'comunidad': HeartHandshake,
+};
 
 function readRoute(): SavedRoute | null {
-  const value = parseStoredJson(getLocalStorageItem(STORAGE_KEY), null, isPlainRecord, 10_000);
-  if (!value) return null;
-  const goal = GOALS.find((item) => item.id === value.goal);
-  if (!goal || !Array.isArray(value.completed) || value.completed.length > goal.steps.length) return null;
-  const allowed = new Set(goal.steps.map((step) => step.id));
-  if (!value.completed.every((id) => typeof id === 'string' && allowed.has(id))) return null;
-  return { goal: goal.id, completed: [...new Set(value.completed as string[])] };
+  return parseSavedRoute(getLocalStorageItem(STORAGE_KEY));
 }
 
 export function PersonalRoute() {
-  const { setActiveSection } = useAppStore();
-  const [route, setRoute] = useState<SavedRoute | null>(() => typeof window === 'undefined' ? null : readRoute());
+  const { setActiveSection, language } = useAppStore();
+  const [route, setRoute] = useState<SavedRoute | null>(() => (typeof window === 'undefined' ? null : readRoute()));
 
   useEffect(() => {
-    if (route) localStorage.setItem(STORAGE_KEY, JSON.stringify(route));
+    if (route) localStorage.setItem(STORAGE_KEY, serializeSavedRoute(route));
   }, [route]);
 
-  const goal = useMemo(() => GOALS.find((item) => item.id === route?.goal) ?? null, [route]);
+  const goal: Journey | null = useMemo(
+    () => JOURNEYS.find((item) => item.id === route?.goal) ?? null,
+    [route],
+  );
   const completed = route?.completed ?? [];
-  const done = goal?.steps.filter((step) => completed.includes(step.id)).length ?? 0;
-  const next = goal?.steps.find((step) => !completed.includes(step.id));
-  const percent = goal ? Math.round((done / goal.steps.length) * 100) : 0;
+  const done = goal?.activities.filter((a) => completed.includes(a.id)).length ?? 0;
+  const next = goal?.activities.find((a) => !completed.includes(a.id));
+  const percent = goal ? Math.round((done / goal.activities.length) * 100) : 0;
 
   if (!goal || !route) {
     return (
       <section className="container mx-auto max-w-7xl px-4" aria-labelledby="personal-route-title">
         <Card className="overflow-hidden border-primary/20 bg-card/80">
           <CardContent className="p-6 md:p-8">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
               <div className="max-w-2xl">
                 <Badge variant="secondary" className="mb-3 gap-1.5"><Compass className="h-3.5 w-3.5" /> Tu punto de partida</Badge>
-                <h2 id="personal-route-title" className="text-2xl font-bold md:text-3xl">No tienes que resolverlo todo hoy.</h2>
-                <p className="mt-2 text-muted-foreground">Elige una meta y Manos Abiertas ordenará los recursos en una ruta corta. Tu avance se guarda en este dispositivo.</p>
+                <h2 id="personal-route-title" className="text-2xl font-bold md:text-3xl">Elige un objetivo y avanza a tu ritmo.</h2>
+                <p className="mt-2 text-muted-foreground">
+                  Rutas cortas con actividades reales de la plataforma. Sin registro: tu avance se guarda solo en este dispositivo.
+                </p>
               </div>
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:w-[28rem]">
-                {GOALS.map((item) => {
-                  const Icon = item.icon;
-                  return <Button key={item.id} variant="outline" className="h-auto min-w-0 justify-start gap-3 whitespace-normal p-3 text-left" onClick={() => setRoute({ goal: item.id, completed: [] })}>
-                    <Icon className="h-5 w-5 shrink-0 text-primary" />
-                    <span className="min-w-0"><span className="block font-semibold">{item.label}</span><span className="block text-xs font-normal text-muted-foreground">{item.description}</span></span>
-                  </Button>;
+              <div
+                className="grid max-h-[22rem] grid-cols-1 gap-2 overflow-y-auto pr-1 sm:grid-cols-2 md:w-[32rem]"
+                role="list"
+                aria-label="Objetivos disponibles"
+              >
+                {JOURNEYS.map((item) => {
+                  const Icon = JOURNEY_ICONS[item.id] ?? Compass;
+                  return (
+                    <Button
+                      key={item.id}
+                      role="listitem"
+                      variant="outline"
+                      className="h-auto min-w-0 justify-start gap-3 whitespace-normal p-3 text-left"
+                      onClick={() => setRoute({ goal: item.id, completed: [] })}
+                    >
+                      <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                      <span className="min-w-0">
+                        <span className="block font-semibold">{pickText(item.title, language)}</span>
+                        <span className="block text-xs font-normal text-muted-foreground">{pickText(item.effort, language)}</span>
+                      </span>
+                    </Button>
+                  );
                 })}
               </div>
             </div>
@@ -92,7 +97,7 @@ export function PersonalRoute() {
     );
   }
 
-  const GoalIcon = goal.icon;
+  const GoalIcon = JOURNEY_ICONS[goal.id] ?? Compass;
   return (
     <section className="container mx-auto max-w-7xl px-4" aria-labelledby="route-progress-title">
       <Card className="overflow-hidden border-primary/20">
@@ -100,27 +105,114 @@ export function PersonalRoute() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <Badge variant="secondary" className="mb-2 gap-1.5"><GoalIcon className="h-3.5 w-3.5" /> Ruta activa</Badge>
-              <CardTitle id="route-progress-title" className="text-2xl">{goal.label}</CardTitle>
-              <p className="mt-1 text-sm text-muted-foreground">{goal.description}</p>
+              <CardTitle id="route-progress-title" className="text-2xl">{pickText(goal.title, language)}</CardTitle>
+              <p className="mt-1 text-sm text-muted-foreground">{pickText(goal.objective, language)}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Badge variant="outline">{pickText(goal.effort, language)}</Badge>
+                <Badge variant="outline">{pickText(goal.prerequisites, language)}</Badge>
+              </div>
             </div>
-            <Button variant="ghost" size="sm" className="gap-2 self-start" onClick={() => setRoute(null)}><RotateCcw className="h-4 w-4" /> Cambiar meta</Button>
+            <Button variant="ghost" size="sm" className="gap-2 self-start" onClick={() => setRoute(null)}>
+              <RotateCcw className="h-4 w-4" /> Cambiar meta
+            </Button>
           </div>
-          <div className="mt-4 flex items-center gap-3"><Progress value={percent} className="h-2" aria-label={`${percent}% completado`} /><span className="min-w-12 text-right text-sm font-semibold tabular-nums">{percent}%</span></div>
+          <div className="mt-4 flex items-center gap-3">
+            <Progress value={percent} className="h-2" aria-label={`${percent}% completado`} />
+            <span className="min-w-12 text-right text-sm font-semibold tabular-nums">{percent}%</span>
+          </div>
         </CardHeader>
         <CardContent className="p-5 md:p-6">
-          <div className="grid gap-3 md:grid-cols-3">
-            {goal.steps.map((step, index) => {
-              const isDone = completed.includes(step.id);
-              const isNext = !isDone && step.id === next?.id;
-              return <div key={step.id} className={`rounded-xl border p-4 transition-colors ${isNext ? 'border-primary bg-primary/5 shadow-sm' : 'border-border/70 bg-card'}`}>
-                <div className="mb-3 flex items-center justify-between"><span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Paso {index + 1}</span>{isDone ? <Check className="h-5 w-5 text-emerald-600" aria-label="Completado" /> : <Circle className="h-5 w-5 text-muted-foreground" aria-hidden="true" />}</div>
-                <h3 className="font-semibold">{step.title}</h3>
-                <p className="mt-1 min-h-10 text-sm text-muted-foreground">{step.description}</p>
-                <div className="mt-4 flex gap-2"><Button size="sm" className="flex-1 gap-1.5" variant={isNext ? 'default' : 'outline'} onClick={() => setActiveSection(step.section)}>{isDone ? 'Revisar' : 'Abrir'} <ArrowRight className="h-3.5 w-3.5" /></Button><Button size="icon" variant={isDone ? 'secondary' : 'ghost'} onClick={() => setRoute({ ...route, completed: isDone ? completed.filter((id) => id !== step.id) : [...completed, step.id] })} aria-label={isDone ? `Marcar ${step.title} como pendiente` : `Marcar ${step.title} como completado`}><Check className="h-4 w-4" /></Button></div>
-              </div>;
+          <div className="grid gap-3 md:grid-cols-2">
+            {goal.activities.map((activity, index) => {
+              const isDone = completed.includes(activity.id);
+              const isNext = !isDone && activity.id === next?.id;
+              const title = pickPair(activity.title, language);
+              return (
+                <div
+                  key={activity.id}
+                  className={`rounded-xl border p-4 transition-colors ${isNext ? 'border-primary bg-primary/5 shadow-sm' : 'border-border/70 bg-card'}`}
+                >
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Paso {index + 1}</span>
+                    {isDone ? <Check className="h-5 w-5 text-emerald-600" aria-label="Completado" /> : <Circle className="h-5 w-5 text-muted-foreground" aria-hidden="true" />}
+                  </div>
+                  <h3 className="font-semibold">{title}</h3>
+                  <p className="mt-1 min-h-10 text-sm text-muted-foreground">{pickPair(activity.description, language)}</p>
+                  {activity.verifiedRefs && activity.verifiedRefs.length > 0 && (
+                    <ul className="mt-2 space-y-1">
+                      {activity.verifiedRefs.map((ref) => (
+                        <li key={ref.url}>
+                          <a
+                            href={ref.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-primary hover:underline"
+                          >
+                            ↗ {ref.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="mt-4 flex gap-2">
+                    {activity.section ? (
+                      <Button
+                        size="sm"
+                        className="flex-1 gap-1.5"
+                        variant={isNext ? 'default' : 'outline'}
+                        onClick={() => activity.section && setActiveSection(activity.section)}
+                      >
+                        {isDone ? 'Revisar' : 'Abrir'} <ArrowRight className="h-3.5 w-3.5" />
+                      </Button>
+                    ) : (
+                      <Button size="sm" className="flex-1 gap-1.5" variant={isNext ? 'default' : 'outline'} asChild>
+                        <a href={activity.href} target="_blank" rel="noopener noreferrer">
+                          {isDone ? 'Revisar' : 'Abrir'} <ArrowRight className="h-3.5 w-3.5" />
+                        </a>
+                      </Button>
+                    )}
+                    <Button
+                      size="icon"
+                      variant={isDone ? 'secondary' : 'ghost'}
+                      onClick={() =>
+                        setRoute({
+                          ...route,
+                          completed: isDone
+                            ? completed.filter((id) => id !== activity.id)
+                            : [...completed, activity.id],
+                        })
+                      }
+                      aria-label={isDone ? `Marcar ${title} como pendiente` : `Marcar ${title} como completado`}
+                    >
+                      <Check className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              );
             })}
           </div>
-          <div className="mt-5 flex flex-col gap-3 rounded-xl bg-muted/50 p-4 sm:flex-row sm:items-center sm:justify-between"><div className="flex items-start gap-3"><Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><p className="text-sm"><strong>{next ? `Siguiente: ${next.title}` : 'Ruta completada'}</strong><span className="block text-muted-foreground">{next ? 'Haz solo este paso ahora. Después volverás aquí.' : 'Elige otra meta o ayuda a otra persona desde la comunidad.'}</span></p></div>{next && <Button variant="secondary" className="gap-2" onClick={() => setActiveSection(next.section)}>Continuar <ArrowRight className="h-4 w-4" /></Button>}</div>
+          <div className="mt-5 flex flex-col gap-3 rounded-xl bg-muted/50 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-3">
+              <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+              <p className="text-sm">
+                <strong>{next ? `Siguiente: ${pickPair(next.title, language)}` : 'Ruta completada'}</strong>
+                <span className="block text-muted-foreground">
+                  {next
+                    ? 'Haz solo este paso ahora. Después volverás aquí.'
+                    : pickText(goal.outcome, language)}
+                </span>
+              </p>
+            </div>
+            {next && (
+              <Button
+                variant="secondary"
+                className="gap-2"
+                onClick={() => next.section && setActiveSection(next.section)}
+              >
+                Continuar <ArrowRight className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
         </CardContent>
       </Card>
     </section>
