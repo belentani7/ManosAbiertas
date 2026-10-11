@@ -49,7 +49,7 @@ export class ChatEngine {
     const availableTools = request.tools || [];
 
     let iterations = 0;
-    let currentMessages = [...messages];
+    const currentMessages = [...messages];
 
     while (iterations < this.maxIterations) {
       iterations++;

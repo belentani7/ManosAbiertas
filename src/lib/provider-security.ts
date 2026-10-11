@@ -17,6 +17,7 @@ export function safeProviderEndpoint(baseUrl: string, production = process.env.N
 
 export function safeProviderModel(value: string) {
   const model = value.trim();
+// eslint-disable-next-line no-control-regex -- valid Unicode control chars for model sanitization
   return model && model.length <= 200 && !/[\u0000-\u001f\u007f]/.test(model) ? model : null;
 }
 

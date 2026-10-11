@@ -273,6 +273,7 @@ const EMAIL_PATTERN = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
 const PHONE_PATTERN = /(?:\+?\d[\s().-]*){9,}/;
 const ID_PATTERN = /\b(?:[XYZ]\d{7}[A-Z]|\d{8}[A-Z])\b/i;
 const URL_PATTERN = /(?:https?:\/\/|www\.)\S+/i;
+// eslint-disable-next-line no-control-regex -- valid Unicode control chars for markup detection
 const MARKUP_PATTERN = /<\/?[a-z][^>]*>|javascript:|[\u0000-\u0008\u000B\u000C\u000E-\u001F\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/i;
 const THREAT_PATTERN = /\b(?:matar|muerte|amenaza|arma|kill|weapon|bomb|bomba)\b/i;
 

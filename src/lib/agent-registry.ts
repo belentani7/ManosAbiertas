@@ -131,7 +131,7 @@ class AgentRegistry {
 
     let iterations = 0;
     const maxIterations = config.maxIterations || 10;
-    let currentMessages = [...request.messages.slice(-10)];
+    const currentMessages = [...request.messages.slice(-10)];
     currentMessages.unshift({ role: 'system' as const, content: systemPrompt });
 
     while (iterations < maxIterations) {
@@ -270,7 +270,9 @@ class AgentRegistry {
               yield { text: '', done: true, finishReason: parsed.choices[0].finish_reason };
               return;
             }
-          } catch {}
+          } catch {
+              // Ignore parse errors in stream
+            }
         }
       }
     } finally {
