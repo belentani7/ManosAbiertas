@@ -11,6 +11,10 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 - `ANALISIS_ORIGINAL.md`: contrato inmutable de funcionalidades validado (Fase 0).
 - `src/data/main-contacts.ts`: fuente única de contactos de instituciones reales con seguimiento humano.
 - `tests/core/main-contacts.test.mjs`: test de integridad del flujo de contactos (los 8 servicios de emergencia, ONGs y embajadas no pueden desaparecer).
+- **Motor de itinerarios personales** (`src/data/journeys.ts` + `personal-route.tsx`): 11 journeys (objetivo → actividades reales → progreso) sin registro, con metadatos (prerrequisitos, esfuerzo, resultado), fuentes verificadas y contenido en PT>ES>EN>CA. Migración sin pérdida del formato legado.
+- **MAIA v1** (`src/lib/maia.ts` + `/api/chat` + `ai-assistant.tsx`): asistente con búsqueda determinista sobre el catálogo verificado, citas con etiquetas de confianza (OFFICIAL SOURCE / REVIEWED COMMUNITY RESOURCE / VERIFICATION REQUIRED), presupuesto diario de IA (30/día cliente, 48/día servidor) y modo sin IA útil (offline).
+- `tests/core/journeys.test.mjs` + `tests/core/maia.test.mjs`: 14 tests de integridad (itinerarios, idiomas, migración, URLs, presupuesto, defensa de payloads).
+- Documentación de producto e ingeniería: `docs/audit/BASELINE-TECHNICAL-AUDIT.md`, `docs/audit/WORLD-CLASS-BACKLOG-REVIEW.md`, `docs/product/USER-JOURNEYS.md`, `docs/ai/MAIA-ARCHITECTURE.md`, `docs/roadmap/IMPLEMENTATION-ROADMAP.md`, `docs/roadmap/EXECUTION-LOG.md`.
 
 ### Changed
 - `package.json` declara `"license": "MIT"` (fuente de verdad: `LICENSE`), eliminando la inconsistencia con AGPL-3.0-only.
