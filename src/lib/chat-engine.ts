@@ -14,8 +14,14 @@ export interface ChatRequest {
   maxTokens?: number;
   temperature?: number;
   topP?: number;
-  tools?: any[];
+  /** Definiciones de herramientas en formato OpenAI (allowlistadas por el llamador). */
+  tools?: ToolDefinition[];
   toolChoice?: 'auto' | 'none' | 'required' | { type: 'function'; function: { name: string } };
+  /**
+   * Ejecutor de herramientas. Si no se proporciona, las tool_calls del modelo
+   * se responden con un error honesto (nunca con resultados simulados).
+   */
+  toolExecutor?: (name: string, argsJson: string) => Promise<string>;
   stream?: boolean;
   systemPrompt?: string;
   context?: Record<string, unknown>;
@@ -49,7 +55,7 @@ export class ChatEngine {
     const availableTools = request.tools || [];
 
     let iterations = 0;
-    let currentMessages = [...messages];
+    const currentMessages = [...messages];
 
     while (iterations < this.maxIterations) {
       iterations++;
@@ -69,11 +75,17 @@ export class ChatEngine {
 
       if (assistantMessage.tool_calls && assistantMessage.tool_calls.length > 0) {
         for (const toolCall of assistantMessage.tool_calls) {
+          // Tool-calling real: el llamador aporta el ejecutor allowlistado.
+          // Sin ejecutor, se responde con error explícito (nunca se simulan
+          // resultados de herramientas).
+          const toolContent = request.toolExecutor
+            ? await request.toolExecutor(toolCall.function.name, toolCall.function.arguments || '{}')
+            : JSON.stringify({ ok: false, error: 'TOOL_NOT_EXECUTED: no executor configured' });
           currentMessages.push({
             role: 'tool',
             tool_call_id: toolCall.id,
             name: toolCall.function.name,
-            content: JSON.stringify({ result: 'Tool execution placeholder' })
+            content: toolContent
           });
         }
         continue;
@@ -98,8 +110,8 @@ export class ChatEngine {
     maxTokens?: number;
     temperature?: number;
     topP?: number;
-    tools?: any[];
-    toolChoice?: any;
+    tools?: ToolDefinition[];
+    toolChoice?: ChatRequest['toolChoice'];
   }): Promise<{ message: ChatMessage; provider: string; model: string; usage?: any; finishReason?: string }> {
     const modelId = options.model || 'qwen3.6-flash';
     const modelConfig = aiRegistry.getModel(modelId);
