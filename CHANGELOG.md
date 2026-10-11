@@ -7,6 +7,11 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 ## [Unreleased]
 
 ### Added
+- **Tool-calling real de MAIA (roadmap D1)** (`src/lib/maia-tools.ts`): 5 herramientas allowlistadas sobre catálogos locales (`search_verified_resources`, `find_courses`, `list_journeys`, `get_journey`, `list_emergency_contacts`) con validación Zod estricta, JSON Schema OpenAI, timeout, audit log expuesto en `/api/chat` (`toolAudit[]`) y tratamiento del tool output como dato no confiable. Tests: `tests/core/maia-tools.test.mjs` (9).
+- **Accesibilidad automatizada con axe-core** (`tests/core/accessibility-axe.test.mjs`): auditoría WCAG sobre componentes reales renderizados con jsdom (contactos humanos, selector y vista de itinerarios). Detectó y corrigió un bug real (`role="listitem"` ilegal en `<button>`).
+- **Lint operativo**: `eslint.config.mjs` (flat config ESLint 9, preset oficial Next 16). `npm run lint` cierra con 0 errores; la deuda legada queda como warnings (ratchet).
+- **`DEPENDENCIAS.md`**: inventario completo de dependencias justificadas + reglas de admisión (contrato del mandato).
+- **Fuentes autoalojadas** (`geist`): build hermético sin red a Google Fonts.
 - Archivos de comunidad: código de conducta, cita, plantillas de issues y PR, Dependabot.
 - `ANALISIS_ORIGINAL.md`: contrato inmutable de funcionalidades validado (Fase 0).
 - `src/data/main-contacts.ts`: fuente única de contactos de instituciones reales con seguimiento humano.
@@ -24,9 +29,12 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 ### Fixed
 - Tipos de `params` async en `src/app/[locale]/cursos/[slug]` y `.../leccion/[lessonId]` (Next 16 `PageProps`): `next build` volvía a pasar su gate de TypeScript.
 - `npm audit`: de 37 vulnerabilidades (3 críticas, 18 high) a 0 críticas y 3 high en tooling (transitivas de Prisma sin fix compatible); 0 en runtime puro.
+- Errores reales detectados por los nuevos gates: `role="listitem"` ilegal en botones (axe), `Math.random` en render (pureza de hooks), comillas sin escapar en JSX (10), `prefer-const` (5), crash de `find_courses` (campo `model` vs `title` en `AICourse`), formato OpenAI de definiciones de tools.
 
 ### Removed
+- **Código muerto y stubs (roadmap B4)**: 6 componentes sin consumidores (`DigitalInsects`, `MatrixRain`, `SpaceShipTrail`, `WaterRain`, `FloatingAgent`, `accessibility-panel`) y directorios stub (`apps/`, `packages/dashboard`, `mini-services/`, `neon-mantra/`); referencias obsoletas reparadas en el ledger de mejoras aplicadas y en la matriz world-class.
 - Dependencias sin uso confirmadas en el código: `omniroute` (vulnerabilidad crítica), `z-ai-web-dev-sdk`, `next-auth`, `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities`, `@tanstack/react-query` (~820 paquetes fuera del árbol de nodos).
+- **Dependencias con 0 usos (G12)**: `uuid`, `@reactuses/core`, `date-fns`, `react-markdown`, `@tanstack/react-table`, `bun-types` (esta última además ocultaba la falta de `@types/node`). −89 paquetes.
 
 ### Security
 - Eliminación de `omniroute` (RCE/DoS transitivos críticos vía next, http-proxy-middleware, onnxruntime-node, etc.).

@@ -67,3 +67,40 @@ Ver [`IMPLEMENTATION-ROADMAP.md`](IMPLEMENTATION-ROADMAP.md). Siguientes P1: B1 
 | Itinerarios | `tests/core/journeys.test.mjs`, `docs/product/USER-JOURNEYS.md` |
 | MAIA | `tests/core/maia.test.mjs`, `docs/ai/MAIA-ARCHITECTURE.md` |
 | Auditoría | `docs/audit/BASELINE-TECHNICAL-AUDIT.md`, `docs/audit/WORLD-CLASS-BACKLOG-REVIEW.md` |
+
+---
+
+## CICLO 2 — CLASE MUNDIAL (tool-calling real, lint, a11y, compactación)
+
+**Fecha**: 2026-10-11 · **Rama**: `arena/7c0760e5-manosabiertas` · **Mandato**: "apruebo y exijo más y lo mejor del mundo"
+
+### OBJETIVO → RESULTADO
+
+| Ítem (roadmap) | Resultado | Evidencia |
+|---|---|---|
+| **D1. Tool-calling real allowlistado** | ✅ `src/lib/maia-tools.ts`: 5 herramientas allowlistadas (`search_verified_resources`, `find_courses`, `list_journeys`, `get_journey`, `list_emergency_contacts`), Zod estricto + JSON Schema OpenAI, timeout 1500 ms, ejecutor determinista sobre catálogos locales, audit log (ring buffer 50) expuesto en `/api/chat` (`toolAudit[]`). Tool output tratado como dato no confiable en el prompt. Error honesto `TOOL_NOT_EXECUTED` si no hay ejecutor (placeholder eliminado). | `tests/core/maia-tools.test.mjs` (9 tests); `npm run typecheck` 0 |
+| **B1. Lint operativo** | ✅ `eslint.config.mjs` (flat config ESLint 9 con preset oficial Next 16: core-web-vitals + typescript). `npm run lint` → **0 errores** (293 warnings de deuda legada trackeados como ratchet: `no-explicit-any` en módulos IA legados, `set-state-in-effect` en hidratación SSR). Arreglos reales: prefer-const (5), unescaped-entities (10 → entidades tipográficas), `Math.random` en render (2 → hash determinista con `useId`), link estático documentado. Prettier **no** se añade: `eslint --fix` cubre el gate y formatear 1000 ficheros sería churn sin valor de usuario (decisión registrada). | `npm run lint` exit 0 |
+| **B3. a11y automatizada** | ✅ `tests/core/accessibility-axe.test.mjs`: axe-core + jsdom sobre componentes REALES (ContactsSection, PersonalRoute selector y ruta activa). **Detectó y corrigió un bug WCAG real**: `role="listitem"` ilegal en `<button>` (→ `role="group"`). 3/3 escenarios axe limpios (0 violaciones). Contraste se audita en revisión manual (jsdom sin layout). | `node --test tests/core/accessibility-axe.test.mjs` 3/3 |
+| **B4. Código muerto fuera** | ✅ `git rm` de 6 componentes sin consumidores (DigitalInsects, MatrixRain, SpaceShipTrail, WaterRain, FloatingAgent, accessibility-panel) + stubs `apps/`, `packages/dashboard`, `mini-services/`, `neon-mantra/` (0 referencias verificadas antes de borrar). Referencias obsoletas reparadas: ledger `applied-improvements.jsonl` (MA-APPLIED-029/030/064 reapuntadas con verdad), matriz `improvements-3000.jsonl` (100 `path` de la superficie accesibilidad reapuntados a `tests/core/accessibility-axe.test.mjs`), `safe-content.test.mjs`. | `strategy:verify` OK · `improvements:verify` OK (155) |
+| **H3. Build hermético (fuentes)** | ✅ `geist` (paquete con woff2 locales) sustituye a `next/font/google`: build compila **sin mock y sin red de Google Fonts**. Engines de Prisma siguen requiriendo red en build en frío (mitigable con cache de CI) → H3 queda 🟡. | `npm run build` → "✓ Compiled successfully" sin `NEXT_FONT_GOOGLE_MOCKED_RESPONSES` |
+| **G12. Limpieza de dependencias** | ✅ Expulsadas 6 deps con 0 usos (`uuid`, `@reactuses/core`, `date-fns`, `react-markdown`, `@tanstack/react-table`, `bun-types` — esta última ocultaba la falta de `@types/node`). −89 paquetes. **`DEPENDENCIAS.md` creado**: inventario completo justificado + reglas de admisión. | `DEPENDENCIAS.md` · `npm audit --omit=dev` 0 |
+| **D1' calidad de la implementación** | MAIA tools validan payloads contra catálogo local (nada se inventa); IDs de emergencia fijos (los 8 teléfonos no pueden desaparecer); hallazgo y fix de bug real: `AICourse.title` no existe (es `model`) — el tool crasheaba; formato OpenAI tool wrapper corregido. | `maia-tools.test.mjs` |
+
+### IMPACTO EN RECURSOS
+
+- **Dependencias nuevas**: 4 devDeps justificadas (`jsdom`, `axe-core`, `esbuild` —tests—, `@types/node`) + 1 runtime (`geist` — build hermético). **−6 deps sin uso**. Todo en `DEPENDENCIAS.md`.
+- **Coste operativo: 0** — todo son tools deterministas sobre datos locales; la inferencia IA sigue con presupuestos 30/día + 48/día.
+- **Complejidad**: +1 módulo (`maia-tools.ts`), −6 componentes muertos, −4 stubs, −89 paquetes.
+
+### EVIDENCIA
+
+| Qué | Dónde |
+|---|---|
+| Tests | `npm run test:core` → **101 tests, 99 pass, 0 fail** (2 cancelados de red) |
+| Lint | `npm run lint` → exit 0 (0 errores) |
+| Typecheck | `npm run typecheck` → 0 errores |
+| Verificadores | `i18n:verify` · `trust:verify` · `accessibility:verify` · `tools:verify` · `guides:verify` · `improvements:verify` (155) · `strategy:verify` — **todos OK** |
+| Seguridad | `npm audit --omit=dev` → **0 vulnerabilities** |
+| Tool-calling | `tests/core/maia-tools.test.mjs` (9) |
+| a11y axe | `tests/core/accessibility-axe.test.mjs` (3) |
+| Build hermético | `npm run build` sin mock de fuentes → compila |
