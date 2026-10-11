@@ -7,9 +7,10 @@ import { PlayCircle, CheckCircle2, Circle } from 'lucide-react';
 
 const prisma = new PrismaClient();
 
-export default async function CoursePage({ params }: { params: { slug: string } }) {
+export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const course = await prisma.course.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       lessons: {
         orderBy: { order: 'asc' }

@@ -7,9 +7,10 @@ import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
 
-export default async function LessonPage({ params }: { params: { slug: string, lessonId: string } }) {
+export default async function LessonPage({ params }: { params: Promise<{ slug: string, lessonId: string }> }) {
+  const { slug, lessonId } = await params;
   const lesson = await prisma.lesson.findUnique({
-    where: { id: params.lessonId },
+    where: { id: lessonId },
     include: {
       course: true
     }
@@ -33,14 +34,14 @@ export default async function LessonPage({ params }: { params: { slug: string, l
           update: { completed: true },
           create: { enrollmentId: enrollment.id, lessonId: lesson!.id, completed: true }
         });
-        revalidatePath(`/cursos/${params.slug}`);
+        revalidatePath(`/cursos/${slug}`);
       }
     }
   }
 
   return (
     <div className="container mx-auto py-6 px-4 max-w-4xl">
-      <Link href={`/cursos/${params.slug}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-6">
+      <Link href={`/cursos/${slug}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-6">
         <ChevronLeft className="w-4 h-4 mr-1" />
         Volver al Curso
       </Link>
