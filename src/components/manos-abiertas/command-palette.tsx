@@ -216,7 +216,7 @@ export function CommandPalette() {
             {results.length === 0 ? (
               <div className="py-12 text-center text-sm text-muted-foreground">
                 <Search className="h-8 w-8 mx-auto mb-2 opacity-30" />
-                No se encontraron resultados para "{query}"
+                No se encontraron resultados para &ldquo;{query}&rdquo;
               </div>
             ) : (
               <div className="space-y-0.5">

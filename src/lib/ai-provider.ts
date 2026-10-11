@@ -635,7 +635,7 @@ export class AIProviderRegistry {
     const fallbackChain = this.config.fallbackChain;
     const modelsToTry = request.model ? [request.model] : [this.config.defaultModel, ...this.config.fallbackChain.filter(m => m !== this.config.defaultModel)];
 
-    let lastError: Error | null = null;
+    const lastError: Error | null = null;
     for (const modelId of modelsToTry) {
       try {
         const result = await attemptModel(modelId);
@@ -684,7 +684,7 @@ export class AIProviderRegistry {
     if (!reader) throw new Error('No response body');
 
     const decoder = new TextDecoder();
-    let buffer = '';
+    const buffer = '';
 
     try {
       while (true) {

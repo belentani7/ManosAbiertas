@@ -120,7 +120,7 @@ export default function PhoneDirectory() {
           ))
         ) : (
           <div className="text-center py-12 text-gray-500 col-span-full">
-            <p>No se encontraron resultados para "{searchTerm}"</p>
+            <p>No se encontraron resultados para &ldquo;{searchTerm}&rdquo;</p>
           </div>
         )}
       </div>
