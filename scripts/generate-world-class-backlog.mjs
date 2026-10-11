@@ -25,7 +25,7 @@ const surfaces = [
   ['events', 'Eventos', 'src/components/manos-abiertas/events-section.tsx', 'descubrir actividades vigentes y accesibles', 'community', 'P1'],
   ['tools', 'Herramientas practicas', 'src/components/manos-abiertas/tools-section.tsx', 'completar tareas administrativas frecuentes', 'experience', 'P1'],
   ['documents', 'Plantillas documentales', 'src/components/manos-abiertas/document-templates.tsx', 'producir documentos claros y editables', 'content', 'P1'],
-  ['accessibility', 'Panel de accesibilidad', 'src/components/manos-abiertas/accessibility-panel.tsx', 'adaptar lectura e interaccion a necesidades diversas', 'accessibility', 'P0'],
+  ['accessibility', 'Panel de accesibilidad', 'tests/core/accessibility-axe.test.mjs', 'adaptar lectura e interaccion a necesidades diversas', 'accessibility', 'P0'],
   ['language', 'Idioma y localizacion', 'src/components/manos-abiertas/locale-provider.tsx', 'mantener una experiencia coherente en cada idioma', 'localization', 'P0'],
   ['navigation', 'Navegacion', 'src/components/manos-abiertas/nav-bar.tsx', 'moverse por el producto sin perder contexto', 'experience', 'P1'],
   ['pwa', 'PWA y estado offline', 'src/components/manos-abiertas/pwa-status.tsx', 'conservar utilidad con red lenta o ausente', 'platform', 'P0'],

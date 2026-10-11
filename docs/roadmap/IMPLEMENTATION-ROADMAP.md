@@ -18,10 +18,10 @@
 
 | Ítem | Prioridad | Beneficio | Módulos | Complejidad | Coste | Riesgos | Aceptación | Verificación | Estado |
 |---|---|---|---|---|---|---|---|---|---|
-| B1. ESLint 9 flat config + Prettier (lint operativo) | P1 | DX y gate de calidad real | config | Baja | 0 | Ruido de reglas (tuneo) | `npm run lint` verde | CI | 📋 |
+| B1. ESLint 9 flat config + Prettier (lint operativo) | P1 | DX y gate de calidad real | config | Baja | 0 | Ruido de reglas (tuneo) | `npm run lint` verde | CI | ✅ (sin Prettier: ver nota) |
 | B2. Localización del chrome nuevo (itinerarios/MAIA) con claves i18n | P1 | PT>ES>EN>CA real en toda la UI | i18n/translations, components | Media | 0 | 25 diccionarios por actualizar | `i18n:verify` sin regresiones | verify-i18n | 📋 |
-| B3. Auditoría a11y automatizada (axe-core + teclado) y WCAG 2.2 AA | P1 | Accesibilidad como contrato | global | Media | 0 | Falsos positivos | axe limpio en rutas críticas + revisión manual | Playwright+axe | 📋 |
-| B4. Eliminar código muerto y stubs (6 componentes, 4 directorios) | P2 | Compactación | varios | Baja | 0 | Pérdida de artefactos (evidenciado: cero refs) | typecheck+tests verdes | CI | 📋 |
+| B3. Auditoría a11y automatizada (axe-core + teclado) y WCAG 2.2 AA | P1 | Accesibilidad como contrato | global | Media | 0 | Falsos positivos | axe limpio en rutas críticas + revisión manual | Playwright+axe | ✅ (axe real; teclado interactivo → H1) |
+| B4. Eliminar código muerto y stubs (6 componentes, 4 directorios) | P2 | Compactación | varios | Baja | 0 | Pérdida de artefactos (evidenciado: cero refs) | typecheck+tests verdes | CI | ✅ |
 
 ## Fase C — Fundación educativa
 
@@ -35,7 +35,7 @@
 
 | Ítem | Prioridad | Beneficio | Módulos | Complejidad | Coste | Riesgos | Aceptación | Verificación | Estado |
 |---|---|---|---|---|---|---|---|---|---|
-| D1. Tool-calling real allowlistado (sustituir placeholder de chat-engine) | P1 | Flujos guiados reales (buscar curso, CV, checklist) | chat-engine, function-calling | Alta | Baja | Prompt injection (tratar tool output como no confiable) | Herramienta ejecutada + audit log | tests integración | 📋 |
+| D1. Tool-calling real allowlistado (sustituir placeholder de chat-engine) | P1 | Flujos guiados reales (buscar curso, CV, checklist) | chat-engine, function-calling | Alta | Baja | Prompt injection (tratar tool output como no confiable) | Herramienta ejecutada + audit log | tests integración | ✅ |
 | D2. Routing por coste/latencia + presupuestos por proveedor | P2 | Coste sostenible | ai-provider | Media | Ahorro | — | Presupuesto por proveedor aplicado | tests | 📋 |
 | D3. Explicador de documentos (local-first, fechas explícitas, sin inventar) | P1 | Entender cartas administrativas | nueva sección + MAIA | Alta | Baja (OCR local opcional) | Interpretaciones erróneas (marcar incertidumbre obligatoria) | Flujo completo con verificación humana | E2E + revisión | 📋 |
 
@@ -67,5 +67,5 @@
 |---|---|---|---|---|---|---|---|---|---|
 | H1. Playwright E2E de flujos críticos (journeys, CV, contactos, MAIA) | P1 | Regresiones imposibles | tests/e2e | Media | 0 | — | Flujos del README cubiertos | CI | 📋 |
 | H2. Lighthouse CI ≥90 perf / ≥95 a11y en páginas representativas | P2 | Rendimiento medido | CI | Baja | 0 | — | Presupuesto de rendimiento en CI | Lighthouse CI | 📋 |
-| H3. Build hermético (fuentes self-hosted, engines cacheados) | P2 | Build sin red, autonomía | layout, prisma | Baja | 0 | — | `npm run build` offline | CI | 📋 |
+| H3. Build hermético (fuentes self-hosted, engines cacheados) | P2 | Build sin red, autonomía | layout, prisma | Baja | 0 | — | `npm run build` offline | CI | 🟡 fuentes ✅ (geist); engines Prisma aún requieren red en build en frío |
 | H4. README elevado + ADRs + CHANGELOG vs original | P2 | Onboarding de contribuidores | docs | Baja | 0 | — | Quickstart <5 min | revisión | 📋 |

@@ -144,7 +144,7 @@ export function TestimonialsSection() {
                   </div>
                   <Quote className="h-5 w-5 text-primary/30 flex-shrink-0" />
                 </div>
-                <p className="text-sm text-foreground/80 leading-relaxed italic">"{t.story}"</p>
+                <p className="text-sm text-foreground/80 leading-relaxed italic">&ldquo;{t.story}&rdquo;</p>
 
                 {/* Outcome badge */}
                 {t.outcome && (

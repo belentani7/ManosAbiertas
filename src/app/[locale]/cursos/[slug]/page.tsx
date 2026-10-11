@@ -26,7 +26,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   const user = await prisma.user.findFirst({ where: { email: 'student@manosabiertas.org' } });
   
   let enrollment: { lessonProgress: { lessonId: string; completed: boolean }[] } | null = null;
-  let progresses: Record<string, boolean> = {};
+  const progresses: Record<string, boolean> = {};
 
   if (user) {
     enrollment = await prisma.enrollment.findUnique({

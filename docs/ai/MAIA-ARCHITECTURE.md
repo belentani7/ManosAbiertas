@@ -75,3 +75,44 @@ El presupuesto **solo se consume cuando hubo inferencia IA real** (`degraded: fa
 2. Routing por coste/latencia con modelo pequeño para tareas simples y presupuestos por proveedor.
 3. Explicador de documentos con procesamiento local-first y borrado inmediato (§10 del mandato).
 4. Reforzar citas en respuestas de tutoría educativa (no solo recursos).
+
+---
+
+## Tool-calling real (Ciclo 2 — roadmap D1) ✅
+
+El placeholder de `chat-engine` (tools simuladas sin efecto) se sustituyó por un
+executor real, determinista y allowlistado. **Ninguna herramienta toca red, DB
+ni sistema de ficheros**: todo responde sobre catálogos locales.
+
+### Allowlist (5 herramientas, `src/lib/maia-tools.ts`)
+
+| Tool | Entrada (Zod estricto) | Salida | Fuente |
+|---|---|---|---|
+| `search_verified_resources` | `{query: 2–160, type?, location?}` | resultados con `trust` | `src/data/resources.ts` (3686) |
+| `find_courses` | `{topic?}` | cursos + nº lecciones | `ai-courses`, `office-course`, `journeys` |
+| `list_journeys` | `{}` | los 11 itinerarios (PT/ES/EN/CA) | `src/data/journeys.ts` |
+| `get_journey` | `{journeyId}` | actividades reales del journey | `src/data/journeys.ts` |
+| `list_emergency_contacts` | `{}` | los 8 servicios con `tel:` | `src/data/main-contacts.ts` |
+
+### Garantías
+
+1. **Allowlist por nombre**: las tools que el cliente envía se filtran contra el
+   registro; nada fuera del allowlist se ejecuta (defensa de prompt injection).
+2. **Validación doble**: `safeParse` Zod (schemas con `additionalProperties:false`)
+   → sin parámetros extra; errores tipados `VALIDATION_ERROR` / `UNKNOWN_TOOL` /
+   `TIMEOUT_TOOL` / `TOOL_ERROR` — nunca crashea la petición.
+3. **Tool output = dato no confiable**: el system prompt lo declara y obliga a
+   citar; el executor nunca concatena salida de tools al prompt del sistema.
+4. **Timeout 1500 ms** por herramienta; aunque sean cálculos locales.
+5. **Audit log**: cada ejecución (éxito o error) queda en un ring buffer de 50
+   con nombre, duración y ok/ko; `/api/chat` lo devuelve en `toolAudit[]`.
+6. **Sin ejecutor → error honesto**: `TOOL_NOT_EXECUTED` (el placeholder que
+   devolvía `tool_used` falso fue eliminado).
+7. **Contrato de emergencia**: `list_emergency_contacts` expone los 8 teléfonos
+   con IDs estables (`emergencias-112`, …); un test impide que desaparezcan.
+
+### Estado de los 5 pilares de calidad del tool-calling
+
+- Allowlist y schemas cerrados ✅ · timeouts ✅ · audit ✅ · output no confiable ✅ · tests (9) ✅
+- Pendiente (Fase D2/E3): routing por coste, herramientas con escritura
+  (application tracker), simulador de entrevistas.

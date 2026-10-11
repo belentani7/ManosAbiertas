@@ -68,7 +68,7 @@ export function PersonalRoute() {
               </div>
               <div
                 className="grid max-h-[22rem] grid-cols-1 gap-2 overflow-y-auto pr-1 sm:grid-cols-2 md:w-[32rem]"
-                role="list"
+                role="group"
                 aria-label="Objetivos disponibles"
               >
                 {JOURNEYS.map((item) => {
@@ -76,7 +76,6 @@ export function PersonalRoute() {
                   return (
                     <Button
                       key={item.id}
-                      role="listitem"
                       variant="outline"
                       className="h-auto min-w-0 justify-start gap-3 whitespace-normal p-3 text-left"
                       onClick={() => setRoute({ goal: item.id, completed: [] })}

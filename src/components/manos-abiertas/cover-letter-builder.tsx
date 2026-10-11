@@ -333,7 +333,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
                   </div>
                   <p className="text-sm font-medium text-muted-foreground mb-1">Tu carta aparecerá aquí</p>
                   <p className="text-xs text-muted-foreground max-w-xs mx-auto">
-                    Rellena tus datos en la pestaña "Datos" y pulsa "Generar carta con IA"
+                    Rellena tus datos en la pestaña &ldquo;Datos&rdquo; y pulsa &ldquo;Generar carta con IA&rdquo;
                   </p>
                 </div>
               )}

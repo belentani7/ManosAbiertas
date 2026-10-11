@@ -114,7 +114,7 @@ export function TTSPlayer({ text, title }: { text: string; title?: string }) {
                   key={i}
                   className="w-0.5 bg-primary rounded-full animate-pulse"
                   style={{
-                    height: `${4 + Math.random() * 12}px`,
+                    height: `${4 + ((i * 11 + 7) % 12)}px`,
                     animationDelay: `${i * 50}ms`,
                   }}
                 />
