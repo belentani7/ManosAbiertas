@@ -47,7 +47,6 @@ test('print, export and local-state consumers retain the safe-content boundary',
   const templates = read('src/components/manos-abiertas/document-templates.tsx');
   const resources = read('src/components/manos-abiertas/resources-section.tsx');
   const localConsumers = [
-    'src/components/manos-abiertas/accessibility-panel.tsx',
     'src/components/manos-abiertas/community-section.tsx',
     'src/components/manos-abiertas/courses-library-section.tsx',
     'src/components/manos-abiertas/document-checklist.tsx',
