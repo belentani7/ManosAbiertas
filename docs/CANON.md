@@ -31,6 +31,9 @@ Plataforma educativa gratuita para competencias digitales, IA aplicada, ofimáti
 ## Pacto arquitectónico
 Mantener el producto centrado en accesibilidad, trazabilidad de fuentes y funcionalidad. No añadir servicios, bases nuevas, autenticación obligatoria o reestructuras masivas por cumplir una plantilla. Antes de mover código, trazar importaciones, rutas, configuración de Vercel y dependencias. Todo cambio en rama/PR con criterios de aceptación y regresión.
 
+## Conformidad, privacidad y derechos
+La evaluación preliminar por regímenes y los ocho escenarios de prueba están documentados en [compliance/ASSESSMENT.md](./compliance/ASSESSMENT.md). **Ningún control sin ejecución se considera aprobado.** En particular, verificar si los modelos de usuario de Prisma son usados en producción y si el CV se mantiene localmente antes de afirmar ausencia de tratamiento de datos personales.
+
 ## Pendientes de evidencias
 - [ ] Ejecutar pruebas, build y Lighthouse sobre preview real.
 - [ ] Verificar cuál de `src/app`, `apps/manos-abiertas` y artefactos HTML es el entrypoint canónico.
