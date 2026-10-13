@@ -11,11 +11,16 @@ const MAX_BACKUP_BYTES = 1_000_000;
 
 function getAppDataSnapshot() {
   if (typeof window === 'undefined') return '[]';
-  const entries = Object.keys(localStorage)
-    .filter(isAppLocalDataKey)
-    .sort()
-    .map((key) => [key, localStorage.getItem(key)]);
-  return JSON.stringify(entries);
+  try {
+    const entries = Object.keys(window.localStorage)
+      .filter(isAppLocalDataKey)
+      .sort()
+      .map((key) => [key, window.localStorage.getItem(key)]);
+    return JSON.stringify(entries);
+  } catch {
+    // Safari privacy mode or blocked storage must not crash the whole page.
+    return '[]';
+  }
 }
 
 function subscribeToLocalData(onStoreChange: () => void) {
@@ -84,9 +89,13 @@ export function LocalDataPanel() {
 
   const clearData = () => {
     if (!window.confirm('¿Eliminar el progreso guardado de Manos Abiertas en este dispositivo?')) return;
-    Object.keys(localStorage).filter(isAppLocalDataKey).forEach((key) => localStorage.removeItem(key));
-    refresh();
-    setStatus('Datos locales eliminados de este dispositivo.');
+    try {
+      Object.keys(window.localStorage).filter(isAppLocalDataKey).forEach((key) => window.localStorage.removeItem(key));
+      refresh();
+      setStatus('Datos locales eliminados de este dispositivo, incluido el progreso de los cursos.');
+    } catch {
+      setStatus('El navegador impide borrar alguno de los datos. Revisa los permisos de almacenamiento.');
+    }
   };
 
   return (
