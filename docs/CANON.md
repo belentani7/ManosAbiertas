@@ -35,4 +35,4 @@ Mantener el producto centrado en accesibilidad, trazabilidad de fuentes y funcio
 - [ ] Ejecutar pruebas, build y Lighthouse sobre preview real.
 - [ ] Verificar cuál de `src/app`, `apps/manos-abiertas` y artefactos HTML es el entrypoint canónico.
 - [ ] Revisar datos sensibles, consentimiento, licencias y expiración de recursos.
-- [ ] Documentar resultado PASS/FAIL/UNTETSED en hoja de auditoría con fecha y SHA.
+- [ ] Documentar resultado PASS/FAIL/UNTESTED en hoja de auditoría con fecha y SHA.
