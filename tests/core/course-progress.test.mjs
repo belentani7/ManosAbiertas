@@ -28,7 +28,7 @@ test('completion is never negative, above 100%, infinite or NaN', () => {
   assert.equal(courseCompletionPercentage(3, Number.NaN), 0);
 });
 
-test('course progress is included in the user's backup, restore and erase key scope', () => {
+test("course progress is included in the user backup, restore and erase key scope", () => {
   const key = courseProgressKey('ai-101');
   assert.equal(isAppLocalDataKey(key), true);
   assert.deepEqual(parseLocalDataBackup({ version: 1, data: { [key]: '{"courseId":"ai-101"}' } }), [[key, '{"courseId":"ai-101"}']]);
