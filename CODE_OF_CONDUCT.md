@@ -1,9 +1,8 @@
-# Código de conducta
+# Contributor Covenant Code of Conduct
 
-Este proyecto adopta el [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+This project follows Contributor Covenant 2.1.
 
-- Sé respetuoso/a y constructivo/a.
-- Nada de acoso, discriminación ni ataques personales.
-- Critica ideas, no personas.
+Be respectful and inclusive.
+Report issues: belentani7pedro@gmail.com
 
-**Reportes**: usa un aviso privado en la pestaña *Security* del repositorio o escribe a la persona mantenedora del perfil.
+https://www.contributor-covenant.org
