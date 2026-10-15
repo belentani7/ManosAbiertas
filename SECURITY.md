@@ -1,32 +1,25 @@
-# Política de seguridad
+# Security Policy
 
-## Cómo reportar una vulnerabilidad
+## Reporting a Vulnerability
 
-Por favor, **no abras issues públicos** con detalles de vulnerabilidades.
+Please report security vulnerabilities via email to belentani7pedro@gmail.com.
 
-Usa el canal privado de GitHub:
+## Code Scanning
 
-1. Ve a la pestaña **Security** del repositorio.
-2. Selecciona **Report a vulnerability** (Private vulnerability reporting).
-3. Describe: impacto, versión afectada, pasos para reproducir y, si tienes, una prueba de concepto.
+This project uses GitHub CodeQL for automated security scanning. All security issues detected by CodeQL will be addressed with priority.
 
-## Qué puedes esperar
+## Dependabot
 
-- **Acuse de recibo**: ~5 días laborables.
-- **Actualización de estado**: ~14 días laborables.
-- **Divulgación coordinada**: tras publicar un fix, o de mutuo acuerdo.
+Dependabot alerts security vulnerabilities in dependencies. Dependabot security updates will be accepted via Pull Request.
 
-## Versiones soportadas
+## Secret Protection
 
-| Versión | Soportada |
-|---|---|
-| Rama principal (`main`) | ✅ |
+GitHub Secret Protection scans for hardcoded secrets. Do not commit API keys, tokens, or passwords to this repository.
 
-## Proceso
+## Advanced Security
 
-1. Triaje privado del reporte.
-2. Fix en rama privada con test.
-3. Publicación del advisory y release del fix.
-4. Crédito al investigador/a (si lo desea).
-
-Gracias por ayudar a mantener este proyecto seguro.
+Enable GitHub Advanced Security for:
+- Dependabot alerts
+- CodeQL analysis
+- Secret scanning
+- Push protection
