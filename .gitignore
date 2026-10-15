@@ -36,3 +36,7 @@ coverage/
 
 # Cache
 .cache/
+
+# Copias locales de datos personales (CV, progreso, analisis ATS)
+/local-*
+
