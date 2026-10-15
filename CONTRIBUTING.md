@@ -1,21 +1,15 @@
-# Contribuir
+# Contributing to Belentani Project
+## Getting Started
+Fork, clone, install (npm install / pip install -r requirements.txt), create branch.
 
-¡Gracias por tu interés en contribuir!
+## Development Workflow
+Run lint/test/build. Follow conventional commits.
 
-## Flujo
+## Pull Request Process
+Submit PR with description, link issues.
 
-1. Abre un **issue** para proponer cambios grandes antes de implementarlos.
-2. Haz fork del repo y crea una rama descriptiva (`git checkout -b feat/mi-cambio`).
-3. Mantén el estilo del código existente y añade tests cuando aplique.
-4. Escribe commits con [Conventional Commits](https://www.conventionalcommits.org/).
-5. Abre un **pull request** explicando qué cambia y por qué.
+## Code Standards
+Use ESLint/Prettier (JS) or ruff/black (Python). Write tests.
 
-## Reglas
-
-- Respeta la licencia del proyecto (ver [`LICENSE`](LICENSE)).
-- No incluyas secretos, claves ni datos personales.
-- Las dependencias nuevas deben estar justificadas en el PR.
-
-## Código de conducta
-
-Trata a las demás personas con respeto. Mantenido por [Pedro Belentani](https://github.com/belentani7).
+## Reporting Issues
+Use .github/ISSUE_TEMPLATE/bug_report.yml.
