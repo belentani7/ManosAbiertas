@@ -168,7 +168,8 @@ export function readStringSet(raw: string | null, maxItems = 1_000) {
   )));
 }
 
-const LOCAL_DATA_PREFIXES = ['manos-abiertas-', 'manosabiertas-'];
+// Legacy course-progress-* belongs to this app too: privacy export/erase must cover it.
+const LOCAL_DATA_PREFIXES = ['manos-abiertas-', 'manosabiertas-', 'course-progress-'];
 const MAX_BACKUP_ENTRIES = 100;
 const MAX_BACKUP_VALUE_CHARS = 500_000;
 
