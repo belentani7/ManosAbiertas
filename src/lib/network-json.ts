@@ -88,11 +88,18 @@ export async function requestJson(
   const timeoutMs = boundedNumber(options.timeoutMs, 10_000, 250, 60_000);
   const maxResponseBytes = boundedNumber(options.maxResponseBytes, 256_000, 1_024, 2_000_000);
   const timeoutSignal = AbortSignal.timeout(timeoutMs);
+  // AbortSignal.timeout uses an unref'ed timer in Node. Keep the test/runtime
+  // alive until the bounded timeout fires when a custom fetcher is pending.
+  const timeoutKeepAlive = setTimeout(() => undefined, timeoutMs);
   const signal = init.signal ? AbortSignal.any([init.signal, timeoutSignal]) : timeoutSignal;
   const headers = new Headers(init.headers);
   if (!headers.has('Accept')) headers.set('Accept', 'application/json');
-  const response = await (options.fetcher ?? fetch)(input, { ...init, headers, signal });
-  const data = await readBoundedJson(response, maxResponseBytes);
-  if (!response.ok) throw new JsonRequestError('HTTP_ERROR', response.status);
-  return data;
+  try {
+    const response = await (options.fetcher ?? fetch)(input, { ...init, headers, signal });
+    const data = await readBoundedJson(response, maxResponseBytes);
+    if (!response.ok) throw new JsonRequestError('HTTP_ERROR', response.status);
+    return data;
+  } finally {
+    clearTimeout(timeoutKeepAlive);
+  }
 }
