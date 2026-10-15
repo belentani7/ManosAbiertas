@@ -1,3 +1,35 @@
 name: CI
-on: [push, pull_request]
-jobs: { lint-test: { runs-on: ubuntu-latest, steps: [{ uses: actions/checkout@v4 }, { uses: actions/setup-node@v4, with: { node-version: '20' } }, { run: npm ci || npm install }] } } }
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Generate Prisma client
+        run: pnpm db:generate
+      - name: Typecheck
+        run: pnpm typecheck --pretty false
+      - name: Lint
+        run: pnpm lint || true
+      - name: Build
+        run: pnpm build

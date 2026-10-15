@@ -29,7 +29,8 @@
     "tools:generate": "node scripts/generate-platform-tools.mjs",
     "tools:verify": "node scripts/generate-platform-tools.mjs --check",
     "guides:generate": "node scripts/generate-one-page-guides.mjs",
-    "guides:verify": "node scripts/generate-one-page-guides.mjs --check"
+    "guides:verify": "node scripts/generate-one-page-guides.mjs --check",
+    "test": "echo 'Core tests: see test:core' && pnpm test:core"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
