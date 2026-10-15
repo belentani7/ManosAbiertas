@@ -1,3 +1,53 @@
 name: CI
-on: [push, pull_request]
-jobs: { lint-test: { runs-on: ubuntu-latest, steps: [{ uses: actions/checkout@v4 }, { uses: actions/setup-node@v4, with: { node-version: '20' } }, { run: npm ci || npm install }] } } }
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Core tests
+        run: pnpm test:core
+
+      - name: Verify i18n
+        run: pnpm i18n:verify
+
+      - name: Verify resource trust
+        run: pnpm trust:verify
+
+      - name: Verify accessibility
+        run: pnpm accessibility:verify
+
+      - name: Production build
+        run: pnpm build
