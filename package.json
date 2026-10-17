@@ -3,12 +3,13 @@
   "version": "0.2.1",
   "private": true,
   "license": "MIT",
+  "packageManager": "pnpm@10.4.1",
   "overrides": {
     "deepmerge-ts": "^8.0.2"
   },
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "node scripts/generate-pwa-icons.mjs && prisma generate && next build && node scripts/copy-build.mjs",
+    "build": "node scripts/generate-platform-tools.mjs && node scripts/generate-pwa-icons.mjs && prisma generate && next build && node scripts/copy-build.mjs",
     "start": "node scripts/start-standalone.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --pretty false",
@@ -76,11 +77,11 @@
     "next-intl": "^4.3.4",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
-    "react-day-picker": "^10.0.2",
+    "react-day-picker": "^9.8.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.88.0",
     "react-markdown": "^10.1.0",
-    "react-resizable-panels": "^4.14.4",
+    "react-resizable-panels": "^3.0.3",
     "recharts": "^2.15.4",
     "sharp": "^0.35.3",
     "sonner": "^2.0.6",
