@@ -175,3 +175,21 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: "--prebuilt"
           vercel-scope: ${{ secrets.VERCEL_ORG_ID }}
+
+
+  education-contract:
+    name: Validate education contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Test contract validator
+        run: node --test scripts/verify-education-contract.test.mjs
+      - name: Validate project ledger
+        run: node scripts/verify-education-contract.mjs
