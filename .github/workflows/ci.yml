@@ -18,7 +18,7 @@ concurrency:
 
 env:
   NODE_VERSION: 22
-  PNPM_VERSION: 9
+  PNPM_VERSION: 10.4.1
 
 jobs:
   lint:
@@ -38,9 +38,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
       - name: Typecheck
-        run: pnpm run --if-present typecheck
+        run: pnpm exec prisma generate && pnpm typecheck
       - name: Lint
-        run: pnpm run --if-present lint
+        run: pnpm lint
       - name: Format check
         run: pnpm run --if-present format:check
 
@@ -62,15 +62,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
       - name: Test
-        run: pnpm run test --coverage --reporter=dot
+        run: pnpm test:core
         env:
           CI: true
-      - name: Upload coverage
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage/
+      - name: Verify translations
+        run: pnpm i18n:verify
+      - name: Verify resource trust
+        run: pnpm trust:verify
+      - name: Verify static accessibility
+        run: pnpm accessibility:verify
 
   build:
     name: Build
@@ -90,12 +90,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
       - name: Build
-        run: pnpm run --if-present build
+        run: pnpm build
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist/
+          path: .next/standalone/
 
   security:
     name: Security Scan
@@ -186,6 +186,7 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false
       - name: Test contract validator
         run: node --test scripts/verify-education-contract.test.mjs
       - name: Validate project ledger

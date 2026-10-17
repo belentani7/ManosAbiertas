@@ -37,3 +37,9 @@ coverage/
 
 # Cache
 .cache/
+
+# Next.js outputs and generated tool guides (rebuilt by pnpm build)
+.next/
+next-env.d.ts
+*.tsbuildinfo
+public/tool-guides/
