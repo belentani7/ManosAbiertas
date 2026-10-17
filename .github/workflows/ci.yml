@@ -156,25 +156,25 @@ jobs:
     needs: build
     if: github.event_name == 'pull_request'
     steps:
+      - name: Validate preview credentials
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [[ -z "$VERCEL_TOKEN" || -z "$VERCEL_ORG_ID" || -z "$VERCEL_PROJECT_ID" ]]; then
+            echo "::error::Preview requires VERCEL_TOKEN, VERCEL_ORG_ID and VERCEL_PROJECT_ID for the existing Vercel project. No deployment was attempted."
+            exit 1
+          fi
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
-      - name: Build for preview
-        run: pnpm run --if-present build
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: "--prebuilt"
-          vercel-scope: ${{ secrets.VERCEL_ORG_ID }}
+          github-comment: false
+          github-deployment: false
 
 
   education-contract:

@@ -25,3 +25,7 @@ Entorno: Node 22.23.3, pnpm 10.4.1. Instalación con lockfile congelado y script
 - Validador educativo: 5 tests correctos; 0/200 reglas verificadas. El ledger no sustituye evidencia de cumplimiento.
 
 Se restauran las versiones mayores de calendario y paneles compatibles con los componentes existentes. No se ejecutaron migraciones, resets ni operaciones de pérdida de datos. Despliegue, revisión visual y recorrido de usuario continúan pendientes.
+
+### CI remoto y bloqueo de preview
+
+En CI170 pasaron tipos, lint, tests, build, validación del contrato y Gitleaks/SARIF; CodeQL52 y Security114 también pasaron. El preview falló porque no está configurado `VERCEL_TOKEN`. No se considera un despliegue correcto. El workflow ahora comprueba las tres credenciales del proyecto existente antes de desplegar, evita repetir el build local y no usa `--prebuilt` sin un directorio `.vercel/output`. La publicación sigue bloqueada hasta disponer de la conexión y credenciales apropiadas; no se crean proyectos duplicados ni se oculta ese fallo.
