@@ -33,7 +33,7 @@ export function runCoreTests() {
     .filter((name) => name.endsWith('.test.mjs'))
     .sort()
     .map((name) => join(testDir, name));
-  return spawnSync(process.execPath, ['--test', ...files], {
+  return spawnSync(process.execPath, ['--experimental-strip-types', '--test', ...files], {
     cwd: PROJECT_ROOT,
     stdio: 'inherit',
     env: { ...process.env, NODE_NO_WARNINGS: '1' },
