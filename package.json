@@ -19,7 +19,7 @@
     "trust:verify": "node scripts/verify-resource-trust.mjs",
     "accessibility:verify": "node scripts/verify-accessibility-static.mjs",
     "improvements:verify": "node scripts/verify-applied-improvements.mjs",
-    "db:push": "prisma db push --accept-data-loss",
+    "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:reset": "prisma migrate reset",
