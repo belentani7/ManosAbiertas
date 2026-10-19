@@ -1,84 +1,94 @@
-'use client';
+"use client";
+import { useState, type FormEvent } from "react";
+import {
+  ARRAIGO_GUIDES, compareArraigoTwoYearMilestone,
+  NATIONALITY_INFORMATION_URL, type ArraigoGuideId,
+} from "@/lib/immigration-reference";
 
-import { useState } from 'react';
+type GuideSelection = ArraigoGuideId | "nationality";
 
-export function PlazosCalculator() {
-  const [fechaInicio, setFechaInicio] = useState('');
-  const [tipoTramite, setTipoTramite] = useState<'arraigo-social' | 'arraigo-laboral' | 'arraigo-familiar' | 'nacionalidad'>('arraigo-social');
-  const [resultado, setResultado] = useState<string | null>(null);
+export default function PlazosCalculator() {
+  const [track, setTrack] = useState<GuideSelection>("social");
+  const [start, setStart] = useState("");
+  const [outcome, setOutcome] = useState<ReturnType<typeof compareArraigoTwoYearMilestone> | null>(null);
+  const [error, setError] = useState("");
+  const guide = ARRAIGO_GUIDES.find(item => item.id === track);
+  const now = new Date();
+  const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, "0"), String(now.getDate()).padStart(2, "0")].join("-");
 
-  const plazos: Record<string, { dias: number; descripcion: string }> = {
-    'arraigo-social': { dias: 1095, descripcion: '3 años de residencia continuada + contrato de trabajo o medios de vida' },
-    'arraigo-laboral': { dias: 730, descripcion: '2 años de residencia + relación laboral de 6 meses mínimo' },
-    'arraigo-familiar': { dias: 0, descripcion: 'Sin requisito de tiempo si hay vínculo familiar directo con español/comunitario' },
-    'nacionalidad': { dias: 3650, descripcion: '10 años residencia legal (2 años para iberoamericanos/sefardíes)' },
-  };
-
-  const calcular = () => {
-    if (!fechaInicio) return;
-    const inicio = new Date(fechaInicio);
-    const hoy = new Date();
-    const diffDias = Math.floor((hoy.getTime() - inicio.getTime()) / (1000 * 60 * 60 * 24));
-    const tramite = plazos[tipoTramite];
-    const diasRestantes = Math.max(0, tramite.dias - diffDias);
-    const años = Math.floor(diffDias / 365);
-    const meses = Math.floor((diffDias % 365) / 30);
-    const dias = diffDias % 30;
-
-    let mensaje = `Días transcurridos: ${diffDias} (${años} años, ${meses} meses, ${dias} días)\n\n`;
-    mensaje += `Trámite: ${tipoTramite.replace('-', ' ').toUpperCase()}\n`;
-    mensaje += `Requisito: ${tramite.descripcion}\n\n`;
-
-    if (diffDias >= tramite.dias) {
-      mensaje += '✅ ¡Ya cumples el requisito de tiempo! Puedes iniciar el trámite.';
-    } else {
-      mensaje += `⏳ Te faltan ${diasRestantes} días (${Math.ceil(diasRestantes/30)} meses aprox).`;
+  function compare(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setOutcome(null); setError("");
+    if (!guide) return;
+    try {
+      setOutcome(compareArraigoTwoYearMilestone(guide.id, start, today));
+    } catch {
+      setError("Introduce una fecha real que no sea posterior a hoy.");
     }
-    setResultado(mensaje);
-  };
+  }
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold mb-4">Calculadora de Plazos de Extranjería</h3>
-      <div className="space-y-4">
-        <div>
-          <label htmlFor="fecha-llegada" className="block text-sm font-medium mb-2">Fecha de llegada a España</label>
-          <input
-            type="date"
-            id="fecha-llegada"
-            value={fechaInicio}
-            onChange={(e) => setFechaInicio(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none"
-            max={new Date().toISOString().split('T')[0]}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-2">Tipo de trámite</label>
-          <select
-            value={tipoTramite}
-            onChange={(e) => setTipoTramite(e.target.value as any)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 focus:outline-none"
-          >
-            <option value="arraigo-social">Arraigo Social</option>
-            <option value="arraigo-laboral">Arraigo Laboral</option>
-            <option value="arraigo-familiar">Arraigo Familiar</option>
-            <option value="nacionalidad">Nacionalidad Española</option>
-          </select>
-        </div>
-        <button
-          onClick={calcular}
-          className="w-full bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition-colors"
-        >
-          Calcular plazos
-        </button>
-        {resultado && (
-          <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm">
-            <pre className="whitespace-pre-wrap">{resultado}</pre>
-          </div>
-        )}
+    <section className="space-y-5" aria-labelledby="arraigo-title">
+      <h3 id="arraigo-title" className="text-lg font-semibold">Orientación de extranjería · Normativa 2026</h3>
+      <p className="text-sm text-gray-700">
+        Esta herramienta señala únicamente un hito temporal de referencia.
+        <strong> No verifica la permanencia legalmente computable ni confirma el derecho a solicitar una autorización.</strong>
+        La fecha de llegada por sí sola no demuestra continuidad; los periodos de protección internacional y las ausencias pueden afectar al cómputo.
+      </p>
+      <div>
+        <label htmlFor="arraigo-track" className="block text-sm font-medium mb-2">Información que necesitas consultar</label>
+        <select id="arraigo-track" value={track}
+          onChange={(event) => { setTrack(event.target.value as GuideSelection); setOutcome(null); setError(""); }}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+          {ARRAIGO_GUIDES.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}
+          <option value="nationality">Nacionalidad española por residencia</option>
+        </select>
       </div>
-    </div>
+      {guide ? (
+        <>
+          <p className="text-sm text-gray-700">
+            La información oficial de {guide.label.toLowerCase()} señala, como regla general, dos años de permanencia continuada,
+            sujetos a requisitos adicionales. {guide.important}
+          </p>
+          <form className="space-y-3" onSubmit={compare} noValidate>
+            <label htmlFor="arraigo-start" className="block text-sm font-medium">
+              Fecha orientativa de comienzo de la presencia en España
+            </label>
+            <input id="arraigo-start" type="date" value={start} max={today} required
+              onChange={(event) => { setStart(event.target.value); setOutcome(null); setError(""); }}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg" />
+            <button type="submit" className="w-full bg-red-700 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-800">
+              Consultar hito temporal aproximado
+            </button>
+            {error && <p role="alert" className="text-sm text-red-700">{error}</p>}
+          </form>
+          {outcome && <div role="status" aria-live="polite" className="p-4 border border-gray-300 rounded-lg">
+            <p>Fecha de referencia de dos años: <strong>{outcome.referenceDate}</strong>.</p>
+            <p>{outcome.referenceDateReached
+              ? "La fecha de referencia ha transcurrido. Esto no significa que reúnas los requisitos del permiso."
+              : `Faltan aproximadamente ${outcome.remainingDays} días naturales hasta esa referencia. No es un plazo oficial de resolución.`}</p>
+          </div>}
+          <a href={guide.source} target="_blank" rel="noopener noreferrer" className="underline text-sm">
+            Consultar la ficha oficial vigente del Ministerio de Migraciones
+          </a>
+        </>
+      ) : (
+        <div className="space-y-3 text-sm text-gray-700">
+          <p>
+            La nacionalidad por residencia depende del inicio y continuidad de la <strong>residencia legal</strong>,
+            no simplemente de la llegada a España. Existen plazos distintos (por ejemplo, la regla general
+            de 10 años y supuestos de 2 años para determinados países de origen) y requisitos adicionales.
+            No se puede calcular una fecha válida sin conocer el expediente.
+          </p>
+          <a href={NATIONALITY_INFORMATION_URL} target="_blank" rel="noopener noreferrer" className="underline">
+            Consultar el artículo 22 del Código Civil en la web del Ministerio de Justicia
+          </a>
+        </div>
+      )}
+      <p className="text-xs text-gray-600">
+        Servicio informativo gratuito. No se recopilan documentos ni se envían tus fechas a un servidor.
+        Antes de presentar una solicitud, confirma la norma vigente y los detalles de tu caso con la administración o un profesional.
+      </p>
+    </section>
   );
 }
-
-export default PlazosCalculator;
