@@ -29,7 +29,7 @@ export function LessonCompletionButton({ courseId, lessonId, totalLessons }: Pro
       </Button>
       <p className="text-xs text-muted-foreground" role="status" aria-live="polite">
         {completed
-          ? "Progreso guardado en este navegador."
+          ? "Lección marcada en esta sesión. La persistencia depende de los permisos del navegador."
           : "No se usa una cuenta compartida ni se envía este progreso al servidor."}
       </p>
     </div>
