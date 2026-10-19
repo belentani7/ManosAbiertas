@@ -3,30 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import { LessonCompletionButton } from "@/components/manos-abiertas/course-ui/LessonCompletionButton";
+import { youtubeEmbedUrl } from "@/lib/video-embed";
 
 const prisma = new PrismaClient();
 
-/** Accept only video providers/IDs we intentionally embed; never trust arbitrary stored URLs. */
-function youtubeEmbedUrl(value: string | null): string | null {
-  if (!value) return null;
-  try {
-    const url = new URL(value);
-    if (url.protocol !== "https:") return null;
-    const host = url.hostname.toLowerCase();
-    let id: string | null = null;
-    if (host === "youtu.be") {
-      id = url.pathname.slice(1);
-    } else if (["youtube.com", "www.youtube.com", "m.youtube.com", "www.youtube-nocookie.com"].includes(host)) {
-      if (url.pathname === "/watch") id = url.searchParams.get("v");
-      if (url.pathname.startsWith("/embed/")) id = url.pathname.slice("/embed/".length);
-    }
-    return id && /^[a-zA-Z0-9_-]{11}$/.test(id)
-      ? `https://www.youtube-nocookie.com/embed/${id}`
-      : null;
-  } catch {
-    return null;
-  }
-}
 
 export default async function LessonPage({
   params,
