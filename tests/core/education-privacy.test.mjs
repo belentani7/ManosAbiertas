@@ -28,8 +28,12 @@ test("public course and lesson pages never write progress to a shared demo user"
   const read = (path) => readFileSync(join(PROJECT_ROOT, path), "utf8");
   const course = read("src/app/[locale]/cursos/[slug]/page.tsx");
   const lesson = read("src/app/[locale]/cursos/[slug]/leccion/[lessonId]/page.tsx");
+  const dashboard = read("src/app/[locale]/dashboard/page.tsx");
   const hook = read("src/components/manos-abiertas/course-ui/useCourseProgress.ts");
-  assert.doesNotMatch(course + lesson, /student@manosabiertas\.org|lessonProgress\.upsert|enrollment\.findUnique/);
+  assert.doesNotMatch(course + lesson + dashboard, /student@manosabiertas\.org|lessonProgress\.upsert|enrollment\.findUnique/);
+  assert.doesNotMatch(dashboard, /const totalLessons = 2/);
+  assert.match(dashboard, /where: \{ published: true \}/);
+  assert.match(dashboard, /LearnerDashboard/);
   assert.match(course, /!course\.published/);
   assert.match(lesson, /lesson\.course\.slug !== slug/);
   assert.match(lesson, /LessonCompletionButton/);
