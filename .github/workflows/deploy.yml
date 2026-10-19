@@ -1,32 +1,39 @@
-name: Deploy to Netlify & Vercel
+name: Deploy to Netlify (manual, optional)
 
+# The automated production path for this repository is not configured.
+# Never run the deprecated npm-based Netlify deploy on every main commit.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
+    if: vars.ENABLE_NETLIFY_DEPLOY == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: '22'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build
-        run: npm run build
-        env:
-          NEXT_OUTPUT_MODE: netlify
-      
-      - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+          version: 10.4.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Validate Netlify credentials
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --prod --dir=.next
+        run: |
+          if [ -z "$NETLIFY_AUTH_TOKEN" ] || [ -z "$NETLIFY_SITE_ID" ]; then
+            echo "::error::Netlify deployment is enabled but site/token credentials are missing."
+            exit 1
+          fi
+      - name: Install pinned dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Publish Next.js via Netlify CLI
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: npx --yes netlify-cli@23.8.1 deploy --build --prod --site "$NETLIFY_SITE_ID"
