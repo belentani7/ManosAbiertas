@@ -21,7 +21,7 @@ test("IMV checker never treats invalid inputs as zero or decides entitlement", (
   for (const value of [-1, Infinity, NaN, 100_000_001]) {
     assert.throws(() => compareImvReference2026("one-adult", value), /invalid_annual_income/);
   }
-  assert.throws(() => compareImvReference2026("unknown" as "one-adult", 1000), /unknown_household/);
+  assert.throws(() => compareImvReference2026("unknown", 1000), /unknown_household/);
   assert.equal(compareImvReference2026("one-adult", 12_000).position, "above");
   assert.equal(compareImvReference2026("one-adult", 5_000).position, "below");
   assert.equal(compareImvReference2026("one-adult", 8_803.2).position, "equal");
