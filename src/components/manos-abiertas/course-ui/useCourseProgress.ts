@@ -82,6 +82,7 @@ export function useCourseProgress(courseId: string, totalLessons: number) {
   }, [ready, courseId, storageKey]);
 
   return {
+    ready,
     progress: ready ? progress : emptyCourseProgress(courseId),
     markCompleted,
     isCompleted,
