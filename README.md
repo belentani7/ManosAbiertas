@@ -1,88 +1,50 @@
 # ManosAbiertas
 
-> Professional project template
+Plataforma educativa gratuita: cursos de IA y Office, creador de CV y recursos para migrantes.
 
-## 🚀 Quick Start
+## Qué es
 
-### Prerequisites
-- Node.js >= 20.0.0
-- pnpm >= 9.0.0
+Formación **gratuita y práctica** para personas que llegan y necesitan herramientas concretas:
+ofimática, inteligencia artificial aplicada, un currículum que funcione. Sin registro, sin
+coste, sin barreras innecesarias.
 
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/belentani7/ManosAbiertas.git
-cd ManosAbiertas
+En línea: <https://manos-abiertas-psi.vercel.app>
 
-# Install dependencies
-pnpm install
+## Qué incluye
 
-# Start development server
-pnpm dev
-```
+- Cursos de IA y Office
+- Creador de currículums
+- Guías de derechos
+- Recursos para comunidades migrantes
 
-## 📦 Available Scripts
+## Accesibilidad
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Build for production |
-| `pnpm preview` | Preview production build |
-| `pnpm lint` | Run ESLint |
-| `pnpm lint:fix` | Fix ESLint errors |
-| `pnpm format` | Format with Prettier |
-| `pnpm format:check` | Check formatting |
-| `pnpm typecheck` | TypeScript type checking |
-| `pnpm test` | Run unit tests |
-| `pnpm test:watch` | Run tests in watch mode |
-| `pnpm test:coverage` | Run tests with coverage |
-| `pnpm test:e2e` | Run E2E tests |
+Es parte del objetivo, no un extra: el público incluye personas con poca familiaridad digital
+y distintas lenguas. **PT > ES > EN > CA.**
 
-## 🏗️ Architecture
+## Licencia
 
-```
-src/
-├── components/     # Reusable UI components
-├── hooks/          # Custom React hooks
-├── pages/          # Page components
-├── services/       # Business logic & API calls
-├── utils/          # Utility functions
-├── styles/         # Global styles & theme
-├── types/          # TypeScript types
-├── test/           # Test utilities & setup
-└── main.tsx        # Application entry point
-```
+MIT (ver [`LICENSE`](LICENSE)).
 
-## 🧪 Testing
+---
 
-- **Unit/Integration**: Vitest + React Testing Library
-- **E2E**: Playwright
-- **Coverage**: Target ≥ 80%
+## Parte del indice educativo
 
-## 🔧 Code Quality
+Esta plataforma forma parte del conjunto educativo de **Belentani / NOIACORE**:
+formacion gratuita y abierta. El indice completo, con material y estado de cada una,
+vive en el nodo central:
 
-- **TypeScript**: Strict mode enabled
-- **Linting**: ESLint + Biome
-- **Formatting**: Prettier
-- **Git Hooks**: Husky + lint-staged
-- **Commits**: Conventional Commits enforced
+**<https://github.com/belentani7/open-school/blob/main/INDICE-EDUCATIVO.md>**
 
-## 🚢 Deployment
+| Plataforma | Que ensena | Enlace |
+|---|---|---|
+| Open School | Instituto digital universal | https://open-school-gamma.vercel.app |
+| ManosAbiertas | IA y ofimatica para recien llegados | https://belentani7.github.io/ManosAbiertas/ |
+| WILLIAMSCHOOL | Escuela comunitaria (curriculo Nepal) | https://williamschool.vercel.app |
+| UX Academy | Diseno UX/Producto, trilingue | https://ux-academy-professional.vercel.app |
+| Aprende Brasil | Educacion para Brasil | https://aprende-brasil.vercel.app/ |
+| Lingua Aberta | Idiomas, progresion CEFR | https://belentani7.github.io/lingua-aberta-empresa/ |
+| Cruzando el Charco | Acogida y arraigo | https://belentani7.github.io/Cruzando-el-charco/ |
+| secure-t | Ciberseguridad e IA | https://belentani7.github.io/secure-t/ |
 
-### Staging
-Automatic on push to `main` branch.
-
-### Production
-Manual via GitHub Actions workflow dispatch or tag push.
-
-## 📋 Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
-## 🔒 Security
-
-See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
+**PT > ES > EN > CA.** Gratuito, accesible (WCAG) y conectado.
