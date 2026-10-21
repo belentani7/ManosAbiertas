@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, CheckCircle2, Circle, Heart, Clock, BookOpen, Lightbulb, Target, RotateCcw } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CheckCircle2, Circle, Heart, Clock, BookOpen, Lightbulb, Target, RotateCcw, Download } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -12,12 +12,14 @@ import { SimpleMarkdown } from './simple-markdown';
 import { TTSButton } from './tts-button';
 import { cn } from '@/lib/utils';
 import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
+import { buildLevel0LessonText, lessonFilename } from '@/lib/level0-lesson-export';
 
 const STORAGE_KEY = 'manos-abiertas-level0-progress';
 
 function loadProgress(): Set<string> {
   if (typeof window === 'undefined') return new Set();
-  return new Set(parseStoredJson(localStorage.getItem(STORAGE_KEY), [], isBoundedStringArray));
+  try { return new Set(parseStoredJson(localStorage.getItem(STORAGE_KEY), [], isBoundedStringArray)); }
+  catch { return new Set(); }
 }
 
 export function Level0Academy() {
@@ -28,6 +30,25 @@ export function Level0Academy() {
   function persist(next: Set<string>) {
     setCompleted(next);
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...next])); } catch { /* ignore */ }
+  }
+
+  function downloadLesson(course: Level0Course, lesson: Level0Lesson) {
+    try {
+      const content = buildLevel0LessonText(course, lesson);
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = lessonFilename(course.id, lesson.id);
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      // Delay revocation until the browser has resolved the download click.
+      window.setTimeout(() => URL.revokeObjectURL(url), 1200);
+    } catch {
+      // In restricted browsers, learners can still select or print the text.
+      window.alert('No se pudo descargar. Puedes seleccionar y copiar el contenido de la lección.');
+    }
   }
 
   function toggleComplete(courseId: string, lessonId: string) {
@@ -142,6 +163,17 @@ export function Level0Academy() {
               </Button>
               <div className="flex gap-2">
                 <TTSButton text={selectedLesson.content} label="Escuchar" size="sm" />
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="gap-1"
+                  onClick={() => downloadLesson(selectedCourse, selectedLesson)}
+                  aria-label={`Guardar lección ${selectedLesson.title} como texto sin conexión`}
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Descargar .txt
+                </Button>
                 <Button
                   size="sm"
                   variant={isCompleted ? 'secondary' : 'default'}
