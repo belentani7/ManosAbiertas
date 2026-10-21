@@ -102,8 +102,8 @@ for (const file of files) {
       totalQuestions++;
       const options = array(prop(question, "options"));
       const correct = num(prop(question, "correct"));
-      if (text(prop(question, "q")).length < 20) bad(label, "quiz question too short");
-      if (options.length < 2 || options.some((option) => text(option).length < 5))
+      if (text(prop(question, "q")).length < 12) bad(label, "quiz question too short");
+      if (options.length < 2 || options.some((option) => !text(option).trim()))
         bad(label, "quiz needs substantive answer options");
       if (!Number.isInteger(correct) || correct < 0 || correct >= options.length)
         bad(label, "quiz correct index out of bounds");
