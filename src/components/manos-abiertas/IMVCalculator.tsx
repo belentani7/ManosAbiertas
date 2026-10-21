@@ -52,9 +52,20 @@ export default function IMVCalculator() {
           <select id="imv-household" value={household}
             onChange={(e) => { setHousehold(e.target.value as ImvHouseholdId); setComparison(null); setError(""); }}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg">
-            {IMV_2026_HOUSEHOLDS.map(group =>
-              <option key={group.id} value={group.id}>{group.label}</option>)}
+            <optgroup label="Unidades de convivencia generales">
+              {IMV_2026_HOUSEHOLDS.filter(group => !group.id.includes("single-parent")).map(group =>
+                <option key={group.id} value={group.id}>{group.label}</option>)}
+            </optgroup>
+            <optgroup label="Unidades monoparentales reconocidas">
+              {IMV_2026_HOUSEHOLDS.filter(group => group.id.includes("single-parent")).map(group =>
+                <option key={group.id} value={group.id}>{group.label}</option>)}
+            </optgroup>
           </select>
+          <p className="mt-2 text-xs text-gray-600">
+            Se muestran referencias de las unidades generales y monoparentales más habituales. Si tu
+            unidad tiene circunstancias especiales (por ejemplo, discapacidad o dependencia), consulta
+            las tablas completas y el simulador oficial: aquí no se calcula el complemento aplicable.
+          </p>
         </div>
         <div>
           <label htmlFor="imv-annual-income" className="block text-sm font-medium mb-2">
