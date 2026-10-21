@@ -3,57 +3,66 @@ document.documentElement.classList.add('js');
 
 const $ = (sel, root = document) => root.querySelector(sel);
 
-function loadQuiz(url) {
-  const box = $('.quiz-box');
-  if (!box) return;
-  fetch(url).then(r => r.json()).then(items => {
-    let idx = 0, score = 0;
-    const titulo = $('.quiz-titulo', box);
-    const opciones = $('.opciones', box);
-    const feedback = $('.feedback', box);
-    const marcador = $('.marcador', box);
-    const btn = $('.quiz-siguiente', box);
-    const render = () => {
-      const q = items[idx];
-      titulo.textContent = `${idx + 1}/${items.length} · ${q.pregunta}`;
-      opciones.innerHTML = '';
-      q.opciones.forEach((o, i) => {
-        const b = document.createElement('button');
-        b.className = 'opcion';
-        b.textContent = o;
-        b.addEventListener('click', () => {
-          [...opciones.children].forEach((el, j) => {
-            el.classList.add(j === q.correcta ? 'correcta' : 'fallo');
-            el.disabled = true;
-          });
-          const ok = i === q.correcta;
-          if (ok) score++;
-          feedback.textContent = ok
-            ? `Correcto. ${q.explicacion}`
-            : `Incorrecto. ${q.explicacion}`;
-          marcador.textContent = `Aciertos: ${score}`;
-          btn.hidden = false;
-        });
-        opciones.appendChild(b);
+function loadQuiz(url,box) {
+  if(!box)return;
+  const titulo=$('.quiz-titulo',box),opciones=$('.opciones',box);
+  const feedback=$('.feedback',box),marcador=$('.marcador',box);
+  const button=$('.quiz-siguiente',box);
+  if(!/^cursos\/(?:alfabetizacion-ia|office-sin-miedo|falsos-amigos-pt-es)\/quiz\.json$/.test(url)){
+    titulo.textContent='Ruta del cuestionario no permitida';return;
+  }
+  titulo.textContent='Cargando preguntas reales…';
+  opciones.replaceChildren();feedback.textContent='';button.hidden=true;
+  fetch(url).then(response=>{
+    if(!response.ok)throw Error('Quiz HTTP '+response.status);
+    return response.json();
+  }).then(items=>{
+    if(!Array.isArray(items)||!items.length||items.length>50||items.some(q=>
+      typeof q.pregunta!=='string'||!Array.isArray(q.opciones)||q.opciones.length<2||
+      q.opciones.length>6||!q.opciones.every(s=>typeof s==='string')||
+      !Number.isInteger(q.correcta)||q.correcta<0||q.correcta>=q.opciones.length||
+      typeof q.explicacion!=='string'))throw Error('Quiz structure invalid');
+    let index=0,score=0;
+    const render=()=>{
+      const q=items[index];titulo.textContent=(index+1)+'/'+items.length+' · '+q.pregunta;
+      opciones.replaceChildren();feedback.textContent='';
+      marcador.textContent='Aciertos: '+score;button.hidden=true;button.textContent='Siguiente';
+      q.opciones.forEach((option,i)=>{
+        const choice=document.createElement('button');
+        choice.className='opcion';choice.type='button';choice.textContent=option;
+        choice.addEventListener('click',()=>{
+          for(const [j,el] of [...opciones.children].entries()){
+            el.classList.add(j===q.correcta?'correcta':'fallo');el.disabled=true;
+          }
+          if(i===q.correcta)score++;
+          feedback.textContent=(i===q.correcta?'Correcto. ':'Incorrecto. ')+q.explicacion;
+          marcador.textContent='Aciertos: '+score;button.hidden=false;
+          button.textContent=index===items.length-1?'Finalizar':'Siguiente';
+        },{once:true});
+        opciones.append(choice);
       });
-      btn.hidden = true;
     };
-    btn.addEventListener('click', () => {
-      idx++;
-      if (idx >= items.length) {
-        titulo.textContent = `Terminado: ${score}/${items.length}`;
-        opciones.innerHTML = '';
-        feedback.textContent = score >= items.length * 0.7
-          ? 'Nivel superado.' : 'Repasa y vuelve a intentarlo.';
-        btn.hidden = true;
-        marcador.textContent = '';
-        return;
+    button.onclick=()=>{
+      if(index===items.length){
+        index=0;score=0;render();return;
       }
-      render();
-    });
+      index++;
+      if(index<items.length){render();return;}
+      titulo.textContent='Práctica finalizada: '+score+'/'+items.length;
+      opciones.replaceChildren();
+      feedback.textContent='Esta actividad no acredita niveles. Revisa las respuestas y repítela cuando quieras.';
+      marcador.textContent='Resultado: '+Math.round(100*score/items.length)+'%';
+      button.hidden=false;button.textContent='Repetir';
+      try{
+        localStorage.setItem('campus:quiz:'+url,JSON.stringify({
+          score,total:items.length,completedAt:new Date().toISOString()
+        }));
+      }catch{/* El almacenamiento del navegador puede estar deshabilitado. */}
+    };
     render();
-  }).catch(() => {
-    $('.quiz-titulo', box).textContent = 'Quiz no disponible offline.';
+  }).catch(()=>{
+    titulo.textContent='No se pudo cargar este cuestionario.';
+    opciones.replaceChildren();feedback.textContent='Comprueba la conexión o vuelve a abrir el campus online para activar el modo offline.';
   });
 }
 
@@ -87,4 +96,9 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 
-document.querySelectorAll('.quiz-json').forEach(el => loadQuiz(el.dataset.src));
+const quizSelect=document.getElementById('quizCurso');
+const quizBox=$('.quiz-box');
+if(quizSelect && quizBox) {
+  quizSelect.addEventListener('change',()=>loadQuiz(quizSelect.value,quizBox));
+  loadQuiz(quizSelect.value,quizBox);
+}

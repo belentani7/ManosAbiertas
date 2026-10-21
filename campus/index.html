@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c1018">
-  <meta name="description" content="Campus abierto ManosAbiertas: cursos gratuitos estilo Harvard/Coursera, offline-first.">
+  <meta name="description" content="Campus Manos Abiertas: lecciones reales y práctica que pueden consultarse sin conexión tras la primera carga.">
   <title>Campus ManosAbiertas</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="tokens.css">
@@ -24,7 +24,7 @@
     <section class="hero">
       <h1>Educación abierta, sin barreras.</h1>
       <p class="lead">Cursos modulares con evidencia, material de bancos
-      abiertos y voz humana en 4 idiomas. Funciona sin conexión.</p>
+      abiertos y voz humana en 4 idiomas. El material básico funciona sin conexión después de su instalación inicial.</p>
     </section>
 
     <section id="cursos" class="grid-cursos">
@@ -51,8 +51,22 @@
       </article>
     </section>
 
-    <section id="quiz" aria-label="Quiz de ejemplo">
+    <section id="lector" class="course-reader" aria-labelledby="lector-title" hidden>
+      <p class="meta">LECTURA / MANOS ABIERTAS</p>
+      <h2 id="lector-title" tabindex="-1">Material del curso</h2>
+      <p id="lector-status" role="status" aria-live="polite">Selecciona una lección para comenzar.</p>
+      <nav id="lector-nav" class="course-nav" aria-label="Unidades de aprendizaje"></nav>
+      <article id="lector-content" class="course-content"></article>
+    </section>
+    <section id="quiz" aria-label="Quiz de práctica">
       <h2>Quiz interactivo</h2>
+      <p class="meta">Práctica formativa; no representa una certificación académica.</p>
+      <label for="quizCurso">Selecciona el curso:</label>
+      <select id="quizCurso" class="opcion">
+        <option value="cursos/alfabetizacion-ia/quiz.json">Alfabetización en IA</option>
+        <option value="cursos/office-sin-miedo/quiz.json">Office sin Miedo</option>
+        <option value="cursos/falsos-amigos-pt-es/quiz.json">Puente PT–ES</option>
+      </select>
       <div class="quiz-box quiz-json"
            data-src="cursos/alfabetizacion-ia/quiz.json">
         <h3 class="quiz-titulo">Cargando quiz…</h3>
@@ -82,12 +96,9 @@
     </section>
 
     <section id="agente" aria-label="Agente tutor">
-      <h2>Agente tutor vivo en GitHub</h2>
-      <p>Este campus tiene un agente IA que vive en GitHub Actions
-      (caja Linux): responde issues etiquetados <code>tutor</code> y publica
-      una cápsula didáctica diaria en <code>campus/capsulas/</code>.</p>
-      <p class="meta">Cero secretos: usa el token efímero de GitHub y modelos
-      gratuitos con fallback local.</p>
+      <h2>Cápsulas educativas y tutor programado</h2>
+      <p>El repositorio conserva cápsulas y un workflow de tutor. Su ejecución depende de la disponibilidad de GitHub Actions; no se garantiza atención automática continua.</p>
+      <p class="meta">Los materiales descargables siguen disponibles aunque los agentes no se ejecuten.</p>
     </section>
   </main>
 
@@ -104,5 +115,6 @@
     });
   </script>
   <script src="app.js"></script>
+  <script type="module" src="course-viewer.mjs"></script>
 </body>
 </html>
