@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --pretty false",
     "pretest:core": "node scripts/generate-platform-tools.mjs",
-    "test:core": "node scripts/test-core.mjs",
+    "test:core": "node scripts/test-core.mjs && node scripts/verify-ciberseguridad-smishing.mjs",
     "i18n:verify": "node scripts/verify-i18n.mjs",
     "trust:verify": "node scripts/verify-resource-trust.mjs",
     "accessibility:verify": "node scripts/verify-accessibility-static.mjs",
