@@ -122,7 +122,7 @@ export const ciberseguridad: GeneratedCourse = {
       summary:
         "Un mensaje dice que tu paquete está retenido y te pide pagar. Cómo reconocerlo.",
       content:
-        "Otro truco es el mensaje del paquete falso. Te llega un SMS que dice que tienes un paquete retenido. Te piden pagar un euro para recibirlo. El mensaje incluye un enlace. No toques el enlace. Las empresas de correo no piden dinero por SMS. Tampoco te piden contraseñas por mensaje. Mira el remitente: suelen ser números raros o textos con errores. Si esperas un paquete, entra en la web oficial de la empresa. Borra el mensaje sospechoso.",
+        "A veces llega un SMS que dice que tienes un paquete retenido y debes pagar una pequeña cantidad. Puede parecer que lo envía una empresa conocida, pero el nombre del remitente se puede falsificar. No abras el enlace ni pongas datos personales o bancarios desde ese mensaje. Un envío internacional puede requerir trámites reales de aduanas: eso no hace auténtico el SMS. Si esperas un paquete, escribe tú la dirección de la web oficial de la empresa o abre su aplicación y comprueba el número de seguimiento. No te fíes solo de las faltas de ortografía: los mensajes falsos también pueden estar bien escritos. Si ya diste datos bancarios, contacta de inmediato con tu banco y guarda pruebas. Puedes pedir orientación gratuita a INCIBE en el 017.",
       audio: true,
       sources: [
         {
@@ -136,6 +136,11 @@ export const ciberseguridad: GeneratedCourse = {
           license: "público",
         },
         {
+          title: "Correos: Confía en Correos, rechaza imitaciones (2026)",
+          url: "https://www.correos.es/es/es/actualidad/2026/confia-en-correos-rechaza-imitaciones",
+          license: "referencia informativa, sin reproducción",
+        },
+        {
           title: "Cisco Networking Academy: Cybersecurity Essentials",
           url: "https://www.netacad.com/courses/cybersecurity/cybersecurity-essentials",
           license: "gratuito",
@@ -147,12 +152,12 @@ export const ciberseguridad: GeneratedCourse = {
           options: [
             "Toco el enlace y pago el euro",
             "Mando mis datos por si es verdad",
-            "No toco el enlace y borro el mensaje",
+            "No pulso el enlace y verifico el envío desde la web oficial",
             "Reenvío el mensaje a todos mis contactos",
           ],
           correct: 2,
           explain:
-            "No toques enlaces de mensajes sospechosos. Las empresas de correo no piden dinero por SMS. Entra siempre por la web oficial.",
+            "Un SMS no confirma que debas pagar. No abras su enlace: comprueba el envío desde la web o aplicación oficial, sin usar datos del mensaje.",
         },
         {
           q: "Quieres saber si de verdad tienes un paquete. ¿Qué haces?",
@@ -176,7 +181,7 @@ export const ciberseguridad: GeneratedCourse = {
           ],
           correct: 1,
           explain:
-            "Los errores de ortografía y los enlaces raros son señales de estafa. Los mensajes falsos suelen tener fallos.",
+            "Los enlaces extraños y las faltas pueden alertarte, pero un SMS sin faltas también puede ser falso. Verifica siempre por un canal oficial independiente.",
         },
       ],
       xp: 25,
