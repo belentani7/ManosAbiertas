@@ -86,10 +86,15 @@ export async function openCourse(path){
 document.addEventListener('click',event=>{
   const a=event.target.closest?.('a[href]');
   if(!a)return;
-  const href=a.getAttribute('href');
-  if(!href||!href.startsWith('cursos/')||!href.endsWith('.md'))return;
+  const raw=a.getAttribute('href');
+  if(!raw)return;
+  let target;
+  try{target=new URL(raw,root)}catch{return}
+  const prefix=new URL('cursos/',root).pathname;
+  if(target.origin!==root.origin||!target.pathname.startsWith(prefix)||!target.pathname.endsWith('.md'))return;
   event.preventDefault();
-  openCourse(href).catch(()=>{
+  const relative='cursos/'+target.pathname.slice(prefix.length);
+  openCourse(relative).catch(()=>{
     info.textContent='La ruta solicitada no está disponible.';
   });
 });
