@@ -19,6 +19,17 @@ export const IMV_2026_HOUSEHOLDS = [
   { id: "two-adults", label: "Dos adultos", monthlyReference: 953.68 },
   { id: "two-adults-one-child", label: "Dos adultos y un menor", monthlyReference: 1173.76 },
   { id: "two-adults-two-children", label: "Dos adultos y dos menores", monthlyReference: 1393.84 },
+  // Additional household rows published by the Seguridad Social for 2026.
+  { id: "one-adult-three-children", label: "Un adulto y tres menores", monthlyReference: 1393.84 },
+  { id: "one-adult-four-plus-children", label: "Un adulto y cuatro o más menores", monthlyReference: 1613.92 },
+  { id: "two-adults-three-plus-children", label: "Dos adultos y tres o más menores", monthlyReference: 1613.92 },
+  { id: "three-adults", label: "Tres adultos", monthlyReference: 1173.76 },
+  { id: "three-adults-one-child", label: "Tres adultos y un menor", monthlyReference: 1393.84 },
+  { id: "three-adults-two-plus-children", label: "Tres adultos y dos o más menores", monthlyReference: 1613.92 },
+  { id: "four-adults", label: "Cuatro adultos", monthlyReference: 1393.84 },
+  { id: "four-adults-one-child", label: "Cuatro adultos y un menor", monthlyReference: 1613.92 },
+  { id: "one-adult-single-parent-three-children", label: "Unidad monoparental reconocida: un adulto y tres menores", monthlyReference: 1555.23 },
+  { id: "one-adult-single-parent-four-plus-children", label: "Unidad monoparental reconocida: un adulto y cuatro o más menores", monthlyReference: 1775.31 },
 ] as const;
 
 export type ImvHouseholdId = (typeof IMV_2026_HOUSEHOLDS)[number]["id"];
