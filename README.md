@@ -48,3 +48,25 @@ vive en el nodo central:
 | secure-t | Ciberseguridad e IA | https://belentani7.github.io/secure-t/ |
 
 **PT > ES > EN > CA.** Gratuito, accesible (WCAG) y conectado.
+
+## Reconciliación del campus y Nivel 0 — 22 octubre 2026
+
+Esta rama reúne sobre la configuración original Next.js recuperada, **sin sustituirla**:
+el lector seguro de tres cursos complementarios, evaluación y progreso local,
+precarga offline delimitada, y exportación de lecciones de Nivel 0 a TXT.
+Se preservan las cinco familias de contenido original, las lecciones, voces,
+juegos, guías y el resto de la aplicación.
+
+Verificación adicional en el workflow real `CI`: las pruebas `pnpm test:core`
+(que descubren los casos `tests/core/*.test.mjs`) siguen existiendo; añadidas
+verificaciones específicas de smishing y estructura de los cursos generados.
+El workflow complementario `campus-course.yml` comprueba materiales, navegación,
+módulos del lector y paquete precargado.
+
+**Límites:** la ruta `campus/` y el frontend Next.js son interfaces distintas
+dentro del mismo proyecto, no un segundo producto. La existencia de archivos
+en el repositorio no garantiza que el host Next.js exponga `/campus/`. Es
+imprescindible comprobar las rutas públicas, construir Next.js, instalar el SW
+bajo HTTPS y verificar la funcionalidad sin conexión en móvil/escritorio.
+No se prometen certificados, tutor autónomo, almacenamiento remoto ni asistencia
+jurídica personalizada. El despliegue de esta candidata sigue pendiente.
