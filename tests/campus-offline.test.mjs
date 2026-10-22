@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {Script,runInNewContext} from 'node:vm';
 import {parseCourseMarkdown,linkTokens} from '../campus/course-core.mjs';
+import {publicCampusPaths} from '../scripts/prepare-public-campus.mjs';
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
 const coursePaths=[['alfabetizacion-ia',3],['office-sin-miedo',3],['falsos-amigos-pt-es',4]];
@@ -84,6 +85,15 @@ test('the offline precache includes all advertised course units, quizzes and aud
   assert.equal(new Set(files).size,files.length);
   assert.equal(files.length,32); // 9 core (including Escudo) + 19 course resources + 4 voice files
   for(const name of ['./escudo/index.html','./escudo/core.mjs','./escudo/recovery.mjs'])assert.ok(files.includes(name),name);
+  // The Next.js publication and PWA manifests must contain the same learning assets.
+  const published=new Set(publicCampusPaths());
+  for(const path of files){
+    if(path==='./')continue;
+    assert.ok(published.has(path.replace(/^\.\//,'')), 'Offline asset not in Next release: '+path);
+  }
+  assert.ok(published.has('sw.js')&&published.has('manifest.webmanifest'));
+  assert.equal(published.size,files.length+1); // SW + manifest, minus the alias "./".
+
   for(const name of files)assert.ok(existsSync(new URL(name,new URL('campus/',root))),'Missing '+name);
   assert.ok(listeners.install&&listeners.activate&&listeners.fetch);
   assert.match(read('campus/sw.js'),/target\.origin!==self\.location\.origin/);
