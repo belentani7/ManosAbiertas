@@ -11,7 +11,7 @@ const DESTINATION=join(ROOT,'public','campus');
 const MARKER=join(DESTINATION,'.generated-by-manos-build');
 
 export function publicCampusPaths(){
- const paths=['index.html','manifest.webmanifest','tokens.css','app.js','sw.js','course-core.mjs','course-viewer.mjs','escudo/index.html','escudo/core.mjs'];
+ const paths=['index.html','manifest.webmanifest','tokens.css','app.js','sw.js','course-core.mjs','course-viewer.mjs','escudo/index.html','escudo/core.mjs','escudo/recovery.mjs'];
  for(const [slug,weeks] of [['alfabetizacion-ia',3],['office-sin-miedo',3],['falsos-amigos-pt-es',4]]){
   for(const file of ['syllabus.md','recursos.md','quiz.json'])paths.push('cursos/'+slug+'/'+file);
   for(let i=1;i<=weeks;i++)paths.push('cursos/'+slug+'/semana-'+String(i).padStart(2,'0')+'.md');
@@ -25,7 +25,7 @@ export function stagePublicCampus(){
   throw new Error('Refusing to modify manually managed public/campus without build marker');
  }
  const resources=publicCampusPaths();
- if(resources.length!==32||new Set(resources).size!==resources.length){
+ if(resources.length!==33||new Set(resources).size!==resources.length){
   throw new Error('Campus publish manifest is not deterministic or contains duplicates');
  }
  // Verify ALL assets before touching the public target (fail closed).
