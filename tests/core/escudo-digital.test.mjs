@@ -17,5 +17,5 @@ test('Escudo Digital has substantive, translated, unique and answerable cases',(
 test('Escudo Digital is standalone, accessible, without collection or external dependencies',()=>{
  const html=readFileSync(new URL('../../campus/escudo/index.html',import.meta.url),'utf8');
  for(const snippet of ['<main>','aria-live="polite"','<fieldset','type="module"','core.mjs','<select id="language"','prefers-reduced-motion'])assert.ok(html.includes(snippet),snippet);
- assert.doesNotMatch(html,/fetch\s*\(|XMLHttpRequest|navigator\.sendBeacon|localStorage|innerHTML|<script[^>]*src="https?:/i);
+ assert.doesNotMatch(html,/fetch\s*\(|XMLHttpRequest|navigator\.sendBeacon|localStorage|innerHTML|<script[^>]*src="https?:\/\//i);
 });
