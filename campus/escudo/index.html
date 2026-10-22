@@ -37,7 +37,9 @@ footer{color:#b3c6d5;padding-bottom:3rem}.hidden,[hidden]{display:none!important
 <script type="module">
 import {SCENARIOS,LABELS,evaluate} from './core.mjs';
 const el=id=>document.getElementById(id);
-let lang='pt',index=0,score=0,answered=false,lastCorrect=false;
+const preferred=new URLSearchParams(location.search).get('lang')?.split('-')[0];
+let lang=['pt','es','en','ca'].includes(preferred)?preferred:'pt',index=0,score=0,answered=false,lastCorrect=false;
+el('language').value=lang;
 const get=()=>LABELS[lang];
 function render(){
   const t=get(),s=SCENARIOS[index];document.documentElement.lang=lang;
@@ -66,5 +68,6 @@ el('answer-form').addEventListener('submit',event=>{
 el('next').addEventListener('click',()=>{index++;answered=false;render();if(index<SCENARIOS.length)el('exercise').focus();else el('finished').focus();});
 el('restart').addEventListener('click',()=>{index=0;score=0;answered=false;render();el('exercise').focus();});
 el('language').addEventListener('change',event=>{lang=event.target.value;render();});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('../sw.js',{scope:'../'}).catch(()=>{});
 render();
 </script></body></html>
