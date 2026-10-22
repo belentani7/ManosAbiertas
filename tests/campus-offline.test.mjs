@@ -82,7 +82,8 @@ test('the offline precache includes all advertised course units, quizzes and aud
   runInNewContext(read('campus/sw.js')+'\nglobalThis.__offlineFiles=CORE;',ctx);
   const files=Array.from(ctx.__offlineFiles);
   assert.equal(new Set(files).size,files.length);
-  assert.equal(files.length,29); // 6 core + 19 course resources + 4 voice files
+  assert.equal(files.length,32); // 9 core (including Escudo) + 19 course resources + 4 voice files
+  for(const name of ['./escudo/index.html','./escudo/core.mjs','./escudo/recovery.mjs'])assert.ok(files.includes(name),name);
   for(const name of files)assert.ok(existsSync(new URL(name,new URL('campus/',root))),'Missing '+name);
   assert.ok(listeners.install&&listeners.activate&&listeners.fetch);
   assert.match(read('campus/sw.js'),/target\.origin!==self\.location\.origin/);
