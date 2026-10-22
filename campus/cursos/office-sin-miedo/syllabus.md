@@ -4,7 +4,7 @@
 
 ## Descripcion
 
-Crea tu CV, cartas formales y controla gastos con herramientas gratuitas (LibreOffice / Google Docs). Practico, guiado, en español claro.
+Aprende a producir un CV veraz, cartas formales y una hoja de presupuesto utilizando datos ficticios. Incluye plantillas, fórmulas verificables, prácticas y criterios de corrección.
 
 ## Objetivos de aprendizaje (evidencia)
 
@@ -12,12 +12,13 @@ Crea tu CV, cartas formales y controla gastos con herramientas gratuitas (LibreO
 - Escribir una carta formal correcta
 - Hacer un presupuesto basico en hoja de calculo
 
-## Evaluacion estilo Harvard
+## Evaluación formativa de este campus
 
-- Participacion y ejercicios semanales: 30%
-- Quizzes formativos por semana: 30%
-- Proyecto final con evidencia: 40%
-- Todo se aprueba demostrando, no adivinando.
+- Las semanas incluyen lecturas, práctica y soluciones comentadas.
+- El cuestionario ofrece retroalimentación inmediata en el navegador.
+- El proyecto final se revisa con la rúbrica descrita en cada lección.
+- No existe afiliación con Harvard u otra universidad, matrícula acreditada ni emisión automática de certificados.
+- Las horas y el nivel indican una orientación pedagógica, no equivalencia académica.
 
 ## Cronograma
 
