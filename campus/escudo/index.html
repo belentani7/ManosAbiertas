@@ -29,15 +29,15 @@ footer{color:#b3c6d5;padding-bottom:3rem}.hidden,[hidden]{display:none!important
 <p class="kicker" id="progress"></p><p class="kicker" id="category"></p><h2 id="prompt"></h2>
 <form id="answer-form"><fieldset style="border:0;padding:0;margin:0"><legend id="instruction" class="sr-only">Elige una respuesta</legend>
 <div id="choices" class="choices"></div></fieldset><button id="check" type="submit"></button></form>
-<div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+<div id="feedback" tabindex="-1" class="feedback" role="status" aria-live="polite" hidden></div>
 <button type="button" id="next" hidden></button></section>
-<section class="panel" id="finished" hidden aria-live="polite"><h2 id="result-title"></h2><p id="result-score"></p><button type="button" id="restart"></button></section>
+<section class="panel" id="finished" tabindex="-1" hidden aria-live="polite"><h2 id="result-title"></h2><p id="result-score"></p><button type="button" id="restart"></button></section>
 <p id="disclaimer" class="lead"></p></main>
 <footer>Manos Abiertas · <span lang="es">Sin registro, sin envío de respuestas, sin seguimiento ni credenciales.</span></footer></div>
 <script type="module">
 import {SCENARIOS,LABELS,evaluate} from './core.mjs';
 const el=id=>document.getElementById(id);
-let lang='pt',index=0,score=0,answered=false;
+let lang='pt',index=0,score=0,answered=false,lastCorrect=false;
 const get=()=>LABELS[lang];
 function render(){
   const t=get(),s=SCENARIOS[index];document.documentElement.lang=lang;
@@ -55,13 +55,13 @@ function render(){
     const input=document.createElement('input');input.type='radio';input.name='answer';input.value=String(i);input.required=true;input.disabled=answered;
     const span=document.createElement('span');span.textContent=choice[lang];label.append(input,span);el('choices').append(label);
   });
-  if(answered){el('feedback').textContent=(window.__lastCorrect?t.right:t.wrong)+' '+s.explanation[lang];}
+  if(answered){el('feedback').textContent=(lastCorrect?t.right:t.wrong)+' '+s.explanation[lang];}
 }
 el('answer-form').addEventListener('submit',event=>{
  event.preventDefault();if(answered)return;
  const choice=el('answer-form').querySelector('input[name=answer]:checked');if(!choice)return;
  const good=evaluate(SCENARIOS[index],Number(choice.value));if(good)score++;
- window.__lastCorrect=good;answered=true;render();el('feedback').focus();
+ lastCorrect=good;answered=true;render();el('feedback').focus();
 });
 el('next').addEventListener('click',()=>{index++;answered=false;render();if(index<SCENARIOS.length)el('exercise').focus();else el('finished').focus();});
 el('restart').addEventListener('click',()=>{index=0;score=0;answered=false;render();el('exercise').focus();});
