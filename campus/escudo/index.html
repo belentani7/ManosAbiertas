@@ -32,7 +32,16 @@ footer{color:#b3c6d5;padding-bottom:3rem}.hidden,[hidden]{display:none!important
 <div id="feedback" tabindex="-1" class="feedback" role="status" aria-live="polite" hidden></div>
 <button type="button" id="next" hidden></button></section>
 <section class="panel" id="finished" tabindex="-1" hidden aria-live="polite"><h2 id="result-title"></h2><p id="result-score"></p><button type="button" id="restart"></button></section>
-<p id="disclaimer" class="lead"></p></main>
+<section class="panel" aria-labelledby="recovery-heading" id="recovery">
+  <p class="kicker">APOIO / AYUDA / HELP / AJUDA</p>
+  <h2 id="recovery-heading"></h2><p class="lead" id="recovery-intro"></p>
+  <label for="recovery-scenario" id="recovery-choose"></label>
+  <select id="recovery-scenario" style="display:block;margin:.75rem 0 1.25rem;width:100%;max-width:100%"></select>
+  <h3 id="recovery-steps-label"></h3><ol id="recovery-steps" aria-labelledby="recovery-steps-label"></ol>
+  <button type="button" id="download-recovery"></button>
+  <p id="recovery-warning" class="lead" style="margin-top:1.3rem"></p>
+  <p id="recovery-status" role="status" aria-live="polite" class="sr-only"></p>
+</section><p id="disclaimer" class="lead"></p></main>
 <footer>Manos Abiertas · <span lang="es">Sin registro, sin envío de respuestas, sin seguimiento ni credenciales.</span></footer></div>
 <script type="module">
 import {SCENARIOS,LABELS,evaluate} from './core.mjs';
@@ -70,4 +79,43 @@ el('restart').addEventListener('click',()=>{index=0;score=0;answered=false;rende
 el('language').addEventListener('change',event=>{lang=event.target.value;render();});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('../sw.js',{scope:'../'}).catch(()=>{});
 render();
+</script>
+<script type="module">
+import {RECOVERY_LABELS,RECOVERY_PLANS,getRecoveryPlan,recoveryText} from './recovery.mjs';
+const $=id=>document.getElementById(id);
+const select=$('recovery-scenario');
+function updateRecovery(){
+ const lang=$('language').value||'pt',words=RECOVERY_LABELS[lang];
+ $('recovery-heading').textContent=words.title;
+ $('recovery-intro').textContent=words.intro;
+ $('recovery-choose').textContent=words.choose;
+ $('recovery-steps-label').textContent=words.steps;
+ $('download-recovery').textContent=words.download;
+ $('recovery-warning').textContent=words.warning;
+ const previous=select.value;
+ select.replaceChildren();
+ for(const plan of RECOVERY_PLANS){
+  const option=document.createElement('option');
+  option.value=plan.id;option.textContent=plan.title[lang];select.append(option);
+ }
+ if(RECOVERY_PLANS.some(p=>p.id===previous))select.value=previous;
+ updateSteps();
+}
+function updateSteps(){
+ const plan=getRecoveryPlan(select.value,$('language').value||'pt');
+ const list=$('recovery-steps');list.replaceChildren();
+ for(const step of plan.steps){
+  const li=document.createElement('li');li.textContent=step;li.style.marginBottom='.65rem';list.append(li);
+ }
+}
+$('language').addEventListener('change',updateRecovery);
+select.addEventListener('change',updateSteps);
+$('download-recovery').addEventListener('click',()=>{
+ const plan=recoveryText(select.value,$('language').value||'pt');
+ const blob=new Blob([plan],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download='manos-abiertas-plan-de-proteccion.txt';a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+updateRecovery();
 </script></body></html>
