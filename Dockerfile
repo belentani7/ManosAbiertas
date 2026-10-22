@@ -1,22 +1,24 @@
-# Multi-stage build for production
-FROM node:20-alpine AS base
+# Reproducible multi-stage build for the existing Next.js standalone app.
+FROM node:22-alpine AS build
 WORKDIR /app
-ENV PNPM_HOME="/pnpm"
-ENV PATH="${PNPM_HOME}:${PATH}"
-RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
-
-FROM base AS builder
-COPY package.json pnpm-lock.yaml ./
+RUN apk add --no-cache libc6-compat openssl
+RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY . .
-RUN pnpm build
+ENV NEXT_TELEMETRY_DISABLED=1
+# The build script also copies public and static assets into .next/standalone.
+RUN pnpm build && test -f .next/standalone/server.js
 
-FROM base AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
+RUN apk add --no-cache libc6-compat openssl
 ENV NODE_ENV=production
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/pnpm-lock.yaml ./
-RUN pnpm install --prod --frozen-lockfile
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+COPY --from=build --chown=node:node /app/.next/standalone ./
+RUN mkdir -p .next/cache && chown -R node:node .next/cache
+USER node
 EXPOSE 3000
-CMD ["node", "dist/index.js"]
+CMD ["node", "server.js"]
