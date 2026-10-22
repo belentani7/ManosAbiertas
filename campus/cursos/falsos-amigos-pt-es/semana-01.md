@@ -16,7 +16,7 @@ Las palabras pueden tener sentidos adicionales según región y contexto. Esta u
 3. PT **oficina** (taller, a menudo mecánico) ≠ ES **oficina** (lugar de trabajo administrativo). «Levei o carro à oficina» → «Llevé el coche al taller».
 4. PT **sobrenome** (apellido) ≠ ES **sobrenombre** (apodo). «Qual é seu sobrenome?» → «¿Cuál es tu apellido?».
 5. PT **apelido** (apodo) ≠ ES **apellido** (nombre de familia). «Meu apelido é Bia» → «Mi apodo es Bia».
-6. PT-BR **propina** (soborno) ≠ ES **propina** (gratificación voluntaria al personal). PT-BR «Ofereceram propina ao fiscal» → ES «Ofrecieron un soborno al inspector». PT-BR «Deixei uma gorjeta» → ES «Dejé una propina». El portugués de otros países puede tener usos adicionales: comprueba la variedad.
+6. **Propina**, palabra ambigua según la variedad y el contexto: en PT-BR es frecuente «propina» para un soborno, mientras «gorjeta» designa habitualmente la gratificación al personal. En español «propina» suele ser esa gratificación. Pero diccionarios brasileños también registran «propina» como gratificación. PT-BR «Ofereceram propina ao fiscal» → ES «Ofrecieron un soborno al inspector». PT-BR «Deixei uma gorjeta» → ES «Dejé una propina». No traduzcas sin leer la frase completa.
 7. PT **rato** (ratón, animal) ≠ ES **rato** (un tiempo breve). «Vi um rato» → «Vi un ratón».
 8. PT **borracha** (goma de borrar o material de caucho) ≠ ES **borracha** (femenino de borracho). «Cadê a borracha?» → «¿Dónde está la goma de borrar?».
 9. PT **salada** (ensalada) ≠ ES **salada** (que contiene sal). «Uma salada verde» → «Una ensalada verde».
