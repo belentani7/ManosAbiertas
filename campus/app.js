@@ -2,9 +2,13 @@
 document.documentElement.classList.add('js');
 
 const $ = (sel, root = document) => root.querySelector(sel);
+let activeQuizController=null;
 
 function loadQuiz(url,box) {
+  if(activeQuizController)activeQuizController.abort();
   if(!box)return;
+  const controller=new AbortController();
+  activeQuizController=controller;
   const titulo=$('.quiz-titulo',box),opciones=$('.opciones',box);
   const feedback=$('.feedback',box),marcador=$('.marcador',box);
   const button=$('.quiz-siguiente',box);
@@ -13,10 +17,11 @@ function loadQuiz(url,box) {
   }
   titulo.textContent='Cargando preguntas reales…';
   opciones.replaceChildren();feedback.textContent='';button.hidden=true;
-  fetch(url).then(response=>{
+  fetch(url,{signal:controller.signal}).then(response=>{
     if(!response.ok)throw Error('Quiz HTTP '+response.status);
     return response.json();
   }).then(items=>{
+    if(controller.signal.aborted)return;
     if(!Array.isArray(items)||!items.length||items.length>50||items.some(q=>
       typeof q.pregunta!=='string'||!Array.isArray(q.opciones)||q.opciones.length<2||
       q.opciones.length>6||!q.opciones.every(s=>typeof s==='string')||
@@ -61,6 +66,7 @@ function loadQuiz(url,box) {
     };
     render();
   }).catch(()=>{
+    if(controller.signal.aborted)return;
     titulo.textContent='No se pudo cargar este cuestionario.';
     opciones.replaceChildren();feedback.textContent='Comprueba la conexión o vuelve a abrir el campus online para activar el modo offline.';
   });

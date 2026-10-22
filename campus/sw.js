@@ -1,5 +1,5 @@
 // Read-only educational offline shell + real course documents (no user account data).
-const CACHE='campus-v2-courses-2026-10';
+const CACHE='campus-v3-courses-2026-10-content';
 const CORE=['./','./index.html','./tokens.css','./app.js','./course-core.mjs','./course-viewer.mjs'];
 for(const [slug,weeks] of [['alfabetizacion-ia',3],['office-sin-miedo',3],['falsos-amigos-pt-es',4]]){
   CORE.push('./cursos/'+slug+'/syllabus.md');

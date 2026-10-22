@@ -4,7 +4,7 @@
 
 ## Descripcion
 
-Que es la IA, como usarla sin miedo (y sin que te engane), y que derechos tienes. Para migrantes y comunidades: cero tecnicismos.
+Qué es la IA, cómo pedir tareas de bajo riesgo, comprobar resultados y proteger datos personales. Explicaciones en lenguaje sencillo y ejercicios con ejemplos ficticios.
 
 ## Objetivos de aprendizaje (evidencia)
 
@@ -13,12 +13,13 @@ Que es la IA, como usarla sin miedo (y sin que te engane), y que derechos tienes
 - Detectar 5 riesgos y defenderse
 - Conocer tus derechos digitales
 
-## Evaluacion estilo Harvard
+## Evaluación formativa de este campus
 
-- Participacion y ejercicios semanales: 30%
-- Quizzes formativos por semana: 30%
-- Proyecto final con evidencia: 40%
-- Todo se aprueba demostrando, no adivinando.
+- Las semanas incluyen lecturas, práctica y soluciones comentadas.
+- El cuestionario ofrece retroalimentación inmediata en el navegador.
+- El proyecto final se revisa con la rúbrica descrita en cada lección.
+- No existe afiliación con Harvard u otra universidad, matrícula acreditada ni emisión automática de certificados.
+- Las horas y el nivel indican una orientación pedagógica, no equivalencia académica.
 
 ## Cronograma
 

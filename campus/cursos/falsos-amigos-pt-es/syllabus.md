@@ -1,24 +1,25 @@
 # Puente PT->ES: Falsos Amigos
 
-> Nivel: A2-B1 · 12 horas · Idioma principal: PT
+> Nivel orientativo: A2-B1 · 12 horas de práctica · Idioma de explicación: ES con contrastes PT-BR
 
 ## Descripcion
 
-Curso intensivo para jovenes brasileños: domina los falsos amigos mas peligrosos entre portugues y español y deja de cometer errores en clase.
+Curso de práctica para hablantes de portugués brasileño que estudian español. Incluye contrastes contextualizados, patrones de interferencia y autocorrección; no equivale a una acreditación oficial de nivel.
 
 ## Objetivos de aprendizaje (evidencia)
 
-- Identificar 40 falsos amigos criticos
+- Reconocer 20 contrastes léxicos contextualizados
 - Escribir frases ES sin transferencia PT
 - Autocorregir textos propios
-- Jugar Caza-Falsos Amigos sin fallar
+- Resolver un examen formativo de 40 situaciones con explicación
 
-## Evaluacion estilo Harvard
+## Evaluación formativa de este campus
 
-- Participacion y ejercicios semanales: 30%
-- Quizzes formativos por semana: 30%
-- Proyecto final con evidencia: 40%
-- Todo se aprueba demostrando, no adivinando.
+- Las semanas incluyen lecturas, práctica y soluciones comentadas.
+- El cuestionario ofrece retroalimentación inmediata en el navegador.
+- El proyecto final se revisa con la rúbrica descrita en cada lección.
+- No existe afiliación con Harvard u otra universidad, matrícula acreditada ni emisión automática de certificados.
+- Las horas y el nivel indican una orientación pedagógica, no equivalencia académica.
 
 ## Cronograma
 
@@ -27,11 +28,11 @@ Curso intensivo para jovenes brasileños: domina los falsos amigos mas peligroso
 - [LECTURA] ¿Por que hablo 'portuñol'?
 - [EJERCICIO] Clasifica 10 pares PT/ES
 - [VOZ] Pronunciacion guiada (audio PT->ES)
-## Semana 2: Los 20 falsos amigos mas letales
+## Semana 2: veinte contrastes frecuentes PT-BR y español
 
 - [LECTURA] Lista maestra comentada
 - [QUIZ] Quiz semana 2
-- [JUEGO] Caza-Falsos Amigos (rondas 1-5)
+- [JUEGO] Corregir diez frases contextualizadas
 ## Semana 3: Gramatica de transferencia
 
 - [LECTURA] Portuñol detectable: 8 patrones
@@ -40,7 +41,7 @@ Curso intensivo para jovenes brasileños: domina los falsos amigos mas peligroso
 
 - [REPASO] Repaso de las 3 semanas
 - [PROYECTO] Guia personal anti-portuñol (1 pagina)
-- [EXAMEN] Examen final: 40 items
+- [EXAMEN] Cuestionario formativo de 40 casos, sin certificación
 
 ## Recursos
 
