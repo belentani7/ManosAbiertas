@@ -56,3 +56,21 @@ El repositorio canónico integra el lector de cursos del campus, práctica evalu
 La entrega actual incluye unidades ampliadas de **Office sin Miedo**, **Puente PT–ES** y un examen PT–ES de 40 casos con retroalimentación. La CI ejecuta comprobaciones específicas para el contenido de ciberseguridad y para la estructura de los cursos generados, además de los tests del proyecto.
 
 El contenido educativo es material de práctica. No constituye certificación institucional ni asesoramiento jurídico personalizado.
+
+
+## Campus servido desde la aplicación Next.js
+
+El proceso de build incorpora exclusivamente los recursos docentes públicos del
+campus a `public/campus/` mediante `scripts/prepare-public-campus.mjs`.
+El generador utiliza una lista explícita de archivos y falla ante enlaces
+simbólicos, elementos ausentes o una carpeta gestionada manualmente.
+
+Rutas previstas tras un build y despliegue correctos:
+
+- `/campus/index.html`: campus formativo con cursos gratuitos y lector.
+- `/campus/escudo/index.html`: Escudo Digital, práctica anties­taf­as PT/ES/EN/CA.
+
+El estudio offline requiere una primera visita conectada en origen seguro.
+`public/campus/` es generado, no debe editarse; la fuente canónica
+es `campus/`. La existencia de estas rutas en producción solo
+queda confirmada tras publicar y comprobar el build.
