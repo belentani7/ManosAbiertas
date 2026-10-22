@@ -27,8 +27,9 @@ function loadQuiz(url,box) {
       q.opciones.length>6||!q.opciones.every(s=>typeof s==='string')||
       !Number.isInteger(q.correcta)||q.correcta<0||q.correcta>=q.opciones.length||
       typeof q.explicacion!=='string'))throw Error('Quiz structure invalid');
-    let index=0,score=0;
+    let index=0,score=0,answered=false;
     const render=()=>{
+      answered=false;
       const q=items[index];titulo.textContent=(index+1)+'/'+items.length+' · '+q.pregunta;
       opciones.replaceChildren();feedback.textContent='';
       marcador.textContent='Aciertos: '+score;button.hidden=true;button.textContent='Siguiente';
@@ -36,11 +37,14 @@ function loadQuiz(url,box) {
         const choice=document.createElement('button');
         choice.className='opcion';choice.type='button';choice.textContent=option;
         choice.addEventListener('click',()=>{
+          // Score only the first real choice; DOM disabled is not a state guard.
+          if(answered||controller.signal.aborted)return;
+          answered=true;
           for(const [j,el] of [...opciones.children].entries()){
             el.classList.add(j===q.correcta?'correcta':'fallo');el.disabled=true;
           }
           if(i===q.correcta)score++;
-          feedback.textContent=(i===q.correcta?'Correcto. ':'Incorrecto. ')+q.explicacion;
+          feedback.textContent=(i===q.correcta?'Correcto. ':('Incorrecto. Respuesta correcta: '+q.opciones[q.correcta]+'. '))+q.explicacion;
           marcador.textContent='Aciertos: '+score;button.hidden=false;
           button.textContent=index===items.length-1?'Finalizar':'Siguiente';
         },{once:true});
@@ -48,6 +52,7 @@ function loadQuiz(url,box) {
       });
     };
     button.onclick=()=>{
+      if(controller.signal.aborted||!answered)return;
       if(index===items.length){
         index=0;score=0;render();return;
       }

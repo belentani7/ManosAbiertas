@@ -44,6 +44,10 @@ function createBrowser() {
 
   return {
     title: children['.quiz-titulo'],
+    feedback: children['.feedback'],
+    score: children['.marcador'],
+    answer(index) { children['.opciones'].children[index].handlers.click(); },
+    advance() { children['.quiz-siguiente'].onclick(); },
     pending,
     select(slug) {
       select.value = quizUrl(slug);
@@ -89,4 +93,21 @@ test('stale HTTP errors cannot overwrite a newly loaded course', async () => {
   await settle();
   assert.match(browser.title.textContent, /Puente PT-ES/);
   assert.doesNotMatch(browser.title.textContent, /No se pudo cargar/);
+});
+
+test('wrong answers expose correct response and cannot be rescored with another choice',async()=>{
+  const browser=createBrowser();
+  browser.pending.get(quizUrl('alfabetizacion-ia')).resolve({
+    ok:true, json:async()=>lesson('Situación de clase'),
+  });
+  await settle();
+  browser.advance(); // Hidden Next cannot skip the question before answering.
+  assert.match(browser.title.textContent, /Situación de clase/);
+  browser.answer(1);
+  assert.match(browser.feedback.textContent,/Incorrecto\. Respuesta correcta: respuesta correcta/);
+  assert.match(browser.score.textContent,/Aciertos: 0/);
+  browser.answer(0); // Programmatic stale click; disabled DOM is not enough.
+  assert.match(browser.score.textContent,/Aciertos: 0/);
+  browser.advance();
+  assert.match(browser.title.textContent,/Práctica finalizada: 0\/1/);
 });
