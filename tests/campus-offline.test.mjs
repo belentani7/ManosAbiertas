@@ -87,7 +87,7 @@ test('the offline precache includes all advertised course units, quizzes and aud
   assert.ok(listeners.install&&listeners.activate&&listeners.fetch);
   assert.match(read('campus/sw.js'),/target\.origin!==self\.location\.origin/);
   assert.match(read('campus/sw.js'),/Response\.error\(\)/);
-  assert.match(read('campus/sw.js'),/key\.startsWith\('campus-v'\)/);
+  assert.match(read('campus/sw.js'),/key\.startsWith\(PREFIX\)/);
 });
 test('campus UI has real course navigation and local quiz choice',()=>{
   const page=read('campus/index.html');
@@ -98,3 +98,4 @@ test('campus UI has real course navigation and local quiz choice',()=>{
   assert.doesNotMatch(page,/estilo Harvard\/Coursera/);
   new Script(read('campus/app.js'));
 });
+

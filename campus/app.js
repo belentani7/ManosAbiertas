@@ -28,9 +28,10 @@ function loadQuiz(url,box) {
       !Number.isInteger(q.correcta)||q.correcta<0||q.correcta>=q.opciones.length||
       typeof q.explicacion!=='string'))throw Error('Quiz structure invalid');
     let index=0,score=0,answered=false;
+    const mistakes=[];
     const render=()=>{
       answered=false;
-      const q=items[index];titulo.textContent=(index+1)+'/'+items.length+' · '+q.pregunta;
+      const q=items[index],questionIndex=index;titulo.textContent=(index+1)+'/'+items.length+' · '+q.pregunta;
       opciones.replaceChildren();feedback.textContent='';
       marcador.textContent='Aciertos: '+score;button.hidden=true;button.textContent='Siguiente';
       q.opciones.forEach((option,i)=>{
@@ -38,12 +39,13 @@ function loadQuiz(url,box) {
         choice.className='opcion';choice.type='button';choice.textContent=option;
         choice.addEventListener('click',()=>{
           // Score only the first real choice; DOM disabled is not a state guard.
-          if(answered||controller.signal.aborted)return;
+          if(answered||controller.signal.aborted||index!==questionIndex)return;
           answered=true;
           for(const [j,el] of [...opciones.children].entries()){
             el.classList.add(j===q.correcta?'correcta':'fallo');el.disabled=true;
           }
           if(i===q.correcta)score++;
+          else mistakes.push(q);
           feedback.textContent=(i===q.correcta?'Correcto. ':('Incorrecto. Respuesta correcta: '+q.opciones[q.correcta]+'. '))+q.explicacion;
           marcador.textContent='Aciertos: '+score;button.hidden=false;
           button.textContent=index===items.length-1?'Finalizar':'Siguiente';
@@ -54,13 +56,16 @@ function loadQuiz(url,box) {
     button.onclick=()=>{
       if(controller.signal.aborted||!answered)return;
       if(index===items.length){
-        index=0;score=0;render();return;
+        index=0;score=0;mistakes.length=0;render();return;
       }
       index++;
       if(index<items.length){render();return;}
       titulo.textContent='Práctica finalizada: '+score+'/'+items.length;
       opciones.replaceChildren();
-      feedback.textContent='Esta actividad no acredita niveles. Revisa las respuestas y repítela cuando quieras.';
+      feedback.textContent='Esta actividad no acredita niveles. Revisa las respuestas y repítela cuando quieras.'+
+        (mistakes.length?'\n\nRepaso de respuestas:\n'+mistakes.map((q,i)=>
+          (i+1)+'. '+q.pregunta+'\nRespuesta correcta: '+q.opciones[q.correcta]+'. '+q.explicacion).join('\n\n'):
+          '\nTodas las respuestas fueron correctas. Puedes repetir la práctica.');
       marcador.textContent='Resultado: '+Math.round(100*score/items.length)+'%';
       button.hidden=false;button.textContent='Repetir';
       try{
@@ -113,3 +118,4 @@ if(quizSelect && quizBox) {
   quizSelect.addEventListener('change',()=>loadQuiz(quizSelect.value,quizBox));
   loadQuiz(quizSelect.value,quizBox);
 }
+
