@@ -38,6 +38,26 @@ test('original lessons are nonempty and structurally readable',()=>{
     }
   }
 });
+test('all published course links resolve to a real tracked local document', () => {
+  for (const [slug, weeks] of coursePaths) {
+    const files = ['syllabus.md', 'recursos.md',
+      ...Array.from({length: weeks}, (_, i) => 'semana-'+String(i+1).padStart(2,'0')+'.md')];
+    for (const file of files) {
+      const rel = 'campus/cursos/'+slug+'/'+file;
+      const source = new URL(rel, root);
+      const document = read(rel);
+      for (const link of linkTokens(document)) {
+        if (link.kind !== 'link') continue;
+        const target = new URL(link.href, source);
+        if (['https:', 'http:', 'mailto:'].includes(target.protocol)) continue;
+        assert.equal(target.protocol, 'file:', rel+' contains a non-local unsafe scheme');
+        assert.ok(target.href.startsWith(root.href), rel+' escapes campus root: '+link.href);
+        assert.ok(existsSync(target), rel+' has a broken link to '+link.href);
+      }
+    }
+  }
+});
+
 test('course parser treats HTML as plain text and limits oversized data',()=>{
   const blocks=parseCourseMarkdown('# Title\n- Example\n<script>alert(1)</script>');
   assert.equal(blocks[0].kind,'heading');
