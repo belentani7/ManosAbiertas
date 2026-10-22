@@ -94,7 +94,7 @@ export const RECOVERY_PLANS = [
       {
         "pt": "Não pague supostas taxas para recuperar o dinheiro.",
         "es": "No pagues supuestas tasas para recuperar el dinero.",
-        "en": "Do not pay supposed recovery fees.",
+        "en": "Do not pay any additional fees for supposed recovery assistance.",
         "ca": "No paguis suposades taxes per recuperar els diners."
       },
       {
