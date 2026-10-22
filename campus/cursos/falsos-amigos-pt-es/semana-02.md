@@ -20,7 +20,7 @@ Reconocer contrastes léxicos de alta frecuencia en ámbitos de estudio, trabajo
 12. **Assinatura / asignatura:** PT firma o suscripción; ES materia escolar. PT «Precisa de assinatura» → ES «Necesita una firma» si se trata de un documento.
 13. **Presunto / presunto:** PT jamón curado o cocido; ES supuesto. PT «Sanduíche de presunto» → ES «Bocadillo de jamón».
 14. **Acordar / acordar:** PT despertar; ES llegar a un acuerdo. PT «Acordei cedo» → ES «Me desperté temprano».
-15. **Experto / experto:** PT hábil, diestro; ES experto. Comparten sentidos, así que **no siempre son falsos amigos**. Analiza el contexto antes de afirmar un contraste.
+15. **Propina / propina:** PT-BR soborno; ES gratificación por servicio. PT-BR «Recebeu propina» → ES «Recibió un soborno». PT-BR «gorjeta» → ES «propina».
 16. **Cena / cena:** PT escena; ES comida de la noche. PT «A cena do filme» → ES «La escena de la película».
 17. **Azar / azar:** PT mala suerte; ES casualidad o aleatoriedad. PT «Que azar!» → ES «¡Qué mala suerte!».
 18. **Vassoura / basura:** PT vassoura = escoba; ES basura = residuos. La similitud sonora puede confundir, aunque las formas son diferentes.
