@@ -36,6 +36,6 @@ Corrige estas cinco frases deliberadamente incorrectas:
 Soluciones: 1 «Mi profesora se sintió avergonzada»; 2 «Comí pulpo»; 3 «¿Cuál es tu apellido?»; 4 «Me parece raro»; 5 «Necesito una goma de borrar».
 
 ## ACTIVIDAD ORAL Y EVIDENCIA
-Lee diez pares en voz alta y graba solo si tú eliges hacerlo en un dispositivo privado. Crea cinco mini diálogos con un compañero o en papel. Se considera logrado cuando puedes reconocer siete de los nueve pares engañosos y explicar por qué el caso de «propina» exige matiz y no una afirmación falsa.
+Lee diez pares en voz alta y graba solo si tú eliges hacerlo en un dispositivo privado. Crea cinco mini diálogos con un compañero o en papel. Se considera logrado cuando puedes reconocer al menos ocho de los diez contrastes y explicar por qué «propina» requiere distinguir claramente PT-BR y ES.
 
 [Semana 2](semana-02.md) · [Programa](syllabus.md)
