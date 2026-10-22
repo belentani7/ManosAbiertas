@@ -6,6 +6,17 @@ import {parseCourseMarkdown,linkTokens} from '../campus/course-core.mjs';
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
 const coursePaths=[['alfabetizacion-ia',3],['office-sin-miedo',3],['falsos-amigos-pt-es',4]];
+test('course cards state the real number of practice questions',()=>{
+  const cards=read('campus/index.html').match(/<article class="card">[\s\S]*?<\/article>/g);
+  for(const [slug] of coursePaths){
+    const card=cards.find(card=>card.includes('cursos/'+slug+'/syllabus.md'));
+    assert.ok(card,slug+' must have a course card');
+    const count=card.match(/quiz (\d+) items/);
+    assert.ok(count,slug+' must declare its practice question count');
+    const questions=JSON.parse(read('campus/cursos/'+slug+'/quiz.json'));
+    assert.equal(Number(count[1]),questions.length,slug+' displays a stale question count');
+  }
+});
 test('original lessons are nonempty and structurally readable',()=>{
   for(const [slug,weeks] of coursePaths){
     const files=['syllabus.md','recursos.md',...Array.from({length:weeks},(_,i)=>'semana-'+String(i+1).padStart(2,'0')+'.md')];
