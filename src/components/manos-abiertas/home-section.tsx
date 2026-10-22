@@ -157,7 +157,7 @@ export function HomeSection() {
             </div>
 
             <a
-              href="/campus/escudo/index.html"
+              href={`/campus/escudo/index.html?lang=${language === 'pt-BR' ? 'pt' : ['pt', 'es', 'en', 'ca'].includes(language) ? language : 'es'}`}
               className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg border border-primary/40 bg-card/90 px-5 py-3 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <Shield className="h-4 w-4 text-primary" aria-hidden="true" />
