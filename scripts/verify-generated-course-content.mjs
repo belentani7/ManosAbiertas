@@ -87,7 +87,7 @@ for (const file of files) {
     if (text(prop(lesson, "summary")).length < 30) bad(label, "lesson summary too short");
     const content = text(prop(lesson, "content")).trim();
     if (content.length < 180) bad(label, "lesson has fewer than 180 characters of content");
-    if (/lorem ipsum|coming soon|pendiente de redactar|\bTODO\b/i.test(content))
+    if (/(?:lorem ipsum|coming soon|pendiente de redactar)/i.test(content) || /\bTODO\b/.test(content))
       bad(label, "unfinished placeholder content");
     const sources = array(prop(lesson, "sources"));
     if (!sources.length) bad(label, "no source citation");
