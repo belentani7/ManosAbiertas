@@ -1,57 +1,442 @@
 [
   {
-    "pregunta": "'Embaraçada' en español significa...",
+    "pregunta": "PT-BR «Fiquei embaraçada»: ¿qué expresa normalmente?",
     "opciones": [
-      "Embarazada",
-      "Avergonzada",
-      "Enfadada",
-      "Confundida"
+      "Me dio vergüenza",
+      "Estoy embarazada",
+      "Estoy aburrida",
+      "Me caí al suelo"
     ],
-    "correcta": 1,
-    "explicacion": "Falso amigo clasico: embaraçada = avergonzada."
+    "correcta": 0,
+    "explicacion": "Embaraçada puede expresar vergüenza o incomodidad; embarazada en español describe gestación."
   },
   {
-    "pregunta": "'Oficina' (PT) es...",
+    "pregunta": "¿Qué dice en PT-BR alguien que está embarazada?",
     "opciones": [
-      "Oficina de trabajo",
-      "Taller mecanico",
-      "Cocina",
-      "Escritorio"
+      "Estou esquisita",
+      "Estou grávida",
+      "Estou embaraçada siempre",
+      "Sou sobremesa"
     ],
     "correcta": 1,
-    "explicacion": "La oficina en ES es 'escritorio'."
+    "explicacion": "Grávida expresa gestación en portugués brasileño."
   },
   {
-    "pregunta": "'Esquisito' (PT) = ...",
+    "pregunta": "PT-BR «Que cheiro esquisito»: traducción natural",
     "opciones": [
-      "Exquisito",
-      "Raro/extrano",
-      "Delicado",
-      "Sencillo"
+      "Qué olor exquisito",
+      "Qué olor dulce",
+      "Qué olor raro",
+      "Qué olor caro"
+    ],
+    "correcta": 2,
+    "explicacion": "Esquisito suele significar raro en PT-BR, no exquisito."
+  },
+  {
+    "pregunta": "ES «un plato exquisito»: significado principal",
+    "opciones": [
+      "Un plato extraño",
+      "Un plato sin sal",
+      "Un plato frío",
+      "Un plato delicioso"
+    ],
+    "correcta": 3,
+    "explicacion": "Exquisito expresa calidad o sabor excelente."
+  },
+  {
+    "pregunta": "PT-BR «Levei o carro à oficina»: destino",
+    "opciones": [
+      "Al taller de coches",
+      "A una oficina pública",
+      "A una farmacia",
+      "A la biblioteca"
+    ],
+    "correcta": 0,
+    "explicacion": "Oficina en este contexto portugués es taller."
+  },
+  {
+    "pregunta": "ES «trabajo en una oficina»: lugar",
+    "opciones": [
+      "Taller mecánico obligatorio",
+      "Despacho o espacio administrativo",
+      "Cancha deportiva",
+      "Cafetería de paso"
     ],
     "correcta": 1,
-    "explicacion": "Exquisito en ES es 'delicioso'."
+    "explicacion": "En español oficina es habitualmente lugar de trabajo administrativo."
   },
   {
-    "pregunta": "'Sobrenome' (PT) = ...",
+    "pregunta": "PT «sobrenome» en un formulario: ¿qué campo en ES?",
     "opciones": [
-      "Sobrenombre",
+      "Sobrenombre informal",
+      "Dirección postal",
       "Apellido",
-      "Nickname",
-      "Seudonimo"
+      "Nombre del tutor"
     ],
-    "correcta": 1,
-    "explicacion": "El apodo en PT es 'apelido'."
+    "correcta": 2,
+    "explicacion": "Sobrenome es nombre de familia en PT."
   },
   {
-    "pregunta": "'Vassoura' (PT) = ...",
+    "pregunta": "PT-BR «meu apelido»: equivalente contextual",
     "opciones": [
-      "Basura",
-      "Escoba",
-      "Vasija",
-      "Cesta"
+      "Mi apellido legal",
+      "Mi edad",
+      "Mi segundo nombre oficial",
+      "Mi apodo"
+    ],
+    "correcta": 3,
+    "explicacion": "Apelido puede ser apodo; no confundir con apellido español."
+  },
+  {
+    "pregunta": "PT-BR «Vi um rato»: traducción",
+    "opciones": [
+      "Vi un ratón",
+      "Esperé un rato",
+      "Vi una rata de agua obligatoriamente",
+      "Llegué tarde"
+    ],
+    "correcta": 0,
+    "explicacion": "Rato en portugués es un roedor."
+  },
+  {
+    "pregunta": "ES «espera un rato»: ¿qué pide?",
+    "opciones": [
+      "Esperar un ratón",
+      "Esperar un tiempo breve",
+      "Esperar una mesa",
+      "Esperar un año exacto"
     ],
     "correcta": 1,
-    "explicacion": "La basura en ES es 'lixo'."
+    "explicacion": "Rato en español señala un lapso de tiempo."
+  },
+  {
+    "pregunta": "PT «borracha» en clase de dibujo: ¿qué es?",
+    "opciones": [
+      "Una persona ebria",
+      "Una libreta",
+      "Goma de borrar",
+      "Una pizarra"
+    ],
+    "correcta": 2,
+    "explicacion": "Borracha en material escolar portugués es goma."
+  },
+  {
+    "pregunta": "ES «estaba borracha»: ¿qué significa?",
+    "opciones": [
+      "Estaba borrando lápiz",
+      "Estaba estudiando",
+      "Estaba dibujando",
+      "Estaba ebria"
+    ],
+    "correcta": 3,
+    "explicacion": "Borracha en español femenino indica intoxicación alcohólica."
+  },
+  {
+    "pregunta": "PT «polvo grelhado»: plato",
+    "opciones": [
+      "Pulpo a la parrilla",
+      "Polvo en el suelo",
+      "Arroz sin pescado",
+      "Pescado crudo siempre"
+    ],
+    "correcta": 0,
+    "explicacion": "Polvo portugués es pulpo."
+  },
+  {
+    "pregunta": "ES «hay polvo en la mesa»: ¿qué hay?",
+    "opciones": [
+      "Un pulpo",
+      "Partículas de suciedad",
+      "Una propina",
+      "Una goma de borrar"
+    ],
+    "correcta": 1,
+    "explicacion": "Polvo en este contexto español es suciedad fina."
+  },
+  {
+    "pregunta": "PT «Quero uma salada»: petición",
+    "opciones": [
+      "Quiero algo demasiado salado",
+      "Quiero una sopa",
+      "Quiero una ensalada",
+      "Quiero un vaso"
+    ],
+    "correcta": 2,
+    "explicacion": "Salada portugués es ensalada."
+  },
+  {
+    "pregunta": "ES «la sopa está salada»: característica",
+    "opciones": [
+      "Es una ensalada",
+      "Es un taller",
+      "Está fría",
+      "Tiene demasiada sal o sabor salado"
+    ],
+    "correcta": 3,
+    "explicacion": "Salada es adjetivo en español, no el sustantivo ensalada."
+  },
+  {
+    "pregunta": "PT-BR «rua larga»: ¿cómo es la calle?",
+    "opciones": [
+      "Ancha",
+      "Necesariamente muy larga",
+      "Estrecha",
+      "Sin salida"
+    ],
+    "correcta": 0,
+    "explicacion": "Largo en portugués suele expresar anchura."
+  },
+  {
+    "pregunta": "ES «un camino largo»: ¿qué indica?",
+    "opciones": [
+      "Mucho ancho necesariamente",
+      "Gran longitud",
+      "Escaso tiempo",
+      "Falta de luz"
+    ],
+    "correcta": 1,
+    "explicacion": "Largo en español se usa para longitud."
+  },
+  {
+    "pregunta": "PT-BR «propina» en una noticia de corrupción: ¿qué suele ser?",
+    "opciones": [
+      "Una ensalada",
+      "Una materia escolar",
+      "Un soborno",
+      "Una despedida"
+    ],
+    "correcta": 2,
+    "explicacion": "En noticias brasileñas sobre corrupción suele designar un soborno; la palabra tiene otros sentidos documentados."
+  },
+  {
+    "pregunta": "PT-BR «deixei uma gorjeta» en un restaurante: ES",
+    "opciones": [
+      "Ofrecí un soborno",
+      "Firmé un contrato",
+      "Me quedé un rato",
+      "Dejé una propina"
+    ],
+    "correcta": 3,
+    "explicacion": "Gorjeta en este contexto es la gratificación al personal."
+  },
+  {
+    "pregunta": "PT «a cena do filme»: ES",
+    "opciones": [
+      "La escena de la película",
+      "La cena familiar",
+      "El cartel del cine",
+      "El reparto completo"
+    ],
+    "correcta": 0,
+    "explicacion": "Cena portugués es escena."
+  },
+  {
+    "pregunta": "ES «cenamos a las ocho»: actividad",
+    "opciones": [
+      "Filmamos una escena",
+      "Comimos por la noche",
+      "Despertamos pronto",
+      "Firmamos una carta"
+    ],
+    "correcta": 1,
+    "explicacion": "Cenar en español se refiere a la comida nocturna."
+  },
+  {
+    "pregunta": "PT-BR «Que azar!»: interpretación",
+    "opciones": [
+      "¡Qué azar científico!",
+      "¡Qué suerte!",
+      "¡Qué mala suerte!",
+      "¡Qué clase tan útil!"
+    ],
+    "correcta": 2,
+    "explicacion": "Azar portugués puede significar mala suerte."
+  },
+  {
+    "pregunta": "ES «el azar del sorteo»: ¿qué expresa?",
+    "opciones": [
+      "Un taller",
+      "Siempre mala suerte",
+      "Una goma",
+      "Casualidad o aleatoriedad"
+    ],
+    "correcta": 3,
+    "explicacion": "Azar en español designa la casualidad, sin carga necesariamente negativa."
+  },
+  {
+    "pregunta": "PT «acordei cedo»: traducción",
+    "opciones": [
+      "Me desperté temprano",
+      "Me puse de acuerdo temprano",
+      "Me dormí tarde",
+      "Firmé pronto"
+    ],
+    "correcta": 0,
+    "explicacion": "Acordar portugués en este contexto es despertarse."
+  },
+  {
+    "pregunta": "ES «acordamos un horario»: significado",
+    "opciones": [
+      "Nos despertamos de golpe",
+      "Llegamos a un acuerdo",
+      "Comimos juntos",
+      "Tomamos notas"
+    ],
+    "correcta": 1,
+    "explicacion": "Acordar en español significa convenir algo."
+  },
+  {
+    "pregunta": "PT «estou no escritório»: ubicación",
+    "opciones": [
+      "Estoy en la mesa de escribir obligatoriamente",
+      "Estoy en el taller mecánico",
+      "Estoy en la oficina",
+      "Estoy en la cocina"
+    ],
+    "correcta": 2,
+    "explicacion": "Escritório portugués puede ser lugar de trabajo."
+  },
+  {
+    "pregunta": "ES «dejé el libro en el escritorio»: ¿dónde?",
+    "opciones": [
+      "En el taller",
+      "En un archivo de empresa siempre",
+      "En una estación",
+      "En la mesa de trabajo"
+    ],
+    "correcta": 3,
+    "explicacion": "Escritorio español suele designar mesa para escribir."
+  },
+  {
+    "pregunta": "PT «precisa de assinatura» en un contrato: ¿qué falta?",
+    "opciones": [
+      "Una firma",
+      "Una asignatura escolar",
+      "Una cena",
+      "Una goma"
+    ],
+    "correcta": 0,
+    "explicacion": "Assinatura puede significar firma o suscripción según el contexto."
+  },
+  {
+    "pregunta": "ES «matemáticas es una asignatura»: ¿qué significa?",
+    "opciones": [
+      "Firma de documento",
+      "Materia escolar",
+      "Apodo",
+      "Dinero extra"
+    ],
+    "correcta": 1,
+    "explicacion": "Asignatura es materia de estudio, no una firma."
+  },
+  {
+    "pregunta": "PT-BR «estou estudando»: traducción idiomática",
+    "opciones": [
+      "Estoy a estudar en español general",
+      "Yo estudiando estoy sin verbo",
+      "Estoy estudiando",
+      "Estoy estudié"
+    ],
+    "correcta": 2,
+    "explicacion": "El progresivo español usa estar + gerundio."
+  },
+  {
+    "pregunta": "PT «vou para a escola»: versión natural ES",
+    "opciones": [
+      "Voy en la escuela ahora",
+      "Voy para a escuela literal",
+      "Voy la escuela",
+      "Voy a la escuela"
+    ],
+    "correcta": 3,
+    "explicacion": "La preposición requerida en español habitual es a."
+  },
+  {
+    "pregunta": "PT «fiquei em casa»: traducción contextual",
+    "opciones": [
+      "Me quedé en casa",
+      "Me fijé en la casa siempre",
+      "Estoy estar casa",
+      "Me senté en otro lugar"
+    ],
+    "correcta": 0,
+    "explicacion": "Ficar em casa en este contexto se traduce quedarse en casa."
+  },
+  {
+    "pregunta": "PT «eu também»: equivalente",
+    "opciones": [
+      "Yo tambem sin tilde",
+      "Yo también",
+      "Yo tampoco sin negación",
+      "Yo tarde"
+    ],
+    "correcta": 1,
+    "explicacion": "También lleva tilde y termina en n en español."
+  },
+  {
+    "pregunta": "PT «quero mais tempo»: equivalente",
+    "opciones": [
+      "Quiero mas tiempo sin tilde",
+      "Quiero pero tiempo",
+      "Quiero más tiempo",
+      "Quiero menos tiempo"
+    ],
+    "correcta": 2,
+    "explicacion": "Mais portugués equivale a más español."
+  },
+  {
+    "pregunta": "PT «mas não posso»: conjunción adversativa ES",
+    "opciones": [
+      "Más no puedo",
+      "Mas estoy pudiendo",
+      "También puedo",
+      "Pero no puedo"
+    ],
+    "correcta": 3,
+    "explicacion": "Mas portugués adversativo corresponde al pero español corriente."
+  },
+  {
+    "pregunta": "PT «falarei amanhã»: equivalente",
+    "opciones": [
+      "Hablaré mañana",
+      "Hablarei mañana",
+      "Hablaba mañana sin contexto",
+      "Me acordaré ayer"
+    ],
+    "correcta": 0,
+    "explicacion": "Futuro español hablaré; respeta acentuación."
+  },
+  {
+    "pregunta": "PT «Me dá o livro?» al pedirlo informalmente: ES",
+    "opciones": [
+      "¿Dame-me el libro?",
+      "¿Me das el libro?",
+      "¿Das-me o livro?",
+      "¿Me libros das?"
+    ],
+    "correcta": 1,
+    "explicacion": "El español coloca me antes del verbo conjugado en este tipo de pregunta."
+  },
+  {
+    "pregunta": "PT-BR «você»: ¿qué pronombre usar al traducir?",
+    "opciones": [
+      "Siempre usted en todos los países",
+      "Siempre tú incluso en cartas formales",
+      "Tú o usted, según relación y variedad",
+      "Nunca puede omitirse el pronombre"
+    ],
+    "correcta": 2,
+    "explicacion": "El trato depende del interlocutor, registro y variedad de español."
+  },
+  {
+    "pregunta": "¿Qué hacer si una palabra se parece pero el significado cambia según contexto?",
+    "opciones": [
+      "Traducir siempre letra por letra",
+      "Pedir a la IA que invente una regla",
+      "Memorizar una equivalencia sin excepciones",
+      "Comprobar frase completa y fuente contextual"
+    ],
+    "correcta": 3,
+    "explicacion": "La transferencia positiva exige reconocer parecidos útiles y matices, no confiar en la forma sola."
   }
 ]
