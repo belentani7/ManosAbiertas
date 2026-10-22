@@ -48,3 +48,11 @@ vive en el nodo central:
 | secure-t | Ciberseguridad e IA | https://belentani7.github.io/secure-t/ |
 
 **PT > ES > EN > CA.** Gratuito, accesible (WCAG) y conectado.
+
+## Campus consolidado — 22 octubre 2026
+
+El repositorio canónico integra el lector de cursos del campus, práctica evaluable con progreso local, precarga offline delimitada y exportación de lecciones de Nivel 0. El campus complementa la aplicación Next.js existente y conserva el contenido educativo original.
+
+La entrega actual incluye unidades ampliadas de **Office sin Miedo**, **Puente PT–ES** y un examen PT–ES de 40 casos con retroalimentación. La CI ejecuta comprobaciones específicas para el contenido de ciberseguridad y para la estructura de los cursos generados, además de los tests del proyecto.
+
+El contenido educativo es material de práctica. No constituye certificación institucional ni asesoramiento jurídico personalizado.
