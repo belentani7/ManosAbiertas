@@ -1,18 +1,42 @@
-# Semana 2: Los 20 falsos amigos mas letales
+# Semana 2: veinte contrastes PT-BR → español con contexto
 
-Curso: [Puente PT->ES: Falsos Amigos](../syllabus.md) · Semana 2 de 4
+Curso: [Puente PT–ES: Falsos Amigos](syllabus.md) · 3 horas
 
-## LECTURA: Lista maestra comentada
+## Objetivos
+Reconocer contrastes léxicos de alta frecuencia en ámbitos de estudio, trabajo, vivienda y conversación. Corregir una frase completa sin depender de una correspondencia de palabra a palabra.
 
-1) embaraçada=avergonzada 2) esquisito=raro 3) oficina=taller 4) polvo=pols/suciedad 5) sobrenome=apellido 6) rato=raton 7) vassoura=escoba 8) propina=soborno 9) apelido=mote 10) borracha=goma de borrar 11) salada=ensalada 12) copo=vaso 13) taça=copa 14) azar=mala suerte 15) cena=escena 16) exquisito (ES)=delicioso 17) roxo=morado 18) peito=pecho 19) anel=anillo 20) cadeira=silla.
+## LECTURA: la lista comentada
+1. **Embaraçada / embarazada:** vergüenza frente a gestación. PT «Fiquei embaraçada» → ES «Me dio vergüenza».
+2. **Esquisito / exquisito:** raro frente a delicioso. PT «Sabor esquisito» → ES «Sabor raro».
+3. **Oficina / oficina:** taller frente a oficina administrativa. PT «Oficina de carros» → ES «Taller de coches».
+4. **Sobrenome / sobrenombre:** apellido frente a apodo. PT «Sobrenome no formulário» → ES «Apellido en el formulario».
+5. **Apelido / apellido:** apodo frente a apellido. PT «É meu apelido» → ES «Es mi apodo».
+6. **Rato / rato:** ratón frente a período breve. PT «Vi um rato» → ES «Vi un ratón».
+7. **Borracha / borracha:** goma de borrar frente a mujer ebria. PT «Use a borracha» → ES «Usa la goma de borrar».
+8. **Polvo / polvo:** pulpo frente a partículas. PT «Salada de polvo» → ES «Ensalada de pulpo».
+9. **Salada / salada:** ensalada frente a algo con sal. PT «Quero salada» → ES «Quiero una ensalada».
+10. **Largo / largo:** en portugués suele ser ancho; en español, de gran longitud. PT «Rua larga» → ES «Calle ancha».
+11. **Escritório / escritorio:** PT oficina/despacho; ES mesa para estudiar/trabajar. PT «No escritório» → ES «En la oficina».
+12. **Assinatura / asignatura:** PT firma o suscripción; ES materia escolar. PT «Precisa de assinatura» → ES «Necesita una firma» si se trata de un documento.
+13. **Presunto / presunto:** PT jamón curado o cocido; ES supuesto. PT «Sanduíche de presunto» → ES «Bocadillo de jamón».
+14. **Acordar / acordar:** PT despertar; ES llegar a un acuerdo. PT «Acordei cedo» → ES «Me desperté temprano».
+15. **Experto / experto:** PT hábil, diestro; ES experto. Comparten sentidos, así que **no siempre son falsos amigos**. Analiza el contexto antes de afirmar un contraste.
+16. **Cena / cena:** PT escena; ES comida de la noche. PT «A cena do filme» → ES «La escena de la película».
+17. **Azar / azar:** PT mala suerte; ES casualidad o aleatoriedad. PT «Que azar!» → ES «¡Qué mala suerte!».
+18. **Vassoura / basura:** PT vassoura = escoba; ES basura = residuos. La similitud sonora puede confundir, aunque las formas son diferentes.
+19. **Copo / copa:** PT copo = vaso; ES copa suele ser recipiente con pie o competición. PT «Copo de água» → ES «Vaso de agua».
+20. **Taça / taza:** PT taça = copa; ES taza = recipiente con asa. PT «Taça de vinho» → ES «Copa de vino».
 
-## QUIZ: Quiz semana 2
+## PRÁCTICA GUIADA
+Para cada par anota: palabra en PT, significado en la frase, traducción al ES y una nueva frase que use el significado correcto. No traduzcas sonidos, traduce ideas.
 
-20 items A/B
+## JUEGO: caza diez errores
+Corrige: «La cena del filme» (escena); «Tengo azar» (mala suerte); «Me acordé a las seis» (me desperté); «Un sándwich de presunto» (de jamón); «Ve a la oficina del coche» (al taller); «Quiero una salada» (ensalada); «Dame el copo de agua» (vaso); «El contrato necesita asignatura» (firma); «¿Tu sobrenombre de familia?» (apellido); «La calle es larga» cuando PT indica anchura (ancha).
 
-## JUEGO: Caza-Falsos Amigos (rondas 1-5)
+## RETROALIMENTACIÓN Y RÚBRICA
+Cada frase vale un punto si preserva la idea y usa registro comprensible. Los acentos y diferencias regionales pueden admitirse si no cambian significado. Se aprueba como práctica formativa con ocho correcciones justificadas; vuelve a estudiar los pares restantes.
 
+## EVIDENCIA
+Redacta cinco ejemplos de tu vida ficticia: comedor, escuela, taller, documento y transporte. Explica en dos líneas por qué una palabra aislada no basta. El cuestionario del campus ayuda a practicar, pero no otorga una certificación oficial.
 
-
----
-[Volver al syllabus](../syllabus.md)
+[Semana 1](semana-01.md) · [Semana 3](semana-03.md) · [Programa](syllabus.md)
