@@ -16,6 +16,7 @@ interface UseSpeechReturn {
   speaking: boolean;
   paused: boolean;
   supported: boolean;
+  error: string | null;
 }
 
 /**
@@ -25,6 +26,7 @@ interface UseSpeechReturn {
 export function useSpeech(): UseSpeechReturn {
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [supported] = useState(() => {
     if (typeof window === 'undefined') return false;
     return 'speechSynthesis' in window;
@@ -36,6 +38,7 @@ export function useSpeech(): UseSpeechReturn {
 
     // Stop any current speech
     window.speechSynthesis.cancel();
+    setError(null);
 
     // Strip markdown for cleaner speech
     const cleanText = text
@@ -47,8 +50,16 @@ export function useSpeech(): UseSpeechReturn {
 
     if (!cleanText) return;
 
+    const locale = options?.lang || 'es-ES';
+    const voice = selectSpeechVoice(window.speechSynthesis.getVoices(), locale);
+    if (!voice) {
+      setError('No hay una voz de ' + locale + ' disponible. Instálala en el dispositivo; no usaremos otra lengua o región.');
+      setSpeaking(false);
+      return;
+    }
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = options?.lang || 'es-ES';
+    utterance.lang = locale;
+    utterance.voice = voice;
     utterance.rate = options?.rate || 0.9;
     utterance.pitch = options?.pitch || 1;
 
@@ -61,6 +72,7 @@ export function useSpeech(): UseSpeechReturn {
       setPaused(false);
     };
     utterance.onerror = () => {
+      setError('No se pudo reproducir la voz seleccionada. Puedes seguir leyendo.');
       setSpeaking(false);
       setPaused(false);
     };
@@ -88,7 +100,23 @@ export function useSpeech(): UseSpeechReturn {
     setPaused(false);
   }, []);
 
-  return { speak, stop, pause, resume, speaking, paused, supported };
+  return { speak, stop, pause, resume, speaking, paused, supported, error };
+}
+
+/** Locale fidelity is mandatory. A browser "natural" voice in another
+ * language/region must never outrank the intended lesson locale.
+ */
+export function selectSpeechVoice(
+  voices: ReadonlyArray<SpeechSynthesisVoice>,
+  locale: string,
+): SpeechSynthesisVoice | undefined {
+  if (!locale || locale === 'und') return undefined;
+  const requested = locale.replace(/_/g, '-').toLowerCase();
+  const matching = voices.filter(
+    (voice) => voice.lang.replace(/_/g, '-').toLowerCase() === requested,
+  );
+  return matching.find((voice) => /natural|premium|neural|enhanced/i.test(voice.name))
+    || matching[0];
 }
 
 // Map app language codes to BCP-47 speech language codes
@@ -104,6 +132,15 @@ export function getSpeechLang(lang: string): string {
     zh: 'zh-CN',
     hi: 'hi-IN',
     ro: 'ro-RO',
+    bg: 'bg-BG',
+    nl: 'nl-NL',
+    sv: 'sv-SE',
+    da: 'da-DK',
+    fi: 'fi-FI',
+    no: 'nb-NO',
+    el: 'el-GR',
+    qu: 'qu-PE',
+    ber: 'zgh-MA',
     uk: 'uk-UA',
     ru: 'ru-RU',
     de: 'de-DE',
@@ -125,5 +162,7 @@ export function getSpeechLang(lang: string): string {
     ja: 'ja-JP',
     ko: 'ko-KR',
   };
-  return map[lang] || map[lang.split('-')[0]] || 'es-ES';
+  // Unknown language codes must not be pronounced as Spanish by default.
+  // 'und' is intentionally unvoiced until a real regional voice is configured.
+  return map[lang] || 'und';
 }
