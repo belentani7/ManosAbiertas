@@ -30,7 +30,8 @@
     "tools:generate": "node scripts/generate-platform-tools.mjs",
     "tools:verify": "node scripts/generate-platform-tools.mjs --check",
     "guides:generate": "node scripts/generate-one-page-guides.mjs",
-    "guides:verify": "node scripts/generate-one-page-guides.mjs --check"
+    "guides:verify": "node scripts/generate-one-page-guides.mjs --check",
+    "quality:check": "pnpm run lint && pnpm run typecheck && pnpm run test:core && pnpm run i18n:verify && pnpm run trust:verify && pnpm run accessibility:verify && pnpm run improvements:verify && pnpm run tools:verify && pnpm run guides:verify && pnpm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
