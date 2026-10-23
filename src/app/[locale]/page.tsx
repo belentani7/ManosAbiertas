@@ -35,9 +35,13 @@ export async function generateMetadata({
       description: t.hero_subtitle,
       type: 'website',
       locale: locale.replace('-', '_'),
+      url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${locale}`,
     },
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${locale}`,
+      languages: Object.fromEntries(
+        LANGUAGES.map((language) => [language.code, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${language.code}`]),
+      ),
     },
   };
 }

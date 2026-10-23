@@ -36,14 +36,6 @@ const jsonLd = {
       url: SITE_URL,
       inLanguage: ["es", "en", "zh", "pt", "fr"],
       publisher: { "@type": "Organization", name: "Manos Abiertas" },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${SITE_URL}/?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
     },
     {
       "@type": "WebPage",
@@ -93,16 +85,6 @@ export const metadata: Metadata = {
     shortcut: "/logo.svg",
   },
   manifest: "/manifest.json",
-  alternates: {
-    canonical: "/",
-    languages: {
-      es: "/",
-      en: "/en",
-      zh: "/zh",
-      pt: "/pt",
-      fr: "/fr",
-    },
-  },
   robots: {
     index: true,
     follow: true,
@@ -118,7 +100,6 @@ export const metadata: Metadata = {
     title: "Manos Abiertas · IA, CV y Derechos para personas inmigrantes en España",
     description:
       "Aprende IA, crea tu CV y conoce tus derechos en España. Gratis y en 35 idiomas.",
-    url: SITE_URL,
     siteName: "Manos Abiertas",
     type: "website",
     locale: "es_ES",

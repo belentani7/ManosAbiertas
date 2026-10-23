@@ -34,11 +34,6 @@ export async function generateMetadata({
       template: `%s · Manos Abiertas (${lang?.englishName})`,
     },
     description: t.hero_subtitle || 'Platform for immigrants and communities',
-    alternates: {
-      languages: Object.fromEntries(
-        LANGUAGES.map((l) => [l.code, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${l.code}`])
-      ),
-    },
     openGraph: {
       title: `Manos Abiertas · ${lang?.name}`,
       description: t.hero_subtitle,
