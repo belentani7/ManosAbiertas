@@ -46,7 +46,7 @@ export function useSpeech(): UseSpeechReturn {
 
     // Strip markdown for cleaner speech
     const cleanText = text
-      .replace(/[#*\`_~]/g, '')
+      .replace(/[#*`_~]/g, '')
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
       .replace(/\n+/g, '. ')
       .replace(/\s+/g, ' ')
