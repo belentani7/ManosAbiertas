@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { getSpeechLang, selectSpeechVoice, waitForSpeechVoice } from '../../src/lib/speech-locale.ts';
+import { getSpeechLang, selectSpeechVoice, waitForSpeechVoice, getSpeechPlaybackAction } from '../../src/lib/speech-locale.ts';
 
 test('regional language mapping never silently falls back to Spanish', () => {
   const expected = {
@@ -57,4 +57,47 @@ test('waits for delayed browser voices before reporting unavailable', async () =
   }, 0);
   assert.equal(await pending, voice);
   assert.equal(changed, undefined);
+});
+
+test('voice batches do not abort before the requested lesson locale arrives', async () => {
+  let voices = [];
+  const listeners = new Set();
+  const source = {
+    getVoices: () => voices,
+    addEventListener: (event, listener) => {
+      assert.equal(event, 'voiceschanged');
+      listeners.add(listener);
+    },
+    removeEventListener: (event, listener) => {
+      assert.equal(event, 'voiceschanged');
+      listeners.delete(listener);
+    },
+  };
+  const pending = waitForSpeechVoice(source, 'pt-BR', 100);
+  voices = [{ lang: 'en-US', name: 'English' }];
+  for (const listener of listeners) listener();
+  assert.equal(listeners.size, 1, 'unrelated voice event must keep waiting');
+  const expected = { lang: 'pt-BR', name: 'Português brasileiro' };
+  voices.push(expected);
+  for (const listener of listeners) listener();
+  assert.equal(await pending, expected);
+  assert.equal(listeners.size, 0);
+});
+
+test('voice wait times out cleanly without inventing a voice', async () => {
+  const listeners = new Set();
+  const source = {
+    getVoices: () => [{ lang: 'es-ES', name: 'Español' }],
+    addEventListener: (_event, listener) => listeners.add(listener),
+    removeEventListener: (_event, listener) => listeners.delete(listener),
+  };
+  assert.equal(await waitForSpeechVoice(source, 'ca-ES', 5), undefined);
+  assert.equal(listeners.size, 0);
+});
+
+test('player always maps its visible pause/resume control to an action', () => {
+  assert.equal(getSpeechPlaybackAction(false, false), 'start');
+  assert.equal(getSpeechPlaybackAction(false, true), 'start');
+  assert.equal(getSpeechPlaybackAction(true, false), 'pause');
+  assert.equal(getSpeechPlaybackAction(true, true), 'resume');
 });
