@@ -35,13 +35,29 @@ export function waitForSpeechVoice(
   return new Promise((resolve) => {
     let timer: ReturnType<typeof setTimeout>;
     const finish = () => {
+      const voice = selectSpeechVoice(source.getVoices(), locale);
+      // Some browsers announce several voice batches. An unrelated batch
+      // must not make a valid lesson voice appear unavailable prematurely.
+      if (!voice) return;
       clearTimeout(timer);
       source.removeEventListener('voiceschanged', finish);
-      resolve(selectSpeechVoice(source.getVoices(), locale));
+      resolve(voice);
     };
-    timer = setTimeout(finish, timeoutMs);
+    timer = setTimeout(() => {
+      source.removeEventListener('voiceschanged', finish);
+      resolve(selectSpeechVoice(source.getVoices(), locale));
+    }, timeoutMs);
     source.addEventListener('voiceschanged', finish);
+    // Cover voices arriving between the initial getVoices and listener setup.
+    finish();
   });
+}
+
+export type SpeechPlaybackAction = 'start' | 'pause' | 'resume';
+
+export function getSpeechPlaybackAction(speaking: boolean, paused: boolean): SpeechPlaybackAction {
+  if (!speaking) return 'start';
+  return paused ? 'resume' : 'pause';
 }
 
 // Map app language codes to BCP-47 speech language codes
