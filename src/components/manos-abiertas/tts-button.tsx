@@ -24,7 +24,7 @@ export function TTSButton({
   className,
 }: TTSButtonProps) {
   const { language } = useAppStore();
-  const { speak, stop, pause, resume, speaking, paused, supported } = useSpeech();
+  const { speak, stop, pause, resume, speaking, paused, supported, error } = useSpeech();
   const [loading, setLoading] = useState(false);
 
   if (!supported) return null;
@@ -47,6 +47,7 @@ export function TTSButton({
   }
 
   return (
+    <>
     <Button
       onClick={handleClick}
       size={size}
@@ -72,6 +73,8 @@ export function TTSButton({
         </span>
       )}
     </Button>
+    {error && <span role="alert" className="text-xs text-destructive max-w-xs">{error}</span>}
+    </>
   );
 }
 
@@ -80,7 +83,7 @@ export function TTSButton({
  */
 export function TTSPlayer({ text, title }: { text: string; title?: string }) {
   const { language } = useAppStore();
-  const { speak, stop, speaking, paused, resume, supported } = useSpeech();
+  const { speak, stop, speaking, paused, resume, supported, error } = useSpeech();
 
   if (!supported) return null;
 
@@ -93,6 +96,8 @@ export function TTSPlayer({ text, title }: { text: string; title?: string }) {
   }
 
   return (
+    <>
+    {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
     <AnimatePresence>
       {speaking && (
         <motion.div
@@ -144,5 +149,6 @@ export function TTSPlayer({ text, title }: { text: string; title?: string }) {
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 }
