@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import { waitForSpeechVoice } from '@/lib/speech-locale';
-export { getSpeechLang, selectSpeechVoice, waitForSpeechVoice } from '@/lib/speech-locale';
+export { getSpeechLang, selectSpeechVoice } from '@/lib/speech-locale';
 
 interface UseSpeechOptions {
   lang?: string;
