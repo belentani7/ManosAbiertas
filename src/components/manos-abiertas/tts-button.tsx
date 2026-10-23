@@ -1,12 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Volume2, Square, Pause, Play, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAppStore } from '@/stores/app-store';
 import { useSpeech, getSpeechLang } from '@/hooks/use-speech';
+import { getSpeechPlaybackAction } from '@/lib/speech-locale';
 import { cn } from '@/lib/utils';
+
+// Deterministic visualizer bars avoid hydration mismatch and layout jitter.
+const WAVE_HEIGHTS = [5, 10, 7, 14, 9, 12, 6, 15, 8, 11, 5, 13, 7, 10, 14, 6, 12, 9, 15, 8] as const;
 
 interface TTSButtonProps {
   text: string;
@@ -83,16 +87,16 @@ export function TTSButton({
  */
 export function TTSPlayer({ text, title }: { text: string; title?: string }) {
   const { language } = useAppStore();
-  const { speak, stop, speaking, paused, resume, supported, error } = useSpeech();
+  const { speak, stop, pause, speaking, paused, resume, supported, error } = useSpeech();
+  const reduceMotion = useReducedMotion();
 
   if (!supported) return null;
 
   function handlePlay() {
-    if (speaking && paused) {
-      resume();
-    } else if (!speaking) {
-      speak(text, { lang: getSpeechLang(language), rate: 0.9 });
-    }
+    const action = getSpeechPlaybackAction(speaking, paused);
+    if (action === 'pause') pause();
+    else if (action === 'resume') resume();
+    else speak(text, { lang: getSpeechLang(language), rate: 0.9 });
   }
 
   return (
@@ -101,9 +105,10 @@ export function TTSPlayer({ text, title }: { text: string; title?: string }) {
     <AnimatePresence>
       {speaking && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
+          exit={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={reduceMotion ? { duration: 0 } : undefined}
           className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-20 sm:w-80 z-40 bg-card border border-border rounded-xl shadow-2xl p-3 flex items-center gap-3"
         >
           <div className="w-9 h-9 rounded-full gradient-brand flex items-center justify-center flex-shrink-0">
@@ -113,14 +118,14 @@ export function TTSPlayer({ text, title }: { text: string; title?: string }) {
             <div className="text-xs font-medium truncate">
               {title || 'Reproduciendo contenido...'}
             </div>
-            <div className="flex items-center gap-0.5 mt-1">
-              {[...Array(20)].map((_, i) => (
+            <div className="flex items-center gap-0.5 mt-1" aria-hidden="true">
+              {WAVE_HEIGHTS.map((height, i) => (
                 <span
                   key={i}
-                  className="w-0.5 bg-primary rounded-full animate-pulse"
+                  className={cn('w-0.5 bg-primary rounded-full', !reduceMotion && 'animate-pulse')}
                   style={{
-                    height: `${4 + Math.random() * 12}px`,
-                    animationDelay: `${i * 50}ms`,
+                    height: `${height}px`,
+                    animationDelay: reduceMotion ? undefined : `${i * 50}ms`,
                   }}
                 />
               ))}
