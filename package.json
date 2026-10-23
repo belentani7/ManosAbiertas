@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next dev -p 3000",
-    "build": "node scripts/generate-platform-tools.mjs && node scripts/generate-pwa-icons.mjs && prisma generate && next build && node scripts/copy-build.mjs",
+    "build": "node scripts/generate-platform-tools.mjs && node scripts/generate-pwa-icons.mjs && node scripts/prepare-public-campus.mjs && prisma generate && next build && node scripts/copy-build.mjs",
     "start": "node scripts/start-standalone.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --pretty false",

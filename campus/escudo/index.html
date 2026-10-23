@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101d2a"><meta name="description" content="Manos Abiertas Escudo Digital: formación gratuita y offline contra estafas digitales.">
+<title>Escudo Digital · Manos Abiertas</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+:root{color-scheme:dark}body{margin:0;background:#0c1420;color:#edf6fa;font:normal 1rem/1.6 system-ui,sans-serif}
+*{box-sizing:border-box}a{color:#b8edff}.skip{position:absolute;left:-999px;top:0}.skip:focus{left:1rem;top:1rem;background:#fff;color:#101820;padding:1rem;z-index:10}
+.shell{max-width:840px;margin:auto;padding:clamp(1rem,4vw,2.5rem)}.brand{font-weight:800;letter-spacing:.05em;color:#96d9eb}
+.head{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}select{background:#1a2a3b;color:#fff;border:1px solid #9bbed0;border-radius:.6rem;padding:.7rem;font:inherit}
+h1{font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-.04em;line-height:1.1;margin:.9rem 0}.lead{color:#bdd1df;max-width:60ch}
+.panel{background:#132337;border:1px solid #456277;border-radius:1rem;padding:clamp(1rem,3vw,2rem);margin:2rem 0;box-shadow:0 14px 40px #0003}
+.kicker{font-weight:750;font-size:.85rem;text-transform:uppercase;color:#a9e6f2;letter-spacing:.05em}
+.choices{display:grid;gap:.75rem;margin:1.5rem 0}.choice{display:flex;align-items:flex-start;gap:.8rem;padding:1rem;border:1px solid #5d778c;border-radius:.75rem;cursor:pointer;background:#1c2c40}
+.choice:has(input:checked){border-color:#aff0e8;background:#244355}.choice:focus-within{outline:3px solid #b0e9ff;outline-offset:2px}
+input[type=radio]{margin-top:.35rem;accent-color:#a9f4e1;width:1.2rem;height:1.2rem}
+button{min-height:48px;padding:.8rem 1.2rem;border:0;border-radius:.65rem;color:#101c24;background:#aff0e8;font:inherit;font-weight:750;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.feedback{padding:1rem;border-left:4px solid #aff0e8;background:#1a3543;border-radius:.25rem;margin-top:1rem}
+footer{color:#b3c6d5;padding-bottom:3rem}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.hidden,[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head>
+<body><a class="skip" href="#exercise">Saltar al ejercicio</a>
+<div class="shell"><header class="head"><a class="brand" href="../index.html">← MANOS ABIERTAS · CAMPUS</a>
+<label><span class="sr-only">Idioma / Language </span><select id="language" aria-label="Idioma / Language"><option value="pt">Português</option><option value="es">Español</option><option value="en">English</option><option value="ca">Català</option></select></label></header>
+<main><h1 id="title">Escudo Digital</h1><p id="subtitle" class="lead"></p>
+<p><a href="#recovery">Preciso de ajuda / Necesito ayuda / Need help / Necessito ajuda ↓</a></p>
+<section id="exercise" class="panel" aria-labelledby="prompt" tabindex="-1">
+<p class="kicker" id="progress"></p><p class="kicker" id="category"></p><h2 id="prompt"></h2>
+<form id="answer-form"><fieldset style="border:0;padding:0;margin:0"><legend id="instruction" class="sr-only">Elige una respuesta</legend>
+<div id="choices" class="choices"></div></fieldset><button id="check" type="submit"></button></form>
+<div id="feedback" tabindex="-1" class="feedback" role="status" aria-live="polite" hidden></div>
+<button type="button" id="next" hidden></button></section>
+<section class="panel" id="finished" tabindex="-1" hidden aria-live="polite"><h2 id="result-title"></h2><p id="result-score"></p><button type="button" id="restart"></button></section>
+<section class="panel" aria-labelledby="recovery-heading" id="recovery">
+  <p class="kicker">APOIO / AYUDA / HELP / AJUDA</p>
+  <h2 id="recovery-heading"></h2><p class="lead" id="recovery-intro"></p>
+  <label for="recovery-scenario" id="recovery-choose"></label>
+  <select id="recovery-scenario" style="display:block;margin:.75rem 0 1.25rem;width:100%;max-width:100%"></select>
+  <h3 id="recovery-steps-label"></h3><ol id="recovery-steps" aria-labelledby="recovery-steps-label"></ol>
+  <button type="button" id="download-recovery"></button>
+  <p id="recovery-warning" class="lead" style="margin-top:1.3rem"></p>
+  <p id="recovery-status" role="status" aria-live="polite" class="sr-only"></p>
+</section><p id="disclaimer" class="lead"></p></main>
+<footer>Manos Abiertas · <span lang="es">Sin registro, sin envío de respuestas, sin seguimiento ni credenciales.</span></footer></div>
+<script type="module">
+import {SCENARIOS,LABELS,evaluate} from './core.mjs';
+const el=id=>document.getElementById(id);
+const preferred=new URLSearchParams(location.search).get('lang')?.split('-')[0];
+let lang=['pt','es','en','ca'].includes(preferred)?preferred:'pt',index=0,score=0,answered=false,lastCorrect=false;
+el('language').value=lang;
+const get=()=>LABELS[lang];
+function render(){
+  const t=get(),s=SCENARIOS[index];document.documentElement.lang=lang;
+  el('title').textContent=t.title;document.title=t.title+' · Manos Abiertas';
+  el('subtitle').textContent=t.subtitle;el('disclaimer').textContent=t.note;
+  el('result-title').textContent=t.result;el('restart').textContent=t.again;
+  el('finished').hidden=index<SCENARIOS.length;el('exercise').hidden=index>=SCENARIOS.length;
+  if(index===SCENARIOS.length){el('result-score').textContent=t.score+': '+score+' / '+SCENARIOS.length;return;}
+  el('progress').textContent=t.progress+' '+(index+1)+' '+t.of+' '+SCENARIOS.length;
+  el('category').textContent=s.category[lang];el('prompt').textContent=s.prompt[lang];
+  el('instruction').textContent=t.select;el('check').textContent=t.check;el('next').textContent=t.next;
+  el('choices').replaceChildren();el('feedback').hidden=!answered;el('next').hidden=!answered;el('check').hidden=answered;
+  s.choices.forEach((choice,i)=>{
+    const label=document.createElement('label');label.className='choice';
+    const input=document.createElement('input');input.type='radio';input.name='answer';input.value=String(i);input.required=true;input.disabled=answered;
+    const span=document.createElement('span');span.textContent=choice[lang];label.append(input,span);el('choices').append(label);
+  });
+  if(answered){el('feedback').textContent=(lastCorrect?t.right:t.wrong)+' '+s.explanation[lang];}
+}
+el('answer-form').addEventListener('submit',event=>{
+ event.preventDefault();if(answered)return;
+ const choice=el('answer-form').querySelector('input[name=answer]:checked');if(!choice)return;
+ const good=evaluate(SCENARIOS[index],Number(choice.value));if(good)score++;
+ lastCorrect=good;answered=true;render();el('feedback').focus();
+});
+el('next').addEventListener('click',()=>{index++;answered=false;render();if(index<SCENARIOS.length)el('exercise').focus();else el('finished').focus();});
+el('restart').addEventListener('click',()=>{index=0;score=0;answered=false;render();el('exercise').focus();});
+el('language').addEventListener('change',event=>{lang=event.target.value;render();});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('../sw.js',{scope:'../'}).catch(()=>{});
+render();
+</script>
+<script type="module">
+import {RECOVERY_LABELS,RECOVERY_PLANS,getRecoveryPlan,recoveryText} from './recovery.mjs';
+const $=id=>document.getElementById(id);
+const select=$('recovery-scenario');
+function updateRecovery(){
+ const lang=$('language').value||'pt',words=RECOVERY_LABELS[lang];
+ $('recovery-heading').textContent=words.title;
+ $('recovery-intro').textContent=words.intro;
+ $('recovery-choose').textContent=words.choose;
+ $('recovery-steps-label').textContent=words.steps;
+ $('download-recovery').textContent=words.download;
+ $('recovery-warning').textContent=words.warning;
+ const previous=select.value;
+ select.replaceChildren();
+ for(const plan of RECOVERY_PLANS){
+  const option=document.createElement('option');
+  option.value=plan.id;option.textContent=plan.title[lang];select.append(option);
+ }
+ if(RECOVERY_PLANS.some(p=>p.id===previous))select.value=previous;
+ updateSteps();
+}
+function updateSteps(){
+ const plan=getRecoveryPlan(select.value,$('language').value||'pt');
+ const list=$('recovery-steps');list.replaceChildren();
+ for(const step of plan.steps){
+  const li=document.createElement('li');li.textContent=step;li.style.marginBottom='.65rem';list.append(li);
+ }
+}
+$('language').addEventListener('change',updateRecovery);
+select.addEventListener('change',updateSteps);
+$('download-recovery').addEventListener('click',()=>{
+ const plan=recoveryText(select.value,$('language').value||'pt');
+ const blob=new Blob([plan],{type:'text/plain;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download='manos-abiertas-plan-de-proteccion.txt';a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+updateRecovery();
+</script></body></html>

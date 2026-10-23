@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {Script,runInNewContext} from 'node:vm';
 import {parseCourseMarkdown,linkTokens} from '../campus/course-core.mjs';
+import {publicCampusPaths} from '../scripts/prepare-public-campus.mjs';
 const root=new URL('../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
 const coursePaths=[['alfabetizacion-ia',3],['office-sin-miedo',3],['falsos-amigos-pt-es',4]];
@@ -82,13 +83,69 @@ test('the offline precache includes all advertised course units, quizzes and aud
   runInNewContext(read('campus/sw.js')+'\nglobalThis.__offlineFiles=CORE;',ctx);
   const files=Array.from(ctx.__offlineFiles);
   assert.equal(new Set(files).size,files.length);
-  assert.equal(files.length,29); // 6 core + 19 course resources + 4 voice files
+  assert.equal(files.length,32); // 9 core (including Escudo) + 19 course resources + 4 voice files
+  for(const name of ['./escudo/index.html','./escudo/core.mjs','./escudo/recovery.mjs'])assert.ok(files.includes(name),name);
+  // The Next.js publication and PWA manifests must contain the same learning assets.
+  const published=new Set(publicCampusPaths());
+  for(const path of files){
+    if(path==='./')continue;
+    assert.ok(published.has(path.replace(/^\.\//,'')), 'Offline asset not in Next release: '+path);
+  }
+  assert.ok(published.has('sw.js')&&published.has('manifest.webmanifest'));
+  assert.equal(published.size,files.length+1); // SW + manifest, minus the alias "./".
+
   for(const name of files)assert.ok(existsSync(new URL(name,new URL('campus/',root))),'Missing '+name);
   assert.ok(listeners.install&&listeners.activate&&listeners.fetch);
   assert.match(read('campus/sw.js'),/target\.origin!==self\.location\.origin/);
   assert.match(read('campus/sw.js'),/Response\.error\(\)/);
-  assert.match(read('campus/sw.js'),/key\.startsWith\('campus-v'\)/);
+  assert.match(read('campus/sw.js'),/key\.startsWith\(PREFIX\)/);
 });
+
+test('offline recovery is isolated to this campus scope', async () => {
+  const listeners = {};
+  const scope = 'https://example.org/campus/';
+  const deleted = [];
+  const keys = ['campus-v4-legacy', 'manos-abiertas-campus:/other/:v1'];
+  const campusCache = {
+    match: async () => new Response('current campus response'),
+  };
+  const context = {
+    URL,
+    Response,
+    console,
+    self: {
+      registration: { scope },
+      location: { origin: 'https://example.org' },
+      clients: { claim() {} },
+      skipWaiting() {},
+      addEventListener: (name, handler) => { listeners[name] = handler; },
+    },
+    caches: {
+      keys: async () => keys,
+      delete: async key => { deleted.push(key); },
+      open: async name => { context.opened = name; return campusCache; },
+      match: async () => new Response('foreign application response'),
+    },
+    fetch: async () => { throw new Error('offline'); },
+  };
+  runInNewContext(read('campus/sw.js') + '\nglobalThis.__cacheName = CACHE;', context);
+  keys.push('manos-abiertas-campus:/campus/:old', context.__cacheName);
+
+  let activation;
+  listeners.activate({ waitUntil: promise => { activation = promise; } });
+  await activation;
+  assert.deepEqual(deleted, ['manos-abiertas-campus:/campus/:old']);
+
+  let responsePromise;
+  listeners.fetch({
+    request: { url: scope + 'index.html', method: 'GET', mode: 'navigate' },
+    respondWith: value => { responsePromise = value; },
+    waitUntil() {},
+  });
+  assert.equal(await (await responsePromise).text(), 'current campus response');
+  assert.equal(context.opened, context.__cacheName);
+});
+
 test('campus UI has real course navigation and local quiz choice',()=>{
   const page=read('campus/index.html');
   assert.match(page,/id="lector"/);
