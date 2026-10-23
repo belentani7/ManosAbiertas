@@ -34,5 +34,5 @@ test('export works for lessons without optional practice', () => {
 
 test('file names stay local, deterministic and path-safe', () => {
   assert.equal(lessonFilename('nivel0-ordenador', 'lesson-01'), 'manos-abiertas-nivel0-ordenador-lesson-01.txt');
-  assert.doesNotMatch(lessonFilename('../../sensitive', '../secrets'), /[\/\\]/);
+  assert.doesNotMatch(lessonFilename('../../sensitive', '../secrets'), /[/\\]/);
 });
