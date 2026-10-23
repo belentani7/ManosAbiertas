@@ -98,8 +98,54 @@ test('the offline precache includes all advertised course units, quizzes and aud
   assert.ok(listeners.install&&listeners.activate&&listeners.fetch);
   assert.match(read('campus/sw.js'),/target\.origin!==self\.location\.origin/);
   assert.match(read('campus/sw.js'),/Response\.error\(\)/);
-  assert.match(read('campus/sw.js'),/key\.startsWith\('campus-v'\)/);
+  assert.match(read('campus/sw.js'),/key\.startsWith\(PREFIX\)/);
 });
+
+test('offline recovery is isolated to this campus scope', async () => {
+  const listeners = {};
+  const scope = 'https://example.org/campus/';
+  const deleted = [];
+  const keys = ['campus-v4-legacy', 'manos-abiertas-campus:/other/:v1'];
+  const campusCache = {
+    match: async () => new Response('current campus response'),
+  };
+  const context = {
+    URL,
+    Response,
+    console,
+    self: {
+      registration: { scope },
+      location: { origin: 'https://example.org' },
+      clients: { claim() {} },
+      skipWaiting() {},
+      addEventListener: (name, handler) => { listeners[name] = handler; },
+    },
+    caches: {
+      keys: async () => keys,
+      delete: async key => { deleted.push(key); },
+      open: async name => { context.opened = name; return campusCache; },
+      match: async () => new Response('foreign application response'),
+    },
+    fetch: async () => { throw new Error('offline'); },
+  };
+  runInNewContext(read('campus/sw.js') + '\nglobalThis.__cacheName = CACHE;', context);
+  keys.push('manos-abiertas-campus:/campus/:old', context.__cacheName);
+
+  let activation;
+  listeners.activate({ waitUntil: promise => { activation = promise; } });
+  await activation;
+  assert.deepEqual(deleted, ['manos-abiertas-campus:/campus/:old']);
+
+  let responsePromise;
+  listeners.fetch({
+    request: { url: scope + 'index.html', method: 'GET', mode: 'navigate' },
+    respondWith: value => { responsePromise = value; },
+    waitUntil() {},
+  });
+  assert.equal(await (await responsePromise).text(), 'current campus response');
+  assert.equal(context.opened, context.__cacheName);
+});
+
 test('campus UI has real course navigation and local quiz choice',()=>{
   const page=read('campus/index.html');
   assert.match(page,/id="lector"/);
