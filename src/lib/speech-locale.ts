@@ -15,6 +15,35 @@ export function selectSpeechVoice(
     || matching[0];
 }
 
+type SpeechVoiceSource = Pick<
+  SpeechSynthesis,
+  'getVoices' | 'addEventListener' | 'removeEventListener'
+>;
+
+/**
+ * Browser voices may arrive asynchronously after the first getVoices() call.
+ * Wait briefly for voiceschanged before reporting that an exact locale is absent.
+ */
+export function waitForSpeechVoice(
+  source: SpeechVoiceSource,
+  locale: string,
+  timeoutMs = 1000,
+): Promise<SpeechSynthesisVoice | undefined> {
+  const immediate = selectSpeechVoice(source.getVoices(), locale);
+  if (immediate || !locale || locale === 'und') return Promise.resolve(immediate);
+
+  return new Promise((resolve) => {
+    let timer: ReturnType<typeof setTimeout>;
+    const finish = () => {
+      clearTimeout(timer);
+      source.removeEventListener('voiceschanged', finish);
+      resolve(selectSpeechVoice(source.getVoices(), locale));
+    };
+    timer = setTimeout(finish, timeoutMs);
+    source.addEventListener('voiceschanged', finish);
+  });
+}
+
 // Map app language codes to BCP-47 speech language codes
 export function getSpeechLang(lang: string): string {
   const map: Record<string, string> = {
