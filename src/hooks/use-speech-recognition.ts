@@ -33,7 +33,8 @@ function getConstructor(): SRConstructor | null {
 }
 
 export function useSpeechRecognition(language: string): UseSpeechRecognitionReturn {
-  const [supported] = useState<boolean>(() => getConstructor() !== null);
+  // Unsupported locales must not silently fall back to system-language recognition.
+  const supported = getConstructor() !== null && getSpeechLang(language) !== 'und';
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [error, setError] = useState<string | null>(null);
