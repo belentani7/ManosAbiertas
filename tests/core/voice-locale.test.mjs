@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { getSpeechLang, selectSpeechVoice } from '../../src/lib/speech-locale.ts';
+import { getSpeechLang, selectSpeechVoice, waitForSpeechVoice } from '../../src/lib/speech-locale.ts';
 
 test('regional language mapping never silently falls back to Spanish', () => {
   const expected = {
@@ -32,4 +32,29 @@ test('enhanced voice wins only among same-locale voices', () => {
     {lang:'es-ES',name:'Español Neural'},
   ];
   assert.equal(selectSpeechVoice(voices,'ca-ES'),voices[1]);
+});
+
+test('waits for delayed browser voices before reporting unavailable', async () => {
+  const voice = {lang:'pt-BR',name:'Português Brasil'};
+  let voices = [];
+  let changed;
+  const source = {
+    getVoices: () => voices,
+    addEventListener: (event, listener) => {
+      assert.equal(event, 'voiceschanged');
+      changed = listener;
+    },
+    removeEventListener: (event, listener) => {
+      assert.equal(event, 'voiceschanged');
+      assert.equal(listener, changed);
+      changed = undefined;
+    },
+  };
+  const pending = waitForSpeechVoice(source, 'pt-BR', 100);
+  setTimeout(() => {
+    voices = [voice];
+    changed?.();
+  }, 0);
+  assert.equal(await pending, voice);
+  assert.equal(changed, undefined);
 });
