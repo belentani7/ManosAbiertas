@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync, existsSync, statSync} from 'node:fs';
-import {resolve, dirname, sep} from 'node:path';
+import {resolve, sep} from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const campus = resolve(root, 'campus');
