@@ -39,7 +39,7 @@ export default function WaterRain({ zIndex = 2, opacity = 0.7 }: WaterRainProps)
 
     const drops: Drop[] = [];
 
-    for (let i = 0; i < 800; i++) {
+    for (let i = 0; i < DROP_COUNT; i++) {
       drops.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,

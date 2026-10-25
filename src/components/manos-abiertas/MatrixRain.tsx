@@ -50,8 +50,6 @@ export default function MatrixRain({ zIndex = 1, opacity = 0.4 }: MatrixRainProp
       ctx.font = '14px "Space Mono", "JetBrains Mono", monospace';
 
       for (let i = 0; i < drops.length; i++) {
-        const char = CHARS[Math.floor(Math.random() * CHARS.length)];
-        const x = i * 14;
         const yPos = drops[i] * 14;
 
         const intensity = Math.random();
@@ -71,7 +69,7 @@ export default function MatrixRain({ zIndex = 1, opacity = 0.4 }: MatrixRainProp
         ctx.fillText(
           CHARS[Math.floor(Math.random() * CHARS.length)],
           i * 14,
-          drops[i] * 14
+          yPos
         );
         ctx.shadowBlur = 0;
 
@@ -88,8 +86,8 @@ export default function MatrixRain({ zIndex = 1, opacity = 0.4 }: MatrixRainProp
     };
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      resize();
+      updateColumns();
     };
 
     window.addEventListener('resize', handleResize);

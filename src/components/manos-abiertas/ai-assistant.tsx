@@ -6,7 +6,6 @@ import { MessageCircle, X, Send, Sparkles, Loader2, RotateCcw, Bot, User, Lightb
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { getOfflineTutorReply } from '@/lib/offline-tutor';

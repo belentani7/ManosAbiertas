@@ -346,7 +346,7 @@ function SectionHeader({ y, label, color, light }: { y: number; label: string; c
 }
 
 // New: Sidebar with photo template
-function SidebarPhotoLayout({ colors }: { colors: TemplateColors }) {
+export function SidebarPhotoLayout({ colors }: { colors: TemplateColors }) {
   return (
     <svg viewBox="0 0 120 160" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
       {/* Left sidebar - colored */}
@@ -431,7 +431,7 @@ function SidebarPhotoLayout({ colors }: { colors: TemplateColors }) {
 }
 
 // New: Two-column tech template
-function TwoColumnTechLayout({ colors }: { colors: TemplateColors }) {
+export function TwoColumnTechLayout({ colors }: { colors: TemplateColors }) {
   return (
     <svg viewBox="0 0 120 160" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
       {/* Top bar */}

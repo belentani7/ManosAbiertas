@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, ArrowLeft, Check, Sparkles, Globe, Heart, Target } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { LANGUAGES, type LanguageCode } from '@/i18n/languages';
 import { useAppStore, type SectionId } from '@/stores/app-store';
 import { toast } from 'sonner';

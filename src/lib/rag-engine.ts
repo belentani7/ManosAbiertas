@@ -37,26 +37,6 @@ export interface RAGConfig {
   rerankModel?: string;
 }
 
-const DEFAULT_RAG_CONFIG: RAGConfig = {
-  embeddingModel: 'text-embedding-3-small',
-  embeddingProvider: 'openai',
-  embeddingDimension: 1536,
-  chunkSize: 800,
-  chunkOverlap: 150,
-  topK: 10,
-  similarityThreshold: 0.7,
-  maxContextTokens: 4000,
-  rerankModel: 'cross-encoder/ms-marco-MiniLM-L-6-v2'
-};
-
-interface VectorStore {
-  upsert(chunks: DocumentChunk[]): Promise<void>;
-  search(queryEmbedding: number[], topK: number, filter?: Record<string, any>): Promise<any[]>;
-  delete(ids: string[]): Promise<void>;
-  clear(): Promise<void>;
-  count(): Promise<number>;
-}
-
 class InMemoryVectorStore {
   private chunks: any[] = [];
   private embeddings: Map<string, number[]> = new Map();
@@ -120,33 +100,13 @@ class InMemoryVectorStore {
   }
 }
 
-function createVectorStore() {
-  return new InMemoryVectorStore();
-}
-
-function chunkText(text: string, chunkSize: number, overlap: number): string[] {
-  const chunks: string[] = [];
-  let start = 0;
-  while (start < text.length) {
-    const end = Math.min(start + chunkSize, text.length);
-    chunks.push(text.slice(start, end));
-    start += chunkSize - overlap;
-  }
-  return chunks.filter(c => c.trim().length > 50);
-}
-
-async function generateEmbedding(text: string, model: any): Promise<number[]> {
-  // Mock embedding - replace with real embedding API
-  return new Array(1536).fill(0).map(() => Math.random());
-}
-
 export class RAGEngine {
   private store: any;
   private config: any;
   private chunkSize: number;
   private chunkOverlap: number;
 
-  constructor(config: any = {}) {
+  constructor(_config: any = {}) {
     this.config = {
       embeddingModel: 'text-embedding-3-small',
       embeddingProvider: 'openai',
@@ -167,23 +127,23 @@ export class RAGEngine {
     // Initialize vector store
   }
 
-  async embedText(text: string): Promise<number[]> {
+  async embedText(_text: string): Promise<number[]> {
     return new Array(1536).fill(0).map(() => Math.random());
   }
 
-  async indexResources(resources: any[]): Promise<number> {
+  async indexResources(_resources: any[]): Promise<number> {
     return 0;
   }
 
-  async indexGuides(guides: any[]): Promise<number> {
+  async indexGuides(_guides: any[]): Promise<number> {
     return 0;
   }
 
-  async search(query: string, options: any = {}): Promise<any[]> {
+  async search(query: string, _options: any = {}): Promise<any[]> {
     return [];
   }
 
-  async generateContext(query: string, options: any = {}): Promise<{ context: string; sources: any[] }> {
+  async generateContext(query: string, _options: any = {}): Promise<{ context: string; sources: any[] }> {
     return { context: '', sources: [] };
   }
 

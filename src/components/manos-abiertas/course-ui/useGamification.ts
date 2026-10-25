@@ -28,14 +28,6 @@ function calculateLevel(xp: number): number {
   return level;
 }
 
-function calculateStreak(lastDate: string, currentDate: string): number {
-  const last = new Date(lastDate);
-  const current = new Date(currentDate);
-  const diffMs = current.getTime() - last.getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-  return diffDays <= 1 ? 1 : 0;
-}
-
 export function useGamification() {
   const [state, setState] = useState<GamificationState>({
     xp: 0,

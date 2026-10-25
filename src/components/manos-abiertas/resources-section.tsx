@@ -2,13 +2,12 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, ExternalLink, Filter, Database, MapPin, Star, X, Heart, ArrowUpDown, LayoutGrid, List as ListIcon, Download, ShieldCheck, ShieldAlert, Clock3 } from 'lucide-react';
+import { Search, ExternalLink, Filter, Database, MapPin, Star, X, ArrowUpDown, LayoutGrid, List as ListIcon, Download, ShieldCheck, ShieldAlert, Clock3 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { RESOURCES, RESOURCE_CATEGORIES, REGIONS, getResourceTrust, searchResources, type Resource, type ResourceCategory, type ResourceRegion } from '@/data/resources';
 import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';

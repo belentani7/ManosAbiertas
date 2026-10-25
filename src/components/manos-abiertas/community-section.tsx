@@ -3,16 +3,14 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Users, Heart, MessageSquare, Globe, MapPin, ChevronDown, ChevronRight,
-  ExternalLink, Star, Clock, MessagesSquare, Languages, Building2,
+  Users, Heart, MessageSquare, Globe, MapPin, ChevronDown,
+  Star, Clock, MessagesSquare, Languages, Building2,
   Sparkles, Award, TrendingUp, Search,
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 import { parseStoredJson } from '@/lib/safe-content';
 import { requestJson } from '@/lib/network-json';

@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { EXTERNAL_COURSES, COURSE_CATEGORIES, getCourseStats, type ExternalCourse, type CourseCategory } from '@/data/external-courses';
 import { NoiaCoreAcademy } from './noia-core-academy';
 import { OpenSourceHub } from './open-source-hub';

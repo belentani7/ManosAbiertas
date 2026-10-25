@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X, Send, CheckCircle2, ExternalLink, Inbox, Trash2, Lightbulb } from 'lucide-react';
+import { Plus, Send, CheckCircle2, ExternalLink, Inbox, Trash2, Lightbulb } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
