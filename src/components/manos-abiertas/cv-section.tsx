@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Plus, Trash2, Sparkles, Download, Printer, Eye, User, Briefcase, GraduationCap, Award, Languages, Palette, Loader2, Check, Lightbulb, Save, RotateCcw, Mail, Target } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -158,7 +157,7 @@ export function CVSection() {
         );
         toast.success('Descripción mejorada con IA ✨');
       }
-    } catch (e) {
+    } catch {
       toast.error('No se pudo generar. Inténtalo de nuevo.');
     } finally {
       setAiLoading(null);

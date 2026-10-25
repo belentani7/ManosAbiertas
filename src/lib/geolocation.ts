@@ -147,7 +147,6 @@ export async function getLocationFromIP(): Promise<LocationResult | null> {
 function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 6371; // Earth radius in km
   const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
   const a = Math.sin(dLat / 2) ** 2 +
     Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(toRad(lng2 - lng1) / 2) ** 2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -167,7 +166,7 @@ export async function findNearbyResources(
     language?: string;
   } = {}
 ): Promise<NearbyResource[]> {
-  const { radiusKm = 10, categories, limit = 20, language = 'es' } = options;
+  const { radiusKm = 10, categories, limit = 20 } = options;
 
   try {
     const overpassQuery = buildOverpassQuery(lat, lng, radiusKm * 1000, categories);
@@ -256,7 +255,7 @@ function parseOverpassResults(data: any, userLat: number, userLng: number, limit
 
   return resources
     .sort((a, b) => a.distanceKm - b.distanceKm)
-    .slice(0, 20);
+    .slice(0, limit);
 }
 
 function categorizeOSMElement(element: any): string {

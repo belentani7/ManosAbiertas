@@ -66,7 +66,7 @@ Formato: lista numerada, cada punto en una línea, máximo 15 palabras por punto
     const offline = () => {
         const sentences = content.split(/(?<=[.!?])\s+/).filter((s) => s.trim().length > 20);
         if (body.tool === 'questions') {
-          const qs = (sentences.slice(0, 3).map((s, i) => ({
+          const qs = (sentences.slice(0, 3).map((s) => ({
             question: `¿Qué se dice sobre "${s.trim().slice(0, 60)}..."?`,
             hint: 'Repasa el texto y busca la idea principal.',
           })));

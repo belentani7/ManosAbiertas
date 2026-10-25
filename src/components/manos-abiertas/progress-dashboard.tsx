@@ -6,9 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useProgress } from '@/hooks/use-progress';
-import { useAppStore, type SectionId } from '@/stores/app-store';
-import { AI_COURSES } from '@/data/ai-courses';
-import { OFFICE_MODULES } from '@/data/office-course';
+import { useAppStore } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 
 export function ProgressDashboard() {

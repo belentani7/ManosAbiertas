@@ -70,7 +70,7 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
       }
       setResult(analysis);
       toast.success('Análisis ATS completado ✨');
-    } catch (e) {
+    } catch {
       toast.error('No se pudo analizar. Inténtalo de nuevo.');
     } finally {
       setLoading(false);

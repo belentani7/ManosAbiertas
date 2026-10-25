@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { COMMUNITY_EVENTS, EVENT_CATEGORIES, type CommunityEvent } from '@/data/events-data';
 import { REGIONS } from '@/data/resources';
 import { cn } from '@/lib/utils';
@@ -242,7 +241,7 @@ function EventDetailDialog({ event, open, onOpenChange }: { event: CommunityEven
   const cat = EVENT_CATEGORIES.find((c) => c.value === event.category);
 
   return (
-    <Card className="fixed inset-0 z-50 m-4 sm:m-auto sm:max-w-lg sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 shadow-2xl border-2 overflow-hidden">
+    <Card aria-hidden={!open} className="fixed inset-0 z-50 m-4 sm:m-auto sm:max-w-lg sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 shadow-2xl border-2 overflow-hidden">
       <CardContent className="p-0">
         {/* Header */}
         <div className="relative gradient-brand p-5 text-white">

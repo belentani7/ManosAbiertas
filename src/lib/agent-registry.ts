@@ -1,8 +1,7 @@
 'use client';
 
-import { ToolDefinition, ToolCall, ProviderMessage } from './ai-provider';
+import { ToolCall } from './ai-provider';
 import { functionRegistry } from './function-calling';
-import { ragEngine } from './rag-engine';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant' | 'tool';
@@ -69,14 +68,6 @@ export interface Agent {
   streamChat(request: any): AsyncGenerator<any, void, unknown>;
 }
 
-interface AgentState {
-  id: string;
-  config: any;
-  memory: Map<string, any>;
-  conversationHistory: any[];
-  lastActive: number;
-}
-
 class AgentRegistry {
   private agents: Map<string, any> = new Map();
   private defaultAgent: string | null = null;
@@ -98,8 +89,6 @@ class AgentRegistry {
     const agentData = this.agents.get(agentId);
     if (!agentData) throw new Error(`Agent not found: ${agentId}`);
     const config = agentData.config;
-    const state = agentData.state;
-
     return {
       id: agentId,
       config,
@@ -115,17 +104,7 @@ class AgentRegistry {
     const config = agentData.config;
     const state = agentData.state;
 
-    const { functionRegistry } = await import('./function-calling');
-    const { aiRegistry, getApiKey } = await import('./ai-provider');
-
-    const context = { locale: request.context?.locale || config.personality.language };
-
     const systemPrompt = this.buildSystemPrompt(config);
-
-    const messages = [
-      { role: 'system' as const, content: systemPrompt },
-      ...request.messages.slice(-10)
-    ];
 
     const availableTools = this.getAvailableTools(config.tools);
 
@@ -187,8 +166,7 @@ class AgentRegistry {
     if (!agentData) throw new Error(`Agent not found: ${agentId}`);
 
     const config = agentData.config;
-    const { aiRegistry, getApiKey } = await import('./ai-provider');
-    const { functionRegistry } = await import('./function-calling');
+    const { getApiKey } = await import('./ai-provider');
 
     const systemPrompt = this.buildSystemPrompt(config);
 
@@ -233,7 +211,6 @@ class AgentRegistry {
     const reader = response.body?.getReader();
     if (!reader) throw new Error('No response body');
 
-    const decoder = new TextDecoder();
     let buffer = '';
 
     try {
@@ -281,7 +258,6 @@ class AgentRegistry {
   }
 
   private buildSystemPrompt(config: any): string {
-    const tools = config.tools.join(', ');
     const capabilities: string[] = [];
     if (config.capabilities.rag) capabilities.push('RAG search');
     if (config.capabilities.tools) capabilities.push('Tool calling');
@@ -646,7 +622,7 @@ const PREDEFINED_AGENTS = {
   }
 };
 
-for (const [id, config] of Object.entries(PREDEFINED_AGENTS)) {
+for (const [, config] of Object.entries(PREDEFINED_AGENTS)) {
   agentRegistry.register(config);
 }
 

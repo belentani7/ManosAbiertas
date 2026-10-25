@@ -75,20 +75,8 @@ export default function SpaceShipTrail({ zIndex = 0, opacity = 0.6 }: SpaceShipT
       ctx.fillStyle = 'rgba(3, 6, 11, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      if (Math.random() < 0.02 && trails.length < 20) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 3 + 2;
-        const color = TRAIL_COLORS[Math.floor(Math.random() * TRAIL_COLORS.length)];
-        
-        trails.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: 0,
-          maxLife: Math.random() * 100 + 50,
-          color,
-        });
+      if (Math.random() < 0.02 && trails.length < MAX_TRAILS) {
+        trails.push(createTrail());
       }
 
       for (let i = trails.length - 1; i >= 0; i--) {

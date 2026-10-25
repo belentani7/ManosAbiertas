@@ -2,12 +2,10 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Search, X, Star, ExternalLink, Code, Key, Zap, BookOpen, Filter, Award } from 'lucide-react';
+import { Github, Search, X, Star, ExternalLink, Code, Key, Zap, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { GITHUB_REPOS, FREE_APIS, REPO_CATEGORIES, getRepoStats, type GitHubRepo, type RepoCategory } from '@/data/open-source-hub';
 import { cn } from '@/lib/utils';
 

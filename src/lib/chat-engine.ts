@@ -1,4 +1,4 @@
-import { aiRegistry, AIModelConfig, ToolDefinition, ToolCall, ProviderMessage } from './ai-provider';
+import { aiRegistry, ToolCall } from './ai-provider';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant' | 'tool';
