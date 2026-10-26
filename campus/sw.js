@@ -1,5 +1,7 @@
 // Read-only educational offline shell + real course documents (no user account data).
-const CACHE='campus-v3-courses-2026-10-content';
+const SCOPE=new URL(self.registration.scope);
+const PREFIX='manos-abiertas-campus:'+SCOPE.pathname+':';
+const CACHE=PREFIX+'v4-review';
 const CORE=['./','./index.html','./tokens.css','./app.js','./course-core.mjs','./course-viewer.mjs'];
 for(const [slug,weeks] of [['alfabetizacion-ia',3],['office-sin-miedo',3],['falsos-amigos-pt-es',4]]){
   CORE.push('./cursos/'+slug+'/syllabus.md');
@@ -17,7 +19,7 @@ self.addEventListener('install',event=>{
 });
 self.addEventListener('activate',event=>{
   event.waitUntil(caches.keys().then(keys=>Promise.all(
-    keys.filter(key=>key.startsWith('campus-v')&&key!==CACHE).map(key=>caches.delete(key))
+    keys.filter(key=>key.startsWith(PREFIX)&&key!==CACHE).map(key=>caches.delete(key))
   )));
   self.clients.claim();
 });
@@ -35,13 +37,15 @@ self.addEventListener('fetch',event=>{
       }
       return response;
     }catch{
-      const cached=await caches.match(request);
+      const cache=await caches.open(CACHE);
+      const cached=await cache.match(request);
       if(cached)return cached;
       if(request.mode==='navigate'){
-        const home=await caches.match(new URL('./index.html',self.registration.scope).href);
+        const home=await cache.match(new URL('./index.html',self.registration.scope).href);
         if(home)return home;
       }
       return Response.error(); // Do not serve index.html as invalid JS, JSON or MP3.
     }
   })());
 });
+

@@ -49,6 +49,7 @@ function createBrowser() {
     answer(index) { children['.opciones'].children[index].handlers.click(); },
     advance() { children['.quiz-siguiente'].onclick(); },
     pending,
+    choices: children['.opciones'],
     select(slug) {
       select.value = quizUrl(slug);
       handlers.change();
@@ -110,4 +111,28 @@ test('wrong answers expose correct response and cannot be rescored with another 
   assert.match(browser.score.textContent,/Aciertos: 0/);
   browser.advance();
   assert.match(browser.title.textContent,/Práctica finalizada: 0\/1/);
+});
+
+
+
+test('completed practice keeps actionable explanations for every missed question', async () => {
+  const browser=createBrowser();
+  browser.pending.get(quizUrl('alfabetizacion-ia')).resolve({ok:true,json:async()=>lesson('Identificar fraude')});
+  await settle();
+  browser.answer(1); browser.advance();
+  assert.match(browser.feedback.textContent,/Identificar fraude/);
+  assert.match(browser.feedback.textContent,/respuesta correcta/);
+  assert.match(browser.feedback.textContent,/Explicación real/);
+  browser.advance();
+  assert.match(browser.title.textContent,/1\/1/);
+  assert.doesNotMatch(browser.feedback.textContent,/Identificar fraude/);
+});
+
+test('a detached answer from the prior question cannot answer the next one', async()=>{
+  const browser=createBrowser();
+  browser.pending.get(quizUrl('alfabetizacion-ia')).resolve({ok:true,json:async()=>[...lesson('Primera'),...lesson('Segunda')]});
+  await settle();
+  const old=browser.choices.children[0];browser.answer(0);browser.advance();old.handlers.click();
+  assert.equal(browser.score.textContent,'Aciertos: 1');
+  assert.equal(browser.feedback.textContent,'');
 });

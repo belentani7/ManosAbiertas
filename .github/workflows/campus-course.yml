@@ -4,6 +4,7 @@ on:
     paths:
       - campus/**
       - tests/campus-*.test.mjs
+      - tests/browser-campus.cjs
       - .github/workflows/campus-course.yml
   push:
     branches: [main]
@@ -29,3 +30,17 @@ jobs:
           node --check campus/sw.js
       - name: Course integrity and offline delivery tests
         run: node --test tests/campus-*.test.mjs
+      - name: Prepare isolated browser runner
+        run: |
+          npm install --prefix "$RUNNER_TEMP/campus-browser" --no-package-lock --ignore-scripts playwright@1.56.1
+          node "$RUNNER_TEMP/campus-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Mobile learning journey and complete offline course
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory . > /tmp/manos-campus-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8766/campus/ > /dev/null; then break; fi
+            sleep 1
+          done
+          PLAYWRIGHT_MODULE="$RUNNER_TEMP/campus-browser/node_modules/playwright" node tests/browser-campus.cjs
