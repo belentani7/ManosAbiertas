@@ -1,9 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Clock, Trash2, ArrowRight } from 'lucide-react';
+import { Clock, Trash2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useRecentItems } from '@/hooks/use-recent-items';
 import { useAppStore } from '@/stores/app-store';

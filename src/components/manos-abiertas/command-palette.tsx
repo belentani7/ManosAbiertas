@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, CornerDownLeft, ArrowRight, Sparkles, FileText, BookOpen, Database, Shield, Phone, Home as HomeIcon, X, Command } from 'lucide-react';
+import { Search, ArrowRight, Command } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';

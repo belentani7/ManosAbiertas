@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Bell, Plus, Trash2, Calendar, Clock, AlertTriangle, CheckCircle2, X, Edit3 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Bell, Plus, Trash2, Calendar, Clock, AlertTriangle, CheckCircle2, Edit3 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

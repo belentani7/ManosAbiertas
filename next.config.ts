@@ -63,7 +63,11 @@ const nextConfig: NextConfig = {
           },
           {
             key: "X-DNS-Prefetch-Control",
-            value: "on",
+            value: "off",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000",
           },
           {
             key: "Permissions-Policy",
@@ -74,6 +78,8 @@ const nextConfig: NextConfig = {
       {
         source: "/api",
         headers: [
+          { key: "Cache-Control", value: "private, no-store, max-age=0" },
+          { key: "Pragma", value: "no-cache" },
           { key: "Content-Security-Policy", value: "default-src 'none'; base-uri 'none'; frame-ancestors 'none'" },
           { key: "Referrer-Policy", value: "no-referrer" },
         ],
@@ -81,6 +87,8 @@ const nextConfig: NextConfig = {
       {
         source: "/api/:path*",
         headers: [
+          { key: "Cache-Control", value: "private, no-store, max-age=0" },
+          { key: "Pragma", value: "no-cache" },
           { key: "Content-Security-Policy", value: "default-src 'none'; base-uri 'none'; frame-ancestors 'none'" },
           { key: "Referrer-Policy", value: "no-referrer" },
         ],

@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import {
-  BarChart, Bar, LineChart, Line,
-  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell,
+  BarChart, Bar,
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from 'recharts';
-import { useTheme } from 'next-themes';
-import { getTranslation } from '@/i18n/translations';
 import { useAppStore } from '@/stores/app-store';
 
 /* ─── types ─── */
@@ -52,7 +50,7 @@ function Skeleton() {
 }
 
 /* ─── Empleo chart ─── */
-function EmpleoChart({ lang }: { lang: string }) {
+function EmpleoChart({ lang: _lang }: { lang: string }) {
   const { data, error } = useOpenData('empleo-y-paro.json');
   if (error) return <p className="text-sm text-muted-foreground">Datos no disponibles</p>;
   if (!data) return <Skeleton />;
@@ -252,7 +250,6 @@ const TABS = [
 export function DatosSection() {
   const { language } = useAppStore();
   const [tab, setTab] = useState<(typeof TABS)[number]['id']>('empleo');
-  const { resolvedTheme } = useTheme();
 
   const ActiveTab = TABS.find((t) => t.id === tab)!;
   // Solo EmpleoChart usa lang; el union de TABS se estrecha a la firma comun.

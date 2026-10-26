@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Clock, FileText, Euro, Lightbulb, AlertTriangle, ExternalLink, CheckCircle2, Circle, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { PROCESS_GUIDES, PROCESS_CATEGORIES, type ProcessGuide, type ProcessStep } from '@/data/process-guides';
+import { PROCESS_GUIDES, type ProcessGuide, type ProcessStep } from '@/data/process-guides';
 import { cn } from '@/lib/utils';
 
 const DIFFICULTY_LABELS = {
@@ -152,7 +150,6 @@ function ProcessDetail({ guide, onBack }: { guide: ProcessGuide; onBack: () => v
               key={step.id}
               step={step}
               isCompleted={completedSteps.has(step.id)}
-              isLast={i === guide.steps.length - 1}
               onToggle={() => toggleStep(step.id)}
               index={i}
             />
@@ -181,13 +178,11 @@ function ProcessDetail({ guide, onBack }: { guide: ProcessGuide; onBack: () => v
 function StepCard({
   step,
   isCompleted,
-  isLast,
   onToggle,
   index,
 }: {
   step: ProcessStep;
   isCompleted: boolean;
-  isLast: boolean;
   onToggle: () => void;
   index: number;
 }) {

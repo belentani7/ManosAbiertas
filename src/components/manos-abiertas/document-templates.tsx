@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Search, X, Copy, Download, Printer, Check, Filter } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { FileText, Search, X, Copy, Download, Printer, Check } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';

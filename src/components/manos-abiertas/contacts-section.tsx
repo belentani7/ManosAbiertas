@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Phone, Ambulance, Shield, Users, Globe, Heart, Building2, ExternalLink } from 'lucide-react';
+import { Phone, Ambulance, Shield, Users, Heart, Building2, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
