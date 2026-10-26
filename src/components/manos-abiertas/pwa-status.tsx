@@ -15,7 +15,7 @@ export function PWAStatus() {
     window.addEventListener('offline', handleOffline);
 
     if ('serviceWorker' in navigator) {
-      void navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
+      void navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).catch(() => undefined);
     }
 
     return () => {

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#120d09" />
+    <meta name="robots" content="noindex" />
+    <title>Manos Abiertas · Sin conexión</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #120d09;
+        --cream: #fff8ee;
+        --muted: #cbb9a6;
+        --accent: #ff7a1a;
+        --line: rgba(255, 248, 238, 0.16);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        background:
+          radial-gradient(circle at 70% 20%, rgba(255, 122, 26, 0.18), transparent 26rem),
+          linear-gradient(180deg, #120d09, #17100b 60%, #0d0907);
+        color: var(--cream);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      main {
+        width: min(100%, 34rem);
+        padding: clamp(1.5rem, 5vw, 2.5rem);
+        border: 1px solid var(--line);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.045);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      }
+      .top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+      .mark {
+        width: 3rem;
+        height: 3rem;
+        display: grid;
+        place-items: center;
+        border-radius: 1rem;
+        background: linear-gradient(135deg, #ff7a1a, #ffb35c);
+        color: #1a0f08;
+        font-weight: 800;
+        font-size: 1.25rem;
+      }
+      .langs { display: flex; gap: 0.25rem; padding: 0.2rem; border: 1px solid var(--line); border-radius: 999px; }
+      .langs button {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        font: inherit;
+        font-size: 0.72rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .langs button[aria-pressed="true"] { background: var(--cream); color: #1a0f08; }
+      p { color: var(--muted); line-height: 1.65; }
+      h1 {
+        margin: 1.5rem 0 0.75rem;
+        font-family: ui-serif, Georgia, serif;
+        font-size: clamp(2rem, 7vw, 3.2rem);
+        font-weight: 400;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+      a, button.action {
+        min-height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1.2rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font: inherit;
+        font-weight: 650;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .primary { background: linear-gradient(135deg, #ff7a1a, #ffb35c); color: #1a0f08; }
+      .secondary { border-color: var(--line); color: var(--cream); background: transparent; }
+      footer { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.72rem; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <main aria-labelledby="offline-title">
+      <div class="top">
+        <div class="mark" aria-hidden="true">M</div>
+        <div class="langs" role="group" aria-label="Idioma / Idioma / Language / Idioma">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="ca" aria-pressed="false">CA</button>
+        </div>
+      </div>
+      <h1 id="offline-title">Sin conexión. Tu ruta sigue aquí.</h1>
+      <p id="offline-body">
+        No podemos cargar la red ahora mismo, pero tus rutas y tu progreso se guardan en este dispositivo.
+        Vuelve a intentarlo cuando recuperes la conexión.
+      </p>
+      <div class="actions">
+        <button class="action primary" type="button" onclick="location.reload()" id="offline-retry">Reintentar</button>
+        <a class="action secondary" href="/" id="offline-home">Volver al inicio</a>
+      </div>
+      <footer id="offline-footer">Manos Abiertas · v2.2.2 · Hecho para personas, no para algoritmos.</footer>
+    </main>
+    <script>
+      const copy = {
+        es: {
+          title: 'Sin conexión. Tu ruta sigue aquí.',
+          body: 'No podemos cargar la red ahora mismo, pero tus rutas y tu progreso se guardan en este dispositivo. Vuelve a intentarlo cuando recuperes la conexión.',
+          retry: 'Reintentar',
+          home: 'Volver al inicio',
+          footer: 'Manos Abiertas · v2.2.2 · Hecho para personas, no para algoritmos.',
+        },
+        pt: {
+          title: 'Sem conexão. Sua rota continua aqui.',
+          body: 'Não conseguimos carregar a rede agora, mas suas rotas e seu progresso ficam neste dispositivo. Tente novamente quando a conexão voltar.',
+          retry: 'Tentar novamente',
+          home: 'Voltar ao início',
+          footer: 'Manos Abiertas · v2.2.2 · Feito para pessoas, não para algoritmos.',
+        },
+        en: {
+          title: 'No connection. Your route is still here.',
+          body: 'We cannot load the network right now, but your routes and progress stay on this device. Try again when your connection returns.',
+          retry: 'Try again',
+          home: 'Back to home',
+          footer: 'Manos Abiertas · v2.2.2 · Built for people, not algorithms.',
+        },
+        ca: {
+          title: 'Sense connexió. La teva ruta continua aquí.',
+          body: 'No podem carregar la xarxa ara mateix, però les teves rutes i el teu progrés es queden en aquest dispositiu. Torna-ho a provar quan recuperis la connexió.',
+          retry: 'Tornar a provar',
+          home: "Tornar a l'inici",
+          footer: 'Manos Abiertas · v2.2.2 · Fet per a persones, no per a algoritmes.',
+        },
+      };
+      const supported = Object.keys(copy);
+      let stored = null;
+      try { stored = localStorage.getItem('manos-abiertas-offline-lang'); } catch { /* storage optional */ }
+      const detected = (navigator.language || 'es').toLowerCase();
+      const initial = stored && supported.includes(stored)
+        ? stored
+        : detected.startsWith('pt') ? 'pt' : detected.startsWith('ca') ? 'ca' : detected.startsWith('en') ? 'en' : 'es';
+      function apply(lang) {
+        const text = copy[lang] || copy.es;
+        document.documentElement.lang = lang;
+        document.getElementById('offline-title').textContent = text.title;
+        document.getElementById('offline-body').textContent = text.body;
+        document.getElementById('offline-retry').textContent = text.retry;
+        document.getElementById('offline-home').textContent = text.home;
+        document.getElementById('offline-footer').textContent = text.footer;
+        document.querySelectorAll('[data-lang]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.lang === lang));
+        });
+        try { localStorage.setItem('manos-abiertas-offline-lang', lang); } catch { /* storage optional */ }
+      }
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.addEventListener('click', () => apply(button.dataset.lang));
+      });
+      apply(initial);
+    </script>
+  </body>
+</html>

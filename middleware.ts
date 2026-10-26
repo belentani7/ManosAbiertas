@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server';
 // Whitelist of served API routes. New routes must be registered here to keep /api/* as JSON-only.
 const API_ROUTES = new Set([
   '/api/health',
+  '/api/onboarding',
   '/api/chat',
   '/api/study-tools',
   '/api/cv/generate',
