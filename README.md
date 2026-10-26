@@ -8,7 +8,7 @@ Formación **gratuita y práctica** para personas que llegan y necesitan herrami
 ofimática, inteligencia artificial aplicada, un currículum que funcione. Sin registro, sin
 coste, sin barreras innecesarias.
 
-En línea: <https://manos-abiertas-psi.vercel.app>
+Publicación: pendiente. El despliegue en <https://manos-abiertas-psi.vercel.app> no está disponible en este momento; para usar la plataforma en local, consulta «Puesta en marcha» más abajo.
 
 ## Qué incluye
 
@@ -22,6 +22,17 @@ En línea: <https://manos-abiertas-psi.vercel.app>
 Es parte del objetivo, no un extra: el público incluye personas con poca familiaridad digital
 y distintas lenguas. **PT > ES > EN > CA.**
 
+## Puesta en marcha
+
+Requisitos: Node 18+ y pnpm 10.
+
+```bash
+pnpm install
+pnpm dev        # aplicación Next.js en http://localhost:3000
+```
+
+Otros comandos: `pnpm build` (genera contenidos, iconos PWA y cliente Prisma antes de `next build`), `pnpm lint`, `pnpm typecheck`, `pnpm test:core` y los verificadores `pnpm i18n:verify`, `pnpm accessibility:verify`. El campus estático vive en [`campus/`](campus/) (abre `campus/index.html` o sírvelo como archivos estáticos).
+
 ## Licencia
 
 MIT (ver [`LICENSE`](LICENSE)).
@@ -32,20 +43,18 @@ MIT (ver [`LICENSE`](LICENSE)).
 
 Esta plataforma forma parte del conjunto educativo de **Belentani / NOIACORE**:
 formacion gratuita y abierta. El indice completo, con material y estado de cada una,
-vive en el nodo central:
-
-**<https://github.com/belentani7/open-school/blob/main/INDICE-EDUCATIVO.md>**
+vive en este repositorio: [`INDICE-EDUCATIVO.md`](INDICE-EDUCATIVO.md).
 
 | Plataforma | Que ensena | Enlace |
 |---|---|---|
-| Open School | Instituto digital universal | https://open-school-gamma.vercel.app |
-| ManosAbiertas | IA y ofimatica para recien llegados | https://belentani7.github.io/ManosAbiertas/ |
+| Open School | Instituto digital universal | publicacion pendiente |
+| ManosAbiertas | IA y ofimatica para recien llegados | publicacion pendiente |
 | WILLIAMSCHOOL | Escuela comunitaria (curriculo Nepal) | https://williamschool.vercel.app |
 | UX Academy | Diseno UX/Producto, trilingue | https://ux-academy-professional.vercel.app |
 | Aprende Brasil | Educacion para Brasil | https://aprende-brasil.vercel.app/ |
-| Lingua Aberta | Idiomas, progresion CEFR | https://belentani7.github.io/lingua-aberta-empresa/ |
-| Cruzando el Charco | Acogida y arraigo | https://belentani7.github.io/Cruzando-el-charco/ |
-| secure-t | Ciberseguridad e IA | https://belentani7.github.io/secure-t/ |
+| Lingua Aberta | Idiomas, progresion CEFR | publicacion pendiente |
+| Cruzando el Charco | Acogida y arraigo | publicacion pendiente |
+| secure-t | Ciberseguridad e IA | publicacion pendiente |
 
 **PT > ES > EN > CA.** Gratuito, accesible (WCAG) y conectado.
 
