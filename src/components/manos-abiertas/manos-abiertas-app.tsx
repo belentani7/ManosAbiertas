@@ -7,12 +7,13 @@ import { Footer } from './footer';
 import { HomeSection } from './home-section';
 import { LearnAISection } from './learn-ai-section';
 import { AIAssistant } from './ai-assistant';
-import { OnboardingWizard } from './onboarding-wizard';
+import { WelcomePortal } from './welcome-portal';
 import { Button } from '@/components/ui/button';
-import { ArrowUp } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowUp, Heart } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
 import { PWAStatus } from './pwa-status';
 import { useAppStore, sectionFromHash } from '@/stores/app-store';
+import { PORTAL_EVENT, PORTAL_STORAGE_KEY } from '@/lib/version';
 
 // Heavy/later sections are lazy-loaded to shrink the initial bundle.
 const CVSection = dynamic(() => import('./cv-section').then((m) => m.CVSection));
@@ -27,7 +28,19 @@ const CommunitySection = dynamic(() => import('./community-section').then((m) =>
 const PricingSection = dynamic(() => import('./pricing-section').then((m) => m.PricingSection));
 const DatosSection = dynamic(() => import('./datos-section').then((m) => m.DatosSection));
 
+function PortalSplash() {
+  return (
+    <div className='portal-splash' role='status' aria-label='Manos Abiertas'>
+      <div className='portal-splash-mark' aria-hidden='true'>
+        <Heart className='h-7 w-7' />
+      </div>
+      <span className='portal-display'>Manos Abiertas</span>
+    </div>
+  );
+}
+
 export function ManosAbiertasApp() {
+  const [portalPhase, setPortalPhase] = useState<'loading' | 'portal' | 'app'>('loading');
   const { activeSection, setActiveSection, readingMode } = useAppStore();
   const [showTop, setShowTop] = useState(false);
   const reduceMotion = useReducedMotion();
@@ -61,6 +74,43 @@ export function ManosAbiertasApp() {
       document.documentElement.setAttribute('data-reading-mode', readingMode);
     }
   }, [readingMode]);
+
+  useEffect(() => {
+    const forced = new URLSearchParams(window.location.search).get('portal') === '1';
+    let seen = false;
+    try {
+      seen = Boolean(localStorage.getItem(PORTAL_STORAGE_KEY));
+    } catch {
+      seen = false;
+    }
+    setPortalPhase(forced || !seen ? 'portal' : 'app');
+    const openPortal = () => setPortalPhase('portal');
+    window.addEventListener(PORTAL_EVENT, openPortal);
+    return () => window.removeEventListener(PORTAL_EVENT, openPortal);
+  }, []);
+
+  const closePortal = useCallback((section: 'home' | 'keep') => {
+    setPortalPhase('app');
+    if (section === 'home') setActiveSection('home');
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('portal')) {
+        url.searchParams.delete('portal');
+        window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+      }
+    } catch {
+      /* La navegación principal sigue funcionando sin reescribir la URL. */
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [setActiveSection]);
+
+  const handlePortalEnter = useCallback(() => closePortal('home'), [closePortal]);
+  const handlePortalSkip = useCallback(() => closePortal('keep'), [closePortal]);
+
+  if (portalPhase === 'loading') return <PortalSplash />;
+  if (portalPhase === 'portal') {
+    return <WelcomePortal onEnter={handlePortalEnter} onSkip={handlePortalSkip} />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -126,8 +176,6 @@ export function ManosAbiertasApp() {
       {/* AI Assistant - floating chat widget */}
       <AIAssistant />
 
-      {/* Onboarding wizard - shows on first visit */}
-      <OnboardingWizard />
     </div>
   );
 }

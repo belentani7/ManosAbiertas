@@ -6,6 +6,6 @@ export async function GET() {
     product: 'Manos Abiertas',
     apiVersion: 'v1',
     privacy: 'local-first',
-    endpoints: ['/api/health', '/api/chat', '/api/study-tools', '/api/cv/generate', '/api/cv/ats', '/api/cover-letter', '/api/community'],
+    endpoints: ['/api/health', '/api/onboarding', '/api/chat', '/api/study-tools', '/api/cv/generate', '/api/cv/ats', '/api/cover-letter', '/api/community'],
   });
 }

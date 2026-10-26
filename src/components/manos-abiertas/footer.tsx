@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart, Globe, Shield, ExternalLink, Keyboard, Command, ArrowUp, Search } from 'lucide-react';
+import { Heart, Globe, Shield, ExternalLink, Keyboard, Command, ArrowUp, Search, Compass } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';
@@ -12,6 +12,7 @@ import { RESOURCES } from '@/data/resources';
 import { AI_COURSES } from '@/data/ai-courses';
 import { OFFICE_MODULES } from '@/data/office-course';
 import { SystemAwareness } from './system-awareness';
+import { APP_VERSION, PORTAL_EVENT } from '@/lib/version';
 
 const SHORTCUTS = [
   { keys: ['Cmd', 'K'], action: 'Abrir búsqueda rápida', icon: Search },
@@ -101,6 +102,15 @@ export function Footer() {
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Ayuda</div>
             <div className="flex flex-wrap gap-1.5">
               <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event(PORTAL_EVENT))}
+                className="inline-flex min-h-11 items-center gap-1.5 text-[11px] bg-secondary/60 hover:bg-secondary rounded-full px-3 py-1 transition-colors"
+              >
+                <Compass className="h-3 w-3" />
+                {t.getStarted}
+              </button>
+              <button
+                type="button"
                 onClick={() => setShowShortcuts(true)}
                 className="inline-flex items-center gap-1.5 text-[11px] bg-secondary/60 hover:bg-secondary rounded-full px-2 py-1 transition-colors"
               >
@@ -122,7 +132,7 @@ export function Footer() {
         </div>
 
         <div className="mt-6 pt-4 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div>© 2026 NOIACORE · Manos Abiertas · {t.footer_rights}</div>
+          <div>© 2026 NOIACORE · Manos Abiertas · {t.footer_rights} · v{APP_VERSION}</div>
           <div className="flex items-center gap-1.5">
             Hecho con <Heart className="h-3.5 w-3.5 text-primary fill-primary" /> para las comunidades latinoamericanas y migrantes en España
           </div>
