@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
+import { waitForSpeechVoice } from '@/lib/speech-locale';
+export { getSpeechLang, selectSpeechVoice } from '@/lib/speech-locale';
 
 interface UseSpeechOptions {
   lang?: string;
@@ -16,6 +18,7 @@ interface UseSpeechReturn {
   speaking: boolean;
   paused: boolean;
   supported: boolean;
+  error: string | null;
 }
 
 /**
@@ -25,17 +28,21 @@ interface UseSpeechReturn {
 export function useSpeech(): UseSpeechReturn {
   const [speaking, setSpeaking] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [supported] = useState(() => {
     if (typeof window === 'undefined') return false;
     return 'speechSynthesis' in window;
   });
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const requestRef = useRef(0);
 
   const speak = useCallback((text: string, options?: UseSpeechOptions) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
 
-    // Stop any current speech
+    // Stop any current speech and invalidate a request still waiting for voices.
     window.speechSynthesis.cancel();
+    const requestId = ++requestRef.current;
+    setError(null);
 
     // Strip markdown for cleaner speech
     const cleanText = text
@@ -47,30 +54,54 @@ export function useSpeech(): UseSpeechReturn {
 
     if (!cleanText) return;
 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = options?.lang || 'es-ES';
-    utterance.rate = options?.rate || 0.9;
-    utterance.pitch = options?.pitch || 1;
+    const locale = options?.lang || 'es-ES';
+    void waitForSpeechVoice(window.speechSynthesis, locale)
+      .then((voice) => {
+        if (requestId !== requestRef.current) return;
+        if (!voice) {
+          setError('No hay una voz de ' + locale + ' disponible. Instálala en el dispositivo; no usaremos otra lengua o región.');
+          setSpeaking(false);
+          return;
+        }
 
-    utterance.onstart = () => {
-      setSpeaking(true);
-      setPaused(false);
-    };
-    utterance.onend = () => {
-      setSpeaking(false);
-      setPaused(false);
-    };
-    utterance.onerror = () => {
-      setSpeaking(false);
-      setPaused(false);
-    };
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = locale;
+        utterance.voice = voice;
+        utterance.rate = options?.rate || 0.9;
+        utterance.pitch = options?.pitch || 1;
 
-    utteranceRef.current = utterance;
-    window.speechSynthesis.speak(utterance);
+        utterance.onstart = () => {
+          if (requestId !== requestRef.current) return;
+          setSpeaking(true);
+          setPaused(false);
+        };
+        utterance.onend = () => {
+          if (requestId !== requestRef.current) return;
+          setSpeaking(false);
+          setPaused(false);
+        };
+        utterance.onerror = () => {
+          if (requestId !== requestRef.current) return;
+          setError('No se pudo reproducir la voz seleccionada. Puedes seguir leyendo.');
+          setSpeaking(false);
+          setPaused(false);
+        };
+
+        if (requestId !== requestRef.current) return;
+        utteranceRef.current = utterance;
+        window.speechSynthesis.speak(utterance);
+      })
+      .catch(() => {
+        if (requestId !== requestRef.current) return;
+        setError('No se pudo preparar la voz seleccionada. Puedes seguir leyendo.');
+        setSpeaking(false);
+        setPaused(false);
+      });
   }, []);
 
   const stop = useCallback(() => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    requestRef.current += 1;
     window.speechSynthesis.cancel();
     setSpeaking(false);
     setPaused(false);
@@ -88,42 +119,5 @@ export function useSpeech(): UseSpeechReturn {
     setPaused(false);
   }, []);
 
-  return { speak, stop, pause, resume, speaking, paused, supported };
-}
-
-// Map app language codes to BCP-47 speech language codes
-export function getSpeechLang(lang: string): string {
-  const map: Record<string, string> = {
-    es: 'es-ES',
-    en: 'en-US',
-    ca: 'ca-ES',
-    'pt-BR': 'pt-BR',
-    pt: 'pt-PT',
-    fr: 'fr-FR',
-    ar: 'ar-SA',
-    zh: 'zh-CN',
-    hi: 'hi-IN',
-    ro: 'ro-RO',
-    uk: 'uk-UA',
-    ru: 'ru-RU',
-    de: 'de-DE',
-    it: 'it-IT',
-    pl: 'pl-PL',
-    tr: 'tr-TR',
-    ur: 'ur-PK',
-    fa: 'fa-IR',
-    bn: 'bn-IN',
-    pa: 'pa-IN',
-    ta: 'ta-IN',
-    te: 'te-IN',
-    mr: 'mr-IN',
-    gu: 'gu-IN',
-    sw: 'sw-KE',
-    am: 'am-ET',
-    tl: 'fil-PH',
-    vi: 'vi-VN',
-    ja: 'ja-JP',
-    ko: 'ko-KR',
-  };
-  return map[lang] || map[lang.split('-')[0]] || 'es-ES';
+  return { speak, stop, pause, resume, speaking, paused, supported, error };
 }
