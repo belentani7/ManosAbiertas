@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, Square, Pause, Play, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,7 @@ export function TTSButton({
   className,
 }: TTSButtonProps) {
   const { language } = useAppStore();
-  const { speak, stop, pause, resume, speaking, paused, supported } = useSpeech();
+  const { speak, pause, resume, speaking, paused, supported } = useSpeech();
   const [loading, setLoading] = useState(false);
 
   if (!supported) return null;

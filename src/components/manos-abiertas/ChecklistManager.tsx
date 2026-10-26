@@ -63,21 +63,11 @@ export default function ChecklistManager() {
   const [activeTab, setActiveTab] = useState<'arraigo-social' | 'arraigo-laboral' | 'arraigo-familiar' | 'nacionalidad' | 'visado-estudios' | 'reagrupacion-familiar'>('arraigo-social');
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
 
-  const tabs = [
-    { id: 'arraigo-social', label: 'Arraigo Social', icon: '🏠' },
-    { id: 'arraigo-laboral', label: 'Arraigo Laboral', icon: '💼' },
-    { id: 'arraigo-familiar', label: 'Arraigo Familiar', icon: '👨‍👩‍👧‍👦' },
-    { id: 'nacionalidad', label: 'Nacionalidad', icon: '🇪🇸' },
-    { id: 'visado-estudios', label: 'Visado Estudios', icon: '🎓' },
-    { id: 'reagrupacion-familiar', label: 'Reagrupación', icon: '👨‍👩‍👧‍👦' },
-  ] as const;
-
   const toggleItem = (id: string) => {
     setCheckedItems(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const progress = () => {
-    const items = checklists[activeTab] || [];
     const done = Object.entries(checkedItems).filter(([_, v]) => v).length;
     const total = checklists[activeTab].length;
     return { done, total, percent: total > 0 ? Math.round((done / total) * 100) : 0 };

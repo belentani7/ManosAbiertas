@@ -1,5 +1,11 @@
 import { readBoundedJson } from './network-json';
-import { boundedProviderText, providerTextFromPayload, safeMaxTokens, safeProviderEndpoint, safeProviderModel } from './provider-security';
+import {
+  boundedProviderText,
+  providerTextFromPayload,
+  safeMaxTokens,
+  safeProviderEndpoint,
+  safeProviderModel
+} from './provider-security';
 
 export type ProviderMessage = { role: 'system' | 'user' | 'assistant' | 'tool'; content: string; tool_calls?: ToolCall[]; tool_call_id?: string; name?: string };
 
@@ -371,153 +377,6 @@ const DEFAULT_CONFIG: AIProviderConfig = {
   timeout: 60000
 };
 
-function buildHeaders(apiKey: string): Record<string, string> {
-  return {
-    'Authorization': `Bearer ${apiKey}`,
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
-  };
-}
-
-async function callProvider(
-  provider: AIModelConfig,
-  messages: ProviderMessage[],
-  options: {
-    maxTokens: number;
-    temperature?: number;
-    topP?: number;
-    tools?: ToolDefinition[];
-    toolChoice?: AIRequest['toolChoice'];
-    stream?: boolean;
-    responseFormat?: AIRequest['responseFormat'];
-    signal?: AbortSignal;
-  }
-): Promise<Response> {
-  const apiKey = getApiKey(provider.apiKeyEnv);
-  if (!apiKey && provider.provider !== 'local') {
-    throw new Error(`API key not found for ${provider.id} (env: ${provider.apiKeyEnv})`);
-  }
-
-  const endpoint = `${provider.baseUrl.replace(/\/+$/, '')}/chat/completions`;
-  const safeModel = provider.model;
-
-  const body: Record<string, unknown> = {
-    model: safeModel,
-    messages,
-    max_completion_tokens: Math.min(options.maxTokens, provider.maxTokens),
-    temperature: options.temperature ?? 0.7,
-    top_p: options.topP ?? 0.95,
-    stream: options.stream ?? false
-  };
-
-  if (options.tools && options.tools.length > 0 && provider.supportsTools) {
-    body.tools = options.tools;
-    if (options.toolChoice) body.tool_choice = options.toolChoice;
-  }
-
-  if (options.responseFormat) {
-    body.response_format = options.responseFormat;
-  }
-
-  const response = await fetch(provider.baseUrl.replace(/\/+$/, '') + '/chat/completions', {
-    method: 'POST',
-    headers: buildHeaders(getApiKey(provider.apiKeyEnv) || ''),
-    body: JSON.stringify(body),
-    signal: options.signal || AbortSignal.timeout(DEFAULT_CONFIG.timeout)
-  });
-
-  return response;
-}
-
-async function* streamResponse(
-  provider: AIModelConfig,
-  messages: ProviderMessage[],
-  options: {
-    maxTokens: number;
-    temperature?: number;
-    topP?: number;
-    tools?: ToolDefinition[];
-    toolChoice?: AIRequest['toolChoice'];
-    responseFormat?: AIRequest['responseFormat'];
-    signal?: AbortSignal;
-  }
-): AsyncGenerator<StreamChunk, void, unknown> {
-  const response = await callProvider(provider, messages, { ...options, stream: true });
-
-  if (!response.ok) {
-    const errorText = await response.text().catch(() => '');
-    throw new Error(`${provider.id} HTTP ${response.status}: ${errorText}`);
-  }
-
-  const reader = response.body?.getReader();
-  if (!reader) throw new Error('No response body');
-
-  const decoder = new TextDecoder();
-  let buffer = '';
-
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop() || '';
-
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const data = line.slice(6).trim();
-        if (data === '[DONE]') {
-          yield { text: '', done: true, finishReason: 'stop' };
-          return;
-        }
-
-        try {
-          const parsed = JSON.parse(data);
-          const delta = parsed.choices?.[0]?.delta;
-          if (!delta) continue;
-
-          const chunk: StreamChunk = {
-            text: delta.content || '',
-            toolCalls: delta.tool_calls,
-            finishReason: parsed.choices?.[0]?.finish_reason,
-            done: false
-          };
-          yield chunk;
-
-          if (parsed.choices?.[0]?.finish_reason) {
-            yield { text: '', done: true, finishReason: parsed.choices[0].finish_reason };
-            return;
-          }
-        } catch {
-          // Ignore parse errors for partial chunks
-        }
-      }
-    }
-  } finally {
-    reader.releaseLock();
-  }
-}
-
-async function executeWithRetry<T>(
-  fn: () => Promise<T>,
-  retries: number,
-  delay: number
-): Promise<T> {
-  let lastError: Error | null = null;
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      return await fn();
-    } catch (error) {
-      lastError = error instanceof Error ? error : new Error(String(error));
-      if (attempt < retries) {
-        await new Promise(r => setTimeout(r, delay * Math.pow(2, attempt)));
-      }
-    }
-  }
-  throw lastError!;
-}
-
 export class AIProviderRegistry {
   private config: AIProviderConfig;
   private modelMap: Map<string, AIModelConfig>;
@@ -554,33 +413,27 @@ export class AIProviderRegistry {
 
   async chat(request: AIRequest): Promise<{ text: string; provider: string; model: string; usage?: any; toolCalls?: ToolCall[]; finishReason: string; latencyMs: number }> {
     const startTime = Date.now();
-    const modelId = request.model || this.config.defaultModel;
     const model = this.modelMap.get(request.model || this.config.defaultModel);
 
     if (!model) {
       throw new Error(`Model not found: ${request.model || this.config.defaultModel}`);
     }
 
-    const messages: ProviderMessage[] = [
-      ...(request.systemPrompt ? [{ role: 'system' as const, content: request.systemPrompt }] : []),
-      ...request.messages
-    ];
-
     const attemptModel = async (modelId: string): Promise<any> => {
       const model = this.modelMap.get(modelId);
       if (!model) throw new Error(`Model not found: ${modelId}`);
-
-      const maxTokens = Math.min(request.maxTokens || 900, model.maxTokens);
-      const temperature = request.temperature ?? 0.7;
-      const topP = request.topP ?? 0.95;
+      const endpoint = safeProviderEndpoint(model.baseUrl);
+      const providerModel = safeProviderModel(model.model);
+      if (!endpoint || !providerModel) throw new Error(`Unsafe provider configuration: ${modelId}`);
+      const maxTokens = safeMaxTokens(request.maxTokens ?? 900);
 
       const body: Record<string, unknown> = {
-        model: model.model,
+        model: providerModel,
         messages: [
           ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
           ...request.messages
         ],
-        max_completion_tokens: Math.min(request.maxTokens || 900, model.maxTokens),
+        max_completion_tokens: Math.min(maxTokens, model.maxTokens),
         temperature: request.temperature ?? 0.7,
         top_p: request.topP ?? 0.95,
         stream: false
@@ -595,19 +448,19 @@ export class AIProviderRegistry {
         (body as any).response_format = request.responseFormat;
       }
 
-      const response = await fetch(`${model.baseUrl.replace(/\/+$/, '')}/chat/completions`, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${getApiKey(model.apiKeyEnv) || ''}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: model.model,
+          model: providerModel,
           messages: [
             ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
             ...request.messages
           ],
-          max_completion_tokens: Math.min(request.maxTokens || 900, model.maxTokens),
+          max_completion_tokens: Math.min(maxTokens, model.maxTokens),
           temperature: request.temperature ?? 0.7,
           top_p: request.topP ?? 0.95,
           stream: false
@@ -617,7 +470,10 @@ export class AIProviderRegistry {
 
       const payload = await readBoundedJson(response, 1_000_000) as {
         choices?: { message?: { content?: string; tool_calls?: ToolCall[] }; finish_reason?: string }[];         usage?: Record<string, number>;       };
-      const text = payload.choices?.[0]?.message?.content || '';
+      const text = boundedProviderText(
+        providerTextFromPayload(payload, Math.min(65_536, maxTokens * 16)),
+        maxTokens
+      ) || '';
       const toolCalls = payload.choices?.[0]?.message?.tool_calls;
       const finishReason = payload.choices?.[0]?.finish_reason || 'stop';
 
@@ -632,10 +488,8 @@ export class AIProviderRegistry {
       };
     }
 
-    const fallbackChain = this.config.fallbackChain;
     const modelsToTry = request.model ? [request.model] : [this.config.defaultModel, ...this.config.fallbackChain.filter(m => m !== this.config.defaultModel)];
 
-    const lastError: Error | null = null;
     for (const modelId of modelsToTry) {
       try {
         const result = await attemptModel(modelId);
@@ -652,25 +506,24 @@ export class AIProviderRegistry {
   async *streamChat(request: AIRequest): AsyncGenerator<any, void, unknown> {
     const model = this.modelMap.get(request.model || this.config.defaultModel);
     if (!model) throw new Error(`Model not found: ${request.model || this.config.defaultModel}`);
+    const endpoint = safeProviderEndpoint(model.baseUrl);
+    const providerModel = safeProviderModel(model.model);
+    if (!endpoint || !providerModel) throw new Error(`Unsafe provider configuration: ${model.id}`);
+    const maxTokens = safeMaxTokens(request.maxTokens ?? 900);
 
-    const messages: any[] = [
-      ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
-      ...request.messages
-    ];
-
-    const response = await fetch(`${model.baseUrl.replace(/\/+$/, '')}/chat/completions`, {
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${getApiKey(model.apiKeyEnv) || ''}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: model.model,
+        model: providerModel,
         messages: [
           ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
           ...request.messages
         ],
-        max_completion_tokens: Math.min(request.maxTokens || 900, model.maxTokens),
+        max_completion_tokens: Math.min(maxTokens, model.maxTokens),
         temperature: request.temperature ?? 0.7,
         top_p: request.topP ?? 0.95,
         stream: true
@@ -702,8 +555,9 @@ export class AIProviderRegistry {
           try {
             const parsed = JSON.parse(data);
             const delta = parsed.choices?.[0]?.delta;
-            if (delta?.content) {
-              yield { text: delta.content, done: false };
+            const text = boundedProviderText(delta?.content, maxTokens);
+            if (text) {
+              yield { text, done: false };
             }
             if (parsed.choices?.[0]?.finish_reason) {
               yield { text: '', done: true, finishReason: parsed.choices[0].finish_reason };

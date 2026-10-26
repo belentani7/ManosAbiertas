@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Heart, Globe, Shield, ExternalLink, Keyboard, Command, ArrowUp, Search } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';
 import { ReadingModeToggle } from './reading-mode-toggle';

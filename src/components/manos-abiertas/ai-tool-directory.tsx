@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { AI_TOOLS, type AIAccess, type AIToolKind } from '@/data/ai-tools';
 
-const KIND_LABELS: Record<AIToolKind, string> = { chat: 'Chat', image: 'Imagen', media: 'Material abierto' };
 const ACCESS_LABELS: Record<AIAccess, string> = { 'no-account': 'Sin cuenta', 'optional-account': 'Cuenta opcional', 'account-or-api': 'Cuenta o API' };
 const KIND_ICONS: Record<AIToolKind, typeof MessageCircle> = { chat: MessageCircle, image: Image, media: Video };
 

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Menu, X, Heart, Sparkles, FileText, BookOpen, Database, Shield, Phone, Home as HomeIcon, Moon, Sun, Wrench, Calendar, GraduationCap, Users, CreditCard, BarChart2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { useAppStore, type SectionId } from '@/stores/app-store';
 import { useTheme } from 'next-themes';
 import { LanguageSelector } from './language-selector';
@@ -160,7 +159,6 @@ export function NavBar() {
           >
             <nav className="container mx-auto max-w-7xl px-4 py-3 grid grid-cols-2 gap-1.5">
               {NAV_ITEMS.map((item) => {
-                const Icon = item.icon;
                 const active = activeSection === item.id;
                 return (
                   <button

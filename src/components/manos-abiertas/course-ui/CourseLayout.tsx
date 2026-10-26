@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Lock, Play, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
+import { Check, Lock, ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
 
 interface Lesson {
   id: string;

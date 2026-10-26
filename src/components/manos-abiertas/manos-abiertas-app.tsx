@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { PWAStatus } from './pwa-status';
-import { useAppStore, sectionFromHash, type SectionId } from '@/stores/app-store';
+import { useAppStore, sectionFromHash } from '@/stores/app-store';
 
 // Heavy/later sections are lazy-loaded to shrink the initial bundle.
 const CVSection = dynamic(() => import('./cv-section').then((m) => m.CVSection));

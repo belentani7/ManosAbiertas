@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { chatCompletion, chatCompletionStream, createSystemPrompt } from '@/lib/chat-engine';
+import { chatCompletionStream, createSystemPrompt } from '@/lib/chat-engine';
 import { aiLanguageInstruction } from '@/lib/ai-language';
 import { chatRequestSchema, type ChatRequest } from '@/lib/api-request-schemas';
 import { apiError, apiJson, apiStream, enforceRateLimit, hasRemoteAIConsent, readJsonBody, reportServerError } from '@/lib/api-security';
@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
     const sources = searchVerifiedResources(fallbackQuestion, { limit: 5 });
 
     const systemPrompt = [
+      aiLanguageInstruction(lang),
       createSystemPrompt({
         locale: lang,
         section: body.context,

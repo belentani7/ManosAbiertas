@@ -24,7 +24,6 @@ export async function generateMetadata({
     notFound();
   }
 
-  const lang = LANGUAGES.find((l) => l.code === locale);
   const t = getTranslation(locale);
 
   return {

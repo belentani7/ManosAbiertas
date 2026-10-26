@@ -1,4 +1,3 @@
-import { ToolDefinition } from './ai-provider';
 
 export interface FunctionContext {
   userId?: string;
@@ -92,7 +91,7 @@ class FunctionRegistry {
 
 export const functionRegistry = new FunctionRegistry();
 
-functionRegistry.addMiddleware(async (name, args, context) => {
+functionRegistry.addMiddleware(async (name, args, _context) => {
   console.log(`[Function] ${name} called with:`, JSON.stringify(args));
 });
 
@@ -117,7 +116,7 @@ functionRegistry.register(
       required: []
     }
   },
-  async (args, context) => {
+  async (args, _context) => {
     return { success: true, result: [], metadata: { query: args.query, total: 0 } };
   }
 );
@@ -136,7 +135,7 @@ functionRegistry.register(
       required: []
     }
   },
-  async (args, context) => {
+  async (args, _context) => {
     return { success: true, result: [], metadata: { query: args.query, total: 0 } };
   }
 );
@@ -215,7 +214,7 @@ functionRegistry.register(
       required: ['personalData']
     }
   },
-  async (args, context) => {
+  async (args, _context) => {
     return { success: true, result: { cvText: 'CV generado', template: args.template || 'europass', language: args.language || 'es' }, metadata: {} };
   }
 );
@@ -237,7 +236,7 @@ functionRegistry.register(
       required: ['jobTitle', 'company', 'jobDescription', 'candidateProfile']
     }
   },
-  async (args, context) => {
+  async (args, _context) => {
     return { success: true, result: { coverLetter: 'Carta generada', language: args.language || 'es' }, metadata: {} };
   }
 );
@@ -256,7 +255,7 @@ functionRegistry.register(
       required: ['cvText', 'jobDescription']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: { analysis: 'Análisis ATS' }, metadata: {} };
   }
 );
@@ -277,7 +276,7 @@ functionRegistry.register(
       required: ['lat', 'lng']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: [], metadata: {} };
   }
 );
@@ -296,7 +295,7 @@ functionRegistry.register(
       required: ['city']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: { analysis: 'Coste de vida calculado' }, metadata: {} };
   }
 );
@@ -315,7 +314,7 @@ functionRegistry.register(
       required: ['documentType', 'expiryDate']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: { analysis: 'Documento verificado' }, metadata: {} };
   }
 );
@@ -334,7 +333,7 @@ functionRegistry.register(
       required: ['text', 'targetLanguage']
     }
   },
-  async (args, context) => {
+  async (args, _context) => {
     return { success: true, result: { translatedText: 'Texto traducido', targetLanguage: args.targetLanguage }, metadata: {} };
   }
 );
@@ -353,7 +352,7 @@ functionRegistry.register(
       required: ['procedure']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: { guide: 'Guía legal generada' }, metadata: {} };
   }
 );
@@ -372,7 +371,7 @@ functionRegistry.register(
       required: ['goal']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: { checklist: 'Checklist generada' }, metadata: {} };
   }
 );
@@ -391,7 +390,7 @@ functionRegistry.register(
       required: []
     }
   },
-  async (args, context) => {
+  async (args, _context) => {
     const contacts = {
       emergencia: { nombre: 'Emergencias', telefono: '112', descripcion: 'Emergencias generales' },
       violencia_genero: { nombre: 'Violencia de Género', telefono: '016', descripcion: 'Atención a víctimas' },
@@ -418,7 +417,7 @@ functionRegistry.register(
       required: []
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: [], metadata: { total: 0 } };
   }
 );
@@ -437,7 +436,7 @@ functionRegistry.register(
       required: ['courseId', 'lessonId']
     }
   },
-  async (args, context) => {
+  async (_args, _context) => {
     return { success: true, result: { content: 'Contenido del curso' }, metadata: {} };
   }
 );
