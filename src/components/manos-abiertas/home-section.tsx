@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Sparkles, FileText, BookOpen, Database, Shield, Phone, Globe, Heart, Users, GraduationCap, ChevronRight, Star, Wrench, Calendar } from 'lucide-react';
+import { ArrowRight, Sparkles, FileText, BookOpen, Database, Shield, Phone, Globe, Heart, Users, GraduationCap, ChevronRight, Star, Wrench, Calendar, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -164,6 +164,15 @@ export function HomeSection() {
                 {language === 'pt' ? 'Explorar cursos' : language === 'en' ? 'Browse courses' : 'Explorar cursos'}
               </Button>
             </div>
+
+            <a
+              href="/orientacion.html"
+              className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-primary/50 bg-white/80 px-5 py-3 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-card/80"
+            >
+              <Compass className="h-4 w-4 text-primary" aria-hidden="true" />
+              {language === 'pt' ? 'Escolher meu caminho de aprendizagem' : language === 'en' ? 'Choose my learning path' : 'Elegir mi ruta de aprendizaje'}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
 
             {/* Visual mockup - CV preview + AI chat */}
             <motion.div
