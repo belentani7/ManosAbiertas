@@ -31,7 +31,8 @@
     "tools:verify": "node scripts/generate-platform-tools.mjs --check",
     "guides:generate": "node scripts/generate-one-page-guides.mjs",
     "guides:verify": "node scripts/generate-one-page-guides.mjs --check",
-    "quality:check": "pnpm run lint && pnpm run typecheck && pnpm run test:core && pnpm run i18n:verify && pnpm run trust:verify && pnpm run accessibility:verify && pnpm run improvements:verify && pnpm run tools:verify && pnpm run guides:verify && pnpm run build"
+    "quality:check": "pnpm run lint && pnpm run typecheck && pnpm run test:core && pnpm run i18n:verify && pnpm run trust:verify && pnpm run accessibility:verify && pnpm run improvements:verify && pnpm run tools:verify && pnpm run guides:verify && pnpm run build",
+    "test": "node --test"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -130,5 +131,8 @@
     "@parcel/watcher@2.6.0": true,
     "unrs-resolver@1.12.2": true
   },
-  "homepage": "https://manos-abiertas-rho.vercel.app"
+  "homepage": "https://manos-abiertas-rho.vercel.app",
+  "engines": {
+    "node": ">=18"
+  }
 }
