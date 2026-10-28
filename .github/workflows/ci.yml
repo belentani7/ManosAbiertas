@@ -65,6 +65,8 @@ jobs:
         run: pnpm test:core
         env:
           CI: true
+      - name: Verify campus navigation, links and quiz content
+        run: node --test tests/campus-navigation-integrity.test.mjs
       - name: Verify cybersecurity course content (smishing)
         run: node scripts/verify-ciberseguridad-smishing.mjs
       - name: Verify five generated learning courses' actual content

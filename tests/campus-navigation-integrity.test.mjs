@@ -19,7 +19,11 @@ function attributes(tag) {
   return result;
 }
 function localTarget(value) {
-  if (!value || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(value)) return null;
+  if (!value) return null;
+  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(value)) {
+    assert.match(value, /^(?:https?:|mailto:|tel:|\/\/)/i, 'Unsafe external URL: ' + value);
+    return null;
+  }
   const url = new URL(value, 'https://campus.invalid/campus/index.html');
   const path = decodeURIComponent(url.pathname);
   assert.ok(path.startsWith('/campus/'), 'Local link escapes published campus: ' + value);
@@ -46,6 +50,22 @@ test('local links cannot silently leave the published campus', () => {
   for (const href of ['../not-published.html', '/not-published.html', '%2e%2e/not-published.html'])
     assert.throws(() => localTarget(href), /Local link escapes published campus/);
   assert.equal(localTarget('https://example.com/course'), null);
+});
+
+test('campus links reject executable and opaque URL schemes', () => {
+  for (const value of [
+    'javascript:alert(1)',
+    'data:text/html,<script>alert(1)</script>',
+    'file:///etc/passwd',
+    'blob:https://example.com/id',
+  ]) assert.throws(() => localTarget(value), /Unsafe external URL/);
+  for (const value of ['https://example.com', 'mailto:info@example.com', 'tel:+34123456789', '//cdn.example.com/a.css'])
+    assert.equal(localTarget(value), null);
+});
+
+test('general CI runs campus navigation integrity gate', () => {
+  const workflow = readFileSync(resolve(root, '.github/workflows/ci.yml'), 'utf8');
+  assert.match(workflow, /node --test tests\/campus-navigation-integrity\.test\.mjs/);
 });
 
 test('HTML attribute parser includes unquoted references and preserves first duplicate', () => {
