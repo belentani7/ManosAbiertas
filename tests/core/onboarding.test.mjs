@@ -117,3 +117,26 @@ test('la API de onboarding está registrada en middleware e índice público', (
   const apiIndex = readFileSync(fileURLToPath(new URL('../../src/app/api/route.ts', import.meta.url)), 'utf8');
   assert.match(apiIndex, /\/api\/onboarding/);
 });
+
+test('entrar desde el onboarding navega a la primera actividad elegida', () => {
+  for (const goal of PORTAL_GOALS) {
+    for (const language of PORTAL_LANGUAGES) {
+      const plan = resolveOnboardingPlan(goal.id, language.code);
+      assert.ok(plan);
+      assert.equal(plan.entrySection, plan.steps[0].section);
+    }
+  }
+
+  // Integration contract: finishing a route must not reset the active section to home.
+  const portal = readFileSync(
+    fileURLToPath(new URL('../../src/components/manos-abiertas/welcome-portal.tsx', import.meta.url)),
+    'utf8',
+  );
+  const app = readFileSync(
+    fileURLToPath(new URL('../../src/components/manos-abiertas/manos-abiertas-app.tsx', import.meta.url)),
+    'utf8',
+  );
+  assert.match(portal, /onEnter\(plan\?\.entrySection \?\? 'home'\)/);
+  assert.match(app, /closePortal\(section\)/);
+  assert.match(app, /if \(section !== 'keep'\) setActiveSection\(section\)/);
+});
