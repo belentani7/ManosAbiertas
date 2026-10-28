@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowUp, Heart } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { PWAStatus } from './pwa-status';
-import { useAppStore, sectionFromHash } from '@/stores/app-store';
+import { useAppStore, sectionFromHash, type SectionId } from '@/stores/app-store';
 import { PORTAL_EVENT, PORTAL_STORAGE_KEY } from '@/lib/version';
 
 // Heavy/later sections are lazy-loaded to shrink the initial bundle.
@@ -89,9 +89,9 @@ export function ManosAbiertasApp() {
     return () => window.removeEventListener(PORTAL_EVENT, openPortal);
   }, []);
 
-  const closePortal = useCallback((section: 'home' | 'keep') => {
+  const closePortal = useCallback((section: SectionId | 'keep') => {
     setPortalPhase('app');
-    if (section === 'home') setActiveSection('home');
+    if (section !== 'keep') setActiveSection(section);
     try {
       const url = new URL(window.location.href);
       if (url.searchParams.has('portal')) {
@@ -104,7 +104,7 @@ export function ManosAbiertasApp() {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, [setActiveSection]);
 
-  const handlePortalEnter = useCallback(() => closePortal('home'), [closePortal]);
+  const handlePortalEnter = useCallback((section: SectionId) => closePortal(section), [closePortal]);
   const handlePortalSkip = useCallback(() => closePortal('keep'), [closePortal]);
 
   if (portalPhase === 'loading') return <PortalSplash />;
