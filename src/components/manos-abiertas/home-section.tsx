@@ -154,6 +154,15 @@ export function HomeSection() {
                 <Sparkles className="h-5 w-5 text-primary" />
                 {t.hero_cta_learn}
               </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => setActiveSection('courses')}
+                className="gap-2 h-12 px-7"
+              >
+                <GraduationCap className="h-5 w-5 text-primary" aria-hidden="true" />
+                {language === 'pt' ? 'Explorar cursos' : language === 'en' ? 'Browse courses' : 'Explorar cursos'}
+              </Button>
             </div>
 
             {/* Visual mockup - CV preview + AI chat */}
