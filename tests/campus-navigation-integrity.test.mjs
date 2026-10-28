@@ -1,6 +1,7 @@
 // Guard against publishing a campus homepage with broken local course links.
 // Run with: node --test tests/campus-navigation-integrity.test.mjs
 import test from 'node:test';
+import {runInNewContext} from 'node:vm';
 import assert from 'node:assert/strict';
 import {readFileSync, existsSync, statSync} from 'node:fs';
 import {resolve, sep} from 'node:path';
@@ -81,6 +82,30 @@ test('quiz schema gate rejects syntactically valid but unusable payloads', () =>
   for (const invalid of [{}, [], [{ ...question, opciones: [] }], [{ ...question, correcta: 3 }],
     [{ ...question, explicacion: '' }]])
     assert.throws(() => assertValidQuiz(invalid, 'invalid'), /Quiz must|invalid|missing/);
+});
+
+test('rejected quiz routes clear stale answers and controls', () => {
+  // Execute the actual browser quiz loader with a minimal DOM fixture.
+  // No network call or external DOM dependency is needed for rejected URLs.
+  const script = readFileSync(resolve(campus, 'app.js'), 'utf8');
+  const boundary = script.indexOf('// stagger');
+  assert.ok(boundary > 0, 'Quiz loader must precede visual effects');
+  const oldAnswers = [{disabled: false}];
+  const ui = {
+    '.quiz-titulo': {textContent: 'Pregunta anterior'},
+    '.opciones': {children: oldAnswers, replaceChildren() {this.children = [];}},
+    '.feedback': {textContent: 'Correcto'},
+    '.marcador': {textContent: 'Aciertos: 1'},
+    '.quiz-siguiente': {hidden: false},
+  };
+  const box = {querySelector(selector) {return ui[selector];}};
+  runInNewContext(script.slice(0, boundary) + "\nloadQuiz('javascript:alert(1)', box);",
+    {box, AbortController});
+  assert.equal(ui['.quiz-titulo'].textContent, 'Ruta del cuestionario no permitida');
+  assert.equal(ui['.opciones'].children.length, 0, 'Previous answer buttons must disappear');
+  assert.equal(ui['.feedback'].textContent, '', 'Previous answer feedback must disappear');
+  assert.equal(ui['.marcador'].textContent, '', 'Previous score must disappear');
+  assert.equal(ui['.quiz-siguiente'].hidden, true, 'Previous next button must be disabled');
 });
 
 test('homepage local document links resolve to published files', () => {
