@@ -10,6 +10,7 @@ import {
   safeMaxTokens,
   safeProviderEndpoint,
   safeProviderModel,
+  takeSseLines,
 } from '../../src/lib/provider-security.ts';
 
 test('provider endpoints require HTTPS without credentials in production', () => {
@@ -96,4 +97,30 @@ test('both provider fetch paths serialize the same verified body builder', () =>
   assert.match(source, /body:\s*JSON\.stringify\(body\)/);
   assert.match(source, /body:\s*JSON\.stringify\(buildProviderBody\(/);
   assert.doesNotMatch(source, /body:\s*JSON\.stringify\(\{/);
+});
+
+test('SSE decoder preserves split JSON frames and CRLF boundaries', () => {
+  const chunks = [
+    'data: {"choices":[{"delta":{"content":"Ho',
+    'la"}}]}\\r\\n\\r\\n',
+    'data: [DO',
+    'NE]\\n',
+  ].map(part => part.replaceAll('\\r', '\r').replaceAll('\\n', '\n'));
+  let remainder = '';
+  const lines = [];
+  for (const chunk of chunks) {
+    const frame = takeSseLines(remainder + chunk);
+    remainder = frame.remainder;
+    lines.push(...frame.lines);
+  }
+  assert.equal(remainder, '');
+  assert.deepEqual(lines.filter(Boolean), [
+    'data: {"choices":[{"delta":{"content":"Hola"}}]}',
+    'data: [DONE]',
+  ]);
+});
+
+test('SSE decoder refuses unbounded unterminated provider frames', () => {
+  assert.throws(() => takeSseLines('x'.repeat(131_073)), /size limit/);
+  assert.deepEqual(takeSseLines('data: {}\\n'.replace('\\n', '\n')), { lines: ['data: {}'], remainder: '' });
 });
