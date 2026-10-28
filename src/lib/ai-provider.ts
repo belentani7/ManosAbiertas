@@ -5,7 +5,8 @@ import {
   providerTextFromPayload,
   safeMaxTokens,
   safeProviderEndpoint,
-  safeProviderModel
+  safeProviderModel,
+  takeSseLines
 } from './provider-security';
 
 export type ProviderMessage = { role: 'system' | 'user' | 'assistant' | 'tool'; content: string; tool_calls?: ToolCall[]; tool_call_id?: string; name?: string };
@@ -503,17 +504,18 @@ export class AIProviderRegistry {
     if (!reader) throw new Error('No response body');
 
     const decoder = new TextDecoder();
-    const buffer = '';
+    let buffer = '';
 
     try {
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
-        const chunk = decoder.decode(value, { stream: true });
-        for (const line of (buffer + chunk).split('\n')) {
-          if (!line.startsWith('data: ')) continue;
-          const data = line.slice(6).trim();
+        const frame = takeSseLines(buffer + decoder.decode(value, { stream: true }));
+        buffer = frame.remainder;
+        for (const line of frame.lines) {
+          if (!line.startsWith('data:')) continue;
+          const data = line.slice(5).trim();
           if (data === '[DONE]') {
             yield { text: '', done: true, finishReason: 'stop' };
             return;
@@ -522,16 +524,14 @@ export class AIProviderRegistry {
             const parsed = JSON.parse(data);
             const delta = parsed.choices?.[0]?.delta;
             const text = boundedProviderText(delta?.content, maxTokens);
-            if (text) {
-              yield { text, done: false };
-            }
+            if (text) yield { text, done: false };
             if (parsed.choices?.[0]?.finish_reason) {
               yield { text: '', done: true, finishReason: parsed.choices[0].finish_reason };
               return;
             }
           } catch {
-              // Ignore parse errors in stream
-            }
+            // Invalid provider events are ignored; a partial event is buffered above.
+          }
         }
       }
     } finally {
