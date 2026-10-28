@@ -88,8 +88,9 @@ test('rejected quiz routes clear stale answers and controls', () => {
   // Execute the actual browser quiz loader with a minimal DOM fixture.
   // No network call or external DOM dependency is needed for rejected URLs.
   const script = readFileSync(resolve(campus, 'app.js'), 'utf8');
+  const start = script.indexOf('const $ =');
   const boundary = script.indexOf('// stagger');
-  assert.ok(boundary > 0, 'Quiz loader must precede visual effects');
+  assert.ok(start >= 0 && boundary > start, 'Quiz loader must precede visual effects');
   const oldAnswers = [{disabled: false}];
   const ui = {
     '.quiz-titulo': {textContent: 'Pregunta anterior'},
@@ -99,7 +100,7 @@ test('rejected quiz routes clear stale answers and controls', () => {
     '.quiz-siguiente': {hidden: false},
   };
   const box = {querySelector(selector) {return ui[selector];}};
-  runInNewContext(script.slice(0, boundary) + "\nloadQuiz('javascript:alert(1)', box);",
+  runInNewContext(script.slice(start, boundary) + "\nloadQuiz('javascript:alert(1)', box);",
     {box, AbortController});
   assert.equal(ui['.quiz-titulo'].textContent, 'Ruta del cuestionario no permitida');
   assert.equal(ui['.opciones'].children.length, 0, 'Previous answer buttons must disappear');
