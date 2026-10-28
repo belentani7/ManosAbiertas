@@ -76,3 +76,12 @@ export function buildProviderBody(
   if (request.responseFormat) body.response_format = request.responseFormat;
   return body;
 }
+
+/** Split complete SSE lines while preserving a partial UTF-8-decoded frame. */
+export function takeSseLines(buffer: string): { lines: string[]; remainder: string } {
+  const parts = buffer.split('\n');
+  const remainder = parts.pop() ?? '';
+  // Prevent an upstream provider from growing a never-terminated event forever.
+  if (remainder.length > 131_072) throw new Error('Provider SSE event exceeds size limit');
+  return { lines: parts.map(line => line.endsWith('\r') ? line.slice(0, -1) : line), remainder };
+}
