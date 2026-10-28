@@ -28,7 +28,7 @@ import {
 } from '@/data/portal';
 import { resolveOnboardingPlan, type OnboardingPlan } from '@/lib/onboarding';
 import { APP_VERSION, PORTAL_STORAGE_KEY } from '@/lib/version';
-import { useAppStore } from '@/stores/app-store';
+import { useAppStore, type SectionId } from '@/stores/app-store';
 import { cn } from '@/lib/utils';
 
 type Stage = 0 | 1 | 2 | 3;
@@ -48,6 +48,7 @@ function isPlan(value: unknown): value is OnboardingPlan {
     record.ok === true
     && typeof record.version === 'string'
     && typeof record.entrySection === 'string'
+    && PORTAL_GOALS.some((goal) => goal.steps.some((step) => step.section === record.entrySection))
     && typeof record.goal === 'object'
     && record.goal !== null
     && typeof record.journey === 'object'
@@ -61,7 +62,7 @@ export function WelcomePortal({
   onEnter,
   onSkip,
 }: {
-  onEnter: () => void;
+  onEnter: (section: SectionId) => void;
   onSkip: () => void;
 }) {
   const languageCode = useAppStore((state) => state.language);
@@ -159,7 +160,7 @@ export function WelcomePortal({
     } catch {
       /* El portal sigue siendo útil aunque el navegador bloquee el almacenamiento. */
     }
-    onEnter();
+    onEnter(plan?.entrySection ?? 'home');
   }
 
   function skip() {
