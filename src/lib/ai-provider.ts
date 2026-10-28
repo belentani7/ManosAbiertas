@@ -1,6 +1,7 @@
 import { readBoundedJson } from './network-json';
 import {
   boundedProviderText,
+  buildProviderBody,
   providerTextFromPayload,
   safeMaxTokens,
   safeProviderEndpoint,
@@ -427,26 +428,9 @@ export class AIProviderRegistry {
       if (!endpoint || !providerModel) throw new Error(`Unsafe provider configuration: ${modelId}`);
       const maxTokens = safeMaxTokens(request.maxTokens ?? 900);
 
-      const body: Record<string, unknown> = {
-        model: providerModel,
-        messages: [
-          ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
-          ...request.messages
-        ],
-        max_completion_tokens: Math.min(maxTokens, model.maxTokens),
-        temperature: request.temperature ?? 0.7,
-        top_p: request.topP ?? 0.95,
-        stream: false
-      };
-
-      if (request.tools && request.tools.length > 0 && model.supportsTools) {
-        (body as any).tools = request.tools;
-        if (request.toolChoice) (body as any).tool_choice = request.toolChoice;
-      }
-
-      if (request.responseFormat) {
-        (body as any).response_format = request.responseFormat;
-      }
+      const body = buildProviderBody(request, {
+        name: providerModel, maxTokens: model.maxTokens, supportsTools: model.supportsTools
+      }, maxTokens, false);
 
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -454,17 +438,7 @@ export class AIProviderRegistry {
           'Authorization': `Bearer ${getApiKey(model.apiKeyEnv) || ''}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          model: providerModel,
-          messages: [
-            ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
-            ...request.messages
-          ],
-          max_completion_tokens: Math.min(maxTokens, model.maxTokens),
-          temperature: request.temperature ?? 0.7,
-          top_p: request.topP ?? 0.95,
-          stream: false
-        }),
+        body: JSON.stringify(body),
         signal: AbortSignal.timeout(DEFAULT_CONFIG.timeout)
       });
 
@@ -517,17 +491,9 @@ export class AIProviderRegistry {
         'Authorization': `Bearer ${getApiKey(model.apiKeyEnv) || ''}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        model: providerModel,
-        messages: [
-          ...(request.systemPrompt ? [{ role: 'system', content: request.systemPrompt }] : []),
-          ...request.messages
-        ],
-        max_completion_tokens: Math.min(maxTokens, model.maxTokens),
-        temperature: request.temperature ?? 0.7,
-        top_p: request.topP ?? 0.95,
-        stream: true
-      }),
+      body: JSON.stringify(buildProviderBody(request, {
+        name: providerModel, maxTokens: model.maxTokens, supportsTools: model.supportsTools
+      }, maxTokens, true)),
       signal: AbortSignal.timeout(DEFAULT_CONFIG.timeout)
     });
 
