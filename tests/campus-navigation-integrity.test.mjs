@@ -11,8 +11,11 @@ const home = readFileSync(resolve(campus, 'index.html'), 'utf8');
 
 function attributes(tag) {
   const result = new Map();
-  for (const match of tag.matchAll(/([\w-]+)\s*=\s*(["'])(.*?)\2/gis))
-    result.set(match[1].toLowerCase(), match[3]);
+  for (const match of tag.matchAll(/\s([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'`=<>]+))/gi)) {
+    const name = match[1].toLowerCase();
+    // Browsers use the first occurrence of a duplicated HTML attribute.
+    if (!result.has(name)) result.set(name, match[2] ?? match[3] ?? match[4]);
+  }
   return result;
 }
 function localTarget(value) {
@@ -45,6 +48,13 @@ test('local links cannot silently leave the published campus', () => {
   assert.equal(localTarget('https://example.com/course'), null);
 });
 
+test('HTML attribute parser includes unquoted references and preserves first duplicate', () => {
+  assert.equal(attributes('<a href=../not-published.html>').get('href'), '../not-published.html');
+  assert.equal(attributes('<option value=cursos/missing.json>').get('value'), 'cursos/missing.json');
+  assert.equal(attributes('<section id=cursos>').get('id'), 'cursos');
+  assert.equal(attributes('<a href=missing.html href="valid.html">').get('href'), 'missing.html');
+});
+
 test('quiz schema gate rejects syntactically valid but unusable payloads', () => {
   const question = { pregunta: '¿Pregunta?', opciones: ['Sí', 'No'], correcta: 0, explicacion: 'Motivo' };
   assert.doesNotThrow(() => assertValidQuiz([question], 'valid'));
@@ -63,15 +73,29 @@ test('homepage local document links resolve to published files', () => {
   }
   assert.deepEqual(failures, [], 'Broken campus links');
 });
+test('homepage local stylesheet, script and media references resolve to published files', () => {
+  const failures = [];
+  for (const match of home.matchAll(/<(?:link|script|img|source)\b[^>]*>/gi)) {
+    const attrs = attributes(match[0]);
+    const ref = attrs.get('src') ?? attrs.get('href');
+    if (!ref || ref.startsWith('#')) continue;
+    const target = localTarget(ref);
+    if (target && (!existsSync(target) || !statSync(target).isFile())) failures.push(ref);
+  }
+  assert.deepEqual(failures, [], 'Missing campus assets');
+});
 test('all homepage fragment links point to existing section IDs', () => {
-  const ids = new Set([...home.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(x => x[2]));
+  const ids = new Set([...home.matchAll(/<[\w:-]+\b[^>]*>/gi)]
+    .map(x => attributes(x[0]).get('id')).filter(Boolean));
   const missing = [...home.matchAll(/<a\b[^>]*>/gi)]
     .map(x => attributes(x[0]).get('href')).filter(x => x?.startsWith('#') && x.length > 1)
     .filter(x => !ids.has(decodeURIComponent(x.slice(1))));
   assert.deepEqual(missing, [], 'Broken fragment links');
 });
 test('every quiz selector source exists and contains valid JSON', () => {
-  const sources = [...home.matchAll(/<option\b[^>]*value\s*=\s*(["'])([^"']+\.json)\1/gi)].map(x=>x[2]);
+  const sources = [...home.matchAll(/<option\b[^>]*>/gi)]
+    .map(x => attributes(x[0]).get('value'))
+    .filter(value => value && /\.json(?:[?#]|$)/i.test(value));
   assert.ok(sources.length >= 3, 'Expected the three course quiz choices');
   for (const source of sources) {
     const target = localTarget(source);
