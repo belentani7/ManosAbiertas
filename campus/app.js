@@ -12,11 +12,14 @@ function loadQuiz(url,box) {
   const titulo=$('.quiz-titulo',box),opciones=$('.opciones',box);
   const feedback=$('.feedback',box),marcador=$('.marcador',box);
   const button=$('.quiz-siguiente',box);
+  // Reset stale answers and feedback before validating a new route.
+  // Otherwise a rejected selection leaves the previous quiz actionable.
+  opciones.replaceChildren();feedback.textContent='';button.hidden=true;
+  marcador.textContent='';
   if(!/^cursos\/(?:alfabetizacion-ia|office-sin-miedo|falsos-amigos-pt-es)\/quiz\.json$/.test(url)){
     titulo.textContent='Ruta del cuestionario no permitida';return;
   }
   titulo.textContent='Cargando preguntas reales…';
-  opciones.replaceChildren();feedback.textContent='';button.hidden=true;
   fetch(url,{signal:controller.signal}).then(response=>{
     if(!response.ok)throw Error('Quiz HTTP '+response.status);
     return response.json();
