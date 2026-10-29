@@ -46,3 +46,18 @@ test('site identity reuses the real institutional symbol and accurately counts s
   assert.doesNotMatch(layout, /\b35 idiomas\b/);
   assert.doesNotMatch(layout, /#ff6a1f/);
 });
+
+test('SEO helper never advertises nonexistent resource detail routes, unowned socials or unverified records', () => {
+  const seo = read('src/lib/seo.ts');
+  assert.match(seo, /import \{ SITE_URL \} from ['"]@\/lib\/site-url['"]/);
+  assert.match(seo, /LANGUAGES\.map/);
+  assert.doesNotMatch(seo, /manosabiertas\.space-z\.ai|SearchAction|twitter\.com\/manosabiertas|3\.647\+ recursos verificados|61 guías verificadas/);
+  assert.doesNotMatch(seo, /\/recursos\/\$\{resource\.id\}/);
+  for (const asset of ['/og.png', '/icon-192.png', '/icon-512.png']) {
+    assert.ok(existsSync(resolve(root, 'public', asset.slice(1))));
+  }
+  assert.doesNotMatch(seo, /\/(?:og-ia|og-recursos|og-derechos|icon-72|icon-384)\.png/);
+  const fallback = read('src/components/seo/static-home-fallback.tsx');
+  assert.match(fallback, /\{LANGUAGE_COUNT\} idiomas/);
+  assert.doesNotMatch(fallback, /35 idiomas/);
+});
