@@ -7,6 +7,8 @@ on:
       - 'public/**'
       - 'e2e/**'
       - 'playwright.config.ts'
+      - 'campus/**'
+      - 'scripts/publish-campus.mjs'
       - '.github/workflows/institutional-e2e.yml'
   pull_request:
     branches: [main]
@@ -37,6 +39,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Install browser engines
         run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - name: Publish the canonical campus for static browser verification
+        run: node scripts/publish-campus.mjs
       - name: Test static institutional journeys on desktop and mobile
         run: pnpm exec playwright test
       - name: Preserve failure evidence
