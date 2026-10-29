@@ -30,15 +30,18 @@ test('orientation changes the plan but only remembers it with consent', async ({
   expect(await page.evaluate(keyName => localStorage.getItem(keyName), key)).toBeNull();
 });
 
-test('programmes and campus entry points load real content', async ({ page }) => {
+test('programmes link to real published learning material', async ({ page }) => {
   await page.goto('/index.html');
   await page.getByRole('link', { name: 'Explorar programas' }).click();
   await expect(page).toHaveURL(/\/programas\.html$/);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await page.getByRole('navigation', { name: 'Navegación principal' })
-    .getByRole('link', { name: /Abrir campus/ }).click();
-  await expect(page).toHaveURL(/\/campus\/?$/);
-  await expect(page.locator('main, #main, #contenido').first()).toBeVisible();
+  const syllabus = page.getByRole('link', { name: /Consultar programa/ }).first();
+  await expect(syllabus).toHaveAttribute('href', './campus/cursos/office-sin-miedo/syllabus.md');
+  const response = await page.request.get('/campus/cursos/office-sin-miedo/syllabus.md');
+  expect(response.ok()).toBeTruthy();
+  expect(await response.text()).toMatch(/office|ofimática/i);
+  // The /campus/ homepage is intentionally a Next.js redirect to /es/cursos.
+  // This separate static suite tests the published curriculum, not Next routing.
 });
 
 test('resource filters update their visible count', async ({ page }) => {
