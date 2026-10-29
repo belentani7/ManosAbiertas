@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { LANGUAGES, type LanguageCode } from '@/i18n/languages';
 import { getTranslation } from '@/i18n/translations';
 import { ManosAbiertasApp } from '@/components/manos-abiertas/manos-abiertas-app';
+import { SITE_URL } from '@/lib/site-url';
 
 // Generate static params for all supported locales
 export async function generateStaticParams() {
@@ -34,12 +35,12 @@ export async function generateMetadata({
       description: t.hero_subtitle,
       type: 'website',
       locale: locale.replace('-', '_'),
-      url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${locale}`,
+      url: `${SITE_URL}/${locale}`,
     },
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${locale}`,
+      canonical: `${SITE_URL}/${locale}`,
       languages: Object.fromEntries(
-        LANGUAGES.map((language) => [language.code, `${process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai'}/${language.code}`]),
+        LANGUAGES.map((language) => [language.code, `${SITE_URL}/${language.code}`]),
       ),
     },
   };
