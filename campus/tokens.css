@@ -188,3 +188,12 @@ footer a { color: var(--accent); }
   .topbar nav .btn { min-height: 44px; }
   .wrap { width: min(72rem, 100% - 2rem); }
 }
+
+/* Consent-led progress: controls remain usable at 320px and on shared devices. */
+.quiz-privacy{display:grid;gap:var(--sp-3);padding:var(--sp-5);margin:var(--sp-5) 0;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-sunken)}
+.quiz-save-option{display:flex;align-items:flex-start;gap:var(--sp-3);max-width:70ch;cursor:pointer}
+.quiz-save-option input{flex:0 0 auto;margin-top:.32em;width:20px;height:20px;accent-color:var(--accent)}
+.quiz-save-option strong,.quiz-save-option small{display:block}
+.quiz-save-option small{font-size:var(--fs-xs);color:var(--text-2);line-height:1.6;margin-top:.3rem}
+.quiz-privacy .btn{justify-self:start;max-width:100%;white-space:normal;text-align:center}
+#quizStorageStatus{max-width:70ch;margin:0;color:var(--text-2);font-size:var(--fs-xs)}

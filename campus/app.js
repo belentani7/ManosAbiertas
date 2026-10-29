@@ -71,11 +71,7 @@ function loadQuiz(url,box) {
       feedback.textContent='Esta actividad no acredita niveles. Revisa las respuestas y repítela cuando quieras.';
       marcador.textContent='Resultado: '+Math.round(100*score/items.length)+'%';
       button.hidden=false;button.textContent='Repetir';
-      try{
-        localStorage.setItem('campus:quiz:'+url,JSON.stringify({
-          score,total:items.length,completedAt:new Date().toISOString()
-        }));
-      }catch{/* El almacenamiento del navegador puede estar deshabilitado. */}
+      storeQuizResult(url,score,items.length);
     };
     render();
   }).catch(()=>{
@@ -88,6 +84,48 @@ function loadQuiz(url,box) {
     feedback.textContent='Comprueba la conexión o vuelve a abrir el campus online para activar el modo offline.';
   });
 }
+
+
+// Quiz progress is private by default. Never persist a learner's score unless
+// the learner explicitly opts in on this visit. Do not store the checkbox state.
+const QUIZ_PATHS=['alfabetizacion-ia','office-sin-miedo','falsos-amigos-pt-es']
+  .map(slug=>'cursos/'+slug+'/quiz.json');
+function quizStorageMessage(message){
+  const status=document.getElementById('quizStorageStatus');
+  if(status)status.textContent=message;
+}
+function storeQuizResult(url,score,total){
+  const choice=document.getElementById('quizRemember');
+  if(!choice?.checked){
+    quizStorageMessage('Resultado no guardado. Puedes repetir la práctica sin crear una cuenta.');
+    return;
+  }
+  if(!QUIZ_PATHS.includes(url))return;
+  try{
+    localStorage.setItem('campus:quiz:'+url,JSON.stringify({
+      score,total,completedAt:new Date().toISOString()
+    }));
+    quizStorageMessage('Resultado guardado únicamente en este navegador. Puedes borrarlo aquí cuando quieras.');
+  }catch{
+    quizStorageMessage('No se pudo guardar en este navegador. Tu resultado sigue visible hasta que salgas.');
+  }
+}
+const quizRemember=document.getElementById('quizRemember');
+if(quizRemember)quizRemember.addEventListener('change',()=>{
+  quizStorageMessage(quizRemember.checked
+    ?'Al finalizar, podrás guardar tu puntuación solo en este navegador.'
+    :'No se guardarán nuevos resultados. Usa «Borrar resultados guardados» para eliminar los anteriores.');
+});
+const quizClear=document.getElementById('quizClear');
+if(quizClear)quizClear.addEventListener('click',()=>{
+  try{
+    for(const path of QUIZ_PATHS)localStorage.removeItem('campus:quiz:'+path);
+    if(quizRemember)quizRemember.checked=false;
+    quizStorageMessage('Resultados guardados borrados de este navegador. La práctica actual no se reinicia.');
+  }catch{
+    quizStorageMessage('No se pudo acceder al almacenamiento. Revisa los permisos de este navegador.');
+  }
+});
 
 // stagger sutil de tarjetas (respeta reduced-motion)
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;

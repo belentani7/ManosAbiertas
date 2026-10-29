@@ -67,6 +67,15 @@
         <option value="cursos/office-sin-miedo/quiz.json">Office sin Miedo</option>
         <option value="cursos/falsos-amigos-pt-es/quiz.json">Puente PT–ES</option>
       </select>
+      <div class="quiz-privacy" aria-label="Privacidad de los resultados">
+        <label class="quiz-save-option" for="quizRemember">
+          <input id="quizRemember" type="checkbox">
+          <span><strong>Guardar mis resultados en este navegador (opcional)</strong>
+          <small>Solo puntuación y fecha; nunca se envían desde esta página. Si compartes el dispositivo, deja esta opción desactivada.</small></span>
+        </label>
+        <button id="quizClear" type="button" class="btn btn-ghost">Borrar resultados guardados</button>
+        <p id="quizStorageStatus" role="status" aria-live="polite">Por defecto, los resultados no se guardan.</p>
+      </div>
       <div class="quiz-box quiz-json"
            data-src="cursos/alfabetizacion-ia/quiz.json">
         <h3 class="quiz-titulo">Cargando quiz…</h3>
