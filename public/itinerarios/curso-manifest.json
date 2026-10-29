@@ -1,0 +1,37 @@
+{
+  "project": "MANOS ABIERTAS",
+  "base": "../campus/cursos",
+  "courses": [
+    {
+      "slug": "alfabetizacion-ia",
+      "title": "Alfabetización en inteligencia artificial",
+      "description": "Contenido original por unidades, con material de estudio, actividad y evaluación cuando está disponible.",
+      "weeks": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "slug": "office-sin-miedo",
+      "title": "Office sin miedo",
+      "description": "Contenido original por unidades, con material de estudio, actividad y evaluación cuando está disponible.",
+      "weeks": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "slug": "falsos-amigos-pt-es",
+      "title": "Puente PT–ES · Falsos amigos",
+      "description": "Contenido original por unidades, con material de estudio, actividad y evaluación cuando está disponible.",
+      "weeks": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}
