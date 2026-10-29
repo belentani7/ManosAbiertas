@@ -127,6 +127,7 @@ export function NavBar() {
                 </button>
               );
             })}
+            <a className="text-xs font-semibold text-primary hover:underline px-2" href="/itinerarios/cursos-completos.html">Biblioteca de cursos ↗</a>
           </nav>
 
           {/* Right controls */}
@@ -180,6 +181,7 @@ export function NavBar() {
                   </button>
                 );
               })}
+              <a href="/itinerarios/cursos-completos.html" className="flex min-h-11 items-center rounded-lg px-3 py-3 text-sm font-semibold text-primary">Biblioteca de cursos ↗</a>
             </nav>
           </motion.div>
         )}
