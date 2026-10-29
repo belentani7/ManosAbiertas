@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site-url";
+import { LANGUAGES, LANGUAGE_COUNT } from "@/i18n/languages";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
@@ -21,9 +23,6 @@ const instrumentSerif = Instrument_Serif({
   weight: "400",
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://manosabiertas.space-z.ai";
-
 // Structured data (JSON-LD) for SEO rich results
 const jsonLd = {
   "@context": "https://schema.org",
@@ -32,7 +31,7 @@ const jsonLd = {
       "@type": "Organization",
       name: "Manos Abiertas",
       url: SITE_URL,
-      logo: `${SITE_URL}/icon-512.png`,
+      logo: `${SITE_URL}/assets/manos-symbol.svg`,
       description:
         "Plataforma gratuita multilingüe para personas inmigrantes en España. IA, CV, Office y derechos.",
     },
@@ -40,7 +39,7 @@ const jsonLd = {
       "@type": "WebSite",
       name: "Manos Abiertas",
       url: SITE_URL,
-      inLanguage: ["es", "en", "zh", "pt", "fr"],
+      inLanguage: LANGUAGES.map((language) => language.code),
       publisher: { "@type": "Organization", name: "Manos Abiertas" },
     },
     {
@@ -76,7 +75,7 @@ export const metadata: Metadata = {
     "manos abiertas",
     "Office",
     "cursos gratis",
-    "35 idiomas",
+    `${LANGUAGE_COUNT} idiomas`,
   ],
   authors: [{ name: "Manos Abiertas" }],
   creator: "Manos Abiertas",
@@ -85,10 +84,10 @@ export const metadata: Metadata = {
   category: "education",
   icons: {
     icon: [
-      { url: "/logo.svg", type: "image/svg+xml" }
+      { url: "/assets/manos-symbol.svg", type: "image/svg+xml" }
     ],
     apple: "/apple-touch-icon.png",
-    shortcut: "/logo.svg",
+    shortcut: "/assets/manos-symbol.svg",
   },
   manifest: "/manifest.json",
   robots: {
@@ -105,7 +104,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Manos Abiertas · IA, CV y Derechos para personas inmigrantes en España",
     description:
-      "Aprende IA, crea tu CV y conoce tus derechos en España. Gratis y en 35 idiomas.",
+      `Aprende IA, crea tu CV y conoce tus derechos en España. Gratis y en ${LANGUAGE_COUNT} idiomas.`,
     siteName: "Manos Abiertas",
     type: "website",
     locale: "es_ES",
@@ -132,8 +131,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ff6a1f" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1510" },
+    { media: "(prefers-color-scheme: light)", color: "#faf7f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#16463e" },
   ],
   colorScheme: "light dark",
 };
