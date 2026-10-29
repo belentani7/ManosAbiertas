@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { calculateChecklistProgress } from '@/lib/checklist-progress';
 
 interface ChecklistItem {
   id: string;
@@ -63,26 +64,23 @@ export default function ChecklistManager() {
   const [activeTab, setActiveTab] = useState<'arraigo-social' | 'arraigo-laboral' | 'arraigo-familiar' | 'nacionalidad' | 'visado-estudios' | 'reagrupacion-familiar'>('arraigo-social');
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
 
-  const toggleItem = (id: string) => {
-    setCheckedItems(prev => ({ ...prev, [id]: !prev[id] }));
+  // A native label already activates its checkbox; never toggle on label click as well.
+  const toggleItem = (id: string, checked: boolean) => {
+    setCheckedItems(prev => ({ ...prev, [id]: checked }));
   };
 
-  const progress = () => {
-    const done = Object.entries(checkedItems).filter(([_, v]) => v).length;
-    const total = checklists[activeTab].length;
-    return { done, total, percent: total > 0 ? Math.round((done / total) * 100) : 0 };
-  };
-
-  const progressData = progress();
+  const progressData = calculateChecklistProgress(checklists[activeTab], checkedItems);
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-6" role="group" aria-label="Seleccionar tipo de trámite">
         {Object.keys(checklists).map((key) => (
           <button
             key={key}
+            type="button"
+            aria-pressed={activeTab === key}
             onClick={() => setActiveTab(key as typeof activeTab)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            className={`min-h-11 px-4 py-2 rounded-full text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 ${
               activeTab === key
                 ? 'bg-red-600 text-white shadow-md'
                 : 'bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-600'
@@ -94,18 +92,20 @@ export default function ChecklistManager() {
       </div>
 
       <div className="bg-white border border-gray-200 rounded-xl p-6">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <h2 className="text-lg font-semibold text-gray-900">
             Checklist: {activeTab.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')}
           </h2>
-          <div className="flex items-center gap-4 text-sm text-gray-600">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600" role="status" aria-live="polite">
             <span>{progressData.done} / {progressData.total} completados</span>
-            <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                className="bg-green-500 h-full transition-all duration-300"
-                style={{ width: `${progressData.percent}%` }}
-              />
-            </div>
+            <progress
+              value={progressData.done}
+              max={progressData.total}
+              className="h-3 w-32 overflow-hidden rounded-full accent-green-600"
+              aria-label={`Progreso de ${activeTab.replaceAll('-', ' ')}`}
+            >
+              {progressData.percent}%
+            </progress>
             <span className="font-semibold text-green-600">{progressData.percent}%</span>
           </div>
         </div>
@@ -117,12 +117,12 @@ export default function ChecklistManager() {
               className={`flex items-start gap-3 p-3 rounded-lg transition-colors ${
                 checkedItems[item.id] ? 'bg-green-50 border-green-200' : 'bg-white hover:bg-gray-50'
               } border`}
-              onClick={() => toggleItem(item.id)}
+
             >
               <input
                 type="checkbox"
                 checked={checkedItems[item.id] || false}
-                onChange={() => toggleItem(item.id)}
+                onChange={(event) => toggleItem(item.id, event.currentTarget.checked)}
                 className="mt-1 h-5 w-5 text-red-600 border-gray-300 rounded focus:ring-2 focus:ring-red-500 cursor-pointer"
               />
               <div className="flex-1 min-w-0">
@@ -136,6 +136,7 @@ export default function ChecklistManager() {
             </label>
           ))}
         </div>
+        <p className="mt-6 text-sm leading-6 text-gray-600">Lista orientativa: los requisitos pueden variar según la fecha y tu situación. Comprueba siempre la información oficial vigente antes de presentar una solicitud.</p>
       </div>
     </div>
   );
