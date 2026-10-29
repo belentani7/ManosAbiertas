@@ -5,8 +5,8 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const read=(path)=>readFileSync(resolve(root,path),'utf8');
-const pages=['index.html','orientacion.html','programas.html','empleo.html','recursos.html','proyecto.html'];
-const additional=['assets/brand.css','assets/site.js','assets/manos-symbol.svg','assets/plantilla-cv.txt','campus/cursos/alfabetizacion-ia/syllabus.md','campus/cursos/office-sin-miedo/syllabus.md','campus/cursos/falsos-amigos-pt-es/syllabus.md'];
+const pages=['index.html','orientacion.html','programas.html','taller-documentos.html','taller-criterio-ia.html','taller-puente-pt-es.html','empleo.html','recursos.html','proyecto.html'];
+const additional=['assets/brand.css','assets/workshops.css','assets/workshops.js','assets/site.js','assets/manos-symbol.svg','assets/plantilla-cv.txt','campus/cursos/alfabetizacion-ia/syllabus.md','campus/cursos/office-sin-miedo/syllabus.md','campus/cursos/falsos-amigos-pt-es/syllabus.md'];
 for(const path of [...pages,...additional]) {
   test('Vercel bundles the same published source: '+path,()=>{
     assert.equal(read(path),read('public/'+path));
