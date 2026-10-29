@@ -205,18 +205,21 @@ export function PersonalRoute() {
                 </span>
               </p>
             </div>
-            {next && (
+            {next && (next.section ? (
               <Button
                 variant="secondary"
                 className="gap-2"
-                onClick={() => {
-                  if (next.section) setActiveSection(next.section);
-                  else if (next.href) window.open(next.href, '_blank', 'noopener,noreferrer');
-                }}
+                onClick={() => setActiveSection(next.section!)}
               >
                 Continuar <ArrowRight className="h-4 w-4" />
               </Button>
-            )}
+            ) : next.href ? (
+              <Button variant="secondary" className="gap-2" asChild>
+                <a href={next.href} target="_blank" rel="noopener noreferrer">
+                  Continuar <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            ) : null)}
           </div>
         </CardContent>
       </Card>
