@@ -86,6 +86,36 @@ function loadQuiz(url,box) {
 }
 
 
+// stagger sutil de tarjetas (respeta reduced-motion)
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduced) {
+  document.querySelectorAll('.card').forEach((el, i) => {
+    el.style.animation = 'rise var(--dur-slow) var(--ease-out) both';
+    el.style.animationDelay = `${Math.min(i * 60, 300)}ms`;
+  });
+  const st = document.createElement('style');
+  st.textContent = '@keyframes rise{from{opacity:0;transform:translateY(8px)}}';
+  document.head.appendChild(st);
+}
+
+// auditoria rapida de accesibilidad (consola)
+window.uiAudit = () => {
+  const issues = [];
+  document.querySelectorAll('img:not([alt])').forEach(() =>
+    issues.push('img sin alt'));
+  document.querySelectorAll('a, button').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if ((r.width < 44 || r.height < 44) && !el.disabled)
+      issues.push(`Target pequeno: ${el.tagName}`);
+  });
+  return issues;
+};
+
+// registro offline
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
 // Quiz progress is private by default. Never persist a learner's score unless
 // the learner explicitly opts in on this visit. Do not store the checkbox state.
 const QUIZ_PATHS=['alfabetizacion-ia','office-sin-miedo','falsos-amigos-pt-es']
@@ -127,35 +157,6 @@ if(quizClear)quizClear.addEventListener('click',()=>{
   }
 });
 
-// stagger sutil de tarjetas (respeta reduced-motion)
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!reduced) {
-  document.querySelectorAll('.card').forEach((el, i) => {
-    el.style.animation = 'rise var(--dur-slow) var(--ease-out) both';
-    el.style.animationDelay = `${Math.min(i * 60, 300)}ms`;
-  });
-  const st = document.createElement('style');
-  st.textContent = '@keyframes rise{from{opacity:0;transform:translateY(8px)}}';
-  document.head.appendChild(st);
-}
-
-// auditoria rapida de accesibilidad (consola)
-window.uiAudit = () => {
-  const issues = [];
-  document.querySelectorAll('img:not([alt])').forEach(() =>
-    issues.push('img sin alt'));
-  document.querySelectorAll('a, button').forEach(el => {
-    const r = el.getBoundingClientRect();
-    if ((r.width < 44 || r.height < 44) && !el.disabled)
-      issues.push(`Target pequeno: ${el.tagName}`);
-  });
-  return issues;
-};
-
-// registro offline
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}
 
 const quizSelect=document.getElementById('quizCurso');
 const quizBox=$('.quiz-box');
