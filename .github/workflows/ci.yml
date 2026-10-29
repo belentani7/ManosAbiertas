@@ -97,6 +97,22 @@ jobs:
         run: pnpm install --frozen-lockfile --prefer-offline
       - name: Build
         run: pnpm build
+      - name: Smoke test the real Next.js production server and campus
+        run: |
+          set -euo pipefail
+          PORT=3000 pnpm start > "$RUNNER_TEMP/manos-production-smoke.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:3000/api/health > /dev/null; then ready=1; break; fi
+            sleep 2
+          done
+          if [[ "$ready" -ne 1 ]]; then cat "$RUNNER_TEMP/manos-production-smoke.log"; exit 1; fi
+          if ! node scripts/verify-production-routes.mjs; then
+            cat "$RUNNER_TEMP/manos-production-smoke.log"
+            exit 1
+          fi
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
