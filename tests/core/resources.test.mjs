@@ -141,6 +141,31 @@ test('invalid or insufficient lifecycle evidence remains pending', () => {
   assert.equal(getResourceTrust({ ...resource, verifiedAt: '2026-01-01', reviewedBy: '   ' }, now).reason, 'invalid-reviewer');
 });
 
+test('high-impact resources require evidence and a named reviewer to be verified', () => {
+  const fixture = {
+    id: 'safety-fixture',
+    title: 'Synthetic safety guidance',
+    description: 'Test fixture only',
+    url: 'https://example.org/resource',
+    category: 'legal',
+    region: 'national',
+    source: 'Example institution',
+    verifiedAt: '2026-01-01',
+  };
+  const now = new Date('2026-06-01T12:00:00Z');
+  assert.equal(getResourceTrust(fixture, now).reason, 'missing-evidence');
+  assert.equal(getResourceTrust({ ...fixture, evidenceUrl: 'https://example.org/evidence' }, now).reason, 'missing-reviewer');
+  assert.equal(getResourceTrust({
+    ...fixture,
+    evidenceUrl: 'https://example.org/evidence',
+    reviewedBy: 'Editorial review team',
+  }, now).status, 'verified');
+  assert.equal(getResourceTrust({ ...fixture, category: 'education' }, now).status, 'verified');
+  for (const category of ['health', 'housing', 'emergency', 'documentation', 'government', 'banking', 'family']) {
+    assert.equal(getResourceTrust({ ...fixture, category }, now).status, 'pending', category);
+  }
+});
+
 test('catalog lifecycle baseline remains deterministic at the audit date', (t) => {
   const auditDate = new Date('2026-08-12T12:00:00Z');
   const counts = RESOURCES.reduce((result, resource) => {
@@ -148,7 +173,9 @@ test('catalog lifecycle baseline remains deterministic at the audit date', (t) =
     return result;
   }, { verified: 0, 'current-review-due': 0, pending: 0 });
 
-  assert.deepEqual(counts, { verified: 39, 'current-review-due': 0, pending: 3647 });
+  // The 13 high-impact global entries lack individual evidence and reviewer
+  // metadata, so their shared date must not elevate them to verified.
+  assert.deepEqual(counts, { verified: 26, 'current-review-due': 0, pending: 3660 });
   t.diagnostic(`lifecycle baseline: ${JSON.stringify(counts)}`);
 });
 
