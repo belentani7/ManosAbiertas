@@ -26,3 +26,26 @@ test('editorial area styles are bundled with the site', () => {
   assert.match(css, /\.page-hero\{[^}]*min-height:/);
   assert.match(css, /@media \(prefers-reduced-motion:reduce\)/);
 });
+
+
+test('each educational subject has an independently deployable HTML document', () => {
+  const catalog = readFileSync(new URL('../programas.html', import.meta.url), 'utf8');
+  assert.equal(catalog, readFileSync(new URL('../public/programas.html', import.meta.url), 'utf8'));
+  const pages = [
+    ['ofimatica.html', 'taller-documentos.html'],
+    ['inteligencia-artificial.html', 'taller-criterio-ia.html'],
+    ['idiomas.html', 'taller-puente-pt-es.html'],
+  ];
+  for (const [name, workshop] of pages) {
+    const file = new URL('../' + name, import.meta.url);
+    assert.ok(existsSync(file), name);
+    const html = readFileSync(file, 'utf8');
+    assert.equal(html, readFileSync(new URL('../public/' + name, import.meta.url), 'utf8'));
+    assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
+    assert.match(html, /<main id="contenido" tabindex="-1">/);
+    assert.match(html, /class="skip-link" href="#contenido"/);
+    assert.match(html, /<details><summary>/);
+    assert.match(html, new RegExp(workshop.replace('.', '\\.')));
+    assert.match(catalog, new RegExp('href="\\./' + name.replace('.', '\\.') + '"'));
+  }
+});
