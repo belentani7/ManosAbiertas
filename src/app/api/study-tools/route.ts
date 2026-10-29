@@ -70,11 +70,16 @@ Formato: lista numerada, cada punto en una línea, máximo 15 palabras por punto
       ? await invokeAIText(systemPrompt, userPrompt, { offline })
       : { text: offline(), provider: 'offline' as const };
 
-    if (!result.text) {
+    // Providers can return HTTP 200 with an empty completion. Keep the
+    // exercise usable without claiming that remote AI generated a result.
+    const effective = result.text
+      ? result
+      : { text: offline(), provider: 'offline' as const };
+    if (!effective.text) {
       return apiError('AI_UNAVAILABLE', 'El servicio de estudio no está disponible.', 503, { text: '' });
     }
 
-    return apiJson({ text: result.text, ok: true, tool: body.tool, provider: result.provider, degraded: result.provider === 'offline' });
+    return apiJson({ text: effective.text, ok: true, tool: body.tool, provider: effective.provider, degraded: effective.provider === 'offline' });
   } catch (error: unknown) {
     reportServerError('study-tools-api', error);
     return apiError('INTERNAL_ERROR', 'No se pudo procesar la solicitud.', 500, { text: '' });
