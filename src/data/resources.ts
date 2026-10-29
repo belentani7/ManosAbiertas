@@ -46,6 +46,8 @@ export type ResourceTrustReason =
   | 'expiry-before-verification'
   | 'invalid-evidence-url'
   | 'invalid-reviewer'
+  | 'missing-evidence'
+  | 'missing-reviewer'
   | 'review-expired';
 
 export interface ResourceTrust {
@@ -65,6 +67,14 @@ const DAY_IN_MS = 24 * 60 * 60 * 1000;
 // A recorded review is current for at most 365 days. An earlier explicit
 // expiresAt shortens this window; it can never extend an old review.
 export const RESOURCE_REVIEW_MAX_AGE_DAYS = 365;
+
+// Safety-critical information needs a traceable editorial review before
+// the UI or MAIA may describe the entry as verified. A shared timestamp
+// alone is not proof that legal, health or emergency advice was checked.
+const HIGH_IMPACT_CATEGORIES = new Set<ResourceCategory>([
+  'legal', 'health', 'housing', 'emergency',
+  'documentation', 'government', 'banking', 'family',
+]);
 
 function getValidIsoDate(value: string | undefined): string | undefined {
   if (!value || !ISO_DATE_PATTERN.test(value)) return undefined;
@@ -118,6 +128,15 @@ export function getResourceTrust(resource: Resource, now = new Date()): Resource
   }
   if (resource.reviewedBy !== undefined && !reviewedBy) {
     return { status: 'pending', source, verifiedAt, expiresAt, evidenceUrl, reason: 'invalid-reviewer' };
+  }
+
+  if (HIGH_IMPACT_CATEGORIES.has(resource.category)) {
+    if (!evidenceUrl) {
+      return { status: 'pending', source, verifiedAt, expiresAt, reviewedBy, reason: 'missing-evidence' };
+    }
+    if (!reviewedBy) {
+      return { status: 'pending', source, verifiedAt, expiresAt, evidenceUrl, reason: 'missing-reviewer' };
+    }
   }
 
   const maxAgeDueAt = addDays(verifiedAt, RESOURCE_REVIEW_MAX_AGE_DAYS);
