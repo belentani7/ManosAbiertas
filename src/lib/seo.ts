@@ -1,4 +1,6 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { SITE_URL } from '@/lib/site-url';
+import { LANGUAGES } from '@/i18n/languages';
 
 interface OGImageOptions {
   title: string;
@@ -13,30 +15,30 @@ interface OGImageOptions {
   tags?: string[];
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://manosabiertas.space-z.ai';
-const DEFAULT_IMAGE = '/og-default.png';
-const TWITTER_HANDLE = '@manosabiertas';
+const BASE_URL = SITE_URL;
+const DEFAULT_IMAGE = '/og.png';
+// No social identity is claimed unless an account is confirmed and maintained.
 
 const SECTION_CONFIG: Record<string, { title: string; description: string; image: string; color: string }> = {
-  ia: { title: 'Aprende IA', description: '8 cursos interactivos de IA (ChatGPT, Gemini, Copilot, Claude, DeepSeek, Qwen, Perplexity, Meta AI)', image: '/og-ia.png', color: '#6366f1' },
-  cv: { title: 'Crea tu CV', description: 'Constructor de CV profesional Europass/ATS con IA integrada', image: '/og-cv.png', color: '#059669' },
-  office: { title: 'Curso Office', description: 'Curso completo de Word, Excel y PowerPoint desde cero', image: '/og-office.png', color: '#dc2626' },
-  recursos: { title: 'Recursos Verificados', description: '3.647+ recursos verificados: cursos, ONGs, oficinas, teléfonos, webs', image: '/og-recursos.png', color: '#0891b2' },
-  derechos: { title: 'Derechos y Ayudas', description: '61 guías verificadas: NIE, arraigo, asilo, vivienda, SMI, violencia de género', image: '/og-derechos.png', color: '#7c3aed' },
-  herramientas: { title: 'Herramientas Prácticas', description: 'Calculadora coste de vida, gestor documentos, plantillas, recordatorios', image: '/og-herramientas.png', color: '#ea580c' },
-  comunidad: { title: 'Comunidad', description: 'Foro, eventos, cursos externos, mentoría', image: '/og-comunidad.png', color: '#db2777' },
-  contacto: { title: 'Contacto', description: 'Conecta con Manos Abiertas', image: '/og-contacto.png', color: '#4338ca' }
+  ia: { title: 'Aprende IA', description: '8 cursos interactivos de IA (ChatGPT, Gemini, Copilot, Claude, DeepSeek, Qwen, Perplexity, Meta AI)', image: '/og.png', color: '#6366f1' },
+  cv: { title: 'Crea tu CV', description: 'Constructor de CV profesional Europass/ATS con IA integrada', image: '/og.png', color: '#059669' },
+  office: { title: 'Curso Office', description: 'Curso completo de Word, Excel y PowerPoint desde cero', image: '/og.png', color: '#dc2626' },
+  recursos: { title: 'Directorio de recursos', description: 'Recursos para la vida cotidiana y el empleo con fuente y estado de revisión visible; confirma las condiciones con cada entidad', image: '/og.png', color: '#0891b2' },
+  derechos: { title: 'Derechos y Ayudas', description: 'Guías informativas sobre trámites y derechos; verifica siempre los requisitos vigentes en la fuente oficial', image: '/og.png', color: '#7c3aed' },
+  herramientas: { title: 'Herramientas Prácticas', description: 'Calculadora coste de vida, gestor documentos, plantillas, recordatorios', image: '/og.png', color: '#ea580c' },
+  comunidad: { title: 'Comunidad', description: 'Foro, eventos, cursos externos, mentoría', image: '/og.png', color: '#db2777' },
+  contacto: { title: 'Contacto', description: 'Conecta con Manos Abiertas', image: '/og.png', color: '#4338ca' }
 };
 
-const ALL_LOCALES = ['es', 'en', 'pt', 'ca', 'fr', 'it', 'de', 'zh', 'ar', 'pt-BR'];
-const SECTIONS = ['', 'ia', 'cv', 'office', 'recursos', 'derechos', 'herramientas', 'comunidad', 'contacto'];
+const ALL_LOCALES = LANGUAGES.map((language) => language.code);
+const SECTIONS = ['', 'ia', 'cv', 'office', 'recursos', 'derechos', 'herramientas', 'comunidad', 'contactos'];
 
 export function generateMetadata(options: OGImageOptions): Metadata {
   const { title, description, section, locale, image, type = 'website', publishedTime, modifiedTime, authors, tags } = options;
 
   const sectionConfig = section ? SECTION_CONFIG[section] : null;
   const finalTitle = title || (sectionConfig ? `${sectionConfig.title} | Manos Abiertas` : 'Manos Abiertas · IA, CV y Derechos para personas inmigrantes en España');
-  const finalDescription = description || sectionConfig?.description || 'Plataforma gratuita multilingüe para personas inmigrantes en España. Aprende IA, crea tu CV, conoce tus derechos y accede a 3.647+ recursos verificados.';
+  const finalDescription = description || sectionConfig?.description || 'Plataforma educativa gratuita multilingüe para personas inmigrantes en España: IA, CV, derechos y recursos con procedencia visible. Confirma siempre la vigencia en la fuente oficial.';
   const finalImage = image || sectionConfig?.image || DEFAULT_IMAGE;
 
   const url = `${BASE_URL}/${locale}${section ? `/${section}` : ''}`;
@@ -83,8 +85,7 @@ export function generateMetadata(options: OGImageOptions): Metadata {
       title: finalTitle,
       description: finalDescription,
       images: [imageUrl],
-      creator: TWITTER_HANDLE,
-      site: TWITTER_HANDLE
+      // Do not claim an unverified social-media account.
     },
     robots: {
       index: true,
@@ -105,7 +106,7 @@ export function generateMetadata(options: OGImageOptions): Metadata {
       'IA para principiantes',
       'CV Europass',
       'derechos inmigrantes',
-      'recursos verificados',
+      'recursos con fuente',
       'cursos gratis',
       'Manos Abiertas'
     ].concat(tags || [])
@@ -129,12 +130,9 @@ export function generateStructuredData(
         ...base,
         name: 'Manos Abiertas',
         url: BASE_URL,
-        logo: `${BASE_URL}/logo.png`,
+        logo: `${BASE_URL}/assets/manos-symbol.svg`,
         description: 'Plataforma gratuita multilingüe para personas inmigrantes en España',
-        sameAs: [
-          'https://twitter.com/manosabiertas',
-          'https://github.com/belentani7/ManosAbiertas'
-        ],
+        sameAs: ['https://github.com/belentani7/ManosAbiertas'],
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer service',
@@ -147,14 +145,7 @@ export function generateStructuredData(
         ...base,
         name: 'Manos Abiertas',
         url: BASE_URL,
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: `${BASE_URL}/search?q={search_term_string}`
-          },
-          'query-input': 'required name=search_term_string'
-        }
+        inLanguage: ALL_LOCALES,
       };
 
     case 'course':
@@ -193,7 +184,7 @@ export function generateStructuredData(
         publisher: {
           '@type': 'Organization',
           name: 'Manos Abiertas',
-          logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` }
+          logo: { '@type': 'ImageObject', url: `${BASE_URL}/assets/manos-symbol.svg` }
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
@@ -315,26 +306,14 @@ export function generateSitemapXml(resources: Array<{ id: string; updatedAt?: st
         xml += `\n    <xhtml:link rel="alternate" hreflang="${loc}" href="${BASE_URL}/${loc}${section ? `/${section}` : ''}"/>`;
       }
       xml += `
-    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/${locale}${section ? `/${section}` : ''}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}/es${section ? `/${section}` : ''}"/>
   </url>`;
     }
   }
 
-  // Resources
-  for (const resource of resources.slice(0, 1000)) {
-    for (const locale of ['es', 'en', 'pt']) {
-      xml += `
-  <url>
-    <loc>${BASE_URL}/${locale}/recursos/${resource.id}</loc>
-    <lastmod>${resource.updatedAt || now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="${BASE_URL}/es/recursos/${resource.id}"/>
-    <xhtml:link rel="alternate" hreflang="en" href="${BASE_URL}/en/recursos/${resource.id}"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="${BASE_URL}/pt/recursos/${resource.id}"/>
-  </url>`;
-    }
-  }
+  // No per-resource detail URLs: the public app currently exposes a directory
+  // at /{locale}/recursos, not /{locale}/recursos/{id}.
+  void resources;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -348,10 +327,6 @@ export function generateRobotsTxt(): string {
   return `User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_next/
-Disallow: /static/
-Disallow: /*.json$
-
 Sitemap: ${BASE_URL}/sitemap.xml
 Host: ${BASE_URL}
 `;
@@ -364,8 +339,8 @@ export function generateManifest(locale: string = 'es'): object {
     description: 'Plataforma gratuita multilingüe para personas inmigrantes en España',
     start_url: `/${locale}`,
     display: 'standalone',
-    background_color: '#03060b',
-    theme_color: '#ff1a4a',
+    background_color: '#faf7f1',
+    theme_color: '#16463e',
     orientation: 'portrait-primary',
     scope: `/${locale}`,
     icons: [
