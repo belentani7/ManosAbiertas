@@ -3,51 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0c1018">
+  <meta name="theme-color" content="#16463e">
   <meta name="description" content="Campus Manos Abiertas: lecciones reales y práctica que pueden consultarse sin conexión tras la primera carga.">
-  <title>Campus ManosAbiertas</title>
+  <title>Campus de aprendizaje | Manos Abiertas</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="tokens.css">
 </head>
 <body>
   <a class="skip-link" href="#cursos">Saltar al contenido</a>
   <header class="topbar">
-    <div class="brand">Campus <span>ManosAbiertas</span></div>
+    <a class="brand" href="../index.html" aria-label="Manos Abiertas · volver al inicio">MANOS <span>ABIERTAS</span><small> / CAMPUS</small></a>
     <nav aria-label="Principal">
+      <a class="btn btn-ghost" href="../programas.html">Programas</a>
       <a class="btn btn-ghost" href="#cursos">Cursos</a>
-      <a class="btn btn-ghost" href="#quiz">Quiz</a>
-      <a class="btn btn-ghost" href="#voz">Voz IA</a>
+      <a class="btn btn-ghost" href="#quiz">Práctica</a>
+      <a class="btn btn-ghost" href="#voz">Audios</a>
     </nav>
   </header>
 
   <main class="wrap">
     <section class="hero">
       <h1>Educación abierta, sin barreras.</h1>
-      <p class="lead">Cursos modulares con evidencia, material de bancos
-      abiertos y voz humana en 4 idiomas. El material básico funciona sin conexión después de su instalación inicial.</p>
+      <p class="lead">Tres cursos de entrada con materiales completos, lecturas guiadas y cuestionarios de práctica. Consulta las lecciones en español y portugués, y escucha las bienvenidas en cuatro idiomas. El material descargado puede consultarse sin conexión.</p>
     </section>
 
     <section id="cursos" class="grid-cursos">
       <article class="card">
         <span class="badge">ES · inicio</span>
         <h3><a href="cursos/alfabetizacion-ia/syllabus.md">Alfabetización en IA para la Vida Real</a></h3>
-        <p>Qué es la IA, cómo usarla sin miedo (y sin que te engañe), y qué derechos tienes. Para migrantes y comunidades: cero tecnicismos.…</p>
+        <p>Comprende las posibilidades y los límites de la IA, verifica las respuestas y protege tus datos mientras practicas con ejemplos cotidianos.</p>
         <p class="meta">3 semanas · 9 h · quiz 4 items</p>
-        <div><a class="btn" href="cursos/alfabetizacion-ia/syllabus.md">Ver syllabus</a></div>
+        <div><a class="btn" href="cursos/alfabetizacion-ia/syllabus.md">Abrir lecciones</a></div>
       </article>
       <article class="card">
         <span class="badge">ES · inicio</span>
         <h3><a href="cursos/office-sin-miedo/syllabus.md">Office sin Miedo: CV, Cartas y Presupuestos</a></h3>
-        <p>Crea tu CV, cartas formales y controla gastos con herramientas gratuitas (LibreOffice / Google Docs). Práctico, guiado, en español…</p>
+        <p>Aprende a elaborar un currículum, escribir cartas y preparar un presupuesto con ejercicios aplicados a situaciones reales.</p>
         <p class="meta">3 semanas · 9 h · quiz 3 items</p>
-        <div><a class="btn" href="cursos/office-sin-miedo/syllabus.md">Ver syllabus</a></div>
+        <div><a class="btn" href="cursos/office-sin-miedo/syllabus.md">Abrir lecciones</a></div>
       </article>
       <article class="card">
         <span class="badge">PT · A2-B1</span>
         <h3><a href="cursos/falsos-amigos-pt-es/syllabus.md">Puente PT->ES: Falsos Amigos</a></h3>
-        <p>Curso intensivo para jóvenes brasileños: domina los falsos amigos más peligrosos entre portugués y español y deja de cometer error…</p>
+        <p>Identifica palabras parecidas que significan cosas distintas en portugués y español, y practica conversaciones de la vida cotidiana.</p>
         <p class="meta">4 semanas · 12 h · quiz 5 items</p>
-        <div><a class="btn" href="cursos/falsos-amigos-pt-es/syllabus.md">Ver syllabus</a></div>
+        <div><a class="btn" href="cursos/falsos-amigos-pt-es/syllabus.md">Abrir lecciones</a></div>
       </article>
     </section>
 
@@ -59,7 +59,7 @@
       <article id="lector-content" class="course-content"></article>
     </section>
     <section id="quiz" aria-label="Quiz de práctica">
-      <h2>Quiz interactivo</h2>
+      <h2>Comprueba lo aprendido</h2>
       <p class="meta">Práctica formativa; no representa una certificación académica.</p>
       <label for="quizCurso">Selecciona el curso:</label>
       <select id="quizCurso" class="opcion">
@@ -78,7 +78,7 @@
     </section>
 
     <section id="voz" aria-label="Voz IA">
-      <h2>Voz humana por idioma</h2>
+      <h2>Bienvenida en cuatro idiomas</h2>
       <div class="voz-player">
         <label for="idioma">Idioma:</label>
         <select id="idioma" class="opcion" style="width:auto;min-height:44px">
@@ -91,8 +91,7 @@
           <source id="audio-src" src="voces/pt/bienvenida.mp3" type="audio/mpeg">
         </audio>
       </div>
-      <p class="meta">Voces generadas por edge-tts (gratuito) o Kokoro vía
-      Hugging Face. Sin coste, con acento humano real.</p>
+      <p class="meta">Audios disponibles en portugués, español, inglés y catalán. Reprodúcelos desde esta página sin crear una cuenta.</p>
     </section>
 
     <section id="agente" aria-label="Agente tutor">
@@ -103,8 +102,8 @@
   </main>
 
   <footer class="wrap">
-    <p>Material abierto: Khan Academy · Parla.cat · GCF Global · MIT OCW ·
-    Drive do Pobre. Generado por edu-forge.</p>
+    <p><strong>Manos Abiertas</strong> · Educación pública y abierta para desarrollar autonomía digital. Estas actividades son formativas; no representan una certificación oficial.</p>
+    <p><a href="../orientacion.html">Orientación</a> · <a href="../recursos.html">Recursos públicos</a> · <a href="../proyecto.html">El proyecto</a></p>
   </footer>
   <script>
     const sel = document.getElementById('idioma');
