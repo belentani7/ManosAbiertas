@@ -17,7 +17,7 @@ test('orientation changes the plan but only remembers it with consent', async ({
   await page.goto('/orientacion.html');
   await page.getByRole('radio', { name: /Aprender herramientas digitales/i }).check();
   await expect(page.locator('[data-plan-title]')).toHaveText('Tu primera ruta de autonomía digital');
-  await expect(page.locator('[data-plan-link]')).toHaveAttribute('href', './campus/');
+  await expect(page.locator('[data-plan-link]')).toHaveAttribute('href', './taller-documentos.html');
   const key = 'manosabiertas:orientacion:v1';
   expect(await page.evaluate(keyName => localStorage.getItem(keyName), key)).toBeNull();
 
@@ -35,13 +35,22 @@ test('programmes link to real published learning material', async ({ page }) => 
   await page.getByRole('link', { name: 'Explorar programas' }).click();
   await expect(page).toHaveURL(/\/programas\.html$/);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  const syllabus = page.getByRole('link', { name: /Consultar programa/ }).first();
-  await expect(syllabus).toHaveAttribute('href', './campus/cursos/office-sin-miedo/syllabus.md');
-  const response = await page.request.get('/campus/cursos/office-sin-miedo/syllabus.md');
-  expect(response.ok()).toBeTruthy();
-  expect(await response.text()).toMatch(/office|ofimática/i);
-  // The /campus/ homepage is intentionally a Next.js redirect to /es/cursos.
-  // This separate static suite tests the published curriculum, not Next routing.
+  const workshop = page.getByRole('link', { name: /Iniciar taller/ }).first();
+  await expect(workshop).toHaveAttribute('href', './taller-documentos.html');
+  await workshop.click();
+  await expect(page).toHaveURL(/\/taller-documentos\.html$/);
+  await expect(page.getByRole('heading', { level: 1, name: /Documentos que abren puertas/i })).toBeVisible();
+  // The learner sees the guided HTML workshop, not a raw Markdown syllabus.
+});
+
+test('orientation leads to verified public resources without saving personal data', async ({ page }) => {
+  await page.goto('/orientacion.html');
+  await page.getByRole('radio', { name: /Resolver trámites y encontrar apoyo/i }).check();
+  await expect(page.locator('[data-plan-link]')).toHaveAttribute('href', './recursos.html');
+  await page.locator('[data-plan-link]').click();
+  await expect(page).toHaveURL(/\/recursos\.html$/);
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  expect(await page.evaluate(() => localStorage.getItem('manosabiertas:orientacion:v1'))).toBeNull();
 });
 
 test('resource filters update their visible count', async ({ page }) => {
