@@ -11,12 +11,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useAppStore } from '@/stores/app-store';
 import { getLocalStorageItem } from '@/lib/local-data';
+import { PERSONAL_ROUTE_STORAGE_KEY, persistPersonalRoute } from '@/lib/personal-route-storage';
 import {
   JOURNEYS, type Journey, type SavedRoute,
-  parseSavedRoute, pickPair, pickText, serializeSavedRoute,
+  parseSavedRoute, pickPair, pickText,
 } from '@/data/journeys';
-
-const STORAGE_KEY = 'manos-abiertas-personal-route';
 
 const JOURNEY_ICONS: Record<string, typeof Compass> = {
   'primeras-24h': Baby,
@@ -33,7 +32,7 @@ const JOURNEY_ICONS: Record<string, typeof Compass> = {
 };
 
 function readRoute(): SavedRoute | null {
-  return parseSavedRoute(getLocalStorageItem(STORAGE_KEY));
+  return parseSavedRoute(getLocalStorageItem(PERSONAL_ROUTE_STORAGE_KEY));
 }
 
 export function PersonalRoute() {
@@ -41,7 +40,7 @@ export function PersonalRoute() {
   const [route, setRoute] = useState<SavedRoute | null>(() => (typeof window === 'undefined' ? null : readRoute()));
 
   useEffect(() => {
-    if (route) localStorage.setItem(STORAGE_KEY, serializeSavedRoute(route));
+    persistPersonalRoute(route, () => window.localStorage);
   }, [route]);
 
   const goal: Journey | null = useMemo(
@@ -112,7 +111,10 @@ export function PersonalRoute() {
                 <Badge variant="outline">{pickText(goal.prerequisites, language)}</Badge>
               </div>
             </div>
-            <Button variant="ghost" size="sm" className="gap-2 self-start" onClick={() => setRoute(null)}>
+            <Button variant="ghost" size="sm" className="gap-2 self-start" onClick={() => {
+              persistPersonalRoute(null, () => window.localStorage);
+              setRoute(null);
+            }}>
               <RotateCcw className="h-4 w-4" /> Cambiar meta
             </Button>
           </div>
@@ -207,7 +209,10 @@ export function PersonalRoute() {
               <Button
                 variant="secondary"
                 className="gap-2"
-                onClick={() => next.section && setActiveSection(next.section)}
+                onClick={() => {
+                  if (next.section) setActiveSection(next.section);
+                  else if (next.href) window.open(next.href, '_blank', 'noopener,noreferrer');
+                }}
               >
                 Continuar <ArrowRight className="h-4 w-4" />
               </Button>
