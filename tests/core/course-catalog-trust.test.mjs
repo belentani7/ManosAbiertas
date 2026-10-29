@@ -18,3 +18,20 @@ test('external course claims are qualified and linked to the provider', () => {
   assert.doesNotMatch(source, /Acceder gratis|135 cursos en total|Más la academia premium/);
   assert.match(source, /target="_blank"[\s\S]*?rel="noopener noreferrer"/);
 });
+
+test('Google Actívate listings resolve to current official Skillshop courses instead of generic legacy redirects', () => {
+  const dataset = readFileSync(
+    resolve(dirname(fileURLToPath(import.meta.url)), '../../src/data/external-courses.ts'),
+    'utf8',
+  );
+  const googleEntries = [...dataset.matchAll(/^\s+g\('gc-\d+',.+$/gm)].map(match => match[0]);
+  assert.equal(googleEntries.length, 15, 'The migration must account for every Google Actívate card');
+  assert.ok(googleEntries.every(row => row.includes('https://skillshop.exceedlms.com/student/collection/')));
+  assert.ok(googleEntries.every(row => !row.includes('learndigital.withgoogle.com/')));
+  assert.match(dataset, /const g = [\s\S]*?certification: false, free: true/);
+  assert.match(dataset, /student\/collection\/1830727-fundamentos-de-marketing-digital/);
+  assert.match(dataset, /student\/collection\/1435583-domina-la-ia-con-gemini/);
+  assert.match(dataset, /student\/collection\/786255-cloud-computing/);
+  assert.match(dataset, /student\/collection\/787525-ecommerce/);
+  assert.doesNotMatch(dataset, /https:\/\/learndigital\.withgoogle\.com\/activate\/course\//);
+});

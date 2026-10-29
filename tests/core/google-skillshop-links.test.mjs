@@ -9,7 +9,7 @@ const data = readFileSync(resolve(root, 'src/data/external-courses.ts'), 'utf8')
 const ui = readFileSync(resolve(root, 'src/components/manos-abiertas/courses-library-section.tsx'), 'utf8');
 
 test('marketing course is linked to its current Google Skillshop collection', () => {
-  assert.match(data, /g\('gc-1', 'Fundamentos del Marketing Digital'.*https:\/\/skillshop\.exceedlms\.com\/student\/collection\/1830727-fundamentos-de-marketing-digital/);
+  assert.match(data, /g\('gc-1', 'Fundamentos de Marketing Digital'.*https:\/\/skillshop\.exceedlms\.com\/student\/collection\/1830727-fundamentos-de-marketing-digital/);
   assert.doesNotMatch(data, /learndigital\.withgoogle\.com\/activate\/course\/digital-marketing/);
 });
 
