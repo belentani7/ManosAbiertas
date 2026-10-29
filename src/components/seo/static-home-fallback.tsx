@@ -2,13 +2,15 @@
 // This content is what search engine crawlers index (no JS required),
 // so it mirrors the real Home section content in plain, semantic HTML.
 
+import { LANGUAGE_COUNT } from '@/i18n/languages';
+
 export function StaticHomeFallback() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <main className="mx-auto max-w-4xl px-4 py-10">
         <h1 className="text-3xl font-bold mb-4">Manos Abiertas · IA, CV y Derechos para personas inmigrantes en España</h1>
         <p className="text-lg mb-8">
-          Tu puente hacia la inteligencia artificial, el empleo y tus derechos en España. Gratis, sencillo y en 35 idiomas.
+          Tu puente hacia la inteligencia artificial, el empleo y tus derechos en España. Gratis, sencillo y en {LANGUAGE_COUNT} idiomas.
         </p>
 
         <section className="mb-8">
