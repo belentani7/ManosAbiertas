@@ -27,10 +27,13 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
   const [questions, setQuestions] = useState<StudyQuestion[] | null>(null);
   const [summary, setSummary] = useState<string | null>(null);
   const [showResults, setShowResults] = useState(false);
+  const [resultMode, setResultMode] = useState<'local' | 'remote'>('local');
 
   async function generateQuestions() {
     setLoading('questions');
     setSummary(null);
+    setQuestions(null);
+    setShowResults(false);
     try {
       const data = await requestJson('/api/study-tools', {
         method: 'POST',
@@ -39,9 +42,11 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
       }, { timeoutMs: 10_000, maxResponseBytes: 64_000 });
       const generatedQuestions = studyQuestionsFromPayload(data);
       if (!generatedQuestions) throw new Error('Respuesta no válida');
+      const remoteResult = typeof data === 'object' && data !== null && 'degraded' in data && data.degraded === false;
+      setResultMode(remoteResult ? 'remote' : 'local');
       setQuestions(generatedQuestions);
       setShowResults(true);
-      toast.success('Preguntas generadas con IA 🧠');
+      toast.success(remoteResult ? 'Preguntas generadas con IA 🧠' : 'Ejercicio local preparado 📚');
     } catch {
       toast.error('No se pudieron generar preguntas');
     } finally {
@@ -52,6 +57,8 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
   async function generateSummary() {
     setLoading('summary');
     setQuestions(null);
+    setSummary(null);
+    setShowResults(false);
     try {
       const data = await requestJson('/api/study-tools', {
         method: 'POST',
@@ -60,9 +67,11 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
       }, { timeoutMs: 10_000, maxResponseBytes: 64_000 });
       const generatedSummary = readApiText(data, 20_000);
       if (!generatedSummary) throw new Error('Respuesta no válida');
+      const remoteResult = typeof data === 'object' && data !== null && 'degraded' in data && data.degraded === false;
+      setResultMode(remoteResult ? 'remote' : 'local');
       setSummary(generatedSummary);
       setShowResults(true);
-      toast.success('Resumen generado con IA 📝');
+      toast.success(remoteResult ? 'Resumen generado con IA 📝' : 'Fragmentos clave del texto listos 📖');
     } catch {
       toast.error('No se pudo generar el resumen');
     } finally {
@@ -93,7 +102,7 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
           className="gap-1.5"
         >
           {loading === 'summary' ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <FileText className="h-3.5 w-3.5 text-primary" />}
-          Resumir con IA
+          Extraer ideas clave
         </Button>
       </div>
 
@@ -114,13 +123,13 @@ export function AIStudyTools({ content, title }: AIStudyToolsProps) {
                       <>
                         <HelpCircle className="h-4 w-4 text-primary" />
                         <span className="text-sm font-semibold">Preguntas de comprensión</span>
-                        <Badge variant="secondary" className="text-[9px]">IA</Badge>
+                        <Badge variant="secondary" className="text-[9px]">{resultMode === 'remote' ? 'IA' : 'LOCAL'}</Badge>
                       </>
                     ) : (
                       <>
                         <ListChecks className="h-4 w-4 text-primary" />
-                        <span className="text-sm font-semibold">Resumen del contenido</span>
-                        <Badge variant="secondary" className="text-[9px]">IA</Badge>
+                        <span className="text-sm font-semibold">{resultMode === 'remote' ? 'Resumen del contenido' : 'Fragmentos clave del texto'}</span>
+                        <Badge variant="secondary" className="text-[9px]">{resultMode === 'remote' ? 'IA' : 'LOCAL'}</Badge>
                       </>
                     )}
                   </div>
