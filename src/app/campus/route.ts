@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// The static syllabus files are served from /public/campus/cursos.
-// The campus homepage itself routes to the existing Next.js course catalog.
+// The canonical campus is copied into public/campus during the build.
+// Keep the /campus/ entry stable while the actual reader serves from index.html.
 export function GET(request: NextRequest) {
-  return NextResponse.redirect(new URL('/es/cursos', request.url), 307);
+  return NextResponse.redirect(new URL('/campus/index.html', request.url), 307);
 }
