@@ -171,3 +171,17 @@ test('API index, health and community fallback retain their public contracts', (
   assert.match(communityClient, /La publicación compartida no está disponible ahora\./);
   assert.doesNotMatch(communityClient, /Se publicará cuando Netlify esté conectado\./);
 });
+
+const { isTrustedStateChangeRequest } = await import('../../src/lib/request-origin.ts');
+
+test('all mutating educational APIs reject cross-origin or opaque browser requests', () => {
+  const url = 'https://learning.example/api/community';
+  const options = (method, headers) => new Request(url, { method, headers });
+  assert.equal(isTrustedStateChangeRequest(options('GET', { origin: 'https://other.test' })), true);
+  assert.equal(isTrustedStateChangeRequest(options('POST', { origin: 'https://learning.example', 'sec-fetch-site': 'same-origin' })), true);
+  assert.equal(isTrustedStateChangeRequest(options('POST', { origin: 'https://evil.example' })), false);
+  assert.equal(isTrustedStateChangeRequest(options('POST', { origin: 'null' })), false);
+  assert.equal(isTrustedStateChangeRequest(options('DELETE', { 'sec-fetch-site': 'cross-site' })), false);
+  assert.equal(isTrustedStateChangeRequest(options('PATCH', { 'sec-fetch-site': 'same-site' })), false);
+  assert.equal(isTrustedStateChangeRequest(options('POST', {})), true);
+});
