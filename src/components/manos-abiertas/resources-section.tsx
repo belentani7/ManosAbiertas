@@ -190,15 +190,17 @@ Plataforma gratuita para personas inmigrantes en España
         <CardContent className="p-3">
           <div className="flex flex-col sm:flex-row gap-2">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <label htmlFor="resource-directory-search" className="sr-only">{t.search_placeholder}</label>
+              <Search aria-hidden="true" className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
+                id="resource-directory-search"
                 value={query}
                 onChange={(e) => { setQuery(e.target.value); setVisibleCount(PAGE_SIZE); }}
                 placeholder={t.search_placeholder}
                 className="pl-9 h-10"
               />
               {query && (
-                <button onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
+                <button type="button" aria-label="Limpiar búsqueda" onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                   <X className="h-4 w-4" />
                 </button>
               )}
