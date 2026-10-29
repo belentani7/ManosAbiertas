@@ -80,3 +80,21 @@ test('mobile menu exposes navigation and closes after choosing a destination', a
   await expect(page).toHaveURL(/\/recursos\.html$/);
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
 });
+
+test('campus entry opens the real reader, lessons and working quiz on the published assets', async ({ page }) => {
+  await page.goto('/campus/index.html');
+  await expect(page.getByRole('heading', { level: 1, name: /Educación abierta, sin barreras/i })).toBeVisible();
+  const firstCourse = page.locator('a[href="cursos/office-sin-miedo/syllabus.md"]').first();
+  await firstCourse.click();
+  await expect(page.locator('#lector')).toBeVisible();
+  await expect(page.locator('#lector-status')).toContainText('Material real del curso');
+  await expect(page.locator('#lector-content')).not.toBeEmpty();
+  await expect(page.locator('#quizCurso')).toBeVisible();
+  await page.locator('#quizCurso').selectOption('cursos/office-sin-miedo/quiz.json');
+  await expect(page.locator('.quiz-titulo')).not.toContainText('Cargando');
+  await expect(page.locator('.quiz-box .opciones button').first()).toBeVisible();
+  const audio = page.locator('#audio-src');
+  await expect(audio).toHaveAttribute('src', 'voces/pt/bienvenida.mp3');
+  const audioResponse = await page.request.get('/campus/voces/pt/bienvenida.mp3');
+  expect(audioResponse.ok()).toBeTruthy();
+});
