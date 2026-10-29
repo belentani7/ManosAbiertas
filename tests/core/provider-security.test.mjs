@@ -124,3 +124,12 @@ test('SSE decoder refuses unbounded unterminated provider frames', () => {
   assert.throws(() => takeSseLines('x'.repeat(131_073)), /size limit/);
   assert.deepEqual(takeSseLines('data: {}\\n'.replace('\\n', '\n')), { lines: ['data: {}'], remainder: '' });
 });
+
+test('provider non-2xx JSON errors cannot masquerade as successful completions', () => {
+  const source = readFileSync(join(PROJECT_ROOT, 'src/lib/ai-provider.ts'), 'utf8');
+  const start = source.indexOf('const response = await fetch(endpoint');
+  const finish = source.indexOf('const payload = await readBoundedJson(response, 1_000_000)', start);
+  assert.ok(start >= 0 && finish > start, 'non-stream provider request must precede JSON parsing');
+  const requestPath = source.slice(start, finish);
+  assert.match(requestPath, /if \(!response\.ok\) throw new Error\(`Provider HTTP \$\{response\.status\}`\)/);
+});
