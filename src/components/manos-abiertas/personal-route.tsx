@@ -50,6 +50,7 @@ export function PersonalRoute() {
   const completed = route?.completed ?? [];
   const done = goal?.activities.filter((a) => completed.includes(a.id)).length ?? 0;
   const next = goal?.activities.find((a) => !completed.includes(a.id));
+  const nextSection = next?.section;
   const percent = goal ? Math.round((done / goal.activities.length) * 100) : 0;
 
   if (!goal || !route) {
@@ -205,11 +206,11 @@ export function PersonalRoute() {
                 </span>
               </p>
             </div>
-            {next && (next.section ? (
+            {next && (nextSection ? (
               <Button
                 variant="secondary"
                 className="gap-2"
-                onClick={() => setActiveSection(next.section!)}
+                onClick={() => setActiveSection(nextSection)}
               >
                 Continuar <ArrowRight className="h-4 w-4" />
               </Button>
