@@ -25,7 +25,7 @@ test('menu opens, closes and preserves semantic expanded state',()=>{
 });
 test('route changes real destinations and only saves with opt-in',()=>{
  const saved=new Map();const localStorage={getItem(k){return saved.get(k)??null},setItem(k,v){saved.set(k,v)},removeItem(k){saved.delete(k)}};
- const save={checked:false};const radios=[{value:'empleo',checked:true},{value:'digital',checked:false},{value:'idioma',checked:false}];
+ const save={checked:false};const radios=[{value:'empleo',checked:true},{value:'digital',checked:false},{value:'idioma',checked:false},{value:'tramites',checked:false}];
  const form=emitter({querySelector(k){return k==='[name=guardar]'?save:null},querySelectorAll(){return radios}});
  const title={textContent:''};const list={children:[],replaceChildren(...items){this.children=items}};
  const link={href:'',textContent:''};const panel=emitter({querySelector(k){return {'[data-plan-title]':title,'[data-plan-steps]':list,'[data-plan-link]':link}[k]}});
@@ -34,11 +34,15 @@ test('route changes real destinations and only saves with opt-in',()=>{
  assert.equal(saved.size,0);
  assert.equal(link.href,'./empleo.html');
  radios[0].checked=false;radios[1].checked=true;save.checked=true;form.events.change();
- assert.equal(link.href,'./campus/');
+ assert.equal(link.href,'./taller-documentos.html');
  assert.equal(list.children.length,3);
  assert.equal(saved.get('manosabiertas:orientacion:v1'),'digital');
  radios[1].checked=false;radios[2].checked=true;save.checked=false;form.events.change();
- assert.equal(link.href,'./campus/cursos/falsos-amigos-pt-es/syllabus.md');
+ assert.equal(link.href,'./taller-puente-pt-es.html');
+ assert.equal(saved.size,0);
+ radios[2].checked=false;radios[3].checked=true;form.events.change();
+ assert.equal(link.href,'./recursos.html');
+ assert.equal(list.children.length,3);
  assert.equal(saved.size,0);
 });
 test('resource filter leaves only selected category visible',()=>{
