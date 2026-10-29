@@ -1,0 +1,48 @@
+PLANTILLA DE CURRÍCULUM — MANOS ABIERTAS
+Puedes modificar este archivo con cualquier editor de texto.
+No incluyas datos sensibles que no sean necesarios para la candidatura.
+
+NOMBRE Y APELLIDOS:
+CIUDAD / ÁREA DE DISPONIBILIDAD:
+CORREO ELECTRÓNICO:
+TELÉFONO (OPCIONAL):
+ENLACE A PORTAFOLIO (OPCIONAL):
+
+PERFIL PROFESIONAL
+En 3–4 líneas, describe las tareas que sabes hacer, el tipo de empleo que buscas y tu principal aportación.
+
+EXPERIENCIA RELEVANTE
+Puesto o actividad:
+Organización / proyecto (si procede):
+Lugar y período:
+- Tarea concreta 1:
+- Tarea concreta 2:
+- Resultado verificable, cuando exista:
+
+Repite por experiencia. También puedes describir proyectos, voluntariado o trabajo por cuenta propia.
+
+FORMACIÓN
+Título / curso:
+Entidad formadora:
+Año:
+Aprendizaje aplicable:
+
+HABILIDADES
+- Digitales:
+- Organización y atención:
+- Técnicas relacionadas con el puesto:
+
+IDIOMAS
+Idioma — nivel aproximado y situaciones donde puedes utilizarlo:
+
+OTROS DATOS PERTINENTES (OPCIONALES)
+Disponibilidad y otros datos directamente relacionados con el trabajo.
+
+ANTES DE ENVIAR
+[ ] Revisé fechas, ortografía y datos de contacto.
+[ ] Adapté el perfil al puesto real.
+[ ] Confirmé que la oferta y el destinatario son fiables.
+[ ] No envié documentación innecesaria.
+
+Material educativo de Manos Abiertas. No garantiza contratación.
+https://github.com/belentani7/ManosAbiertas
