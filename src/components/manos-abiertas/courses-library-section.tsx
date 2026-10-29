@@ -18,6 +18,10 @@ import { isPlainRecord, parseStoredJson } from '@/lib/safe-content';
 
 const PAGE_SIZE = 12;
 const PROGRESS_KEY = 'manos-abiertas-course-progress';
+// Historical Google Actívate deep links now redirect to the generic Grow with Google home.
+// Use the verified Spanish Skillshop collection instead of a dead-end redirect.
+const LEGACY_ACTIVATE_COURSE_PREFIX = 'https://learndigital.withgoogle.com/activate/course/';
+const ACTIVATE_SKILLSHOP_CATALOG = 'https://skillshop.exceedlms.com/student/catalog/list?category_ids=7880-google-activate&locale=es';
 
 interface CourseProgress {
   [courseId: string]: 'started' | 'completed';
@@ -302,6 +306,8 @@ function CourseCard({ course, progress, onToggleProgress, index }: { course: Ext
   const cat = COURSE_CATEGORIES.find((c) => c.value === course.category);
   const lvl = LEVEL_LABELS[course.level];
   const providerColor = PROVIDER_COLORS[course.providerType] || PROVIDER_COLORS.platform;
+  const needsCatalogSearch = course.url.startsWith(LEGACY_ACTIVATE_COURSE_PREFIX);
+  const courseHref = needsCatalogSearch ? ACTIVATE_SKILLSHOP_CATALOG : course.url;
 
   return (
     <motion.div
@@ -344,7 +350,7 @@ function CourseCard({ course, progress, onToggleProgress, index }: { course: Ext
 
           {/* Title */}
           <a
-            href={course.url}
+            href={courseHref}
             target="_blank"
             rel="noopener noreferrer"
             className="font-semibold text-sm leading-snug hover:text-primary transition-colors block mb-1 line-clamp-2"
@@ -385,15 +391,22 @@ function CourseCard({ course, progress, onToggleProgress, index }: { course: Ext
             )}
           </div>
 
+          {needsCatalogSearch && (
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              Google Actívate se trasladó a Skillshop. Este enlace abre el catálogo, no una inscripción directa:
+              busca el título y confirma que el curso siga disponible.
+            </p>
+          )}
+
           {/* CTA */}
           <a
-            href={course.url}
+            href={courseHref}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
           >
             <ExternalLink className="h-3 w-3" />
-            Consultar en el proveedor
+            {needsCatalogSearch ? 'Buscar en Skillshop' : 'Consultar en el proveedor'}
           </a>
         </CardContent>
       </Card>
