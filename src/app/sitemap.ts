@@ -31,7 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       urls.push({
         url,
-        lastModified: new Date(),
         changeFrequency: section.changefreq,
         priority: section.priority,
         alternates: { languages: alternates },
