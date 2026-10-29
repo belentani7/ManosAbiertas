@@ -4,18 +4,34 @@ on:
   push:
     branches: [main]
     paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'src/app/**'
+      - 'src/components/manos-abiertas/**'
+      - 'src/lib/**'
+      - 'src/i18n/**'
       - 'public/**'
       - 'e2e/**'
       - 'playwright.config.ts'
       - 'campus/**'
       - 'scripts/publish-campus.mjs'
+      - 'scripts/verify-production-routes.mjs'
       - '.github/workflows/institutional-e2e.yml'
   pull_request:
     branches: [main]
     paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'src/app/**'
+      - 'src/components/manos-abiertas/**'
+      - 'src/lib/**'
+      - 'src/i18n/**'
       - 'public/**'
       - 'e2e/**'
       - 'playwright.config.ts'
+      - 'campus/**'
+      - 'scripts/publish-campus.mjs'
+      - 'scripts/verify-production-routes.mjs'
       - '.github/workflows/institutional-e2e.yml'
   workflow_dispatch:
 
