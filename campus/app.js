@@ -12,21 +12,29 @@ function loadQuiz(url,box) {
   const titulo=$('.quiz-titulo',box),opciones=$('.opciones',box);
   const feedback=$('.feedback',box),marcador=$('.marcador',box);
   const button=$('.quiz-siguiente',box);
+  // A rejected or failed request must not show questions, scores or feedback
+  // belonging to a previously selected course.
+  opciones.replaceChildren();
+  feedback.textContent='';
+  marcador.textContent='';
+  button.hidden=true;
+  button.onclick=null;
   if(!/^cursos\/(?:alfabetizacion-ia|office-sin-miedo|falsos-amigos-pt-es)\/quiz\.json$/.test(url)){
     titulo.textContent='Ruta del cuestionario no permitida';return;
   }
   titulo.textContent='Cargando preguntas reales…';
-  opciones.replaceChildren();feedback.textContent='';button.hidden=true;
   fetch(url,{signal:controller.signal}).then(response=>{
     if(!response.ok)throw Error('Quiz HTTP '+response.status);
     return response.json();
   }).then(items=>{
     if(controller.signal.aborted)return;
     if(!Array.isArray(items)||!items.length||items.length>50||items.some(q=>
-      typeof q.pregunta!=='string'||!Array.isArray(q.opciones)||q.opciones.length<2||
-      q.opciones.length>6||!q.opciones.every(s=>typeof s==='string')||
+      !q||typeof q!=='object'||Array.isArray(q)||
+      typeof q.pregunta!=='string'||!q.pregunta.trim()||
+      !Array.isArray(q.opciones)||q.opciones.length<2||
+      q.opciones.length>6||!q.opciones.every(s=>typeof s==='string'&&s.trim())||
       !Number.isInteger(q.correcta)||q.correcta<0||q.correcta>=q.opciones.length||
-      typeof q.explicacion!=='string'))throw Error('Quiz structure invalid');
+      typeof q.explicacion!=='string'||!q.explicacion.trim()))throw Error('Quiz structure invalid');
     let index=0,score=0,answered=false;
     const render=()=>{
       answered=false;
@@ -73,7 +81,11 @@ function loadQuiz(url,box) {
   }).catch(()=>{
     if(controller.signal.aborted)return;
     titulo.textContent='No se pudo cargar este cuestionario.';
-    opciones.replaceChildren();feedback.textContent='Comprueba la conexión o vuelve a abrir el campus online para activar el modo offline.';
+    opciones.replaceChildren();
+    marcador.textContent='';
+    button.hidden=true;
+    button.onclick=null;
+    feedback.textContent='Comprueba la conexión o vuelve a abrir el campus online para activar el modo offline.';
   });
 }
 
