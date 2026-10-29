@@ -25,7 +25,7 @@ test('all institutional public URLs remain valid on Vercel',()=>{
     assert.ok(!target.includes('..'),page+': unsafe target: '+target);
     const full=resolve(root,'public',target);
     if(target==='campus/'){
-      assert.match(read('src/app/campus/route.ts'),/es\/cursos/);
+      assert.ok(read('src/app/campus/route.ts').includes("new URL('/campus/index.html'"));
       continue;
     }
     assert.ok(existsSync(full),page+': broken Vercel target '+target);

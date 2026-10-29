@@ -27,6 +27,12 @@ function localTarget(value) {
   }
   const url = new URL(value, 'https://campus.invalid/campus/index.html');
   const path = decodeURIComponent(url.pathname);
+  // The campus may link to a small, explicitly approved set of institutional
+  // pages in the same published site, never to arbitrary paths outside campus.
+  const institutionalPages = new Set([
+    '/index.html', '/programas.html', '/orientacion.html', '/recursos.html', '/proyecto.html',
+  ]);
+  if (institutionalPages.has(path)) return resolve(root, path.slice(1));
   assert.ok(path.startsWith('/campus/'), 'Local link escapes published campus: ' + value);
   const target = resolve(campus, '.' + path.slice('/campus'.length));
   assert.ok(target === campus || target.startsWith(campus + sep), 'Path escapes campus: ' + value);
@@ -51,6 +57,9 @@ test('local links cannot silently leave the published campus', () => {
   for (const href of ['../not-published.html', '/not-published.html', '%2e%2e/not-published.html'])
     assert.throws(() => localTarget(href), /Local link escapes published campus/);
   assert.equal(localTarget('https://example.com/course'), null);
+  assert.equal(localTarget('../index.html'), resolve(root, 'index.html'));
+  assert.equal(localTarget('../programas.html'), resolve(root, 'programas.html'));
+  assert.throws(() => localTarget('../admin.html'), /Local link escapes published campus/);
 });
 
 test('campus links reject executable and opaque URL schemes', () => {
