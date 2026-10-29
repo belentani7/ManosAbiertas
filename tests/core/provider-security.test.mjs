@@ -5,10 +5,12 @@ import test from 'node:test';
 import { PROJECT_ROOT } from '../../scripts/test-core.mjs';
 import {
   boundedProviderText,
+  buildProviderBody,
   providerTextFromPayload,
   safeMaxTokens,
   safeProviderEndpoint,
   safeProviderModel,
+  takeSseLines,
 } from '../../src/lib/provider-security.ts';
 
 test('provider endpoints require HTTPS without credentials in production', () => {
@@ -47,4 +49,78 @@ test('AI provider retains endpoint, token, response-size and log-sanitization bo
   assert.match(source, /boundedProviderText/);
   assert.doesNotMatch(source, /response\.json\(/);
   assert.doesNotMatch(source, /console\.warn\([^\n]*,\s*error/);
+});
+
+test('provider wire body retains tool calls, tool choice and structured JSON output', () => {
+  const tools = [{ type: 'function', function: { name: 'find_course', description: 'Lookup', parameters: { type: 'object' } } }];
+  const request = {
+    systemPrompt: 'Be helpful',
+    messages: [{ role: 'user', content: 'Encuentra un curso' }],
+    tools,
+    toolChoice: 'required',
+    responseFormat: { type: 'json_object' },
+    temperature: 0,
+    topP: 0.2,
+  };
+  const model = { name: 'test-model', maxTokens: 256, supportsTools: true };
+  for (const stream of [false, true]) {
+    const wire = JSON.parse(JSON.stringify(buildProviderBody(request, model, 500, stream)));
+    assert.equal(wire.model, 'test-model');
+    assert.equal(wire.stream, stream);
+    assert.deepEqual(wire.messages, [
+      { role: 'system', content: 'Be helpful' },
+      { role: 'user', content: 'Encuentra un curso' },
+    ]);
+    assert.equal(wire.max_completion_tokens, 256);
+    assert.equal(wire.temperature, 0);
+    assert.equal(wire.top_p, 0.2);
+    assert.deepEqual(wire.tools, tools);
+    assert.equal(wire.tool_choice, 'required');
+    assert.deepEqual(wire.response_format, { type: 'json_object' });
+  }
+});
+
+test('unsupported tool models do not send tools or orphan tool_choice', () => {
+  const wire = buildProviderBody({
+    messages: [{ role: 'user', content: 'Hola' }],
+    tools: [{ type: 'function' }],
+    toolChoice: 'required',
+    responseFormat: { type: 'json_schema', json_schema: { name: 'result' } },
+  }, { name: 'text-only', maxTokens: 100, supportsTools: false }, 90, false);
+  assert.equal(Object.hasOwn(wire, 'tools'), false);
+  assert.equal(Object.hasOwn(wire, 'tool_choice'), false);
+  assert.deepEqual(wire.response_format, { type: 'json_schema', json_schema: { name: 'result' } });
+});
+
+test('both provider fetch paths serialize the same verified body builder', () => {
+  const source = readFileSync(join(PROJECT_ROOT, 'src/lib/ai-provider.ts'), 'utf8');
+  assert.match(source, /body:\s*JSON\.stringify\(body\)/);
+  assert.match(source, /body:\s*JSON\.stringify\(buildProviderBody\(/);
+  assert.doesNotMatch(source, /body:\s*JSON\.stringify\(\{/);
+});
+
+test('SSE decoder preserves split JSON frames and CRLF boundaries', () => {
+  const chunks = [
+    'data: {"choices":[{"delta":{"content":"Ho',
+    'la"}}]}\\r\\n\\r\\n',
+    'data: [DO',
+    'NE]\\n',
+  ].map(part => part.replaceAll('\\r', '\r').replaceAll('\\n', '\n'));
+  let remainder = '';
+  const lines = [];
+  for (const chunk of chunks) {
+    const frame = takeSseLines(remainder + chunk);
+    remainder = frame.remainder;
+    lines.push(...frame.lines);
+  }
+  assert.equal(remainder, '');
+  assert.deepEqual(lines.filter(Boolean), [
+    'data: {"choices":[{"delta":{"content":"Hola"}}]}',
+    'data: [DONE]',
+  ]);
+});
+
+test('SSE decoder refuses unbounded unterminated provider frames', () => {
+  assert.throws(() => takeSseLines('x'.repeat(131_073)), /size limit/);
+  assert.deepEqual(takeSseLines('data: {}\\n'.replace('\\n', '\n')), { lines: ['data: {}'], remainder: '' });
 });
