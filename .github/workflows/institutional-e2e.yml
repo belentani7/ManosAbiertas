@@ -1,0 +1,51 @@
+name: Institutional E2E
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/**'
+      - 'e2e/**'
+      - 'playwright.config.ts'
+      - '.github/workflows/institutional-e2e.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/**'
+      - 'e2e/**'
+      - 'playwright.config.ts'
+      - '.github/workflows/institutional-e2e.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-journeys:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install pinned dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install browser engines
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+      - name: Test static institutional journeys on desktop and mobile
+        run: pnpm exec playwright test
+      - name: Preserve failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: institutional-playwright-results
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
