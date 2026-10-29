@@ -114,11 +114,15 @@ export function CoursesLibrarySection() {
       <div className="text-center mb-4">
         <Badge variant="secondary" className="mb-2 gap-1.5">
           <GraduationCap className="h-3 w-3" />
-          {EXTERNAL_COURSES.length + 20} cursos en total
+          Rutas de aprendizaje organizadas
         </Badge>
         <h1 className="text-3xl md:text-4xl font-bold mb-2">Biblioteca de Cursos</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-          Cursos online de Google, SEPE, universidades y más. Más la academia premium NO.IA_CORE.
+          Formación propia y enlaces a proveedores externos para practicar habilidades útiles.
+        </p>
+        <p className="text-muted-foreground max-w-2xl mx-auto mt-2 text-xs leading-relaxed">
+          La disponibilidad, el coste, la duración y la emisión de certificados dependen de cada proveedor.
+          Comprueba siempre las condiciones vigentes en la web de origen antes de inscribirte.
         </p>
       </div>
 
@@ -183,7 +187,7 @@ export function CoursesLibrarySection() {
       {/* Stats bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
         <StatCard icon={BookOpen} label="Cursos" value={stats.total} color="text-primary" />
-        <StatCard icon={Award} label="Con certificado" value={stats.withCert} color="text-amber-600 dark:text-amber-400" />
+        <StatCard icon={Award} label="Certificado indicado" value={stats.withCert} color="text-amber-600 dark:text-amber-400" />
         <StatCard icon={Users} label="Iniciados" value={startedCount} color="text-blue-600 dark:text-blue-400" />
         <StatCard icon={CheckCircle2} label="Completados" value={completedCount} color="text-emerald-600 dark:text-emerald-400" />
       </div>
@@ -240,7 +244,7 @@ export function CoursesLibrarySection() {
             <label className="flex items-center gap-1.5 cursor-pointer">
               <input type="checkbox" checked={certOnly} onChange={(e) => { setCertOnly(e.target.checked); setVisibleCount(PAGE_SIZE); }} className="rounded" />
               <Award className="h-3.5 w-3.5" />
-              Solo con certificado
+              Indicados con certificado
             </label>
           </div>
         </CardContent>
@@ -376,7 +380,7 @@ function CourseCard({ course, progress, onToggleProgress, index }: { course: Ext
             {course.certification && (
               <Badge className="text-[9px] py-0 h-4 bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300 hover:bg-amber-200">
                 <Award className="h-2.5 w-2.5 mr-0.5" />
-                Certificado
+                Certificado indicado
               </Badge>
             )}
           </div>
@@ -389,7 +393,7 @@ function CourseCard({ course, progress, onToggleProgress, index }: { course: Ext
             className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
           >
             <ExternalLink className="h-3 w-3" />
-            {course.free ? 'Acceder gratis' : 'Más información'}
+            Consultar en el proveedor
           </a>
         </CardContent>
       </Card>
