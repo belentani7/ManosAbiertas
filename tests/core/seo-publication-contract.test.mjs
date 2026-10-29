@@ -11,8 +11,8 @@ const read = path => readFileSync(join(root, path), 'utf8');
 test('robots points to the same configured Next.js origin as sitemap, not historical Pages', () => {
   const robots = read('src/app/robots.ts');
   const sitemap = read('src/app/sitemap.ts');
-  assert.match(robots, /process\.env\.NEXT_PUBLIC_SITE_URL/);
-  assert.match(sitemap, /process\.env\.NEXT_PUBLIC_SITE_URL/);
+  assert.match(robots, /import \{ SITE_URL \} from ["']@\/lib\/site-url["']/);
+  assert.match(sitemap, /import \{ SITE_URL \} from ["']@\/lib\/site-url["']/);
   assert.match(robots, /new URL\("\/sitemap\.xml", SITE_URL\)/);
   assert.doesNotMatch(robots, /github\.io|\/_next\/|\/static\//);
   assert.match(robots, /disallow: \["\/api\/"\]/);
@@ -24,7 +24,8 @@ test('localized home owns canonical and hreflang; subroutes do not inherit home 
   const globalLayout = read('src/app/layout.tsx');
   assert.match(home, /canonical:\s*`/);
   assert.match(home, /languages:\s*Object\.fromEntries\(/);
-  assert.match(home, /url:\s*`\$\{process\.env\.NEXT_PUBLIC_SITE_URL/);
+  assert.match(home, /url:\s*`\$\{SITE_URL\}/);
+  assert.match(home, /import \{ SITE_URL \} from ["']@\/lib\/site-url["']/);
   assert.doesNotMatch(localeLayout, /alternates:/);
   assert.doesNotMatch(globalLayout, /canonical:\s*["']\/["']/);
   assert.doesNotMatch(globalLayout, /SearchAction|search_term_string/);
@@ -51,15 +52,11 @@ test('every advertised sitemap section has a real Next.js localized page route',
   assert.doesNotMatch(source, /lastModified:\s*new Date\(/);
 });
 
-test('sitemap only publishes supported locale identifiers', () => {
+test('sitemap derives all supported locales from the canonical language registry', () => {
   const sitemap = read('src/app/sitemap.ts');
   const languages = read('src/i18n/languages.ts');
-  const match = sitemap.match(/const LOCALES = \[([^\]]+)\]/);
-  assert.ok(match, 'sitemap locale list is explicit');
-  const locales = [...match[1].matchAll(/"([^"]+)"/g)].map(item => item[1]);
-  assert.ok(locales.length > 0);
-  assert.equal(locales.length, new Set(locales).size);
-  for (const locale of locales) {
-    assert.ok(languages.includes(`code: '${locale}'`), `unrecognized locale in sitemap: ${locale}`);
-  }
+  assert.match(sitemap, /import \{ LANGUAGES \} from ['"]@\/i18n\/languages['"]/);
+  assert.match(sitemap, /const LOCALES = LANGUAGES\.map\(\(language\) => language\.code\)/);
+  assert.match(languages, /export const LANGUAGE_COUNT = LANGUAGES\.length/);
+  assert.doesNotMatch(sitemap, /const LOCALES = \[/, 'locale lists must not go stale');
 });
