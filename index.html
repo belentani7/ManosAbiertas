@@ -1,116 +1,42 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0c1018">
-<title>Manos Abiertas — Formación gratuita para quienes llegan</title>
-<meta name="description" content="Formación gratuita y sin registro: inteligencia artificial, ofimática e idiomas. Materiales abiertos para aprender a tu ritmo.">
-<link rel="canonical" href="https://github.com/belentani7/ManosAbiertas">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Manos Abiertas — Formación gratuita para quienes llegan">
-<meta property="og:description" content="Formación abierta en IA, ofimática e idiomas. Gratuita, sin registro y con materiales para estudiar sin conexión.">
-<meta property="og:url" content="https://github.com/belentani7/ManosAbiertas">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c1018'/%3E%3Cpath d='M8 20c4-8 12-8 16 0' fill='none' stroke='%237dd3fc' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="./campus/tokens.css">
-<style>
-.env{width:min(66rem,100% - 2rem);margin:0 auto;padding:clamp(2rem,6vw,5rem) 0}
-.eyebrow{font-family:var(--font-mono);font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
-h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:.6rem 0 1rem;font-weight:800}
-.lead{font-size:var(--fs-lg);color:var(--text-2);max-width:56ch;line-height:1.6}
-.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(19rem,100%),1fr));margin:3rem 0}
-.card{display:block;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem;text-decoration:none;color:inherit}
-.card:hover{border-color:var(--accent)}
-.card h3{font-size:var(--fs-lg);margin:0 0 .5rem}
-.card p{color:var(--text-2);font-size:var(--fs-sm);line-height:1.55;margin:0 0 1rem}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;font-family:var(--font-mono);font-size:var(--fs-xs)}
-.tag{border:1px solid var(--border);border-radius:999px;padding:.15rem .6rem;color:var(--text-3)}
-.acciones{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
-.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:var(--r-md);background:var(--accent);color:#0c1018;font-weight:700;text-decoration:none}
-.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text-1)}
-.meta{color:var(--text-3);font-size:var(--fs-sm);line-height:1.6}
-footer{border-top:1px solid var(--border);margin-top:4rem;padding-top:1.5rem;color:var(--text-3);font-size:var(--fs-sm)}
-
-/* Identidad educativa: cálida, inclusiva y diferenciada del universo JUDAS */
-.env{width:min(76rem,100% - 2rem)}
-.hero-stage{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:clamp(2rem,5vw,6rem);align-items:center;padding:clamp(3rem,7vw,7rem) clamp(1.2rem,4vw,4rem);border:1px solid #f0cbb275;border-radius:32px;background:linear-gradient(125deg,#fff8ed,#f9efe4 50%,#e3eee6);color:#1b3032;overflow:hidden;box-shadow:0 32px 75px #080b101f}
-.hero-stage:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 77% 35%,#ffc28262,transparent 33%);z-index:-1}
-.hero-stage .eyebrow{color:#9c481f;font-weight:800}.hero-stage h1{color:#19363a;font-size:clamp(2.6rem,5vw,5.2rem);line-height:1.04;letter-spacing:-.065em;margin:1.2rem 0;max-width:11ch}
-.hero-stage h1 em{font-style:normal;color:#b7421e}.hero-stage .lead{color:#34565a;font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.68}
-.hero-stage .btn{background:#d75327;color:white;min-height:48px;display:inline-flex;align-items:center;border-radius:12px}.hero-stage .btn.ghost{border-color:#a5aba7;color:#1c3c42;background:#ffffff8c}
-.hero-art{min-height:330px;position:relative;display:grid;place-items:center}
-.sun-disc{width:min(100%,290px);aspect-ratio:1;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 30% 20%,#fff5d6,#ffbb72 35%,#ed884d 78%,#d15b2c);box-shadow:0 22px 70px #e978484a,inset -25px -24px 40px #a344342f;animation:artFloat 8s ease-in-out infinite}
-.sun-disc:before,.sun-disc:after{content:"";position:absolute;border:1px solid #a45d4780;border-radius:50%;width:88%;height:56%;transform:rotate(-32deg)}.sun-disc:after{transform:rotate(44deg)}.sun-disc span{font-size:7rem;font-weight:200;color:#fff5e4;text-shadow:0 9px 28px #92341f6a}
-.hero-card{position:absolute;display:grid;gap:.3rem;min-width:150px;padding:1rem;background:#fffef7d9;border:1px solid #ffffffa6;border-radius:15px;box-shadow:0 12px 28px #37554830;backdrop-filter:blur(14px);font-size:.88rem;color:#305358}.hero-card strong{color:#a84622;font-size:.75rem;letter-spacing:.13em}.hero-card.one{top:7%;left:0}.hero-card.two{bottom:2%;left:-2%}.hero-card.three{right:-3%;top:42%}
-@keyframes artFloat{50%{transform:translateY(-10px)}}
-@media(max-width:820px){.hero-stage{grid-template-columns:1fr}.hero-stage h1{max-width:14ch}.hero-art{min-height:300px}.hero-card.one{left:9%}.hero-card.three{right:6%}}
-@media(max-width:540px){.hero-stage{padding:2rem 1rem}.hero-art{min-height:250px}.sun-disc{width:215px}.hero-card{min-width:120px;padding:.7rem}.hero-card.one{left:0}.hero-card.two{left:0}.hero-card.three{right:0}}
-@media(prefers-reduced-motion:reduce){.sun-disc{animation:none}}
-</style>
-</head>
-<body>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf7f1">
+<title>Educación gratuita para avanzar | Manos Abiertas</title>
+<meta name="description" content="Aprende competencias digitales, prepara documentos y descubre recursos fiables con Manos Abiertas. Formación abierta y práctica, a tu ritmo.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Manos Abiertas"><meta property="og:title" content="Educación gratuita para avanzar | Manos Abiertas"><meta property="og:description" content="Aprende competencias digitales, prepara documentos y descubre recursos fiables con Manos Abiertas. Formación abierta y práctica, a tu ritmo.">
+<link rel="icon" href="./assets/manos-symbol.svg" type="image/svg+xml"><link rel="stylesheet" href="./assets/brand.css">
+<script defer src="./assets/site.js"></script>
+</head><body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<main id="contenido" tabindex="-1" class="env">
-  <div class="hero-stage"><div class="hero-copy">
-  <p class="eyebrow">MANOS ABIERTAS · APRENDER PARA AVANZAR</p>
-  <h1>Aprender abre puertas. <em>También las tuyas.</em></h1>
-  <p class="lead">Formación gratuita, práctica y abierta para quienes empiezan una nueva etapa. Aprende inteligencia artificial, ofimática e idiomas con materiales que puedes estudiar a tu ritmo, sin registrarte.</p>
-  <div class="acciones">
-    <a class="btn" href="./orientacion.html">Elegir mi primera ruta ↗</a>
-    <a class="btn ghost" href="./campus/">Abrir el campus</a>
-    <a class="btn ghost" href="./ecosistema.html">Ecosistema</a>
-  </div><div class="hero-art" aria-hidden="true"><div class="sun-disc"><span>↗</span></div><div class="hero-card one"><strong>01 / IA</strong><span>Comprender</span></div><div class="hero-card two"><strong>02 / OFFICE</strong><span>Crear</span></div><div class="hero-card three"><strong>03 / IDIOMAS</strong><span>Comunicar</span></div></div></div>
-  <section>
-    <h2 style="font-size:var(--fs-xl);margin:3rem 0 .6rem">Quiénes somos</h2>
-    <p class="meta" lang="pt">Quem somos: uma plataforma aberta e sem fins lucrativos para quem
-    chega a um pais novo e precisa de ferramentas praticas. Nao pedimos conta nem correio,
-    nao ha publicidade e nao ha seguimento. O progresso guarda-se no teu proprio navegador.
-    Todo o material tem licenca aberta e cita as suas fontes.</p>
-  </section>
-  <h2 style="font-size:var(--fs-xl);margin:3rem 0 .6rem">Cursos</h2>
-  <section class="grid">
-    <a class="card" href="campus/cursos/alfabetizacion-ia/index.html">
-      <h3>Alfabetización en IA</h3>
-      <p>Entender que hace y que no hace la inteligencia artificial, sin humo y sin miedo.</p>
-      <div class="tags">
-        <span class="tag">LLM</span>
-        <span class="tag">Sesgos</span>
-        <span class="tag">Verificacion</span>
-        <span class="tag">Uso responsable</span>
-      </div>
-    </a>
-    <a class="card" href="campus/cursos/office-sin-miedo/index.html">
-      <h3>Office sin miedo</h3>
-      <p>Ofimatica practica para el trabajo diario: documentos, hojas de calculo y presentaciones.</p>
-      <div class="tags">
-        <span class="tag">Documentos</span>
-        <span class="tag">Hojas</span>
-        <span class="tag">Presentaciones</span>
-        <span class="tag">Tramites</span>
-      </div>
-    </a>
-    <a class="card" href="campus/cursos/falsos-amigos-pt-es/index.html">
-      <h3>Falsos amigos PT-ES</h3>
-      <p>Las palabras que enganan a quien habla portugues y aprende espanol. Con ejemplos reales.</p>
-      <div class="tags">
-        <span class="tag">Portugues</span>
-        <span class="tag">Espanol</span>
-        <span class="tag">Vocabulario</span>
-        <span class="tag">Practica</span>
-      </div>
-    </a>
-  </section>
-  <h2 style="font-size:var(--fs-xl);margin:3rem 0 .6rem">Cómo funciona</h2>
-  <p class="meta" lang="pt">Cada curso tem semanas com leitura, pratica guiada e um caso real, mais
-  um quiz, um laboratorio com evidencia e um projeto final. O material vive no
-  <a href="./campus/">campus</a> e abre-se sem ligacao a internet.</p>
-  <footer>
-    <p lang="pt">Manos Abiertas - material educativo aberto. <a href="./campus/">Campus</a> &middot;
-    <a href="https://github.com/belentani7/ManosAbiertas">Codigo fonte</a></p>
-    <p class="meta" lang="pt">Parte do ecossistema educativo <strong>Belentani / NOIACORE</strong>: formação gratuita e aberta.
-    <a href="https://github.com/belentani7/open-school/blob/main/INDICE-EDUCATIVO.md">Índice educativo</a> · <a href="https://open-school-gamma.vercel.app" target="_blank" rel="noopener">Open School</a> · <a href="https://williamschool.vercel.app" target="_blank" rel="noopener">WILLIAMSCHOOL</a> · <a href="https://ux-academy-professional.vercel.app" target="_blank" rel="noopener">UX Academy</a> · <a href="https://aprende-brasil.vercel.app/" target="_blank" rel="noopener">Aprende Brasil</a> · <a href="https://github.com/belentani7/lingua-aberta-empresa" target="_blank" rel="noopener">Lingua Aberta</a> · <a href="https://github.com/belentani7/Cruzando-el-charco" target="_blank" rel="noopener">Cruzando el Charco</a> · <a href="https://github.com/belentani7/secure-t" target="_blank" rel="noopener">secure T</a></p>
-  </footer>
-</main>
-</body>
-</html>
+<header class="site-header"><div class="container header-inner">
+<a class="wordmark" href="./index.html" aria-label="Manos Abiertas, volver al inicio"><svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="14" fill="#16463e"/><path d="M10 25c4-7 8-9 14-2 6-7 10-5 14 2M12 30c6 9 18 9 24 0" fill="none" stroke="#f7efe0" stroke-width="3.4" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#f3a46d"/></svg><span><b>MANOS<br>ABIERTAS</b><small>Educación para avanzar</small></span></a>
+<button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menú ☰</button>
+<nav id="main-nav" data-nav class="header-nav" aria-label="Navegación principal"><a href="./index.html" aria-current="page">Inicio</a><a href="./orientacion.html">Empieza aquí</a><a href="./programas.html">Aprender</a><a href="./empleo.html">Empleo</a><a href="./recursos.html">Recursos</a><a href="./proyecto.html">El proyecto</a><a class="header-cta" href="./campus/">Abrir campus ↗</a></nav>
+</div></header>
+<main id="contenido" tabindex="-1">
+<section class="hero"><div class="container hero-grid"><div class="hero-copy">
+<p class="eyebrow">Educación abierta · Autonomía real</p><h1>El futuro se construye <span>paso a paso.</span></h1>
+<p class="lead">Llegar a un lugar nuevo, buscar trabajo o aprender una herramienta no debería ser un laberinto. En Manos Abiertas encuentras formación práctica, orientación clara y recursos para avanzar a tu ritmo.</p>
+<div class="actions"><a class="button" href="./orientacion.html">Encuentra tu primer paso <span aria-hidden="true">↗</span></a><a class="button secondary" href="./programas.html">Explorar programas</a></div>
+<div class="proofline"><span>Recursos educativos gratuitos</span><span>Acceso sin crear cuenta</span><span>Contenido de aprendizaje práctico</span></div></div><div class="hero-visual" role="img" aria-label="Ilustración editorial de dos personas ante un camino ascendente de aprendizaje, con formas vegetales y luz cálida">
+<svg viewBox="0 0 580 650" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><linearGradient id="warm" x2="1" y2="1"><stop stop-color="#f8e8ca"/><stop offset="1" stop-color="#bbd5c2"/></linearGradient><linearGradient id="way" x2="0" y2="1"><stop stop-color="#d77547"/><stop offset="1" stop-color="#a4452b"/></linearGradient></defs>
+<rect width="580" height="650" fill="url(#warm)"/><circle cx="411" cy="163" r="126" fill="#f5c68d" opacity=".83"/><path d="M-40 524Q130 392 305 504T635 467V710H-40Z" fill="#b7cbb6"/><path d="M-30 582Q180 467 346 561T650 522V710H-30Z" fill="#86a88c"/>
+<g fill="none" stroke="#63836b" stroke-width="2" opacity=".55"><path d="M30 200C120 127 158 172 226 110"/><path d="M15 222C120 149 176 205 254 136"/><path d="M270 56c-36 84-64 98-63 146"/></g>
+<path d="M156 492L276 492 351 411 430 411 477 349 573 349 573 633 156 633Z" fill="#f9f5e7"/><path d="M156 492L276 492 351 411 430 411 477 349 573 349" fill="none" stroke="#e0b18b" stroke-width="12" stroke-linejoin="round"/>
+<path d="M198 488v-71c0-18 16-30 32-30s31 15 31 33v68" fill="#2c594d"/><circle cx="228" cy="363" r="33" fill="#af6347"/><path d="M197 355c1-50 63-53 66 4-21-12-35-18-66-4Z" fill="#233d37"/><path d="M194 430q-25 15-36 49M259 431l35-25" fill="none" stroke="#2c594d" stroke-width="16" stroke-linecap="round"/><path d="M206 490v72m42-72v72" stroke="#203e36" stroke-width="19" stroke-linecap="round"/>
+<path d="M357 407v-63c0-17 11-29 27-29s29 12 29 29v63" fill="#b85b3a"/><circle cx="384" cy="292" r="29" fill="#d29d79"/><path d="M356 282q2-38 31-38 26 0 28 36-24 8-59 2Z" fill="#2a3e31"/><path d="M359 362l-35 19m87-18 32-34" fill="none" stroke="#b85b3a" stroke-width="14" stroke-linecap="round"/><path d="M370 405v64m29-64v64" stroke="#324e45" stroke-width="17" stroke-linecap="round"/>
+<g fill="#16463e"><path d="M65 484q-32-97 38-139-2 105-38 139Z"/><path d="M75 493q42-86 93-68-43 71-93 68Z"/><path d="M65 497q-70-53-54-112 69 39 54 112Z"/></g><path d="M67 511q10-121 56-149" fill="none" stroke="#16463e" stroke-width="4"/>
+<g font-family="Arial,sans-serif" font-size="14" font-weight="700"><rect x="50" y="85" width="150" height="38" rx="19" fill="#fffdf6"/><text x="69" y="109" fill="#1b493f">APRENDER</text><rect x="358" y="62" width="143" height="38" rx="19" fill="#fffdf6"/><text x="377" y="87" fill="#1b493f">AVANZAR</text></g>
+</svg><div class="visual-caption"><div><strong>Pequeños pasos. Nuevas posibilidades.</strong><span>Educación práctica para situaciones reales</span></div><span aria-hidden="true" style="font-size:1.5rem;color:var(--clay)">↗</span></div></div></div></section>
+<div class="intro-band"><div class="container"><p><strong>Una idea sencilla:</strong> que aprender sirva para resolver algo importante en tu vida, desde el primer día.</p><a href="./proyecto.html">Conoce nuestro propósito ↗</a></div></div>
+<section class="section"><div class="container"><div class="section-head"><div><p class="eyebrow">Empieza por lo que necesitas</p><h2>No tienes que aprenderlo todo.<br>Empieza por algo útil.</h2></div><p>Elige una necesidad concreta. Cada recorrido te acerca a materiales, actividades y herramientas que ya existen.</p></div>
+<div class="cards-3"><article class="card dark"><span class="tag">01 · Vida laboral</span><h3><a class="stretched-link" href="./empleo.html">Quiero preparar mi búsqueda de empleo</a></h3><p>Organiza tus capacidades, mejora tu currículum y practica las tareas digitales habituales en una candidatura.</p><span class="arrow">Ver ruta de empleo ↗</span></article>
+<article class="card"><span class="tag">02 · Autonomía digital</span><h3><a class="stretched-link" href="./programas.html#office">Quiero manejar herramientas digitales</a></h3><p>Documentos, hojas de cálculo, correo y organización cotidiana, explicados desde lo esencial.</p><span class="arrow">Aprender herramientas ↗</span></article>
+<article class="card"><span class="tag">03 · Comunicación</span><h3><a class="stretched-link" href="./programas.html#idiomas">Quiero comunicarme con más seguridad</a></h3><p>Recursos para practicar español y portugués y evitar confusiones del día a día.</p><span class="arrow">Descubrir idiomas ↗</span></article></div></div></section>
+<section class="section" style="background:#f0ede5"><div class="container"><div class="section-head"><div><p class="eyebrow">Una metodología sin artificios</p><h2>Aprender. Practicar. Aplicar.</h2></div><p>Diseñamos el aprendizaje para personas reales, con distintos puntos de partida y tiempos disponibles.</p></div>
+<div class="pathway"><article><strong>PASO 01</strong><h3>Elige un objetivo</h3><p>Qué necesitas resolver ahora: trabajo, documentos, idioma o herramientas digitales.</p></article><article><strong>PASO 02</strong><h3>Entiende lo básico</h3><p>Explicaciones claras y ejemplos que no dan nada por supuesto.</p></article><article><strong>PASO 03</strong><h3>Practica</h3><p>Ejercicios y recursos que puedes repetir y consultar.</p></article><article><strong>PASO 04</strong><h3>Úsalo en tu vida</h3><p>Convierte lo aprendido en un documento, una tarea o una decisión mejor informada.</p></article></div></div></section>
+<section class="section"><div class="container feature"><div class="feature-pane"><div><p class="eyebrow">Campus abierto</p><div class="oversized">01—03</div><div class="rule"></div><p>Rutas iniciales para construir una base: inteligencia artificial responsable, ofimática e idiomas.</p></div><span class="text-small">Cursos modulares disponibles en el repositorio educativo</span></div><div><p class="eyebrow">Aprender sin barreras</p><h2>Un campus pensado para empezar de verdad.</h2><p class="lead">No necesitas dominar la tecnología ni suscribirte para acceder a los materiales básicos. Explora lecciones, realiza ejercicios y avanza con objetivos alcanzables.</p><ul class="list-plain"><li>IA con criterio, no con promesas exageradas</li><li>Office aplicado a tareas reales</li><li>Español y portugués en situaciones cotidianas</li></ul><a class="button" href="./campus/">Entrar al campus ↗</a></div></div></section>
+<section class="section-sm"><div class="container"><div class="cta-panel"><div><p class="eyebrow light">Tu recorrido empieza hoy</p><h2>Un primer paso puede cambiar cómo afrontas el siguiente.</h2><p>Te ayudamos a elegir por dónde empezar, sin formularios interminables ni promesas vacías.</p></div><div class="actions"><a class="button on-dark" href="./orientacion.html">Descubrir mi ruta ↗</a></div></div></div></section></main><footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="wordmark" href="./index.html"><svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="14" fill="#16463e"/><path d="M10 25c4-7 8-9 14-2 6-7 10-5 14 2M12 30c6 9 18 9 24 0" fill="none" stroke="#f7efe0" stroke-width="3.4" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#f3a46d"/></svg><span><b>MANOS<br>ABIERTAS</b><small>Educación para avanzar</small></span></a><p style="max-width:38ch;margin-top:22px">Una iniciativa educativa abierta para convertir el aprendizaje digital en autonomía cotidiana. Sin promesas imposibles ni barreras innecesarias.</p></div><div><h2>Explorar</h2><div class="footer-links"><a href="./orientacion.html">Elegir una ruta</a><a href="./programas.html">Programas</a><a href="./empleo.html">Preparar mi CV</a><a href="./campus/">Campus abierto</a></div></div><div><h2>Transparencia</h2><div class="footer-links"><a href="./recursos.html">Recursos oficiales</a><a href="./proyecto.html">Quiénes somos</a><a href="https://github.com/belentani7/ManosAbiertas" target="_blank" rel="noopener noreferrer">Código del proyecto ↗</a><a href="./proyecto.html#limites">Alcance y límites</a></div></div></div><div class="copyright"><span>© 2026 Manos Abiertas · Proyecto educativo independiente</span><span>Material formativo. No sustituye atención profesional ni servicios públicos.</span></div></div></footer>
+</body></html>
