@@ -443,6 +443,10 @@ export class AIProviderRegistry {
         signal: AbortSignal.timeout(DEFAULT_CONFIG.timeout)
       });
 
+      // Non-2xx JSON error envelopes are not successful chat completions.
+      // Throw so the provider fallback chain can try the next configured model.
+      if (!response.ok) throw new Error(`Provider HTTP ${response.status}`);
+
       const payload = await readBoundedJson(response, 1_000_000) as {
         choices?: { message?: { content?: string; tool_calls?: ToolCall[] }; finish_reason?: string }[];         usage?: Record<string, number>;       };
       const text = boundedProviderText(
