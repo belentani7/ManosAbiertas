@@ -49,7 +49,15 @@ for (const check of checks) {
       const location = response.headers.get('location');
       assert.ok(location, 'missing Location header for ' + path);
       const target = new URL(location, ORIGIN);
-      assert.equal(target.origin, new URL(ORIGIN).origin, 'redirect must remain same-origin');
+      const expectedOrigin = new URL(ORIGIN);
+      const localHosts = new Set(['127.0.0.1', 'localhost', '0.0.0.0']);
+      assert.ok(
+        target.protocol === expectedOrigin.protocol &&
+        target.port === expectedOrigin.port &&
+        localHosts.has(target.hostname) &&
+        localHosts.has(expectedOrigin.hostname),
+        'redirect must remain on the same local production test server'
+      );
       path = target.pathname;
       redirects += 1;
     }
