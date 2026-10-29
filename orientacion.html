@@ -1,85 +1,27 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#fff9ef">
-<meta name="description" content="Tu primera ruta de aprendizaje gratuita en Manos Abiertas: IA, herramientas de oficina e idiomas. Plan local sin cuenta.">
-<title>Tu ruta de aprendizaje | Manos Abiertas</title>
-<link rel="stylesheet" href="./campus/tokens.css">
-<style>
-:root{color-scheme:light;--sun:#ff6c28;--blue:#116a73;--ink:#183235;--cream:#fff9ef}
-html{scroll-behavior:smooth}body{color:var(--ink);background:var(--cream);font-family:system-ui,Segoe UI,sans-serif}
-a{color:var(--blue)}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #165d65;outline-offset:4px}
-.wrap{width:min(1050px,calc(100% - 2rem));margin:auto}
-.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 0;flex-wrap:wrap}.brand{font-weight:850;color:var(--ink);text-decoration:none;font-size:1.1rem}.brand span{color:var(--sun)}
-nav{display:flex;gap:1rem;flex-wrap:wrap}nav a{font-weight:650;text-decoration:none}
-.hero{position:relative;overflow:hidden;padding:clamp(3rem,8vw,7rem) 0 4rem;border-radius:32px;background:radial-gradient(circle at 80% 25%,#ffcf898c,transparent 36%),linear-gradient(130deg,#fff9ec,#def6ee)}
-.eyebrow{font:800 .78rem/1.4 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#92501f}
-.hero-inner{display:grid;grid-template-columns:1.25fr .75fr;gap:2rem;align-items:center;padding-inline:clamp(1.5rem,5vw,4rem)}
-h1{font-size:clamp(2.7rem,6.5vw,5.8rem);line-height:1.02;letter-spacing:-.075em;font-weight:900;max-width:12ch;margin:.6rem 0 1rem;color:var(--ink)}
-h1 em{color:#bd4612;font-style:normal}.lead{font-size:clamp(1.08rem,2vw,1.3rem);line-height:1.7;max-width:53ch}
-.visual{width:min(100%,340px);aspect-ratio:1;display:grid;place-items:center;justify-self:center;position:relative;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fffdf3,#fcac63 43%,#ee7a3c 70%,#b55727);box-shadow:0 30px 90px #fa8f636a,inset -24px -30px 30px #824b2933}
-.visual:before,.visual:after{content:"";inset:-11%;position:absolute;border:2px solid #6b988d8c;border-radius:50%;transform:rotate3d(1,1,0,45deg)}.visual:after{inset:12%;border-color:#fffaf4bd;transform:rotate3d(1,-1,0,55deg)}
-.visual svg{width:65%;height:65%;filter:drop-shadow(0 12px 20px #86432a55);position:relative;z-index:2}
-.meta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}.meta span{border:1px solid #3f807959;background:#ffffff99;padding:.5rem .8rem;border-radius:999px;font-size:.83rem;font-weight:700}
-.choose{padding:3.5rem 0}.choose h2,.plan h2{font-size:clamp(1.7rem,4vw,3rem);letter-spacing:-.04em;margin:.5rem 0 1rem;color:var(--ink)}
-.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
-.route{cursor:pointer;display:grid;gap:.9rem;align-content:start;text-align:left;background:#fff;border:2px solid #e0e7dc;border-radius:22px;color:var(--ink);padding:1.6rem;min-height:220px;font:inherit;box-shadow:0 15px 25px #24483d10}
-.route:hover,.route[aria-pressed=true]{border-color:#e96129;box-shadow:0 0 0 3px #fbbd9d63}.route strong{font-size:1.45rem}.route span{font-size:1rem;line-height:1.6;color:#496363}
-.route small{color:#995021;font-weight:800;letter-spacing:.1em}
-.plan{padding:clamp(1.5rem,4vw,3rem);border-radius:28px;background:#17383b;color:white;margin-bottom:4rem}
-.plan h2{color:#fff}.plan p{color:#d5e9e6}
-#steps{list-style:none;padding:0;margin:1.5rem 0;display:grid;gap:.8rem}#steps li{display:flex;align-items:center;gap:.9rem;padding:1rem;border:1px solid #ffffff38;border-radius:12px;background:#ffffff0b}#steps input{width:23px;height:23px;accent-color:#fbb068;flex-shrink:0}
-#steps label{font-weight:650;line-height:1.4}#steps a{color:#ffd49e;font-size:.88rem;margin-left:auto;white-space:nowrap;text-underline-offset:3px}
-.button{display:inline-flex;min-height:47px;align-items:center;padding:.7rem 1.2rem;border-radius:10px;background:#ffbf8b;color:#1d2727!important;font-weight:800;text-decoration:none}
-footer{padding:2.5rem 0;border-top:1px solid #d3dfd7;color:#496363}
-@media(max-width:760px){.hero-inner{grid-template-columns:1fr}.visual{width:220px}.routes{grid-template-columns:1fr}.route{min-height:0}.plan li{flex-wrap:wrap}#steps a{margin-left:34px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
-</head>
-<body>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#faf7f1">
+<title>Encuentra tu ruta | Manos Abiertas</title>
+<meta name="description" content="Elige un objetivo de aprendizaje y recibe una ruta breve basada en materiales reales de Manos Abiertas.">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Manos Abiertas"><meta property="og:title" content="Encuentra tu ruta | Manos Abiertas"><meta property="og:description" content="Elige un objetivo de aprendizaje y recibe una ruta breve basada en materiales reales de Manos Abiertas.">
+<link rel="icon" href="./assets/manos-symbol.svg" type="image/svg+xml"><link rel="stylesheet" href="./assets/brand.css">
+<script defer src="./assets/site.js"></script>
+</head><body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<div class="wrap">
-<header class="top"><a class="brand" href="./index.html">MANOS <span>ABIERTAS</span></a><nav aria-label="Principal"><a href="./index.html">Inicio</a><a href="./campus/">Campus</a><a href="#elegir">Mi ruta</a></nav></header>
+<header class="site-header"><div class="container header-inner">
+<a class="wordmark" href="./index.html" aria-label="Manos Abiertas, volver al inicio"><svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="14" fill="#16463e"/><path d="M10 25c4-7 8-9 14-2 6-7 10-5 14 2M12 30c6 9 18 9 24 0" fill="none" stroke="#f7efe0" stroke-width="3.4" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#f3a46d"/></svg><span><b>MANOS<br>ABIERTAS</b><small>Educación para avanzar</small></span></a>
+<button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menú ☰</button>
+<nav id="main-nav" data-nav class="header-nav" aria-label="Navegación principal"><a href="./index.html">Inicio</a><a href="./orientacion.html" aria-current="page">Empieza aquí</a><a href="./programas.html">Aprender</a><a href="./empleo.html">Empleo</a><a href="./recursos.html">Recursos</a><a href="./proyecto.html">El proyecto</a><a class="header-cta" href="./campus/">Abrir campus ↗</a></nav>
+</div></header>
 <main id="contenido" tabindex="-1">
-<section class="hero" aria-labelledby="title"><div class="hero-inner">
-<div><p class="eyebrow">PRIMEROS PASOS / APRENDIZAJE ABIERTO</p><h1 id="title">Tu próximo paso <em>empieza aquí.</em></h1><p class="lead">Aprender a usar IA, preparar documentos o entender otro idioma no debería exigir una cuenta ni pagar un curso. Elige una ruta concreta y comienza con los materiales que ya tenemos.</p><a class="button" href="#elegir">Elegir mi primera ruta ↘</a><div class="meta"><span>Gratuito</span><span>Sin registro</span><span>Progreso en tu dispositivo</span></div></div>
-<div class="visual" role="img" aria-label="Ilustración de dos manos abiertas sosteniendo un libro y una luz cálida">
-<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M46 122l62 10v63L46 178z" fill="#fffdf3"/><path d="M132 132l62-10v56l-62 17z" fill="#e4f2e9"/><path d="M120 135v62M45 121l75 15 75-15" stroke="#16565e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M30 155c12-9 19-6 29 5l26 21 35 13 35-13 26-21c10-11 17-14 29-5" fill="none" stroke="#fce2ca" stroke-width="15" stroke-linecap="round"/><circle cx="120" cy="62" r="28" fill="#fff6c5" opacity=".87"/><path d="M120 20v10M120 95v10M78 62H68M172 62h-10M92 33l-8-8M149 33l8-8" stroke="#fff8cf" stroke-width="5" stroke-linecap="round"/></svg></div>
-</div></section>
-<section class="choose" id="elegir" aria-labelledby="elige"><p class="eyebrow">01 / TU OBJETIVO</p><h2 id="elige">¿Qué quieres conseguir primero?</h2><p>Selecciona un camino. Puedes cambiarlo en cualquier momento.</p>
-<div class="routes" role="group" aria-label="Rutas disponibles">
-<button type="button" class="route" data-route="ia" aria-pressed="true"><small>RUTA 01</small><strong>Entender la IA</strong><span>Aprende a preguntar, contrastar información y usar herramientas sin perder criterio propio.</span></button>
-<button type="button" class="route" data-route="office" aria-pressed="false"><small>RUTA 02</small><strong>Preparar documentos</strong><span>Organiza tu CV, un presupuesto y textos claros usando herramientas gratuitas.</span></button>
-<button type="button" class="route" data-route="idiomas" aria-pressed="false"><small>RUTA 03</small><strong>Comunicarte mejor</strong><span>Practica las diferencias entre portugués y español con ejercicios reales.</span></button>
-</div></section>
-<section class="plan" id="plan" aria-labelledby="plan-title"><p class="eyebrow" style="color:#ffbd84">02 / PLAN PERSONAL</p><h2 id="plan-title">Tu ruta de inicio</h2><p id="plan-desc">Un paso a la vez, con ejercicios y progreso local.</p><ol id="steps" aria-live="polite"></ol><a class="button" href="./campus/">Abrir el campus ↗</a><p style="font-size:.85rem">Esta ruta es una guía de aprendizaje, no una asesoría legal ni un certificado. Se guarda solo en este navegador si permites almacenamiento local.</p></section>
-</main>
-<footer>Manos Abiertas · Educación gratuita y abierta. <a href="https://github.com/belentani7/ManosAbiertas">Código y proyecto</a>.</footer>
-</div>
-<script>
-(function(){
-"use strict";
-const plans={
-ia:{title:"Entender la IA",desc:"Aprende los fundamentos antes de confiar en las respuestas.",links:[["Descubre qué es y qué no es un modelo de IA","campus/cursos/alfabetizacion-ia/syllabus.md"],["Practica una pregunta clara y comprueba las fuentes","campus/cursos/alfabetizacion-ia/syllabus.md"],["Responde al cuestionario del campus","campus/"]]},
-office:{title:"Preparar documentos",desc:"Empieza por documentos que puedes revisar y conservar.",links:[["Identifica las partes de un CV legible","campus/cursos/office-sin-miedo/syllabus.md"],["Practica un presupuesto sencillo","campus/cursos/office-sin-miedo/syllabus.md"],["Comprueba lo que has aprendido","campus/"]]},
-idiomas:{title:"Comunicarte mejor",desc:"El puente entre portugués y español comienza con ejemplos concretos.",links:[["Estudia los falsos amigos más comunes","campus/cursos/falsos-amigos-pt-es/syllabus.md"],["Practica con frases en contexto","campus/cursos/falsos-amigos-pt-es/syllabus.md"],["Haz los ejercicios y vuelve a tu progreso","campus/"]]}
-};
-const getStored=()=>{try{return localStorage.getItem("manos-route-2026")}catch{return null}};
-const save=(v)=>{try{localStorage.setItem("manos-route-2026",v)}catch{}};
-let state;try{state=JSON.parse(getStored()||"{}")}catch{state={}};if(!state||typeof state!=="object")state={};
-let active=plans[state.route]?state.route:"ia";
-function render(){
-const plan=plans[active];
-document.querySelectorAll("[data-route]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.route===active)));
-document.getElementById("plan-title").textContent=plan.title;
-document.getElementById("plan-desc").textContent=plan.desc;
-const list=document.getElementById("steps");list.replaceChildren();
-plan.links.forEach(([label,url],i)=>{const li=document.createElement("li"),box=document.createElement("input"),txt=document.createElement("label"),link=document.createElement("a");
-const id="step-"+active+"-"+i;box.type="checkbox";box.id=id;box.checked=!!state[id];box.addEventListener("change",()=>{state[id]=box.checked;save(JSON.stringify(state))});txt.htmlFor=id;txt.textContent=label;link.href=url;link.textContent="Abrir material ↗";li.append(box,txt,link);list.append(li)});
-state.route=active;save(JSON.stringify(state));
-}
-document.querySelectorAll("[data-route]").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.route;render();document.getElementById("plan").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"})}));
-render();
-})();
-</script></body></html>
+<section class="page-hero"><div class="container"><p class="eyebrow">Orientación · Tu punto de partida</p><h1>Una dirección clara. <span>A tu ritmo.</span></h1><p class="lead">No hace falta saber por dónde empezar. Elige lo que más necesitas ahora y te mostraremos tres primeros pasos con acceso a materiales reales. Esta orientación no requiere datos personales.</p><div class="proofline"><span>Sin formulario de registro</span><span>Puedes cambiar de ruta</span><span>Opción de guardar solo en este navegador</span></div></div></section>
+<section class="section"><div class="container"><p class="eyebrow">01 · Qué necesitas ahora</p><h2>¿Cuál es tu prioridad?</h2>
+<form data-route-form><fieldset style="border:0;padding:0;margin:0"><legend class="text-muted">Selecciona una de estas tres rutas:</legend><div class="route-grid">
+<label class="route-option"><input type="radio" name="objetivo" value="empleo" checked><strong>Encontrar oportunidades laborales</strong><span>Mi currículum, mis habilidades y mis primeras candidaturas.</span></label>
+<label class="route-option"><input type="radio" name="objetivo" value="digital"><strong>Aprender herramientas digitales</strong><span>Necesito manejar documentos, correo o inteligencia artificial.</span></label>
+<label class="route-option"><input type="radio" name="objetivo" value="idioma"><strong>Mejorar mi comunicación</strong><span>Quiero practicar situaciones habituales en español y portugués.</span></label>
+</div></fieldset><label class="check-row"><input type="checkbox" name="guardar"><span>Recordar mi elección en este navegador (opcional)</span></label></form>
+<section class="result-panel" data-route-result aria-live="polite" aria-atomic="true"><p class="eyebrow light">02 · Tu plan inicial</p><h2 data-plan-title>Una ruta para acercarte al empleo</h2><p>Una propuesta breve, adaptable a tus circunstancias. No es una evaluación personal ni una garantía de resultados.</p><ol data-plan-steps><li>Prepara tus datos y reconoce tus habilidades.</li><li>Practica un CV claro y adaptable a cada oferta.</li><li>Aprende a enviar documentos y proteger tus datos.</li></ol><a data-plan-link class="button on-dark" href="./empleo.html">Ver la guía de empleo →</a></section>
+<div class="notice"><strong>Privacidad:</strong> el selector funciona en tu dispositivo. Solo se guarda tu objetivo en el almacenamiento local cuando marcas la casilla; no enviamos este formulario a un servidor.</div></div></section></main><footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="wordmark" href="./index.html"><svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="14" fill="#16463e"/><path d="M10 25c4-7 8-9 14-2 6-7 10-5 14 2M12 30c6 9 18 9 24 0" fill="none" stroke="#f7efe0" stroke-width="3.4" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#f3a46d"/></svg><span><b>MANOS<br>ABIERTAS</b><small>Educación para avanzar</small></span></a><p style="max-width:38ch;margin-top:22px">Una iniciativa educativa abierta para convertir el aprendizaje digital en autonomía cotidiana. Sin promesas imposibles ni barreras innecesarias.</p></div><div><h2>Explorar</h2><div class="footer-links"><a href="./orientacion.html">Elegir una ruta</a><a href="./programas.html">Programas</a><a href="./empleo.html">Preparar mi CV</a><a href="./campus/">Campus abierto</a></div></div><div><h2>Transparencia</h2><div class="footer-links"><a href="./recursos.html">Recursos oficiales</a><a href="./proyecto.html">Quiénes somos</a><a href="https://github.com/belentani7/ManosAbiertas" target="_blank" rel="noopener noreferrer">Código del proyecto ↗</a><a href="./proyecto.html#limites">Alcance y límites</a></div></div></div><div class="copyright"><span>© 2026 Manos Abiertas · Proyecto educativo independiente</span><span>Material formativo. No sustituye atención profesional ni servicios públicos.</span></div></div></footer>
+</body></html>
