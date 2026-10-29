@@ -16,7 +16,7 @@
     :root{color-scheme:dark;--pine:#102d27;--moss:#1d453a;--ivory:#f6f1e5;--mint:#d7e5cb;--sand:#eac39e;--line:#ffffff2a;--ease:cubic-bezier(.22,1,.36,1)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;background:var(--pine);color:var(--ivory);font-family:Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
     a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}:focus-visible{outline:3px solid var(--sand);outline-offset:5px}
-    .skip{position:absolute;left:1rem;top:-100px;z-index:20;padding:.8rem 1rem;background:var(--ivory);color:var(--pine)}.skip:focus{top:1rem}
+    .skip-link{position:absolute;left:1rem;top:-100px;z-index:20;padding:.8rem 1rem;background:var(--ivory);color:var(--pine)}.skip-link:focus{top:1rem}
     .stage{position:relative;isolation:isolate;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(ellipse at 73% 47%,#295447 0%,#183b33 38%,#102d27 74%)}
     .stage:before{content:"";pointer-events:none;position:absolute;inset:-30%;z-index:-1;background:radial-gradient(circle at calc(65% + var(--mx,0px)) calc(50% + var(--my,0px)),#a6bd8950 0%,transparent 30%);opacity:.6}
     .grain{position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
@@ -54,7 +54,7 @@
   </style>
 </head>
 <body>
-  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="stage" data-stage>
     <div class="grain" aria-hidden="true"></div>
     <header class="top frame">
