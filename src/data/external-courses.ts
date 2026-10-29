@@ -65,7 +65,7 @@ const a = (id: string, title: string, desc: string, url: string, dur: string, le
 
 export const EXTERNAL_COURSES: ExternalCourse[] = [
   // === GOOGLE ACTÍVATE (15) ===
-  g('gc-1', 'Fundamentos del Marketing Digital', 'Aprende los conceptos básicos del marketing digital: SEO, SEM, redes sociales, email marketing y analítica.', 'https://learndigital.withgoogle.com/activate/course/digital-marketing', '40 horas', 'beginner', 'marketing', ['SEO', 'SEM', 'Redes sociales', 'Email marketing', 'Google Analytics'], '📈'),
+  g('gc-1', 'Fundamentos del Marketing Digital', 'Aprende los conceptos básicos del marketing digital: SEO, SEM, redes sociales, email marketing y analítica.', 'https://skillshop.exceedlms.com/student/collection/1830727-fundamentos-de-marketing-digital', '40 horas', 'beginner', 'marketing', ['SEO', 'SEM', 'Redes sociales', 'Email marketing', 'Google Analytics'], '📈'),
   g('gc-2', 'Análisis de Datos con Google', 'Domina Google Analytics 4 y aprende a tomar decisiones basadas en datos.', 'https://learndigital.withgoogle.com/activate/course/data-analytics', '30 horas', 'intermediate', 'digital-skills', ['Google Analytics', 'Interpretación de datos', 'Informes', 'KPIs'], '📊'),
   g('gc-3', 'Desarrollo Web Básico', 'Introducción al desarrollo web: HTML, CSS y JavaScript desde cero.', 'https://learndigital.withgoogle.com/activate/course/web-development', '20 horas', 'beginner', 'programming', ['HTML', 'CSS', 'JavaScript básico'], '🌐'),
   g('gc-4', 'Comercio Electrónico', 'Aprende a crear y gestionar una tienda online, pagos y logística.', 'https://learndigital.withgoogle.com/activate/course/ecommerce', '15 horas', 'beginner', 'business', ['E-commerce', 'Google Merchant', 'Pasarelas de pago'], '🛒'),
