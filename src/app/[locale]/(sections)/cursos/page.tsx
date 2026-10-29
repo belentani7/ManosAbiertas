@@ -12,26 +12,30 @@ export const metadata: Metadata = {
   },
 };
 
-const CURRICULUM_COPY: Record<'es' | 'pt' | 'ca' | 'en', { title: string; text: string; cta: string }> = {
+const CURRICULUM_COPY: Record<'es' | 'pt' | 'ca' | 'en', { title: string; text: string; cta: string; glossary: string }> = {
   es: {
     title: 'Currículo Manos Abiertas',
     text: '8 módulos de IA · 26 niveles por módulo · 4 idiomas, en orden pedagógico.',
     cta: 'Abrir el currículo',
+    glossary: 'Consultar conceptos básicos',
   },
   pt: {
     title: 'Currículo Manos Abertas',
     text: '8 módulos de IA · 26 níveis por módulo · 4 idiomas, em ordem pedagógica.',
     cta: 'Abrir o currículo',
+    glossary: 'Consultar conceitos básicos',
   },
   ca: {
     title: 'Currículum Mans Obertes',
     text: '8 mòduls d’IA · 26 nivells per mòdul · 4 idiomes, en ordre pedagògic.',
     cta: 'Obre el currículum',
+    glossary: 'Consulta conceptes bàsics',
   },
   en: {
     title: 'Manos Abiertas Curriculum',
     text: '8 AI modules · 26 levels per module · 4 languages, in pedagogical order.',
     cta: 'Open the curriculum',
+    glossary: 'Explore key concepts',
   },
 };
 
@@ -62,6 +66,9 @@ export default async function CursosPage({
             {copy.cta} →
           </Link>
         </div>
+        <a href="/conceptos/index.html" className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-stone-800 underline decoration-stone-300 underline-offset-4 hover:decoration-amber-700 focus-visible:outline-2 focus-visible:outline-offset-2">
+          {copy.glossary} →
+        </a>
       </section>
       <CoursesLibrarySection />
     </>
