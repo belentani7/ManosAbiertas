@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site-url";
+import { LANGUAGES } from "@/i18n/languages";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://manosabiertas.space-z.ai";
-const LOCALES = ["es", "en", "pt", "ca", "fr", "it", "de", "zh", "ar", "pt-BR"];
+const LOCALES = LANGUAGES.map((language) => language.code);
 
 const SECTIONS = [
   { path: "", priority: 1.0, changefreq: "daily" as const },
@@ -18,7 +19,15 @@ const SECTIONS = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const urls: MetadataRoute.Sitemap = [];
+  const urls: MetadataRoute.Sitemap = [
+    ...["index.html", "orientacion.html", "programas.html", "empleo.html", "recursos.html",
+      "proyecto.html", "taller-documentos.html", "taller-criterio-ia.html",
+      "taller-puente-pt-es.html", "campus/index.html"].map((path) => ({
+      url: `${SITE_URL}/${path}`,
+      changeFrequency: "monthly" as const,
+      priority: path === "index.html" ? 1 : 0.6,
+    })),
+  ];
 
   for (const locale of LOCALES) {
     for (const section of SECTIONS) {
