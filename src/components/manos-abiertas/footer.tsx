@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart, Globe, Shield, ExternalLink, Keyboard, Command, ArrowUp, Search, Compass } from 'lucide-react';
+import { Heart, Globe, Shield, ExternalLink, Keyboard, Command, ArrowUp, Search, Compass, BookOpen } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAppStore } from '@/stores/app-store';
 import { getTranslation } from '@/i18n/translations';
@@ -88,7 +88,7 @@ export function Footer() {
               </span>
             </div>
             <a
-              href="https://github.com/belentani7/manosabiertas-vercel"
+              href="https://github.com/belentani7/ManosAbiertas"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-primary transition-colors"
@@ -117,6 +117,13 @@ export function Footer() {
                 <Keyboard className="h-3 w-3" />
                 Atajos
               </button>
+              <a
+                href="/conceptos/index.html"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-secondary/60 px-3 py-1 text-[11px] font-medium text-foreground transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                Conceptos
+              </a>
               <ReadingModeToggle />
               <PomodoroTimer />
             </div>
