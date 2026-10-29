@@ -35,12 +35,28 @@ async function request(path, options = {}) {
 }
 
 for (const check of checks) {
-  const response = await request(check.path);
   if (check.redirect) {
-    assert.ok(response.status >= 300 && response.status < 400, check.path + ' must redirect, got ' + response.status);
-    const redirect = response.headers.get('location');
-    assert.equal(new URL(redirect, ORIGIN).pathname, check.redirect, check.path + ' redirect destination');
+    // Next.js first normalizes trailing slashes (308) and the route then
+    // redirects (307). Verify the actual learner destination, not just hop 1.
+    let path = check.path;
+    let redirects = 0;
+    while (redirects < 4) {
+      const response = await request(path);
+      if (response.status < 300 || response.status >= 400) {
+        assert.equal(response.status, 200, path + ' returned HTTP ' + response.status);
+        break;
+      }
+      const location = response.headers.get('location');
+      assert.ok(location, 'missing Location header for ' + path);
+      const target = new URL(location, ORIGIN);
+      assert.equal(target.origin, new URL(ORIGIN).origin, 'redirect must remain same-origin');
+      path = target.pathname;
+      redirects += 1;
+    }
+    assert.ok(redirects >= 1 && redirects < 4, check.path + ' must terminate after a bounded redirect chain');
+    assert.equal(path, check.redirect, check.path + ' final learner destination');
   } else {
+    const response = await request(check.path);
     assert.equal(response.status, 200, check.path + ' returned HTTP ' + response.status);
     const text = await response.text();
     assert.ok(text.includes(check.marker), check.path + ' missing expected page content ' + check.marker);
