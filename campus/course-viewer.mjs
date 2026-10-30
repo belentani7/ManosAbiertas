@@ -98,3 +98,15 @@ document.addEventListener('click',event=>{
     info.textContent='La ruta solicitada no está disponible.';
   });
 });
+
+/**
+ * Allow the editorial course catalogue to deep-link to a real syllabus.
+ * Only known course slugs reach openCourse(), which validates the file path
+ * and origin. Unknown values are ignored without a network request.
+ */
+const selectedCourse = new URLSearchParams(window.location.search).get('curso');
+if (selectedCourse && Object.prototype.hasOwnProperty.call(catalogs, selectedCourse)) {
+  openCourse('cursos/' + selectedCourse + '/syllabus.md').catch(() => {
+    info.textContent = 'No se ha podido abrir este curso. Selecciónalo desde el catálogo.';
+  });
+}
