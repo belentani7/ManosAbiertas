@@ -6,7 +6,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = [
-  '01-home.html', '21-courses.html', '28-course-detail.html',
+  '01-home.html', '09-accessibility.html', '11-help.html',
+  '16-privacy.html', '18-safety.html', '21-courses.html',
+  '25-category-legal.html', '28-course-detail.html',
   '41-login.html', '42-register.html', '60-dashboard.html',
   '80-lesson.html', '84-quiz.html',
 ];
@@ -23,7 +25,7 @@ test('the home is an accessible immersive hero, not a repeated multi-card placeh
   assert.doesNotMatch(home, /Qué encontrarás aquí/);
 });
 
-test('eight high-priority pages have unique content, real destinations and a single page heading', () => {
+test('thirteen high-priority pages have unique content, real destinations and a single page heading', () => {
   const bodies = [];
   for (const page of pages) {
     const html = read('platform-pages/' + page);
@@ -75,4 +77,16 @@ test('shared design supports accessible focus, reduced motion and narrow viewpor
   for (const token of [':focus-visible', '.skip-link:focus', '@media(prefers-reduced-motion:reduce)', '@media(max-width:800px)']) {
     assert.ok(css.includes(token), 'missing ' + token);
   }
+});
+
+test('official-resource guidance discloses its scope and avoids fictional services', () => {
+  const legal = read('platform-pages/25-category-legal.html');
+  const privacy = read('platform-pages/16-privacy.html');
+  const access = read('platform-pages/09-accessibility.html');
+  const safety = read('platform-pages/18-safety.html');
+  assert.match(legal, /inclusion\.gob\.es/);
+  assert.match(privacy, /aepd\.es/);
+  assert.match(privacy, /No constituye una política de privacidad completa/);
+  assert.match(access, /WCAG 2\.2 AA/);
+  assert.match(safety, /portal oficial de Migraciones/);
 });
