@@ -18,8 +18,8 @@ test('the home is an accessible immersive hero, not a repeated multi-card placeh
   assert.match(home, /<main id="contenido">/);
   assert.match(home, /href="#contenido"/);
   assert.match(home, /class="hero hero-home"/);
-  assert.equal((home.match(/<section\\b/g) || []).length, 1);
-  assert.match(home, /campus\\/index\\.html#cursos/);
+  assert.equal((home.match(/<section\b/g) || []).length, 1);
+  assert.match(home, /campus\/index\.html#cursos/);
   assert.doesNotMatch(home, /Qué encontrarás aquí/);
 });
 
@@ -31,8 +31,8 @@ test('eight high-priority pages have unique content, real destinations and a sin
     assert.match(html, /<meta name="description"/);
     assert.match(html, /href="#contenido"/);
     assert.match(html, /<main id="contenido">/);
-    assert.equal((html.match(/<h1\\b/g) || []).length, 1, page);
-    assert.match(html, /platform\\.css/);
+    assert.equal((html.match(/<h1\b/g) || []).length, 1, page);
+    assert.match(html, /platform\.css/);
     const mainContent = html.split('<main id="contenido">')[1]?.split('</main>')[0];
     assert.ok(mainContent && mainContent.length > 450, 'real content: ' + page);
     bodies.push(mainContent);
@@ -49,8 +49,8 @@ test('eight high-priority pages have unique content, real destinations and a sin
 test('course catalogue links to all three real curricula and a safe validated reader', () => {
   const catalogue = read('platform-pages/21-courses.html');
   const reader = read('campus/course-viewer.mjs');
-  assert.match(reader, /new URLSearchParams\\(window\\.location\\.search\\)\\.get\\('curso'\\)/);
-  assert.match(reader, /Object\\.prototype\\.hasOwnProperty\\.call\\(catalogs, selectedCourse\\)/);
+  assert.match(reader, /new URLSearchParams\(window\.location\.search\)\.get\('curso'\)/);
+  assert.match(reader, /Object\.prototype\.hasOwnProperty\.call\(catalogs, selectedCourse\)/);
   for (const slug of knownSlugs) {
     assert.ok(catalogue.includes('curso=' + slug), 'missing deep link: ' + slug);
     assert.ok(existsSync(join(root, 'campus/cursos', slug, 'syllabus.md')), 'missing syllabus: ' + slug);
@@ -62,11 +62,11 @@ test('account and assessment pages do not present fabricated authentication or c
   for (const page of ['41-login.html', '42-register.html']) {
     const html = read('platform-pages/' + page);
     assert.doesNotMatch(html, /<input[^>]+type="password"/);
-    assert.doesNotMatch(html, /<form\\b/);
+    assert.doesNotMatch(html, /<form\b/);
     assert.match(html, /sin (cuenta|registrarte|crear una cuenta|registro)/i);
   }
   const quiz = read('platform-pages/84-quiz.html');
-  assert.match(quiz, /campus\\/index\\.html#quiz/);
+  assert.match(quiz, /campus\/index\.html#quiz/);
   assert.match(quiz, /no crean certificados|no crea certificados|no crean certificados/i);
 });
 
