@@ -8,6 +8,7 @@ build/
 .next/
 next-env.d.ts
 public/tool-guides/
+public/curriculum-html/
 /local-*
 *.local
 
