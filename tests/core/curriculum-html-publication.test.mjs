@@ -73,7 +73,8 @@ test('publishes navigable module, language and default indexes', () => {
 
     for (const moduleDir of readdirSync(HTML_ROOT, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name)) {
       const moduleIndex = readFileSync(join(HTML_ROOT, moduleDir, `index-${language}.html`), 'utf8');
-      assert.equal((moduleIndex.match(/<li><a href="nivel-\d{2}\/nivel-\d{2}-[A-Z]{2}\.html"/g) ?? []).length, 26);
+      const levelNavigation = moduleIndex.match(/<ol class="module-levels">([\s\S]*?)<\/ol>/)?.[1] ?? '';
+      assert.equal((levelNavigation.match(/<li><a href="nivel-\d{2}\/nivel-\d{2}-[A-Z]{2}\.html"/g) ?? []).length, 26);
     }
   }
 
