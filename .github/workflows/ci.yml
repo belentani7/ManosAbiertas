@@ -63,6 +63,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Publish canonical campus and reviewed educational routes
+        run: node scripts/publish-campus.mjs
       - name: Test
         run: pnpm test:core
         env:
