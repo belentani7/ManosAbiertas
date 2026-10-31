@@ -69,6 +69,8 @@ jobs:
           CI: true
       - name: Reject missing campus assets, invalid quiz JSON and stale quiz controls
         run: node --test tests/campus-navigation-integrity.test.mjs
+      - name: Verify public educational pages, links and truthful account flows
+        run: node --test tests/platform-pages-contract.test.mjs
       - name: Verify cybersecurity course content (smishing)
         run: node scripts/verify-ciberseguridad-smishing.mjs
       - name: Verify five generated learning courses' actual content
