@@ -53,9 +53,9 @@ export function publishCampus(root = resolve(dirname(fileURLToPath(import.meta.u
     if (!existsSync(from)) throw Error('Missing required campus directory: ' + dir);
     cpSync(from, join(target, dir), { recursive: true, force: true });
   }
-  publishPlatformPages(root);
   console.log('Campus ready: /campus/index.html (lessons, quizzes, offline assets, voices)');
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   publishCampus();
+  publishPlatformPages();
 }
