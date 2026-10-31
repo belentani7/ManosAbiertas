@@ -4,11 +4,11 @@ import { test, expect } from '@playwright/test';
 // No placeholder Vite counter, invented backend or external network dependency.
 test('institutional homepage offers a working first step and keyboard entry', async ({ page }) => {
   await page.goto('/index.html');
-  await expect(page).toHaveTitle(/Educación gratuita para avanzar/);
-  await expect(page.getByRole('heading', { level: 1, name: /El futuro se construye paso a paso/i })).toBeVisible();
+  await expect(page).toHaveTitle(/Manos Abiertas.*Aprender abre caminos/);
+  await expect(page.getByRole('heading', { level: 1, name: /Aprender abre caminos/i })).toBeVisible();
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Saltar al contenido' })).toBeFocused();
-  await page.getByRole('link', { name: /Encuentra tu primer paso/ }).click();
+  await page.getByRole('link', { name: /Encuentra tu camino/ }).click();
   await expect(page).toHaveURL(/\/orientacion\.html$/);
   await expect(page.getByRole('heading', { level: 1, name: /Una dirección clara/i })).toBeVisible();
 });
@@ -30,17 +30,18 @@ test('orientation changes the plan but only remembers it with consent', async ({
   expect(await page.evaluate(keyName => localStorage.getItem(keyName), key)).toBeNull();
 });
 
-test('programmes link to real published learning material', async ({ page }) => {
+test('programmes open independent complete learning areas, then a real workshop', async ({ page }) => {
   await page.goto('/index.html');
-  await page.getByRole('link', { name: 'Explorar programas' }).click();
+  await page.getByRole('navigation', { name: 'Navegación principal' }).getByRole('link', { name: 'Aprender' }).click();
   await expect(page).toHaveURL(/\/programas\.html$/);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  const workshop = page.getByRole('link', { name: /Iniciar taller/ }).first();
-  await expect(workshop).toHaveAttribute('href', './taller-documentos.html');
-  await workshop.click();
+  await page.getByRole('link', { name: 'Ver programa' }).first().click();
+  await expect(page).toHaveURL(/\/ofimatica\.html$/);
+  await expect(page.getByRole('heading', { level: 1, name: /Haz documentos que te representen/i })).toBeVisible();
+  await expect(page.locator('.area-unit')).toHaveCount(3);
+  await page.getByRole('link', { name: /Comenzar taller práctico/ }).click();
   await expect(page).toHaveURL(/\/taller-documentos\.html$/);
   await expect(page.getByRole('heading', { level: 1, name: /Documentos que abren puertas/i })).toBeVisible();
-  // The learner sees the guided HTML workshop, not a raw Markdown syllabus.
 });
 
 test('orientation leads to verified public resources without saving personal data', async ({ page }) => {
@@ -66,19 +67,15 @@ test('resource filters update their visible count', async ({ page }) => {
   expect(all).toBeGreaterThanOrEqual(visible);
 });
 
-test('mobile menu exposes navigation and closes after choosing a destination', async ({ page }, testInfo) => {
+test('mobile homepage exposes uncluttered navigation without a hidden menu', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'mobile-chromium', 'Mobile-only interaction');
   await page.goto('/index.html');
-  const menu = page.getByRole('button', { name: /Menú/ });
   const nav = page.getByRole('navigation', { name: 'Navegación principal' });
-  await expect(menu).toBeVisible();
-  await expect(menu).toHaveAttribute('aria-expanded', 'false');
-  await menu.click();
-  await expect(menu).toHaveAttribute('aria-expanded', 'true');
   await expect(nav).toBeVisible();
+  await expect(nav.getByRole('link', { name: 'Recursos', exact: true })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBeTruthy();
   await nav.getByRole('link', { name: 'Recursos', exact: true }).click();
   await expect(page).toHaveURL(/\/recursos\.html$/);
-  await expect(menu).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('campus entry opens the real reader, lessons and working quiz on the published assets', async ({ page }) => {
@@ -97,4 +94,13 @@ test('campus entry opens the real reader, lessons and working quiz on the publis
   await expect(audio).toHaveAttribute('src', 'voces/pt/bienvenida.mp3');
   const audioResponse = await page.request.get('/campus/voces/pt/bienvenida.mp3');
   expect(audioResponse.ok()).toBeTruthy();
+});
+
+test('homepage respects reduced motion and keeps its essential content accessible', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/index.html');
+  const name = await page.locator('.flower').first().evaluate(element => getComputedStyle(element).animationName);
+  expect(name).toBe('none');
+  await expect(page.getByRole('heading', { level: 1, name: /Aprender abre caminos/i })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Encuentra tu camino/ })).toBeVisible();
 });

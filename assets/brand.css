@@ -19,3 +19,45 @@
 @media(max-width:850px){.header-inner{min-height:74px;flex-wrap:wrap}.js .nav-toggle{display:block;margin-left:auto}.header-nav{display:flex;flex-basis:100%;flex-direction:column;align-items:stretch;padding:10px 0 20px;gap:2px}.js .header-nav{display:none}.js .header-nav.is-open{display:flex}.header-nav a{font-size:.95rem;padding:12px;border-radius:7px}.header-nav a:hover{background:var(--sage)}.header-cta{display:block}.hero-grid,.feature,.cta-panel{grid-template-columns:1fr}.hero-visual{min-height:450px}.cards-3{grid-template-columns:repeat(2,minmax(0,1fr))}.pathway{grid-template-columns:repeat(2,minmax(0,1fr))}.pathway article:nth-child(2){border-right:0}.pathway article:nth-child(n+3){border-top:1px solid var(--stroke)}.cta-panel .actions{justify-content:flex-start}.footer-grid{grid-template-columns:1fr 1fr}.route-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:580px){.container{width:min(var(--max),calc(100% - 32px))}.hero{padding-top:46px}.hero h1,.page-hero h1{font-size:clamp(2.65rem,10vw,4rem)}.hero-grid{grid-template-columns:1fr}.hero-visual{min-height:370px}.cards-3,.cards-2,.route-grid,.footer-grid{grid-template-columns:1fr}.pathway{grid-template-columns:1fr}.pathway article,.pathway article+article{padding:22px 0;border-right:0;border-top:1px solid var(--stroke)}.pathway article:first-child{border-top:0}.section-head{display:block}.intro-band .container{display:block}.intro-band a{display:inline-block;margin-top:12px}.visual-caption{bottom:12px;left:12px;right:12px}.detail-list{grid-template-columns:1fr}.detail-list dt{padding-bottom:0;border-bottom:0}.detail-list dd{padding-top:5px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+
+/* Educational editorial system: each area remains a full independent HTML page. */
+@view-transition{navigation:auto}
+.site-header{background:rgba(250,247,241,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:none}
+.header-inner{min-height:78px}
+.header-nav{gap:clamp(10px,1.35vw,22px)}
+.header-nav a{font-size:.7rem;letter-spacing:.085em;text-transform:uppercase;font-weight:700}
+.header-nav .header-cta{font-size:.7rem;border-radius:2px;padding:.72rem .95rem}
+.page-hero{position:relative;overflow:hidden;isolation:isolate;min-height:clamp(570px,78svh,880px);display:flex;align-items:center;background:radial-gradient(ellipse at 81% 28%,#c8d7c5 0%,transparent 38%),linear-gradient(125deg,#f8f4eb 0%,#ebeee5 55%,#e0e7d8 100%);padding:clamp(100px,11vw,170px) 0}
+.page-hero:before{content:"";position:absolute;right:-10%;top:-38%;width:min(80vw,930px);aspect-ratio:1;border:1px solid #16463e2b;border-radius:50%;box-shadow:0 0 0 80px #16463e08,0 0 0 166px #16463e07;z-index:-1;pointer-events:none}
+.page-hero:after{content:"";position:absolute;right:4%;bottom:-17%;width:28%;aspect-ratio:1;border:1px solid #b94f2e3d;border-radius:50%;pointer-events:none;z-index:-1}
+.page-hero>.container{position:relative}
+.page-hero h1{font-family:Georgia,"Iowan Old Style",serif;font-weight:400;font-size:clamp(3.9rem,8.3vw,8.4rem);line-height:1.02;letter-spacing:-.066em;max-width:13ch;margin-bottom:clamp(25px,3vw,44px)}
+.page-hero h1 span{font-style:italic;font-weight:400;color:#a94e30}
+.page-hero .lead{max-width:61ch;font-size:clamp(1.05rem,1.5vw,1.31rem);line-height:1.8;color:#344f44}
+.page-hero .actions{margin-top:30px}
+.page-hero .proofline{max-width:890px}
+.page-hero .subnav{position:relative;z-index:2}
+@media (max-width:850px){.page-hero{min-height:610px;padding:100px 0 84px}.page-hero:before{right:-50%;width:110vw}.page-hero h1{font-size:clamp(3.4rem,11vw,6.3rem)}}
+@media (max-width:600px){.page-hero{min-height:590px;padding:90px 0 72px}.page-hero h1{font-size:clamp(3.1rem,12vw,5rem)}.page-hero:before{right:-90%;width:150vw}.page-hero:after{width:70%}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page-hero *{transition:none!important}}
+
+
+/* Independent programme documents: distinct narrative, shared institution. */
+.area-office .area-hero{background:radial-gradient(ellipse at 80% 24%,#b4d4bc,transparent 44%),linear-gradient(128deg,#f8f5ec,#e6eddf)}
+.area-ai .area-hero{background:radial-gradient(ellipse at 82% 21%,#c9d8c0,transparent 48%),linear-gradient(128deg,#f5f3e8,#e9e9d9)}
+.area-language .area-hero{background:radial-gradient(ellipse at 83% 20%,#f6d6b3,transparent 44%),linear-gradient(128deg,#f9f4e9,#f1e7d8)}
+.area-hero .lead{max-width:59ch}
+.area-units{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.area-unit{border-top:2px solid var(--forest);padding:28px 25px 34px;background:var(--surface);box-shadow:0 16px 45px #16463e0a;display:flex;flex-direction:column}
+.area-unit-label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--clay);margin-bottom:28px}
+.area-unit h3{font-size:clamp(1.5rem,2.4vw,2.25rem);font-weight:650;margin-bottom:20px}
+.area-unit p{line-height:1.75}.area-unit ol{margin:15px 0 35px;padding-left:22px}.area-unit li{margin-bottom:12px;line-height:1.65}
+.area-result{margin-top:auto!important;border-top:1px solid var(--stroke);padding-top:22px;color:var(--muted)}
+.area-result strong{color:var(--deep)}
+.area-practice{background:#e9eee6}.area-practice-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,7vw,100px);align-items:center}
+.area-check{padding:clamp(26px,4vw,52px);background:var(--surface);border:1px solid var(--stroke);box-shadow:0 22px 65px #16463e13}
+.area-check h3{font-size:clamp(1.4rem,2.2vw,2rem)}.area-check details{border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);padding:15px 0;margin:25px 0}
+.area-check summary{cursor:pointer;color:var(--forest);font-weight:750;min-height:44px;display:flex;align-items:center}.area-check details p{padding-top:10px}
+@media(max-width:960px){.area-units{grid-template-columns:1fr 1fr}.area-unit:last-child{grid-column:1/-1}.area-practice-layout{grid-template-columns:1fr}}
+@media(max-width:630px){.area-units{grid-template-columns:1fr}.area-unit:last-child{grid-column:auto}.area-unit{padding:26px}.area-check{padding:24px}}
