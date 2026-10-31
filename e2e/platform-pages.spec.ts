@@ -44,13 +44,7 @@ test('four reviewed learning areas lead to real courses and original workshops',
   for (const area of areas) {
     await page.goto('/platform-pages/21-courses.html');
     await page.getByRole('link', { name: area.name }).click();
-    await expect(page).toHaveURL(new RegExp('/platform-pages/' + area.path.replace('.', '\\.') + '
-  const released = await request.get('/platform-pages/84-quiz.html');
-  expect(released.ok()).toBeTruthy();
-  const fictional = await request.get('/platform-pages/57-payments.html');
-  expect(fictional.status()).toBe(404);
-});
-));
+    await expect(page).toHaveURL(new RegExp('/platform-pages/' + area.path.replace('.', '\\.') + '$'));
     await expect(page.getByRole('heading', { level: 1, name: area.heading })).toBeVisible();
     await expect(page.locator('a[href="' + area.destination + '"]').first()).toBeVisible();
   }
