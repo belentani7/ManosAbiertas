@@ -4,6 +4,7 @@
  * Markdown remains the single source of truth; generated pages are build output.
  */
 import {
+  copyFileSync,
   existsSync,
   mkdirSync,
   readFileSync,
@@ -20,6 +21,7 @@ export const CURRICULUM_PAGE_LANGUAGES = Object.freeze([
     copy: {
       skip: 'Saltar al contenido',
       catalog: 'Todos los módulos',
+      interactive: 'Abrir visor de aprendizaje',
       levels: 'Niveles del módulo',
       level: 'Nivel',
       previous: 'Nivel anterior',
@@ -36,6 +38,7 @@ export const CURRICULUM_PAGE_LANGUAGES = Object.freeze([
     copy: {
       skip: 'Saltar para o conteúdo',
       catalog: 'Todos os módulos',
+      interactive: 'Abrir o visualizador de aprendizagem',
       levels: 'Níveis do módulo',
       level: 'Nível',
       previous: 'Nível anterior',
@@ -52,6 +55,7 @@ export const CURRICULUM_PAGE_LANGUAGES = Object.freeze([
     copy: {
       skip: 'Ves al contingut',
       catalog: 'Tots els mòduls',
+      interactive: 'Obrir el visor d’aprenentatge',
       levels: 'Nivells del mòdul',
       level: 'Nivell',
       previous: 'Nivell anterior',
@@ -68,6 +72,7 @@ export const CURRICULUM_PAGE_LANGUAGES = Object.freeze([
     copy: {
       skip: 'Skip to content',
       catalog: 'All modules',
+      interactive: 'Open learning viewer',
       levels: 'Module levels',
       level: 'Level',
       previous: 'Previous level',
@@ -84,6 +89,7 @@ export const CURRICULUM_LEVELS = Object.freeze(
 );
 
 const SOURCE_ROOT = 'public/contenido/curriculum';
+const OUTPUT_ROOT = 'public/curriculum-html';
 const LANGUAGE_BY_CODE = new Map(
   CURRICULUM_PAGE_LANGUAGES.map((language) => [language.code, language]),
 );
@@ -99,7 +105,8 @@ export function escapeHtml(value) {
 
 function safeHref(value) {
   const href = value.trim();
-  if (/^(https?:|mailto:|#|\/|\.\/|\.\.\/)/i.test(href)) return href;
+  if (/^(https?:|mailto:|#|\.\/|\.\.\/)/i.test(href)) return href;
+  if (href.startsWith('/') && !href.startsWith('//')) return href;
   return null;
 }
 
@@ -323,8 +330,8 @@ function lessonBody({ moduleDir, moduleTitle, level, language, title, meta, mark
   return `
 <a class="skip-link" href="#contenido">${escapeHtml(language.copy.skip)}</a>
 <header class="site-header">
-  <a class="brand" href="../../../index.html">Manos Abiertas <span>Currículo abierto</span></a>
-  <nav aria-label="${escapeHtml(language.copy.catalog)}"><a href="../../../index.html">${escapeHtml(language.copy.catalog)}</a><a href="../index.html">${escapeHtml(language.copy.levels)}</a></nav>
+  <a class="brand" href="/${escapeHtml(language.lang)}">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="${escapeHtml(language.copy.catalog)}"><a href="../../index-${escapeHtml(language.code)}.html">${escapeHtml(language.copy.catalog)}</a><a href="../index-${escapeHtml(language.code)}.html">${escapeHtml(language.copy.levels)}</a><a href="/${escapeHtml(language.lang)}/curriculum/${escapeHtml(moduleDir)}">${escapeHtml(language.copy.interactive)}</a></nav>
 </header>
 <div class="page-grid">
   <aside class="lesson-aside">
@@ -370,8 +377,8 @@ function moduleBody({ moduleDir, titles, lang }) {
   const body = `
 <a class="skip-link" href="#contenido">${escapeHtml(language.copy.skip)}</a>
 <header class="site-header">
-  <a class="brand" href="../index.html">Manos Abiertas <span>Currículo abierto</span></a>
-  <nav aria-label="${escapeHtml(language.copy.catalog)}"><a href="../index.html">${escapeHtml(language.copy.catalog)}</a></nav>
+  <a class="brand" href="/${escapeHtml(language.lang)}">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="${escapeHtml(language.copy.catalog)}"><a href="../index-${escapeHtml(lang)}.html">${escapeHtml(language.copy.catalog)}</a><a href="/${escapeHtml(language.lang)}/curriculum/${escapeHtml(moduleDir)}">${escapeHtml(language.copy.interactive)}</a></nav>
 </header>
 <main id="contenido" class="module-main">
   <header class="lesson-heading">
@@ -398,6 +405,12 @@ function moduleBody({ moduleDir, titles, lang }) {
 
 function catalogBody({ modules, lang }) {
   const language = LANGUAGE_BY_CODE.get(lang);
+  const catalogCopy = {
+    ES: { title: 'Currículo de Inteligencia Artificial', intro: 'Ocho módulos, 26 niveles por módulo y cuatro itinerarios de idioma, a partir de materiales didácticos ya existentes.', modules: 'Módulos' },
+    PT: { title: 'Currículo de Inteligência Artificial', intro: 'Oito módulos, 26 níveis por módulo e quatro percursos linguísticos, a partir dos materiais didáticos existentes.', modules: 'Módulos' },
+    CA: { title: 'Currículum d’Intel·ligència Artificial', intro: 'Vuit mòduls, 26 nivells per mòdul i quatre itineraris lingüístics, a partir dels materials didàctics existents.', modules: 'Mòduls' },
+    EN: { title: 'Artificial Intelligence Curriculum', intro: 'Eight modules, 26 levels per module and four language tracks, built from existing learning materials.', modules: 'Modules' },
+  }[lang];
   const cards = modules.map(({ dir, titles }) => (
     `<li><a href="${escapeHtml(`${dir}/index-${lang}.html`)}"><strong>${escapeHtml(titles[lang])}</strong><span>26 ${escapeHtml(language.copy.levels.toLocaleLowerCase(language.lang))} · ES · PT · CA · EN</span></a></li>`
   )).join('');
@@ -406,23 +419,44 @@ function catalogBody({ modules, lang }) {
   )).join('');
   const body = `
 <a class="skip-link" href="#contenido">${escapeHtml(language.copy.skip)}</a>
-<header class="site-header"><a class="brand" href="../../../index.html">Manos Abiertas <span>Currículo abierto</span></a></header>
+<header class="site-header"><a class="brand" href="/${escapeHtml(language.lang)}">Manos Abiertas <span>Currículo abierto</span></a></header>
 <main id="contenido" class="module-main">
-  <header class="lesson-heading"><p class="eyebrow">Manos Abiertas · ES · PT · CA · EN</p><h1>Currículo de Inteligencia Artificial</h1><p>Ocho módulos, 26 niveles por módulo y cuatro itinerarios de idioma, a partir de materiales didácticos ya existentes.</p></header>
+  <header class="lesson-heading"><p class="eyebrow">Manos Abiertas · ES · PT · CA · EN</p><h1>${escapeHtml(catalogCopy.title)}</h1><p>${escapeHtml(catalogCopy.intro)}</p></header>
   <nav class="language-picker" aria-label="${escapeHtml(language.copy.language)}"><span>${escapeHtml(language.copy.language)}:</span>${languageLinks}</nav>
-  <section aria-labelledby="modules-title"><h2 id="modules-title">Módulos</h2><ol class="module-cards">${cards}</ol></section>
+  <section aria-labelledby="modules-title"><h2 id="modules-title">${escapeHtml(catalogCopy.modules)}</h2><ol class="module-cards">${cards}</ol></section>
 </main>
 <footer class="site-footer"><span>Manos Abiertas · Currículo abierto</span><span>${escapeHtml(language.copy.footer)}</span></footer>
 `;
   return documentShell({
-    title: 'Currículo de Inteligencia Artificial | Manos Abiertas',
-    description: 'Ocho módulos de IA, con 26 niveles en español, portugués, catalán e inglés.',
+    title: `${catalogCopy.title} | Manos Abiertas`,
+    description: catalogCopy.intro,
     lang: language.lang,
     body,
     stylesheet: 'curriculum-pages.css',
   });
 }
 
+function languageSelectorBody() {
+  const links = CURRICULUM_PAGE_LANGUAGES.map((option) =>
+    `<li><a href="index-${option.code}.html" lang="${escapeHtml(option.lang)}"><strong>${escapeHtml(option.name)}</strong><span>26 niveles · 8 módulos</span><span aria-hidden="true">→</span></a></li>`
+  ).join('');
+  const body = `
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><a class="brand" href="/es">Manos Abiertas <span>Currículo abierto</span></a></header>
+<main id="contenido" class="module-main">
+  <header class="lesson-heading"><p class="eyebrow">Manos Abiertas</p><h1>Currículo abierto de Inteligencia Artificial</h1><p>832 lecciones existentes en ocho módulos, 26 niveles y cuatro idiomas. Elige una edición para explorar el contenido completo.</p></header>
+  <section aria-labelledby="language-title"><h2 id="language-title">Elige un idioma</h2><ol class="module-cards">${links}</ol></section>
+</main>
+<footer class="site-footer"><span>Manos Abiertas · Material educativo abierto</span></footer>
+`;
+  return documentShell({
+    title: 'Currículo abierto de Inteligencia Artificial | Manos Abiertas',
+    description: '832 lecciones educativas existentes, organizadas en ocho módulos, 26 niveles y cuatro idiomas.',
+    lang: 'es',
+    body,
+    stylesheet: 'curriculum-pages.css',
+  });
+}
 function parseMeta(markdown) {
   const difficulty = markdown.match(/^## Idioma:.*?·\s*Dificultad:\s*(.+)$/m)?.[1]?.trim();
   const time = markdown.match(/^## (?:Tiempo|Tempo) estimado:\s*(.+)$/m)?.[1]?.trim();
@@ -430,12 +464,18 @@ function parseMeta(markdown) {
 }
 
 export function publishCurriculumHtml(root = resolve(dirname(fileURLToPath(import.meta.url)), '..')) {
-  const outputRoot = join(root, SOURCE_ROOT);
+  const sourceRoot = join(root, SOURCE_ROOT);
+  const outputRoot = join(root, OUTPUT_ROOT);
   const configPath = join(root, 'src/data/curriculum-modules.ts');
   const config = readFileSync(configPath, 'utf8');
-  const modules = [...config.matchAll(/id:\s*'([^']+)'\s*,\s*dir:\s*'([^']+)'/g)]
+  const modules = [...config.matchAll(/id:\s*'([^']+)'[\s\S]*?\bdir:\s*'([^']+)'/g)]
     .map((match) => ({ id: match[1], dir: match[2], titles: {} }));
   if (modules.length !== 8) throw new Error(`Expected 8 curriculum modules, found ${modules.length}`);
+
+  mkdirSync(outputRoot, { recursive: true });
+  const stylesheetSource = join(sourceRoot, 'curriculum-pages.css');
+  if (!existsSync(stylesheetSource)) throw new Error(`Missing curriculum stylesheet: ${stylesheetSource}`);
+  copyFileSync(stylesheetSource, join(outputRoot, 'curriculum-pages.css'));
 
   let pageCount = 0;
   for (const module of modules) {
@@ -478,7 +518,7 @@ export function publishCurriculumHtml(root = resolve(dirname(fileURLToPath(impor
     writeFileSync(join(outputRoot, `index-${language.code}.html`), catalogBody({ modules, lang: language.code }));
   }
   // English default index keeps the directory browsable without a language suffix.
-  writeFileSync(join(outputRoot, 'index.html'), catalogBody({ modules, lang: 'ES' }));
+  writeFileSync(join(outputRoot, 'index.html'), languageSelectorBody());
 
   if (pageCount < 200) throw new Error(`Curriculum HTML output below platform minimum: ${pageCount}/200`);
   return { modules: modules.length, languages: CURRICULUM_PAGE_LANGUAGES.length, levels: CURRICULUM_LEVELS.length, pages: pageCount };
