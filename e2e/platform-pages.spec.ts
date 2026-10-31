@@ -3,6 +3,8 @@ import { test, expect } from '@playwright/test';
 // These checks exercise files actually served from public/ in four browser profiles.
 test('the established institutional homepage leads to reviewed learning routes', async ({ page }) => {
   await page.goto('/index.html');
+  const menu = page.getByRole('button', { name: /Menú/ });
+  if (await menu.isVisible()) await menu.click();
   await page.getByRole('navigation', { name: 'Navegación principal' })
     .getByRole('link', { name: 'Rutas abiertas' }).click();
   await expect(page).toHaveURL(/\/platform-pages\/21-courses\.html$/);
