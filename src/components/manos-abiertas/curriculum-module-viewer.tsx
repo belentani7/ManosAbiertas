@@ -28,6 +28,7 @@ const LABELS: Record<'es' | 'pt' | 'ca' | 'en', {
   loading: string;
   missing: string;
   reset: string;
+  openHtml: string;
 }> = {
   es: {
     back: 'Volver al currículo',
@@ -41,6 +42,7 @@ const LABELS: Record<'es' | 'pt' | 'ca' | 'en', {
     loading: 'Cargando nivel…',
     missing: 'Este nivel todavía no está disponible en este idioma.',
     reset: 'Reiniciar progreso',
+    openHtml: 'Abrir lección completa en HTML',
   },
   pt: {
     back: 'Voltar ao currículo',
@@ -54,6 +56,7 @@ const LABELS: Record<'es' | 'pt' | 'ca' | 'en', {
     loading: 'Carregando nível…',
     missing: 'Este nível ainda não está disponível neste idioma.',
     reset: 'Reiniciar progresso',
+    openHtml: 'Abrir a lição completa em HTML',
   },
   ca: {
     back: 'Torna al currículum',
@@ -67,6 +70,7 @@ const LABELS: Record<'es' | 'pt' | 'ca' | 'en', {
     loading: 'Carregant nivell…',
     missing: 'Aquest nivell encara no està disponible en aquest idioma.',
     reset: 'Reinicia el progrés',
+    openHtml: 'Obre la lliçó completa en HTML',
   },
   en: {
     back: 'Back to curriculum',
@@ -80,6 +84,7 @@ const LABELS: Record<'es' | 'pt' | 'ca' | 'en', {
     loading: 'Loading level…',
     missing: 'This level is not available yet in this language.',
     reset: 'Reset progress',
+    openHtml: 'Open the full HTML lesson',
   },
 };
 
@@ -202,6 +207,12 @@ export default function CurriculumModuleViewer({
               ))}
             </div>
           </fieldset>
+          <a
+            href={`/curriculum-html/${moduleDir}/nivel-${levelId}/nivel-${levelId}-${lang}.html`}
+            className="rounded-full border border-black/8 bg-white px-4 py-2 text-sm font-semibold text-stone-900 shadow-sm underline-offset-4 transition hover:border-black/15 hover:underline"
+          >
+            {labels.openHtml}
+          </a>
         </div>
 
         <div className="mt-6 min-h-[280px] rounded-2xl border border-black/5 bg-stone-50 p-4 sm:p-6">
