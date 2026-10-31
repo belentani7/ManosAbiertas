@@ -3,11 +3,13 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { renderCurriculumMarkdown } from '../../scripts/generate-curriculum-html.mjs';
+import { publishCurriculumHtml, renderCurriculumMarkdown } from '../../scripts/generate-curriculum-html.mjs';
 
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const HTML_ROOT = join(PROJECT_ROOT, 'public/curriculum-html');
 const LANGUAGE_TAGS = { ES: 'es', PT: 'pt', CA: 'ca', EN: 'en' };
+
+if (!existsSync(HTML_ROOT)) publishCurriculumHtml(PROJECT_ROOT);
 
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
