@@ -29,10 +29,15 @@ function localTarget(value) {
   const path = decodeURIComponent(url.pathname);
   // The campus may link to a small, explicitly approved set of institutional
   // pages in the same published site, never to arbitrary paths outside campus.
-  const institutionalPages = new Set([
-    '/index.html', '/programas.html', '/orientacion.html', '/recursos.html', '/proyecto.html',
+  const institutionalPages = new Map([
+    ['/index.html', resolve(root, 'index.html')],
+    ['/programas.html', resolve(root, 'programas.html')],
+    ['/orientacion.html', resolve(root, 'orientacion.html')],
+    ['/recursos.html', resolve(root, 'recursos.html')],
+    ['/proyecto.html', resolve(root, 'proyecto.html')],
+    ['/curriculum-html/index.html', resolve(root, 'public', 'curriculum-html', 'index.html')],
   ]);
-  if (institutionalPages.has(path)) return resolve(root, path.slice(1));
+  if (institutionalPages.has(path)) return institutionalPages.get(path);
   assert.ok(path.startsWith('/campus/'), 'Local link escapes published campus: ' + value);
   const target = resolve(campus, '.' + path.slice('/campus'.length));
   assert.ok(target === campus || target.startsWith(campus + sep), 'Path escapes campus: ' + value);

@@ -24,7 +24,9 @@ for(const page of pages){
    if(href.startsWith('#')){assert.ok(html.includes('id="'+href.slice(1)+'"'),page+': missing fragment '+href);continue}
    if(!href.startsWith('./'))continue;
    const path=decodeURIComponent(href.split(/[?#]/)[0].slice(2));
-   const target=resolve(root,path);
+   const target=page==='index.html' && path==='curriculum-html/index.html'
+    ? resolve(root,'public',path)
+    : resolve(root,path);
    assert.ok(target.startsWith(root+'/'),page+': unsafe target '+href);
    assert.ok(existsSync(target),page+': missing '+href);
    if(href.endsWith('/'))assert.ok(existsSync(resolve(target,'index.html')),page+': missing index for '+href);
