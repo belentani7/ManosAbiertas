@@ -13,6 +13,32 @@ export const CAMPUS_FILES = Object.freeze([
 ]);
 export const CAMPUS_DIRECTORIES = Object.freeze(['cursos', 'voces']);
 
+//
+// Publish only the educational pages with real, reviewed content.
+// The other architectural HTML drafts are intentionally excluded: they must not
+// be presented as functioning enrollment, payments or administration screens.
+//
+export const RELEASED_PLATFORM_PAGES = Object.freeze([
+  '01-home.html', '09-accessibility.html', '11-help.html',
+  '16-privacy.html', '18-safety.html', '21-courses.html',
+  '25-category-legal.html', '28-course-detail.html',
+  '41-login.html', '42-register.html', '60-dashboard.html',
+  '80-lesson.html', '84-quiz.html',
+  'platform.css',
+]);
+
+export function publishPlatformPages(root = resolve(dirname(fileURLToPath(import.meta.url)), '..')) {
+  const source = join(root, 'platform-pages');
+  const target = join(root, 'public', 'platform-pages');
+  for (const file of RELEASED_PLATFORM_PAGES) {
+    const from = join(source, file);
+    if (!existsSync(from)) throw Error('Missing reviewed institutional page: ' + file);
+    mkdirSync(target, { recursive: true });
+    cpSync(from, join(target, file), { force: true });
+  }
+  console.log('Reviewed educational pages ready: /platform-pages/ (draft-only screens excluded)');
+}
+
 export function publishCampus(root = resolve(dirname(fileURLToPath(import.meta.url)), '..')) {
   const source = join(root, 'campus');
   const target = join(root, 'public', 'campus');
@@ -27,6 +53,7 @@ export function publishCampus(root = resolve(dirname(fileURLToPath(import.meta.u
     if (!existsSync(from)) throw Error('Missing required campus directory: ' + dir);
     cpSync(from, join(target, dir), { recursive: true, force: true });
   }
+  publishPlatformPages(root);
   console.log('Campus ready: /campus/index.html (lessons, quizzes, offline assets, voices)');
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
