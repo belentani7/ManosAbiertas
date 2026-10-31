@@ -34,6 +34,28 @@ test('catalogue deep-link loads a real published course and practice controls', 
   await expect(page.locator('#quizCurso')).toHaveValue('cursos/office-sin-miedo/quiz.json');
 });
 
+test('four reviewed learning areas lead to real courses and original workshops', async ({ page }) => {
+  const areas = [
+    { name: /Explorar IA/i, path: '22-category-ai.html', heading: /inteligencia artificial es una herramienta/i, destination: '../campus/index.html?curso=alfabetizacion-ia' },
+    { name: /Explorar Office/i, path: '23-category-office.html', heading: /Un documento útil puede abrir puertas/i, destination: '../campus/index.html?curso=office-sin-miedo' },
+    { name: /Explorar empleo/i, path: '24-category-cv.html', heading: /Tu experiencia merece ser comprendida/i, destination: '../taller-documentos.html' },
+    { name: /Elegir recorrido/i, path: '29-learning-paths.html', heading: /No es una carrera/i, destination: '23-category-office.html' },
+  ];
+  for (const area of areas) {
+    await page.goto('/platform-pages/21-courses.html');
+    await page.getByRole('link', { name: area.name }).click();
+    await expect(page).toHaveURL(new RegExp('/platform-pages/' + area.path.replace('.', '\\.') + '
+  const released = await request.get('/platform-pages/84-quiz.html');
+  expect(released.ok()).toBeTruthy();
+  const fictional = await request.get('/platform-pages/57-payments.html');
+  expect(fictional.status()).toBe(404);
+});
+));
+    await expect(page.getByRole('heading', { level: 1, name: area.heading })).toBeVisible();
+    await expect(page.locator('a[href="' + area.destination + '"]').first()).toBeVisible();
+  }
+});
+
 test('unimplemented payment screens are not deployed under the public institutional path', async ({ request }) => {
   const released = await request.get('/platform-pages/84-quiz.html');
   expect(released.ok()).toBeTruthy();
