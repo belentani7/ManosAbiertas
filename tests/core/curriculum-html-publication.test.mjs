@@ -85,8 +85,21 @@ test('publishes navigable module, language and default indexes', () => {
   assert.equal((defaultIndex.match(/href="index-(?:ES|PT|CA|EN)\.html"/g) ?? []).length, 4);
 });
 
+test('preserves keyboard, reduced-motion and print accessibility and exposes the catalogue', () => {
+  const stylesheet = readFileSync(join(HTML_ROOT, 'curriculum-pages.css'), 'utf8');
+  assert.match(stylesheet, /:focus-visible/);
+  assert.match(stylesheet, /\.skip-link:focus/);
+  assert.match(stylesheet, /prefers-reduced-motion/);
+  assert.match(stylesheet, /@media print/);
+
+  const rootLanding = readFileSync(join(PROJECT_ROOT, 'public/index.html'), 'utf8');
+  assert.match(rootLanding, /href="\.\/curriculum-html\/index\.html"/);
+  const campusLanding = readFileSync(join(PROJECT_ROOT, 'campus/index.html'), 'utf8');
+  assert.match(campusLanding, /href="\.\.\/curriculum-html\/index\.html"/);
+});
+
 test('escapes raw HTML and refuses executable Markdown links', () => {
-  const rendered = renderCurriculumMarkdown('<script>alert(1)</script>\n\n[enlace](javascript:alert(1))');
+  const rendered = renderCurriculumMarkdown('<script>alert(1)</script>\n\n[enlace](javascript:alert)');
   assert.match(rendered, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
   assert.match(rendered, /<p>enlace<\/p>/);
   assert.doesNotMatch(rendered, /<script\b|href="javascript:/i);

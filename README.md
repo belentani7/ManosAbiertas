@@ -17,6 +17,14 @@ Publicación: pendiente. El despliegue en <https://manos-abiertas-psi.vercel.app
 - Guías de derechos
 - Recursos para comunidades migrantes
 
+## Biblioteca HTML del currículo
+
+La compilación publica **832 páginas de lección** a partir del currículo existente: 8 módulos × 26 niveles × 4 ediciones de idioma (ES, PT, CA, EN). La fuente sigue en `public/contenido/curriculum/`; el lector generado vive en `/curriculum-html/` y no inventa niveles, certificaciones ni progreso.
+
+- Ruta del catálogo en la aplicación: `/curriculum-html/index.html` (se genera durante el build; no es una fuente manual del repositorio).
+- Verificación: `pnpm build` y `pnpm test:core` regeneran y comprueban los 832 documentos, sus idiomas, navegación, enlaces, seguridad Markdown y textos no duplicados.
+- El enlace también está en el inicio y el campus estático para que se pueda encontrar sin conocer la ruta.
+
 ## Accesibilidad
 
 Es parte del objetivo, no un extra: el público incluye personas con poca familiaridad digital

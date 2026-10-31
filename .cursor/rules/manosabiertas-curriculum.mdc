@@ -1,0 +1,28 @@
+---
+description: Preserve Manos Abiertas' canonical translated curriculum, static lesson output and accessible reading experience.
+alwaysApply: true
+---
+
+# Manos Abiertas curriculum contract
+
+## Canonical content
+- Treat `public/contenido/curriculum/` Markdown and `src/data/curriculum-modules.ts` as the canonical source.
+- Preserve the published shape of 8 modules × 26 levels × 4 language editions (ES, PT, CA, EN) = 832 full lesson pages. These are translated source lessons, not 832 new courses or certificates.
+- Do not invent, summarize away, or silently translate learning objectives. Keep the source language in `<html lang>` and the visible language picker.
+- Do not claim registration, payments, completion tracking, accreditation, legal advice or institutional certification unless the specific flow exists and has been verified.
+
+## Generated curriculum
+- `scripts/generate-curriculum-html.mjs` renders the source Markdown into `public/curriculum-html/`; this output is generated during `pnpm build` and ignored by Git. Never edit generated HTML as the source.
+- Preserve the existing `public/contenido/curriculum/curriculum-pages.css` visual system and the standalone-reader layout.
+- Keep raw HTML escaped, executable Markdown links rejected, and external links restricted to safe schemes with `rel="noopener noreferrer"`.
+- Every generated lesson must keep a single `h1`, correct locale, skip link, `main), complete text, local navigation, responsive layout, keyboard focus, reduced-motion handling and print styling.
+
+## Validation gates
+- Run `node --test tests/core/curriculum-html-publication.test.mjs` to check all 832 outputs, locale tags, unique pages, links and Markdown safety.
+- Run `pnpm test:core`, `pnpm accessibility:verify`, and `pnpm build` before publishing.
+- Verify the root entry and campus both link to `/curriculum-html/index.html`. A green build does not prove a deployment URL is live.
+
+## Project documentation
+- Cursor Project Rules: https://docs.cursor.com/context/rules-for-ai
+- GitHub Actions Secure Use: https://docs.github.com/en/actions/reference/security/secure-use
+- Microsoft Edge accessibility build guidance: https://learn.microsoft.com/en-us/microsoft-edge/accessibility/build/
