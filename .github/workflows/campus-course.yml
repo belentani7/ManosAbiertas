@@ -28,5 +28,7 @@ jobs:
           node --check campus/course-viewer.mjs
           node --check campus/app.js
           node --check campus/sw.js
+      - name: Generate the reviewed curriculum for link validation
+        run: node scripts/generate-curriculum-html.mjs
       - name: Course integrity and offline delivery tests
         run: node --test tests/campus-*.test.mjs
