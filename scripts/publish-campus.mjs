@@ -6,6 +6,7 @@
 import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { publishCurriculumHtml } from './generate-curriculum-html.mjs';
 
 export const CAMPUS_FILES = Object.freeze([
   'index.html', 'tokens.css', 'app.js', 'course-core.mjs',
@@ -60,4 +61,5 @@ export function publishCampus(root = resolve(dirname(fileURLToPath(import.meta.u
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   publishCampus();
   publishPlatformPages();
+  publishCurriculumHtml();
 }
