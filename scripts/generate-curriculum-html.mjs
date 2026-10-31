@@ -306,16 +306,20 @@ function readDescription(markdown) {
 function lessonBody({ moduleDir, moduleTitle, level, language, title, meta, markdown }) {
   const selectedLevel = Number(level);
   const levelFile = (value) => `nivel-${String(value).padStart(2, '0')}-${language.code}.html`;
+  const levelPath = (value) => {
+    const padded = String(value).padStart(2, '0');
+    return `../nivel-${padded}/nivel-${padded}-${language.code}.html`;
+  };
   const currentFile = levelFile(selectedLevel);
   const previous = selectedLevel > 0
-    ? `<a rel="prev" href="${escapeHtml(levelFile(selectedLevel - 1))}">${escapeHtml(language.copy.previous)}</a>`
+    ? `<a rel="prev" href="${escapeHtml(levelPath(selectedLevel - 1))}">${escapeHtml(language.copy.previous)}</a>`
     : '<span aria-disabled="true"></span>';
   const next = selectedLevel < CURRICULUM_LEVELS.length - 1
-    ? `<a rel="next" href="${escapeHtml(levelFile(selectedLevel + 1))}">${escapeHtml(language.copy.next)}</a>`
+    ? `<a rel="next" href="${escapeHtml(levelPath(selectedLevel + 1))}">${escapeHtml(language.copy.next)}</a>`
     : '<span aria-disabled="true"></span>';
 
   const levelLinks = CURRICULUM_LEVELS.map((value) => (
-    `<li><a href="${escapeHtml(levelFile(Number(value)))}"${value === level ? ' aria-current="page"' : ''}>${escapeHtml(language.copy.level)} ${value}</a></li>`
+    `<li><a href="${escapeHtml(levelPath(Number(value)))}"${value === level ? ' aria-current="page"' : ''}>${escapeHtml(language.copy.level)} ${value}</a></li>`
   )).join('');
 
   const languageLinks = CURRICULUM_PAGE_LANGUAGES.map((option) => (
