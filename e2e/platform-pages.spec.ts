@@ -1,6 +1,14 @@
 import { test, expect } from '@playwright/test';
 
 // These checks exercise files actually served from public/ in four browser profiles.
+test('the established institutional homepage leads to reviewed learning routes', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.getByRole('navigation', { name: 'Navegación principal' })
+    .getByRole('link', { name: 'Rutas abiertas' }).click();
+  await expect(page).toHaveURL(/\/platform-pages\/21-courses\.html$/);
+  await expect(page.getByRole('heading', { level: 1, name: /Tres caminos/i })).toBeVisible();
+});
+
 test('reviewed educational home has a single hero and working course navigation', async ({ page }) => {
   await page.goto('/platform-pages/01-home.html');
   await expect(page.getByRole('heading', { level: 1, name: /Aprender abre camino/i })).toBeVisible();
