@@ -8,6 +8,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = [
   '01-home.html', '09-accessibility.html', '11-help.html',
   '16-privacy.html', '18-safety.html', '21-courses.html',
+  '22-category-ai.html', '23-category-office.html',
+  '24-category-cv.html', '29-learning-paths.html',
   '25-category-legal.html', '28-course-detail.html',
   '41-login.html', '42-register.html', '60-dashboard.html',
   '80-lesson.html', '84-quiz.html',
@@ -25,7 +27,7 @@ test('the home is an accessible immersive hero, not a repeated multi-card placeh
   assert.doesNotMatch(home, /Qué encontrarás aquí/);
 });
 
-test('thirteen high-priority pages have unique content, real destinations and a single page heading', () => {
+test('seventeen high-priority pages have unique content, real destinations and a single page heading', () => {
   const bodies = [];
   for (const page of pages) {
     const html = read('platform-pages/' + page);

@@ -22,6 +22,8 @@ export const RELEASED_PLATFORM_PAGES = Object.freeze([
   '01-home.html', '09-accessibility.html', '11-help.html',
   '16-privacy.html', '18-safety.html', '21-courses.html',
   '25-category-legal.html', '28-course-detail.html',
+  '22-category-ai.html', '23-category-office.html',
+  '24-category-cv.html', '29-learning-paths.html',
   '41-login.html', '42-register.html', '60-dashboard.html',
   '80-lesson.html', '84-quiz.html',
   'platform.css',
