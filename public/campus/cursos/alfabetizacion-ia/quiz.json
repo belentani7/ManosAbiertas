@@ -1,0 +1,46 @@
+[
+  {
+    "pregunta": "La IA generativa...",
+    "opciones": [
+      "Siempre acierta",
+      "Puede inventar datos con seguridad",
+      "Tiene conciencia",
+      "Es gratis siempre"
+    ],
+    "correcta": 1,
+    "explicacion": "Alucinaciones: verifica fuentes."
+  },
+  {
+    "pregunta": "Un buen prompt tiene...",
+    "opciones": [
+      "Solo una pregunta",
+      "Rol+tarea+contexto+formato",
+      "Emojis",
+      "Mayusculas"
+    ],
+    "correcta": 1,
+    "explicacion": "La receta de la semana 2."
+  },
+  {
+    "pregunta": "Ante un mensaje urgente pidiendo dinero...",
+    "opciones": [
+      "Pagar ya",
+      "Verificar por otra via y denunciar",
+      "Compartir",
+      "Ignorar"
+    ],
+    "correcta": 1,
+    "explicacion": "La urgencia es la herramienta del estafador."
+  },
+  {
+    "pregunta": "En la UE tus datos personales estan protegidos por...",
+    "opciones": [
+      "RGPD",
+      "Nada",
+      "El contrato",
+      "La empresa"
+    ],
+    "correcta": 0,
+    "explicacion": "Reglamento General de Proteccion de Datos."
+  }
+]

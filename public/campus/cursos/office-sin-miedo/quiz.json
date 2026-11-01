@@ -1,0 +1,35 @@
+[
+  {
+    "pregunta": "El CV europeo estandar se llama...",
+    "opciones": [
+      "Europass",
+      "LinkedIn",
+      "Resume.io",
+      "PDF"
+    ],
+    "correcta": 0,
+    "explicacion": "Europass, gratuito y reconocido."
+  },
+  {
+    "pregunta": "En una carta formal el saludo correcto es...",
+    "opciones": [
+      "Hola!",
+      "Estimado/a Sr./Sra.",
+      "Que tal",
+      "Buenas"
+    ],
+    "correcta": 1,
+    "explicacion": "Registro formal siempre."
+  },
+  {
+    "pregunta": "Para sumar una columna en la hoja de calculo usas...",
+    "opciones": [
+      "=SUMA()",
+      "TOTAL",
+      "ADD",
+      "=PLUS()"
+    ],
+    "correcta": 0,
+    "explicacion": "=SUMA(A1:A10)."
+  }
+]
