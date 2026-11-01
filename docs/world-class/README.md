@@ -1,7 +1,5 @@
 # Manos Abiertas: matriz world-class
 
-Estado actual: `ESTADO-2026-08-13.txt`. Evidencia de accesibilidad vigente: `ACCESSIBILITY-AUDIT-2026-08-13.md`.
-
 Generado: 2026-08-11
 
 ## Alcance verificable

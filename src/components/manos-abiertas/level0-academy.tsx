@@ -12,7 +12,7 @@ import { SimpleMarkdown } from './simple-markdown';
 import { TTSButton } from './tts-button';
 import { cn } from '@/lib/utils';
 import { isBoundedStringArray, parseStoredJson } from '@/lib/safe-content';
-import { buildLevel0LessonText, lessonFilename } from '@/lib/level0-lesson-export';
+import { buildLevel0LessonText, lessonFilename, buildLevel0CoursePackHtml, coursePackFilename } from '@/lib/level0-lesson-export';
 
 const STORAGE_KEY = 'manos-abiertas-level0-progress';
 
@@ -48,6 +48,23 @@ export function Level0Academy() {
     } catch {
       // In restricted browsers, learners can still select or print the text.
       window.alert('No se pudo descargar. Puedes seleccionar y copiar el contenido de la lección.');
+    }
+  }
+
+  function downloadCoursePack(course: Level0Course) {
+    try {
+      const html = buildLevel0CoursePackHtml(course);
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = coursePackFilename(course.id);
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1200);
+    } catch {
+      window.alert('No se pudo descargar el curso. Puedes descargar cada lección en .txt.');
     }
   }
 
@@ -215,6 +232,17 @@ export function Level0Academy() {
                 <span className="flex items-center gap-1"><BookOpen className="h-3 w-3" />{selectedCourse.lessons.length} lecciones</span>
                 <span>👤 {selectedCourse.targetAge}</span>
               </div>
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                className="mt-3 gap-1"
+                onClick={() => downloadCoursePack(selectedCourse)}
+                aria-label={`Guardar el curso completo ${selectedCourse.title} como archivo sin conexión`}
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Descargar curso completo (.html sin conexión)
+              </Button>
             </div>
           </div>
         </div>

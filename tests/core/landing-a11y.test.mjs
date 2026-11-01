@@ -27,7 +27,7 @@ for(const page of pages){
    const target=page==='index.html' && path==='curriculum-html/index.html'
     ? resolve(root,'public',path)
     : resolve(root,path);
-   assert.ok(target.startsWith(root+'/'),page+': unsafe target '+href);
+   assert.ok(target.replaceAll('\\','/').startsWith(root.replaceAll('\\','/')+'/'),page+': unsafe target '+href);
    assert.ok(existsSync(target),page+': missing '+href);
    if(href.endsWith('/'))assert.ok(existsSync(resolve(target,'index.html')),page+': missing index for '+href);
   }

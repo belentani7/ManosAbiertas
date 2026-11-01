@@ -24,6 +24,7 @@ import { RemoteAIConsent } from './remote-ai-consent';
 import { getLocalStorageItem, readStoredCV } from '@/lib/local-data';
 import { readApiText } from '@/lib/safe-content';
 import { requestJson } from '@/lib/network-json';
+import { downloadCvDocx, downloadCvEuropass, type CvExportModel } from '@/lib/cv-docx-export';
 
 interface Experience {
   id: string;
@@ -605,12 +606,41 @@ export function CVSection() {
                 {t.print}
               </Button>
               <Button
-                onClick={() => hasContent ? toast.success('Usa «Imprimir» → «Guardar como PDF»') : toast.error('Rellena tu CV primero')}
+                onClick={() => {
+                  if (!hasContent) { toast.error('Rellena tu CV primero'); return; }
+                  const model: CvExportModel = {
+                    fullName, profession, email, phone, address, summary,
+                    experiences: experiences.filter((e) => e.position || e.company),
+                    education: education.filter((e) => e.title || e.institution),
+                    skills, languages,
+                  };
+                  downloadCvDocx(model);
+                  toast.success('CV descargado como Word (.docx)');
+                }}
                 disabled={!hasContent}
                 className="flex-1 gap-1.5"
               >
                 <Download className="h-4 w-4" />
-                {t.download}
+                Word (.docx)
+              </Button>
+              <Button
+                onClick={() => {
+                  if (!hasContent) { toast.error('Rellena tu CV primero'); return; }
+                  const model: CvExportModel = {
+                    fullName, profession, email, phone, address, summary,
+                    experiences: experiences.filter((e) => e.position || e.company),
+                    education: education.filter((e) => e.title || e.institution),
+                    skills, languages,
+                  };
+                  downloadCvEuropass(model);
+                  toast.success('CV descargado en formato Europass');
+                }}
+                disabled={!hasContent}
+                variant="outline"
+                className="flex-1 gap-1.5"
+              >
+                <Download className="h-4 w-4" />
+                Europass (.txt)
               </Button>
             </div>
           </div>

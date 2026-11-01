@@ -21,13 +21,13 @@
 | B1. ESLint 9 flat config + Prettier (lint operativo) | P1 | DX y gate de calidad real | config | Baja | 0 | Ruido de reglas (tuneo) | `npm run lint` verde | CI | 📋 |
 | B2. Localización del chrome nuevo (itinerarios/MAIA) con claves i18n | P1 | PT>ES>EN>CA real en toda la UI | i18n/translations, components | Media | 0 | 25 diccionarios por actualizar | `i18n:verify` sin regresiones | verify-i18n | 📋 |
 | B3. Auditoría a11y automatizada (axe-core + teclado) y WCAG 2.2 AA | P1 | Accesibilidad como contrato | global | Media | 0 | Falsos positivos | axe limpio en rutas críticas + revisión manual | Playwright+axe | 📋 |
-| B4. Eliminar código muerto y stubs (6 componentes, 4 directorios) | P2 | Compactación | varios | Baja | 0 | Pérdida de artefactos (evidenciado: cero refs) | typecheck+tests verdes | CI | 📋 |
+| B4 ◐ (2026-11-01, 5 componentes decorativos eliminados; accessibility-panel conservado por gobernanza) Eliminar código muerto y stubs (6 componentes, 4 directorios) | P2 | Compactación | varios | Baja | 0 | Pérdida de artefactos (evidenciado: cero refs) | typecheck+tests verdes | CI | 📋 |
 
 ## Fase C — Fundación educativa
 
 | Ítem | Prioridad | Beneficio | Módulos | Complejidad | Coste | Riesgos | Aceptación | Verificación | Estado |
 |---|---|---|---|---|---|---|---|---|---|
-| C1. Lesson packs descargables (offline) de cursos/campus | P1 | Aprendizaje sin datos móviles | campus, cursos | Media | 0 | Tamaño de bundle | Descarga + uso offline verificado | E2E offline | 📋 |
+| C1 ✅ (2026-11-01, pack HTML autónomo por curso Nivel 0 en level0-lesson-export + tests) Lesson packs descargables (offline) de cursos/campus | P1 | Aprendizaje sin datos móviles | campus, cursos | Media | 0 | Tamaño de bundle | Descarga + uso offline verificado | E2E offline | 📋 |
 | C2. Progreso de cursos unificado (localStorage → contrato portable) | P2 | Continuidad entre vistas | use-progress, dashboard | Baja | 0 | Migración de claves | Progreso persiste tras recarga | tests | 📋 |
 | C3. Motor de quizzes accesibles reutilizando `quiz.json` | P2 | Evaluación real, no visitas | campus/cursos | Media | 0 | — | Quiz completo + resultado | E2E | 📋 |
 
@@ -43,7 +43,7 @@
 
 | Ítem | Prioridad | Beneficio | Módulos | Complejidad | Coste | Riesgos | Aceptación | Verificación | Estado |
 |---|---|---|---|---|---|---|---|---|---|
-| E1. Exportación DOCX/Europass del CV (además del PDF actual) | P1 | Compatibilidad con portales | cv | Media | 0 | — | Export válida | tests + apertura manual | 📋 |
+| E1 ✅ (2026-11-01, cv-docx-export sin dependencias, DOCX+Europass local) Exportación DOCX/Europass del CV (además del PDF actual) | P1 | Compatibilidad con portales | cv | Media | 0 | — | Export válida | tests + apertura manual | 📋 |
 | E2. Application tracker (local-first) | P2 | Seguimiento de candidaturas | tools | Baja | 0 | — | CRUD local + recordatorios | tests | 📋 |
 | E3. Simulador de entrevistas con MAIA (presupuestado) | P2 | Práctica segura | MAIA + tools | Media | Inferencia acotada | — | Simulacro completo + feedback | E2E | 📋 |
 

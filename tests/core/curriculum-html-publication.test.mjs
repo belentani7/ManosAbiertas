@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import { dirname, join, relative, resolve } from 'node:path';
+import { basename, dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { publishCurriculumHtml, renderCurriculumMarkdown } from '../../scripts/generate-curriculum-html.mjs';
@@ -30,12 +30,12 @@ test('publishes 832 complete lesson pages from the existing translated curriculu
 
   const lessonPages = moduleDirectories
     .flatMap((moduleDir) => walk(join(HTML_ROOT, moduleDir)))
-    .filter((path) => /^nivel-\d{2}-\b(?:ES|PT|CA|EN)\.html$/.test(path.split('/').at(-1)));
+    .filter((path) => /^nivel-\d{2}-\b(?:ES|PT|CA|EN)\.html$/.test(basename(path)));
   assert.equal(lessonPages.length, 8 * 26 * 4);
 
   const uniqueBodies = new Set();
   for (const path of lessonPages) {
-    const name = path.split('/').at(-1);
+    const name = basename(path);
     const language = name.match(/-(ES|PT|CA|EN)\.html$/)?.[1];
     const html = readFileSync(path, 'utf8');
     const plainText = html.replace(/<[^>]*>/g, ' ').replace(/&(?:amp|lt|gt|quot|#39);/g, ' ').replace(/\s+/g, ' ').trim();

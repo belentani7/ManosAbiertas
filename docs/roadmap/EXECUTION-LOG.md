@@ -4,6 +4,25 @@ Formato por ciclo: **QUÉ SE ENCONTRÓ · QUÉ SE CAMBIÓ · QUÉ FUNCIONA · QU
 
 ---
 
+## Ciclo 2 — Windows parity + E1/C1/B4 (2026-11-01)
+
+Rama: `main` (directo, patrón aditivo). Alcance: hacer la suite verificable en Windows y cerrar tres ítems P1/P2 del roadmap sin dependencias nuevas.
+
+### QUÉ SE CAMBIÓ
+1. **Tests core multiplataforma**: `curriculum-html-publication` usaba `path.split('/').at(-1)` (0 de 832 lecciones en Windows) y `landing-a11y` comparaba `target.startsWith(root+'/')`; ahora `basename()` y normalización de separadores. 191/191 → 197/197 (6 tests nuevos).
+2. **E1 — Export real del CV** (`src/lib/cv-docx-export.ts`): .docx válido construido en el navegador (ZIP store + CRC32 + OOXML mínimos, sin deps) y Europass .txt estructurado; botones nuevos en `cv-section.tsx` (el botón anterior solo abría un toast «usa Imprimir»).
+3. **C1 — Pack offline de curso** (`buildLevel0CoursePackHtml`): un único HTML autónomo por curso Nivel 0 (índice navegable, todas las lecciones, escape HTML, sin scripts, imprimible); botón «Descargar curso completo» en `level0-academy.tsx`.
+4. **B4 parcial**: eliminados `DigitalInsects`, `MatrixRain`, `SpaceShipTrail`, `WaterRain`, `FloatingAgent` (0 referencias). `accessibility-panel.tsx` se conserva: es superficie del backlog world-class (applied-improvements + matriz 3000).
+
+### QUÉ AHORA FUNCIONA
+- ✅ La persona descarga su CV en Word o Europass sin red, sin cuenta y sin subir nada a ningún servidor.
+- ✅ Un curso Nivel 0 completo se lleva en un solo archivo que abre sin internet en cualquier móvil.
+- ✅ `pnpm test:core` verde en Windows y en CI Linux.
+
+### VERIFICACIÓN
+lint 0 errores · typecheck OK · test:core 197/0 · i18n/trust/accessibility/improvements/tools/guides verify OK · build completo OK.
+---
+
 ## Ciclo 1 — Baseline + Itinerarios + MAIA v1 (2026-10-11)
 
 Rama: `arena/7c0760e5-manosabiertas` · Alcance: primera ejecución recomendada (auditoría → verificación → objetivo/ruta/progreso sin registro → primer flujo MAIA → PR con evidencias).
