@@ -1,8 +1,6 @@
 name: tutor-ia
 
 on:
-  schedule:
-    - cron: "0 8 * * *"
   issues:
     types: [opened]
   workflow_dispatch:
