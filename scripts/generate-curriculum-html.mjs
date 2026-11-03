@@ -287,9 +287,10 @@ function sourceFiles(root, moduleDir, level, lang) {
 
 function readTitle(markdown, level) {
   const first = markdown.split('\n', 1)[0]?.trim() ?? '';
-  const title = first.replace(/^#\s*/, '').replace(/\s+—\s+[^—]*\d{2}\s*$/, '').trim();
+  const match = first.match(/^#\s*(.*?)(?:\s+—\s+([^—]*\d{2})\s*)?$/);
+  const title = (match?.[1] ?? '').trim();
   if (!title) throw new Error(`Curriculum level ${level} has no title`);
-  return title;
+  return { title, levelLabel: (match?.[2] ?? '').trim() };
 }
 
 function readDescription(markdown) {
@@ -486,10 +487,10 @@ export function publishCurriculumHtml(root = resolve(dirname(fileURLToPath(impor
     for (const level of CURRICULUM_LEVELS) {
       for (const language of CURRICULUM_PAGE_LANGUAGES) {
         const source = sourceFiles(root, module.dir, level, language);
-        const title = readTitle(source.markdown, level);
+        const { title, levelLabel } = readTitle(source.markdown, level);
         module.titles[language.code] ??= level === '00'
           ? title
-          : readTitle(sourceFiles(root, module.dir, '00', language).markdown, '00');
+          : readTitle(sourceFiles(root, module.dir, '00', language).markdown, '00').title;
         const body = lessonBody({
           moduleDir: module.dir,
           moduleTitle: module.titles[language.code],
@@ -499,8 +500,12 @@ export function publishCurriculumHtml(root = resolve(dirname(fileURLToPath(impor
           meta: parseMeta(source.markdown),
           markdown: source.markdown,
         });
+        // WEB-05: el sufijo de nivel mantiene distinto el <title> de cada leccion
+        // respecto al indice del modulo (SEO); si con marca pasa de 70 (SEO-01), sin marca.
+        const withLevel = levelLabel ? `${title} — ${levelLabel}` : title;
+        const branded = `${withLevel} | Manos Abiertas`;
         const html = documentShell({
-          title: `${title} | Manos Abiertas`,
+          title: branded.length <= 70 ? branded : withLevel,
           description: readDescription(source.markdown),
           lang: language.lang,
           body,

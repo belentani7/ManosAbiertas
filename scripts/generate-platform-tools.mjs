@@ -111,7 +111,9 @@ function htmlPage({ id, platformId, platformName, tool, context, objective, acce
   const [toolId, toolName, category, command] = tool;
   const [contextId, contextName] = context;
   const [objectiveId, objectiveName, objectiveRule] = objective;
-  const title = `${toolName}: ${objectiveName} para ${contextName}`;
+  const full = `${toolName}: ${objectiveName} para ${contextName}`;
+  // SEO-01: el title completo no debe pasar de 70 chars con el sufijo de marca (17)
+  const title = full.length > 52 ? `${full.slice(0, 51).replace(/\s+\S*$/, '')}…` : full;
   return `<!doctype html>
 <html lang="es" data-guide-id="${id}">
 <head>
