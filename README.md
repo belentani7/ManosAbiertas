@@ -73,3 +73,24 @@ El repositorio canónico integra el lector de cursos del campus, práctica evalu
 La entrega actual incluye unidades ampliadas de **Office sin Miedo**, **Puente PT–ES** y un examen PT–ES de 40 casos con retroalimentación. La CI ejecuta comprobaciones específicas para el contenido de ciberseguridad y para la estructura de los cursos generados, además de los tests del proyecto.
 
 El contenido educativo es material de práctica. No constituye certificación institucional ni asesoramiento jurídico personalizado.
+
+
+## Uso
+
+Instala dependencias y ejecuta el proyecto:
+
+```powershell
+# Dependencias
+npm install
+
+# Desarrollo
+npm run dev
+
+# Pruebas
+npm test
+
+# Construcción de producción
+npm run build
+```
+
+Consulta `package.json` para la lista completa de scripts disponibles.
