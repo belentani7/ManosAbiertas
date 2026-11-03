@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Search, X, ExternalLink, Clock, Award, Filter, CheckCircle2, Circle, BookOpen, Users, Github } from 'lucide-react';
+import { GraduationCap, Search, X, ExternalLink, Clock, Award, Filter, CheckCircle2, Circle, BookOpen, Users, GitFork } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -170,7 +170,7 @@ export function CoursesLibrarySection() {
               activeTab === 'opensource' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground'
             )}
           >
-            <Github className="h-3.5 w-3.5" />
+            <GitFork className="h-3.5 w-3.5" />
             Open Source (50+50)
           </button>
         </div>
