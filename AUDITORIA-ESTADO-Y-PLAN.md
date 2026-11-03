@@ -4,15 +4,15 @@ Generado 2026-11-03 por el pase de reglas del ecosistema (catálogo `_meta/regla
 Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficial y git.
 
 - **Categoría:** educacion · **Ruta:** `C:\Users\USER\belentani-ecosystem\educacion\ManosAbiertas`
-- **Remoto:** https://github.com/belentani7/ManosAbiertas.git · **Rama:** main · **HEAD:** 94c70a0 (fix(web-rules): aplica catalogo oficial WEB-01..11, ACC, SEO-01 en 51 ficheros ()
-- **Lenguajes:** .md:926,.tsx:150,.ts:93,.mjs:71,.html:58,.json:42 · **Commits (git real):** 393 · **Tamaño worktree:** 32.6 MB
-- **Visibilidad GitHub:** public · **Homepage:** https://manos-abiertas-rho.vercel.app · **HTTP:** —
+- **Remoto:** https://github.com/belentani7/ManosAbiertas.git · **Rama:** main · **HEAD:** 64bdb6d (docs(auditoria): estado real del repo, comandos para arreglar/elevar y potencial)
+- **Lenguajes:** .md:926,.tsx:150,.ts:93,.mjs:71,.html:58,.json:42 · **Commits (git real):** 394 · **Tamaño worktree:** 32.6 MB
+- **Visibilidad GitHub:** public · **Homepage:** https://manos-abiertas-rho.vercel.app · **HTTP:** HTTP_200
 - **GitHub Pages:** no activo
 
 ## 1. Situación actual
 
 - **Consolidación:** familia `proyecto-manosabiertas` · acción survivor (estable).
-- **Git:** 3 ficheros sin commitear · 3 commits sin push · 2 commits del pase de reglas (desde 2026-11-02).
+- **Git:** 3 ficheros sin commitear · 4 commits sin push · 3 commits del pase de reglas (desde 2026-11-02).
 - **Reglas web (gate oficial):** 81 HTML · **0 hallazgos** · 0 títulos duplicados.
 - **Gobernanza GitHub (protocolo MS):** 10/11 reglas aplicadas · pendientes: GH-09
 - **Secretos (triaje):** sin hallazgos.
@@ -46,6 +46,7 @@ Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficia
 ## 3. Qué puede alcanzar este repositorio
 
 - **Repositorio público**: puede publicar gratis en GitHub Pages (`https://belentani7.github.io/ManosAbiertas/`) y mantener Vercel; hoy tiene Pages desactivado
+- Ya tiene despliegue Vercel vivo: siguiente nivel es dominio propio (`<producto>.belentani.es`) añadiendo CNAME en el registrador.
 - Con 81 páginas HTML y el catálogo de reglas cumplido, es candidato a **superviviente/documentado** del ecosistema: README con arranque real, índice navegable y CI que ejecute `check_web_rules.py`.
 
 ---
