@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Search, X, Star, ExternalLink, Code, Key, Zap, BookOpen } from 'lucide-react';
+import { GitFork, Search, X, Star, ExternalLink, Code, Key, Zap, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -53,7 +53,7 @@ export function OpenSourceHub() {
       {/* Header */}
       <div>
         <h2 className="text-2xl font-bold flex items-center gap-2">
-          <Github className="h-6 w-6 text-primary" />
+          <GitFork className="h-6 w-6 text-primary" />
           Hub de Código Abierto
         </h2>
         <p className="text-sm text-muted-foreground mt-1">
@@ -64,7 +64,7 @@ export function OpenSourceHub() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-2">
         <Card><CardContent className="p-3 text-center">
-          <Github className="h-4 w-4 mx-auto mb-1 text-primary" />
+          <GitFork className="h-4 w-4 mx-auto mb-1 text-primary" />
           <div className="text-lg font-bold">{stats.total}</div>
           <div className="text-[10px] text-muted-foreground">Repositorios</div>
         </CardContent></Card>
@@ -87,7 +87,7 @@ export function OpenSourceHub() {
           className={cn('px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-1.5',
             activeTab === 'repos' ? 'bg-card shadow-sm text-primary' : 'text-muted-foreground')}
         >
-          <Github className="h-3.5 w-3.5" />
+          <GitFork className="h-3.5 w-3.5" />
           Repositorios ({GITHUB_REPOS.length})
         </button>
         <button
@@ -179,7 +179,7 @@ function RepoCard({ repo, index }: { repo: GitHubRepo; index: number }) {
         <CardContent className="p-4">
           <div className="flex items-start justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
-              <Github className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+              <GitFork className="h-4 w-4 text-muted-foreground flex-shrink-0" />
               <div className="min-w-0">
                 <div className="font-semibold text-sm truncate">{repo.name}</div>
                 <div className="text-[10px] text-muted-foreground">{repo.owner}</div>
