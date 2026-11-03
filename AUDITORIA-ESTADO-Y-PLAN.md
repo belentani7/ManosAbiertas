@@ -4,17 +4,17 @@ Generado 2026-11-03 por el pase de reglas del ecosistema (catálogo `_meta/regla
 Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficial y git.
 
 - **Categoría:** educacion · **Ruta:** `C:\Users\USER\belentani-ecosystem\educacion\ManosAbiertas`
-- **Remoto:** https://github.com/belentani7/ManosAbiertas.git · **Rama:** main · **HEAD:** 64bdb6d (docs(auditoria): estado real del repo, comandos para arreglar/elevar y potencial)
-- **Lenguajes:** .md:926,.tsx:150,.ts:93,.mjs:71,.html:58,.json:42 · **Commits (git real):** 394 · **Tamaño worktree:** 32.6 MB
+- **Remoto:** https://github.com/belentani7/ManosAbiertas.git · **Rama:** main · **HEAD:** 6883e52 (fix(web-rules): titulos unicos/SEO-01 y h1 visible; gate completo 3534 ficheros )
+- **Lenguajes:** .md:926,.tsx:150,.ts:93,.mjs:71,.html:58,.json:42 · **Commits (git real):** 396 · **Tamaño worktree:** 32.6 MB
 - **Visibilidad GitHub:** public · **Homepage:** https://manos-abiertas-rho.vercel.app · **HTTP:** HTTP_200
 - **GitHub Pages:** no activo
 
 ## 1. Situación actual
 
 - **Consolidación:** familia `proyecto-manosabiertas` · acción survivor (estable).
-- **Git:** 3 ficheros sin commitear · 4 commits sin push · 3 commits del pase de reglas (desde 2026-11-02).
-- **Reglas web (gate oficial):** 81 HTML · **0 hallazgos** · 0 títulos duplicados.
-- **Gobernanza GitHub (protocolo MS):** 10/11 reglas aplicadas · pendientes: GH-09
+- **Git:** 7 ficheros sin commitear · 6 commits sin push · 5 commits del pase de reglas (desde 2026-11-02).
+- **Reglas web (gate oficial):** 956 HTML · **0 hallazgos** · 0 títulos duplicados.
+- **Gobernanza GitHub (protocolo MS):** 11/11 reglas aplicadas · completo.
 - **Secretos (triaje):** sin hallazgos.
 
 ## 2. Comandos para arreglar y elevar (ejecutar en este orden)
@@ -23,22 +23,17 @@ Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficia
    ```powershell
    python C:\Users\USER\belentani-ecosystem\_meta\check_web_rules.py ManosAbiertas
    ```
-2. **Gobernanza GitHub pendiente (GH-09):** crear/verificar README, LICENSE, CODE_OF_CONDUCT, CONTRIBUTING, ISSUE_TEMPLATE, PR_TEMPLATE, CI verde, .gitignore, descripción+topics, sin secretos:
-   ```powershell
-   gh api -X PATCH repos/belentani7/ManosAbiertas -f description="<descripcion real>" -f homepage="<url viva>"
-   gh repo edit belentani7/ManosAbiertas --add-topic <topic1>,<topic2>,<topic3>   # topics reales del proyecto
-   ```
-3. **Publicar en GitHub Pages** (repo público; la cuenta free solo publica repos públicos):
+2. **Publicar en GitHub Pages** (repo público; la cuenta free solo publica repos públicos):
    ```powershell
    gh api -X POST repos/belentani7/ManosAbiertas/pages -f source[branch]=main -f source[path]=/
    gh api -X POST repos/belentani7/ManosAbiertas/pages/builds/latest -X POST 2>$null   # o dejar que el workflow publique
    ```
-4. **Limpiar 3 ficheros sin commitear** (revisar antes; si son del pase de reglas, commitear):
+3. **Limpiar 7 ficheros sin commitear** (revisar antes; si son del pase de reglas, commitear):
    ```powershell
    git -C "C:\Users\USER\belentani-ecosystem\educacion\ManosAbiertas" status --short
    git -C "C:\Users\USER\belentani-ecosystem\educacion\ManosAbiertas" add -- <solo los ficheros del pase> ; git -C "C:\Users\USER\belentani-ecosystem\educacion\ManosAbiertas" commit -m "fix(web-rules): ..."
    ```
-5. **Subir al remoto** (requiere tu confirmación explícita; hoy ningún repo tiene push):
+4. **Subir al remoto** (requiere tu confirmación explícita; hoy ningún repo tiene push):
    ```powershell
    git -C "C:\Users\USER\belentani-ecosystem\educacion\ManosAbiertas" push origin main
    ```
@@ -47,7 +42,7 @@ Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficia
 
 - **Repositorio público**: puede publicar gratis en GitHub Pages (`https://belentani7.github.io/ManosAbiertas/`) y mantener Vercel; hoy tiene Pages desactivado
 - Ya tiene despliegue Vercel vivo: siguiente nivel es dominio propio (`<producto>.belentani.es`) añadiendo CNAME en el registrador.
-- Con 81 páginas HTML y el catálogo de reglas cumplido, es candidato a **superviviente/documentado** del ecosistema: README con arranque real, índice navegable y CI que ejecute `check_web_rules.py`.
+- Con 956 páginas HTML y el catálogo de reglas cumplido, es candidato a **superviviente/documentado** del ecosistema: README con arranque real, índice navegable y CI que ejecute `check_web_rules.py`.
 
 ---
 *Evidencia: `_meta/consolidacion/consolidacion.db` · `_meta/specs/2026-11-01-*` · gate `check_web_rules.py` · git log. Regenerable con `python _meta/gen_auditoria_repos.py`.*
