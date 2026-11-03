@@ -56,3 +56,7 @@ legacy/
 _stems/
 __pycache__/
 *.pyc
+
+# Config local de agentes
+.claude/
+AUDITORIA_ESTADO.md
