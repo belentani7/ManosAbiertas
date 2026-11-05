@@ -12,12 +12,12 @@ Run: python3 scripts/refresh-open-data.py
 Output: open-data/data/*.json + open-data/topics.json
 """
 
-import urllib.request
-import urllib.parse
 import json
-import ssl
 import os
-from datetime import datetime, timezone
+import ssl
+import urllib.parse
+import urllib.request
+from datetime import UTC, datetime
 
 CA_BUNDLE = '/root/.ccr/ca-bundle.crt'
 ctx = ssl.create_default_context()
@@ -44,7 +44,7 @@ def save(topic, records):
     payload = {
         "tema": topic,
         "portal": "manosabiertas",
-        "generado_utc": datetime.now(timezone.utc).isoformat(),
+        "generado_utc": datetime.now(UTC).isoformat(),
         "registros": records
     }
     with open(path, 'w', encoding='utf-8') as f:
@@ -209,7 +209,7 @@ try:
             "url": item.get('@id', '')
         })
     sources_log.append({"tema": "vivienda-y-servicios", "fuente": "datos.gob.es", "ok": True})
-except Exception as ex:
+except Exception:
     sources_log.append({"tema": "vivienda-y-servicios", "fuente": "datos.gob.es", "ok": False})
 
 save("vivienda-y-servicios", records)
@@ -398,7 +398,7 @@ manifest = {
     "portal": "manosabiertas",
     "repo": "belentani7/ManosAbiertas",
     "dominio": "Integracion, derechos y tramites (ES)",
-    "generado_utc": datetime.now(timezone.utc).isoformat(),
+    "generado_utc": datetime.now(UTC).isoformat(),
     "orden_idiomas": ["pt", "es", "en", "ca"],
     "fuentes": sources_log
 }
@@ -408,4 +408,4 @@ with open(manifest_path, 'w', encoding='utf-8') as f:
 
 ok_count = sum(1 for s in sources_log if s.get('ok'))
 print(f"\n✅  Completado: {ok_count}/{len(sources_log)} fuentes OK")
-print(f"    Manifest: open-data/topics.json")
+print("    Manifest: open-data/topics.json")

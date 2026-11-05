@@ -1,4 +1,4 @@
-﻿# AGENTS.md - ManosAbiertas
+# AGENTS.md - ManosAbiertas
 
 ## Stack
 - package.json: True
