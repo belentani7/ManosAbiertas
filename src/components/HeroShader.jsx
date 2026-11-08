@@ -31,3 +31,5 @@ export default function HeroShader({ colorA = '#0ea5e9', colorB = '#7c3aed' }) {
 }
 
 HeroShader.displayName = 'HeroShader';
+
+globalThis.HeroShader = HeroShader;
