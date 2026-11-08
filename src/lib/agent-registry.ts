@@ -72,7 +72,7 @@ class AgentRegistry {
   private agents: Map<string, any> = new Map();
   private defaultAgent: string | null = null;
 
-  register(config: AgentConfig): AgentConfig {
+  register(config: any): Agent {
     const state = {
       id: config.id,
       config,
