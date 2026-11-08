@@ -100,7 +100,7 @@ export class ChatEngine {
     topP?: number;
     tools?: unknown[];
     toolChoice?: unknown;
-  }): Promise<{ message: ChatMessage; provider: string; model: string; usage?: unknown; finishReason?: string }> {
+  }): Promise<{ message: ChatMessage; provider: string; model: string; usage?: ChatResponse['usage']; finishReason?: string }> {
     const modelId = options.model || 'qwen3.6-flash';
     const modelConfig = aiRegistry.getModel(modelId);
 
@@ -142,6 +142,13 @@ export class ChatEngine {
     const payload = await response.json();
     const choice = payload.choices?.[0];
     const message = choice?.message || {};
+    const rawUsage = payload.usage;
+    const promptTokens = rawUsage?.prompt_tokens ?? rawUsage?.promptTokens;
+    const completionTokens = rawUsage?.completion_tokens ?? rawUsage?.completionTokens;
+    const totalTokens = rawUsage?.total_tokens ?? rawUsage?.totalTokens;
+    const usage = [promptTokens, completionTokens, totalTokens].every(
+      (value) => typeof value === 'number' && Number.isFinite(value)
+    ) ? { promptTokens, completionTokens, totalTokens } : undefined;
 
     return {
       message: {
@@ -153,7 +160,7 @@ export class ChatEngine {
       },
       provider: modelConfig.provider,
       model: modelConfig.id,
-      usage: payload.usage,
+      usage,
       finishReason: choice?.finish_reason || 'stop'
     };
   }
