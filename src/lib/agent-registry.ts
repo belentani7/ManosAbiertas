@@ -186,7 +186,8 @@ class AgentRegistry {
       ...request.messages.slice(-10)
     ];
 
-    const availableTools = this.getAvailableTools(request.tools || agentData.config.tools);
+    const requestedToolNames = request.tools?.filter((name): name is string => typeof name === 'string');
+    const availableTools = this.getAvailableTools(requestedToolNames?.length ? requestedToolNames : config.tools);
 
     const registry = (await import('./ai-provider')).aiRegistry;
     const modelConfig = registry.getModel(request.model || config.model);
