@@ -69,6 +69,8 @@ export interface Agent {
 }
 
 interface AgentState {
+  id: string;
+  config: AgentConfig;
   memory: Map<string, unknown>;
   conversationHistory: Array<{ role: 'user' | 'assistant'; content: string }>;
   lastActive: number;
