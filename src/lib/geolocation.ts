@@ -212,7 +212,7 @@ function getOverpassCategoryFilter(category: string): string {
   return filters[category] || '';
 }
 
-function parseOverpassResults(data: any, userLat: number, userLng: number, limit: number): NearbyResource[] {
+function parseOverpassResults(data: unknown, userLat: number, userLng: number, limit: number): NearbyResource[] {
   if (!data.elements) return [];
 
   const resources: NearbyResource[] = [];
@@ -258,7 +258,7 @@ function parseOverpassResults(data: any, userLat: number, userLng: number, limit
     .slice(0, limit);
 }
 
-function categorizeOSMElement(element: any): string {
+function categorizeOSMElement(element: unknown): string {
   const tags = element.tags || {};
   if (tags.amenity) return tags.amenity;
   if (tags.office) return tags.office;
@@ -268,7 +268,7 @@ function categorizeOSMElement(element: any): string {
   return 'unknown';
 }
 
-function formatAddress(tags: any): string {
+function formatAddress(tags: unknown): string {
   const parts = [
     tags['addr:street'],
     tags['addr:housenumber'],
@@ -279,7 +279,7 @@ function formatAddress(tags: any): string {
   return parts.join(' ') || '';
 }
 
-function extractServices(tags: any): string[] {
+function extractServices(tags: unknown): string[] {
   const services: string[] = [];
   if (tags.wheelchair === 'yes') services.push('Accesible');
   if (tags.internet_access === 'wlan') services.push('WiFi');
@@ -288,7 +288,7 @@ function extractServices(tags: any): string[] {
   return services;
 }
 
-function extractLanguages(tags: any): string[] {
+function extractLanguages(tags: unknown): string[] {
   const langs: string[] = [];
   if (tags['language:es']) langs.push('es');
   if (tags['language:en']) langs.push('en');
@@ -324,7 +324,7 @@ export async function getDirections(
   from: Coordinates,
   to: Coordinates,
   mode: 'walking' | 'cycling' | 'driving' | 'transit' = 'walking'
-): Promise<{ distance: number; duration: number; steps: any[] } | null> {
+): Promise<{ distance: number; duration: number; steps: unknown[] } | null> {
   try {
     const url = `https://router.project-osrm.org/route/v1/${mode}/${from.lng},${from.lat};${to.lng},${to.lat}?overview=false&steps=true&geometries=geojson`;
     const response = await fetch(url);
@@ -336,7 +336,7 @@ export async function getDirections(
     return {
       distance: route.distance / 1000, // km
       duration: route.duration / 60, // minutes
-      steps: route.legs[0]?.steps?.map((step: any) => ({
+      steps: route.legs[0]?.steps?.map((step: unknown) => ({
         instruction: step.maneuver?.instruction || '',
         distance: step.distance / 1000,
         duration: step.duration / 60

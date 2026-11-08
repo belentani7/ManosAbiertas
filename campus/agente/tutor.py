@@ -21,7 +21,7 @@ import os
 import subprocess
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -92,9 +92,9 @@ def tutor_issue() -> None:
 
 def capsula_diaria() -> None:
     """Propone una cápsula mediante PR, respetando la protección de main."""
-    hoy = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    hoy = datetime.now(UTC).strftime("%Y-%m-%d")
     langs = ["es", "ca", "pt", "en"]
-    lang = langs[datetime.now(timezone.utc).day % len(langs)]
+    lang = langs[datetime.now(UTC).day % len(langs)]
     rama = f"bot/capsula-{hoy}"
     remoto = subprocess.run(
         ["git", "ls-remote", "--exit-code", "--heads", "origin", rama],
