@@ -11,16 +11,19 @@
   <script defer src="hero.js"></script>
 </head>
 <body>
-  <nav class="nav">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <nav class="nav" aria-label="Navegación principal">
     <a href="#features" class="logo">ManosAbiertas</a>
     <ul class="nav-links">
       <li><a href="#features">Características</a></li>
       <li><a href="#stack">Stack</a></li>
       <li><a href="#about">Acerca de</a></li>
     </ul>
+    <a href="./campus/" class="campus-link">Campus</a>
     <a href="#features" class="cta">Empezar</a>
   </nav>
 
+  <main id="contenido" tabindex="-1">
   <section class="hero">
     <div class="hero-canvas-wrapper">
       <canvas id="hero-canvas"></canvas>
@@ -74,6 +77,7 @@
   <footer>
     <p>© 2026 ManosAbiertas — Parte del ecosistema Belentani / NOIACORE</p>
   </footer>
+  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
