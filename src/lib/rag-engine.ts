@@ -38,10 +38,10 @@ export interface RAGConfig {
 }
 
 class InMemoryVectorStore {
-  private chunks: unknown[] = [];
+  private chunks: DocumentChunk[] = [];
   private embeddings: Map<string, number[]> = new Map();
 
-  async upsert(chunks: unknown[]): Promise<void> {
+  async upsert(chunks: DocumentChunk[]): Promise<void> {
     for (const chunk of chunks) {
       this.chunks = this.chunks.filter(c => c.id !== chunk.id);
       this.chunks.push(chunk);
@@ -59,13 +59,13 @@ class InMemoryVectorStore {
     return dot / (Math.sqrt(normA) * Math.sqrt(normB));
   }
 
-  async search(queryEmbedding: number[], topK: number, filter?: Record<string, any>): Promise<any[]> {
-    const results: unknown[] = [];
+  async search(queryEmbedding: number[], topK: number, filter?: Record<string, unknown>): Promise<SearchResult[]> {
+    const results: Array<{ chunk: DocumentChunk; score: number }> = [];
     for (const chunk of this.chunks) {
       if (filter) {
         let match = true;
         for (const [key, value] of Object.entries(filter)) {
-          const metaValue = (chunk.metadata as any)[key];
+          const metaValue = (chunk.metadata as unknown as Record<string, unknown>)[key];
           if (Array.isArray(value)) {
             if (!value.includes(metaValue)) { match = false; break; }
           } else if (metaValue !== value) {
