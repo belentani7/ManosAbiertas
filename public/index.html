@@ -1,245 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ManosAbiertas - Producto completo con hero shader y animaciones">
-  <title>Manosabiertas</title>
-  <link rel="theme-color" content="#2563eb">
-  <style>/* Hero Shader */
-:root {
-  --primary: #2563eb;
-  --secondary: #3b82f6;
-  --bg: #f8fafc;
-  --accent: #1e40af;
-  --glow: 0 0 15px rgba(37, 99, 235, 0.3);
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: #ffffff;
-  font-family: system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
-}
-.hero {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg);
-  overflow: hidden;
-}
-.hero-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-.hero-overlay {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding: 2rem;
-}
-.hero h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.3));
-  animation: pulse 3s ease-in-out infinite;
-}
-.hero p {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.btn-primary {
-  background: var(--primary);
-  color: #ffffff;
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1rem;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-  filter: brightness(1.1);
-}
-.btn-secondary {
-  background: transparent;
-  color: var(--primary);
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1rem;
-  border: 2px solid var(--primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.btn-secondary:hover {
-  background: var(--primary);
-  color: #ffffff;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
-}
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2rem; }
-  .hero p { font-size: 1rem; }
-  .hero-actions { flex-direction: column; align-items: center; }
-  .btn-primary, .btn-secondary { width: 100%; max-width: 250px; text-align: center; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero { animation: none; }
-  .hero h1 { animation: none; }
-}
-section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary);
-  text-align: center;
-}
-section p {
-  font-size: 1.1rem;
-  color: #64748b;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  text-align: center;
-}
-.stack-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-}
-.stack-list li {
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 2rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  color: #64748b;
-}
-footer {
-  padding: 3rem 2rem;
-  border-top: 1px solid rgba(128, 128, 128, 0.2);
-  text-align: center;
-  color: #64748b;
-  font-size: 0.9rem;
-}
-@media (max-width: 768px) {
-  .hero { min-height: 80vh; }
-  .hero h1 { font-size: 2rem; }
-  .hero p { font-size: 1rem; }
-  .hero-actions { flex-direction: column; align-items: center; }
-  .btn-primary, .btn-secondary { width: 100%; max-width: 250px; text-align: center; }
-  section { padding: 2rem 1rem; }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102d27">
+  <meta name="color-scheme" content="dark">
+  <title>Manos Abiertas — Aprender abre caminos · ManosAbiertas</title>
+  <meta name="description" content="Formación gratuita para avanzar con autonomía: competencias digitales, orientación laboral, idiomas y recursos contrastados. Empieza por lo que necesitas.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Manos Abiertas">
+  <meta property="og:title" content="Manos Abiertas — Aprender abre caminos">
+  <meta property="og:description" content="Educación abierta, práctica y humana. Descubre tu próxima posibilidad.">
+  <link rel="icon" type="image/svg+xml" href="./assets/manos-symbol.svg">
+  <style>
+    :root{color-scheme:dark;--pine:#102d27;--moss:#1d453a;--ivory:#f6f1e5;--mint:#d7e5cb;--sand:#eac39e;--line:#ffffff2a;--ease:cubic-bezier(.22,1,.36,1)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;background:var(--pine);color:var(--ivory);font-family:Inter,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}:focus-visible{outline:3px solid var(--sand);outline-offset:5px}
+    .skip-link{position:absolute;left:1rem;top:-100px;z-index:20;padding:.8rem 1rem;background:var(--ivory);color:var(--pine)}.skip-link:focus{top:1rem}
+    .stage{position:relative;isolation:isolate;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(ellipse at 73% 47%,#295447 0%,#183b33 38%,#102d27 74%)}
+    .stage:before{content:"";pointer-events:none;position:absolute;inset:-30%;z-index:-1;background:radial-gradient(circle at calc(65% + var(--mx,0px)) calc(50% + var(--my,0px)),#a6bd8950 0%,transparent 30%);opacity:.6}
+    .grain{position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+    .motes{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+    .mote{position:absolute;border-radius:50%;background:#f5e6c4;opacity:0;filter:blur(.4px);animation:mote var(--d,14s) linear infinite;animation-delay:var(--dl,0s)}
+    @keyframes mote{0%{transform:translateY(10vh) scale(.6);opacity:0}14%{opacity:var(--o,.4)}82%{opacity:var(--o,.4)}100%{transform:translateY(-12vh) scale(1);opacity:0}}
+    .frame{width:min(1540px,calc(100% - clamp(32px,7.4vw,128px)));margin-inline:auto}
+    .top{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:2rem;padding-top:clamp(24px,3.1vw,48px)}
+    .brand{display:inline-flex;align-items:center;gap:15px;text-decoration:none;flex-shrink:0}.brand-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid #f8f1df83;border-radius:50%;color:var(--ivory)}
+    .brand-icon svg{width:26px;height:26px}.brand-name{font-weight:750;letter-spacing:-.065em;font-size:1.02rem;line-height:1.02}.brand-name small{display:block;font-size:.55rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;margin-top:5px;color:#dce6d6}
+    .nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(12px,2vw,35px)}.nav a{font-size:clamp(.69rem,.72vw,.78rem);text-transform:uppercase;letter-spacing:.13em;font-weight:650;text-decoration:none;position:relative;white-space:nowrap;padding:15px 0;transition:color .25s}
+    .nav a:after{content:"";height:1px;position:absolute;bottom:8px;left:0;right:100%;background:var(--sand);transition:right .35s var(--ease)}.nav a:hover{color:var(--sand)}.nav a:hover:after,.nav a:focus-visible:after{right:0}
+    .nav .nav-campus{border:1px solid #e2e9dd6b;border-radius:2px;padding:14px 20px;margin-left:6px}.nav .nav-campus:after{display:none}.nav .nav-campus:hover{background:var(--ivory);color:var(--pine)}
+    main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column}.hero{flex:1;min-height:570px;display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);align-items:center;gap:clamp(12px,2vw,40px);padding-block:clamp(85px,10vh,145px) clamp(45px,7vh,80px)}
+    .copy{position:relative;z-index:4;max-width:890px}.kicker{display:flex;align-items:center;gap:16px;font-size:.69rem;letter-spacing:.27em;font-weight:700;text-transform:uppercase;color:var(--sand);margin:0 0 clamp(20px,2.7vw,40px)}.kicker:before{content:"";display:block;width:47px;height:1px;background:var(--sand)}
+    h1{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400;letter-spacing:-.068em;line-height:.94;font-size:clamp(4.6rem,9.2vw,10.5rem);margin:0;max-width:10ch;text-wrap:balance}h1 em{font-style:italic;font-weight:400;white-space:nowrap;background:linear-gradient(115deg,#eec089,#f8e6c0 48%,#dfae76);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{margin:clamp(25px,3vw,46px) 0 0;max-width:47ch;color:#d1ddd1;line-height:1.8;font-size:clamp(1.01rem,1.33vw,1.23rem);font-weight:400}.actions{display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:clamp(28px,3.4vw,52px)}
+    .main-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:32px;min-height:60px;padding:17px 24px;background:var(--ivory);color:var(--pine);font-weight:750;text-decoration:none;font-size:.8rem;letter-spacing:.035em;box-shadow:0 22px 48px -22px #f6f1e570;transition:background .3s,transform .3s var(--ease),box-shadow .3s}.main-cta:hover{background:var(--sand);transform:translateY(-3px);box-shadow:0 30px 60px -22px #eac39e8c}
+    .plain-cta{font-size:.8rem;text-decoration:none;letter-spacing:.045em;border-bottom:1px solid #e7f0dc83;padding-block:10px;transition:border-color .25s,color .25s}.plain-cta:hover{color:var(--sand);border-color:var(--sand)}
+    .art{position:relative;z-index:2;aspect-ratio:1;min-width:0;max-width:790px;width:115%;justify-self:center;display:grid;place-items:center;transform:translate3d(var(--shift-x,0px),var(--shift-y,0px),0);transition:transform .6s var(--ease)}
+    .halo{position:absolute;width:91%;aspect-ratio:1;left:4%;top:5%;border-radius:50%;background:radial-gradient(circle at 46% 40%,#e5d9ac14,#b4c9a911 36%,transparent 68%);box-shadow:inset 0 0 0 1px #ebefdc2b,0 0 120px #e0e8c615}
+    .halo:before,.halo:after{content:"";position:absolute;inset:8%;border:1px solid #e3e6d320;border-radius:50%}.halo:after{inset:22%;border-style:dashed;opacity:.45}
+    .emblem{display:block;position:relative;width:100%;filter:drop-shadow(0 30px 28px #06161065);overflow:visible}.line{fill:none;stroke:#f6e5c9;stroke-linecap:round;stroke-linejoin:round}.flower{transform-origin:50% 50%;animation:breath 9s ease-in-out infinite}.flower-2{animation:breath 12s ease-in-out -5s infinite}
+    .beam{transform-origin:50% 50%;animation:orbit 32s linear infinite}.beam.rev{animation-direction:reverse;animation-duration:42s}
+    .art-label{position:absolute;right:2%;bottom:6%;font-size:.65rem;letter-spacing:.24em;color:#d2decf;text-transform:uppercase;writing-mode:vertical-rl;opacity:.68}
+    .bottom{z-index:3;position:relative;display:grid;grid-template-columns:1fr repeat(3,minmax(0,1fr));border-top:1px solid var(--line);padding-top:19px;padding-bottom:clamp(27px,3vw,50px);gap:clamp(12px,3vw,48px)}
+    .bottom .statement{font-size:.62rem;line-height:1.75;letter-spacing:.16em;text-transform:uppercase;color:#c5d4c5;margin:0;max-width:18ch}
+    .path{text-decoration:none;display:flex;align-items:flex-start;justify-content:space-between;gap:13px;border-top:1px solid transparent;padding:2px 0 0;transition:color .25s,transform .25s}.path .number{display:block;font-size:.6rem;letter-spacing:.18em;color:var(--sand);margin-bottom:7px}.path strong{font-family:Georgia,serif;font-size:clamp(1.08rem,1.5vw,1.6rem);font-weight:400;letter-spacing:-.04em}.path .arrow{font-size:1.25rem;line-height:1}.path .arrow{transition:transform .3s var(--ease)}.path:hover{color:var(--sand);transform:translateY(-4px)}.path:hover .arrow{transform:translate(3px,-3px)}
+    .edge-label{position:absolute;right:clamp(14px,2vw,34px);top:45%;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.58rem;letter-spacing:.22em;color:#ccdcc5a8;text-transform:uppercase}
+    @keyframes breath{0%,100%{transform:scale(.97) rotate(-1deg)}50%{transform:scale(1.025) rotate(1deg)}}@keyframes orbit{to{transform:rotate(360deg)}}
+    @media(max-width:980px){.nav{gap:14px}.nav a{letter-spacing:.06em}.nav .nav-campus{padding:11px}.hero{grid-template-columns:1.06fr .94fr;padding-block:80px 50px}h1{font-size:clamp(4rem,9vw,7rem)}.art{width:130%;transform:translate3d(0,0,0)}.bottom{grid-template-columns:repeat(3,1fr)}.bottom .statement{grid-column:1/-1;max-width:none}}
+    @media(max-width:720px){.frame{width:calc(100% - 42px)}.stage{min-height:100svh}.top{align-items:flex-start;flex-wrap:wrap;gap:10px 20px;padding-top:22px}.brand-icon{width:36px;height:36px}.brand-name{font-size:.86rem}.brand-name small{font-size:.46rem}.nav{flex-wrap:wrap;gap:4px 16px;max-width:none;width:100%;justify-content:flex-start}.nav a{font-size:.75rem;min-height:44px;display:inline-flex;align-items:center;padding:8px 0}.nav .nav-campus{padding:8px;border:0;margin:0;border-bottom:1px solid #d8e3d5}.nav a:after{bottom:4px}
+    .hero{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:0;padding-top:clamp(55px,10vh,100px);padding-bottom:clamp(170px,23vh,235px)}h1{font-size:clamp(4rem,15vw,7.2rem);max-width:11ch}.kicker{margin-bottom:20px;font-size:.61rem}.intro{max-width:42ch;font-size:1rem;line-height:1.6;margin-top:24px}.actions{margin-top:25px;gap:18px}.main-cta{min-height:54px;padding:14px 18px;font-size:.73rem}
+    .art{pointer-events:none;position:absolute;width:min(83vw,445px);right:-15vw;bottom:-35px;opacity:.42;z-index:-1}.art-label,.edge-label{display:none}.bottom{grid-template-columns:1fr 1fr;gap:20px 18px}.bottom .statement{font-size:.56rem}.path strong{font-size:1.13rem}.bottom .path:last-child{grid-column:1/-1}}
+    @media(max-width:390px){.nav{gap:3px 10px}.nav a{font-size:.69rem}h1{font-size:3.6rem}.hero{padding-bottom:125px}.art{width:100%;right:-30%;opacity:.32}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}.art{transform:none!important}.stage:before{background:transparent!important}}
+    @view-transition{navigation:auto}
+  </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-canvas"></div>
-    <div class="hero-overlay">
-      <h1>Manosabiertas</h1>
-      <p>Producto completo con home hero, shader WebGL animado, y stack moderno listo para producción.</p>
-      <div class="hero-actions">
-        <a href="#" class="btn-primary">Ver Características</a>
-        <a href="#stack" class="btn-secondary">Ver Stack</a>
-      </div>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="stage" data-stage>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="motes" id="motes" aria-hidden="true"></div>
+    <header class="top frame">
+      <a class="brand" href="./index.html" aria-label="Manos Abiertas. Inicio">
+        <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M6 24c6-9 11-10 18-2 7-8 12-7 18 2M10 31c8 11 20 11 28 0" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="11" r="3" fill="#EAC39E"/></svg></span>
+        <span class="brand-name">MANOS<br>ABIERTAS<small>Educación para avanzar</small></span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="./orientacion.html">Empieza aquí</a>
+        <a href="./programas.html">Aprender</a>
+        <a href="./platform-pages/21-courses.html">Rutas abiertas</a>
+        <a href="./empleo.html">Empleo</a>
+        <a href="./recursos.html">Recursos</a>
+        <a class="nav-campus" href="./campus/">Campus ↗</a>
+        <a href="./curriculum-html/index.html">832 lecciones HTML</a>
+      </nav>
+    </header>
+    <main id="contenido" tabindex="-1" class="frame">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="copy">
+          <p class="kicker">Educación abierta · Autonomía real</p>
+          <h1 id="hero-title">Aprender abre <em>caminos.</em></h1>
+          <p class="intro">Una oportunidad comienza cuando tienes las herramientas para aprovecharla. Formación gratuita, orientación cercana y recursos prácticos para decidir tu siguiente paso.</p>
+          <div class="actions">
+            <a class="main-cta" href="./orientacion.html"><span>Encuentra tu camino</span><span aria-hidden="true">↗</span></a>
+            <a class="plain-cta" href="./proyecto.html">Conoce el proyecto ↗</a>
+          </div>
+        </div>
+        <div class="art" aria-hidden="true" data-art>
+          <span class="halo"></span>
+          <svg class="emblem" viewBox="0 0 760 760" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ribbon" x1=".1" y1=".2" x2=".9" y2=".8"><stop stop-color="#f9e7c9"/><stop offset=".36" stop-color="#d9b58a"/><stop offset=".7" stop-color="#789c7b"/><stop offset="1" stop-color="#f2d2a5"/></linearGradient>
+              <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f9e7ca"/><stop offset="1" stop-color="#b8c49f"/></linearGradient>
+              <radialGradient id="light"><stop stop-color="#f5d6a1" stop-opacity=".7"/><stop offset="1" stop-color="#f5d6a1" stop-opacity="0"/></radialGradient>
+            </defs>
+            <circle cx="385" cy="374" r="288" fill="url(#light)" opacity=".38"/>
+            <g class="beam" fill="none" stroke="#e7e5c5" stroke-opacity=".3" stroke-width="1">
+              <ellipse cx="380" cy="380" rx="319" ry="190" transform="rotate(-29 380 380)"/>
+              <ellipse cx="380" cy="380" rx="319" ry="190" transform="rotate(29 380 380)"/>
+            </g>
+            <g class="beam rev" fill="#fff3d0"><circle cx="380" cy="61" r="5"/><circle cx="380" cy="699" r="3"/><circle cx="61" cy="380" r="3.5"/></g>
+            <g class="flower">
+              <path d="M378 596C289 533 190 450 184 332c-3-67 35-121 93-123 66-2 104 65 101 144 0-102 39-183 110-183 68 0 106 66 86 141-23 89-122 167-196 285Z" fill="none" stroke="url(#ribbon)" stroke-width="34" stroke-linejoin="round"/>
+              <path d="M379 597c-49-119-69-224-32-325 23-64 60-104 96-110" class="line" stroke-width="6" stroke-opacity=".8"/>
+              <path d="M378 594c45-119 107-181 162-217" class="line" stroke-width="3" stroke-opacity=".5"/>
+              <path d="M377 595C288 496 244 433 223 348" class="line" stroke-width="3" stroke-opacity=".48"/>
+            </g>
+            <g class="flower flower-2" fill="none" stroke="url(#leaf)" stroke-linecap="round">
+              <path d="M380 596C350 495 252 452 226 449c23 63 79 110 154 147Z" stroke-width="6"/>
+              <path d="M380 596c26-95 103-153 161-153-33 65-88 112-161 153Z" stroke-width="6"/>
+            </g>
+            <circle cx="380" cy="599" r="10" fill="#f5dfba"/>
+            <circle cx="380" cy="599" r="23" fill="none" stroke="#f5dfba" stroke-opacity=".5"/>
+          </svg>
+          <span class="art-label">Un gesto. Infinitas posibilidades.</span>
+        </div>
+      </section>
+    </main>
+    <div class="bottom frame" aria-label="Áreas para explorar">
+      <p class="statement">Hecho para aprender a tu ritmo.<br>Sin barreras innecesarias.</p>
+      <a class="path" href="./programas.html"><span><span class="number">01 / Aprendizaje</span><strong>Programas</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
+      <a class="path" href="./empleo.html"><span><span class="number">02 / Autonomía</span><strong>Vida laboral</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
+      <a class="path" href="./recursos.html"><span><span class="number">03 / Comunidad</span><strong>Recursos útiles</strong></span><span class="arrow" aria-hidden="true">↗</span></a>
     </div>
-  </section>
-  <section id="stack">
-    <h2>Stack Tecnológico</h2>
-    <p>Tecnologías utilizadas en este repositorio.</p>
-    <ul class="stack-list">
-      <li>HTML5</li>
-      <li>CSS3</li>
-      <li>JavaScript</li>
-      <li>WebGL Shader</li>
-      <li>Responsive Design</li>
-    </ul>
-  </section>
-  <footer><p>© 2026 Manosabiertas - Parte del ecosistema Belentani</p></footer>
-/* Hero Shader WebGL */
-(function() {
-  const canvas = document.createElement('canvas');
-  canvas.id = 'hero-canvas';
-  canvas.style.position = 'absolute';
-  canvas.style.top = '0';
-  canvas.style.left = '0';
-  canvas.style.width = '100%';
-  canvas.style.height = '100%';
-  canvas.style.zIndex = '1';
-  document.body.insertBefore(canvas, document.body.firstChild);
-  const gl = canvas.getContext('webgl');
-  if (!gl) return;
-  const vs = gl.createShader(gl.VERTEX_SHADER);
-  gl.shaderSource(vs, 'attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }');
-  gl.compileShader(vs);
-  const fs = gl.createShader(gl.FRAGMENT_SHADER);
-  gl.shaderSource(fs, 'precision mediump float; uniform vec2 u_resolution; uniform float u_time; uniform vec2 u_mouse; float hash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y * p.z); } float noise(vec2 p) { vec2 i = floor(p); vec2 f = fract(p); f = f * f * (3.0 - 2.0 * f); float a = hash(i); float b = hash(i + vec2(1.0, 0.0)); float c = hash(i + vec2(0.0, 1.0)); float d = hash(i + vec2(1.0, 1.0)); return mix(mix(a, b, f.x), mix(c, d, f.x), f.y); } float fbm(vec2 p) { float v = 0.0; float a = 0.5; vec2 shift = vec2(100.0); for (int i = 0; i < 5; ++i) { v += a * noise(p); p = p * 2.0 + shift; a *= 0.5; } return v; } void main() { vec2 uv = gl_FragCoord.xy / u_resolution.xy; uv.x *= u_resolution.x / u_resolution.y; vec2 m = uv - u_mouse; float n = fbm(uv * 3.0 + u_time * 0.5); n += fbm(uv * 6.0 - u_time * 0.3) * 0.5; n += length(m) * 0.1; n = mod(n, 1.0); vec3 color = mix(vec3(0.0, 0.5, 1.0), vec3(1.0, 0.0, 0.5), n); float vignette = 1.0 - length(uv * 2.0 - 1.0) * 0.4; color *= vignette; gl_FragColor = vec4(color, 1.0); }');
-  gl.compileShader(fs);
-  const program = gl.createProgram();
-  gl.attachShader(program, vs);
-  gl.attachShader(program, fs);
-  gl.linkProgram(program);
-  gl.useProgram(program);
-  const pb = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, pb);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]), gl.STATIC_DRAW);
-  const pl = gl.getAttribLocation(program, 'position');
-  gl.enableVertexAttribArray(pl);
-  gl.vertexAttribPointer(pl, 2, gl.FLOAT, false, 0, 0);
-  const rl = gl.getUniformLocation(program, 'u_resolution');
-  const tl = gl.getUniformLocation(program, 'u_time');
-  const ml = gl.getUniformLocation(program, 'u_mouse');
-  let mouse = {x: 0.5, y: 0.5};
-  window.addEventListener('mousemove', (e) => { mouse.x = e.clientX / window.innerWidth; mouse.y = 1.0 - e.clientY / window.innerHeight; });
-  function resize() { canvas.width = canvas.clientWidth * window.devicePixelRatio; canvas.height = canvas.clientHeight * window.devicePixelRatio; gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(rl, canvas.width, canvas.height); }
-  window.addEventListener('resize', resize);
-  resize();
-  function render(time) { gl.uniform1f(tl, time * 0.001); gl.uniform2f(ml, mouse.x, mouse.y); gl.drawArrays(gl.TRIANGLES, 0, 6); requestAnimationFrame(render); }
-  requestAnimationFrame(render);
-})();
+    <span class="edge-label" aria-hidden="true">Educación para avanzar · 2026</span>
+  </div>
+  <script>
+    (() => {
+      "use strict";
+      const stage = document.querySelector("[data-stage]");
+      const art = document.querySelector("[data-art]");
+      const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+      const motes = document.getElementById("motes");
+      if (motes && !motion.matches) {
+        const count = window.innerWidth < 720 ? 9 : 16;
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < count; i++) {
+          const m = document.createElement("span");
+          m.className = "mote";
+          const size = (Math.random() * 2.2 + 1).toFixed(1);
+          m.style.width = m.style.height = size + "px";
+          m.style.left = (Math.random() * 100).toFixed(2) + "%";
+          m.style.top = (Math.random() * 100).toFixed(2) + "%";
+          m.style.setProperty("--d", (Math.random() * 16 + 10).toFixed(1) + "s");
+          m.style.setProperty("--dl", "-" + (Math.random() * 20).toFixed(1) + "s");
+          m.style.setProperty("--o", (Math.random() * 0.35 + 0.2).toFixed(2));
+          frag.appendChild(m);
+        }
+        motes.appendChild(frag);
+      }
+      if (!stage || !art || !finePointer.matches) return;
+      let frame = 0;
+      const move = (event) => {
+        if (motion.matches) return;
+        const rect = stage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          art.style.setProperty("--shift-x", (x * -20).toFixed(1) + "px");
+          art.style.setProperty("--shift-y", (y * -16).toFixed(1) + "px");
+          stage.style.setProperty("--mx", (x * 85).toFixed(1) + "px");
+          stage.style.setProperty("--my", (y * 65).toFixed(1) + "px");
+        });
+      };
+      stage.addEventListener("pointermove", move, {passive:true});
+      stage.addEventListener("pointerleave", () => {
+        cancelAnimationFrame(frame);
+        art.style.removeProperty("--shift-x");
+        art.style.removeProperty("--shift-y");
+        stage.style.removeProperty("--mx");
+        stage.style.removeProperty("--my");
+      });
+      motion.addEventListener("change", () => {
+        if (motion.matches) {
+          cancelAnimationFrame(frame);
+          art.style.removeProperty("--shift-x");
+          art.style.removeProperty("--shift-y");
+          stage.style.removeProperty("--mx");
+          stage.style.removeProperty("--my");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
