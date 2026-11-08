@@ -48,6 +48,21 @@ export interface GeocodingResult {
   confidence: number;
 }
 
+type OsmTags = Record<string, string | undefined>;
+interface OsmElement {
+  type: string;
+  id: number;
+  lat?: number;
+  lon?: number;
+  center?: { lat: number; lon: number };
+  tags?: OsmTags;
+}
+interface DirectionsStep {
+  maneuver?: { instruction?: string };
+  distance: number;
+  duration: number;
+}
+
 const NOMINATIM_BASE = 'https://nominatim.openstreetmap.org';
 const USER_AGENT = 'ManosAbiertas/1.0 (contacto@manosabiertas.org)';
 
@@ -126,8 +141,10 @@ export async function getLocationFromIP(): Promise<LocationResult | null> {
 
     if (!response.ok) return null;
 
-    const data = await response.json();
-    if (!data.latitude || !data.longitude) return null;
+    const payload: unknown = await response.json();
+    if (!payload || typeof payload !== 'object') return null;
+    const data = payload as { latitude?: number; longitude?: number; city?: string; region?: string; country_name?: string };
+    if (typeof data.latitude !== 'number' || typeof data.longitude !== 'number') return null;
 
     return {
       lat: data.latitude,
@@ -213,14 +230,16 @@ function getOverpassCategoryFilter(category: string): string {
 }
 
 function parseOverpassResults(data: unknown, userLat: number, userLng: number, limit: number): NearbyResource[] {
-  if (!data.elements) return [];
+  if (!data || typeof data !== 'object' || !('elements' in data) || !Array.isArray(data.elements)) return [];
 
   const resources: NearbyResource[] = [];
 
-  for (const element of data.elements) {
-    const lat = element.lat || element.center?.lat;
-    const lng = element.lon || element.center?.lon;
-    if (!lat || !lng) continue;
+  for (const item of data.elements) {
+    if (!item || typeof item !== 'object' || typeof item.type !== 'string' || typeof item.id !== 'number') continue;
+    const element = item as OsmElement;
+    const lat = element.lat ?? element.center?.lat;
+    const lng = element.lon ?? element.center?.lon;
+    if (typeof lat !== 'number' || typeof lng !== 'number' || !Number.isFinite(lat) || !Number.isFinite(lng)) continue;
 
     const tags = element.tags || {};
     const distance = haversineDistance(
@@ -258,7 +277,7 @@ function parseOverpassResults(data: unknown, userLat: number, userLng: number, l
     .slice(0, limit);
 }
 
-function categorizeOSMElement(element: unknown): string {
+function categorizeOSMElement(element: OsmElement): string {
   const tags = element.tags || {};
   if (tags.amenity) return tags.amenity;
   if (tags.office) return tags.office;
@@ -268,7 +287,7 @@ function categorizeOSMElement(element: unknown): string {
   return 'unknown';
 }
 
-function formatAddress(tags: unknown): string {
+function formatAddress(tags: OsmTags): string {
   const parts = [
     tags['addr:street'],
     tags['addr:housenumber'],
@@ -279,7 +298,7 @@ function formatAddress(tags: unknown): string {
   return parts.join(' ') || '';
 }
 
-function extractServices(tags: unknown): string[] {
+function extractServices(tags: OsmTags): string[] {
   const services: string[] = [];
   if (tags.wheelchair === 'yes') services.push('Accesible');
   if (tags.internet_access === 'wlan') services.push('WiFi');
@@ -288,7 +307,7 @@ function extractServices(tags: unknown): string[] {
   return services;
 }
 
-function extractLanguages(tags: unknown): string[] {
+function extractLanguages(tags: OsmTags): string[] {
   const langs: string[] = [];
   if (tags['language:es']) langs.push('es');
   if (tags['language:en']) langs.push('en');
@@ -336,7 +355,7 @@ export async function getDirections(
     return {
       distance: route.distance / 1000, // km
       duration: route.duration / 60, // minutes
-      steps: route.legs[0]?.steps?.map((step: unknown) => ({
+      steps: route.legs[0]?.steps?.map((step: DirectionsStep) => ({
         instruction: step.maneuver?.instruction || '',
         distance: step.distance / 1000,
         duration: step.duration / 60
