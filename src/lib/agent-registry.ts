@@ -12,7 +12,7 @@ export interface ChatMessage {
 }
 
 export interface ChatRequest {
-  messages: unknown[];
+  messages: ChatMessage[];
   model?: string;
   maxTokens?: number;
   temperature?: number;
@@ -25,7 +25,7 @@ export interface ChatRequest {
 }
 
 export interface ChatResponse {
-  message: unknown;
+  message: ChatMessage;
   provider: string;
   model: string;
   usage?: { promptTokens: number; completionTokens: number; totalTokens: number };
@@ -44,7 +44,7 @@ export interface AgentConfig {
   model: string;
   systemPrompt?: string;
   personality: {
-    tone: 'empathetic' | 'professional' | 'patient' | 'enthusiastic' | 'authoritative';
+    tone: 'empathetic' | 'professional' | 'patient' | 'enthusiastic' | 'authoritative' | 'helpful';
     expertise: string[];
     language: string;
   };
@@ -63,17 +63,30 @@ export interface AgentConfig {
 
 export interface Agent {
   id: string;
-  config: unknown;
-  chat(request: unknown): Promise<any>;
-  streamChat(request: unknown): AsyncGenerator<any, void, unknown>;
+  config: AgentConfig;
+  chat(request: ChatRequest): Promise<ChatResponse>;
+  streamChat(request: ChatRequest): AsyncGenerator<unknown, void, unknown>;
+}
+
+interface AgentState {
+  id: string;
+  config: AgentConfig;
+  memory: Map<string, unknown>;
+  conversationHistory: Array<{ role: 'user' | 'assistant'; content: string }>;
+  lastActive: number;
+}
+
+interface RegisteredAgent {
+  config: AgentConfig;
+  state: AgentState;
 }
 
 class AgentRegistry {
-  private agents: Map<string, any> = new Map();
+  private agents: Map<string, RegisteredAgent> = new Map();
   private defaultAgent: string | null = null;
 
-  register(config: unknown): unknown {
-    const state = {
+  register(config: AgentConfig): Agent {
+    const state: AgentState = {
       id: config.id,
       config,
       memory: new Map(),
@@ -85,19 +98,19 @@ class AgentRegistry {
     return this.createAgentProxy(config.id);
   }
 
-  private createAgentProxy(agentId: string): unknown {
+  private createAgentProxy(agentId: string): Agent {
     const agentData = this.agents.get(agentId);
     if (!agentData) throw new Error(`Agent not found: ${agentId}`);
     const config = agentData.config;
     return {
       id: agentId,
       config,
-      chat: (request: unknown) => this.chatWithAgent(agentId, request),
-      streamChat: (request: unknown) => this.streamChatWithAgent(agentId, request)
+      chat: (request: ChatRequest) => this.chatWithAgent(agentId, request),
+      streamChat: (request: ChatRequest) => this.streamChatWithAgent(agentId, request)
     };
   }
 
-  private async chatWithAgent(agentId: string, request: unknown): Promise<any> {
+  private async chatWithAgent(agentId: string, request: ChatRequest): Promise<ChatResponse> {
     const agentData = this.agents.get(agentId);
     if (!agentData) throw new Error(`Agent not found: ${agentId}`);
 
@@ -144,7 +157,7 @@ class AgentRegistry {
 
       state.lastActive = Date.now();
       state.conversationHistory.push(
-        { role: 'user', content: request.messages.at(-1)?.content },
+        { role: 'user', content: request.messages.at(-1)?.content ?? '' },
         { role: 'assistant', content: assistantMessage.content }
       );
 
@@ -153,7 +166,7 @@ class AgentRegistry {
         provider: response.provider,
         model: response.model,
         usage: response.usage,
-        finishReason: response.finishReason || 'stop',
+        finishReason: (response.finishReason || 'stop') as ChatResponse['finishReason'],
         latencyMs: response.latencyMs
       };
     }
@@ -161,7 +174,7 @@ class AgentRegistry {
     throw new Error('Max iterations reached');
   }
 
-  private async *streamChatWithAgent(agentId: string, request: unknown): AsyncGenerator<any, void, unknown> {
+  private async *streamChatWithAgent(agentId: string, request: ChatRequest): AsyncGenerator<unknown, void, unknown> {
     const agentData = this.agents.get(agentId);
     if (!agentData) throw new Error(`Agent not found: ${agentId}`);
 
@@ -175,14 +188,15 @@ class AgentRegistry {
       ...request.messages.slice(-10)
     ];
 
-    const availableTools = this.getAvailableTools(request.tools || agentData.config.tools);
+    const requestedToolNames = request.tools?.filter((name): name is string => typeof name === 'string');
+    const availableTools = this.getAvailableTools(requestedToolNames?.length ? requestedToolNames : config.tools);
 
     const registry = (await import('./ai-provider')).aiRegistry;
     const modelConfig = registry.getModel(request.model || config.model);
 
     if (!modelConfig) throw new Error('Model not found');
 
-    const body: unknown = {
+    const body: Record<string, unknown> = {
       model: modelConfig.model,
       messages,
       max_completion_tokens: Math.min(request.maxTokens || 900, modelConfig.maxTokens),
@@ -235,7 +249,7 @@ class AgentRegistry {
             const delta = parsed.choices?.[0]?.delta;
             if (!delta) continue;
 
-            const chunk: unknown = {
+            const chunk: Record<string, unknown> = {
               text: delta.content || '',
               toolCalls: delta.tool_calls,
               finishReason: parsed.choices?.[0]?.finish_reason,
@@ -257,7 +271,7 @@ class AgentRegistry {
     }
   }
 
-  private buildSystemPrompt(config: unknown): string {
+  private buildSystemPrompt(config: AgentConfig): string {
     const capabilities: string[] = [];
     if (config.capabilities.rag) capabilities.push('RAG search');
     if (config.capabilities.tools) capabilities.push('Tool calling');
@@ -320,7 +334,7 @@ ${config.systemPrompt || ''}`;
     const modelConfig = aiRegistry.getModel(options.model || 'qwen3.8-max');
     if (!modelConfig) throw new Error(`Model not found`);
 
-    const body: unknown = {
+    const body: Record<string, unknown> = {
       model: modelConfig.model,
       messages: options.messages,
       max_completion_tokens: Math.min(options.maxTokens || 900, modelConfig.maxTokens),
@@ -355,7 +369,7 @@ ${config.systemPrompt || ''}`;
 
     return {
       message: {
-        role: 'assistant',
+        role: 'assistant' as const,
         content: message.content || '',
         tool_calls: message.tool_calls,
         tool_call_id: message.tool_call_id,
@@ -369,7 +383,7 @@ ${config.systemPrompt || ''}`;
     };
   }
 
-  private async executeToolCall(toolCall: unknown, options?: { locale?: string }): Promise<any> {
+  private async executeToolCall(toolCall: ToolCall, options?: { locale?: string }): Promise<any> {
     try {
       const result = await functionRegistry.execute(
         toolCall.function.name,
@@ -382,21 +396,21 @@ ${config.systemPrompt || ''}`;
     }
   }
 
-  getAgent(id: string): unknown {
+  getAgent(id: string): Agent | undefined {
     const agentData = this.agents.get(id);
     if (!agentData) return undefined;
     return this.createAgentProxy(id);
   }
 
-  getAllAgents(): unknown[] {
-    return Array.from(this.agents.values()).map((a: unknown) => a.config);
+  getAllAgents(): AgentConfig[] {
+    return Array.from(this.agents.values()).map((a) => a.config);
   }
 
   setDefaultAgent(id: string): void {
     if (this.agents.has(id)) this.defaultAgent = id;
   }
 
-  getDefaultAgent(): unknown {
+  getDefaultAgent(): Agent | undefined {
     return this.defaultAgent ? this.getAgent(this.defaultAgent!) : undefined;
   }
 
@@ -408,7 +422,7 @@ ${config.systemPrompt || ''}`;
 
 const agentRegistry = new AgentRegistry();
 
-const PREDEFINED_AGENTS = {
+const PREDEFINED_AGENTS: Record<string, AgentConfig> = {
   'legal-guide': {
     id: 'legal-guide',
     name: 'Guía Legal',
@@ -626,15 +640,15 @@ for (const [, config] of Object.entries(PREDEFINED_AGENTS)) {
   agentRegistry.register(config);
 }
 
-export function createAgent(config: unknown): unknown {
+export function createAgent(config: AgentConfig): Agent {
   return agentRegistry.register(config);
 }
 
-export function getAgent(id: string): unknown {
+export function getAgent(id: string): Agent | undefined {
   return agentRegistry.getAgent(id);
 }
 
-export function getAllAgents(): unknown[] {
+export function getAllAgents(): AgentConfig[] {
   return agentRegistry.getAllAgents();
 }
 
@@ -642,7 +656,7 @@ export function setDefaultAgent(id: string): void {
   agentRegistry.setDefaultAgent(id);
 }
 
-export function getDefaultAgent(): unknown {
+export function getDefaultAgent(): Agent | undefined {
   return agentRegistry.getDefaultAgent();
 }
 
@@ -650,7 +664,7 @@ export function removeAgent(id: string): boolean {
   return agentRegistry.removeAgent(id);
 }
 
-export function createAgentConfig(overrides: unknown = {}): unknown {
+export function createAgentConfig(overrides: Partial<AgentConfig> = {}): AgentConfig {
   return {
     id: overrides.id || `agent-${Date.now()}`,
     name: overrides.name || 'Assistant',
