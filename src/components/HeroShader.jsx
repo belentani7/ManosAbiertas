@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * HeroShader.jsx — Componente React del shader WebGL hero.
  * Reutilizable en cualquier repo React.
