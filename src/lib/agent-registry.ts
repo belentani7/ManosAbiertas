@@ -72,7 +72,7 @@ class AgentRegistry {
   private agents: Map<string, any> = new Map();
   private defaultAgent: string | null = null;
 
-  register(config: unknown): unknown {
+  register(config: AgentConfig): AgentConfig {
     const state = {
       id: config.id,
       config,
@@ -85,7 +85,7 @@ class AgentRegistry {
     return this.createAgentProxy(config.id);
   }
 
-  private createAgentProxy(agentId: string): unknown {
+  private createAgentProxy(agentId: string): Agent {
     const agentData = this.agents.get(agentId);
     if (!agentData) throw new Error(`Agent not found: ${agentId}`);
     const config = agentData.config;
