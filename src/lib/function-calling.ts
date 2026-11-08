@@ -26,8 +26,8 @@ export interface FunctionDefinition {
       type: 'string' | 'number' | 'boolean' | 'array' | 'object';
       description: string;
       enum?: string[];
-      items?: unknown;
-      default?: unknown;
+      items?: any;
+      default?: any;
       maximum?: number;
       minimum?: number;
       properties?: Record<string, any>;
@@ -39,7 +39,7 @@ export interface FunctionDefinition {
 
 export interface FunctionResult {
   success: boolean;
-  result: unknown;
+  result: any;
   error?: string;
   metadata?: Record<string, any>;
 }
@@ -48,7 +48,7 @@ type FunctionHandler = (args: Record<string, any>, context: FunctionContext) => 
 
 class FunctionRegistry {
   private functions: Map<string, { definition: FunctionDefinition; handler: FunctionHandler }> = new Map();
-  private middleware: Array<(name: string, args: unknown, context: FunctionContext) => Promise<void>> = [];
+  private middleware: Array<(name: string, args: any, context: FunctionContext) => Promise<void>> = [];
 
   register(definition: FunctionDefinition, handler: FunctionHandler) {
     this.functions.set(definition.name, { definition, handler });
@@ -66,7 +66,7 @@ class FunctionRegistry {
     return Array.from(this.functions.values()).map(f => f.definition);
   }
 
-  addMiddleware(fn: (name: string, args: unknown, context: FunctionContext) => Promise<void>) {
+  addMiddleware(fn: (name: string, args: any, context: FunctionContext) => Promise<void>) {
     this.middleware.push(fn);
   }
 
@@ -81,7 +81,7 @@ class FunctionRegistry {
     return fn.handler(args, context);
   }
 
-  getToolsForAI(): unknown[] {
+  getToolsForAI(): any[] {
     return this.getAllDefinitions().map(def => ({
       type: 'function',
       function: def

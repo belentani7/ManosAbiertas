@@ -494,7 +494,7 @@ export function isActivityId(journeyId: string, activityId: string): boolean {
  */
 export function parseSavedRoute(raw: string | null | undefined): SavedRoute | null {
   if (!raw) return null;
-  let value: unknown;
+  let value: any;
   try {
     value = JSON.parse(raw);
   } catch {

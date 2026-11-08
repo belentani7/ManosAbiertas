@@ -413,7 +413,7 @@ export class AIProviderRegistry {
     return this.providerInstances.get(id);
   }
 
-  async chat(request: AIRequest): Promise<{ text: string; provider: string; model: string; usage?: unknown; toolCalls?: ToolCall[]; finishReason: string; latencyMs: number }> {
+  async chat(request: AIRequest): Promise<{ text: string; provider: string; model: string; usage?: any; toolCalls?: ToolCall[]; finishReason: string; latencyMs: number }> {
     const startTime = Date.now();
     const model = this.modelMap.get(request.model || this.config.defaultModel);
 
@@ -560,7 +560,7 @@ export async function invokeAIText(
   systemPrompt: string,
   userPrompt: string,
   options: { maxTokens?: number; model?: string; temperature?: number; stream?: boolean; tools?: ToolDefinition[]; offline?: () => string } = {}
-): Promise<{ text: string; provider: string; model: string; usage?: unknown; toolCalls?: ToolCall[]; finishReason: string }> {
+): Promise<{ text: string; provider: string; model: string; usage?: any; toolCalls?: ToolCall[]; finishReason: string }> {
   try {
     return await aiRegistry.chat({
       systemPrompt,

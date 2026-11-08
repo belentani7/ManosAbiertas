@@ -11,17 +11,17 @@ export function getLocalStorageItem(key: string) {
   }
 }
 
-function boundedString(value: unknown, maxLength: number) {
+function boundedString(value: any, maxLength: number) {
   return typeof value === 'string' && value.length <= maxLength ? value : '';
 }
 
-function boundedStrings(value: unknown, maxItems: number, maxLength: number) {
+function boundedStrings(value: any, maxItems: number, maxLength: number) {
   return Array.isArray(value)
     ? value.slice(0, maxItems).filter((item): item is string => typeof item === 'string' && item.length <= maxLength)
     : [];
 }
 
-function validDateTime(value: unknown) {
+function validDateTime(value: any) {
   if (typeof value !== 'string' || value.length > 40) return '';
   return Number.isNaN(Date.parse(value)) ? '' : value;
 }
@@ -58,7 +58,7 @@ export interface StoredCV {
   savedAt: string;
 }
 
-function normalizeExperiences(value: unknown): StoredExperience[] {
+function normalizeExperiences(value: any): StoredExperience[] {
   if (!Array.isArray(value)) return [];
   return value.slice(0, 20).flatMap((item) => {
     if (!isPlainRecord(item)) return [];
@@ -75,7 +75,7 @@ function normalizeExperiences(value: unknown): StoredExperience[] {
   });
 }
 
-function normalizeEducation(value: unknown): StoredEducation[] {
+function normalizeEducation(value: any): StoredEducation[] {
   if (!Array.isArray(value)) return [];
   return value.slice(0, 20).flatMap((item) => {
     if (!isPlainRecord(item)) return [];
@@ -146,7 +146,7 @@ export interface StoredChatMessage {
 }
 
 export function readStoredChat(raw: string | null): StoredChatMessage[] {
-  const values = parseStoredJson(raw, [], (value): value is unknown[] => Array.isArray(value), 200_000);
+  const values = parseStoredJson(raw, [], (value): value is any[] => Array.isArray(value), 200_000);
   return values.slice(-20).filter((message): message is StoredChatMessage => (
     isPlainRecord(message)
       && typeof message.id === 'string'
@@ -177,7 +177,7 @@ export function isAppLocalDataKey(key: string) {
   return key.length <= 128 && LOCAL_DATA_PREFIXES.some((prefix) => key.startsWith(prefix));
 }
 
-export function parseLocalDataBackup(value: unknown): Array<[string, string]> | null {
+export function parseLocalDataBackup(value: any): Array<[string, string]> | null {
   if (!isPlainRecord(value)) return null;
   if ('version' in value && value.version !== 1) return null;
   const data = 'data' in value ? value.data : value;

@@ -71,6 +71,6 @@ export const LANGUAGE_COUNT = LANGUAGES.length;
 
 const LANGUAGE_CODE_SET = new Set<string>(LANGUAGES.map((language) => language.code));
 
-export function isLanguageCode(value: unknown): value is LanguageCode {
+export function isLanguageCode(value: any): value is LanguageCode {
   return typeof value === 'string' && LANGUAGE_CODE_SET.has(value);
 }

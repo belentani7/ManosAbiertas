@@ -9,7 +9,7 @@ export const languageCodeSchema = z.string()
   .refine(isLanguageCode, { message: 'Unsupported language' })
   .transform((value) => value as LanguageCode);
 
-function textLength(value: unknown): number {
+function textLength(value: any): number {
   if (typeof value === 'string') return value.length;
   if (Array.isArray(value)) return value.reduce((total, item) => total + textLength(item), 0);
   if (value && typeof value === 'object') {

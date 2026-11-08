@@ -176,7 +176,7 @@ export function readMaiaBudget(store: KeyValueStore | null | undefined, now: Dat
   try {
     const raw = store.getItem(MAIA_BUDGET_STORAGE_KEY);
     if (!raw) return empty;
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: any = JSON.parse(raw);
     if (typeof parsed !== 'object' || parsed === null) return empty;
     const record = parsed as Record<string, unknown>;
     const date = typeof record.date === 'string' ? record.date : '';
@@ -216,7 +216,7 @@ export function writeMaiaBudget(store: KeyValueStore | null | undefined, state: 
 const VALID_LABELS = new Set<string>(['OFFICIAL SOURCE', 'REVIEWED COMMUNITY RESOURCE', 'VERIFICATION REQUIRED']);
 const KNOWN_URLS = new Set<string>(RESOURCES.map((r) => r.url));
 
-export function maiaSourcesFromPayload(value: unknown, limit = 5): MaiaSource[] {
+export function maiaSourcesFromPayload(value: any, limit = 5): MaiaSource[] {
   if (!Array.isArray(value)) return [];
   const out: MaiaSource[] = [];
   for (const item of value) {

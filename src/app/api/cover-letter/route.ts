@@ -81,7 +81,7 @@ Devuelve SOLO el texto de la carta, lista para usar.`;
     }
 
     return apiJson({ text: result.text, ok: true, provider: result.provider, degraded: result.provider === 'offline' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     reportServerError('cover-letter-api', error);
     return apiError('INTERNAL_ERROR', 'No se pudo generar la carta.', 500, { text: '' });
   }
