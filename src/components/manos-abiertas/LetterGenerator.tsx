@@ -3,14 +3,15 @@
 import { useState } from 'react';
 
 type TemplateType = 'empadronamiento' | 'motivacion' | 'solicitud' | 'presentacion';
+type TemplateData = Readonly<Record<string, string>>;
 
-const templateConfigs: Record<TemplateType, { label: string; icon: string; subject: string; template: (data: unknown) => string; fields: string[] }> = {
+const templateConfigs: Record<TemplateType, { label: string; icon: string; subject: string; template: (data: TemplateData) => string; fields: string[] }> = {
   empadronamiento: {
     label: 'Empadronamiento',
     icon: '🏠',
     subject: 'Solicitud de Empadronamiento',
     fields: ['nombre', 'dni', 'direccion', 'direccion_completa', 'ciudad', 'fecha_llegada', 'fecha'],
-    template: (data: unknown) => `
+    template: (data: TemplateData) => `
 SOLICITUD DE EMPADRONAMIENTO
 
 AYUNTAMIENTO DE ${data.ciudad || '[CIUDAD]'}
@@ -41,7 +42,7 @@ Fdo.: ${data.nombre || ''}
     icon: '💼',
     subject: 'Carta de Motivación',
     fields: ['nombre_receptor', 'puesto', 'empresa', 'fuente', 'cuerpo', 'nombre', 'telefono', 'email'],
-    template: (data: unknown) => `
+    template: (data: TemplateData) => `
 Estimado/a ${data.nombre_receptor || ''}:
 
 Por medio de la presente, le dirijo mi candidatura para el puesto de ${data.puesto || ''} en ${data.empresa || ''}, publicada en ${data.fuente || ''}.
@@ -61,7 +62,7 @@ ${data.email || ''}
     icon: '📝',
     subject: 'Solicitud Genérica',
     fields: ['TIPO_SOLICITUD', 'ORGANISMO', 'NOMBRE', 'DNI', 'DIRECCION', 'HECHOS', 'CIUDAD', 'FECHA'],
-    template: (data: unknown) => `
+    template: (data: TemplateData) => `
 SOLICITUD DE ${data.TIPO_SOLICITUD || ''}
 
 A LA ATENCIÓN DE: ${data.ORGANISMO || ''}
@@ -88,7 +89,7 @@ Fdo.: ${data.NOMBRE || ''}
     icon: '👋',
     subject: 'Carta de Presentación',
     fields: ['nombre_contacto', 'nombre', 'motivo', 'cuerpo', 'telefono', 'email'],
-    template: (data: unknown) => `
+    template: (data: TemplateData) => `
 Hola ${data.nombre_contacto || ''}:
 
 Mi nombre es ${data.nombre || ''} y me pongo en contacto contigo porque ${data.motivo || ''}.
