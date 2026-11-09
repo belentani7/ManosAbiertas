@@ -94,7 +94,7 @@ Reescribe en formato de viñetas (•) con logros concretos y verbos de acción.
     }
 
     return apiJson({ text: result.text, ok: true, provider: result.provider, degraded: result.provider === 'offline' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     reportServerError('cv-generate-api', error);
     return apiError('INTERNAL_ERROR', 'No se pudo generar el contenido del CV.', 500, { text: '' });
   }

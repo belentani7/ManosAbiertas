@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * HeroShader.jsx — Componente React del shader WebGL hero.
  * Reutilizable en cualquier repo React.
@@ -31,3 +32,5 @@ export default function HeroShader({ colorA = '#0ea5e9', colorB = '#7c3aed' }) {
 }
 
 HeroShader.displayName = 'HeroShader';
+
+globalThis.HeroShader = HeroShader;

@@ -48,7 +48,7 @@ export function ATSAnalyzer({ remoteAIConsent }: { remoteAIConsent: boolean }) {
     try {
       const cvData = readStoredCV(getLocalStorageItem(STORAGE_KEY));
 
-      const data: unknown = await requestJson('/api/cv/ats', {
+      const data: Record<string, unknown> = await requestJson('/api/cv/ats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(withRemoteAIConsent({

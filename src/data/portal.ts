@@ -15,7 +15,7 @@ export const PORTAL_LANGUAGES: Array<{ code: PortalLanguage; label: string; shor
   { code: 'ca', label: 'Català', short: 'CA' },
 ];
 
-export function normalizePortalLanguage(value: unknown): PortalLanguage {
+export function normalizePortalLanguage(value: any): PortalLanguage {
   if (typeof value !== 'string') return 'es';
   const normalized = value.trim().toLowerCase();
   if (normalized.startsWith('pt')) return 'pt';
@@ -26,7 +26,7 @@ export function normalizePortalLanguage(value: unknown): PortalLanguage {
 
 const PORTAL_GOAL_IDS = new Set<string>(['first-days', 'work', 'papers', 'language', 'digital']);
 
-export function isPortalGoalId(value: unknown): value is PortalGoalId {
+export function isPortalGoalId(value: any): value is PortalGoalId {
   return typeof value === 'string' && PORTAL_GOAL_IDS.has(value);
 }
 

@@ -35,7 +35,7 @@ export interface OnboardingRequest {
  * Construye una ruta de 10 minutos a partir de datos locales verificados.
  * No recibe ni devuelve datos personales; el progreso se guarda en el cliente.
  */
-export function resolveOnboardingPlan(goalId: string, languageInput: unknown): OnboardingPlan | null {
+export function resolveOnboardingPlan(goalId: string, languageInput: any): OnboardingPlan | null {
   if (!isPortalGoalId(goalId)) return null;
   const goal = getPortalGoal(goalId);
   if (!goal) return null;
@@ -69,7 +69,7 @@ export function resolveOnboardingPlan(goalId: string, languageInput: unknown): O
 }
 
 /** Valida el contrato de la API sin aceptar datos personales ni campos libres. */
-export function parseOnboardingRequest(value: unknown): OnboardingRequest | null {
+export function parseOnboardingRequest(value: any): OnboardingRequest | null {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return null;
   const record = value as Record<string, unknown>;
   if (!isPortalGoalId(record.goal)) return null;

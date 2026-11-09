@@ -18,7 +18,7 @@ interface DataRecord {
   titulo?: string;
   url?: string;
   resumen?: string;
-  [key: string]: unknown;
+  [key: string]: any;
 }
 
 /* ─── palette ─── */

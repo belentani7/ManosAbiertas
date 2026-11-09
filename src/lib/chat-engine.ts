@@ -14,7 +14,7 @@ export interface ChatRequest {
   maxTokens?: number;
   temperature?: number;
   topP?: number;
-  tools?: unknown[];
+  tools?: any[];
   toolChoice?: 'auto' | 'none' | 'required' | { type: 'function'; function: { name: string } };
   stream?: boolean;
   systemPrompt?: string;
@@ -98,9 +98,9 @@ export class ChatEngine {
     maxTokens?: number;
     temperature?: number;
     topP?: number;
-    tools?: unknown[];
-    toolChoice?: unknown;
-  }): Promise<{ message: ChatMessage; provider: string; model: string; usage?: unknown; finishReason?: string }> {
+    tools?: any[];
+    toolChoice?: any;
+  }): Promise<{ message: ChatMessage; provider: string; model: string; usage?: any; finishReason?: string }> {
     const modelId = options.model || 'qwen3.6-flash';
     const modelConfig = aiRegistry.getModel(modelId);
 

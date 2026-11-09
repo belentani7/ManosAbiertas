@@ -14,7 +14,7 @@ type RateLimitEntry = {
 };
 
 type JsonReadResult =
-  | { ok: true; data: unknown }
+  | { ok: true; data: any }
   | { ok: false; response: NextResponse };
 
 const JSON_CONTENT_TYPE = /^application\/(?:[a-z0-9.+-]+\+)?json(?:\s*;|$)/i;
@@ -74,7 +74,7 @@ async function readBoundedRequestText(request: Request, maxBytes: number) {
   return { ok: true as const, text: new TextDecoder().decode(bytes) };
 }
 
-export function apiJson(data: unknown, status = 200, headers: HeadersInit = {}) {
+export function apiJson(data: any, status = 200, headers: HeadersInit = {}) {
   return NextResponse.json(data, {
     status,
     headers: { ...RESPONSE_HEADERS, ...Object.fromEntries(new Headers(headers)) },
@@ -229,7 +229,7 @@ export async function enforceRateLimit(
   );
 }
 
-export function hasRemoteAIConsent(data: unknown) {
+export function hasRemoteAIConsent(data: any) {
   return Boolean(
     data
     && typeof data === 'object'
@@ -238,7 +238,7 @@ export function hasRemoteAIConsent(data: unknown) {
   );
 }
 
-export function reportServerError(scope: string, error: unknown) {
+export function reportServerError(scope: string, error: any) {
   const kind = error instanceof Error ? error.name : 'UnknownError';
   console.error(`[${scope}] request failed (${kind})`);
 }

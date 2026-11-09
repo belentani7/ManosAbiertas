@@ -38,10 +38,10 @@ export interface RAGConfig {
 }
 
 class InMemoryVectorStore {
-  private chunks: unknown[] = [];
+  private chunks: any[] = [];
   private embeddings: Map<string, number[]> = new Map();
 
-  async upsert(chunks: unknown[]): Promise<void> {
+  async upsert(chunks: any[]): Promise<void> {
     for (const chunk of chunks) {
       this.chunks = this.chunks.filter(c => c.id !== chunk.id);
       this.chunks.push(chunk);
@@ -60,7 +60,7 @@ class InMemoryVectorStore {
   }
 
   async search(queryEmbedding: number[], topK: number, filter?: Record<string, any>): Promise<any[]> {
-    const results: unknown[] = [];
+    const results: any[] = [];
     for (const chunk of this.chunks) {
       if (filter) {
         let match = true;
@@ -101,12 +101,12 @@ class InMemoryVectorStore {
 }
 
 export class RAGEngine {
-  private store: unknown;
-  private config: unknown;
+  private store: any;
+  private config: any;
   private chunkSize: number;
   private chunkOverlap: number;
 
-  constructor(_config: unknown = {}) {
+  constructor(_config: any = {}) {
     this.config = {
       embeddingModel: 'text-embedding-3-small',
       embeddingProvider: 'openai',
@@ -131,19 +131,19 @@ export class RAGEngine {
     return new Array(1536).fill(0).map(() => Math.random());
   }
 
-  async indexResources(_resources: unknown[]): Promise<number> {
+  async indexResources(_resources: any[]): Promise<number> {
     return 0;
   }
 
-  async indexGuides(_guides: unknown[]): Promise<number> {
+  async indexGuides(_guides: any[]): Promise<number> {
     return 0;
   }
 
-  async search(query: string, _options: unknown = {}): Promise<any[]> {
+  async search(query: string, _options: any = {}): Promise<any[]> {
     return [];
   }
 
-  async generateContext(query: string, _options: unknown = {}): Promise<{ context: string; sources: unknown[] }> {
+  async generateContext(query: string, _options: any = {}): Promise<{ context: string; sources: any[] }> {
     return { context: '', sources: [] };
   }
 

@@ -20,7 +20,7 @@ export function emptyCourseProgress(courseId: string): CourseProgressState {
 export function parseCourseProgress(raw: string | null, courseId: string): CourseProgressState | null {
   if (!raw || raw.length > 120_000) return null;
   try {
-    const parsed: unknown = JSON.parse(raw);
+    const parsed: any = JSON.parse(raw);
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
     const value = parsed as Record<string, unknown>;
     if (value.courseId !== courseId || !Array.isArray(value.completedLessons)) return null;
@@ -28,7 +28,7 @@ export function parseCourseProgress(raw: string | null, courseId: string): Cours
       (item): item is string => typeof item === 'string' && item.length > 0 && item.length <= 128
     );
     const completedLessons = Array.from(new Set(validIds));
-    const validTime = (time: unknown) =>
+    const validTime = (time: any) =>
       typeof time === 'string' && time.length <= 40 && Number.isFinite(Date.parse(time))
         ? time
         : new Date().toISOString();

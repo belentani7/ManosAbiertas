@@ -98,7 +98,7 @@ Devuelve SOLO el objeto JSON con el análisis ATS.`;
       return apiError('INVALID_AI_RESPONSE', 'No se pudo interpretar el análisis ATS.', 502, { data: null });
     }
     return apiJson({ ok: true, data: analysis, provider: result.provider, degraded: result.provider === 'offline' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     reportServerError('cv-ats-api', error);
     return apiError('INTERNAL_ERROR', 'No se pudo analizar el CV.', 500, { data: null });
   }

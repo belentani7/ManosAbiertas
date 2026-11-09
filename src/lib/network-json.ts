@@ -53,7 +53,7 @@ async function readBoundedText(response: Response, byteLimit: number) {
   return new TextDecoder().decode(bytes);
 }
 
-export async function readBoundedJson(response: Response, maxBytes: number): Promise<unknown> {
+export async function readBoundedJson(response: Response, maxBytes: number): Promise<any> {
   const byteLimit = boundedNumber(maxBytes, 256_000, 1, 2_000_000);
   const contentType = response.headers.get('content-type') || '';
   if (!JSON_CONTENT_TYPE.test(contentType)) {

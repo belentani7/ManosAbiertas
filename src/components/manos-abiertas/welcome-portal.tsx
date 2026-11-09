@@ -41,7 +41,7 @@ const GOAL_ICONS = {
   sparkles: Sparkles,
 } as const;
 
-function isPlan(value: unknown): value is OnboardingPlan {
+function isPlan(value: any): value is OnboardingPlan {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return false;
   const record = value as Record<string, unknown>;
   return (
@@ -113,7 +113,7 @@ export function WelcomePortal({
         signal: controller.signal,
       });
       if (!response.ok) throw new Error('onboarding-unavailable');
-      const data: unknown = await response.json();
+      const data: any = await response.json();
       if (requestId !== requestRef.current) return;
       if (!isPlan(data)) throw new Error('invalid-plan');
       setPlan(data);

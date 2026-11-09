@@ -80,7 +80,7 @@ Formato: lista numerada, cada punto en una línea, máximo 15 palabras por punto
     }
 
     return apiJson({ text: effective.text, ok: true, tool: body.tool, provider: effective.provider, degraded: effective.provider === 'offline' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     reportServerError('study-tools-api', error);
     return apiError('INTERNAL_ERROR', 'No se pudo procesar la solicitud.', 500, { text: '' });
   }

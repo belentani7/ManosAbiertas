@@ -8,9 +8,9 @@ interface RecognitionLike {
   continuous: boolean;
   interimResults: boolean;
   maxAlternatives: number;
-  onresult: ((event: unknown) => void) | null;
+  onresult: ((event: any) => void) | null;
   onend: (() => void) | null;
-  onerror: ((event: unknown) => void) | null;
+  onerror: ((event: any) => void) | null;
   start: () => void;
   stop: () => void;
 }
@@ -49,7 +49,7 @@ export function useSpeechRecognition(language: string): UseSpeechRecognitionRetu
     rec.interimResults = true;
     rec.maxAlternatives = 1;
 
-    rec.onresult = (event: unknown) => {
+    rec.onresult = (event: any) => {
       const e = event as { results?: ArrayLike<ArrayLike<{ transcript?: string }>> };
       let text = '';
       const results = e.results;
@@ -61,7 +61,7 @@ export function useSpeechRecognition(language: string): UseSpeechRecognitionRetu
       }
       setTranscript(text);
     };
-    rec.onerror = (event: unknown) => {
+    rec.onerror = (event: any) => {
       const e = event as { error?: string };
       setError(e.error || 'error');
       setListening(false);

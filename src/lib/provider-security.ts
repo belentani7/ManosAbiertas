@@ -25,7 +25,7 @@ export function safeMaxTokens(value: number) {
   return Number.isFinite(value) ? Math.max(1, Math.min(4_096, Math.round(value))) : 900;
 }
 
-export function providerTextFromPayload(value: unknown, maxChars: number) {
+export function providerTextFromPayload(value: any, maxChars: number) {
   if (!isPlainRecord(value) || !Array.isArray(value.choices)) return null;
   const first = value.choices[0];
   if (!isPlainRecord(first) || !isPlainRecord(first.message) || typeof first.message.content !== 'string') return null;
@@ -33,7 +33,7 @@ export function providerTextFromPayload(value: unknown, maxChars: number) {
   return text && text.length <= maxChars ? text : null;
 }
 
-export function boundedProviderText(value: unknown, maxTokens: number) {
+export function boundedProviderText(value: any, maxTokens: number) {
   if (typeof value !== 'string') return null;
   const text = value.trim();
   const maxChars = Math.min(65_536, safeMaxTokens(maxTokens) * 16);
@@ -46,13 +46,13 @@ export function boundedProviderText(value: unknown, maxTokens: number) {
  */
 export function buildProviderBody(
   request: {
-    messages: readonly { role: string; content: string; tool_calls?: unknown; tool_call_id?: string; name?: string }[];
+    messages: readonly { role: string; content: string; tool_calls?: any; tool_call_id?: string; name?: string }[];
     systemPrompt?: string;
     temperature?: number;
     topP?: number;
-    tools?: readonly unknown[];
-    toolChoice?: unknown;
-    responseFormat?: unknown;
+    tools?: readonly any[];
+    toolChoice?: any;
+    responseFormat?: any;
   },
   model: { name: string; maxTokens: number; supportsTools: boolean },
   maxTokens: number,

@@ -134,7 +134,7 @@ export async function POST(req: NextRequest) {
       degraded: false,
       sources,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     reportServerError('chat-api', error);
     const offlineText = getOfflineTutorReply(fallbackQuestion, fallbackLanguage);
     return apiJson({

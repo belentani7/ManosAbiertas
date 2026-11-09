@@ -18,7 +18,7 @@ export interface ATSAnalysis {
   summary: string;
 }
 
-export function normalizeATSAnalysis(value: unknown): ATSAnalysis | null {
+export function normalizeATSAnalysis(value: any): ATSAnalysis | null {
   const parsed = rawATSAnalysisSchema.safeParse(value);
   if (!parsed.success) return null;
   return {

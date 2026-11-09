@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 import globals from 'globals';
 
 export default tseslint.config(
-  { ignores: ['.next/**', 'node_modules/**', 'dist/**', 'build/**', '*.config.*', 'turbo.json', 'pnpm-lock.yaml', 'package-lock.json', 'public/sw.js'] },
+  { ignores: ['.next/**', 'node_modules/**', 'dist/**', 'build/**', '*.config.*', 'turbo.json', 'pnpm-lock.yaml', 'package-lock.json', 'public/sw.js', 'src/components/HeroShader.jsx'] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

@@ -5,7 +5,7 @@ export interface StudyQuestion {
   hint: string;
 }
 
-function isStudyQuestion(value: unknown): value is StudyQuestion {
+function isStudyQuestion(value: any): value is StudyQuestion {
   return isPlainRecord(value)
     && typeof value.question === 'string'
     && value.question.length > 0
@@ -14,11 +14,11 @@ function isStudyQuestion(value: unknown): value is StudyQuestion {
     && value.hint.length <= 1_000;
 }
 
-export function studyQuestionsFromPayload(value: unknown) {
+export function studyQuestionsFromPayload(value: any) {
   const text = readApiText(value, 20_000);
   if (!text) return null;
   try {
-    const parsed: unknown = JSON.parse(text);
+    const parsed: any = JSON.parse(text);
     if (isPlainRecord(parsed) && Array.isArray(parsed.questions)) {
       const questions = parsed.questions.slice(0, 3).filter(isStudyQuestion);
       if (questions.length > 0) return questions;
@@ -41,7 +41,7 @@ export type SharedCommunityPost = {
   createdAt: string;
 };
 
-function isCommunityPost(value: unknown): value is SharedCommunityPost {
+function isCommunityPost(value: any): value is SharedCommunityPost {
   return isPlainRecord(value)
     && typeof value.id === 'string'
     && value.id.length <= 128
@@ -56,13 +56,13 @@ function isCommunityPost(value: unknown): value is SharedCommunityPost {
     && !Number.isNaN(Date.parse(value.createdAt));
 }
 
-export function communityPostsFromPayload(value: unknown) {
+export function communityPostsFromPayload(value: any) {
   if (!isPlainRecord(value) || value.ok !== true || value.mode !== 'shared' || !Array.isArray(value.posts)) return null;
   if (value.posts.length > 100 || !value.posts.every(isCommunityPost)) return null;
   return value.posts;
 }
 
-export function communityFeedFromPayload(value: unknown) {
+export function communityFeedFromPayload(value: any) {
   if (!isPlainRecord(value) || value.ok !== true || !Array.isArray(value.posts)) return null;
   if (value.mode === 'local' && value.degraded === true && value.posts.length === 0) {
     return { mode: 'local' as const, posts: [] as SharedCommunityPost[] };
@@ -71,14 +71,14 @@ export function communityFeedFromPayload(value: unknown) {
   return posts ? { mode: 'shared' as const, posts } : null;
 }
 
-export function publishedCommunityPostFromPayload(value: unknown) {
+export function publishedCommunityPostFromPayload(value: any) {
   if (!isPlainRecord(value) || value.ok !== true || value.mode !== 'shared' || value.published !== true) return null;
   return isCommunityPost(value.post) ? value.post : null;
 }
 
 export type HealthStatus = { ok: true; provider: string; capabilities: string[] };
 
-export function healthFromPayload(value: unknown): HealthStatus | null {
+export function healthFromPayload(value: any): HealthStatus | null {
   if (!isPlainRecord(value) || value.ok !== true) return null;
   if (typeof value.provider !== 'string' || value.provider.length > 100) return null;
   if (!Array.isArray(value.capabilities) || value.capabilities.length > 50) return null;
