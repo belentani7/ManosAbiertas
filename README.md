@@ -1,4 +1,4 @@
-﻿# ManosAbiertas
+# ManosAbiertas
 
 Plataforma educativa gratuita: cursos de IA y Office, creador de CV y recursos para migrantes.
 
