@@ -1,4 +1,4 @@
-# ManosAbiertas
+﻿# ManosAbiertas
 
 Plataforma educativa gratuita: cursos de IA y Office, creador de CV y recursos para migrantes.
 
@@ -94,3 +94,91 @@ npm run build
 ```
 
 Consulta `package.json` para la lista completa de scripts disponibles.
+
+<!-- repo-forge:readme:inicio -->
+## Qué es
+
+**Manos Abiertas** — plataforma educativa abierta (cursos + CV + derechos).
+
+Convertir conocimiento que ya existe en una ruta que una persona real puede recorrer hoy, sin pagar y sin que le pidan datos.
+
+## Estado medido
+
+| Dato | Valor |
+|---|---|
+| Lenguajes | Markdown, TypeScript, JSON, HTML, JavaScript, YAML |
+| Archivos / líneas | 1523 / 190577 |
+| Páginas HTML | 102 |
+| Tests detectados | 56 |
+| Cumplimiento de reglas | 36/37 (97.3%) |
+
+Todo lo anterior se midió en disco el 2026-11-10; no es una estimación.
+
+## Uso
+
+```bash
+npm install
+npm run dev
+```
+
+## Estructura
+
+```
+apps/
+assets/
+brand/
+campus/
+data/
+docs/
+e2e/
+mini-services/
+neon-mantra/
+open-data/
+```
+
+## Diseño de plataforma
+
+- Rutas por objetivo (empleo, oficina, trámites)
+- Lector de lecciones con progreso local
+- Creador de CV exportable
+- Guías de derechos con fecha de vigencia
+- Puente lingüístico PT↔ES
+- Modo aula para entidades sociales
+
+La ficha completa —máximo potencial, marca, fases de monetización y recursos— vive en
+[`plataforma/FICHA.md`](plataforma/FICHA.md). Los tokens de marca están en
+[`brand/tokens.css`](brand/tokens.css).
+
+## Reglas del proyecto
+
+Este repositorio sigue el catálogo oficial del ecosistema (`GH-*`, `WEB-*`, `ACC-*`,
+`SEO-*`, `COH-*`, `DEV-*`). El gate se ejecuta con:
+
+```bash
+python scripts/doctor.py
+```
+
+## Licencia
+
+MIT. Ver [`LICENSE`](LICENSE).
+<!-- repo-forge:readme:fin -->
+## Producto comercial
+
+Este repositorio se vende como **cohorte patrocinada**: 25 plazas de la ruta completa para
+una entidad, con kit offline, ruta impresa y dos sesiones de arranque. El alumno no paga y no
+se registra.
+
+- [`producto/OFERTA.md`](producto/OFERTA.md) — qué se vende, a quién, precio y objeciones
+- [`producto/landing.html`](producto/landing.html) — página de venta autocontenida
+- [`producto/precios.json`](producto/precios.json) — planes, límites e IVA
+- [`producto/COBRO.md`](producto/COBRO.md) — pasarela, datos de facturación y reembolso
+- [`producto/ONEPAGER.md`](producto/ONEPAGER.md) — ficha de una página
+- [`producto/DEMO.md`](producto/DEMO.md) — guion de demo de 3 minutos
+- [`producto/METRICAS.md`](producto/METRICAS.md) — indicadores y objetivos a 30 días
+
+Verificación: `python tools/area_check.py producto --repo ManosAbiertas` desde la raíz del
+workspace.
+
+<!-- repo-forge:readme:fin -->
+<!-- repo-forge:readme:fin -->
+<!-- repo-forge:readme:fin -->

@@ -56,7 +56,7 @@ export default function CourseLayout({
               <ChevronLeft className="w-5 h-5 text-gray-500" />
             </button>
           </div>
-          
+
           {/* Progress bar */}
           <div className="space-y-1">
             <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">

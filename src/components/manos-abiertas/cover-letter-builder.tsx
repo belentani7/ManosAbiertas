@@ -43,7 +43,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
   useEffect(() => {
     const data = readStoredCoverLetter(getLocalStorageItem(STORAGE_KEY));
     if (data) {
-         
+
         if (data.fullName) setFullName(data.fullName);
         if (data.profession) setProfession(data.profession);
         if (data.companyName) setCompanyName(data.companyName);
@@ -53,7 +53,7 @@ export function CoverLetterBuilder({ remoteAIConsent }: { remoteAIConsent: boole
         if (data.tone) setTone(data.tone);
         if (data.letter) setLetter(data.letter);
         if (data.savedAt) setSavedAt(new Date(data.savedAt));
-         
+
     }
   }, []);
 

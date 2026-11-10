@@ -60,3 +60,6 @@ __pycache__/
 # Config local de agentes
 .claude/
 AUDITORIA_ESTADO.md
+
+# repo-forge
+.venv/

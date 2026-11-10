@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site-url";
 import { LANGUAGES, LANGUAGE_COUNT } from "@/i18n/languages";
@@ -7,19 +7,19 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
 
-const geistSans = localFont({
-  src: "../assets/fonts/GeistVF.woff2",
+const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
-const geistMono = localFont({
-  src: "../assets/fonts/GeistMonoVF.woff2",
+const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
-const instrumentSerif = localFont({
-  src: "../assets/fonts/InstrumentSerif-Regular.woff2",
+const instrumentSerif = Instrument_Serif({
   variable: "--font-display",
+  subsets: ["latin"],
   weight: "400",
 });
 
