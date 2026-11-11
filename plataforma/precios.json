@@ -1,0 +1,37 @@
+{
+  "repo": "ManosAbiertas",
+  "moneda": "EUR",
+  "estado": "vigente",
+  "modelo": "plataforma educativa gratuita con servicios técnicos opcionales",
+  "quien_paga": "equipos y organizaciones que solicitan soporte, despliegue gestionado o consultoría",
+  "que_se_bloquea": "nada del núcleo educativo",
+  "regla_dura": "ninguna capacidad del núcleo se reserva a un plan de pago",
+  "contratacion": "consulta por correo, propuesta escrita, aceptación y factura; sin checkout automático",
+  "impuestos": "se especifican en la propuesta antes de aceptar",
+  "planes": [
+    {
+      "nombre": "Base abierta",
+      "precio": 0,
+      "periodo": "sin límite",
+      "descripcion": "Acceso gratuito a la plataforma educativa y al código abierto."
+    },
+    {
+      "nombre": "Soporte",
+      "precio": 89,
+      "periodo": "mes",
+      "descripcion": "Asistencia técnica prioritaria; canal y SLA acordados por escrito."
+    },
+    {
+      "nombre": "Gestionado",
+      "precio": 149,
+      "periodo": "mes",
+      "descripcion": "Despliegue y mantenimiento según el alcance acordado."
+    },
+    {
+      "nombre": "Consultoría",
+      "precio": 89,
+      "periodo": "hora",
+      "descripcion": "Integración y personalización técnica, facturadas por horas trabajadas."
+    }
+  ]
+}

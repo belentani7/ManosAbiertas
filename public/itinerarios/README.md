@@ -10,3 +10,7 @@ Puente PT–ES · Falsos amigos: 4 semanas
 **Manutenção:** ao adicionar semanas em `campus/cursos`, atualizar `curso-manifest.json` para manter o índice coerente. O motor escapa HTML do Markdown e restringe nomes de arquivo e identificadores.
 
 O estado é local ao navegador e não substitui a matrícula ou o LMS principal.
+
+
+## Producto
+Véase `plataforma/OFERTA.md`.

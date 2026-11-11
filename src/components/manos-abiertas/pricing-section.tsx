@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BadgeEuro, Building2, Check, HeartHandshake, Sparkles } from 'lucide-react';
+import { BadgeEuro, Check, HeartHandshake, LifeBuoy, ServerCog, Wrench } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -9,55 +9,67 @@ import { useAppStore } from '@/stores/app-store';
 
 const PLANS = [
   {
-    id: 'comunidad',
+    id: 'base',
     icon: HeartHandshake,
-    name: 'Comunidad',
+    name: 'Base abierta',
     price: '0 €',
-    period: 'para siempre',
-    desc: 'Todo lo esencial para empezar de cero en España.',
+    period: 'siempre',
+    desc: 'La plataforma educativa completa, gratuita y de código abierto.',
     features: [
-      'Cursos de IA, ofimática y CV',
-      'Guías de derechos y ayudas',
-      'Herramientas (trámites, coste de vida)',
-      'Comunidad y eventos',
-      'En tu idioma',
+      'Cursos de IA y ofimática',
+      'Creador de currículum y herramientas',
+      'Guías y recursos comunitarios',
+      'Sin cuenta y sin coste',
     ],
-    cta: 'Empezar gratis',
+    cta: 'Abrir la plataforma',
     featured: false,
   },
   {
-    id: 'premium',
-    icon: Sparkles,
-    name: 'Premium',
-    price: '9 €',
-    period: '/mes · o 49 €/año',
-    desc: 'Avanza más rápido con acompañamiento y certificados.',
+    id: 'soporte',
+    icon: LifeBuoy,
+    name: 'Soporte',
+    price: '89 €',
+    period: '/mes',
+    desc: 'Asistencia técnica prioritaria para equipos que ya usan la plataforma.',
     features: [
-      'Todo lo del plan Comunidad',
-      'Certificados verificables de cursos',
-      'Talleres en vivo cada mes',
-      'Tutor IA prioritario',
-      'Plantillas premium de CV y cartas',
-      'Sin anuncios',
+      'Ayuda técnica prioritaria',
+      'Canal de soporte acordado',
+      'SLA definido por escrito antes de contratar',
+      'La plataforma educativa sigue siendo gratuita',
     ],
-    cta: 'Hazte Premium',
+    cta: 'Solicitar soporte',
     featured: true,
   },
   {
-    id: 'organizaciones',
-    icon: Building2,
-    name: 'Organizaciones',
-    price: '199 €',
-    period: '/taller',
-    desc: 'Para ONGs, ayuntamientos y centros que acompañan.',
+    id: 'gestionado',
+    icon: ServerCog,
+    name: 'Gestionado',
+    price: '149 €',
+    period: '/mes',
+    desc: 'Despliegue y mantenimiento para equipos que quieren delegar la operación.',
     features: [
-      'Talleres presenciales u online',
-      'Panel de progreso del grupo',
-      'Materiales imprimibles',
-      'Informe de impacto',
-      'Soporte dedicado',
+      'Preparación del despliegue',
+      'Mantenimiento acordado para el entorno',
+      'Alcance y responsabilidades por escrito',
+      'Sin bloqueo de proveedor: código abierto',
     ],
-    cta: 'Pedir propuesta',
+    cta: 'Solicitar gestión',
+    featured: false,
+  },
+  {
+    id: 'consultoria',
+    icon: Wrench,
+    name: 'Consultoría',
+    price: '89 €',
+    period: '/hora',
+    desc: 'Integración, adaptación y personalización técnica del producto.',
+    features: [
+      'Trabajo técnico por alcance acordado',
+      'Estimación previa cuando el trabajo lo permita',
+      'Factura según las horas realizadas',
+      'El núcleo abierto se mantiene gratuito',
+    ],
+    cta: 'Consultar disponibilidad',
     featured: false,
   },
 ];
@@ -65,20 +77,20 @@ const PLANS = [
 export function PricingSection() {
   const { setActiveSection } = useAppStore();
   return (
-    <div className="container mx-auto max-w-6xl px-4 py-8">
-      <div className="text-center mb-8">
+    <div className="container mx-auto max-w-7xl px-4 py-8">
+      <div className="mb-8 text-center">
         <Badge variant="secondary" className="mb-2 gap-1.5">
           <BadgeEuro className="h-3 w-3" />
-          Precios claros · sin letra pequeña
+          Precios públicos · servicios opcionales
         </Badge>
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Planes para cada momento</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-          Empieza gratis. Sube de plan cuando te aporte valor. Sin permanencia,
-          sin datos innecesarios, cancela cuando quieras.
+        <h1 className="mb-2 text-3xl font-bold md:text-4xl">Educación abierta. Ayuda cuando la necesitas.</h1>
+        <p className="mx-auto max-w-2xl text-sm text-muted-foreground md:text-base">
+          Todos los cursos y herramientas educativas siguen siendo gratuitos. Los precios siguientes
+          corresponden a servicios técnicos opcionales para equipos y organizaciones.
         </p>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {PLANS.map((plan, i) => {
           const Icon = plan.icon;
           return (
@@ -89,57 +101,39 @@ export function PricingSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
             >
-              <Card
-                className={
-                  plan.featured
-                    ? 'relative border-primary/50 shadow-lg h-full'
-                    : 'h-full'
-                }
-              >
+              <Card className={plan.featured ? 'relative h-full border-primary/50 shadow-lg' : 'h-full'}>
                 {plan.featured && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[10px] font-bold text-primary-foreground">
-                    RECOMENDADO
+                    ATENCIÓN PRIORITARIA
                   </span>
                 )}
-                <CardContent className="p-6 flex flex-col h-full">
+                <CardContent className="flex h-full flex-col p-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center flex-shrink-0">
+                    <div className="gradient-brand flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl">
                       <Icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <h2 className="font-bold text-lg leading-tight">{plan.name}</h2>
+                      <h2 className="text-lg font-bold leading-tight">{plan.name}</h2>
                       <p className="text-xs text-muted-foreground">{plan.period}</p>
                     </div>
                   </div>
-                  <p className="mt-3 font-display text-4xl font-bold">
-                    {plan.price}
-                  </p>
+                  <p className="mt-3 font-display text-4xl font-bold">{plan.price}</p>
                   <p className="mt-2 text-sm text-muted-foreground">{plan.desc}</p>
-                  <ul className="mt-4 space-y-2 flex-1">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm">
-                        <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{f}</span>
+                  <ul className="mt-4 flex-1 space-y-2">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm">
+                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  {plan.id === 'comunidad' ? (
-                    <Button
-                      className="mt-6 w-full"
-                      variant={plan.featured ? 'default' : 'outline'}
-                      onClick={() => setActiveSection('home')}
-                    >
+                  {plan.id === 'base' ? (
+                    <Button className="mt-6 w-full" variant="outline" onClick={() => setActiveSection('home')}>
                       {plan.cta}
                     </Button>
                   ) : (
-                    <Button
-                      className="mt-6 w-full"
-                      variant={plan.featured ? 'default' : 'outline'}
-                      asChild
-                    >
-                      <a
-                        href={`mailto:planes@manos-abiertas.es?subject=${encodeURIComponent(`Plan ${plan.name} — Manos Abiertas`)}`}
-                      >
+                    <Button className="mt-6 w-full" variant={plan.featured ? 'default' : 'outline'} asChild>
+                      <a href={`mailto:planes@manos-abiertas.es?subject=${encodeURIComponent(`Consulta: ${plan.name} — Manos Abiertas`)}&body=${encodeURIComponent(`Hola,\n\nMe interesa el servicio ${plan.name} (${plan.price}${plan.period}).\n\nMi organización y necesidad:\n`)}`}>
                         {plan.cta}
                       </a>
                     </Button>
@@ -152,8 +146,8 @@ export function PricingSection() {
       </div>
 
       <p className="mt-8 text-center text-xs text-muted-foreground">
-        Precios orientativos con IVA incluido. El acceso se gestiona por cuenta,
-        nunca vendemos ni compartimos tus datos.
+        La contratación se acuerda por escrito y se factura. No se bloquean funciones educativas por plan.
+        Los impuestos aplicables y el alcance del servicio se confirmarán en la propuesta antes de aceptar.
       </p>
     </div>
   );

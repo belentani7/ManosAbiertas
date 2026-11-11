@@ -29,3 +29,7 @@ Solo necesitan Python. Sin instalacion, sin dependencias, sin conexion.
 
 Un juego no da miedo. Quien no se atreve con un curso si prueba un juego, y el juego ensena
 lo mismo. Es la puerta de entrada mas baja que existe.
+
+
+## Producto
+Véase `plataforma/OFERTA.md`.

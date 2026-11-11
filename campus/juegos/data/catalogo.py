@@ -1,0 +1,2 @@
+REPO = "juegos"
+FAMILIA = "educación"

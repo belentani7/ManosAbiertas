@@ -1,0 +1,2 @@
+# PAYWALL — juegos
+Familia: educación
