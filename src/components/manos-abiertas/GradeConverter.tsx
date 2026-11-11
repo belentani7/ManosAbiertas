@@ -71,7 +71,7 @@ export default function GradeConverter() {
   return (
     <div className="space-y-6">
       <h3 className="text-lg font-semibold mb-4">Conversor de Notas Internacional</h3>
-      
+
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-medium mb-2">Sistema de origen</label>

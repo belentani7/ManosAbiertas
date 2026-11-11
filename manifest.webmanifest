@@ -1,0 +1,17 @@
+{
+  "name": "Manos Abiertas",
+  "short_name": "Manos Abiert",
+  "description": "plataforma educativa abierta (cursos + CV + derechos)",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#0f6f5b",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

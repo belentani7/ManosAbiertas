@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una ruta formativa completa para quien acaba de llegar, sin</title>
+<meta name="description" content="Una ruta formativa completa para quien acaba de llegar, sin pedirle ni un dato Cohorte patrocinada · 25 plazas">
+<meta name="color-scheme" content="light">
+<style>
+  :root{
+    --bg:#fbfaf7; --surface:#f5f4f1; --ink:#1a1a1a; --muted:#5d5c5b;
+    --accent:#0f6f5b; --accent-dark:#0b5546; --accent2:#c2410c; --line:#dedbd4;
+    --max:66rem;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:1.0625rem; line-height:1.6;
+  }
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; line-height:1.2; margin:0 0 .5em}
+  h1{font-size:clamp(1.9rem,5.2vw,3.1rem); letter-spacing:-.01em}
+  h2{font-size:clamp(1.35rem,3.4vw,1.9rem)}
+  h3{font-size:1.1rem; font-family:inherit; letter-spacing:0}
+  p{margin:0 0 1em; max-width:62ch}
+  a{color:var(--accent-dark)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--accent2); outline-offset:3px; border-radius:4px}
+  .skip{position:absolute; left:-9999px; top:0; background:var(--ink); color:#fff; padding:.6rem 1rem; z-index:9}
+  .skip:focus{left:1rem; top:1rem}
+  .wrap{width:100%; max-width:var(--max); margin:0 auto; padding:0 1.15rem}
+  header.site{border-bottom:1px solid var(--line); background:var(--bg); position:sticky; top:0; z-index:5}
+  .bar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.7rem 0; min-height:3.6rem}
+  .logo{display:flex; align-items:center; gap:.55rem; font-weight:700; text-decoration:none; color:var(--ink); font-size:1rem}
+  .logo span.mark{width:1.6rem; height:1.6rem; border-radius:.45rem; background:var(--accent); color:#fff; display:grid; place-items:center; font-family:Georgia,serif; font-size:.95rem}
+  nav.top{display:none}
+  nav.top a{color:var(--ink); text-decoration:none; margin-left:1.2rem; font-size:.95rem}
+  nav.top a:hover{color:var(--accent-dark); text-decoration:underline}
+
+  section{padding:clamp(2rem,6vw,4rem) 0}
+  .hero{padding-top:clamp(1.4rem,4vw,2.6rem)}
+  .eyebrow{display:inline-block; font-size:.8rem; letter-spacing:.09em; text-transform:uppercase; color:var(--accent-dark); background:#e7f0ed; border:1px solid #cfe0db; padding:.3rem .6rem; border-radius:999px; margin-bottom:1rem}
+  .lead{font-size:clamp(1.02rem,2.4vw,1.22rem); color:#333}
+  .cta-row{display:flex; flex-wrap:wrap; gap:.7rem; align-items:center; margin:1.1rem 0 .6rem}
+  .btn{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; font-weight:700; padding:.85rem 1.35rem; border-radius:.5rem; border:2px solid var(--accent); font-size:1rem}
+  .btn:hover{background:var(--accent-dark); border-color:var(--accent-dark)}
+  .btn.secondary{background:transparent; color:var(--accent-dark); border-color:var(--accent-dark)}
+  .btn.secondary:hover{background:#e7f0ed}
+  .cta-note{font-size:.9rem; color:var(--muted); margin:0}
+
+  .facts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; margin:1.5rem 0 0; padding:0; list-style:none}
+  .facts li{background:var(--surface); border:1px solid var(--line); border-radius:.6rem; padding:.75rem .85rem}
+  .facts b{display:block; font-size:1.35rem; font-family:Georgia,serif; color:var(--accent-dark)}
+  .facts span{font-size:.86rem; color:var(--muted)}
+
+  .grid{display:grid; gap:1rem}
+  .card{background:#fff; border:1px solid var(--line); border-radius:.7rem; padding:1.15rem}
+  .card h3{margin-bottom:.35rem}
+  .card p{margin:0; font-size:.97rem}
+  .card .n{font-family:Georgia,serif; color:var(--accent2); font-size:.85rem; letter-spacing:.08em; text-transform:uppercase}
+
+  .band{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .price{display:grid; gap:1rem; margin-top:1.2rem}
+  .plan{background:#fff; border:1px solid var(--line); border-radius:.8rem; padding:1.3rem; display:flex; flex-direction:column}
+  .plan.featured{border-width:2px; border-color:var(--accent)}
+  .plan .tag{align-self:flex-start; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; background:var(--accent); color:#fff; padding:.2rem .5rem; border-radius:.3rem; margin-bottom:.6rem}
+  .amount{font-family:Georgia,serif; font-size:2.1rem; line-height:1.1; margin:.2rem 0 .1rem}
+  .small{font-size:.87rem; color:var(--muted); margin:0}
+  .plan ul{margin:.9rem 0 1.1rem; padding-left:1.15rem; font-size:.95rem}
+  .plan li{margin-bottom:.4rem}
+  .plan .btn{margin-top:auto; text-align:center}
+
+  table{border-collapse:collapse; width:100%; font-size:.95rem; margin:.5rem 0 1rem}
+  caption{text-align:left; font-size:.88rem; color:var(--muted); padding-bottom:.4rem}
+  th,td{border-bottom:1px solid var(--line); padding:.6rem .5rem; text-align:left; vertical-align:top}
+  th{background:var(--surface); font-weight:700}
+  .scroll{overflow-x:auto}
+
+  details{border:1px solid var(--line); border-radius:.6rem; background:#fff; padding:.9rem 1.1rem; margin-bottom:.7rem}
+  summary{cursor:pointer; font-weight:700}
+  summary::marker{color:var(--accent)}
+  details p{margin:.7rem 0 0; font-size:.97rem}
+
+  .note{background:#fff8f1; border:1px solid #f0d6bd; border-left:5px solid var(--accent2); padding:1rem 1.1rem; border-radius:.4rem; font-size:.95rem}
+  footer.site{border-top:1px solid var(--line); padding:2rem 0 2.6rem; font-size:.9rem; color:var(--muted)}
+  footer.site p{max-width:70ch}
+  .visually-hidden{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+  @media (min-width:40rem){
+    .facts{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .price{grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch}
+  }
+  @media (min-width:56rem){
+    nav.top{display:block}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+  }
+  @media print{
+    header.site, .cta-row, .skip{display:none}
+    body{background:#fff; font-size:11pt}
+    .band{background:#fff}
+  }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Una ruta formativa completa para quien acaba de llegar, sin">
+<meta property="og:description" content="Una ruta formativa completa para quien acaba de llegar, sin pedirle ni un dato Cohorte patrocinada · 25 plazas">
+<meta property="og:image" content="brand/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="#contenido"><span class="mark" aria-hidden="true">MA</span> Manos Abiertas</a>
+    <nav class="top" aria-label="Secciones">
+      <a href="#problema">El problema</a>
+      <a href="#incluye">Qué incluye</a>
+      <a href="#precio">Precio</a>
+      <a href="#dudas">Dudas</a>
+      <a href="#reservar">Reservar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Cohorte patrocinada · 25 plazas</p>
+      <h1>Una ruta formativa completa para quien acaba de llegar, sin pedirle ni un dato</h1>
+      <p class="lead">Patrocina 25 plazas de Manos Abiertas. La entidad recibe la ruta entera
+        —8 módulos, 208 niveles, 832 lecciones en castellano, portugués, catalán e inglés—,
+        un kit que funciona sin conexión y dos sesiones para arrancar. El alumno no paga y no
+        se registra: su progreso se queda en su navegador.</p>
+      <div class="cta-row">
+        <a class="btn cta" href="#reservar" data-cta="reservar">Reservar una cohorte</a>
+        <a class="btn secondary" href="#precio">Ver precio y límites</a>
+      </div>
+      <p class="cta-note">1.900 € + IVA por 25 plazas · demostración de 45 minutos sin coste ·
+        devolución íntegra durante 30 días.</p>
+
+      <ul class="facts">
+        <li><b>208</b><span>niveles con objetivos escritos</span></li>
+        <li><b>832</b><span>documentos de lección en 4 idiomas</span></li>
+        <li><b>575 h</b><span>de estudio estimadas</span></li>
+        <li><b>0 €</b><span>de coste para el alumno</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="problema" class="band">
+    <div class="wrap">
+      <h2>El problema no es el contenido: es que nadie lo arranca</h2>
+      <p>Una entidad que atiende a personas recién llegadas tiene el aula, tiene a la gente y
+        tiene la buena intención. Lo que no tiene es a nadie que convierta «hay materiales
+        gratis en internet» en un plan de ocho módulos con fechas, ejercicios y una forma de
+        saber quién ha avanzado.</p>
+      <p>Montar un campus propio cuesta meses y un presupuesto que no existe. Repartir enlaces
+        sueltos no produce nada medible. Esta oferta cubre exactamente ese hueco: la puesta en
+        marcha, no el contenido.</p>
+    </div>
+  </section>
+
+  <section id="incluye">
+    <div class="wrap">
+      <h2>Qué recibe la entidad</h2>
+      <div class="grid three">
+        <article class="card">
+          <p class="n">01 · Ruta</p>
+          <h3>Ocho módulos con 208 niveles</h3>
+          <p>Cada nivel declara objetivos, dificultad y tiempo. La ruta está generada desde el
+            currículo real del repositorio, no desde una presentación.</p>
+        </article>
+        <article class="card">
+          <p class="n">02 · Sin registro</p>
+          <h3>El alumno no deja ni un dato</h3>
+          <p>Se abre la ruta y se empieza. El avance se guarda en el navegador del equipo. No
+            hay cuentas, ni cookies de seguimiento, ni servidor que custodie nada.</p>
+        </article>
+        <article class="card">
+          <p class="n">03 · Offline</p>
+          <h3>Funciona sin conexión</h3>
+          <p>Se carga una vez con la red de la entidad y después el kit abre sin internet: lo
+            que hace falta en un aula con wifi intermitente o datos limitados.</p>
+        </article>
+        <article class="card">
+          <p class="n">04 · Papel</p>
+          <h3>Ruta impresa para el aula</h3>
+          <p>Los niveles se pueden imprimir y trabajar en papel, para quien no quiere pantalla
+            o para la sesión en la que no hay equipos suficientes.</p>
+        </article>
+        <article class="card">
+          <p class="n">05 · Arranque</p>
+          <h3>Dos sesiones de 90 minutos</h3>
+          <p>Con el autor de la ruta: una para el equipo de la entidad, otra con el grupo. Se
+            sale de la sesión con la cohorte en marcha, no con un PDF.</p>
+        </article>
+        <article class="card">
+          <p class="n">06 · Cierre</p>
+          <h3>Informe sin datos personales</h3>
+          <p>Una plantilla de recuento de niveles completados que la entidad rellena con su
+            grupo. Sirve para justificar el patrocinio sin identificar a nadie.</p>
+        </article>
+      </div>
+      <div class="note" style="margin-top:1.4rem">
+        <strong>Lo que no está incluido, dicho antes de cobrar:</strong> certificación oficial
+        (Manos Abiertas no certifica), panel de gestión de aula (en desarrollo) y recogida de
+        datos de los participantes (no se hace). Si necesitas cualquiera de las tres, esta no
+        es la compra.
+      </div>
+    </div>
+  </section>
+
+  <section id="precio" class="band">
+    <div class="wrap">
+      <h2>Precio</h2>
+      <p>Pago único por cohorte. Sin cuota mensual y sin coste por alumno. Precios sin IVA;
+        se añade el 21 % en la factura.</p>
+      <div class="price">
+        <article class="plan featured">
+          <span class="tag">Recomendado</span>
+          <h3>Cohorte 25</h3>
+          <p class="amount">1.900 €</p>
+          <p class="small">+ 399 € de IVA · total 2.299 €</p>
+          <ul>
+            <li>25 plazas de la ruta completa</li>
+            <li>Kit offline para 30 equipos</li>
+            <li>2 sesiones de arranque</li>
+            <li>Ruta impresa y plantilla de cierre</li>
+            <li>90 días de soporte por correo</li>
+          </ul>
+          <a class="btn cta" href="#reservar" data-cta="reservar">Reservar 25 plazas</a>
+        </article>
+        <article class="plan">
+          <span class="tag" style="background:var(--surface); color:var(--ink)">Aula grande</span>
+          <h3>Cohorte 60</h3>
+          <p class="amount">3.900 €</p>
+          <p class="small">+ 819 € de IVA · total 4.719 €</p>
+          <ul>
+            <li>60 plazas de la ruta completa</li>
+            <li>Kit offline para 70 equipos</li>
+            <li>3 sesiones de arranque</li>
+            <li>Dos juegos de ruta impresa</li>
+            <li>180 días de soporte y segundo informe</li>
+          </ul>
+          <a class="btn cta" href="#reservar" data-cta="reservar">Reservar 60 plazas</a>
+        </article>
+      </div>
+      <p class="small" style="margin-top:1rem">Precio de lanzamiento, válido para las tres
+        primeras cohortes. Descuento del 10 % para entidades sin ánimo de lucro acreditadas.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Cómo se compra, en tres pasos</h2>
+      <div class="scroll">
+        <table>
+          <caption>Proceso de contratación de una cohorte</caption>
+          <thead>
+            <tr><th scope="col">Paso</th><th scope="col">Qué pasa</th><th scope="col">Cuánto tarda</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Demostración de 45 minutos: se abre la ruta y el kit sin red</td><td>misma semana</td></tr>
+            <tr><td>2</td><td>Factura y pago por transferencia o enlace de pago con tarjeta</td><td>2 días</td></tr>
+            <tr><td>3</td><td>Entrega del kit, ruta impresa y agenda de las dos sesiones</td><td>5 días laborables</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="dudas" class="band">
+    <div class="wrap">
+      <h2>Dudas razonables</h2>
+      <details>
+        <summary>Si el contenido es gratis, ¿qué estoy pagando?</summary>
+        <p>La puesta en marcha: instalación del kit en tus equipos, ruta impresa, dos sesiones
+          y cierre con recuento. Puedes hacerlo tú misma gratis abriendo la ruta publicada;
+          esta oferta es para quien no tiene a nadie que lo haga.</p>
+      </details>
+      <details>
+        <summary>¿Certifica? ¿Sirve para el currículum del participante?</summary>
+        <p>No certifica. La ficha del producto excluye explícitamente «certificar sin entidad».
+          Se entrega constancia interna de la entidad; si la entidad certifica, el documento es
+          suyo, no nuestro.</p>
+      </details>
+      <details>
+        <summary>¿Y si la conexión del aula es mala o no hay ordenadores suficientes?</summary>
+        <p>El kit se carga una vez y luego funciona sin red. Para los turnos sin equipo está la
+          ruta impresa. No hay registro ni contraseñas que caduquen.</p>
+      </details>
+      <details>
+        <summary>¿Quién está detrás?</summary>
+        <p>El autor del repositorio <em>Manos Abiertas</em>, que firma el currículo y el código
+          de la ruta. El repositorio es público y verificable: la ruta, los 208 niveles y el
+          kit offline se pueden abrir antes de pagar nada.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si no arrancamos?</summary>
+        <p>Devolución íntegra dentro de los 30 días siguientes al pago o a la primera sesión,
+          si el kit no se ha usado con el grupo.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="reservar">
+    <div class="wrap">
+      <h2>Reservar una cohorte</h2>
+      <p>Escribe con el asunto «Cohorte» indicando la entidad, cuántas plazas necesitas y en
+        qué fechas querrías arrancar. Se responde con dos huecos para la demostración y la
+        factura proforma.</p>
+      <div class="cta-row">
+        <a class="btn cta" href="mailto:hola@manosabiertas.example?subject=Cohorte%20patrocinada" data-cta="reservar">Escribir para reservar</a>
+        <a class="btn secondary" href="#incluye">Repasar qué incluye</a>
+      </div>
+      <p class="small">Sin formulario, sin cookies y sin analítica en esta página: el contacto
+        es un correo y no se mide nada.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Manos Abiertas</strong> — plataforma educativa abierta para personas recién
+      llegadas. Contenido bajo licencia MIT, uso sin registro y sin coste para el alumno.</p>
+    <p>Esta página no usa CDN, ni fuentes externas, ni analítica. No certifica estudios y no
+      sustituye asesoramiento jurídico. Precios en euros con IVA indicado; validez de la oferta
+      sujeta a disponibilidad de agenda.</p>
+  </div>
+</footer>
+<!-- page-fix:1 -->
+</body>
+</html>

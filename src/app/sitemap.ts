@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const section of SECTIONS) {
       const url = `${SITE_URL}/${locale}${section.path}`;
       const alternates: Record<string, string> = {};
-      
+
       for (const altLocale of LOCALES) {
         alternates[altLocale] = `${SITE_URL}/${altLocale}${section.path}`;
       }

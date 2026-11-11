@@ -1,0 +1,80 @@
+{
+  "esquema": "repo-forge/ficha/1",
+  "nombre": "ManosAbiertas",
+  "remoto": "https://github.com/belentani7/ManosAbiertas",
+  "arquetipo": "web-app",
+  "stack": "Next.js + Markdown",
+  "modelo": "plataforma educativa abierta (cursos + CV + derechos)",
+  "publico": "personas recién llegadas a España/Brasil, sin presupuesto y con poca familiaridad digital",
+  "techo": "academia pública de referencia para migración digital: 832 lecciones ya escritas convertidas en rutas con certificación verificable, empleabilidad medida y espejo offline para aulas y bibliotecas",
+  "modulos": [
+    "Rutas por objetivo (empleo, oficina, trámites)",
+    "Lector de lecciones con progreso local",
+    "Creador de CV exportable",
+    "Guías de derechos con fecha de vigencia",
+    "Puente lingüístico PT↔ES",
+    "Modo aula para entidades sociales"
+  ],
+  "no_go": "cobrar al alumno, pedir registro obligatorio, certificar sin entidad",
+  "marca": {
+    "nombre": "Manos Abiertas",
+    "familia": "educacion",
+    "paleta": {
+      "familia": "educacion",
+      "bg": "#fbfaf7",
+      "surface": "#f5f4f1",
+      "ink": "#1a1a1a",
+      "muted": "#706f6e",
+      "accent": "#0f6f5b",
+      "accent2": "#c2410c",
+      "ok": "#15803d",
+      "warn": "#b45309",
+      "danger": "#b91c1c",
+      "contraste_ink_bg": 16.67,
+      "contraste_accent_bg": 5.84,
+      "accent_sobre_bg_ok": true
+    },
+    "narrativa": "Aprender no debería pedir permiso"
+  },
+  "paywall": {
+    "principio": "muro cero para el alumno: el conocimiento no se bloquea",
+    "fases": 4
+  },
+  "medido": {
+    "archivos": 1523,
+    "lineas": 190577,
+    "html": 102,
+    "tests": 56,
+    "bytes": 17326176,
+    "lenguajes": {
+      "Markdown": 59.0,
+      "TypeScript": 19.0,
+      "JSON": 8.5,
+      "HTML": 6.0,
+      "JavaScript": 3.2,
+      "YAML": 2.6
+    },
+    "fecha": "2026-11-10"
+  },
+  "gate": {
+    "pass": 36,
+    "fail": 1,
+    "skip": 12,
+    "cumplimiento": 97.3,
+    "fallos": [
+      "DEV-06"
+    ]
+  },
+  "ajustes": {
+    "total": 64,
+    "aplicados": 52,
+    "ya_estaban": 12,
+    "fallos": 0
+  },
+  "esfuerzo_dias": 61,
+  "doctor": {
+    "ok": true,
+    "detalle": "77/77 comprobaciones en verde"
+  },
+  "huella": "de5dc22fd9d35259"
+}

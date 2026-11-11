@@ -8,6 +8,12 @@
   <title>Campus de aprendizaje | Manos Abiertas</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="tokens.css">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Campus de aprendizaje | Manos Abiertas">
+<meta property="og:description" content="Campus Manos Abiertas: lecciones reales y práctica que pueden consultarse sin conexión tras la primera carga.">
+<meta property="og:image" content="brand/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
   <a class="skip-link" href="#cursos">Saltar al contenido</a>
@@ -70,7 +76,7 @@
       </select>
       <div class="quiz-privacy" aria-label="Privacidad de los resultados">
         <label class="quiz-save-option" for="quizRemember">
-          <input id="quizRemember" type="checkbox">
+          <input id="quizRemember" type="checkbox" aria-label="checkbox">
           <span><strong>Guardar mis resultados en este navegador (opcional)</strong>
           <small>Solo puntuación y fecha; nunca se envían desde esta página. Si compartes el dispositivo, deja esta opción desactivada.</small></span>
         </label>
@@ -125,5 +131,6 @@
   </script>
   <script src="app.js"></script>
   <script type="module" src="course-viewer.mjs"></script>
+<!-- page-fix:1 -->
 </body>
 </html>

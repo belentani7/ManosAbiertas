@@ -1,0 +1,87 @@
+{
+  "producto": "Cohorte patrocinada — Manos Abiertas",
+  "moneda": "EUR",
+  "iva": {
+    "tipo": 21,
+    "regimen": "IVA general España",
+    "precios_sin_iva": true,
+    "nota": "Entidades con derecho a deducción recuperan el IVA; fundaciones y administraciones pueden aplicar exención según el artículo correspondiente, se confirma con su asesoría antes de facturar."
+  },
+  "prueba": {
+    "tipo": "sesión de demostración",
+    "duracion_minutos": 45,
+    "precio": 0,
+    "condiciones": "Una sesión por entidad, sin compromiso. Se muestra `ruta.html` en vivo y el kit funcionando sin red."
+  },
+  "planes": [
+    {
+      "id": "cohorte-25",
+      "nombre": "Cohorte 25",
+      "precio": 1900,
+      "periodo": "pago único por cohorte",
+      "plazas": 25,
+      "limites": {
+        "plazas": 25,
+        "equipos_kit_offline": 30,
+        "sesiones_arranque": 2,
+        "ruta_impresa": "un juego por aula",
+        "soporte_dias": 90,
+        "informe_cierre": 1
+      },
+      "incluye": [
+        "Ruta completa: 8 módulos, 208 niveles, 832 documentos, 4 idiomas",
+        "Kit offline instalable (PWA) para 30 equipos de la entidad",
+        "Ruta impresa para el aula",
+        "2 sesiones de arranque de 90 minutos",
+        "Informe de cierre con recuento de niveles completados"
+      ],
+      "no_incluye": [
+        "Certificación oficial",
+        "Panel de gestión de aula (pendiente de desarrollo)",
+        "Recogida de datos personales de los participantes"
+      ]
+    },
+    {
+      "id": "cohorte-60",
+      "nombre": "Cohorte 60",
+      "precio": 3900,
+      "periodo": "pago único por cohorte",
+      "plazas": 60,
+      "limites": {
+        "plazas": 60,
+        "equipos_kit_offline": 70,
+        "sesiones_arranque": 3,
+        "ruta_impresa": "dos juegos",
+        "soporte_dias": 180,
+        "informe_cierre": 2
+      },
+      "incluye": [
+        "Todo lo del plan Cohorte 25, ampliado a 60 plazas y 70 equipos",
+        "Una sesión de arranque adicional",
+        "Segundo informe de cierre a los 180 días"
+      ],
+      "no_incluye": [
+        "Certificación oficial",
+        "Panel de gestión de aula (pendiente de desarrollo)",
+        "Recogida de datos personales de los participantes"
+      ]
+    }
+  ],
+  "descuentos": {
+    "tres_cohortes": "10 % sobre la tercera cohorte del mismo ejercicio",
+    "entidad_sin_animo_de_lucro": "10 % acreditado con estatutos"
+  },
+  "reembolso": {
+    "dias": 30,
+    "condicion": "devolución íntegra si la entidad no ha usado el kit con su grupo",
+    "via": "misma pasarela o transferencia"
+  },
+  "coherencia_paywall": {
+    "fuente": "plataforma/PAYWALL.md",
+    "muro_para_el_alumno": 0,
+    "quien_paga": "empresas, administraciones y entidades que patrocinan cohortes",
+    "fases_cubiertas": ["2 Patrocinio"],
+    "fases_no_vendidas": ["3 Aula (pendiente)", "4 Credencial (sin entidad certificadora)"]
+  },
+  "nota_precio": "Precio de lanzamiento decidido por el propietario, válido para las tres primeras cohortes. No es una cifra medida: es una decisión comercial revisable."
+}
