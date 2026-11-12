@@ -9,10 +9,29 @@ import { fileURLToPath } from 'node:url';
 import { publishCurriculumHtml } from './generate-curriculum-html.mjs';
 
 export const CAMPUS_FILES = Object.freeze([
-  'index.html', 'tokens.css', 'app.js', 'course-core.mjs',
+  'index.html', 'favicon.svg', 'tokens.css', 'app.js', 'course-core.mjs',
   'course-viewer.mjs', 'sw.js', 'manifest.webmanifest',
 ]);
 export const CAMPUS_DIRECTORIES = Object.freeze(['cursos', 'voces']);
+
+export const INSTITUTIONAL_FILES = Object.freeze([
+  'index.html', 'orientacion.html', 'programas.html',
+  'taller-documentos.html', 'taller-criterio-ia.html', 'taller-puente-pt-es.html',
+  'empleo.html', 'recursos.html', 'proyecto.html',
+  'assets/brand.css', 'assets/workshops.css', 'assets/workshops.js',
+  'assets/site.js', 'assets/manos-symbol.svg', 'assets/plantilla-cv.txt',
+  'assets/a11y.css', 'assets/favicon.svg', 'brand/og-image.svg',
+]);
+
+export function publishInstitutional(root = resolve(dirname(fileURLToPath(import.meta.url)), '..')) {
+  for (const file of INSTITUTIONAL_FILES) {
+    const from = join(root, file);
+    if (!existsSync(from)) throw Error('Missing institutional source: ' + file);
+    const target = join(root, 'public', file);
+    mkdirSync(dirname(target), { recursive: true });
+    cpSync(from, target, { force: true });
+  }
+}
 
 //
 // Publish only the educational pages with real, reviewed content.
@@ -59,6 +78,7 @@ export function publishCampus(root = resolve(dirname(fileURLToPath(import.meta.u
   console.log('Campus ready: /campus/index.html (lessons, quizzes, offline assets, voices)');
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  publishInstitutional();
   publishCampus();
   publishPlatformPages();
   publishCurriculumHtml();

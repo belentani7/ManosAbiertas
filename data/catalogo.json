@@ -1,4 +1,35 @@
 {
+  "nombre": "ManosAbiertas",
+  "remoto": "https://github.com/belentani7/ManosAbiertas",
+  "tipo": "web-app",
+  "modelo": "plataforma educativa abierta (cursos + CV + derechos)",
+  "publico": "personas recién llegadas a España/Brasil, sin presupuesto y con poca familiaridad digital",
+  "licencia": "MIT",
+  "medido": {
+    "archivos": 1523,
+    "lineas": 190577,
+    "bytes": 17326176,
+    "html": 102,
+    "tests": 56
+  },
+  "modulos": [
+    "Rutas por objetivo (empleo, oficina, trámites)",
+    "Lector de lecciones con progreso local",
+    "Creador de CV exportable",
+    "Guías de derechos con fecha de vigencia",
+    "Puente lingüístico PT↔ES",
+    "Modo aula para entidades sociales"
+  ],
+  "paleta": {
+    "bg": "#fbfaf7",
+    "ink": "#1a1a1a",
+    "accent": "#0f6f5b"
+  },
+  "fuente": {
+    "ruta": "repos\\ManosAbiertas",
+    "fecha": "2026-11-10"
+  },
+  "generado_por": "repo-forge",
   "repo": "ManosAbiertas",
   "familia": "educación",
   "ajustes_aplicados": 50,
@@ -6,5 +37,6 @@
   "estado": "estructurado",
   "producto_completo": false,
   "generado": "2026-11-10T18:59:04.942933+00:00",
-  "motor": "repo_forge.py"
+  "motor": "repo_forge.py",
+  "medicion_es_historica": true
 }

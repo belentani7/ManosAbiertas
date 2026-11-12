@@ -98,3 +98,7 @@ Consulta `package.json` para la lista completa de scripts disponibles.
 
 ## Producto
 Página comercial: [`public/servicios.html`](public/servicios.html). Oferta, precios y contratación: [`plataforma/OFERTA.md`](plataforma/OFERTA.md), [`plataforma/precios.json`](plataforma/precios.json), [`plataforma/COBRO.md`](plataforma/COBRO.md) y [`plataforma/ONEPAGER.md`](plataforma/ONEPAGER.md).
+
+## Alcance del producto
+
+Consulta la [ficha del producto](plataforma/FICHA.md) para las funciones y límites previstos.

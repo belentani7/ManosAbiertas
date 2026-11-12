@@ -82,7 +82,8 @@ test('the offline precache includes all advertised course units, quizzes and aud
   runInNewContext(read('campus/sw.js')+'\nglobalThis.__offlineFiles=CORE;',ctx);
   const files=Array.from(ctx.__offlineFiles);
   assert.equal(new Set(files).size,files.length);
-  assert.equal(files.length,29); // 6 core + 19 course resources + 4 voice files
+  assert.equal(files.length,30); // 7 core (including the favicon) + 19 course resources + 4 voice files
+  assert.ok(files.includes('./favicon.svg'), 'The campus icon must remain available offline');
   for(const name of files)assert.ok(existsSync(new URL(name,new URL('campus/',root))),'Missing '+name);
   assert.ok(listeners.install&&listeners.activate&&listeners.fetch);
   assert.match(read('campus/sw.js'),/target\.origin!==self\.location\.origin/);
