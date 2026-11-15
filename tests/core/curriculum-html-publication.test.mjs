@@ -9,7 +9,9 @@ const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const HTML_ROOT = join(PROJECT_ROOT, 'public/curriculum-html');
 const LANGUAGE_TAGS = { ES: 'es', PT: 'pt', CA: 'ca', EN: 'en' };
 
-if (!existsSync(HTML_ROOT)) publishCurriculumHtml(PROJECT_ROOT);
+// A previous build or tool may leave stale pages even when the output exists.
+// Always validate the publication generated from the current curriculum source.
+publishCurriculumHtml(PROJECT_ROOT);
 
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -73,7 +75,10 @@ test('publishes navigable module, language and default indexes', () => {
     assert.match(html, new RegExp('<html lang="' + LANGUAGE_TAGS[language] + '"'));
     assert.equal((html.match(/<li><a href="[^"]+\/index-[A-Z]{2}\.html"/g) ?? []).length, 8);
 
-    for (const moduleDir of readdirSync(HTML_ROOT, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name)) {
+    for (const moduleDir of readdirSync(HTML_ROOT, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .filter((name) => existsSync(join(HTML_ROOT, name, 'index-ES.html')))) {
       const moduleIndex = readFileSync(join(HTML_ROOT, moduleDir, `index-${language}.html`), 'utf8');
       const levelNavigation = moduleIndex.match(/<ol class="module-levels">([\s\S]*?)<\/ol>/)?.[1] ?? '';
       assert.equal((levelNavigation.match(/<li><a href="nivel-\d{2}\/nivel-\d{2}-[A-Z]{2}\.html"/g) ?? []).length, 26);

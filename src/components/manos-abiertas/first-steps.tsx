@@ -21,15 +21,6 @@ interface Step {
 
 const STEPS: Step[] = [
   {
-    id: 'step-1',
-    emoji: '📍',
-    title: 'Conoce la plataforma',
-    desc: 'Explora las 7 secciones disponibles para inmigrantes',
-    section: 'home',
-    check: () => false, // Always show as not completed (encourages exploration)
-    color: 'from-rose-400 to-pink-500',
-  },
-  {
     id: 'step-2',
     emoji: '🤖',
     title: 'Aprende tu primera IA',
@@ -42,7 +33,7 @@ const STEPS: Step[] = [
     id: 'step-3',
     emoji: '📝',
     title: 'Crea tu currículum',
-    desc: 'Genera un CV profesional con ayuda de IA',
+    desc: 'Prepara tu experiencia y guarda un borrador de CV',
     section: 'cv',
     check: (s) => s.hasCV,
     color: 'from-amber-400 to-orange-500',
@@ -56,15 +47,6 @@ const STEPS: Step[] = [
     check: (s) => s.officeCompleted >= 1,
     color: 'from-yellow-400 to-amber-500',
   },
-  {
-    id: 'step-5',
-    emoji: '⚖️',
-    title: 'Conoce tus derechos',
-    desc: 'NIE, sanidad, vivienda, trabajo... infórmate',
-    section: 'rights',
-    check: () => false,
-    color: 'from-teal-400 to-emerald-500',
-  },
 ];
 
 export function FirstSteps() {
@@ -74,8 +56,8 @@ export function FirstSteps() {
   const completedCount = STEPS.filter((s) => s.check(stats)).length;
   const percent = Math.round((completedCount / STEPS.length) * 100);
 
-  // Hide if user has completed most steps
-  if (completedCount >= 4) return null;
+  // Every suggested activity has a measurable completion condition.
+  if (completedCount >= STEPS.length) return null;
 
   return (
     <section className="container mx-auto max-w-7xl px-4 py-8">
