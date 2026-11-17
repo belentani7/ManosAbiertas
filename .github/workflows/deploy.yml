@@ -1,3 +1,9 @@
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 name: Deploy to Netlify (manual, optional)
 
 # The automated production path for this repository is not configured.

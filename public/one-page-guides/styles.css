@@ -15,3 +15,19 @@ button{border:1px solid var(--accent);border-radius:99px;background:#fff;color:v
 footer{position:absolute;left:12mm;right:12mm;bottom:8mm;display:flex;justify-content:space-between;border-top:1px solid #ccd2d8;padding-top:2mm;font-size:7.5pt;color:#5d6872}
 @media(max-width:720px){body{padding:0}.sheet{min-height:100vh;padding:8vw;border-top-width:5vw}.top,.grid{display:block}.actions{margin-top:5mm}.panel,.template,.checks,.notes{margin-top:4mm}.checks,.notes{display:grid;grid-template-columns:1fr 1fr}footer{position:static;margin-top:8mm}}
 @media print{html,body{width:210mm;height:297mm;background:#fff}body{padding:0}.sheet{width:194mm;height:281mm;min-height:281mm;max-height:281mm;margin:0;padding:10mm 11mm;border-top-width:5mm;box-shadow:none}.actions{display:none}.grid{gap:4mm;margin-top:6mm}.panel{padding:4mm}.template{padding:4mm}.editable{min-height:14mm}.line{min-height:13mm}footer{left:11mm;right:11mm;bottom:6mm}}
+
+/* --- mejora universal: movimiento reducido --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- mejora universal: foco visible --- */
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
