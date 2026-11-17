@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html dir="ltr" lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,11 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="color-scheme" content="light dark">
 <meta name="robots" content="index,follow">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="Campus de aprendizaje | Manos Abiertas">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
   <a class="skip-link" href="#cursos">Saltar al contenido</a>
@@ -91,7 +96,7 @@
         <div class="opciones"></div>
         <p class="feedback" aria-live="polite"></p>
         <p class="marcador"></p>
-        <button class="btn quiz-siguiente" hidden>Siguiente</button>
+        <button class="btn quiz-siguiente" hidden type="button">Siguiente</button>
       </div>
     </section>
 
@@ -133,7 +138,7 @@
       document.getElementById('audio').load();
     });
   </script>
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
   <script type="module" src="course-viewer.mjs"></script>
 <!-- page-fix:1 -->
 </body>
