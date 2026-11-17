@@ -102,3 +102,10 @@ Página comercial: [`public/servicios.html`](public/servicios.html). Oferta, pre
 ## Alcance del producto
 
 Consulta la [ficha del producto](plataforma/FICHA.md) para las funciones y límites previstos.
+
+## Verificacion
+
+```bash
+npm install
+npm test
+```
