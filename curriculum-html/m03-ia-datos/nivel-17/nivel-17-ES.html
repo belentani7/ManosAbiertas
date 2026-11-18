@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="En el nivel anterior aprendimos a predecir números con la regresión. Hoy vamos a por la otra gran familia de predicciones, quizá la más visible en su vida diaria: la clasificación. La clasificación no predice un número, ">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 3: IA Aplicada a los Datos — Nivel 17 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <a class="brand" href="/es">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos los módulos"><a href="../../index-ES.html">Todos los módulos</a><a href="../index-ES.html">Niveles del módulo</a><a href="/es/curriculum/m03-ia-datos">Abrir visor de aprendizaje</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 3: IA Aplicada a los Datos</p>
+    <details open>
+      <summary>Niveles del módulo</summary>
+      <nav aria-label="Niveles del módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-ES.html">Nivel 00</a></li><li><a href="../nivel-01/nivel-01-ES.html">Nivel 01</a></li><li><a href="../nivel-02/nivel-02-ES.html">Nivel 02</a></li><li><a href="../nivel-03/nivel-03-ES.html">Nivel 03</a></li><li><a href="../nivel-04/nivel-04-ES.html">Nivel 04</a></li><li><a href="../nivel-05/nivel-05-ES.html">Nivel 05</a></li><li><a href="../nivel-06/nivel-06-ES.html">Nivel 06</a></li><li><a href="../nivel-07/nivel-07-ES.html">Nivel 07</a></li><li><a href="../nivel-08/nivel-08-ES.html">Nivel 08</a></li><li><a href="../nivel-09/nivel-09-ES.html">Nivel 09</a></li><li><a href="../nivel-10/nivel-10-ES.html">Nivel 10</a></li><li><a href="../nivel-11/nivel-11-ES.html">Nivel 11</a></li><li><a href="../nivel-12/nivel-12-ES.html">Nivel 12</a></li><li><a href="../nivel-13/nivel-13-ES.html">Nivel 13</a></li><li><a href="../nivel-14/nivel-14-ES.html">Nivel 14</a></li><li><a href="../nivel-15/nivel-15-ES.html">Nivel 15</a></li><li><a href="../nivel-16/nivel-16-ES.html">Nivel 16</a></li><li><a href="../nivel-17/nivel-17-ES.html" aria-current="page">Nivel 17</a></li><li><a href="../nivel-18/nivel-18-ES.html">Nivel 18</a></li><li><a href="../nivel-19/nivel-19-ES.html">Nivel 19</a></li><li><a href="../nivel-20/nivel-20-ES.html">Nivel 20</a></li><li><a href="../nivel-21/nivel-21-ES.html">Nivel 21</a></li><li><a href="../nivel-22/nivel-22-ES.html">Nivel 22</a></li><li><a href="../nivel-23/nivel-23-ES.html">Nivel 23</a></li><li><a href="../nivel-24/nivel-24-ES.html">Nivel 24</a></li><li><a href="../nivel-25/nivel-25-ES.html">Nivel 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 3: IA Aplicada a los Datos</p>
+        <h1>Módulo 3: IA Aplicada a los Datos</h1>
+        <div class="metadata">
+          <span>Español (ES)</span>
+          <span>Rama</span>
+          <span>Tiempo estimado: 3 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-17-ES.html" aria-current="page" lang="es">Español</a><a href="nivel-17-PT.html" lang="pt">Português</a><a href="nivel-17-CA.html" lang="ca">Català</a><a href="nivel-17-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: ES · Dificultad: Rama</h3>
+<h3>Tiempo estimado: 3 horas</h3>
+<h3>🎯 Objetivo del nivel</h3>
+<ul><li>Entender qué es la clasificación: la técnica que predice categorías.</li><li>Ver la diferencia entre predecir números (regresión) y predecir etiquetas (clasificación).</li><li>Comprender el papel de los datos etiquetados en el entrenamiento.</li><li>Aprender a leer la &quot;exactitud&quot; de un clasificador y desconfiar de las trampas.</li></ul>
+<h3>📖 Vocabulario esencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Término</th><th scope="col">Explicación en palabras simples</th></tr></thead><tbody><tr><td>Clasificación</td><td>La técnica de la IA que decide a qué grupo pertenece algo.</td></tr><tr><td>Etiqueta</td><td>La respuesta correcta que acompaña a cada ejemplo en el entrenamiento.</td></tr><tr><td>Clase</td><td>Cada uno de los grupos posibles: &quot;gato&quot;, &quot;spam&quot;, &quot;lluvia&quot;.</td></tr><tr><td>Exactitud</td><td>El porcentaje de aciertos del clasificador.</td></tr><tr><td>Frontera de decisión</td><td>La línea invisible que separa las clases en el mapa de los datos.</td></tr></tbody></table></div>
+<h3>📚 Lección principal</h3>
+<p>En el nivel anterior aprendimos a predecir números con la regresión. Hoy vamos a por la otra gran familia de predicciones, quizá la más visible en su vida diaria: la clasificación. La clasificación no predice un número, sino una categoría. El correo: ¿spam o no? La foto: ¿perro o gato? El día: ¿lluvia o sol? El mensaje: ¿amenaza o noticia? La clasificación es el arte de decidir en qué casillero entra cada cosa.</p>
+<p>Comparemos las dos técnicas para que no se confundan nunca. La regresión responde a preguntas de &quot;¿cuánto?&quot;: ¿cuántos helados, cuántos euros, cuántos kilos? La clasificación responde a preguntas de &quot;¿cuál?&quot;: ¿spam o normal, perro o gato, seguro o fraudulento? Una te da una medida; la otra te da una etiqueta. Si usted quiere saber cuánto costará el billete, usa regresión. Si quiere saber si el mensaje es peligroso, usa clasificación.</p>
+<p>¿Cómo aprende una máquina a clasificar? Con datos etiquetados. Volvamos al niño del nivel 15: le enseñamos 100 fotos, cada una con su etiqueta (&quot;esto es un perro&quot;, &quot;esto es un gato&quot;). En la jerga de la IA, esas 100 fotos son &quot;datos etiquetados&quot;, y las etiquetas son las respuestas correctas. Sin etiquetas no hay clasificación posible: la máquina no puede aprender qué es cada cosa si nunca le decimos qué es. Por eso, cada ejemplo de entrenamiento es un par: los datos (la foto) y la etiqueta (lo que es).</p>
+<p>Una idea bonita para entender la clasificación es la &quot;frontera de decisión&quot;. Imagine un mapa: en un eje, el peso del animal; en otro, la longitud de las orejas. Los perros caen en una zona del mapa y los gatos en otra. El clasificador dibuja una línea invisible que separa las dos zonas, y cuando llega un animal nuevo, mira de qué lado de la línea está. Si cae del lado de los perros, dice &quot;perro&quot;. Esa línea invisible es la frontera de decisión, y es el equivalente a la línea de tendencia de la regresión, pero separando grupos.</p>
+<p>¿Cómo se mide si un clasificador funciona? Con la &quot;exactitud&quot;: el porcentaje de veces que acierta. Si prueba el clasificador con 100 animales nuevos y acierta 92, su exactitud es del 92%. Parece simple, pero aquí esconden los fabricantes la trampa más grande. Imagínese un detector de fraudes en un banco donde el 99% de las operaciones son legítimas. Un sistema que siempre responda &quot;legítima&quot;, sin mirar nada, tendría una exactitud del 99%. ¡Parecería perfecto y sería inútil! Por eso los profesionales miran algo más que la exactitud: miran cuántos fraudes reales captura y cuántos avisos falsos dispara.</p>
+<p>Otra trampa famosa: la clase mayoritaria aplasta a la minoritaria. Si entrena un clasificador para detectar un defecto raro en unas piezas, y el defecto solo aparece en 1 de cada 1000 piezas, el sistema aprende a decir &quot;todo está bien&quot; y acierta el 99,9%. Aparentemente genial; en realidad no detecta nada. La lección: cuando una categoría es muy rara, un clasificador que ignora la categoría rara &quot;parece&quot; excelente. Mire siempre cuántos casos raros detectó, no solo el porcentaje total.</p>
+<p>En la vida diaria la clasificación está en todas partes y casi siempre sin que lo notemos. El correo electrónico clasifica el spam. El teléfono clasifica su voz en &quot;comandos&quot;. El banco clasifica cada operación en &quot;normal&quot; o &quot;sospechosa&quot;. El hospital clasifica las radiografías en &quot;limpia&quot; o &quot;con nódulo&quot;. La cámara clasifica sus fotos en &quot;paisajes&quot; y &quot;personas&quot;. Cada una de esas decisiones es una frontera de decisión trazada por una máquina entrenada con miles de ejemplos etiquetados.</p>
+<p>Para practicar la clasificación sin programar, existen herramientas gratuitas y visuales. Una muy famosa es &quot;Machine Learning for Kids&quot;, donde se crean &quot;proyectos&quot;, se suben fotos o textos etiquetados y la herramienta entrena un modelo con botones. Otra es &quot;Teachable Machine&quot;, de Google, donde se hacen tres clases con fotos de la cámara (por ejemplo, &quot;cabeza&quot;, &quot;papel&quot;, &quot;nada&quot;) y el modelo aprende a distinguirlas en vivo. En el nivel 18 las usaremos a fondo. Hoy solo las conoceremos.</p>
+<p>Antes de terminar, una idea para encadenar con lo que viene: clasificar y regresión se combinan en casi todos los sistemas reales. El navegador clasifica su ruta (&quot;trayecto normal o atascado&quot;) y luego regresa el tiempo (&quot;llegará en 23 minutos&quot;). El banco clasifica la operación (&quot;fraudulenta o no&quot;) y luego predice cuánto arriesga. Entender las dos piezas le da a usted el mapa completo de cómo piensa la IA. En el próximo nivel, manos a la obra: entrenará sus primeros modelos de clasificación con sus propias fotos y sonidos.</p>
+<h3>💡 Ejemplos prácticos</h3>
+<h4>Ejemplo 1: El correo spam</h4>
+<p>Un correo electrónico llega con &quot;GANA UN PREMIO, haga clic ya&quot;. El clasificador de su buzón lo compara con millones de correos etiquetados como spam y decide: spam. No lee el texto: lo clasifica.</p>
+<h4>Ejemplo 2: Las fotos de la abuela</h4>
+<p>La abuela quiere una foto solo de sus nietos. La app clasifica cada foto de su galería en &quot;persona&quot; o &quot;no persona&quot;, y de paso identifica a cada nieto. Todo eso es clasificación entrenada con fotos etiquetadas.</p>
+<h4>Ejemplo 3: La fruta del mercado</h4>
+<p>Un agricultor fotografía manzanas y peras con la cámara del móvil. Un clasificador entrenado con miles de frutas etiquetadas le dice al momento si es manzana o pera, y así se ahorra clasificarlas a mano.</p>
+<h3>🛠️ Actividad guiada</h3>
+<p>Paso 1. Abra el navegador y entre en https://teachablemachine.withgoogle.com (es gratuito y no pide cuenta). Paso 2. Pulse &quot;Empezar&quot; y elija &quot;Proyecto de imágenes&quot;. Paso 3. Verá tres clases: Clase 1, Clase 2 y Clase 3. Anote cada clase con un objeto de su casa (por ejemplo, &quot;taza&quot;, &quot;mando&quot;, &quot;nada&quot;). Paso 4. Active la cámara y capture 20 fotos de la taza manteniendo el botón &quot;Mantener pulsado para grabar&quot; mientras la mueve. Paso 5. Capture 20 fotos del mando y 20 del fondo sin objeto (la clase &quot;nada&quot;). Paso 6. Pulse &quot;Entrenar modelo&quot; y espere a que termine (unos segundos). Paso 7. En la ventana de &quot;Vista previa&quot;, muestre la taza a la cámara: ¿la clasifica bien? Paso 8. Pruebe el mando y luego la clase &quot;nada&quot;. Anote cuántas veces acierta de cada diez. Paso 9. Ahora pruebe un objeto que NO entrenó (por ejemplo, su mano): vea cómo la IA se confunde. Eso es normal: no aprendió esa clase. Paso 10. Escriba en un papel: &quot;mi clasificador acierta X de cada 10 veces&quot; y guarde el proyecto. Ha entrenado su primer modelo de clasificación.</p>
+<h3>✍️ Ejercicios de autoevaluación</h3>
+<ol><li>¿Qué diferencia hay entre regresión y clasificación?</li><li>¿Qué son los datos etiquetados?</li><li>¿Qué es la frontera de decisión?</li><li>¿Por qué la exactitud puede engañar cuando una clase es muy rara?</li><li>Nombre dos herramientas gratuitas para entrenar clasificadores sin programar.</li></ol>
+<p>Respuestas: 1. La regresión predice números (&quot;¿cuánto?&quot;) y la clasificación predice categorías (&quot;¿cuál?&quot;). 2. Ejemplos que llevan junto a los datos su respuesta correcta (la etiqueta). 3. La línea invisible que separa las clases en el mapa de los datos. 4. Porque un sistema que siempre dice la clase mayoritaria acierta casi siempre sin detectar nada. 5. Machine Learning for Kids y Teachable Machine.</p>
+<h3>⚖️ Dimensión ética</h3>
+<p>Los clasificadores se equivocan, y sus errores no pesan igual. Confundir un correo con spam molesta; confundir una radiografía limpia con una con nódulo asusta a una persona y puede alterar su vida. Los errores de clasificación que afectan a personas deben revisarlos siempre personas. Y hay un peligro ético enorme: si las etiquetas con las que se entrenó contienen prejuicios (por ejemplo, &quot;estas fotos son de delincuentes&quot;), la máquina los hereda y los repite a gran escala. Entrene sus clasificadores con etiquetas justas, y nunca deje que decidan solos sobre vidas humanas.</p>
+<h3>🔓 Herramientas abiertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Herramienta</th><th scope="col">Qué es y para qué sirve</th><th scope="col">Dónde encontrarla</th></tr></thead><tbody><tr><td>Teachable Machine</td><td>Entrenar clasificadores con fotos y sonidos sin programar</td><td>https://teachablemachine.withgoogle.com</td></tr><tr><td>Machine Learning for Kids</td><td>Proyectos de clasificación visuales para aprender</td><td>https://machinelearningforkids.co.uk</td></tr><tr><td>Google Sheets</td><td>Clasificar datos con filtros y tablas</td><td>https://sheets.google.com</td></tr><tr><td>Quick, Draw!</td><td>Ver cómo una IA clasifica sus dibujos</td><td>https://quickdraw.withgoogle.com</td></tr></tbody></table></div>
+<h3>🧠 Resumen y puente</h3>
+<ul><li>La regresión predice números; la clasificación predice categorías.</li><li>La clasificación se entrena con datos etiquetados.</li><li>La frontera de decisión separa las clases, como la línea de tendencia separa tendencias.</li><li>La exactitud sola engaña cuando hay clases raras: mire los aciertos reales.</li></ul>
+<p>En el nivel siguiente, manos a la obra: usaremos Teachable Machine y Machine Learning for Kids para entrenar nuestros primeros modelos con fotos, sonidos y textos.</p></div>
+      <nav class="lesson-pagination" aria-label="Niveles del módulo"><a rel="prev" href="../nivel-16/nivel-16-ES.html">Nivel anterior</a><span>Nivel 17</span><a rel="next" href="../nivel-18/nivel-18-ES.html">Nivel siguiente</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Material educativo abierto. No constituye una certificación.</span><a href="nivel-17-ES.html" download>Nivel 17 · HTML</a></footer>
+
+</body>
+</html>

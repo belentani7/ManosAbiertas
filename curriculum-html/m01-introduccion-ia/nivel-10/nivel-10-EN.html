@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Imagine a primary school class. A teacher teaches children to distinguish fruit: he shows an apple and says &quot;this is an apple&quot;, shows a pear and says &quot;this is a pear&quot;. Then he gives an exam: he shows a fruit and asks. If">
+  <meta name="color-scheme" content="light">
+  <title>Module 1: Introduction to Artificial Intelligence — Level 10</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m01-introduccion-ia">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 1: Introduction to Artificial Intelligence</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html" aria-current="page">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 1: Introduction to Artificial Intelligence</p>
+        <h1>Module 1: Introduction to Artificial Intelligence</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-10-ES.html" lang="es">Español</a><a href="nivel-10-PT.html" lang="pt">Português</a><a href="nivel-10-CA.html" lang="ca">Català</a><a href="nivel-10-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Stem</h3>
+<h3>Estimated time: 2.5 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand what supervised learning is using the teacher metaphor.</li><li>Distinguish classification and regression with real-life examples.</li><li>Understand how the machine corrects its errors during training.</li><li>Recognize supervised learning in everyday applications.</li><li>Do a small &quot;regression&quot; by hand in a spreadsheet.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple explanation</th></tr></thead><tbody><tr><td>Supervised learning</td><td>Learning with a &quot;teacher&quot;: the machine receives examples with their correct answer.</td></tr><tr><td>Classification</td><td>Deciding which group something belongs to: spam or not, cat or dog.</td></tr><tr><td>Regression</td><td>Predicting a number, such as the price of a house or tomorrow&#39;s temperature.</td></tr><tr><td>Teacher (supervisor)</td><td>The one who labels the examples and corrects the machine during training.</td></tr><tr><td>Error</td><td>The difference between what the machine answered and the correct answer.</td></tr><tr><td>Train and validate</td><td>Training is learning with examples; validating is checking with new examples.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>Imagine a primary school class. A teacher teaches children to distinguish fruit: he shows an apple and says &quot;this is an apple&quot;, shows a pear and says &quot;this is a pear&quot;. Then he gives an exam: he shows a fruit and asks. If the child is right, great; if wrong, the teacher corrects him. With practice, the child ends up getting it right almost every time. That is how supervised learning works.</p>
+<p>&quot;Supervised&quot; means there is a supervisor: someone or something that knows the correct answers. In the AI world, the supervisor is the labeled dataset. Each example comes with its answer. The machine does not guess blindly: at the end of the process it has a &quot;teacher&#39;s correction&quot; that tells it whether it was right.</p>
+<p>The process is a circle: the machine looks at an example, makes a prediction, compares with the correct label, calculates its error, and adjusts its connections to fail less next time. Then it moves to the next example, and the next, millions of times. Each round is like one exam after another, and each correction makes it a little better.</p>
+<p>There are two big types of supervised tasks. The first is classification: deciding which group something belongs to. Is this email spam or important? Does this photo have a cat or a dog? Is this payment normal or suspicious? The answer is a label, a category. It is like putting each thing in its box.</p>
+<p>The second is regression: predicting a number. How much will this house be worth? What temperature will it be tomorrow? How many steps will you take today? There are no boxes; there is a scale. It is like estimating how many kilograms a sack weighs by looking at it: it does not say &quot;heavy or light&quot;, it says &quot;approximately 25 kilograms&quot;.</p>
+<p>A very close example of regression: the price of apartments. If we show the machine thousands of examples of &quot;square meters → price&quot;, it will learn to estimate the price of an apartment it has never seen. You do this intuitively every day: &quot;a bigger apartment usually costs more&quot;. The machine does it with thousands of data points and with more precision.</p>
+<p>The difference between classification and regression is simpler than it seems: classifying is saying &quot;yes or no, this or that&quot;; regression is saying &quot;how much&quot;. The bank classifies whether a payment is fraud; it predicts (regression) how much you will spend next month. Understanding this difference will help you read any AI news.</p>
+<p>Now, an important point: the machine can learn &quot;by heart&quot; and deceive us. If the teacher examines the children with the same fruits they already saw in class, everyone gets a perfect score. That is why in AI, training is separated from validation: you train with some examples and check with others the machine has not seen. If it gets the new ones right, it has truly learned.</p>
+<p>This has a technical name worth knowing: overfitting. It is when the machine memorizes the training examples instead of learning the general pattern. It is like a student who memorizes the exam questions but does not understand the subject: he passes the known exam and fails the unknown one. Good models are always tested with new data.</p>
+<p>Supervised learning is in almost all the applications we already know. The email that filters spam, face recognition, fraud detection, image diagnosis: they are all supervised; they all learned with labeled examples. It is the most used type of learning and the easiest to understand.</p>
+<p>And why is so much data needed? Because each example is an opportunity to correct. A model needs to see many variations of the real world so as not to get confused. Just as a child needs to see many dogs (white, black, big, small) so as not to believe there is only one kind of dog.</p>
+<p>You do not need to know math to use this. What matters is the concept: there is a teacher (the labeled data), the machine takes exams (predictions), makes mistakes, corrects, and improves. And then it is tested with new exams to make sure it truly learned.</p>
+<p>In this level&#39;s activity, you will do your own regression with a spreadsheet: you will draw points of &quot;apartment size → price&quot; and a line that summarizes them. That line is, in miniature, what regression does with thousands of data points. You will see with your own eyes how the machine &quot;sees&quot; the trend.</p>
+<p>In the next level, we will see the other two types of learning: unsupervised and reinforcement learning.</p>
+<h3>💡 Practical examples</h3>
+<ol><li><strong>Email:</strong> you mark messages as &quot;important&quot; or &quot;spam&quot;; the machine classifies the new ones just like you.</li><li><strong>The bank:</strong> it classifies each payment as &quot;normal&quot; or &quot;suspicious&quot;, with labeled examples from millions of transactions.</li><li><strong>Housing prices:</strong> a website estimates the price of an apartment by comparing it with thousands of real sales (regression).</li></ol>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1. Open the browser and go to Google Sheets (sheets.google.com) or open your spreadsheet program. Step 2. In column A, write apartment sizes: 40, 55, 70, 85, 100. Step 3. In column B, write invented prices that grow with size: 80000, 100000, 130000, 160000, 190000. Step 4. Select the two columns with the mouse. Step 5. Click &quot;Insert&quot; and then &quot;Chart&quot;. Step 6. In the chart, look for the &quot;Trendline&quot; option and enable it. Step 7. Observe: the line summarizes the relationship &quot;more meters, more price&quot;. That is a regression. Step 8. Think: with this line, what price would you estimate for a 60-square-meter apartment? That estimate is exactly what AI does with thousands of data points.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>Explain with the teacher metaphor what supervised learning is.</li><li>What is the difference between classification and regression?</li><li>What is the error and what is it used for during training?</li><li>What is overfitting and why is the model tested with new data?</li><li>Give an everyday example of classification and one of regression.</li></ol>
+<p><strong>Answers:</strong> 1) It is learning with examples that come with their correct answer, like a teacher who corrects exams. 2) Classifying is deciding which group something belongs to (category); regression is predicting a number (quantity). 3) It is the difference between what the machine predicted and the correct answer; it is used to adjust and improve. 4) It is when the machine memorizes the examples instead of learning the pattern; that is why it is tested with data it has not seen. 5) Classification: filtering spam or recognizing a face; regression: estimating the price of an apartment or tomorrow&#39;s temperature.</p>
+<h3>⚖️ Ethical dimension</h3>
+<p>Supervised learning inherits the decisions of the human supervisor who labels. If the labels are unfair (for example, loans approved by neighborhood), the machine learns that injustice and applies it to thousands of people. In addition, a model tested only on similar data can seem perfect and fail in the real world. Demanding that models be validated with diverse data is an ethical responsibility, not a technical luxury.</p>
+<h3>🔓 Open tools</h3>
+<ul><li><strong>Teachable Machine</strong> (teachablemachine.withgoogle.com): train a supervised classifier with your own photos.</li><li><strong>TensorFlow Playground</strong> (playground.tensorflow.org): watch live how a network is trained with labeled data.</li><li><strong>Google Sheets</strong> (sheets.google.com): free, with charts and trendlines to do simple regressions.</li><li><strong>Kaggle</strong> (kaggle.com): contests and data to practice classification and regression.</li><li><strong>YouTube</strong> (youtube.com): search &quot;supervised learning explained&quot; for more videos.</li></ul>
+<h3>🧠 Summary and bridge</h3>
+<ul><li>Supervised learning learns with labeled examples: there is a teacher.</li><li>Classifying is putting into boxes; regression is predicting numbers.</li><li>The machine corrects its error with each example and improves.</li><li>Overfitting deceives: you must validate with new data.</li><li>You already use supervised learning every day without knowing it.</li></ul>
+<p>In level 11, we will see unsupervised learning and reinforcement learning.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-09/nivel-09-EN.html">Previous level</a><span>Level 10</span><a rel="next" href="../nivel-11/nivel-11-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m01-introduccion-ia</span><span>Open educational material. It is not a certification.</span><a href="nivel-10-EN.html" download>Level 10 · HTML</a></footer>
+
+</body>
+</html>

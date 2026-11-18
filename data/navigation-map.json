@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-11-18T06:44:51.284Z",
+  "repo": "ManosAbiertas",
+  "totalFiles": 8631,
+  "links": [
+    {
+      "label": "Abrir bug_report.md",
+      "target": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir feature_request.md",
+      "target": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir PULL_REQUEST_TEMPLATE.md",
+      "target": ".github/PULL_REQUEST_TEMPLATE.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir 404.html",
+      "target": "404.html",
+      "type": "page",
+      "exists": true
+    },
+    {
+      "label": "Abrir accesibilidad.html",
+      "target": "accesibilidad.html",
+      "type": "page",
+      "exists": true
+    },
+    {
+      "label": "Abrir accessibility.html",
+      "target": "accessibility.html",
+      "type": "page",
+      "exists": true
+    },
+    {
+      "label": "Abrir AGENTS.md",
+      "target": "AGENTS.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir ANALISIS_ORIGINAL.md",
+      "target": "ANALISIS_ORIGINAL.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir settings.json",
+      "target": "apps/manos-abiertas/.vscode/settings.json",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir BIBLIA.md",
+      "target": "apps/manos-abiertas/BIBLIA.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir FICHA.md",
+      "target": "apps/manos-abiertas/brand/FICHA.md",
+      "type": "file",
+      "exists": true
+    },
+    {
+      "label": "Abrir NARRATIVA.md",
+      "target": "apps/manos-abiertas/brand/NARRATIVA.md",
+      "type": "file",
+      "exists": true
+    }
+  ]
+}

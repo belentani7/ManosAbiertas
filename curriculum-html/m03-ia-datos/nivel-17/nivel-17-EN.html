@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="In the previous level we learned to predict numbers with regression. Today we go for the other great family of predictions, perhaps the most visible in your daily life: classification. Classification does not predict a n">
+  <meta name="color-scheme" content="light">
+  <title>Module 3: AI Applied to Data — Level 17 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m03-ia-datos">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 3: AI Applied to Data</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html" aria-current="page">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 3: AI Applied to Data</p>
+        <h1>Module 3: AI Applied to Data</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-17-ES.html" lang="es">Español</a><a href="nivel-17-PT.html" lang="pt">Português</a><a href="nivel-17-CA.html" lang="ca">Català</a><a href="nivel-17-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Branch</h3>
+<h3>Estimated time: 3 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand what classification is: the technique that predicts categories.</li><li>See the difference between predicting numbers (regression) and predicting labels (classification).</li><li>Understand the role of labelled data in training.</li><li>Learn to read a classifier&#39;s &quot;accuracy&quot; and distrust the traps.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Plain-language explanation</th></tr></thead><tbody><tr><td>Classification</td><td>The AI technique that decides which group something belongs to.</td></tr><tr><td>Label</td><td>The correct answer that accompanies each example during training.</td></tr><tr><td>Class</td><td>Each of the possible groups: &quot;cat&quot;, &quot;spam&quot;, &quot;rain&quot;.</td></tr><tr><td>Accuracy</td><td>The percentage of correct answers of the classifier.</td></tr><tr><td>Decision boundary</td><td>The invisible line that separates the classes on the data map.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>In the previous level we learned to predict numbers with regression. Today we go for the other great family of predictions, perhaps the most visible in your daily life: classification. Classification does not predict a number but a category. The email: spam or not? The photo: dog or cat? The day: rain or sun? The message: threat or news? Classification is the art of deciding which box each thing goes into.</p>
+<p>Let&#39;s compare the two techniques so they are never confused. Regression answers &quot;how much?&quot; questions: how many ice creams, how many euros, how many kilos? Classification answers &quot;which one?&quot; questions: spam or normal, dog or cat, safe or fraudulent? One gives you a measurement; the other gives you a label. If you want to know how much the ticket will cost, use regression. If you want to know whether a message is dangerous, use classification.</p>
+<p>How does a machine learn to classify? With labelled data. Let&#39;s go back to the child from level 15: we show them 100 photos, each with its label (&quot;this is a dog&quot;, &quot;this is a cat&quot;). In AI jargon, those 100 photos are &quot;labelled data&quot;, and the labels are the correct answers. Without labels, no classification is possible: the machine cannot learn what each thing is if we never tell it what it is. That is why every training example is a pair: the data (the photo) and the label (what it is).</p>
+<p>A beautiful idea for understanding classification is the &quot;decision boundary&quot;. Imagine a map: on one axis, the animal&#39;s weight; on another, the length of its ears. Dogs fall in one area of the map and cats in another. The classifier draws an invisible line separating the two areas, and when a new animal arrives, it looks at which side of the line it is on. If it falls on the dog side, it says &quot;dog&quot;. That invisible line is the decision boundary, the equivalent of regression&#39;s trend line, but separating groups.</p>
+<p>How do you measure whether a classifier works? With &quot;accuracy&quot;: the percentage of times it is right. If you test the classifier with 100 new animals and it gets 92 right, its accuracy is 92%. It seems simple, but here is where manufacturers hide the biggest trap. Imagine a fraud detector in a bank where 99% of transactions are legitimate. A system that always answers &quot;legitimate&quot;, without looking at anything, would have 99% accuracy. It would seem perfect and would be useless! That is why professionals look beyond accuracy: they look at how many real frauds it catches and how many false alarms it fires.</p>
+<p>Another famous trap: the majority class crushes the minority. If you train a classifier to detect a rare defect in parts, and the defect only appears in 1 in 1000 parts, the system learns to say &quot;everything is fine&quot; and gets 99.9% right. Apparently brilliant; in reality it detects nothing. The lesson: when a category is very rare, a classifier that ignores the rare category &quot;seems&quot; excellent. Always look at how many rare cases it detected, not just the total percentage.</p>
+<p>In daily life, classification is everywhere and almost always unnoticed. Email classifies spam. Your phone classifies your voice into &quot;commands&quot;. The bank classifies each transaction as &quot;normal&quot; or &quot;suspicious&quot;. The hospital classifies x-rays as &quot;clean&quot; or &quot;with a nodule&quot;. The camera classifies your photos into &quot;landscapes&quot; and &quot;people&quot;. Each of those decisions is a decision boundary drawn by a machine trained on thousands of labelled examples.</p>
+<p>To practise classification without coding, there are free visual tools. A very famous one is &quot;Machine Learning for Kids&quot;, where you create &quot;projects&quot;, upload labelled photos or texts and the tool trains a model with buttons. Another is &quot;Teachable Machine&quot; by Google, where you make three classes with camera photos (for example, &quot;head&quot;, &quot;paper&quot;, &quot;nothing&quot;) and the model learns to tell them apart live. In level 18 we will use them in depth. Today we will just get to know them.</p>
+<p>Before finishing, one idea to link with what comes next: classification and regression combine in almost every real system. The navigation app classifies your route (&quot;normal trip or traffic jam&quot;) and then regresses the time (&quot;you will arrive in 23 minutes&quot;). The bank classifies the transaction (&quot;fraudulent or not&quot;) and then predicts how much is at risk. Understanding the two pieces gives you the complete map of how AI thinks. In the next level, let&#39;s get our hands dirty: you will train your first classification models with your own photos and sounds.</p>
+<h3>💡 Practical examples</h3>
+<h4>Example 1: Spam email</h4>
+<p>An email arrives saying &quot;WIN A PRIZE, click now&quot;. The classifier in your inbox compares it with millions of emails labelled as spam and decides: spam. It does not read the text: it classifies it.</p>
+<h4>Example 2: Grandma&#39;s photos</h4>
+<p>Grandma wants a photo of only her grandchildren. The app classifies each photo in her gallery as &quot;person&quot; or &quot;not a person&quot;, and also identifies each grandchild. All of that is classification trained on labelled photos.</p>
+<h4>Example 3: The market fruit</h4>
+<p>A farmer photographs apples and pears with their phone camera. A classifier trained on thousands of labelled fruits tells them instantly whether it is an apple or a pear, saving them from sorting by hand.</p>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1. Open your browser and go to https://teachablemachine.withgoogle.com (it is free and needs no account). Step 2. Press &quot;Get Started&quot; and choose &quot;Image Project&quot;. Step 3. You will see three classes: Class 1, Class 2 and Class 3. Assign each class an object from your home (for example, &quot;mug&quot;, &quot;remote&quot;, &quot;nothing&quot;). Step 4. Turn on the camera and capture 20 photos of the mug by holding the &quot;Hold to Record&quot; button while moving it. Step 5. Capture 20 photos of the remote and 20 of the background with no object (the &quot;nothing&quot; class). Step 6. Press &quot;Train Model&quot; and wait for it to finish (a few seconds). Step 7. In the &quot;Preview&quot; window, show the mug to the camera: does it classify it well? Step 8. Try the remote and then the &quot;nothing&quot; class. Note how many times out of ten it gets it right. Step 9. Now try an object you did NOT train (for example, your hand): see how the AI gets confused. That is normal: it did not learn that class. Step 10. Write on a piece of paper: &quot;my classifier gets X out of 10 right&quot; and save the project. You have trained your first classification model.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>What is the difference between regression and classification?</li><li>What is labelled data?</li><li>What is the decision boundary?</li><li>Why can accuracy deceive when a class is very rare?</li><li>Name two free tools for training classifiers without coding.</li></ol>
+<p>Answers: 1. Regression predicts numbers (&quot;how much?&quot;) and classification predicts categories (&quot;which one?&quot;). 2. Examples that carry, alongside the data, their correct answer (the label). 3. The invisible line that separates the classes on the data map. 4. Because a system that always says the majority class gets it right almost always without detecting anything. 5. Machine Learning for Kids and Teachable Machine.</p>
+<h3>⚖️ Ethical dimension</h3>
+<p>Classifiers make mistakes, and not all their mistakes weigh the same. Confusing an email with spam is annoying; confusing a clean x-ray with one that has a nodule frightens a person and can change their life. Classification errors that affect people must always be reviewed by people. And there is an enormous ethical danger: if the labels it was trained with contain prejudices (for example, &quot;these photos are of criminals&quot;), the machine inherits and repeats them at scale. Train your classifiers with fair labels, and never let them decide alone about human lives.</p>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it is and what it is for</th><th scope="col">Where to find it</th></tr></thead><tbody><tr><td>Teachable Machine</td><td>Train classifiers with photos and sounds without coding</td><td>https://teachablemachine.withgoogle.com</td></tr><tr><td>Machine Learning for Kids</td><td>Visual classification projects for learning</td><td>https://machinelearningforkids.co.uk</td></tr><tr><td>Google Sheets</td><td>Classify data with filters and tables</td><td>https://sheets.google.com</td></tr><tr><td>Quick, Draw!</td><td>See how an AI classifies your drawings</td><td>https://quickdraw.withgoogle.com</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<ul><li>Regression predicts numbers; classification predicts categories.</li><li>Classification is trained with labelled data.</li><li>The decision boundary separates the classes, as the trend line separates trends.</li><li>Accuracy alone deceives when there are rare classes: look at the real hits.</li></ul>
+<p>In the next level, let&#39;s get our hands dirty: we will use Teachable Machine and Machine Learning for Kids to train our first models with photos, sounds and texts.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-16/nivel-16-EN.html">Previous level</a><span>Level 17</span><a rel="next" href="../nivel-18/nivel-18-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Open educational material. It is not a certification.</span><a href="nivel-17-EN.html" download>Level 17 · HTML</a></footer>
+
+</body>
+</html>

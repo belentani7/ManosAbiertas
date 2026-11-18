@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Until now we have edited videos with programs that have windows and buttons (CapCut, Canva). There is another way, more technical but very powerful: using the command line with FFmpeg. It is like the difference between o">
+  <meta name="color-scheme" content="light">
+  <title>Module 4: Content Generation — Level 17 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m04-generacion-contenido">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 4: Content Generation</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html" aria-current="page">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 4: Content Generation</p>
+        <h1>Module 4: Content Generation</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-17-ES.html" lang="es">Español</a><a href="nivel-17-PT.html" lang="pt">Português</a><a href="nivel-17-CA.html" lang="ca">Català</a><a href="nivel-17-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Branch</h3>
+<h3>Estimated time: 4 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand what a production pipeline is: the steps in order to make a video.</li><li>Get to know FFmpeg, a free tool that joins audio and video.</li><li>Combine Piper (voice) and FFmpeg (joining) in a complete workflow.</li><li>Create a video with narrated voice and subtitles using open-source tools.</li><li>Repeat the process for other videos quickly.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple explanation</th></tr></thead><tbody><tr><td>Production pipeline</td><td>The list of steps in order to create something, like a recipe.</td></tr><tr><td>FFmpeg</td><td>A free program that mixes, cuts and converts audio and video.</td></tr><tr><td>Workflow</td><td>The fixed order in which we do the tasks so none is forgotten.</td></tr><tr><td>Command</td><td>A written order we give to the program to do something.</td></tr><tr><td>Command line</td><td>The dark window where orders are written to the program.</td></tr><tr><td>Automation</td><td>That the computer does the repetitive steps for us.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>Until now we have edited videos with programs that have windows and buttons (CapCut, Canva). There is another way, more technical but very powerful: using the command line with FFmpeg. It is like the difference between ordering in a restaurant or cooking ourselves: it takes more to learn, but we can repeat the recipe whenever we want.</p>
+<p>FFmpeg is a free and open program that has been helping mix, cut and convert audio and video for years. It works with &quot;commands&quot;: written orders. For example, a command can join an audio file (Piper&#39;s voice) with an image or video file to create a final video. All without windows, just text.</p>
+<p>The command line is scary at first, but it is like learning to use the new dishwasher: by the third day we do it without thinking. We write an order, press the key to run it and the program works. The key is to copy the commands carefully, without mistakes, like copying a recipe.</p>
+<p>Our production pipeline with open tools has clear steps. First we write the script (we saw that in level 15). Second, we generate the voice with Piper (level 10). Third, we create or choose the images. Fourth, we use FFmpeg to join the voice with the images and create the video. Fifth, we add the subtitles (level 13). Six simple steps that, in order, produce a complete video.</p>
+<p>The FFmpeg command is a sentence with parts: the program (ffmpeg), the input (the audio file and the image file), the orders (how long it lasts, what format) and the output (the name of the new video). It is like giving kitchen instructions: &quot;take the rice, add water, cook ten minutes, serve&quot;.</p>
+<p>A great advantage of this pipeline is automation. Once we have the command that works, we save it in a document and only change the file names for each video. The computer does the repetitive work; we bring the idea and the review. It is like bread dough: the same recipe, a thousand loaves.</p>
+<p>And subtitles? FFmpeg can also embed them in the video. We give it the video and the SRT file (level 13) and it draws them on top at the exact moment. So the final video already carries its text. The whole process, from start to finish, with free programs and at no cost.</p>
+<p>The review is still human. The computer joins the files, but we check that the voice sounds good, that the images are the right ones and that the subtitles say what is heard. The machine speeds things up; the judgement is ours. Like in sewing: the machine stitches, but the good eye decides.</p>
+<p>This way of working also has limits. If we need complicated effects or many fine cuts, windowed programs are more comfortable. The command line shines when we repeat the same type of video many times: recipe videos, greetings, club newsletters. Knowing both ways makes us freer.</p>
+<p>Patience is important. The first commands will fail or come out odd. No problem: it is fixed and tried again. Learning something new always has that first step. And when the video comes out well for the first time, the satisfaction is huge: we have mastered a tool of the &quot;experts&quot;.</p>
+<p>By the end of this level, we will know how to create a complete video with Piper&#39;s voice and subtitles using FFmpeg and other free tools, and repeat the recipe whenever we want. Content production is already in our hands.</p>
+<h3>💡 Practical examples</h3>
+<ol><li><strong>The club newsletter.</strong> Pedro prepares a weekly video: he writes the script, generates the voice with Piper and joins the voice with the poster photo using FFmpeg. Every week, the same command.</li><li><strong>The birthday greetings.</strong> Rosa creates personalised congratulation videos for her family: each one with a different name, generated and joined automatically.</li><li><strong>Carmen&#39;s recipes.</strong> Carmen photographs each step and adds the narrated voice with Piper. FFmpeg joins photos and voice into a recipe video ready to share.</li></ol>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1: Write a short script of 4 sentences about a simple topic (for example, &quot;the benefits of walking&quot;). Step 2: Generate the voice with Piper and save the audio file (for example, voice.mp3). Step 3: Choose or create an image to accompany the text (for example, a photo of a park). Step 4: Open the command line (the terminal) of the computer. Step 5: Write the FFmpeg command to join the image and the audio: ffmpeg -loop 1 -i photo.jpg -i voice.mp3 -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4 Step 6: Press the key to run it (Enter) and wait for it to finish. Step 7: Open the resulting video and check that the image and the voice last the same time. Step 8: Add the subtitles with FFmpeg using your SRT file (ffmpeg -i video.mp4 -vf subtitles=subtitles.srt final_video.mp4) and share the result.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>What is a production pipeline? a) The steps in order to create something. b) A car factory. c) A drawing program.</li><li>What is FFmpeg? a) A free program that mixes, cuts and converts audio and video. b) A camera. c) A type of font.</li><li>What is a command? a) A written order to the program. b) A green button. c) A song.</li><li>What is the advantage of automation? a) That the computer repeats the repetitive steps. b) That nothing needs reviewing. c) That it cannot be used twice.</li><li>Who does the final review? a) The computer, alone. b) The person, with judgement. c) Nobody.</li></ol>
+<p>Answers: 1-a, 2-a, 3-a, 4-a, 5-b.</p>
+<h3>⚖️ Ethical dimension</h3>
+<ul><li>Free tools allow anyone to produce: share what you learn with your community.</li><li>Respect the licences: use free or own images, voices and music.</li><li>Do not use the technique to deceive: an edited video must be faithful to what happened.</li><li>If you publish the command or the recipe, explain the process clearly.</li><li>Remember privacy: do not generate videos with other people&#39;s data without permission.</li></ul>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it is for</th><th scope="col">Where to get it</th></tr></thead><tbody><tr><td>FFmpeg</td><td>Join, cut and convert audio and video</td><td>ffmpeg.org (free)</td></tr><tr><td>Piper</td><td>Generate the narrated voice</td><td>github.com/rhasspy/piper (free)</td></tr><tr><td>Whisper</td><td>Transcribe to create the subtitles</td><td>github.com/openai/whisper (free)</td></tr><tr><td>Audacity</td><td>Prepare and clean the audios</td><td>audacityteam.org (free)</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<p>With FFmpeg and Piper we have a complete production pipeline with free tools: script, voice, images, joining and subtitles. Commands are scary at first, but automation repeats the recipe whenever we want. In the next level we will master voice and dubbing to bring any text to life.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-16/nivel-16-EN.html">Previous level</a><span>Level 17</span><a rel="next" href="../nivel-18/nivel-18-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m04-generacion-contenido</span><span>Open educational material. It is not a certification.</span><a href="nivel-17-EN.html" download>Level 17 · HTML</a></footer>
+
+</body>
+</html>

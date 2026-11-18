@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="En el nivel anterior conectamos dos aplicaciones y vimos cómo trabajan juntas. Hoy nos centramos en una de las cosas más útiles que se pueden automatizar: las notificaciones. Un aviso automático es un mensaje que llega s">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 5: Automatización e Integración — Nivel 07 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <a class="brand" href="/es">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos los módulos"><a href="../../index-ES.html">Todos los módulos</a><a href="../index-ES.html">Niveles del módulo</a><a href="/es/curriculum/m05-automatizacion">Abrir visor de aprendizaje</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 5: Automatización e Integración</p>
+    <details open>
+      <summary>Niveles del módulo</summary>
+      <nav aria-label="Niveles del módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-ES.html">Nivel 00</a></li><li><a href="../nivel-01/nivel-01-ES.html">Nivel 01</a></li><li><a href="../nivel-02/nivel-02-ES.html">Nivel 02</a></li><li><a href="../nivel-03/nivel-03-ES.html">Nivel 03</a></li><li><a href="../nivel-04/nivel-04-ES.html">Nivel 04</a></li><li><a href="../nivel-05/nivel-05-ES.html">Nivel 05</a></li><li><a href="../nivel-06/nivel-06-ES.html">Nivel 06</a></li><li><a href="../nivel-07/nivel-07-ES.html" aria-current="page">Nivel 07</a></li><li><a href="../nivel-08/nivel-08-ES.html">Nivel 08</a></li><li><a href="../nivel-09/nivel-09-ES.html">Nivel 09</a></li><li><a href="../nivel-10/nivel-10-ES.html">Nivel 10</a></li><li><a href="../nivel-11/nivel-11-ES.html">Nivel 11</a></li><li><a href="../nivel-12/nivel-12-ES.html">Nivel 12</a></li><li><a href="../nivel-13/nivel-13-ES.html">Nivel 13</a></li><li><a href="../nivel-14/nivel-14-ES.html">Nivel 14</a></li><li><a href="../nivel-15/nivel-15-ES.html">Nivel 15</a></li><li><a href="../nivel-16/nivel-16-ES.html">Nivel 16</a></li><li><a href="../nivel-17/nivel-17-ES.html">Nivel 17</a></li><li><a href="../nivel-18/nivel-18-ES.html">Nivel 18</a></li><li><a href="../nivel-19/nivel-19-ES.html">Nivel 19</a></li><li><a href="../nivel-20/nivel-20-ES.html">Nivel 20</a></li><li><a href="../nivel-21/nivel-21-ES.html">Nivel 21</a></li><li><a href="../nivel-22/nivel-22-ES.html">Nivel 22</a></li><li><a href="../nivel-23/nivel-23-ES.html">Nivel 23</a></li><li><a href="../nivel-24/nivel-24-ES.html">Nivel 24</a></li><li><a href="../nivel-25/nivel-25-ES.html">Nivel 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 5: Automatización e Integración</p>
+        <h1>Módulo 5: Automatización e Integración</h1>
+        <div class="metadata">
+          <span>Español (ES)</span>
+          <span>Raíz</span>
+          <span>Tiempo estimado: 2 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-07-ES.html" aria-current="page" lang="es">Español</a><a href="nivel-07-PT.html" lang="pt">Português</a><a href="nivel-07-CA.html" lang="ca">Català</a><a href="nivel-07-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: ES · Dificultad: Raíz</h3>
+<h3>Tiempo estimado: 2 horas</h3>
+<h3>🎯 Objetivo del nivel</h3>
+<ul><li>Entender qué es una notificación automática y para qué sirve.</li><li>Crear avisos que llegan solos al teléfono o al correo cuando algo sucede.</li><li>Elegir qué eventos merecen un aviso y cuáles no.</li><li>Configurar un aviso de un dato importante (un pago, una fecha, una respuesta).</li><li>Evitar la sobrecarga de avisos que cansan y no ayudan.</li></ul>
+<h3>📖 Vocabulario esencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Término</th><th scope="col">Explicación en palabras simples</th></tr></thead><tbody><tr><td>Notificación</td><td>El aviso que aparece en la pantalla del teléfono o en el correo.</td></tr><tr><td>Aviso automático</td><td>Un mensaje que se envía solo cuando algo ocurre.</td></tr><tr><td>Evento</td><td>El suceso que pone en marcha el aviso: un pago, un mensaje, una fecha.</td></tr><tr><td>Sobrecarga de avisos</td><td>Demasiados avisos que llegan a la vez y agobian.</td></tr><tr><td>Canal</td><td>El camino por donde llega el aviso: teléfono, correo, mensajes.</td></tr><tr><td>Importante</td><td>Lo que de verdad merece nuestra atención.</td></tr></tbody></table></div>
+<h3>📚 Lección principal</h3>
+<p>En el nivel anterior conectamos dos aplicaciones y vimos cómo trabajan juntas. Hoy nos centramos en una de las cosas más útiles que se pueden automatizar: las notificaciones. Un aviso automático es un mensaje que llega solo cuando algo importante sucede, sin que nosotros tengamos que estar mirando la pantalla.</p>
+<p>Pensemos en la olla a presión de la cocina. Nosotros no estamos todo el tiempo mirando si ya está lista: la olla avisa con un pito cuando alcanza la presión. Ese pito es una notificación. La automatización del aviso nos deja hacer otras cosas mientras la olla trabaja.</p>
+<p>En el mundo digital es igual. Hay cientos de momentos que nos interesa conocer: cuando llega un correo importante, cuando alguien rellena un formulario, cuando se hace un pago, cuando se cumple una fecha. Si tuviéramos que estar mirando todo el rato, no haríamos otra cosa. El aviso automático mira por nosotros.</p>
+<p>La gracia está en elegir bien qué nos avisa. No todos los eventos merecen un pito. Lo importante, lo urgente o lo que cuesta dinero merece aviso. Lo que es ruido, no. Una buena notificación es como la llamada de un amigo que solo te llama cuando importa, no el que te llama por cualquier cosa.</p>
+<p>Cuando montamos una notificación en nuestra herramienta de integración, seguimos el mismo esquema de siempre. El disparador es el evento que queremos vigilar: &quot;nuevo correo de esta persona&quot;, &quot;fila nueva en esta hoja&quot;, &quot;pago realizado&quot;. La acción es el envío del aviso: un mensaje al teléfono, un correo, una notificación.</p>
+<p>¿Qué canal elegir? Depende del momento. Para algo urgente, un mensaje al teléfono (Telegram o WhatsApp). Para algo que puede esperar, un correo. Para un recordatorio de calendario, la propia aplicación del calendario. Elegir el canal es como elegir entre llamar por teléfono o mandar una carta: según la importancia, el camino.</p>
+<p>Muchas aplicaciones ya avisan solas sin necesidad de la herramienta de integración. El banco avisa de cada movimiento, el correo de cada mensaje nuevo. Lo que aporta la integración es avisar de cosas que ninguna aplicación vigila: cruzar datos, unir dos aplicaciones, avisar de condiciones concretas.</p>
+<p>Un ejemplo: queremos que nos avisen solo si la temperatura de la nevera sube de cierto nivel, o solo si llega un correo del banco con la palabra &quot;recibo&quot;. Eso es una condición. Aprenderemos condiciones a fondo en la banda Tallo; hoy vemos cómo encaja: la notificación puede depender de una condición elegida.</p>
+<p>La sobrecarga de avisos es un peligro real. Si activamos quince notificaciones, el teléfono suena todo el día y acabamos ignorándolas todas, incluso las importantes. Es como el pastor que grita &quot;¡lobo!&quot; tantas veces que nadie le hace caso. La regla de oro: pocos avisos y buenos.</p>
+<p>Cada vez que activemos un aviso, preguntémonos: &quot;¿de verdad necesito saber esto en el momento en que pasa?&quot;. Si la respuesta es dudosa, mejor no activarlo. Podemos empezar sin aviso y añadirlo más tarde si de verdad lo echamos de menos. Es más fácil añadir que quitar el ruido.</p>
+<p>También conviene poner apagones: hay momentos del día en que no queremos avisos. El teléfono ya tiene modos de silencio (nivel 4) y las herramientas permiten que los avisos solo se envíen en ciertas horas. Una notificación que llega de madrugada no es una ayuda, es una molestia.</p>
+<p>Al terminar este nivel sabrás montar avisos que te cuentan solo lo importante y, sobre todo, sabrás decir &quot;esto no merece un aviso&quot;. Ese criterio vale más que toda la tecnología junta.</p>
+<h3>💡 Ejemplos prácticos</h3>
+<ol><li><strong>El pago del alquiler.</strong> Cuando la hoja del club registra el pago de un socio, el tesorero recibe un mensaje en el teléfono: &quot;Pago recibido de [nombre]&quot;.</li><li><strong>La respuesta del formulario.</strong> Cuando alguien pide información en la web de la asociación, llega un aviso al correo de la coordinadora en menos de un minuto.</li><li><strong>El aviso de mantenimiento.</strong> La herramienta vigila la hoja de incidencias y avisa al encargado cuando alguien escribe &quot;urgente&quot; en la columna de estado.</li></ol>
+<h3>🛠️ Actividad guiada</h3>
+<p>Paso 1: Abre tu herramienta de integración (Make o Zapier) y entra en tu cuenta. Paso 2: Crea un escenario nuevo y elige el disparador. Por ejemplo: en Google Sheets, el evento &quot;Observar filas&quot; con tu hoja de pagos del club. Paso 3: Añade la acción: busca la aplicación de mensajes (Telegram) y elige &quot;Enviar mensaje&quot;. Paso 4: Conecta tu cuenta de Telegram si no está conectada (te pedirá un código breve). Paso 5: En el mensaje, escribe: &quot;Pago recibido de [campo nombre] por [campo importe]&quot;. La herramienta te ofrece los campos de la hoja para insertarlos. Paso 6: Pulsa &quot;Probar&quot;. La herramienta enviará un mensaje de prueba a tu Telegram. Ábrelo y míralo. Paso 7: Si quieres que solo avise cuando el importe sea mayor de cero, busca la opción &quot;Filtro&quot; o &quot;Condición&quot; y pon esa regla (o espera al nivel 10). Paso 8: Activa el escenario. Añade una fila de prueba a la hoja y comprueba que llega el mensaje. Borra luego la fila de prueba. Paso 9: Escribe en tu papel una lista de tres eventos que quieres vigilar y decide, para cada uno, si merece aviso o no.</p>
+<h3>✍️ Ejercicios de autoevaluación</h3>
+<ol><li>¿Qué es una notificación automática? a) Un mensaje que se envía solo cuando algo ocurre. b) Un mensaje que escribimos a mano. c) Un tipo de letra.</li><li>¿Qué eventos merecen un aviso? a) Todos, cuantos más mejor. b) Solo lo importante, urgente o que cuesta dinero. c) Ninguno.</li><li>¿Qué canal es mejor para algo urgente? a) Una carta en papel. b) Un mensaje al teléfono. c) Apuntarlo en la agenda.</li><li>¿Qué es la sobrecarga de avisos? a) Demasiados avisos que llegan y se ignoran todos. b) Un aviso que llega tarde. c) Un aviso en inglés.</li><li>¿Qué regla de oro aplicamos a las notificaciones? a) Cuantos más avisos, mejor. b) Pocos avisos y buenos. c) Ningún aviso nunca.</li></ol>
+<p>Respuestas: 1-a, 2-b, 3-b, 4-a, 5-b.</p>
+<h3>⚖️ Dimensión ética</h3>
+<ul><li>No mandes avisos automáticos a otras personas sin su consentimiento: cada aviso que llega a un teléfono ajeno interrumpe.</li><li>Los avisos sobre dinero o salud deben ser discretos: no escribas datos sensibles en el propio mensaje.</li><li>Respeta los horarios de descanso de los demás: programa los avisos para horas razonables.</li><li>Quita los avisos que ya no sirven: un aviso antiguo es ruido y confusión.</li><li>Tú eres dueño de tu atención: decide tú qué te avisa, no las aplicaciones.</li></ul>
+<h3>🔓 Herramientas abiertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Herramienta</th><th scope="col">Para qué sirve</th><th scope="col">Dónde conseguirla</th></tr></thead><tbody><tr><td>Telegram</td><td>Recibir avisos en el teléfono</td><td>telegram.org (gratuito)</td></tr><tr><td>Pushbullet</td><td>Avisos del ordenador al teléfono</td><td>pushbullet.com (gratuito)</td></tr><tr><td>ntfy</td><td>Avisos propios, sin depender de otras apps</td><td>ntfy.sh (gratuito y libre)</td></tr><tr><td>Google Alerts</td><td>Aviso cuando aparece algo nuevo en internet</td><td>google.com/alerts (gratuito)</td></tr></tbody></table></div>
+<h3>🧠 Resumen y puente</h3>
+<p>Las notificaciones automáticas nos avisan solo de lo importante, sin que estemos mirando. Elegimos el evento, el canal y el momento, y evitamos la sobrecarga de avisos. Ya conectamos aplicaciones y montamos avisos. En el siguiente nivel aprenderemos a usar plantillas de automatización: recetas ya hechas que podemos copiar y adaptar en minutos.</p></div>
+      <nav class="lesson-pagination" aria-label="Niveles del módulo"><a rel="prev" href="../nivel-06/nivel-06-ES.html">Nivel anterior</a><span>Nivel 07</span><a rel="next" href="../nivel-08/nivel-08-ES.html">Nivel siguiente</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Material educativo abierto. No constituye una certificación.</span><a href="nivel-07-ES.html" download>Nivel 07 · HTML</a></footer>
+
+</body>
+</html>

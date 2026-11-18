@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Al nivell anterior vam aprendre a predir números amb la regressió. Avui anem a l&#39;altra gran família de prediccions, potser la més visible a la vostra vida diària: la classificació. La classificació no prediu un número, s">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 3: IA Aplicada a les Dades — Nivell 17 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m03-ia-datos">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 3: IA Aplicada a les Dades</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html" aria-current="page">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 3: IA Aplicada a les Dades</p>
+        <h1>Mòdul 3: IA Aplicada a les Dades</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-17-ES.html" lang="es">Español</a><a href="nivel-17-PT.html" lang="pt">Português</a><a href="nivel-17-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-17-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Branca</h3>
+<h3>Temps estimat: 3 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre què és la classificació: la tècnica que prediu categories.</li><li>Veure la diferència entre predir números (regressió) i predir etiquetes (classificació).</li><li>Comprendre el paper de les dades etiquetades en l&#39;entrenament.</li><li>Aprendre a llegir la &quot;exactitud&quot; d&#39;un classificador i desconfiar de les trampes.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules simples</th></tr></thead><tbody><tr><td>Classificació</td><td>La tècnica de la IA que decideix a quin grup pertany alguna cosa.</td></tr><tr><td>Etiqueta</td><td>La resposta correcta que acompanya cada exemple en l&#39;entrenament.</td></tr><tr><td>Classe</td><td>Cadascun dels grups possibles: &quot;gat&quot;, &quot;spam&quot;, &quot;pluja&quot;.</td></tr><tr><td>Exactitud</td><td>El percentatge d&#39;encerts del classificador.</td></tr><tr><td>Frontera de decisió</td><td>La línia invisible que separa les classes al mapa de les dades.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Al nivell anterior vam aprendre a predir números amb la regressió. Avui anem a l&#39;altra gran família de prediccions, potser la més visible a la vostra vida diària: la classificació. La classificació no prediu un número, sinó una categoria. El correu: spam o no? La foto: gos o gat? El dia: pluja o sol? El missatge: amenaça o notícia? La classificació és l&#39;art de decidir en quina casella entra cada cosa.</p>
+<p>Comparem les dues tècniques perquè no es confonguin mai. La regressió respon a preguntes de &quot;quant?&quot;: quants gelats, quants euros, quants quilos? La classificació respon a preguntes de &quot;quin?&quot;: spam o normal, gos o gat, segur o fraudulent? Una et dona una mesura; l&#39;altra et dona una etiqueta. Si voleu saber quant costarà el bitllet, feu servir regressió. Si voleu saber si el missatge és perillós, feu servir classificació.</p>
+<p>Com aprèn una màquina a classificar? Amb dades etiquetades. Tornem al nen del nivell 15: li ensenyem 100 fotos, cadascuna amb la seva etiqueta (&quot;això és un gos&quot;, &quot;això és un gat&quot;). A l&#39;argot de la IA, aquestes 100 fotos són &quot;dades etiquetades&quot;, i les etiquetes són les respostes correctes. Sense etiquetes no hi ha classificació possible: la màquina no pot aprendre què és cada cosa si mai no li diem què és. Per això, cada exemple d&#39;entrenament és una parella: les dades (la foto) i l&#39;etiqueta (el que és).</p>
+<p>Una idea bonica per entendre la classificació és la &quot;frontera de decisió&quot;. Imagineu un mapa: en un eix, el pes de l&#39;animal; en un altre, la llargada de les orelles. Els gossos cauen en una zona del mapa i els gats en una altra. El classificador dibuixa una línia invisible que separa les dues zones, i quan arriba un animal nou, mira de quin costat de la línia està. Si cau al costat dels gossos, diu &quot;gos&quot;. Aquesta línia invisible és la frontera de decisió, l&#39;equivalent a la línia de tendència de la regressió, però separant grups.</p>
+<p>Com es mesura si un classificador funciona? Amb l&#39;&quot;exactitud&quot;: el percentatge de vegades que encerta. Si proveu el classificador amb 100 animals nous i encerta 92, la seva exactitud és del 92%. Sembla simple, però aquí és on els fabricants amaguen la trampa més gran. Imagineu-vos un detector de fraus en un banc on el 99% de les operacions són legítimes. Un sistema que sempre respongui &quot;legítima&quot;, sense mirar res, tindria una exactitud del 99%. Semblaria perfecte i seria inútil! Per això els professionals miren més coses que l&#39;exactitud: miren quants fraus reals captura i quants avisos falsos dispara.</p>
+<p>Una altra trampa famosa: la classe majoritària aixafa la minoritària. Si entreneu un classificador per detectar un defecte rar en unes peces, i el defecte només apareix en 1 de cada 1000 peces, el sistema aprèn a dir &quot;tot està bé&quot; i encerta el 99,9%. Aparentment genial; a la realitat no detecta res. La lliçó: quan una categoria és molt rara, un classificador que ignora la categoria rara &quot;sembla&quot; excel·lent. Mireu sempre quants casos rars ha detectat, no només el percentatge total.</p>
+<p>A la vida diària la classificació és a tot arreu i gairebé sempre sense que ho notem. El correu electrònic classifica el spam. El telèfon classifica la vostra veu en &quot;ordres&quot;. El banc classifica cada operació en &quot;normal&quot; o &quot;sospitosa&quot;. L&#39;hospital classifica les radiografies en &quot;neta&quot; o &quot;amb nòdul&quot;. La càmera classifica les vostres fotos en &quot;paisatges&quot; i &quot;persones&quot;. Cadascuna d&#39;aquestes decisions és una frontera de decisió traçada per una màquina entrenada amb milers d&#39;exemples etiquetats.</p>
+<p>Per practicar la classificació sense programar, hi ha eines gratuïtes i visuals. Una de molt famosa és &quot;Machine Learning for Kids&quot;, on es creen &quot;projectes&quot;, es pugen fotos o textos etiquetats i l&#39;eina entrena un model amb botons. Una altra és &quot;Teachable Machine&quot;, de Google, on es fan tres classes amb fotos de la càmera (per exemple, &quot;cap&quot;, &quot;paper&quot;, &quot;res&quot;) i el model aprèn a distingir-les en viu. Al nivell 18 les farem servir a fons. Avui només les coneixerem.</p>
+<p>Abans de acabar, una idea per encadenar amb el que ve: classificació i regressió es combinen en gairebé tots els sistemes reals. El navegador classifica la vostra ruta (&quot;trajecte normal o embussat&quot;) i després regressa el temps (&quot;hi arribareu en 23 minuts&quot;). El banc classifica l&#39;operació (&quot;fraudulenta o no&quot;) i després prediu quant s&#39;arrisca. Entendre les dues peces us dóna el mapa complet de com pensa la IA. Al proper nivell, mans a l&#39;obra: entrenareu els vostres primers models de classificació amb les vostres pròpies fotos i sons.</p>
+<h3>💡 Exemples pràctics</h3>
+<h4>Exemple 1: El correu spam</h4>
+<p>Un correu electrònic arriba amb &quot;GUANYEU UN PREMI, feu clic ja&quot;. El classificador de la vostra bústia el compara amb milions de correus etiquetats com a spam i decideix: spam. No llegeix el text: el classifica.</p>
+<h4>Exemple 2: Les fotos de l&#39;àvia</h4>
+<p>L&#39;àvia vol una foto només dels néts. L&#39;app classifica cada foto de la seva galeria en &quot;persona&quot; o &quot;no persona&quot;, i de pas identifica cada nét. Tot això és classificació entrenada amb fotos etiquetades.</p>
+<h4>Exemple 3: La fruita del mercat</h4>
+<p>Un pagès fotografia pomes i peres amb la càmera del mòbil. Un classificador entrenat amb milers de fruites etiquetades li diu a l&#39;instant si és poma o pera, i així s&#39;estalvia classificar-les a mà.</p>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1. Obriu el navegador i entreu a https://teachablemachine.withgoogle.com (és gratuït i no demana compte). Pas 2. Premeu &quot;Comença&quot; i trieu &quot;Projecte d&#39;imatges&quot;. Pas 3. Veureu tres classes: Classe 1, Classe 2 i Classe 3. Anoteu cada classe amb un objecte de casa vostra (per exemple, &quot;tassa&quot;, &quot;comandament&quot;, &quot;res&quot;). Pas 4. Activeu la càmera i captureu 20 fotos de la tassa mantenint el botó &quot;Mantén premut per enregistrar&quot; mentre la moveu. Pas 5. Captureu 20 fotos del comandament i 20 del fons sense objecte (la classe &quot;res&quot;). Pas 6. Premeu &quot;Entrena el model&quot; i espereu que acabi (uns segons). Pas 7. A la finestra de &quot;Previsualització&quot;, mostreu la tassa a la càmera: la classifica bé? Pas 8. Proveu el comandament i després la classe &quot;res&quot;. Anoteu quantes vegades encerta de cada deu. Pas 9. Ara proveu un objecte que NO heu entrenat (per exemple, la vostra mà): vegeu com la IA es confon. Això és normal: no va aprendre aquesta classe. Pas 10. Escriviu en un paper: &quot;el meu classificador encerta X de cada 10 vegades&quot; i deseu el projecte. Heu entrenat el vostre primer model de classificació.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Quina diferència hi ha entre regressió i classificació?</li><li>Què són les dades etiquetades?</li><li>Què és la frontera de decisió?</li><li>Per què l&#39;exactitud pot enganyar quan una classe és molt rara?</li><li>Digueu dues eines gratuïtes per entrenar classificadors sense programar.</li></ol>
+<p>Respostes: 1. La regressió prediu números (&quot;quant?&quot;) i la classificació prediu categories (&quot;quin?&quot;). 2. Exemples que porten juntament amb les dades la seva resposta correcta (l&#39;etiqueta). 3. La línia invisible que separa les classes al mapa de les dades. 4. Perquè un sistema que sempre diu la classe majoritària encerta gairebé sempre sense detectar res. 5. Machine Learning for Kids i Teachable Machine.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<p>Els classificadors s&#39;equivoquen, i els seus errors no pesen tots igual. Confondre un correu amb spam molesta; confondre una radiografia neta amb una amb nòdul espanta una persona i pot alterar-li la vida. Els errors de classificació que afecten persones sempre els han de revisar persones. I hi ha un perill ètic enorme: si les etiquetes amb què s&#39;ha entrenat contenen prejudicis (per exemple, &quot;aquestes fotos són de delinqüents&quot;), la màquina els hereta i els repeteix a gran escala. Entreneu els vostres classificadors amb etiquetes justes, i no deixeu mai que decideixin sols sobre vides humanes.</p>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Què és i per a què serveix</th><th scope="col">On trobar-la</th></tr></thead><tbody><tr><td>Teachable Machine</td><td>Entrenar classificadors amb fotos i sons sense programar</td><td>https://teachablemachine.withgoogle.com</td></tr><tr><td>Machine Learning for Kids</td><td>Projectes de classificació visuals per aprendre</td><td>https://machinelearningforkids.co.uk</td></tr><tr><td>Google Sheets</td><td>Classificar dades amb filtres i taules</td><td>https://sheets.google.com</td></tr><tr><td>Quick, Draw!</td><td>Veure com una IA classifica els vostres dibuixos</td><td>https://quickdraw.withgoogle.com</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<ul><li>La regressió prediu números; la classificació prediu categories.</li><li>La classificació s&#39;entrena amb dades etiquetades.</li><li>La frontera de decisió separa les classes, com la línia de tendència separa tendències.</li><li>L&#39;exactitud sola enganya quan hi ha classes rares: mireu els encerts reals.</li></ul>
+<p>Al nivell següent, mans a l&#39;obra: farem servir Teachable Machine i Machine Learning for Kids per entrenar els nostres primers models amb fotos, sons i textos.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-16/nivel-16-CA.html">Nivell anterior</a><span>Nivell 17</span><a rel="next" href="../nivel-18/nivel-18-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-17-CA.html" download>Nivell 17 · HTML</a></footer>
+
+</body>
+</html>

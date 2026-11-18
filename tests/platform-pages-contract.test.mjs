@@ -31,7 +31,7 @@ test('seventeen high-priority pages have unique content, real destinations and a
   const bodies = [];
   for (const page of pages) {
     const html = read('platform-pages/' + page);
-    assert.match(html, /<html lang="es">/);
+    assert.match(html, /<html\b[^>]*\blang="es"/);
     assert.match(html, /<meta name="description"/);
     assert.match(html, /href="#contenido"/);
     assert.match(html, /<main id="contenido">/);

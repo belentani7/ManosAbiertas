@@ -6,9 +6,11 @@ const bundled = readFileSync(new URL('../public/index.html', import.meta.url), '
 test('GitHub Pages and Next.js publish the same front page', () => {
   assert.equal(root, bundled);
 });
-test('front page is a hero-only experience with native navigational links', () => {
+test('front page is a hero plus an accessible WebGL lab with native navigational links', () => {
   assert.equal((root.match(/<main\b/g) ?? []).length, 1);
-  assert.equal((root.match(/<section\b/g) ?? []).length, 1);
+  assert.equal((root.match(/<section\b/g) ?? []).length, 2);
+  assert.equal((root.match(/<section\s+class="hero"/g) ?? []).length, 1);
+  assert.equal((root.match(/<section\s+class="webgl-lab"/g) ?? []).length, 1);
   assert.equal((root.match(/<h1\b/g) ?? []).length, 1);
   assert.match(root, /aria-label="Navegación principal"/);
   assert.match(root, /id="contenido"/);

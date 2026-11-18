@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Al nivell anterior vam connectar dues aplicacions i vam veure com treballen juntes. Avui ens centrem en una de les coses més útils que es poden automatitzar: les notificacions. Un avís automàtic és un missatge que arriba">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 5: Automatització i Integració — Nivell 07 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m05-automatizacion">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 5: Automatització i Integració</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html" aria-current="page">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 5: Automatització i Integració</p>
+        <h1>Mòdul 5: Automatització i Integració</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-07-ES.html" lang="es">Español</a><a href="nivel-07-PT.html" lang="pt">Português</a><a href="nivel-07-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-07-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Arrel</h3>
+<h3>Temps estimat: 2 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre què és una notificació automàtica i per a què serveix.</li><li>Crear avisos que arriben sols al telèfon o al correu quan passa alguna cosa.</li><li>Triar quins esdeveniments mereixen un avís i quins no.</li><li>Configurar un avís d&#39;una dada important (un pagament, una data, una resposta).</li><li>Evitar la sobrecàrrega d&#39;avisos que cansen i no ajuden.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules senzilles</th></tr></thead><tbody><tr><td>Notificació</td><td>L&#39;avís que apareix a la pantalla del telèfon o al correu.</td></tr><tr><td>Avís automàtic</td><td>Un missatge que s&#39;envia sol quan passa alguna cosa.</td></tr><tr><td>Esdeveniment</td><td>El fet que posa en marxa l&#39;avís: un pagament, un missatge, una data.</td></tr><tr><td>Sobrecàrrega d&#39;avisos</td><td>Massa avisos que arriben alhora i aclaparen.</td></tr><tr><td>Canal</td><td>El camí per on arriba l&#39;avís: telèfon, correu, missatges.</td></tr><tr><td>Important</td><td>El que de veritat mereix la nostra atenció.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Al nivell anterior vam connectar dues aplicacions i vam veure com treballen juntes. Avui ens centrem en una de les coses més útils que es poden automatitzar: les notificacions. Un avís automàtic és un missatge que arriba sol quan passa alguna cosa important, sense que hàgim d&#39;estar mirant la pantalla.</p>
+<p>Pensem en l&#39;olla de pressió de la cuina. Nosaltres no estem tot el temps mirant si ja està a punt: l&#39;olla avisa amb un xiulet quan assoleix la pressió. Aquest xiulet és una notificació. L&#39;automatització de l&#39;avís ens deixa fer altres coses mentre l&#39;olla treballa.</p>
+<p>Al món digital és igual. Hi ha centenars de moments que ens interessa conèixer: quan arriba un correu important, quan algú omple un formulari, quan es fa un pagament, quan es compleix una data. Si haguéssim d&#39;estar mirant tot l&#39;estona, no faríem res més. L&#39;avís automàtic mira per nosaltres.</p>
+<p>La gràcia està a triar bé què ens avisa. No tots els esdeveniments mereixen un xiulet. L&#39;important, l&#39;urgent o el que costa diners mereix avís. El que és soroll, no. Una bona notificació és com la trucada d&#39;un amic que només truca quan importa, no el que truca per qualsevol cosa.</p>
+<p>Quan muntem una notificació a la nostra eina d&#39;integració, seguim el mateix esquema de sempre. El disparador és l&#39;esdeveniment que volem vigilar: &quot;correu nou d&#39;aquesta persona&quot;, &quot;fila nova en aquest full&quot;, &quot;pagament fet&quot;. L&#39;acció és l&#39;enviament de l&#39;avís: un missatge al telèfon, un correu, una notificació.</p>
+<p>Quin canal triar? Depèn del moment. Per a alguna cosa urgent, un missatge al telèfon (Telegram o WhatsApp). Per a alguna cosa que pot esperar, un correu. Per a un recordatori de calendari, la mateixa aplicació del calendari. Triar el canal és com triar entre trucar per telèfon o enviar una carta: segons la importància, el camí.</p>
+<p>Moltes aplicacions ja avisen soles sense necessitat de l&#39;eina d&#39;integració. El banc avisa de cada moviment, el correu de cada missatge nou. El que aporta la integració és avisar de coses que cap aplicació vigila: creuar dades, unir dues aplicacions, avisar de condicions concretes.</p>
+<p>Un exemple: volem que ens avisin només si la temperatura de la nevera puja per sobre de cert nivell, o només si arriba un correu del banc amb la paraula &quot;rebut&quot;. Això és una condició. Aprendrem condicions a fons a la banda Tija; avui veiem com encaixa: la notificació pot dependre d&#39;una condició triada.</p>
+<p>La sobrecàrrega d&#39;avisos és un perill real. Si activem quinze notificacions, el telèfon sona tot el dia i acabem ignorant-les totes, fins i tot les importants. És com el pastor que crida &quot;llop!&quot; tantes vegades que ningú no li fa cas. La regla d&#39;or: pocs avisos i bons.</p>
+<p>Cada vegada que activem un avís, preguntem-nos: &quot;de veritat necessito saber-ho en el moment que passa?&quot;. Si la resposta és dubtosa, millor no activar-lo. Podem començar sense avís i afegir-lo més tard si de veritat el trobem a faltar. És més fàcil afegir que treure el soroll.</p>
+<p>També convé posar apagades: hi ha moments del dia en què no volem avisos. El telèfon ja té modes de silenci (nivell 4) i les eines permeten que els avisos només s&#39;enviïn en certes hores. Una notificació que arriba de matinada no és una ajuda, és una molèstia.</p>
+<p>En acabar aquest nivell sabràs muntar avisos que et conten només el que és important i, sobretot, sabràs dir &quot;això no mereix un avís&quot;. Aquest criteri val més que tota la tecnologia junta.</p>
+<h3>💡 Exemples pràctics</h3>
+<ol><li><strong>El pagament del lloguer.</strong> Quan el full del club registra el pagament d&#39;un soci, el tresorer rep un missatge al telèfon: &quot;Pagament rebut de [nom]&quot;.</li><li><strong>La resposta del formulari.</strong> Quan algú demana informació a la web de l&#39;associació, arriba un avís al correu de la coordinadora en menys d&#39;un minut.</li><li><strong>L&#39;avís de manteniment.</strong> L&#39;eina vigila el full d&#39;incidències i avisa l&#39;encarregat quan algú escriu &quot;urgent&quot; a la columna d&#39;estat.</li></ol>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1: Obre la teva eina d&#39;integració (Make o Zapier) i entra al teu compte. Pas 2: Crea un escenari nou i tria el disparador. Per exemple: a Google Sheets, l&#39;esdeveniment &quot;Observa files&quot; amb el teu full de pagaments del club. Pas 3: Afegeix l&#39;acció: busca l&#39;aplicació de missatges (Telegram) i tria &quot;Envia missatge&quot;. Pas 4: Connecta el teu compte de Telegram si no està connectat (et demanarà un codi breu). Pas 5: Al missatge, escriu: &quot;Pagament rebut de [camp nom] per [camp import]&quot;. L&#39;eina t&#39;ofereix els camps del full per inserir-los. Pas 6: Prem &quot;Prova&quot;. L&#39;eina enviarà un missatge de prova al teu Telegram. Obre&#39;l i mira&#39;l. Pas 7: Si vols que només avisi quan l&#39;import sigui més gran que zero, busca l&#39;opció &quot;Filtre&quot; o &quot;Condició&quot; i posa aquesta regla (o espera al nivell 10). Pas 8: Activa l&#39;escenari. Afegeix una fila de prova al full i comprova que arriba el missatge. Esborra després la fila de prova. Pas 9: Escriu al teu paper una llista de tres esdeveniments que vols vigilar i decideix, per a cada un, si mereix avís o no.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Què és una notificació automàtica? a) Un missatge que s&#39;envia sol quan passa alguna cosa. b) Un missatge que escrivim a mà. c) Un tipus de lletra.</li><li>Quins esdeveniments mereixen un avís? a) Tots, com més millor. b) Només el que és important, urgent o costa diners. c) Cap.</li><li>Quin canal és millor per a una cosa urgent? a) Una carta en paper. b) Un missatge al telèfon. c) Apuntar-ho a l&#39;agenda.</li><li>Què és la sobrecàrrega d&#39;avisos? a) Massa avisos que arriben i s&#39;ignoren tots. b) Un avís que arriba tard. c) Un avís en anglès.</li><li>Quina regla d&#39;or apliquem a les notificacions? a) Com més avisos, millor. b) Pocs avisos i bons. c) Cap avís mai.</li></ol>
+<p>Respostes: 1-a, 2-b, 3-b, 4-a, 5-b.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<ul><li>No enviïs avisos automàtics a altres persones sense el seu consentiment: cada avís que arriba a un telèfon aliè interromp.</li><li>Els avisos sobre diners o salut han de ser discrets: no escriguis dades sensibles al mateix missatge.</li><li>Respecta els horaris de descans dels altres: programa els avisos per a hores raonables.</li><li>Treu els avisos que ja no serveixen: un avís antic és soroll i confusió.</li><li>Ets amo de la teva atenció: decideix tu què t&#39;avisa, no les aplicacions.</li></ul>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Per a què serveix</th><th scope="col">On aconseguir-la</th></tr></thead><tbody><tr><td>Telegram</td><td>Rebre avisos al telèfon</td><td>telegram.org (gratuït)</td></tr><tr><td>Pushbullet</td><td>Avisos de l&#39;ordinador al telèfon</td><td>pushbullet.com (gratuït)</td></tr><tr><td>ntfy</td><td>Avisos propis, sense dependre d&#39;altres apps</td><td>ntfy.sh (gratuït i lliure)</td></tr><tr><td>Google Alerts</td><td>Avís quan apareix alguna cosa nova a internet</td><td>google.com/alerts (gratuït)</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<p>Les notificacions automàtiques ens avisen només del que és important, sense que hi estiguem mirant. Triem l&#39;esdeveniment, el canal i el moment, i evitem la sobrecàrrega d&#39;avisos. Ja hem connectat aplicacions i muntat avisos. Al següent nivell aprendrem a fer servir plantilles d&#39;automatització: receptes ja fetes que podem copiar i adaptar en minuts.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-06/nivel-06-CA.html">Nivell anterior</a><span>Nivell 07</span><a rel="next" href="../nivel-08/nivel-08-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-07-CA.html" download>Nivell 07 · HTML</a></footer>
+
+</body>
+</html>

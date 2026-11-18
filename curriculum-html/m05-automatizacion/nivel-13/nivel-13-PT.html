@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Hoje vamos falar de algo que ninguém menciona no início e que todos encontram logo no primeiro dia: os erros. As automatizações falham. Enganam-se, partem-se, detêm-se. E isso não é um problema nosso: faz parte da vida d">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 5: Automatização e Integração — Nível 13 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar para o conteúdo</a>
+<header class="site-header">
+  <a class="brand" href="/pt">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos os módulos"><a href="../../index-PT.html">Todos os módulos</a><a href="../index-PT.html">Níveis do módulo</a><a href="/pt/curriculum/m05-automatizacion">Abrir o visualizador de aprendizagem</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 5: Automatização e Integração</p>
+    <details open>
+      <summary>Níveis do módulo</summary>
+      <nav aria-label="Níveis do módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-PT.html">Nível 00</a></li><li><a href="../nivel-01/nivel-01-PT.html">Nível 01</a></li><li><a href="../nivel-02/nivel-02-PT.html">Nível 02</a></li><li><a href="../nivel-03/nivel-03-PT.html">Nível 03</a></li><li><a href="../nivel-04/nivel-04-PT.html">Nível 04</a></li><li><a href="../nivel-05/nivel-05-PT.html">Nível 05</a></li><li><a href="../nivel-06/nivel-06-PT.html">Nível 06</a></li><li><a href="../nivel-07/nivel-07-PT.html">Nível 07</a></li><li><a href="../nivel-08/nivel-08-PT.html">Nível 08</a></li><li><a href="../nivel-09/nivel-09-PT.html">Nível 09</a></li><li><a href="../nivel-10/nivel-10-PT.html">Nível 10</a></li><li><a href="../nivel-11/nivel-11-PT.html">Nível 11</a></li><li><a href="../nivel-12/nivel-12-PT.html">Nível 12</a></li><li><a href="../nivel-13/nivel-13-PT.html" aria-current="page">Nível 13</a></li><li><a href="../nivel-14/nivel-14-PT.html">Nível 14</a></li><li><a href="../nivel-15/nivel-15-PT.html">Nível 15</a></li><li><a href="../nivel-16/nivel-16-PT.html">Nível 16</a></li><li><a href="../nivel-17/nivel-17-PT.html">Nível 17</a></li><li><a href="../nivel-18/nivel-18-PT.html">Nível 18</a></li><li><a href="../nivel-19/nivel-19-PT.html">Nível 19</a></li><li><a href="../nivel-20/nivel-20-PT.html">Nível 20</a></li><li><a href="../nivel-21/nivel-21-PT.html">Nível 21</a></li><li><a href="../nivel-22/nivel-22-PT.html">Nível 22</a></li><li><a href="../nivel-23/nivel-23-PT.html">Nível 23</a></li><li><a href="../nivel-24/nivel-24-PT.html">Nível 24</a></li><li><a href="../nivel-25/nivel-25-PT.html">Nível 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 5: Automatização e Integração</p>
+        <h1>Módulo 5: Automatização e Integração</h1>
+        <div class="metadata">
+          <span>Português (PT)</span>
+          
+          <span>Tempo estimado: 2 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma do material"><span>Idioma do material:</span><a href="nivel-13-ES.html" lang="es">Español</a><a href="nivel-13-PT.html" aria-current="page" lang="pt">Português</a><a href="nivel-13-CA.html" lang="ca">Català</a><a href="nivel-13-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: PT · Dificuldade: Haste</h3>
+<h3>Tempo estimado: 2 horas</h3>
+<h3>🎯 Objetivo do nível</h3>
+<ul><li>Entender que as automatizações podem falhar e que isso é normal.</li><li>Conhecer os tipos de erros mais comuns num fluxo.</li><li>Aprender a ler uma mensagem de erro sem assustar.</li><li>Acrescentar passos que avisem quando algo falha.</li><li>Montar um fluxo que continue ou se detenha conforme o erro.</li></ul>
+<h3>📖 Vocabulário essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Termo</th><th scope="col">Explicação em palavras simples</th></tr></thead><tbody><tr><td>Erro</td><td>Uma falha: algo não saiu como esperávamos.</td></tr><tr><td>Mensagem de erro</td><td>O aviso que a ferramenta mostra para explicar a falha.</td></tr><tr><td>Provar de novo</td><td>Voltar a executar o passo que falhou.</td></tr><tr><td>Exceção</td><td>O caso especial que não cumpre o habitual e faz o fluxo falhar.</td></tr><tr><td>Registo</td><td>O histórico onde ficam anotados os passos e os erros.</td></tr><tr><td>Aviso de falha</td><td>Uma notificação que se envia quando algo se parte.</td></tr></tbody></table></div>
+<h3>📚 Lição principal</h3>
+<p>Hoje vamos falar de algo que ninguém menciona no início e que todos encontram logo no primeiro dia: os erros. As automatizações falham. Enganam-se, partem-se, detêm-se. E isso não é um problema nosso: faz parte da vida de toda a máquina. O importante não é que não falhe, mas saber o que fazer quando falha.</p>
+<p>Pensemos na cozinha. Mesmo que sigamos a receita à risca, às vezes o pudim talha-se, o forno apaga-se ou falta um ingrediente. Um bom cozinheiro não deita fora os pratos: sabe por que aconteceu e arranja-o. Com as automatizações é igual. O erro é informação, não um castigo.</p>
+<p>A primeira habilidade é ler a mensagem de erro. As ferramentas de integração guardam um histórico ou registo de cada execução: quem disparou o fluxo, que passos se fizeram e onde parou. Quando algo falha, a mensagem de erro costuma dizer a causa: &quot;campo vazio&quot;, &quot;aplicação não ligada&quot;, &quot;dado incorreto&quot;. É como o diagnóstico do médico: para curar, primeiro é preciso saber o que dói.</p>
+<p>Os erros mais comuns são poucos e aprendem-se rápido. Um: os campos vazios, quando chega um dado por preencher. Dois: as contas desligadas, quando a autorização expirou ou foi retirada. Três: os dados com formato diferente, quando esperávamos um número e chega um texto. Quatro: os limites de uso, quando o plano gratuito se esgota.</p>
+<p>Para cada erro há uma solução. Se o campo está vazio, usamos uma condição (nível 10) para não continuar quando falta o dado. Se a conta se desligou, voltamos a ligar. Se o formato é diferente, revemos a folha ou a aplicação de origem. Se se esgotou o limite, esperamos pelo próximo mês ou usamos menos o fluxo.</p>
+<p>Mas a verdadeira mestria está noutra coisa: em que o fluxo saiba avisar quando falha. Em vez de falhar em silêncio, a nossa automatização pode enviar-nos uma mensagem: &quot;o passo de enviar correio falhou&quot;. Assim, mesmo que se parta, nós sabemos e arranjamo-lo. Uma falha que avisa é uma falha a meio.</p>
+<p>As ferramentas permitem acrescentar um passo especial, às vezes chamado &quot;controlo de erros&quot; ou &quot;gestão de erros&quot;, que se executa só quando algo falha. Nesse passo podemos enviar o aviso, guardar o dado que falhou ou deter o fluxo com calma. É como ter um detetor de fumo: não apaga o fogo, mas avisa a tempo.</p>
+<p>Também podemos decidir se uma falha detém tudo ou se salta. Às vezes o melhor é deter: se o pagamento não é processado, que não continue. Outras vezes o melhor é continuar: se o envio da mensagem falha, que o resto siga e depois revemos. Cada fluxo escolhe a sua atitude conforme a importância de cada passo.</p>
+<p>Convém rever o registo de vez em quando, como quem olha as faturas do mês. O registo conta-nos o que aconteceu na nossa automatização: quantas vezes se executou, quando falhou e porquê. Ler o registo é a forma de cuidar da automatização, de a manter saudável. É a higiene do ofício.</p>
+<p>Um erro que se repete muito é sinal de que o fluxo está mal desenhado ou de que a origem dos dados mudou. Não o tapemos com remendos: olhemos a causa e arranjemo-la pela raiz. É como a gota de água: arranja-se o telhado, não se põe um balde todas as vezes.</p>
+<p>Quando provas uma automatização e ela falha, respira: é o melhor momento para aprender. Cada falha que encontras e entendes torna-te mais dono do teu sistema. O medo dos erros desaparece quando os conhecemos. E conhecê-los é precisamente o que estamos a fazer hoje.</p>
+<p>Ao terminar este nível saberás ler uma mensagem de erro, saber o que fazer com as falhas típicas e montar avisos que te contem quando algo se parte. A tua automatização já não é frágil: está vigiada e cuidada.</p>
+<h3>💡 Exemplos práticos</h3>
+<ol><li><strong>A conta desligada.</strong> O fluxo do clube deixou de funcionar porque o Google fez expirar a autorização. O aviso de falha chegou à coordenadora, que voltou a ligar em um minuto.</li><li><strong>A linha vazia.</strong> Chegou um sócio sem correio. A condição do fluxo (nível 10) parou-o antes de enviar, e o registo guardou o caso para rever à mão.</li><li><strong>O limite de IA.</strong> O plano gratuito da IA esgotou-se num mês. O fluxo avisou e continuou a trabalhar com o resumo manual até ao mês seguinte.</li></ol>
+<h3>🛠️ Atividade guiada</h3>
+<p>Passo 1: Abre a tua ferramenta de integração e escolhe um cenário que já tenhas criado (por exemplo, o de incidências ou o de resumos). Passo 2: Entra no registo ou histórico do cenário (costuma ser o separador &quot;Histórico&quot;, &quot;History&quot; ou &quot;Execuções&quot;). Olha as últimas execuções. Passo 3: Procura uma execução que tenha falhado ou faz falhar uma de propósito: desliga a conta do Telegram ou deixa um campo vazio na folha. Passo 4: Lê a mensagem de erro. Escreve-a no teu papel e anota o que achas que significa. Verifica com a guia deste nível qual é o erro típico. Passo 5: Corrige o erro: volta a ligar a conta ou completa o campo. Passo 6: Acrescenta o controlo de erros: procura na configuração do cenário a opção &quot;Controlo de erros&quot;, &quot;Error handling&quot; ou &quot;Gestão de erros&quot;. Passo 7: Configura o aviso: quando falhar, envia uma mensagem para o Telegram com o texto &quot;Falhou o cenário [nome]: [mensagem de erro]&quot;. Passo 8: Prova a falhar outra vez e verifica que chega o aviso. Passo 9: Ativa o cenário e habitua-te a rever o registo uma vez por semana.</p>
+<h3>✍️ Exercícios de autoavaliação</h3>
+<ol><li>É normal que uma automatização falhe? a) Não, se estiver bem feita nunca falha. b) Sim, falhar faz parte da vida de toda a máquina. c) Só as baratas.</li><li>O que fazemos primeiro perante um erro? a) Apagar o cenário. b) Ler a mensagem de erro e olhar o registo. c) Comprar outro computador.</li><li>Qual é um erro típico? a) Um campo vazio. b) Uma mudança de letra. c) A hora do pequeno-almoço.</li><li>Que faz o controlo de erros? a) Evita que falhe tudo. b) Executa-se quando algo falha, para avisar ou deter com calma. c) Apaga os erros do passado.</li><li>Para que serve rever o registo? a) Para cuidar da automatização e saber o que aconteceu. b) Para preencher o tempo. c) Para que fique bonito.</li></ol>
+<p>Respostas: 1-b, 2-b, 3-a, 4-b, 5-a.</p>
+<h3>⚖️ Dimensão ética</h3>
+<ul><li>Uma falha silenciosa é perigosa: se uma automatização que processa dados de pessoas falha sem avisar, perde-se informação. O aviso é responsabilidade.</li><li>Se o fluxo falhar ao tratar dados pessoais, avisa de imediato e não o oculte: a transparência protege as pessoas.</li><li>Não uses o controlo de erros para &quot;tapar&quot; um desenho mal feito: arranja a causa, não só o alerta.</li><li>Os avisos de falha devem chegar à pessoa adequada, não ao correio de toda a gente.</li><li>Perante um erro que afeta dinheiro ou saúde, detém a automatização e revê à mão antes de continuar.</li></ul>
+<h3>🔓 Ferramentas abertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Ferramenta</th><th scope="col">Para que serve</th><th scope="col">Onde conseguir</th></tr></thead><tbody><tr><td>Make (controlo de erros)</td><td>Avisar quando falha um passo</td><td>make.com</td></tr><tr><td>Zapier (filtros e retry)</td><td>Configurar tentativas e continuações</td><td>zapier.com</td></tr><tr><td>UptimeRobot</td><td>Vigiar que as tuas automatizações web respondam</td><td>uptimerobot.com (grátis)</td></tr><tr><td>Logseq ou notas</td><td>Levar um diário de erros e arranjos</td><td>logseq.com (grátis)</td></tr></tbody></table></div>
+<h3>🧠 Resumo e ponte</h3>
+<p>Os erros fazem parte do ofício: leem-se, entendem-se e arranjam-se. O controlo de erros avisa quando algo falha e o registo conta a história do fluxo. A tua automatização já está vigiada. No próximo nível fechamos a banda Haste: vamos montar uma automatização completa que use condições, variáveis, IA e controlo de erros juntos.</p></div>
+      <nav class="lesson-pagination" aria-label="Níveis do módulo"><a rel="prev" href="../nivel-12/nivel-12-PT.html">Nível anterior</a><span>Nível 13</span><a rel="next" href="../nivel-14/nivel-14-PT.html">Próximo nível</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Material educativo aberto. Não constitui certificação.</span><a href="nivel-13-PT.html" download>Nível 13 · HTML</a></footer>
+
+</body>
+</html>

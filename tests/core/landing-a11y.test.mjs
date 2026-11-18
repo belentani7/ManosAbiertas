@@ -9,7 +9,7 @@ function read(path){return readFileSync(resolve(root,path),'utf8')}
 for(const page of pages){
  test(page+' has semantic metadata and accessible navigation',()=>{
   const html=read(page);
-  assert.match(html,/<html lang="es">/);
+  assert.match(html, /<html\b[^>]*\blang="es"/);
   assert.match(html,/<a class="skip-link" href="#contenido">Saltar al contenido<\/a>/);
   assert.match(html,/<main\b[^>]*id="contenido"[^>]*tabindex="-1"/);
   assert.equal((html.match(/<h1\b/g)||[]).length,1);

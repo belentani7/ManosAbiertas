@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="So far we have seen the ideas: predicting numbers, predicting categories, training, evaluating. But you may have thought: &quot;and how do I do this without knowing how to program?&quot; The answer is one of the biggest revolution">
+  <meta name="color-scheme" content="light">
+  <title>Module 3: AI Applied to Data — Level 18 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m03-ia-datos">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 3: AI Applied to Data</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html" aria-current="page">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 3: AI Applied to Data</p>
+        <h1>Module 3: AI Applied to Data</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-18-ES.html" lang="es">Español</a><a href="nivel-18-PT.html" lang="pt">Português</a><a href="nivel-18-CA.html" lang="ca">Català</a><a href="nivel-18-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Branch</h3>
+<h3>Estimated time: 4 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand what AutoML is: the technique that automates model creation.</li><li>Get to know AutoML platforms: Teachable Machine, Google Vertex AI and similar.</li><li>Train a complete classification model with your own images.</li><li>Upload a model to the cloud and understand what is at stake there (data, costs, responsibility).</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Plain-language explanation</th></tr></thead><tbody><tr><td>AutoML</td><td>Automated machine learning: the machine chooses the best model for us.</td></tr><tr><td>Dataset</td><td>The complete group of examples we use to train.</td></tr><tr><td>Hyperparameters</td><td>The settings that AutoML tests and fine-tunes by itself.</td></tr><tr><td>Cloud</td><td>Remote servers that do the computing instead of your computer.</td></tr><tr><td>API</td><td>The &quot;door&quot; through which other programs ask the model for predictions.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>So far we have seen the ideas: predicting numbers, predicting categories, training, evaluating. But you may have thought: &quot;and how do I do this without knowing how to program?&quot; The answer is one of the biggest revolutions in AI of recent years: AutoML. It is short for &quot;automated machine learning&quot;. In plain words: the machine that trains the machine.</p>
+<p>What exactly does AutoML do? Remember that training a model meant teaching it with examples. It turns out that training has many settings to choose: how many layers the network has, how fast it learns, how many times it goes over the data. Choosing those settings used to be a craft for experts with doctorates. AutoML makes the system itself try thousands of setting combinations, keep the best one and return the winning model to us. You just provide the labelled data and AutoML does the rest.</p>
+<p>AutoML tools come in two flavours. The first, for learning and small projects: visual free platforms like Teachable Machine, where we already trained in level 17. The second, for companies and serious projects: professional cloud platforms like Google Vertex AI, which let you train models with millions of examples, store them and ask them for predictions through an &quot;API&quot; (a door through which other programs ask the model questions). This course uses the first flavour; we will get to know the second to understand the real world.</p>
+<p>In this level we are going to do something very concrete: train a model with Teachable Machine that distinguishes between two or three objects in your home. It is the same procedure as level 17, but now with a difference: we will do it with more classes, more photos, and check the quality of the model the way a professional would. Because training is easy; evaluating well is the craft.</p>
+<p>The first step of a good AutoML project is planning the dataset. The golden rule: more variety, not more repetition. If you take 100 photos of the mug always the same, from the same angle and with the same light, the model learns by heart and fails at the first change. Better 30 varied photos: close up, far away, turned, with the mug full and empty, with daylight and night light. Variety is the model&#39;s food: without variety, the machine does not learn &quot;mug&quot;, it learns &quot;that exact mug, exactly like that&quot;.</p>
+<p>The second step is balancing the classes. If we train with 100 photos of the mug and 5 of the remote, the model will be an expert on mugs and clumsy with remotes. The number of examples per class should be similar. This is the same &quot;rare class&quot; lesson from level 17, but now applied at the source: injustice is avoided at collection, not fixed later.</p>
+<p>The third step, the professional one, is setting aside part of the data for evaluation. When you press &quot;Train Model&quot; in Teachable Machine, the tool already does this for you internally: it keeps some photos of each class that the model never sees, and uses only the others to learn. Then it tests with the reserved ones and tells you how much it gets right. If you yourself separate 10 photos of each class before training, you could do the evaluation by hand: train without those photos and then test with them. That is the professionals&#39; ritual, and you already understand it.</p>
+<p>Now the question everyone worries about in the cloud: what happens to my data when I train on a platform? Simple rule: in free learning tools like Teachable Machine, your photos are used to train your model; in professional platforms like Vertex AI, you sign a contract that says who owns what and where the data is stored. Before uploading anything, read where your data is stored and who can see it. People&#39;s data — photos, voices, names — deserves the same care as an important document.</p>
+<p>Another thing at stake in the cloud is money. Training small models in Teachable Machine is free; training in Vertex AI costs money per hour of computing. The cloud is not a favour from the universe: it is renting the muscle of other people&#39;s computers. For learning projects, the free version is enough. The management lesson: always start with the free option, and when the project becomes serious, budget the cloud cost as just another expense.</p>
+<p>When you finish training, Teachable Machine offers you a wonderful button: &quot;Export Model&quot;. You can download the model, or ask for a link to share. Once exported, that model works without internet: it lives on your computer. You can even put it on a web page or a phone. What you have trained no longer needs the platform: it is a model, a small machine that lives wherever you take it.</p>
+<p>With this level we close the practical part of the Branch band. You already know: what predicting is, how to predict a number, how to predict a category and how to train a model without writing a line of code. In the next level comes the part that puts the heart into the matter: data ethics. Because you now have the power to create models, and power without responsibility is dangerous.</p>
+<h3>💡 Practical examples</h3>
+<h4>Example 1: Grandma&#39;s bag</h4>
+<p>Grandma trains a model to distinguish &quot;keys&quot;, &quot;glasses&quot; and &quot;nothing&quot;. With 40 photos of each, the model tells her instantly where what she is looking for is. AutoML at home.</p>
+<h4>Example 2: The factory</h4>
+<p>A factory uses Vertex AI AutoML to classify parts as &quot;good&quot; and &quot;defective&quot; from photos on the production line. The model is trained on 10,000 photos labelled by technicians.</p>
+<h4>Example 3: The NGO</h4>
+<p>An NGO trains a model to count cars in satellite photos of a camp and estimate how many families need help. Free AutoML serving a cause.</p>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1. Gather two objects from your home (for example, a mug and a remote) and choose a place with good light. Step 2. Open https://teachablemachine.withgoogle.com and create an image project with 3 classes: mug, remote and &quot;nothing&quot;. Step 3. Capture 40 varied photos of the mug: close up, far away, turned, with light and without light. Move the camera between shots. Step 4. Capture 40 varied photos of the remote, just as varied. Step 5. Capture 40 photos of the background without an object for the &quot;nothing&quot; class. Step 6. Press &quot;Train Model&quot; and wait for it to finish. Step 7. Check the quality: test each object from new angles. Note how many hits out of 10. Step 8. Do the &quot;exam test&quot;: show the object with different light or an odd position. Does the model hold up or waver? Step 9. Reflect and write: if you add only 5 photos of the remote, what do you think will happen to its accuracy? Try it if you like. Step 10. Press &quot;Export Model&quot; and save whichever option you prefer. Write a conclusion: &quot;AutoML lets me train models without coding, but quality depends on the variety of my photos&quot;.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>What does AutoML mean?</li><li>What two flavours of AutoML tools exist?</li><li>What is the golden rule of the dataset?</li><li>Why should classes be balanced?</li><li>What should you check before uploading data to a cloud platform?</li></ol>
+<p>Answers: 1. Automated machine learning: the machine chooses and fine-tunes the best model for us. 2. Visual and free (Teachable Machine) and professional in the cloud (Vertex AI AutoML). 3. More variety, not more repetition: varied photos so the model generalises. 4. Because if one class has many more examples, the model learns it better and neglects the others. 5. Where the data is stored, who can see it and how much the computing costs.</p>
+<h3>⚖️ Ethical dimension</h3>
+<p>AutoML lowers the barrier to AI: today anyone can train models that recognise faces, voices or gestures. That power comes with two duties. First, consent: if you train a model with other people&#39;s photos or voices, they must know and accept it. Second, proportionality: you do not need to recognise every neighbour to count the cars on a street. Always ask: what is the minimum data I need to achieve my goal without invading anyone? AutoML is a magnificent tool; the responsibility for how it is used remains ours.</p>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it is and what it is for</th><th scope="col">Where to find it</th></tr></thead><tbody><tr><td>Teachable Machine</td><td>Free AutoML with photos, sounds and poses</td><td>https://teachablemachine.withgoogle.com</td></tr><tr><td>Google Vertex AI</td><td>Professional AutoML in the cloud</td><td>https://cloud.google.com/vertex-ai</td></tr><tr><td>Machine Learning for Kids</td><td>Guided educational AutoML projects</td><td>https://machinelearningforkids.co.uk</td></tr><tr><td>Hugging Face</td><td>Pre-trained models to try and use</td><td>https://huggingface.co</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<ul><li>AutoML automates model creation: you provide the data, the machine provides the craft.</li><li>Quality depends on the variety and balance of your data, not on repeated quantity.</li><li>Your data and your money are at stake in the cloud: read before pressing the button.</li><li>A trained model is exported and lives wherever you want.</li></ul>
+<p>In the next level comes data ethics: because you now have the power to create models, and power without responsibility is dangerous.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-17/nivel-17-EN.html">Previous level</a><span>Level 18</span><a rel="next" href="../nivel-19/nivel-19-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Open educational material. It is not a certification.</span><a href="nivel-18-EN.html" download>Level 18 · HTML</a></footer>
+
+</body>
+</html>

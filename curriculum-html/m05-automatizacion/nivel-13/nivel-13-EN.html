@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Today we&#39;re going to talk about something nobody mentions at the start and everyone meets on their first day: errors. Automations fail. They get things wrong, they break, they stop. And that&#39;s not a problem with us: it&#39;s">
+  <meta name="color-scheme" content="light">
+  <title>Module 5: Automation and Integration — Level 13 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m05-automatizacion">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 5: Automation and Integration</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html" aria-current="page">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 5: Automation and Integration</p>
+        <h1>Module 5: Automation and Integration</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-13-ES.html" lang="es">Español</a><a href="nivel-13-PT.html" lang="pt">Português</a><a href="nivel-13-CA.html" lang="ca">Català</a><a href="nivel-13-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Stem</h3>
+<h3>Estimated time: 2 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand that automations can fail and that this is normal.</li><li>Learn the most common types of errors in a flow.</li><li>Learn to read an error message without panicking.</li><li>Add steps that warn when something fails.</li><li>Build a flow that continues or stops depending on the error.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple explanation</th></tr></thead><tbody><tr><td>Error</td><td>A fault: something didn&#39;t go as we expected.</td></tr><tr><td>Error message</td><td>The notice the tool shows to explain the fault.</td></tr><tr><td>Retry</td><td>Run the step that failed again.</td></tr><tr><td>Exception</td><td>The special case that doesn&#39;t meet the usual and makes the flow fail.</td></tr><tr><td>Log</td><td>The history where the steps and errors are recorded.</td></tr><tr><td>Failure notice</td><td>A notification sent when something breaks.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>Today we&#39;re going to talk about something nobody mentions at the start and everyone meets on their first day: errors. Automations fail. They get things wrong, they break, they stop. And that&#39;s not a problem with us: it&#39;s part of the life of every machine. What matters isn&#39;t that it doesn&#39;t fail, but knowing what to do when it does.</p>
+<p>Let&#39;s think of the kitchen. Even if we follow the recipe to the letter, sometimes the custard curdles, the oven turns off or an ingredient is missing. A good cook doesn&#39;t throw away the dishes: they know why it happened and fix it. It&#39;s the same with automations. The error is information, not a punishment.</p>
+<p>The first skill is reading the error message. Integration tools keep a history or log of every run: who triggered the flow, which steps were done and where it stopped. When something fails, the error message usually states the cause: &quot;empty field&quot;, &quot;app not connected&quot;, &quot;incorrect data&quot;. It&#39;s like the doctor&#39;s diagnosis: to cure, you first have to know what hurts.</p>
+<p>The most common errors are few and quickly learned. One: empty fields, when a piece of data arrives unfilled. Two: disconnected accounts, when the authorisation expired or was revoked. Three: data with a different format, when we expected a number and a text arrives. Four: usage limits, when the free plan runs out.</p>
+<p>For every error there&#39;s a solution. If the field is empty, we use a condition (level 10) so we don&#39;t continue when the data is missing. If the account disconnected, we reconnect it. If the format is different, we review the sheet or the source app. If the limit ran out, we wait until next month or use the flow less.</p>
+<p>But the real mastery lies in something else: the flow knowing how to warn when it fails. Instead of failing silently, our automation can send us a message: &quot;the send email step has failed&quot;. That way, even if it breaks, we know and fix it. A failure that warns is a half failure.</p>
+<p>The tools let us add a special step, sometimes called &quot;error handling&quot;, which only runs when something fails. In that step we can send the notice, save the data that failed or stop the flow calmly. It&#39;s like having a smoke detector: it doesn&#39;t put out the fire, but it warns in time.</p>
+<p>We can also decide whether a failure stops everything or is skipped. Sometimes stopping is best: if the payment isn&#39;t processed, it shouldn&#39;t continue. Other times continuing is best: if the message sending fails, the rest goes on and we review later. Each flow chooses its attitude according to how important each step is.</p>
+<p>It&#39;s worth reviewing the log from time to time, like someone checking the month&#39;s bills. The log tells us what happened in our automation: how many times it ran, when it failed and why. Reading the log is the way to care for the automation, to keep it healthy. It&#39;s the hygiene of the trade.</p>
+<p>An error that repeats a lot is a sign that the flow is badly designed or that the data source has changed. Let&#39;s not cover it with patches: let&#39;s look at the cause and fix it at the root. It&#39;s like the leak: you fix the roof, you don&#39;t put a bucket out every time.</p>
+<p>When you test an automation and it fails, breathe: it&#39;s the best moment to learn. Every failure you find and understand makes you more the owner of your system. The fear of errors disappears when we know them. And knowing them is exactly what we&#39;re doing today.</p>
+<p>When you finish this level you&#39;ll know how to read an error message, what to do with typical faults and how to set up notices that tell you when something breaks. Your automation is no longer fragile: it&#39;s watched over and cared for.</p>
+<h3>💡 Practical examples</h3>
+<ol><li><strong>The disconnected account.</strong> The club&#39;s flow stopped working because Google let the authorisation expire. The failure notice reached the coordinator, who reconnected it in a minute.</li><li><strong>The empty row.</strong> A member arrived without an email. The flow&#39;s condition (level 10) stopped it before sending, and the log kept the case for a manual review.</li><li><strong>The AI limit.</strong> The AI&#39;s free plan ran out one month. The flow warned and kept working with the manual summary until the next month.</li></ol>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1: Open your integration tool and choose a scenario you&#39;ve already created (for example, the incidents or summaries one). Step 2: Go into the scenario&#39;s log or history (usually the &quot;History&quot; or &quot;Executions&quot; tab). Look at the latest runs. Step 3: Find a run that failed or make one fail on purpose: disconnect the Telegram account or leave an empty field in the sheet. Step 4: Read the error message. Write it on your paper and note what you think it means. Check with this level&#39;s guide which typical error it is. Step 5: Fix the error: reconnect the account or fill in the field. Step 6: Add error handling: look in the scenario&#39;s settings for the &quot;Error handling&quot; option. Step 7: Set up the notice: when it fails, send a Telegram message with the text &quot;Scenario [name] failed: [error message]&quot;. Step 8: Make it fail again and check that the notice arrives. Step 9: Activate the scenario and get used to reviewing the log once a week.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>Is it normal for an automation to fail? a) No, if it&#39;s well made it never fails. b) Yes, failing is part of the life of every machine. c) Only the cheap ones.</li><li>What do we do first when there&#39;s an error? a) Delete the scenario. b) Read the error message and look at the log. c) Buy another computer.</li><li>Which is a typical error? a) An empty field. b) A font change. c) Breakfast time.</li><li>What does error handling do? a) It prevents everything from failing. b) It runs when something fails, to warn or stop calmly. c) It deletes past errors.</li><li>What is reviewing the log for? a) To care for the automation and know what happened. b) To fill time. c) So it looks nice.</li></ol>
+<p>Answers: 1-b, 2-b, 3-a, 4-b, 5-a.</p>
+<h3>⚖️ Ethical dimension</h3>
+<ul><li>A silent failure is dangerous: if an automation processing people&#39;s data fails without warning, information is lost. The notice is a responsibility.</li><li>If the flow fails when handling personal data, warn immediately and don&#39;t hide it: transparency protects people.</li><li>Don&#39;t use error handling to &quot;cover up&quot; a badly designed flow: fix the cause, not just the alert.</li><li>Failure notices should reach the right person, not everyone&#39;s inbox.</li><li>In the face of an error that affects money or health, stop the automation and review by hand before continuing.</li></ul>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it&#39;s for</th><th scope="col">Where to get it</th></tr></thead><tbody><tr><td>Make (error handling)</td><td>Warning when a step fails</td><td>make.com</td></tr><tr><td>Zapier (filters and retry)</td><td>Setting up retries and continuations</td><td>zapier.com</td></tr><tr><td>UptimeRobot</td><td>Watching that your web automations respond</td><td>uptimerobot.com (free)</td></tr><tr><td>Logseq or notes</td><td>Keeping an error and fix diary</td><td>logseq.com (free)</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<p>Errors are part of the trade: they&#39;re read, understood and fixed. Error handling warns when something fails and the log tells the flow&#39;s story. Your automation is now watched over. In the next level we close the Stem band: we&#39;ll build a complete automation that uses conditions, variables, AI and error handling together.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-12/nivel-12-EN.html">Previous level</a><span>Level 13</span><a rel="next" href="../nivel-14/nivel-14-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Open educational material. It is not a certification.</span><a href="nivel-13-EN.html" download>Level 13 · HTML</a></footer>
+
+</body>
+</html>

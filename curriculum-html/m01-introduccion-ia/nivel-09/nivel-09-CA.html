@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Ja sabem que les màquines aprenen d&#39;exemples. Però d&#39;on surten aquests exemples? En aquest nivell obrirem la capsa i mirarem la matèria primera: les dades d&#39;entrenament. Són la base de tot, i entendre-les és entendre els">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 1: Introducció a la Intel·ligència Artificial — Nivell 09</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m01-introduccion-ia">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 1: Introducció a la Intel·ligència Artificial</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html" aria-current="page">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 1: Introducció a la Intel·ligència Artificial</p>
+        <h1>Mòdul 1: Introducció a la Intel·ligència Artificial</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-09-ES.html" lang="es">Español</a><a href="nivel-09-PT.html" lang="pt">Português</a><a href="nivel-09-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-09-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Arrel</h3>
+<h3>Temps estimat: 2 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre què són les dades d&#39;entrenament i d&#39;on surten.</li><li>Comprendre per què la quantitat i la qualitat de les dades importen més que la tècnica.</li><li>Conèixer la feina d&#39;etiquetar dades i qui la fa.</li><li>Reflexionar sobre la privacitat i els drets d&#39;autor de les dades.</li><li>Crear a mà un petit conjunt de dades per veure com funciona l&#39;aprenentatge.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació senzilla</th></tr></thead><tbody><tr><td>Conjunt de dades</td><td>Una col·lecció ordenada d&#39;exemples amb què s&#39;entrena un model.</td></tr><tr><td>Etiqueta</td><td>La &quot;resposta correcta&quot; que es posa a cada exemple perquè la màquina aprengui.</td></tr><tr><td>Etiquetador</td><td>La persona que revisa i classifica els exemples, sovint sense aparèixer enlloc.</td></tr><tr><td>Qualitat de les dades</td><td>Com de bé representen els exemples la realitat que volem ensenyar.</td></tr><tr><td>Drets d&#39;autor</td><td>Els drets del creador sobre la seva obra; les dades també en tenen.</td></tr><tr><td>Consentiment</td><td>El permís d&#39;una persona per fer servir les seves dades; sense ell, no s&#39;haurien de fer servir.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Ja sabem que les màquines aprenen d&#39;exemples. Però d&#39;on surten aquests exemples? En aquest nivell obrirem la capsa i mirarem la matèria primera: les dades d&#39;entrenament. Són la base de tot, i entendre-les és entendre els punts forts i febles de la IA actual.</p>
+<p>Un conjunt de dades és, en essència, una llista ordenada d&#39;exemples amb la seva resposta correcta. Per exemple, per ensenyar a un sistema a distingir pomes de peres, el conjunt tindria milers de fotos, cadascuna amb la seva etiqueta: &quot;poma&quot; o &quot;pera&quot;. El model estudia la llista, troba els patrons i aprèn. Sense llista, no hi ha aprenentatge.</p>
+<p>Qui posa les etiquetes? Darrere de gairebé tota la IA moderna hi ha un exèrcit invisible de persones que miren imatges, àudios i textos i els classifiquen. Són els etiquetadors. És una feina real, repetitiva i de vegades mal pagada, que gairebé mai no surt a les notícies. Cada vegada que un sistema reconeix la vostra veu o un senyal de trànsit, algú va passar hores ensenyant-li amb exemples.</p>
+<p>És bo saber-ho per dues raons. Primer, per justícia: la IA que admirem no neix sola; neix del treball humà. Segon, per humilitat: si les etiquetes tenen errors, la màquina aprendrà aquests errors. Els etiquetadors, per molt acurats que siguin, no són perfectes, i les seves fallades es colen als models.</p>
+<p>D&#39;on surten les dades? De moltes parts. Els científics fan servir conjunts públics com l&#39;ImageNet, amb milions de fotos classificades. Les empreses fan servir les seves pròpies dades: compres, cerques, missatges. I els grans models de llenguatge s&#39;entrenen amb una quantitat gegantina de text tret d&#39;internet: pàgines web, llibres, fòrums. Tot aquest text és la seva &quot;biblioteca&quot;.</p>
+<p>Aquí apareix un debat important: els drets d&#39;autor. Pot una empresa entrenar un model amb els llibres i articles d&#39;altri sense pagar? És una discussió oberta en tribunals i parlaments. El punt clau per a nosaltres és aquest: les dades no són gratuïtes ni neutres. Algú les va crear, i fer servir les dades d&#39;altri sense permís té conseqüències.</p>
+<p>Una altra cosa que heu de saber: la quantitat importa, però la qualitat importa més. Un conjunt petit i net acostuma a produir millors models que un de gegantí ple d&#39;errors. És com estudiar: memoritzar deu mil apunts confusos és pitjor que estudiar bé cent pàgines clares. Les millors empreses inverteixen molt a netejar i revisar les seves dades.</p>
+<p>La qualitat inclou la varietat. Si entrenem un reconeixedor de fruites només amb fotos perfectes, fallarà amb fotos reals: amb ombres, poca llum, de costat. El món real és variat, i el model ha de veure aquesta varietat per no fallar. Per això es diu que les dades han de representar el món que volem gestionar, amb tota la seva diversitat.</p>
+<p>I aquí ve la part més delicada: la privacitat. Moltes dades personals — fotos, veus, missatges — es fan servir per entrenar models, de vegades sense que la persona ho sàpiga o ho consenti. La vostra cara pot haver &quot;ajudat&quot; a entrenar un sistema de reconeixement sense que ho sabéssiu. El consentiment hauria de ser la regla, no l&#39;excepció.</p>
+<p>Pensem en la vostra vida diària. Quan el mòbil us suggereix respostes, quan el banc decideix si us dona un crèdit, quan el metge fa servir un sistema de diagnòstic: al darrere hi ha dades d&#39;entrenament que poden incloure persones com vosaltres. Preguntar-se d&#39;on van sortir aquestes dades no és paranoia: és ciutadania digital.</p>
+<p>Hi ha un detall curiós i preocupant alhora: els models s&#39;entrenen amb dades del passat, però viuen en el present. Si el món canvia — una moda, una llei, una tecnologia nova — el model es queda desactualitzat. És com un empleat que va aprendre l&#39;ofici fa vint anys i no s&#39;ha actualitzat. Mantenir els models al dia és una feina constant.</p>
+<p>També hi ha un cercle curiós: la IA genera contingut nou, i aquest contingut es pot fer servir com a dades per entrenar la IA següent. És com fotocopiar fotocòpies: cada còpia perd qualitat. Els experts ja parlen del risc que les IA entrenades amb contingut d&#39;altres IA degradin els seus resultats. La matèria primera es contamina.</p>
+<p>Conèixer les dades d&#39;entrenament canvia la mirada: la IA no és una capsa màgica, és una esponja que absorbeix el que li donem. Si li donem bones dades, bones respostes; si li donem dades brutes, respostes brutes. Per això la responsabilitat de qui crea els models és enorme, i la curiositat de qui els fa servir també.</p>
+<p>En el proper nivell canviarem de banda: deixarem l&#39;Arrel i entrarem a la Tija, veient com aprenen les màquines segons el tipus d&#39;aprenentatge.</p>
+<h3>💡 Exemples pràctics</h3>
+<ol><li><strong>Al supermercat:</strong> el lector de preus de fruita per imatge es va entrenar amb milers de fotos etiquetades per persones reals.</li><li><strong>Al banc:</strong> el sistema de crèdits es va entrenar amb dades històriques de préstecs; si aquestes dades tenien biaixos, el sistema els hereta.</li><li><strong>Amb el metge:</strong> un sistema que llegeix radiografies es va entrenar amb milers de plaques anotades per radiòlegs.</li></ol>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1. Agafeu un paper i un bolígraf. Pas 2. Dibuixeu una taula amb quatre columnes: &quot;Exemple&quot;, &quot;Color&quot;, &quot;Forma&quot;, &quot;És poma?&quot;. Pas 3. Escriviu sis files: tres pomes i tres peres, amb característiques senzilles (vermell, verd, rodona, allargada...). Pas 4. Repasseu: quines característiques veieu que separen pomes de peres en els vostres exemples? Pas 5. Afegiu una fila &quot;estranya&quot;: una poma verda amb forma allargada. Què creieu que respondria el model? Pas 6. Penseu: què passaria si els vostres sis exemples fossin totes pomes vermelles? El model no sabria reconèixer peres. Pas 7. Compareu amb el món real: a la vida hi ha més varietat que als vostres exemples, per això calen milers de fotos. Pas 8. Opcional: obriu el Kaggle (kaggle.com), cerqueu &quot;fruits&quot; i vegeu com són els conjunts de dades reals amb milers d&#39;etiquetes.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Què és un conjunt de dades i què conté cada exemple?</li><li>Qui fa la major part de l&#39;etiquetatge de dades i per què importa conèixer-ho?</li><li>Què és més important, la quantitat o la qualitat de les dades? Per què?</li><li>Quina relació tenen els drets d&#39;autor amb les dades d&#39;entrenament?</li><li>Quin risc té entrenar una IA amb contingut generat per altres IA?</li></ol>
+<p><strong>Respostes:</strong> 1) És una llista d&#39;exemples amb la seva resposta correcta (etiqueta) amb què s&#39;entrena un model. 2) Persones etiquetadores, una feina real i sovint invisible; conèixer-la ajuda a entendre d&#39;on ve la IA i a valorar la seva feina. 3) La qualitat: un conjunt petit i net ensenya millor que un de gegantí i brut. 4) Les dades creades per altres (llibres, articles, fotos) tenen drets; fer-les servir sense permís és un debat obert als tribunals. 5) Que el contingut es degrada, com fotocopiar fotocòpies: els models entrenats amb contingut d&#39;altres IA perden qualitat.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<p>Les dades d&#39;entrenament amaguen decisions ètiques de gran abast. Es van fer servir dades de persones sense el seu consentiment? Es va pagar amb justícia els etiquetadors? Les dades representen tota la societat o només uns quants? Darrere de cada model hi ha eleccions humanes que poden discriminar o excloure. Exigir transparència sobre les dades no és tècnica: és exigir que la IA es construeixi amb dignitat i justícia.</p>
+<h3>🔓 Eines obertes</h3>
+<ul><li><strong>Kaggle</strong> (kaggle.com): milers de conjunts de dades públics i gratuïts per explorar.</li><li><strong>Google Dataset Search</strong> (datasetsearch.research.google.com): cercador de conjunts de dades públics.</li><li><strong>ImageNet</strong> (image-net.org): el famós conjunt de milions d&#39;imatges classificades.</li><li><strong>OpenML</strong> (openml.org): plataforma oberta de dades d&#39;aprenentatge automàtic.</li><li><strong>Common Crawl</strong> (commoncrawl.org): l&#39;arxiu obert de pàgines web usat per entrenar molts models.</li></ul>
+<h3>🧠 Resum i pont</h3>
+<ul><li>Les dades d&#39;entrenament són la llista d&#39;exemples amb etiquetes de què la màquina aprèn.</li><li>Al darrere hi ha una feina humana invisible: els etiquetadors.</li><li>La qualitat i la varietat importen més que la quantitat.</li><li>Les dades tenen drets d&#39;autor i plantegen dubtes de privacitat.</li><li>La IA és una esponja: absorbeix el que li donem.</li></ul>
+<p>En el nivell 10 entrem a la banda &quot;Tija&quot;: com aprenen les màquines (supervisat, no supervisat i reforç).</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-08/nivel-08-CA.html">Nivell anterior</a><span>Nivell 09</span><a rel="next" href="../nivel-10/nivel-10-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m01-introduccion-ia</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-09-CA.html" download>Nivell 09 · HTML</a></footer>
+
+</body>
+</html>

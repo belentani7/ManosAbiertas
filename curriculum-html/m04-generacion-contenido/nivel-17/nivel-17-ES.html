@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Hasta ahora hemos montado vídeos con programas con ventanas y botones (CapCut, Canva). Existe otra manera, más técnica pero muy poderosa: usar la línea de comandos con FFmpeg. Es como la diferencia entre pedir en el rest">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 4: Generación de Contenido — Nivel 17 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <a class="brand" href="/es">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos los módulos"><a href="../../index-ES.html">Todos los módulos</a><a href="../index-ES.html">Niveles del módulo</a><a href="/es/curriculum/m04-generacion-contenido">Abrir visor de aprendizaje</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 4: Generación de Contenido</p>
+    <details open>
+      <summary>Niveles del módulo</summary>
+      <nav aria-label="Niveles del módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-ES.html">Nivel 00</a></li><li><a href="../nivel-01/nivel-01-ES.html">Nivel 01</a></li><li><a href="../nivel-02/nivel-02-ES.html">Nivel 02</a></li><li><a href="../nivel-03/nivel-03-ES.html">Nivel 03</a></li><li><a href="../nivel-04/nivel-04-ES.html">Nivel 04</a></li><li><a href="../nivel-05/nivel-05-ES.html">Nivel 05</a></li><li><a href="../nivel-06/nivel-06-ES.html">Nivel 06</a></li><li><a href="../nivel-07/nivel-07-ES.html">Nivel 07</a></li><li><a href="../nivel-08/nivel-08-ES.html">Nivel 08</a></li><li><a href="../nivel-09/nivel-09-ES.html">Nivel 09</a></li><li><a href="../nivel-10/nivel-10-ES.html">Nivel 10</a></li><li><a href="../nivel-11/nivel-11-ES.html">Nivel 11</a></li><li><a href="../nivel-12/nivel-12-ES.html">Nivel 12</a></li><li><a href="../nivel-13/nivel-13-ES.html">Nivel 13</a></li><li><a href="../nivel-14/nivel-14-ES.html">Nivel 14</a></li><li><a href="../nivel-15/nivel-15-ES.html">Nivel 15</a></li><li><a href="../nivel-16/nivel-16-ES.html">Nivel 16</a></li><li><a href="../nivel-17/nivel-17-ES.html" aria-current="page">Nivel 17</a></li><li><a href="../nivel-18/nivel-18-ES.html">Nivel 18</a></li><li><a href="../nivel-19/nivel-19-ES.html">Nivel 19</a></li><li><a href="../nivel-20/nivel-20-ES.html">Nivel 20</a></li><li><a href="../nivel-21/nivel-21-ES.html">Nivel 21</a></li><li><a href="../nivel-22/nivel-22-ES.html">Nivel 22</a></li><li><a href="../nivel-23/nivel-23-ES.html">Nivel 23</a></li><li><a href="../nivel-24/nivel-24-ES.html">Nivel 24</a></li><li><a href="../nivel-25/nivel-25-ES.html">Nivel 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 4: Generación de Contenido</p>
+        <h1>Módulo 4: Generación de Contenido</h1>
+        <div class="metadata">
+          <span>Español (ES)</span>
+          <span>Rama</span>
+          <span>Tiempo estimado: 4 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-17-ES.html" aria-current="page" lang="es">Español</a><a href="nivel-17-PT.html" lang="pt">Português</a><a href="nivel-17-CA.html" lang="ca">Català</a><a href="nivel-17-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: ES · Dificultad: Rama</h3>
+<h3>Tiempo estimado: 4 horas</h3>
+<h3>🎯 Objetivo del nivel</h3>
+<ul><li>Entender qué es una cadena de producción: los pasos en orden para hacer un vídeo.</li><li>Conocer FFmpeg, una herramienta libre que une audio y vídeo.</li><li>Combinar Piper (voz) y FFmpeg (unión) en un flujo de trabajo completo.</li><li>Crear un vídeo con voz narrada y subtítulos usando herramientas de código abierto.</li><li>Repetir el proceso para otros vídeos de forma rápida.</li></ul>
+<h3>📖 Vocabulario esencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Término</th><th scope="col">Explicación en palabras simples</th></tr></thead><tbody><tr><td>Cadena de producción</td><td>La lista de pasos en orden para crear algo, como una receta.</td></tr><tr><td>FFmpeg</td><td>Un programa libre que mezcla, corta y convierte audio y vídeo.</td></tr><tr><td>Flujo de trabajo</td><td>El orden fijo en que hacemos las tareas para no olvidar ninguna.</td></tr><tr><td>Comando</td><td>Una orden escrita que decimos al programa para que haga algo.</td></tr><tr><td>Línea de comandos</td><td>La ventana oscura donde se escriben las órdenes al programa.</td></tr><tr><td>Automatización</td><td>Que el ordenador haga los pasos repetitivos por nosotros.</td></tr></tbody></table></div>
+<h3>📚 Lección principal</h3>
+<p>Hasta ahora hemos montado vídeos con programas con ventanas y botones (CapCut, Canva). Existe otra manera, más técnica pero muy poderosa: usar la línea de comandos con FFmpeg. Es como la diferencia entre pedir en el restaurante o cocinar nosotros: cuesta más aprender, pero repetimos la receta cuando queremos.</p>
+<p>FFmpeg es un programa libre y gratuito que lleva años ayudando a mezclar, cortar y convertir audio y vídeo. Funciona con &quot;comandos&quot;: órdenes escritas. Por ejemplo, un comando puede unir un archivo de audio (la voz de Piper) con un archivo de imagen o vídeo para crear un vídeo final. Todo sin ventanas, solo texto.</p>
+<p>La línea de comandos asusta al principio, pero es como aprender a usar el lavavajillas nuevo: al tercer día lo hacemos sin pensar. Escribimos una orden, pulsamos la tecla para ejecutarla y el programa trabaja. La clave es copiar los comandos con cuidado, sin errores, como se copia una receta.</p>
+<p>Nuestra cadena de producción con herramientas abiertas tiene pasos claros. Primero escribimos el guion (lo vimos en el nivel 15). Segundo, generamos la voz con Piper (nivel 10). Tercero, creamos o elegimos las imágenes. Cuarto, usamos FFmpeg para unir la voz con las imágenes y crear el vídeo. Quinto, añadimos los subtítulos (nivel 13). Seis pasos sencillos que, en orden, producen un vídeo completo.</p>
+<p>El comando de FFmpeg es una frase con partes: el programa (ffmpeg), la entrada (input: el archivo de audio y el de imagen), las órdenes (cuánto dura, qué formato) y la salida (output: el nombre del vídeo nuevo). Es como dar instrucciones en la cocina: &quot;coge el arroz, añade agua, cuece diez minutos, sirve&quot;.</p>
+<p>Una gran ventaja de esta cadena es la automatización. Una vez que tenemos el comando que funciona, lo guardamos en un documento y solo cambiamos los nombres de los archivos para cada vídeo. El ordenador hace el trabajo repetitivo; nosotros ponemos la idea y la revisión. Es como la masa de pan: la misma receta, mil hogazas.</p>
+<p>¿Y los subtítulos? FFmpeg también puede incrustarlos en el vídeo. Le damos el vídeo y el archivo SRT (nivel 13) y él los dibuja encima en el momento exacto. Así el vídeo final ya lleva su texto. Todo el proceso, de principio a fin, con programas libres y sin coste.</p>
+<p>La revisión sigue siendo humana. El ordenador une los archivos, pero nosotros comprobamos que la voz suena bien, que las imágenes son las correctas y que los subtítulos dicen lo que se escucha. La máquina acelera; el criterio es nuestro. Como en la costura: la máquina cose, pero el buen ojo decide.</p>
+<p>Esta manera de trabajar también tiene límites. Si necesitamos efectos complicados o muchos recortes finos, los programas con ventanas son más cómodos. La línea de comandos brilla cuando repetimos el mismo tipo de vídeo muchas veces: vídeos de recetas, saludos, boletines del club. Saber las dos maneras nos hace más libres.</p>
+<p>La paciencia es importante. Los primeros comandos fallarán o saldrán raros. No pasa nada: se corrige y se prueba otra vez. Aprender algo nuevo siempre tiene ese primer escalón. Y cuando el vídeo sale bien por primera vez, la satisfacción es enorme: hemos dominado una herramienta de los &quot;expertos&quot;.</p>
+<p>Al terminar este nivel, sabremos crear un vídeo completo con voz de Piper y subtítulos usando FFmpeg y otras herramientas libres, y repetir la receta cuando queramos. La producción de contenidos ya está en nuestras manos.</p>
+<h3>💡 Ejemplos prácticos</h3>
+<ol><li><strong>El boletín del club.</strong> Pedro prepara un vídeo semanal: escribe el guion, genera la voz con Piper y une la voz con la foto del cartel usando FFmpeg. Cada semana, el mismo comando.</li><li><strong>Los saludos de cumpleaños.</strong> Rosa crea vídeos de felicitación personalizados para su familia: cada uno con el nombre distinto, generado y unido automáticamente.</li><li><strong>Las recetas de Carmen.</strong> Carmen graba las fotos de cada paso y añade la voz narrada con Piper. FFmpeg une fotos y voz en un vídeo de receta listo para compartir.</li></ol>
+<h3>🛠️ Actividad guiada</h3>
+<p>Paso 1: Escribe un guion corto de 4 frases sobre un tema sencillo (por ejemplo, &quot;los beneficios de pasear&quot;). Paso 2: Genera la voz con Piper y guarda el archivo de audio (por ejemplo, voz.mp3). Paso 3: Elige o crea una imagen que acompañe el texto (por ejemplo, una foto de un parque). Paso 4: Abre la línea de comandos (la terminal) del ordenador. Paso 5: Escribe el comando de FFmpeg para unir la imagen y el audio: ffmpeg -loop 1 -i foto.jpg -i voz.mp3 -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4 Paso 6: Pulsa la tecla para ejecutar (Enter) y espera a que termine. Paso 7: Abre el vídeo resultante y comprueba que la imagen y la voz duran lo mismo. Paso 8: Añade los subtítulos con FFmpeg usando tu archivo SRT (ffmpeg -i video.mp4 -vf subtitles=subtitulos.srt video_final.mp4) y comparte el resultado.</p>
+<h3>✍️ Ejercicios de autoevaluación</h3>
+<ol><li>¿Qué es una cadena de producción? a) Los pasos en orden para crear algo. b) Una fábrica de coches. c) Un programa de dibujo.</li><li>¿Qué es FFmpeg? a) Un programa libre que mezcla, corta y convierte audio y vídeo. b) Una cámara. c) Un tipo de letra.</li><li>¿Qué es un comando? a) Una orden escrita al programa. b) Un botón verde. c) Una canción.</li><li>¿Cuál es la ventaja de la automatización? a) Que el ordenador repite los pasos repetitivos. b) Que no hay que revisar nada. c) Que no se puede usar dos veces.</li><li>¿Quién hace la revisión final? a) El ordenador, solo. b) La persona, con criterio. c) Nadie.</li></ol>
+<p>Respuestas: 1-a, 2-a, 3-a, 4-a, 5-b.</p>
+<h3>⚖️ Dimensión ética</h3>
+<ul><li>Las herramientas libres permiten que cualquiera produzca: comparte lo que aprendas con tu comunidad.</li><li>Respeta las licencias: usa imágenes, voces y músicas libres o propias.</li><li>No uses la técnica para engañar: un vídeo editado debe ser fiel a lo que pasó.</li><li>Si publicas el comando o la receta, explica el proceso con claridad.</li><li>Recuerda la privacidad: no generes vídeos con datos de otros sin permiso.</li></ul>
+<h3>🔓 Herramientas abiertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Herramienta</th><th scope="col">Para qué sirve</th><th scope="col">Dónde conseguirla</th></tr></thead><tbody><tr><td>FFmpeg</td><td>Unir, cortar y convertir audio y vídeo</td><td>ffmpeg.org (gratuito)</td></tr><tr><td>Piper</td><td>Generar la voz narrada</td><td>github.com/rhasspy/piper (gratuito)</td></tr><tr><td>Whisper</td><td>Transcribir para crear los subtítulos</td><td>github.com/openai/whisper (gratuito)</td></tr><tr><td>Audacity</td><td>Preparar y limpiar los audios</td><td>audacityteam.org (gratuito)</td></tr></tbody></table></div>
+<h3>🧠 Resumen y puente</h3>
+<p>Con FFmpeg y Piper tenemos una cadena de producción completa con herramientas libres: guion, voz, imágenes, unión y subtítulos. Los comandos asustan al principio, pero la automatización repite la receta cuando queremos. En el siguiente nivel dominaremos la voz y el doblaje para darle vida a cualquier texto.</p></div>
+      <nav class="lesson-pagination" aria-label="Niveles del módulo"><a rel="prev" href="../nivel-16/nivel-16-ES.html">Nivel anterior</a><span>Nivel 17</span><a rel="next" href="../nivel-18/nivel-18-ES.html">Nivel siguiente</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m04-generacion-contenido</span><span>Material educativo abierto. No constituye una certificación.</span><a href="nivel-17-ES.html" download>Nivel 17 · HTML</a></footer>
+
+</body>
+</html>

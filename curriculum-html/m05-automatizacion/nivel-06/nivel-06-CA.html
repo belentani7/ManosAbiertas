@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Al nivell anterior vam crear el nostre compte i vam entendre les dues peces de tota automatització: el disparador i l&#39;acció. Avui construirem la nostra primera automatització real, de principi a fi. Unirem dues aplicacio">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 5: Automatització i Integració — Nivell 06 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m05-automatizacion">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 5: Automatització i Integració</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html" aria-current="page">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 5: Automatització i Integració</p>
+        <h1>Mòdul 5: Automatització i Integració</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-06-ES.html" lang="es">Español</a><a href="nivel-06-PT.html" lang="pt">Português</a><a href="nivel-06-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-06-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Arrel</h3>
+<h3>Temps estimat: 3 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Construir una primera automatització real entre dues aplicacions.</li><li>Connectar el teu compte d&#39;una aplicació a l&#39;eina d&#39;integració.</li><li>Triar un disparador i una acció de veritat.</li><li>Provar l&#39;automatització amb una dada real.</li><li>Entendre què és &quot;provar&quot; en automatització i per què es fa.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules senzilles</th></tr></thead><tbody><tr><td>Connectar un compte</td><td>Autoritzar l&#39;eina a fer servir una aplicació teva.</td></tr><tr><td>Autorització</td><td>El permís que dónes perquè dos programes es parlin.</td></tr><tr><td>Provar</td><td>Fer una prova real per veure si l&#39;automatització funciona.</td></tr><tr><td>Escenari</td><td>L&#39;automatització completa: disparador, passos i acció.</td></tr><tr><td>Connector</td><td>La peça que uneix l&#39;eina amb una aplicació.</td></tr><tr><td>Dades</td><td>La informació que viatja: un nom, una data, un missatge.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Al nivell anterior vam crear el nostre compte i vam entendre les dues peces de tota automatització: el disparador i l&#39;acció. Avui construirem la nostra primera automatització real, de principi a fi. Unirem dues aplicacions i les veurem treballar juntes. És un moment bonic, com veure la primera planta que hem sembrat.</p>
+<p>Triarem un exemple senzill i útil: un full de càlcul on apuntem alguna cosa (per exemple, la llista de la compra del club) i, cada vegada que hi afegim una fila, l&#39;eina envia un missatge a una altra aplicació (per exemple, el grup de missatges de l&#39;associació). Això és connectar dues aplicacions: el full i els missatges.</p>
+<p>El primer pas és triar les dues aplicacions. Una serà el disparador, la que &quot;desperta&quot; l&#39;automatització; l&#39;altra serà l&#39;acció, la que fa alguna cosa. En el nostre exemple: el full de càlcul dispara i el missatge actua. No hi ha regles fixes: qualsevol de les dues pot ser qualsevol de les parts.</p>
+<p>Abans de començar, necessitem que l&#39;eina &quot;conegui&quot; les nostres aplicacions. Això s&#39;anomena connectar un compte o autoritzar. És com donar la clau d&#39;una habitació concreta al cambrer: només d&#39;aquesta habitació, no de tota la casa. Es fa prement &quot;Connecta el compte&quot; i iniciant sessió a l&#39;aplicació quan ens ho demani.</p>
+<p>És normal sentir una mica de recel en donar permisos. Tranquil·litat: en aquestes eines es pot treure la connexió quan vulguem, des dels ajustos. I podem revisar quins permisos hem donat. Donar permís no és donar poder per sempre; és obrir una porta que podem tancar.</p>
+<p>Un cop connectats els comptes, triem el disparador. L&#39;eina ens mostra una llista d&#39;esdeveniments de cada aplicació. Busquem el nostre: &quot;fila nova&quot;, &quot;missatge nou&quot;, &quot;correu nou&quot;. Premem i l&#39;eina ens demana que confirmem amb quin dels nostres comptes i en quin full o carpeta treballar.</p>
+<p>Després ve l&#39;acció. Triem la segona aplicació i l&#39;esdeveniment: &quot;enviar missatge&quot;, &quot;enviar correu&quot;, &quot;crear fitxer&quot;. L&#39;eina ens mostra els camps que podem omplir i, el més meravellós, ens ofereix posar dades que venen del disparador. Així, el missatge pot dir &quot;Compra nova: [nom de la fila]&quot; sense que nosaltres escriguem res.</p>
+<p>Aquesta possibilitat de &quot;prendre dades d&#39;un lloc i posar-les en un altre&quot; és el que fa màgica la integració. L&#39;eina ens deixa triar, amb un clic, la dada que ve del full i posar-la dins del missatge. És com el cambrer que porta la nota del cuiner i la copia al compte del client.</p>
+<p>Abans d&#39;activar, es prova. Provar és fer una simulació: l&#39;eina executa el flux amb dades d&#39;exemple i ens mostra què ha sortit. Si alguna cosa falla, la veiem i la corregim sense molestar ningú. Provar és gratuït i evita errors reals. Ningú envia un missatge al grup sense provar-ho abans.</p>
+<p>Quan la prova surt bé, s&#39;activa l&#39;automatització. A partir d&#39;aquí, quan afegim una fila nova al full, el missatge s&#39;enviarà sol. Sense prémer res. És una emoció veure-ho per primera vegada: la màquina treballa mentre nosaltres mirem.</p>
+<p>Convé deixar clar que les automatitzacions d&#39;aquestes eines revisen els canvis amb certa freqüència: no és instantani com un llamp, sinó com el correu, que arriba en minuts. Si la prova triga una mica a aparèixer, és normal. La paciència forma part de l&#39;ofici.</p>
+<p>Si alguna cosa surt malament, no passa res. L&#39;error sol ser als permisos, als camps buits o a una dada escrita de manera diferent. L&#39;eina ens diu on és el problema i ho arreglem. Cada error que corregim ens ensenya una lliçó que no oblidem.</p>
+<p>En acabar aquest nivell tindràs la teva primera automatització funcionant: dues aplicacions unides, treballant juntes. És la base de tot el que ve. Si avui has connectat un full amb un missatge, demà connectaràs coses més grans.</p>
+<h3>💡 Exemples pràctics</h3>
+<ol><li><strong>La llista del club.</strong> Cada compra nova que s&#39;apunta al full del club envia un missatge al grup de l&#39;associació amb l&#39;import i l&#39;article.</li><li><strong>El formulari de contacte.</strong> Quan algú omple el formulari de l&#39;associació a internet, les seves dades es guarden soles al full i s&#39;avisa la coordinadora.</li><li><strong>L&#39;avís de pagament.</strong> Quan el tresorer marca una quota com a pagada al full, el soci rep automàticament un correu d&#39;agraïment.</li></ol>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1: Obre Make (o Zapier) al navegador i entra al teu compte. Pas 2: Prem el botó &quot;Crea un escenari&quot; (Make) o &quot;Create from scratch&quot; (Zapier). Pas 3: Afegeix el disparador: busca l&#39;aplicació &quot;Google Sheets&quot; i tria l&#39;esdeveniment &quot;Observa files&quot; o &quot;New spreadsheet row&quot;. Pas 4: Prem &quot;Connecta&quot; i autoritza el teu compte de Google: apareixerà la finestra de Google, prem &quot;Permet&quot; o &quot;Continua&quot;. Pas 5: Tria el full de càlcul i la pestanya que faràs servir (pots crear un full de prova amb una fila: nom, article, import). Pas 6: Afegeix l&#39;acció: busca l&#39;aplicació de missatges que tinguis (per exemple, &quot;Telegram&quot; o &quot;WhatsApp Business&quot;) i tria &quot;Envia missatge&quot;. Pas 7: Al camp del missatge, escriu alguna cosa com &quot;Compra nova:&quot; i prem per afegir la dada del full (el nom de la fila). L&#39;eina la inserirà. Pas 8: Prem &quot;Prova&quot; o &quot;Run&quot;. Mira el resultat: hauria d&#39;aparèixer un missatge amb les teves dades de prova. Pas 9: Si surt bé, activa l&#39;escenari amb l&#39;interruptor. Afegeix una fila nova al full i espera: el missatge arribarà sol. Si alguna cosa falla, llegeix l&#39;avís d&#39;error i corregeix els camps.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Què és connectar un compte? a) Donar permís a l&#39;eina per fer servir una aplicació teva. b) Comprar un altre compte. c) Esborrar l&#39;aplicació.</li><li>Quina és l&#39;ordre del flux? a) Acció i després disparador. b) Disparador i després acció. c) No importa.</li><li>Per què es prova abans d&#39;activar? a) Perquè és obligatori per llei. b) Per veure si funciona sense molestar ningú. c) Per gastar dades.</li><li>Una automatització envia el missatge a l&#39;instant? a) Sí, sempre. b) No, pot trigar uns minuts, com el correu. c) Només de nit.</li><li>Si una automatització falla, què faig? a) Llence l&#39;ordinador. b) Llegeixo l&#39;avís d&#39;error, corregeixo els camps i torno a provar. c) La ignoro.</li></ol>
+<p>Respostes: 1-a, 2-b, 3-b, 4-b, 5-b.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<ul><li>Revisa sempre quins permisos dónes i a quins comptes. Treu l&#39;accés quan deixis de fer servir una automatització.</li><li>No connectis comptes que guarden dades personals d&#39;altres persones (salut, diners) sense un motiu clar.</li><li>Si la teva automatització envia missatges a un grup, avisa abans el grup i comprova el contingut.</li><li>No provis automatitzacions que enviïn correus o missatges reals a desconeguts: fes servir adreces o xats de prova.</li><li>Les automatitzacions que crees són teves: sigues responsable del que fan i de les dades que mouen.</li></ul>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Per a què serveix</th><th scope="col">On aconseguir-la</th></tr></thead><tbody><tr><td>Google Sheets</td><td>El full de càlcul on posaràs les teves dades</td><td>sheets.google.com (gratuït)</td></tr><tr><td>Make</td><td>Crear i provar els teus escenaris</td><td>make.com</td></tr><tr><td>Zapier</td><td>Alternativa amb moltes plantilles</td><td>zapier.com</td></tr><tr><td>Telegram</td><td>Aplicació de missatges per rebre avisos</td><td>telegram.org (gratuït)</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<p>Hem construït la nostra primera automatització real: un disparador en un full que desencadena una acció en una altra aplicació. Hem connectat comptes, triat esdeveniments, provat i activat. Aquest és el mètode que farem servir sempre. Al següent nivell aprendrem a crear notificacions automàtiques, avisos que arriben sols quan passa alguna cosa important.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-05/nivel-05-CA.html">Nivell anterior</a><span>Nivell 06</span><a rel="next" href="../nivel-07/nivel-07-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-06-CA.html" download>Nivell 06 · HTML</a></footer>
+
+</body>
+</html>

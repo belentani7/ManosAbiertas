@@ -43,7 +43,7 @@ test('publishes 832 complete lesson pages from the existing translated curriculu
     const plainText = html.replace(/<[^>]*>/g, ' ').replace(/&(?:amp|lt|gt|quot|#39);/g, ' ').replace(/\s+/g, ' ').trim();
 
     assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1, name);
-    assert.match(html, new RegExp('<html lang="' + LANGUAGE_TAGS[language] + '"'), name);
+    assert.match(html, new RegExp('<html\\b[^>]*\\blang="' + LANGUAGE_TAGS[language] + '"'), name);
     assert.match(html, /<meta name="viewport"/, name);
     assert.match(html, /class="skip-link"/, name);
     assert.match(html, /<main id="contenido"/, name);
@@ -72,7 +72,7 @@ test('publishes navigable module, language and default indexes', () => {
   for (const language of Object.keys(LANGUAGE_TAGS)) {
     const catalog = join(HTML_ROOT, `index-${language}.html`);
     const html = readFileSync(catalog, 'utf8');
-    assert.match(html, new RegExp('<html lang="' + LANGUAGE_TAGS[language] + '"'));
+    assert.match(html, new RegExp('<html\\b[^>]*\\blang="' + LANGUAGE_TAGS[language] + '"'));
     assert.equal((html.match(/<li><a href="[^"]+\/index-[A-Z]{2}\.html"/g) ?? []).length, 8);
 
     for (const moduleDir of readdirSync(HTML_ROOT, { withFileTypes: true })

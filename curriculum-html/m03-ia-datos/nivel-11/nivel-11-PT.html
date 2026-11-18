@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="No nível anterior aprendemos que a correlação mais bonita pode ser mentira. Hoje vamos ver a causa mais aborrecida e perigosa de isso acontecer: os dados sujos. Os estatísticos têm um ditado: &quot;lixo entra, lixo sai&quot;. Se o">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 3: IA Aplicada aos Dados — Nível 11 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar para o conteúdo</a>
+<header class="site-header">
+  <a class="brand" href="/pt">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos os módulos"><a href="../../index-PT.html">Todos os módulos</a><a href="../index-PT.html">Níveis do módulo</a><a href="/pt/curriculum/m03-ia-datos">Abrir o visualizador de aprendizagem</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 3: IA Aplicada aos Dados</p>
+    <details open>
+      <summary>Níveis do módulo</summary>
+      <nav aria-label="Níveis do módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-PT.html">Nível 00</a></li><li><a href="../nivel-01/nivel-01-PT.html">Nível 01</a></li><li><a href="../nivel-02/nivel-02-PT.html">Nível 02</a></li><li><a href="../nivel-03/nivel-03-PT.html">Nível 03</a></li><li><a href="../nivel-04/nivel-04-PT.html">Nível 04</a></li><li><a href="../nivel-05/nivel-05-PT.html">Nível 05</a></li><li><a href="../nivel-06/nivel-06-PT.html">Nível 06</a></li><li><a href="../nivel-07/nivel-07-PT.html">Nível 07</a></li><li><a href="../nivel-08/nivel-08-PT.html">Nível 08</a></li><li><a href="../nivel-09/nivel-09-PT.html">Nível 09</a></li><li><a href="../nivel-10/nivel-10-PT.html">Nível 10</a></li><li><a href="../nivel-11/nivel-11-PT.html" aria-current="page">Nível 11</a></li><li><a href="../nivel-12/nivel-12-PT.html">Nível 12</a></li><li><a href="../nivel-13/nivel-13-PT.html">Nível 13</a></li><li><a href="../nivel-14/nivel-14-PT.html">Nível 14</a></li><li><a href="../nivel-15/nivel-15-PT.html">Nível 15</a></li><li><a href="../nivel-16/nivel-16-PT.html">Nível 16</a></li><li><a href="../nivel-17/nivel-17-PT.html">Nível 17</a></li><li><a href="../nivel-18/nivel-18-PT.html">Nível 18</a></li><li><a href="../nivel-19/nivel-19-PT.html">Nível 19</a></li><li><a href="../nivel-20/nivel-20-PT.html">Nível 20</a></li><li><a href="../nivel-21/nivel-21-PT.html">Nível 21</a></li><li><a href="../nivel-22/nivel-22-PT.html">Nível 22</a></li><li><a href="../nivel-23/nivel-23-PT.html">Nível 23</a></li><li><a href="../nivel-24/nivel-24-PT.html">Nível 24</a></li><li><a href="../nivel-25/nivel-25-PT.html">Nível 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 3: IA Aplicada aos Dados</p>
+        <h1>Módulo 3: IA Aplicada aos Dados</h1>
+        <div class="metadata">
+          <span>Português (PT)</span>
+          
+          <span>Tempo estimado: 3 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma do material"><span>Idioma do material:</span><a href="nivel-11-ES.html" lang="es">Español</a><a href="nivel-11-PT.html" aria-current="page" lang="pt">Português</a><a href="nivel-11-CA.html" lang="ca">Català</a><a href="nivel-11-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: PT · Dificuldade: Caule</h3>
+<h3>Tempo estimado: 3 horas</h3>
+<h3>🎯 Objetivo do nível</h3>
+<ul><li>Perceber que os dados sujos (erros, duplicados, buracos) falsificam qualquer análise.</li><li>Aprender a detetar os cinco problemas típicos: duplicados, em falta, erros de escrita, formatos misturados e valores impossíveis.</li><li>Limpar uma folha de cálculo real passo a passo no Google Sheets.</li><li>Verificar a limpeza com as ferramentas de &quot;validação&quot; da própria folha.</li></ul>
+<h3>📖 Vocabulário essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Termo</th><th scope="col">Explicação em palavras simples</th></tr></thead><tbody><tr><td>Dados sujos</td><td>Dados com erros, duplicados ou buracos que enganam a análise.</td></tr><tr><td>Dado duplicado</td><td>A mesma informação repetida duas vezes na folha.</td></tr><tr><td>Valor em falta</td><td>Uma caixa vazia onde deveria estar um dado.</td></tr><tr><td>Valor impossível</td><td>Um dado que não pode ser verdade, como uma idade de 400 anos.</td></tr><tr><td>Limpeza de dados</td><td>O processo de rever e corrigir os dados antes de os analisar.</td></tr></tbody></table></div>
+<h3>📚 Lição principal</h3>
+<p>No nível anterior aprendemos que a correlação mais bonita pode ser mentira. Hoje vamos ver a causa mais aborrecida e perigosa de isso acontecer: os dados sujos. Os estatísticos têm um ditado: &quot;lixo entra, lixo sai&quot;. Se os dados estão maus, todas as conclusões que saírem deles estarão erradas, por muito bonitos que sejam os gráficos.</p>
+<p>O que é um dado sujo? É qualquer dado que não reflete a realidade. Imagine que a sua associação de moradores quer saber quantas árvores há na rua para pedir à câmara que plante mais. Recolhe dados de 50 vizinhos: cada um escreve o número de árvores que vê da sua janela. O que pode correr mal? Tudo. Alguém escreve &quot;1ª&quot; em vez de &quot;12&quot;; outro escreve a mesma rua duas vezes; outro esquece-se de responder; alguém escreve &quot;muitas&quot; em vez de um número. Isso é uma folha suja.</p>
+<p>Os problemas mais comuns agrupam-se em cinco tipos. Primeiro, os duplicados: a mesma linha aparece duas vezes, e ao somar as árvores contamo-la duas vezes. Segundo, os em falta: caixas vazias que partem os cálculos. Terceiro, os erros de escrita: &quot;12&quot; escrito como &quot;12o&quot; ou com uma vírgula decimal no lugar errado. Quarto, os formatos misturados: umas datas em formato português (12/06/2026) e outras em formato inglês (06/12/2026), que significam meses diferentes. Quinto, os valores impossíveis: uma idade de 400 anos ou uma temperatura de 500 graus.</p>
+<p>Porque é que isto nos interessa num curso de IA? Porque a inteligência artificial alimenta-se de dados. Uma IA treina com a história de milhares de pacientes para prever doenças; se essa história contém erros de escrita, a IA aprende padrões falsos e comete erros graves. Os cientistas de dados dedicam entre 60% e 80% do seu tempo a limpar dados, não a construir a IA. Esse dado surpreende toda a gente e é verdade.</p>
+<p>A limpeza não é magia: é paciência. Trabalha-se por passos. Passo um, olhar para a folha: abrir os olhos e percorrê-la. Passo dois, tirar duplicados: no Google Sheets, &quot;Dados&quot; e &quot;Depurar dados&quot; e &quot;Remover duplicados&quot;. Passo três, procurar buracos: a ferramenta &quot;Localizar e substituir&quot; (Ctrl+H) serve para localizar as caixas vazias se escrevermos um espaço. Passo quatro, corrigir os formatos: uma coluna deve ter um único formato; se as datas estão misturadas, é preciso unificá-las. Passo cinco, eliminar valores impossíveis: um filtro mostra de uma vez o número maior e o menor de cada coluna, e se o máximo é absurdo, é preciso rever essa linha.</p>
+<p>Como se verifica que a limpeza funcionou? Com três medidas de resumo que já conhecemos: o total, a média e o máximo. Antes de limpar, uma soma com duplicados dá um resultado inflado. Depois de limpar, o total muda e aproxima-se da realidade. Também podemos usar a função &quot;CONTAR&quot; para ver quantos valores tem cada coluna: se uma coluna de 50 vizinhos só tem 47 números, já sabemos que há três buracos.</p>
+<p>Há um hábito de ouro que os profissionais aplicam sempre: fazer uma cópia da folha antes de limpar. Nunca se limpa sobre o original. Se nos enganarmos ou se quisermos ver como era o dado antes, a cópia salva-nos. No Google Sheets isto é facílimo: botão direito sobre o nome da folha, &quot;Duplicar&quot;, e pronto.</p>
+<p>Outro hábito importante: anotar que alterações foram feitas. Os profissionais mantêm uma coluna ou um documento à parte com as correções: &quot;linhas 12 e 40 duplicadas, eliminadas; caixa 33 vazia, preenchida com 0; data da linha 20, corrigida de formato inglês para português&quot;. Isso chama-se &quot;registo de limpeza&quot; e serve para que qualquer pessoa possa verificar o nosso trabalho. A honestidade também é limpeza.</p>
+<p>No nível seguinte usaremos estes dados limpos para construir o nosso primeiro painel de controlo, o que em inglês se chama &quot;dashboard&quot;. Lembre-se disto: o painel bonito com dados sujos é como uma casa bonita com alicerces de areia. Primeiro limpam-se os dados, depois desenham-se os gráficos. A limpeza não é um passo aborrecido: é o passo que faz funcionar tudo o resto.</p>
+<h3>💡 Exemplos práticos</h3>
+<h4>Exemplo 1: O censo das árvores</h4>
+<p>A sua associação recolhe 50 respostas. Ao rever, encontra a linha da senhora do 3º duplicada, a caixa 33 vazia e um vizinho que escreveu &quot;1ª&quot; em vez de &quot;12&quot;. Aplique os cinco passos e explique o que muda no total.</p>
+<h4>Exemplo 2: As datas misturadas</h4>
+<p>Uma tabela de compras tem datas em formato português e inglês. A compra de 12 de junho aparece como 12/06 e como 06/12, que em inglês é 6 de dezembro. Se se somarem as vendas de junho, esse erro muda o resultado.</p>
+<h4>Exemplo 3: O valor impossível</h4>
+<p>Na lista de idades de um clube há uma linha com &quot;234&quot;. O máximo da coluna denuncia o erro. Com um filtro localiza-se a linha e chama-se o sócio para corrigir o dado para &quot;34&quot;.</p>
+<h3>🛠️ Atividade guiada</h3>
+<p>Passo 1. Crie no Google Sheets uma folha chamada &quot;Árvores sujas&quot; e copie os seguintes dados: 12, 7, 12, 5, &quot;1ª&quot;, 9, (vazio), 12, 3, 8. Passo 2. Faça uma cópia de segurança: botão direito sobre o nome da folha e &quot;Duplicar&quot;. Chame à cópia &quot;Árvores limpas&quot;. Passo 3. Na folha limpa, some com =SOMA(A1:A10) e anote o resultado (está inflado pelo duplicado). Passo 4. Remova duplicados: &quot;Dados&quot;, &quot;Depurar dados&quot;, &quot;Remover duplicados&quot;. Verifique quantas linhas ficam. Passo 5. Localize os buracos: &quot;Editar&quot;, &quot;Localizar e substituir&quot;, procure um espaço e marque &quot;coincidir conteúdo de célula&quot;. Passo 6. Corrija o &quot;1ª&quot;: mude-o para &quot;12&quot; consultando o vizinho que o escreveu. Passo 7. Procure o valor impossível: use &quot;Dados&quot; e &quot;Filtrar&quot; e olhe para o máximo. Corrija o que for preciso. Passo 8. Volte a somar com =SOMA(...) e compare com o resultado do passo 3. O que mudou e porquê? Passo 9. Acrescente uma coluna D chamada &quot;Registo&quot; e anote cada correção feita com a sua data. Passo 10. Guarde a folha e escreva uma conclusão: &quot;dados limpos, totais fiáveis&quot;.</p>
+<h3>✍️ Exercícios de autoavaliação</h3>
+<ol><li>O que significa o ditado &quot;lixo entra, lixo sai&quot;?</li><li>Nomeie três dos cinco problemas típicos dos dados sujos.</li><li>Porque é que os duplicados inflam as somas?</li><li>O que é preciso fazer antes de começar a limpar uma folha?</li><li>Que percentagem do tempo dedicam os cientistas de dados a limpar dados?</li></ol>
+<p>Respostas: 1. Que se os dados estão maus, as conclusões estarão erradas por muito bonitos que sejam os gráficos. 2. Duplicados, em falta, erros de escrita, formatos misturados e valores impossíveis. 3. Porque a mesma linha se conta duas vezes. 4. Fazer uma cópia da folha (nunca se limpa sobre o original). 5. Entre 60% e 80% do seu tempo.</p>
+<h3>⚖️ Dimensão ética</h3>
+<p>Os dados sujos não causam só erros técnicos: causam dano a pessoas. Um historial médico mal escrito pode levar a um tratamento errado; um censo com buracos deixa de fora os vizinhos que não responderam. Limpar dados é um ato de respeito: significa cuidar que as decisões que se tomam sobre as pessoas se baseiem em informação verdadeira. E ser honesto no registo de limpeza permite que outros verifiquem e confiem no nosso trabalho.</p>
+<h3>🔓 Ferramentas abertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Ferramenta</th><th scope="col">O que é e para que serve</th><th scope="col">Onde encontrar</th></tr></thead><tbody><tr><td>Google Sheets</td><td>Ferramentas de depuração: remover duplicados, localizar, filtrar</td><td>https://sheets.google.com</td></tr><tr><td>OpenRefine</td><td>Programa gratuito especializado em limpar dados</td><td>https://openrefine.org</td></tr><tr><td>LibreOffice Calc</td><td>As mesmas funções de depuração, sem ligação</td><td>https://pt.libreoffice.org</td></tr><tr><td>Open Data Kit</td><td>Recolha de dados de campo com menos erros</td><td>https://getodk.org</td></tr></tbody></table></div>
+<h3>🧠 Resumo e ponte</h3>
+<ul><li>Os dados sujos falsificam qualquer análise: lixo entra, lixo sai.</li><li>Os cinco problemas típicos: duplicados, em falta, erros de escrita, formatos misturados e valores impossíveis.</li><li>Limpa-se sempre sobre uma cópia e anota-se cada correção num registo.</li><li>60-80% do tempo dos cientistas de dados é limpar dados.</li></ul>
+<p>No nível seguinte vamos transformar os dados já limpos no nosso primeiro painel de controlo ou &quot;dashboard&quot;.</p></div>
+      <nav class="lesson-pagination" aria-label="Níveis do módulo"><a rel="prev" href="../nivel-10/nivel-10-PT.html">Nível anterior</a><span>Nível 11</span><a rel="next" href="../nivel-12/nivel-12-PT.html">Próximo nível</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Material educativo aberto. Não constitui certificação.</span><a href="nivel-11-PT.html" download>Nível 11 · HTML</a></footer>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="No nível anterior vimos a ideia geral da previsão. Hoje vamos à primeira técnica concreta, e é a mais útil de todas quando queremos adivinhar um número: a regressão. Não se assuste com o nome, que parece de bata e labora">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 3: IA Aplicada aos Dados — Nível 16 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar para o conteúdo</a>
+<header class="site-header">
+  <a class="brand" href="/pt">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos os módulos"><a href="../../index-PT.html">Todos os módulos</a><a href="../index-PT.html">Níveis do módulo</a><a href="/pt/curriculum/m03-ia-datos">Abrir o visualizador de aprendizagem</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 3: IA Aplicada aos Dados</p>
+    <details open>
+      <summary>Níveis do módulo</summary>
+      <nav aria-label="Níveis do módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-PT.html">Nível 00</a></li><li><a href="../nivel-01/nivel-01-PT.html">Nível 01</a></li><li><a href="../nivel-02/nivel-02-PT.html">Nível 02</a></li><li><a href="../nivel-03/nivel-03-PT.html">Nível 03</a></li><li><a href="../nivel-04/nivel-04-PT.html">Nível 04</a></li><li><a href="../nivel-05/nivel-05-PT.html">Nível 05</a></li><li><a href="../nivel-06/nivel-06-PT.html">Nível 06</a></li><li><a href="../nivel-07/nivel-07-PT.html">Nível 07</a></li><li><a href="../nivel-08/nivel-08-PT.html">Nível 08</a></li><li><a href="../nivel-09/nivel-09-PT.html">Nível 09</a></li><li><a href="../nivel-10/nivel-10-PT.html">Nível 10</a></li><li><a href="../nivel-11/nivel-11-PT.html">Nível 11</a></li><li><a href="../nivel-12/nivel-12-PT.html">Nível 12</a></li><li><a href="../nivel-13/nivel-13-PT.html">Nível 13</a></li><li><a href="../nivel-14/nivel-14-PT.html">Nível 14</a></li><li><a href="../nivel-15/nivel-15-PT.html">Nível 15</a></li><li><a href="../nivel-16/nivel-16-PT.html" aria-current="page">Nível 16</a></li><li><a href="../nivel-17/nivel-17-PT.html">Nível 17</a></li><li><a href="../nivel-18/nivel-18-PT.html">Nível 18</a></li><li><a href="../nivel-19/nivel-19-PT.html">Nível 19</a></li><li><a href="../nivel-20/nivel-20-PT.html">Nível 20</a></li><li><a href="../nivel-21/nivel-21-PT.html">Nível 21</a></li><li><a href="../nivel-22/nivel-22-PT.html">Nível 22</a></li><li><a href="../nivel-23/nivel-23-PT.html">Nível 23</a></li><li><a href="../nivel-24/nivel-24-PT.html">Nível 24</a></li><li><a href="../nivel-25/nivel-25-PT.html">Nível 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 3: IA Aplicada aos Dados</p>
+        <h1>Módulo 3: IA Aplicada aos Dados</h1>
+        <div class="metadata">
+          <span>Português (PT)</span>
+          
+          <span>Tempo estimado: 3 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma do material"><span>Idioma do material:</span><a href="nivel-16-ES.html" lang="es">Español</a><a href="nivel-16-PT.html" aria-current="page" lang="pt">Português</a><a href="nivel-16-CA.html" lang="ca">Català</a><a href="nivel-16-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: PT · Dificuldade: Ramo</h3>
+<h3>Tempo estimado: 3 horas</h3>
+<h3>🎯 Objetivo do nível</h3>
+<ul><li>Perceber o que é a regressão: a técnica para prever números.</li><li>Ver a &quot;linha de tendência&quot; como o coração da regressão.</li><li>Desenhar uma linha de tendência no Google Sheets.</li><li>Aprender os perigos de prever demasiado longe (extrapolar).</li></ul>
+<h3>📖 Vocabulário essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Termo</th><th scope="col">Explicação em palavras simples</th></tr></thead><tbody><tr><td>Regressão</td><td>A técnica da IA para prever um número com dados passados.</td></tr><tr><td>Linha de tendência</td><td>A linha reta que melhor resume como sobem ou descem os pontos.</td></tr><tr><td>Dados históricos</td><td>Os valores passados que o modelo usa para aprender.</td></tr><tr><td>Extrapolar</td><td>Prever para além dos dados que temos, com cuidado.</td></tr><tr><td>Erro</td><td>A diferença entre o que o modelo previu e o que aconteceu.</td></tr></tbody></table></div>
+<h3>📚 Lição principal</h3>
+<p>No nível anterior vimos a ideia geral da previsão. Hoje vamos à primeira técnica concreta, e é a mais útil de todas quando queremos adivinhar um número: a regressão. Não se assuste com o nome, que parece de bata e laboratório. A regressão é a técnica que desenha uma linha reta entre os pontos de um gráfico para poder dizer: &quot;as coisas vão por aqui, e assim continuarão&quot;.</p>
+<p>Lembre-se do gráfico de dispersão do nível 10: uma nuvem de pontos que sobe da esquerda para a direita quando duas coisas andam juntas. A regressão faz algo maravilhoso com essa nuvem: traça a linha reta que passa o mais perto possível de todos os pontos ao mesmo tempo. Não é uma linha qualquer: é a &quot;melhor&quot; linha, a que deixa os pontos o mais perto possível, por cima e por baixo. Essa linha chama-se &quot;linha de tendência&quot;.</p>
+<p>Porque é que uma linha serve? Porque quando a tem, pode estendê-la. Se a nuvem mostra que com 20 graus se vendem 40 gelados e com 25 graus se vendem 55, a linha cruza por ali e continua reta. Então olha para a altura da linha aos 28 graus e diz: &quot;provavelmente vender-se-ão uns 65 gelados&quot;. Acabou de fazer uma previsão por regressão. A máquina não pensa: a máquina desenha a linha e lê a altura.</p>
+<p>O Google Sheets faz esta linha por nós com dois cliques. Seleciona-se o gráfico de dispersão, abre-se a configuração (&quot;Personalizar&quot;, &quot;Série&quot;, &quot;Linha de tendência&quot;), e a linha aparece magicamente. Ao lado pode-se ativar a &quot;etiqueta&quot; que mostra a fórmula, e também o &quot;coeficiente de determinação&quot;, um número entre 0 e 1 que diz quão bem a linha se ajusta aos pontos. Quanto mais perto de 1, mais fiável a linha; perto de 0, a linha não serve para nada.</p>
+<p>Vamos perceber esse coeficiente com um exemplo quotidiano. Se os pontos da sua dispersão estiverem quase colados à linha, como as vendas de um quiosque conforme a temperatura, o coeficiente aproxima-se de 1: a linha resume muito bem a realidade, e as suas previsões merecem confiança. Se os pontos estiverem espalhados como um punhado de arroz, o coeficiente aproxima-se de 0: não há padrão claro, e nenhuma linha reta pode salvar a situação. O coeficiente é o &quot;semáforo&quot; da regressão.</p>
+<p>Agora vem a lição mais importante do dia: a extrapolação. Extrapolar é usar a linha para prever para além dos dados que temos. É tentador e perigoso. Se só tem dados de temperaturas entre 10 e 30 graus, pode prever sem medo os gelados a 25 graus: está dentro do conhecido, os dados sustentam-no. Mas se previr os gelados a 50 graus, está a viajar para um território que nunca viu: a linha talvez continue a subir, mas na realidade, a 50 graus, ninguém sai para comprar gelados e as vendas afundam. A linha não sabe isso: a linha só sabe prolongar-se.</p>
+<p>Os profissionais chamam a isto &quot;não extrapolar para além dos dados&quot;. É a causa dos erros mais famosos da história da IA. Previu-se o comportamento da economia, das epidemias e do clima estendendo linhas sem perguntar se o mundo continuava o mesmo. Uma linha é um resumo do passado, não uma lei do universo. Quanto mais longe do passado, menos fiável.</p>
+<p>Outra ideia útil: a regressão não entende o significado dos números, só a sua forma. Se você lhe der os quilos de tomates e os dias de chuva, a máquina encontra a linha que melhor encaixa. Mas não sabe que os tomates precisam de água, nem quanta. A interpretação é da pessoa. Por isso a regressão é uma excelente ferramenta, mas sempre acompanhada de critério humano: o critério é seu, a linha é da máquina.</p>
+<p>No mundo real, a regressão está em todo o lado disfarçada de produto. Os preços dos voos preveem-se com regressão sobre milhões de reservas passadas. O valor de uma casa estima-se com regressão sobre os preços de vendas anteriores. O gasto elétrico do mês que vem antecipa-se com a linha dos meses passados. Sempre que um sistema lhe diz um número &quot;provável&quot;, o mais certo é que atrás haja uma regressão.</p>
+<p>No próximo nível veremos a segunda grande técnica da previsão: a classificação, que não prevê um número mas uma categoria: será chuva ou sol? É spam ou não? Entretanto, guarde esta ideia: prever números é desenhar a melhor linha entre os pontos e lê-la com humildade, sabendo que a linha é memória, não profecia.</p>
+<h3>💡 Exemplos práticos</h3>
+<h4>Exemplo 1: Os gelados do quiosque</h4>
+<p>Com 10 dias de dados (temperatura e gelados vendidos), a linha de tendência permite estimar quantos gelados se venderão amanhã. A 28 graus, uns 65. A regressão feita com os olhos.</p>
+<h4>Exemplo 2: O preço do voo</h4>
+<p>Uma companhia aérea guarda milhões de reservas passadas. Uma regressão encontra a linha que liga preço a dias de antecedência e cobra-lhe &quot;o que o algoritmo sabe que você vai pagar&quot;.</p>
+<h4>Exemplo 3: A água do prédio</h4>
+<p>Com 12 meses de consumo, a linha de tendência mostra se o gasto de água sobe. Se a linha sobe, algo se está a partir ou a desperdiçar: a regressão avisa antes da fatura.</p>
+<h3>🛠️ Atividade guiada</h3>
+<p>Passo 1. Abra a folha &quot;A minha primeira previsão&quot; do nível 15 (ou crie uma com 10 dias de temperatura e gelados). Passo 2. Selecione as duas colunas e faça um gráfico de dispersão (Inserir, Gráfico, dispersão). Passo 3. Carregue nos três pontos do gráfico e abra &quot;Editar gráfico&quot;. Passo 4. Vá a &quot;Personalizar&quot;, &quot;Série&quot; e ative &quot;Linha de tendência&quot;. Passo 5. Ative também &quot;Rótulo&quot; (para ver a fórmula) e, se aparecer, &quot;R²&quot; (o coeficiente de determinação). Passo 6. Observe o R²: está perto de 1? Então a linha resume bem os pontos. Passo 7. Leia na fórmula o número: a fórmula tem a forma &quot;y = a·x + b&quot;. Nela, &quot;x&quot; é a temperatura e &quot;y&quot; os gelados. Passo 8. Substitua x por 28 e calcule y com a calculadora. Esse é o número que prevê a linha. Passo 9. Escreva por baixo: &quot;previsão a 28 graus: y gelados&quot;. Verifique se coincide com o que vê na linha. Passo 10. Pergunte-se e escreva: &quot;ousaria prever a 50 graus? Porquê sim ou porquê não?&quot;.</p>
+<h3>✍️ Exercícios de autoavaliação</h3>
+<ol><li>O que é a regressão?</li><li>Como se chama a linha que a regressão desenha?</li><li>O que indica o coeficiente R²?</li><li>O que é extrapolar e porque é perigoso?</li><li>Quem põe o significado nos números que a regressão prevê?</li></ol>
+<p>Respostas: 1. A técnica da IA para prever um número com dados passados. 2. Linha de tendência. 3. Quão bem a linha se ajusta aos pontos: perto de 1 é fiável, perto de 0 não serve. 4. Prever para além dos dados que temos; perigoso porque o mundo pode mudar e a linha não sabe. 5. A pessoa: a máquina vê a forma, a pessoa entende o significado.</p>
+<h3>⚖️ Dimensão ética</h3>
+<p>Uma regressão pode servir para ajudar ou para espremer. A mesma técnica que prevê o consumo de água para evitar desperdícios também se usa para cobrar mais a quem tem menos opções. E há uma armadilha ética subtil: se os dados históricos contêm injustiças (por exemplo, um bairro a quem se vendeu menos), a linha herda-as e perpetua-as. Antes de acreditar num número previsto, pergunte-se: os dados de que nasce são justos? A regressão não é culpada nem inocente: herda a verdade ou o preconceito dos seus dados.</p>
+<h3>🔓 Ferramentas abertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Ferramenta</th><th scope="col">O que é e para que serve</th><th scope="col">Onde encontrar</th></tr></thead><tbody><tr><td>Google Sheets</td><td>Linha de tendência e R² com dois cliques</td><td>https://sheets.google.com</td></tr><tr><td>LibreOffice Calc</td><td>As mesmas linhas de tendência, sem ligação</td><td>https://pt.libreoffice.org</td></tr><tr><td>Gapminder</td><td>Dados reais para praticar linhas de tendência</td><td>https://www.gapminder.org</td></tr><tr><td>Desmos</td><td>Calculadora gráfica que desenha linhas sobre pontos</td><td>https://www.desmos.com</td></tr></tbody></table></div>
+<h3>🧠 Resumo e ponte</h3>
+<ul><li>A regressão prevê números desenhando a melhor linha entre os pontos.</li><li>O coeficiente R² diz se a linha é fiável.</li><li>Extrapolar para além dos dados é a causa de erros famosos.</li><li>A máquina desenha a linha; a pessoa põe o significado.</li></ul>
+<p>No nível seguinte veremos a classificação: prever categorias (chuva ou sol? spam ou não?) em vez de números.</p></div>
+      <nav class="lesson-pagination" aria-label="Níveis do módulo"><a rel="prev" href="../nivel-15/nivel-15-PT.html">Nível anterior</a><span>Nível 16</span><a rel="next" href="../nivel-17/nivel-17-PT.html">Próximo nível</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Material educativo aberto. Não constitui certificação.</span><a href="nivel-16-PT.html" download>Nível 16 · HTML</a></footer>
+
+</body>
+</html>

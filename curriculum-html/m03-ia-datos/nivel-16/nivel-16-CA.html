@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Al nivell anterior vam veure la idea general de la predicció. Avui anem a la primera tècnica concreta, i és la més útil de totes quan volem endevinar un número: la regressió. Que no us espanti el nom, que sembla de bata ">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 3: IA Aplicada a les Dades — Nivell 16 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m03-ia-datos">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 3: IA Aplicada a les Dades</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html" aria-current="page">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 3: IA Aplicada a les Dades</p>
+        <h1>Mòdul 3: IA Aplicada a les Dades</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-16-ES.html" lang="es">Español</a><a href="nivel-16-PT.html" lang="pt">Português</a><a href="nivel-16-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-16-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Branca</h3>
+<h3>Temps estimat: 3 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre què és la regressió: la tècnica per predir números.</li><li>Veure la &quot;línia de tendència&quot; com el cor de la regressió.</li><li>Dibuixar una línia de tendència a Google Sheets.</li><li>Aprendre els perills de predir massa lluny (extrapolar).</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules simples</th></tr></thead><tbody><tr><td>Regressió</td><td>La tècnica de la IA per predir un número amb dades passades.</td></tr><tr><td>Línia de tendència</td><td>La línia recta que millor resumeix com pugen o baixen els punts.</td></tr><tr><td>Dades històriques</td><td>Els valors passats que el model fa servir per aprendre.</td></tr><tr><td>Extrapolar</td><td>Predir més enllà de les dades que tenim, amb compte.</td></tr><tr><td>Error</td><td>La diferència entre el que el model va predir i el que va passar.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Al nivell anterior vam veure la idea general de la predicció. Avui anem a la primera tècnica concreta, i és la més útil de totes quan volem endevinar un número: la regressió. Que no us espanti el nom, que sembla de bata i laboratori. La regressió és la tècnica que dibuixa una línia recta entre els punts d&#39;un gràfic per poder dir: &quot;per aquí van les coses, i així continuaran&quot;.</p>
+<p>Recordeu el gràfic de dispersió del nivell 10: un núvol de punts que puja d&#39;esquerra a dreta quan dues coses van juntes. La regressió fa una cosa meravellosa amb aquest núvol: traça la línia recta que passa el més a prop possible de tots els punts alhora. No és una línia qualsevol: és la &quot;millor&quot; línia, la que deixa els punts el més a prop possible, per sobre i per sota. Aquesta línia s&#39;anomena &quot;línia de tendència&quot;.</p>
+<p>Per què serveix una línia? Perquè un cop la teniu, podeu allargar-la. Si el núvol mostra que amb 20 graus es venen 40 gelats i amb 25 graus se&#39;n venen 55, la línia hi passa per sobre i continua recta. Llavors mireu quina alçada té la línia als 28 graus i dieu: &quot;probablement se&#39;n vendran uns 65&quot;. Acabeu de fer una predicció per regressió. La màquina no pensa: la màquina dibuixa la línia i llegeix l&#39;alçada.</p>
+<p>Google Sheets fa aquesta línia per nosaltres amb un parell de clics. Se selecciona el gràfic de dispersió, s&#39;obre la configuració (&quot;Personalitza&quot;, &quot;Sèrie&quot;, &quot;Línia de tendència&quot;), i la línia apareix màgicament. Al costat es pot activar l&#39;&quot;etiqueta&quot; que mostra la fórmula, i també el &quot;coeficient de determinació&quot;, un número entre 0 i 1 que diu com de bé s&#39;ajusta la línia als punts. Com més a prop d&#39;1, més fiable la línia; prop de 0, la línia no serveix per a res.</p>
+<p>Entendrem aquest coeficient amb un exemple quotidià. Si els punts de la vostra dispersió estan gairebé enganxats a la línia, com les vendes d&#39;un quiosc segons la temperatura, el coeficient s&#39;acosta a 1: la línia resumeix molt bé la realitat, i les seves prediccions mereixen confiança. Si els punts estan escampats com un grapat d&#39;arròs, el coeficient s&#39;acosta a 0: no hi ha patró clar, i cap línia recta no pot salvar la situació. El coeficient és el &quot;semàfor&quot; de la regressió.</p>
+<p>Ara ve la lliçó més important del dia: l&#39;extrapolació. Extrapolar és fer servir la línia per predir més enllà de les dades que tenim. És temptador i perillós. Si només teniu dades de temperatures entre 10 i 30 graus, podeu predir sense por els gelats a 25 graus: és dins del conegut, les dades ho sostenen. Però si prediu els gelats a 50 graus, esteu viatjant a un territori que mai no heu vist: la línia potser continua pujant, però a la realitat, a 50 graus, ningú no surt a comprar gelats i les vendes s&#39;enfonsen. La línia no ho sap: la línia només sap perllongar-se.</p>
+<p>Els professionals anomenen això &quot;no extrapolar més enllà de les dades&quot;. És la causa dels errors més sonats de la història de la IA. Es va predir el comportament de l&#39;economia, de les epidèmies i del clima allargant línies sense preguntar-se si el món continuava sent el mateix. Una línia és un resum del passat, no una llei de l&#39;univers. Com més lluny del passat, menys fiable.</p>
+<p>Una altra idea útil: la regressió no entén el significat dels números, només la seva forma. Si li doneu els quilos de tomàquets i els dies de pluja, la màquina troba la línia que millor encaixa. Però no sap que els tomàquets necessiten aigua, ni quanta. La interpretació la posa la persona. Per això la regressió és una eina excel·lent, però sempre acompanyada de criteri humà: el criteri és vostre, la línia és de la màquina.</p>
+<p>Al món real, la regressió és a tot arreu disfressada de producte. Els preus dels vols es prediuen amb regressió sobre milions de reserves passades. El valor d&#39;una casa s&#39;estima amb regressió sobre els preus de vendes anteriors. La despesa elèctrica del mes que ve s&#39;anticipa amb la línia dels mesos passats. Cada vegada que un sistema us diu un número &quot;probable&quot;, el més segur és que al darrere hi hagi una regressió.</p>
+<p>Al proper nivell veurem la segona gran tècnica de la predicció: la classificació, que no prediu un número sinó una categoria: serà pluja o sol? És spam o no? Mentrestant, guardeu aquesta idea: predir números és dibuixar la millor línia entre els punts i llegir-la amb humilitat, sabent que la línia és memòria, no profecia.</p>
+<h3>💡 Exemples pràctics</h3>
+<h4>Exemple 1: Els gelats del quiosc</h4>
+<p>Amb 10 dies de dades (temperatura i gelats venuts), la línia de tendència permet estimar quants gelats es vendran demà. A 28 graus, uns 65. La regressió feta amb els ulls.</p>
+<h4>Exemple 2: El preu del vol</h4>
+<p>Una aerolínia guarda milions de reserves passades. Una regressió troba la línia que relaciona preu amb dies d&#39;antelació i us cobra &quot;el que l&#39;algorisme sap que pagareu&quot;.</p>
+<h4>Exemple 3: L&#39;aigua de l&#39;edifici</h4>
+<p>Amb 12 mesos de consum, la línia de tendència mostra si la despesa d&#39;aigua puja. Si la línia puja, alguna cosa s&#39;està trencant o malbaratant: la regressió avisa abans que la factura.</p>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1. Obriu el full &quot;La meva primera predicció&quot; del nivell 15 (o creeu-ne un amb 10 dies de temperatura i gelats). Pas 2. Seleccioneu les dues columnes i feu un gràfic de dispersió (Insereix, Gràfic, dispersió). Pas 3. Premeu els tres punts del gràfic i obriu &quot;Edita el gràfic&quot;. Pas 4. Aneu a &quot;Personalitza&quot;, &quot;Sèrie&quot; i activeu &quot;Línia de tendència&quot;. Pas 5. Activeu també &quot;Etiqueta&quot; (per veure la fórmula) i, si apareix, &quot;R²&quot; (el coeficient de determinació). Pas 6. Observeu el R²: és a prop d&#39;1? Doncs la línia resumeix bé els punts. Pas 7. Llegiu a la fórmula el número: la fórmula té la forma &quot;y = a·x + b&quot;. En ella, &quot;x&quot; és la temperatura i &quot;y&quot; els gelats. Pas 8. Substituïu x per 28 i calculeu y amb la calculadora. Aquest és el número que prediu la línia. Pas 9. Escriviu a sota: &quot;predicció a 28 graus: y gelats&quot;. Comproveu que coincideix amb el que veieu a la línia. Pas 10. Pregunteu-vos i escriviu: &quot;m&#39;atreviria a predir a 50 graus? Per què sí o per què no?&quot;.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Què és la regressió?</li><li>Com s&#39;anomena la línia que dibuixa la regressió?</li><li>Què indica el coeficient R²?</li><li>Què és extrapolar i per què és perillós?</li><li>Qui posa el significat als números que prediu la regressió?</li></ol>
+<p>Respostes: 1. La tècnica de la IA per predir un número amb dades passades. 2. Línia de tendència. 3. Com de bé s&#39;ajusta la línia als punts: prop d&#39;1 és fiable, prop de 0 no serveix. 4. Predir més enllà de les dades que tenim; perillós perquè el món pot canviar i la línia no ho sap. 5. La persona: la màquina veu la forma, la persona entén el significat.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<p>Una regressió pot servir per ajudar o per esprémer. La mateixa tècnica que prediu el consum d&#39;aigua per evitar malbarataments també s&#39;usa per cobrar més al que té menys opcions. I hi ha una trampa ètica subtil: si les dades històriques contenen injustícies (per exemple, un barri al qual se li va vendre menys), la línia les hereta i les perpetua. Abans de creure un número predit, pregunteu-vos: les dades de les quals neix són justes? La regressió no és culpable ni innocent: hereta la veritat o el prejudici de les seves dades.</p>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Què és i per a què serveix</th><th scope="col">On trobar-la</th></tr></thead><tbody><tr><td>Google Sheets</td><td>Línia de tendència i R² amb dos clics</td><td>https://sheets.google.com</td></tr><tr><td>LibreOffice Calc</td><td>Les mateixes línies de tendència, sense connexió</td><td>https://ca.libreoffice.org</td></tr><tr><td>Gapminder</td><td>Dades reals per practicar línies de tendència</td><td>https://www.gapminder.org</td></tr><tr><td>Desmos</td><td>Calculadora gràfica que dibuixa línies sobre punts</td><td>https://www.desmos.com</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<ul><li>La regressió prediu números dibuixant la millor línia entre els punts.</li><li>El coeficient R² diu si la línia és fiable.</li><li>Extrapolar més enllà de les dades és la causa d&#39;errors famosos.</li><li>La màquina dibuixa la línia; la persona posa el significat.</li></ul>
+<p>Al nivell següent veurem la classificació: predir categories (pluja o sol? spam o no?) en comptes de números.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-15/nivel-15-CA.html">Nivell anterior</a><span>Nivell 16</span><a rel="next" href="../nivel-17/nivel-17-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-16-CA.html" download>Nivell 16 · HTML</a></footer>
+
+</body>
+</html>

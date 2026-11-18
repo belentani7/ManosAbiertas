@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="In the Seed band we already talked about Netflix, Spotify, and Amazon recommendations. Now that we are more expert, let us open that box and understand how they work from the inside. Because recommendations are not a det">
+  <meta name="color-scheme" content="light">
+  <title>Module 1: Introduction to Artificial Intelligence — Level 19</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m01-introduccion-ia">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 1: Introduction to Artificial Intelligence</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html" aria-current="page">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 1: Introduction to Artificial Intelligence</p>
+        <h1>Module 1: Introduction to Artificial Intelligence</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-19-ES.html" lang="es">Español</a><a href="nivel-19-PT.html" lang="pt">Português</a><a href="nivel-19-CA.html" lang="ca">Català</a><a href="nivel-19-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Branch</h3>
+<h3>Estimated time: 3 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand how recommendation systems work from the inside.</li><li>Distinguish the two main techniques: collaborative and content-based.</li><li>Understand the feedback loop and the filter bubble.</li><li>Recognize that the goal of recommendations is to keep our attention.</li><li>Learn how to get out of the bubble and regain control.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple explanation</th></tr></thead><tbody><tr><td>Collaborative filtering</td><td>&quot;People like you like this&quot;: recommends according to what similar people do.</td></tr><tr><td>Content-based filtering</td><td>&quot;Since you liked this, you will like something similar&quot;: recommends according to what you already consumed.</td></tr><tr><td>Feedback loop</td><td>The circle: what you see influences what you are recommended, and that influences what you will see.</td></tr><tr><td>Filter bubble</td><td>The reduced world that the recommendation builds around you: you only see what is similar to what you already like.</td></tr><tr><td>Echo chamber</td><td>An environment where only the same ideas are repeated, without different voices.</td></tr><tr><td>Engagement</td><td>The time we spend looking; it is the real goal of many platforms.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>In the Seed band we already talked about Netflix, Spotify, and Amazon recommendations. Now that we are more expert, let us open that box and understand how they work from the inside. Because recommendations are not a detail: they are the machinery that decides what we watch, what we listen to, and even what we think.</p>
+<p>The first technique is called collaborative filtering. Its logic is simple: &quot;people who watched what you watched also watched this&quot;. The machine does not need to know what you like: it only needs to know that you resemble, in tastes, a group of people, and it offers you what works for that group. It is &quot;word of mouth&quot; on a scale of millions.</p>
+<p>The second technique is content-based filtering. Here the machine looks at what you already consumed and looks for similar things: if you watched two Italian comedy films, it will recommend more Italian comedy. It is like a waiter who remembers your tastes and always suggests dishes of the same style.</p>
+<p>Modern platforms combine both techniques and add more signals: how long you spent looking, whether you clicked, whether you skipped halfway, whether you liked it. Every small gesture is a piece of data. The machine observes your fingers and your gaze better than anyone, and adjusts the next recommendation.</p>
+<p>Here the feedback loop appears. You watch something; the machine learns you like it; it recommends more of the same; you watch more; and so on in a circle. The circle is perfect for the platform, because each turn keeps you longer with your eyes on the screen.</p>
+<p>That loop has a side effect worth knowing: the filter bubble. Over time, the recommendation builds around you a world more and more similar to your tastes. The novelties, the different opinions, and the topics outside your zone are left out. Without wanting it, your window to the world narrows.</p>
+<p>When that bubble fills with news and ideas of the same sign, an echo chamber forms: a place where all voices repeat the same thing and the opposite voices are not heard. This can radicalize opinions, increase fear, or create misunderstandings with the family. It is not theory: it is an effect measured again and again.</p>
+<p>It is important to understand the real goal of these platforms. It is not to choose &quot;the best for you&quot;, but to keep you watching. It is called engagement: screen time is your currency. That is why recommendations tend toward the flashy, the controversial, and the repetitive, which is what hooks most.</p>
+<p>That does not mean recommendation is always bad. It has a wonderful side: it discovers music we would not have looked for, films that move us, recipes that make us cook. The issue is not to demonize it, but to know when it serves us and when it dominates us.</p>
+<p>The key is to regain control. Some strategies are simple and work: search directly for what we want instead of waiting for suggestions, use incognito mode to compare, log out from time to time and see what it recommends to a &quot;stranger&quot;.</p>
+<p>Another powerful strategy is to introduce variety on purpose. Follow accounts or channels on different topics, press &quot;not interested&quot; on what we do not want, search news in several media and not only the one we already know. Variety is the natural antidote against the bubble.</p>
+<p>It is also worth questioning the lists: &quot;trending&quot;, &quot;most viewed&quot;, &quot;recommended for you&quot;. They are the fruit of algorithms that seek their own benefit. Looking at them with distance is like reading an ad: you can enjoy it, but knowing who paid for it.</p>
+<p>For people over 40, this knowledge is especially valuable. We have seen television, the Internet, and social networks arrive. Now we understand that the machine does not just show content: it builds a portrait of us and decides what is worth showing us. Knowing the machinery is regaining freedom.</p>
+<p>In the next level, we will close the concepts module and start the Crown band: designing AI solutions.</p>
+<h3>💡 Practical examples</h3>
+<ol><li><strong>Netflix:</strong> it recommends Italian comedies because people with your history watched them (collaborative) and because you already watched two (content).</li><li><strong>YouTube:</strong> the automatic &quot;next video&quot; chains content of the same topic, feeding the loop and the bubble.</li><li><strong>Social media:</strong> your &quot;feed&quot; mixes friends, ads, and trends according to what retains you most, not according to what is best for you.</li></ol>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1. Open YouTube (without signing in or in incognito mode) and look at the home page: write down 5 recommended videos. Step 2. Now watch a video on a new topic for you, for example &quot;how to make homemade bread&quot;. Do nothing else. Step 3. Go back to the home page and look at the new recommendations: what changed? Step 4. Sign in and compare your account&#39;s home page with the incognito one. What differences do you see? Step 5. Think about the bubble: does your account show variety or does it repeat the same? Step 6. Actively search for a topic opposite to or different from what you usually watch and see if it appears in the recommendations. Step 7. On Netflix or Spotify, review &quot;recommended for you&quot; and ask yourself: what is it trying to keep me watching? Step 8. Write a conclusion with three strategies you will use to get out of your bubble.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>Explain in your own words collaborative filtering and content-based filtering.</li><li>What is the feedback loop and why is it good for the platform?</li><li>What is the difference between a filter bubble and an echo chamber?</li><li>What is the real goal of recommendations on many platforms?</li><li>Give two strategies to get out of the bubble.</li></ol>
+<p><strong>Answers:</strong> 1) Collaborative recommends according to what people similar to you do; content-based recommends what is similar to what you already consumed. 2) It is the circle between what you see and what you are recommended; it is good for the platform because it keeps you looking longer. 3) The bubble is the narrow world built around your tastes; the echo chamber is that world full of repeated voices of the same sign. 4) Keeping our attention and screen time (engagement), not choosing the best for us. 5) Search directly for what we want, use incognito mode, log out, vary topics, and mark &quot;not interested&quot;.</p>
+<h3>⚖️ Ethical dimension</h3>
+<p>Recommendations shape what we see and think without us asking, and their commercial goal does not always match our well-being. The bubble and the echo chamber can polarize and isolate. As a user, knowing the machinery and exercising control (searching, varying, logging out) is a form of freedom. And as a society, we should demand transparency about how things are recommended and why.</p>
+<h3>🔓 Open tools</h3>
+<ul><li><strong>DuckDuckGo</strong> (duckduckgo.com): a search engine that does not build your results bubble.</li><li><strong>Incognito mode</strong> (in any browser): compare recommendations without your history.</li><li><strong>Feedly</strong> (feedly.com): a reader of sources you choose, without algorithms in between.</li><li><strong>YouTube without an account</strong> (youtube.com): see what it recommends to a &quot;stranger&quot;.</li><li><strong>Wikipedia</strong> (wikipedia.org): search &quot;filter bubble&quot; to read more about the concept.</li></ul>
+<h3>🧠 Summary and bridge</h3>
+<ul><li>Two techniques: recommend by similar people or by similar content.</li><li>The loop feeds back: what you see decides what you will see.</li><li>The bubble narrows the world; the echo chamber repeats the same voices.</li><li>The platform&#39;s goal is your time, not your well-being.</li><li>Searching, varying, and comparing are your tools of freedom.</li></ul>
+<p>In level 20, we begin the Crown band: we will design AI solutions thinking like creators.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-18/nivel-18-EN.html">Previous level</a><span>Level 19</span><a rel="next" href="../nivel-20/nivel-20-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m01-introduccion-ia</span><span>Open educational material. It is not a certification.</span><a href="nivel-19-EN.html" download>Level 19 · HTML</a></footer>
+
+</body>
+</html>

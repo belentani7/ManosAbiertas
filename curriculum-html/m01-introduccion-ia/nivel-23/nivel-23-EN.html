@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Until now AI waited for our command: we asked, it answered. Autonomous agents go a step further: we give them a goal and they decide what to do, in what order, with what tools, and keep going until finished. It&#39;s like hi">
+  <meta name="color-scheme" content="light">
+  <title>Module 1: Introduction to Artificial Intelligence — Level 23</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m01-introduccion-ia">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 1: Introduction to Artificial Intelligence</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html" aria-current="page">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 1: Introduction to Artificial Intelligence</p>
+        <h1>Module 1: Introduction to Artificial Intelligence</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-23-ES.html" lang="es">Español</a><a href="nivel-23-PT.html" lang="pt">Português</a><a href="nivel-23-CA.html" lang="ca">Català</a><a href="nivel-23-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Fruto</h3>
+<h3>Estimated time: 6 hours</h3>
+<h3>🎯 Level Objective</h3>
+<ul><li>Understand what an autonomous agent is and how it differs from an assistant.</li><li>Know the components: goal, tools, memory, action loop.</li><li>Identify when an agent is useful and when it&#39;s a risk.</li><li>Learn to supervise an agent without letting it act alone without control.</li><li>Reflect on responsibility when AI acts on its own.</li></ul>
+<h3>📖 Essential Vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple Explanation</th></tr></thead><tbody><tr><td>Autonomous agent</td><td>An AI that receives a goal and decides the steps to achieve it on its own.</td></tr><tr><td>Action loop</td><td>The cycle: observe, plan, act, learn, repeat.</td></tr><tr><td>Tools</td><td>What the agent can use: search, calculator, email, code.</td></tr><tr><td>Memory</td><td>What the agent remembers from what it has done and seen.</td></tr><tr><td>Human supervision</td><td>A person who reviews and approves what the agent does.</td></tr><tr><td>Alignment</td><td>That the agent does what we want, not just what we literally asked.</td></tr></tbody></table></div>
+<h3>📚 Main Lesson</h3>
+<p>Until now AI waited for our command: we asked, it answered. Autonomous agents go a step further: we give them a goal and they decide what to do, in what order, with what tools, and keep going until finished. It&#39;s like hiring an intern who doesn&#39;t need you to specify every step, just the result you want.</p>
+<p>An agent has four pieces. First: the goal, what we want to achieve (&quot;find three vegetarian lentil recipes and email them to me&quot;). Second: the tools, what it can use (web search, email, calculator, Python). Third: memory, what it remembers to avoid repeating mistakes. Fourth: the action loop, the engine: observe what happens, plan the next step, act, learn from the result, and repeat.</p>
+<p>Let&#39;s see an example. You tell an agent: &quot;organize my trip to Madrid next week&quot;. The agent searches trains, compares prices, checks hotels, reviews weather, books the best option, and sends you the itinerary. You only gave the goal; the agent did the rest. It sounds wonderful, and it is, but it has risks.</p>
+<p>The first risk is that the agent makes a mistake. It might book the wrong train, a hotel that doesn&#39;t exist, or spend more than budgeted. That&#39;s why human supervision is mandatory: the agent proposes, the person decides. Before booking, the agent shows you the option and you say yes or no. Without that brake, an agent&#39;s error is your error.</p>
+<p>The second risk is alignment. You ask &quot;delete old emails&quot; and the agent also deletes important ones because &quot;they were old&quot;. It did what you literally asked, not what you wanted. Alignment is the central problem of advanced AI: ensuring the agent understands the intent, not just the command. That&#39;s why goals must be precise and bounded: &quot;archive emails older than one year without the &#39;important&#39; label&quot;.</p>
+<p>The third risk is opacity. The agent does many things in the background and you don&#39;t see the process. If something fails, you don&#39;t know why. Good agents leave a trace: a log of what they searched, what they decided, why. Demand traceability: if you can&#39;t see what it did, don&#39;t trust it.</p>
+<p>The fourth risk is dependence. If you delegate everything to agents, you lose practice and judgment. Knowing how to search, compare, decide is a skill that rusts if unused. Use agents for the tedious, but keep control of what matters.</p>
+<p>When to use an agent? For repetitive tasks, with clear steps, under supervision: &quot;every Monday summarize minutes and send them&quot;, &quot;watch this product&#39;s price and alert me if it drops&quot;. When NOT? For health, money, relationship decisions, or when errors hurt. There, you decide.</p>
+<p>Responsibility is always human. The agent is a powerful tool, but the person who sets the goal, provides the tools, supervises, and answers for consequences is the human. There&#39;s no &quot;the agent did it&quot;. You did it, using an agent.</p>
+<p>In the next level we&#39;ll enter scientific AI: how AI is transforming science, and the challenge of alignment at scale.</p>
+<h3>💡 Practical Examples</h3>
+<ol><li><strong>Shopping agent:</strong> goal &quot;buy the grocery list at the best price&quot;; tools: supermarket sites, price comparator; supervision: you approve the cart before paying.</li><li><strong>Research agent:</strong> goal &quot;find 10 studies on sleep in people over 60&quot;; tools: Google Scholar, summarizer; supervision: you review the list before using it.</li><li><strong>Calendar agent:</strong> goal &quot;find slots for the club meeting&quot;; tools: calendar, email; supervision: you choose the final time.</li></ol>
+<h3>🛠️ Guided Activity</h3>
+<p>Step 1. Choose a repetitive task of yours (price comparison, email summarization, appointment finding). Step 2. Write the goal with clear boundaries: what yes, what no, how much at most. Step 3. Test a simple agent: use ChatGPT with &quot;Custom GPT&quot; or a tool like AutoGPT (free web version). Step 4. Give it the goal and observe: what does it search? What does it decide? What does it propose? Step 5. Before it executes the final action (buy, send, delete), stop it and review. Step 6. Note: did it save time? Did it make mistakes? What boundary was missing? Step 7. Rewrite the goal with learned boundaries and test again. Step 8. Decide: does this task deserve an agent or do you do it better?</p>
+<h3>✍️ Self-Assessment Exercises</h3>
+<ol><li>What are the four pieces of an autonomous agent?</li><li>What is the action loop and what is it for?</li><li>Why is human supervision mandatory?</li><li>What is alignment and why does it sometimes fail?</li><li>Who is responsible if an agent makes an error?</li></ol>
+<p><strong>Answers:</strong> 1) Goal, tools, memory, action loop. 2) The observe-plan-act-learn-repeat cycle; it&#39;s the engine that makes the agent advance on its own. 3) Because the agent can make mistakes, overspend, or delete important things; the person must approve the final action. 4) It&#39;s that the agent does what we want, not just what we literally asked; it fails when the goal is vague or unbounded. 5) The person who set the goal, provided the tools, and supervised: responsibility is always human.</p>
+<h3>⚖️ Ethical Dimension</h3>
+<p>An autonomous agent amplifies the power of its user. It can do much good (free time, help those who don&#39;t know how) and much harm (cascading errors, opacity, skill loss). Never use an agent to decide for others, to act on someone else&#39;s behalf without permission, or to evade your responsibility. Supervision isn&#39;t optional: it&#39;s the brake that prevents a small error from becoming a big one.</p>
+<h3>🔓 Open Tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">Purpose</th><th scope="col">Where to Get It</th></tr></thead><tbody><tr><td>Custom GPTs (ChatGPT)</td><td>Create agents with instructions and tools</td><td>chat.openai.com</td></tr><tr><td>Gemini Gems</td><td>Google&#39;s personalized agents</td><td>gemini.google.com</td></tr><tr><td>AutoGPT (web)</td><td>Open-source agents to test</td><td>github.com/Significant-Gravitas/AutoGPT</td></tr><tr><td>LangChain</td><td>Library for building agents (advanced)</td><td>github.com/langchain-ai/langchain</td></tr></tbody></table></div>
+<h3>🧠 Summary and Bridge</h3>
+<ul><li>An autonomous agent receives a goal and decides steps on its own.</li><li>Four pieces: goal, tools, memory, action loop.</li><li>Mandatory supervision: agent proposes, person decides.</li><li>Alignment: precise goal with boundaries so it does what we want.</li><li>Responsibility always human.</li></ul>
+<p>In Level 24 we&#39;ll see how AI is transforming science and the challenge of alignment at scale.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-22/nivel-22-EN.html">Previous level</a><span>Level 23</span><a rel="next" href="../nivel-24/nivel-24-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m01-introduccion-ia</span><span>Open educational material. It is not a certification.</span><a href="nivel-23-EN.html" download>Level 23 · HTML</a></footer>
+
+</body>
+</html>

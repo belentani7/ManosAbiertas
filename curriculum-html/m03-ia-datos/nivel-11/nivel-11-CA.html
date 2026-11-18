@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Al nivell anterior vam aprendre que la correlació més bonica pot ser mentida. Avui veurem la causa més avorrida i perillosa que això passi: les dades brutes. Els estadístics tenen un refrany: &quot;brossa entra, brossa surt&quot;.">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 3: IA Aplicada a les Dades — Nivell 11 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m03-ia-datos">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 3: IA Aplicada a les Dades</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html" aria-current="page">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 3: IA Aplicada a les Dades</p>
+        <h1>Mòdul 3: IA Aplicada a les Dades</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-11-ES.html" lang="es">Español</a><a href="nivel-11-PT.html" lang="pt">Português</a><a href="nivel-11-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-11-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Tija</h3>
+<h3>Temps estimat: 3 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre que les dades brutes (errors, duplicats, buits) falsegen qualsevol anàlisi.</li><li>Aprendre a detectar els cinc problemes típics: duplicats, mancants, errors de picar, formats barrejats i valors impossibles.</li><li>Netejar un full de càlcul real pas a pas a Google Sheets.</li><li>Comprovar la neteja amb les eines de &quot;validació&quot; del mateix full.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules simples</th></tr></thead><tbody><tr><td>Dades brutes</td><td>Dades amb errors, duplicats o buits que enganyen l&#39;anàlisi.</td></tr><tr><td>Dada duplicada</td><td>La mateixa informació repetida dues vegades al full.</td></tr><tr><td>Valor mancant</td><td>Una casella buida on hi hauria d&#39;haver una dada.</td></tr><tr><td>Valor impossible</td><td>Una dada que no pot ser certa, com una edat de 400 anys.</td></tr><tr><td>Neteja de dades</td><td>El procés de revisar i corregir les dades abans d&#39;analitzar-les.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Al nivell anterior vam aprendre que la correlació més bonica pot ser mentida. Avui veurem la causa més avorrida i perillosa que això passi: les dades brutes. Els estadístics tenen un refrany: &quot;brossa entra, brossa surt&quot;. Si les dades estan malament, totes les conclusions que en surtin estaran malament, per molt bonics que siguin els gràfics.</p>
+<p>Què és una dada bruta? És qualsevol dada que no reflecteix la realitat. Imagineu que la vostra associació de veïns vol saber quants arbres hi ha al carrer per demanar a l&#39;ajuntament que en planti més. Recull dades de 50 veïns: cadascú escriu el nombre d&#39;arbres que veu des de la seva finestra. Què pot sortir malament? Tot. Algú escriu &quot;1er&quot; en comptes de &quot;12&quot;; un altre escriu el mateix carrer dues vegades; a un altre se li oblida contestar; algú escriu &quot;molts&quot; en comptes d&#39;un número. Això és un full brut.</p>
+<p>Els problemes més comuns s&#39;agrupen en cinc tipus. Primer, els duplicats: la mateixa fila apareix dues vegades, i en sumar els arbres la comptem dues vegades. Segon, els mancants: caselles buides que trenquen els càlculs. Tercer, els errors de picar: &quot;12&quot; escrit com a &quot;12o&quot; o amb una coma decimal al lloc equivocat. Quart, els formats barrejats: unes dates en format català (12/06/2026) i altres en format anglès (06/12/2026), que signifiquen mesos diferents. Cinquè, els valors impossibles: una edat de 400 anys o una temperatura de 500 graus.</p>
+<p>Per què ens importa això en un curs d&#39;IA? Perquè la intel·ligència artificial s&#39;alimenta de dades. Una IA s&#39;entrena amb la història de milers de pacients per predir malalties; si aquesta història conté errors de picar, la IA aprèn patrons falsos i comet errors greus. Els científics de dades dediquen entre el 60% i el 80% del seu temps a netejar dades, no a construir la IA. Aquesta dada sorprèn tothom i és veritat.</p>
+<p>La neteja no és màgia: és paciència. Es treballa per passos. Pas u, mirar el full: obrir els ulls i recórrer-lo. Pas dos, treure duplicats: a Google Sheets, &quot;Dades&quot; i &quot;Depurar dades&quot; i &quot;Elimina duplicats&quot;. Pas tres, buscar buits: l&#39;eina &quot;Cerca i substitueix&quot; (Ctrl+H) serveix per localitzar les caselles buides si escrivim un espai. Pas quatre, corregir els formats: una columna ha de tenir un únic format; si les dates estan barrejades, cal unificar-les. Pas cinc, eliminar valors impossibles: un filtre mostra d&#39;una vegada el nombre més gran i el més petit de cada columna, i si el màxim és absurd, cal revisar aquesta fila.</p>
+<p>Com es comprova que la neteja ha funcionat? Amb tres mesures de resum que ja coneixem: el total, la mitjana i el màxim. Abans de netejar, una suma amb duplicats dóna un resultat inflat. Després de netejar, el total canvia i s&#39;acosta a la realitat. També podem fer servir la funció &quot;COMPTA&quot; per veure quants valors té cada columna: si una columna de 50 veïns només té 47 números, ja sabem que hi ha tres buits.</p>
+<p>Hi ha un hàbit d&#39;or que els professionals apliquen sempre: fer una còpia del full abans de netejar. Mai no es neteja sobre l&#39;original. Si ens equivoquem o si volem veure com era la dada abans, la còpia ens salva. A Google Sheets això és fàcilíssim: botó dret sobre el nom del full, &quot;Duplica&quot;, i llest.</p>
+<p>Un altre hàbit important: anotar quins canvis s&#39;han fet. Els professionals mantenen una columna o un document a part amb les correccions: &quot;files 12 i 40 duplicades, eliminades; casella 33 buida, omplerta amb 0; data de la fila 20, corregida de format anglès a català&quot;. Això s&#39;anomena &quot;registre de neteja&quot; i serveix perquè qualsevol pugui comprovar la nostra feina. L&#39;honestedat també és neteja.</p>
+<p>Al nivell següent farem servir aquestes dades netes per construir el nostre primer quadre de comandament, que en anglès s&#39;anomena &quot;dashboard&quot;. Recordeu això: el quadre bonic amb dades brutes és com una casa bonica amb fonaments de sorra. Primer es netegen les dades, després es dibuixen els gràfics. La neteja no és un pas avorrit: és el pas que fa que totes les altres coses funcionin.</p>
+<h3>💡 Exemples pràctics</h3>
+<h4>Exemple 1: El cens d&#39;arbres</h4>
+<p>La vostra associació recull 50 respostes. En revisar, trobeu la fila de la senyora del 3r duplicada, la casella 33 buida i un veí que va escriure &quot;1er&quot; en comptes de &quot;12&quot;. Apliqueu els cinc passos i expliqueu què canvia al total.</p>
+<h4>Exemple 2: Les dates barrejades</h4>
+<p>Una taula de compres té dates en format català i anglès. La compra del 12 de juny apareix com a 12/06 i com a 06/12, que en anglès és el 6 de desembre. Si se sumen les vendes de juny, aquest error canvia el resultat.</p>
+<h4>Exemple 3: El valor impossible</h4>
+<p>A la llista d&#39;edats d&#39;un club hi ha una fila amb &quot;234&quot;. El màxim de la columna delata l&#39;error. Amb un filtre es localitza la fila i es truca al soci per corregir la dada a &quot;34&quot;.</p>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1. Creeu a Google Sheets un full anomenat &quot;Arbres bruts&quot; i copieu les dades següents: 12, 7, 12, 5, &quot;1er&quot;, 9, (buit), 12, 3, 8. Pas 2. Feu una còpia de seguretat: botó dret sobre el nom del full i &quot;Duplica&quot;. Anomeneu la còpia &quot;Arbres nets&quot;. Pas 3. Al full net, sumeu amb =SUMA(A1:A10) i anoteu el resultat (està inflat pel duplicat). Pas 4. Elimineu duplicats: &quot;Dades&quot;, &quot;Depurar dades&quot;, &quot;Elimina duplicats&quot;. Comproveu quantes files queden. Pas 5. Localitzeu els buits: &quot;Edita&quot;, &quot;Cerca i substitueix&quot;, busqueu un espai i marqueu &quot;coincidir amb el contingut de la cel·la&quot;. Pas 6. Corregiu el &quot;1er&quot;: canvieu-lo per &quot;12&quot; consultant el veí que el va escriure. Pas 7. Busqueu el valor impossible: feu servir &quot;Dades&quot; i &quot;Filtre&quot; i mireu el màxim. Corregiu el que calgui. Pas 8. Torneu a sumar amb =SUMA(...) i compareu amb el resultat del pas 3. Què ha canviat i per què? Pas 9. Afegiu una columna D anomenada &quot;Registre&quot; i anoteu cada correcció feta amb la seva data. Pas 10. Deseu el full i escriviu una conclusió: &quot;dades netes, totals fiables&quot;.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Què vol dir el refrany &quot;brossa entra, brossa surt&quot;?</li><li>Digueu tres dels cinc problemes típics de les dades brutes.</li><li>Per què els duplicats inflen les sumes?</li><li>Què cal fer abans de començar a netejar un full?</li><li>Quin percentatge del temps dediquen els científics de dades a netejar dades?</li></ol>
+<p>Respostes: 1. Que si les dades estan malament, les conclusions estaran malament per molt bonics que siguin els gràfics. 2. Duplicats, mancants, errors de picar, formats barrejats i valors impossibles. 3. Perquè la mateixa fila es compta dues vegades. 4. Fer una còpia del full (mai no es neteja sobre l&#39;original). 5. Entre el 60% i el 80% del seu temps.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<p>Les dades brutes no causen només errors tècnics: causen mal a persones. Un historial mèdic mal picat pot portar a un tractament equivocat; un cens amb buits deixa fora els veïns que no van contestar. Netejar dades és un acte de respecte: vol dir cuidar que les decisions que es prenen sobre les persones es basin en informació veraç. I ser honest en el registre de neteja permet que altres comprovin i confiïn en la nostra feina.</p>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Què és i per a què serveix</th><th scope="col">On trobar-la</th></tr></thead><tbody><tr><td>Google Sheets</td><td>Eines de depuració: elimina duplicats, cerca, filtra</td><td>https://sheets.google.com</td></tr><tr><td>OpenRefine</td><td>Programa gratuït especialitzat a netejar dades</td><td>https://openrefine.org</td></tr><tr><td>LibreOffice Calc</td><td>Les mateixes funcions de depuració, sense connexió</td><td>https://ca.libreoffice.org</td></tr><tr><td>Open Data Kit</td><td>Recollida de dades de camp amb menys errors</td><td>https://getodk.org</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<ul><li>Les dades brutes falsegen qualsevol anàlisi: brossa entra, brossa surt.</li><li>Els cinc problemes típics: duplicats, mancants, errors de picar, formats barrejats i valors impossibles.</li><li>Sempre es neteja sobre una còpia i s&#39;anota cada correcció en un registre.</li><li>El 60-80% del temps dels científics de dades és netejar dades.</li></ul>
+<p>Al nivell següent convertirem les dades ja netes en el nostre primer quadre de comandament o &quot;dashboard&quot;.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-10/nivel-10-CA.html">Nivell anterior</a><span>Nivell 11</span><a rel="next" href="../nivel-12/nivel-12-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-11-CA.html" download>Nivell 11 · HTML</a></footer>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Fins ara hem muntat vídeos amb programes amb finestres i botons (CapCut, Canva). Hi ha una altra manera, més tècnica però molt poderosa: fer servir la línia d&#39;ordres amb el FFmpeg. És com la diferència entre demanar al r">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 4: Generació de Contingut — Nivell 17 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m04-generacion-contenido">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 4: Generació de Contingut</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html" aria-current="page">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 4: Generació de Contingut</p>
+        <h1>Mòdul 4: Generació de Contingut</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-17-ES.html" lang="es">Español</a><a href="nivel-17-PT.html" lang="pt">Português</a><a href="nivel-17-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-17-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Branca</h3>
+<h3>Temps estimat: 4 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre què és una cadena de producció: els passos en ordre per fer un vídeo.</li><li>Conèixer el FFmpeg, una eina lliure que uneix àudio i vídeo.</li><li>Combinar el Piper (veu) i el FFmpeg (unió) en un flux de treball complet.</li><li>Crear un vídeo amb veu narrada i subtítols fent servir eines de codi obert.</li><li>Repetir el procés per a altres vídeos de manera ràpida.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules simples</th></tr></thead><tbody><tr><td>Cadena de producció</td><td>La llista de passos en ordre per crear alguna cosa, com una recepta.</td></tr><tr><td>FFmpeg</td><td>Un programa lliure que barreja, talla i converteix àudio i vídeo.</td></tr><tr><td>Flux de treball</td><td>L&#39;ordre fix en què fem les tasques per no oblidar-ne cap.</td></tr><tr><td>Comanda</td><td>Una ordre escrita que diem al programa perquè faci alguna cosa.</td></tr><tr><td>Línia d&#39;ordres</td><td>La finestra fosca on s&#39;escriuen les ordres al programa.</td></tr><tr><td>Automatització</td><td>Que l&#39;ordinador faci els passos repetitius per nosaltres.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Fins ara hem muntat vídeos amb programes amb finestres i botons (CapCut, Canva). Hi ha una altra manera, més tècnica però molt poderosa: fer servir la línia d&#39;ordres amb el FFmpeg. És com la diferència entre demanar al restaurant o cuinar nosaltres: costa més aprendre, però repetim la recepta quan volem.</p>
+<p>El FFmpeg és un programa lliure i gratuït que fa anys que ajuda a barrejar, tallar i convertir àudio i vídeo. Funciona amb &quot;comandes&quot;: ordres escrites. Per exemple, una comanda pot unir un fitxer d&#39;àudio (la veu del Piper) amb un fitxer d&#39;imatge o vídeo per crear un vídeo final. Tot sense finestres, només text.</p>
+<p>La línia d&#39;ordres espanta al principi, però és com aprendre a fer servir el rentavaixelles nou: al tercer dia ho fem sense pensar. Escrivim una ordre, premem la tecla per executar-la i el programa treballa. La clau és copiar les comandes amb cura, sense errors, com es copia una recepta.</p>
+<p>La nostra cadena de producció amb eines obertes té passos clars. Primer escrivim el guió (ho vam veure al nivell 15). Segon, generem la veu amb el Piper (nivell 10). Tercer, creem o triem les imatges. Quart, fem servir el FFmpeg per unir la veu amb les imatges i crear el vídeo. Cinquè, afegim els subtítols (nivell 13). Sis passos senzills que, en ordre, produeixen un vídeo complet.</p>
+<p>La comanda del FFmpeg és una frase amb parts: el programa (ffmpeg), l&#39;entrada (input: el fitxer d&#39;àudio i el d&#39;imatge), les ordres (quant dura, quin format) i la sortida (output: el nom del vídeo nou). És com donar instruccions a la cuina: &quot;agafa l&#39;arròs, afegeix aigua, cou deu minuts, serveix&quot;.</p>
+<p>Un gran avantatge d&#39;aquesta cadena és l&#39;automatització. Un cop tenim la comanda que funciona, la desem en un document i només canviem els noms dels fitxers per a cada vídeo. L&#39;ordinador fa la feina repetitiva; nosaltres hi posem la idea i la revisió. És com la massa del pa: la mateixa recepta, mil pans.</p>
+<p>I els subtítols? El FFmpeg també els pot incrustar al vídeo. Li donem el vídeo i el fitxer SRT (nivell 13) i ell els dibuixa a sobre al moment exacte. Així el vídeo final ja porta el seu text. Tot el procés, de principi a fi, amb programes lliures i sense cost.</p>
+<p>La revisió continua sent humana. L&#39;ordinador uneix els fitxers, però nosaltres comprovem que la veu sona bé, que les imatges són les correctes i que els subtítols diuen el que se sent. La màquina accelera; el criteri és nostre. Com a la costura: la màquina cos, però el bon ull decideix.</p>
+<p>Aquesta manera de treballar també té límits. Si necessitem efectes complicats o molts talls fins, els programes amb finestres són més còmodes. La línia d&#39;ordres brilla quan repetim el mateix tipus de vídeo moltes vegades: vídeos de receptes, salutacions, butlletins del club. Saber les dues maneres ens fa més lliures.</p>
+<p>La paciència és important. Les primeres comandes fallaran o sortiran estranyes. No passa res: es corregeix i es torna a provar. Aprendre alguna cosa nova sempre té aquest primer esglaó. I quan el vídeo surt bé per primera vegada, la satisfacció és enorme: hem dominat una eina dels &quot;experts&quot;.</p>
+<p>En acabar aquest nivell, sabrem crear un vídeo complet amb veu del Piper i subtítols fent servir el FFmpeg i altres eines lliures, i repetir la recepta quan vulguem. La producció de continguts ja és a les nostres mans.</p>
+<h3>💡 Exemples pràctics</h3>
+<ol><li><strong>El butlletí del club.</strong> Pere prepara un vídeo setmanal: escriu el guió, genera la veu amb el Piper i uneix la veu amb la foto del cartell fent servir el FFmpeg. Cada setmana, la mateixa comanda.</li><li><strong>Les salutacions d&#39;aniversari.</strong> Rosa crea vídeos de felicitació personalitzats per a la seva família: cadascun amb el nom diferent, generat i unit automàticament.</li><li><strong>Les receptes de Carme.</strong> Carme grava les fotos de cada pas i afegeix la veu narrada amb el Piper. El FFmpeg uneix fotos i veu en un vídeo de recepta a punt per compartir.</li></ol>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1: Escriu un guió curt de 4 frases sobre un tema senzill (per exemple, &quot;els beneficis de passejar&quot;). Pas 2: Genera la veu amb el Piper i desa el fitxer d&#39;àudio (per exemple, veu.mp3). Pas 3: Tria o crea una imatge que acompanyi el text (per exemple, una foto d&#39;un parc). Pas 4: Obre la línia d&#39;ordres (la terminal) de l&#39;ordinador. Pas 5: Escriu la comanda del FFmpeg per unir la imatge i l&#39;àudio: ffmpeg -loop 1 -i foto.jpg -i veu.mp3 -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4 Pas 6: Prem la tecla per executar (Enter) i espera que acabi. Pas 7: Obre el vídeo resultant i comprova que la imatge i la veu duren el mateix. Pas 8: Afegeix els subtítols amb el FFmpeg fent servir el teu fitxer SRT (ffmpeg -i video.mp4 -vf subtitles=subtitols.srt video_final.mp4) i comparteix el resultat.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>Què és una cadena de producció? a) Els passos en ordre per crear alguna cosa. b) Una fàbrica de cotxes. c) Un programa de dibuix.</li><li>Què és el FFmpeg? a) Un programa lliure que barreja, talla i converteix àudio i vídeo. b) Una càmera. c) Un tipus de lletra.</li><li>Què és una comanda? a) Una ordre escrita al programa. b) Un botó verd. c) Una cançó.</li><li>Quin és l&#39;avantatge de l&#39;automatització? a) Que l&#39;ordinador repeteixi els passos repetitius. b) Que no calgui revisar res. c) Que no es pugui fer servir dues vegades.</li><li>Qui fa la revisió final? a) L&#39;ordinador, només. b) La persona, amb criteri. c) Ningú.</li></ol>
+<p>Respostes: 1-a, 2-a, 3-a, 4-a, 5-b.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<ul><li>Les eines lliures permeten que qualsevol persona produeixi: comparteix el que aprenguis amb la teva comunitat.</li><li>Respecta les llicències: fes servir imatges, veus i músiques lliures o pròpies.</li><li>No facis servir la tècnica per enganyar: un vídeo editat ha de ser fidel al que va passar.</li><li>Si publiques la comanda o la recepta, explica el procés amb claredat.</li><li>Recorda la privacitat: no generis vídeos amb dades d&#39;altres sense permís.</li></ul>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Per a què serveix</th><th scope="col">On aconseguir-la</th></tr></thead><tbody><tr><td>FFmpeg</td><td>Unir, tallar i convertir àudio i vídeo</td><td>ffmpeg.org (gratuït)</td></tr><tr><td>Piper</td><td>Generar la veu narrada</td><td>github.com/rhasspy/piper (gratuït)</td></tr><tr><td>Whisper</td><td>Transcriure per crear els subtítols</td><td>github.com/openai/whisper (gratuït)</td></tr><tr><td>Audacity</td><td>Preparar i netejar els àudios</td><td>audacityteam.org (gratuït)</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<p>Amb el FFmpeg i el Piper tenim una cadena de producció completa amb eines lliures: guió, veu, imatges, unió i subtítols. Les comandes espanten al principi, però l&#39;automatització repeteix la recepta quan volem. En el següent nivell dominarem la veu i el doblatge per donar vida a qualsevol text.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-16/nivel-16-CA.html">Nivell anterior</a><span>Nivell 17</span><a rel="next" href="../nivel-18/nivel-18-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m04-generacion-contenido</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-17-CA.html" download>Nivell 17 · HTML</a></footer>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="No nível anterior criámos a nossa conta e percebemos as duas peças de toda a automatização: o disparador e a ação. Hoje vamos construir a nossa primeira automatização real, de princípio a fim. Vamos unir duas aplicações ">
+  <meta name="color-scheme" content="light">
+  <title>Módulo 5: Automatização e Integração — Nível 06 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar para o conteúdo</a>
+<header class="site-header">
+  <a class="brand" href="/pt">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Todos os módulos"><a href="../../index-PT.html">Todos os módulos</a><a href="../index-PT.html">Níveis do módulo</a><a href="/pt/curriculum/m05-automatizacion">Abrir o visualizador de aprendizagem</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Módulo 5: Automatização e Integração</p>
+    <details open>
+      <summary>Níveis do módulo</summary>
+      <nav aria-label="Níveis do módulo"><ol class="level-list"><li><a href="../nivel-00/nivel-00-PT.html">Nível 00</a></li><li><a href="../nivel-01/nivel-01-PT.html">Nível 01</a></li><li><a href="../nivel-02/nivel-02-PT.html">Nível 02</a></li><li><a href="../nivel-03/nivel-03-PT.html">Nível 03</a></li><li><a href="../nivel-04/nivel-04-PT.html">Nível 04</a></li><li><a href="../nivel-05/nivel-05-PT.html">Nível 05</a></li><li><a href="../nivel-06/nivel-06-PT.html" aria-current="page">Nível 06</a></li><li><a href="../nivel-07/nivel-07-PT.html">Nível 07</a></li><li><a href="../nivel-08/nivel-08-PT.html">Nível 08</a></li><li><a href="../nivel-09/nivel-09-PT.html">Nível 09</a></li><li><a href="../nivel-10/nivel-10-PT.html">Nível 10</a></li><li><a href="../nivel-11/nivel-11-PT.html">Nível 11</a></li><li><a href="../nivel-12/nivel-12-PT.html">Nível 12</a></li><li><a href="../nivel-13/nivel-13-PT.html">Nível 13</a></li><li><a href="../nivel-14/nivel-14-PT.html">Nível 14</a></li><li><a href="../nivel-15/nivel-15-PT.html">Nível 15</a></li><li><a href="../nivel-16/nivel-16-PT.html">Nível 16</a></li><li><a href="../nivel-17/nivel-17-PT.html">Nível 17</a></li><li><a href="../nivel-18/nivel-18-PT.html">Nível 18</a></li><li><a href="../nivel-19/nivel-19-PT.html">Nível 19</a></li><li><a href="../nivel-20/nivel-20-PT.html">Nível 20</a></li><li><a href="../nivel-21/nivel-21-PT.html">Nível 21</a></li><li><a href="../nivel-22/nivel-22-PT.html">Nível 22</a></li><li><a href="../nivel-23/nivel-23-PT.html">Nível 23</a></li><li><a href="../nivel-24/nivel-24-PT.html">Nível 24</a></li><li><a href="../nivel-25/nivel-25-PT.html">Nível 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Módulo 5: Automatização e Integração</p>
+        <h1>Módulo 5: Automatização e Integração</h1>
+        <div class="metadata">
+          <span>Português (PT)</span>
+          
+          <span>Tempo estimado: 3 horas</span>
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma do material"><span>Idioma do material:</span><a href="nivel-06-ES.html" lang="es">Español</a><a href="nivel-06-PT.html" aria-current="page" lang="pt">Português</a><a href="nivel-06-CA.html" lang="ca">Català</a><a href="nivel-06-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: PT · Dificuldade: Raiz</h3>
+<h3>Tempo estimado: 3 horas</h3>
+<h3>🎯 Objetivo do nível</h3>
+<ul><li>Construir uma primeira automatização real entre duas aplicações.</li><li>Ligar a tua conta de uma aplicação à ferramenta de integração.</li><li>Escolher um disparador e uma ação de verdade.</li><li>Testar a automatização com um dado real.</li><li>Entender o que é &quot;testar&quot; em automatização e por que se faz.</li></ul>
+<h3>📖 Vocabulário essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Termo</th><th scope="col">Explicação em palavras simples</th></tr></thead><tbody><tr><td>Ligar uma conta</td><td>Autorizar a ferramenta a usar uma aplicação tua.</td></tr><tr><td>Autorização</td><td>A permissão que dás para que dois programas falem entre si.</td></tr><tr><td>Testar</td><td>Fazer uma prova real para ver se a automatização funciona.</td></tr><tr><td>Cenário</td><td>A automatização completa: disparador, passos e ação.</td></tr><tr><td>Conector</td><td>A peça que une a ferramenta a uma aplicação.</td></tr><tr><td>Dados</td><td>A informação que viaja: um nome, uma data, uma mensagem.</td></tr></tbody></table></div>
+<h3>📚 Lição principal</h3>
+<p>No nível anterior criámos a nossa conta e percebemos as duas peças de toda a automatização: o disparador e a ação. Hoje vamos construir a nossa primeira automatização real, de princípio a fim. Vamos unir duas aplicações e vê-las trabalhar juntas. É um momento bonito, como ver a primeira planta que semeámos.</p>
+<p>Escolheremos um exemplo simples e útil: uma folha de cálculo onde apontamos algo (por exemplo, a lista de compras do clube) e, sempre que acrescentamos uma linha, a ferramenta envia uma mensagem para outra aplicação (por exemplo, o grupo de mensagens da associação). Isso é ligar duas aplicações: a folha e as mensagens.</p>
+<p>O primeiro passo é escolher as duas aplicações. Uma será o disparador, a que &quot;acorda&quot; a automatização; a outra será a ação, a que faz algo. No nosso exemplo: a folha de cálculo dispara e a mensagem atua. Não há regras fixas: qualquer uma das duas pode ser qualquer uma das partes.</p>
+<p>Antes de começar, precisamos que a ferramenta &quot;conheça&quot; as nossas aplicações. Isso chama-se ligar uma conta ou autorizar. É como dar a chave de uma divisão concreta ao empregado: só dessa divisão, não de toda a casa. Faz-se carregando em &quot;Ligar conta&quot; e iniciando sessão na aplicação quando nos pedir.</p>
+<p>É normal sentir um pouco de receio ao dar permissões. Tranquilidade: nestas ferramentas pode-se tirar a ligação quando quisermos, desde as definições. E podemos rever que permissões demos. Dar permissão não é dar poder para sempre; é abrir uma porta que podemos fechar.</p>
+<p>Assim que as contas estiverem ligadas, escolhemos o disparador. A ferramenta mostra-nos uma lista de eventos de cada aplicação. Procuramos o nosso: &quot;nova linha&quot;, &quot;nova mensagem&quot;, &quot;novo correio&quot;. Carregamos e a ferramenta pede-nos que confirmemos com qual das nossas contas e em que folha ou pasta trabalhar.</p>
+<p>Depois vem a ação. Escolhemos a segunda aplicação e o evento: &quot;enviar mensagem&quot;, &quot;enviar correio&quot;, &quot;criar ficheiro&quot;. A ferramenta mostra-nos os campos que podemos preencher e, o mais maravilhoso, oferece-nos pôr dados que vêm do disparador. Assim, a mensagem pode dizer &quot;Nova compra: [nome da linha]&quot; sem que nós escrevamos nada.</p>
+<p>Essa possibilidade de &quot;pegar em dados de um lado e pô-los no outro&quot; é o que torna a integração mágica. A ferramenta deixa-nos escolher, com um clique, o dado que vem da folha e pô-lo dentro da mensagem. É como o empregado que traz a nota do cozinheiro e a copia na conta do cliente.</p>
+<p>Antes de ativar, testa-se. Testar é fazer uma simulação: a ferramenta executa o fluxo com dados de exemplo e mostra-nos o que saiu. Se algo falhar, vemo-lo e corrigimo-lo sem incomodar ninguém. Testar é grátis e evita erros reais. Ninguém envia uma mensagem para o grupo sem a testar antes.</p>
+<p>Quando o teste corre bem, ativa-se a automatização. A partir daí, sempre que acrescentarmos uma linha nova à folha, a mensagem será enviada sozinha. Sem carregar em nada. É uma emoção ver isso pela primeira vez: a máquina trabalha enquanto nós olhamos.</p>
+<p>Convém deixar claro que as automatizações destas ferramentas revêem as mudanças com alguma frequência: não é instantâneo como um raio, mas como o correio, que chega em minutos. Se o teste demorar um pouco a aparecer, é normal. A paciência faz parte do ofício.</p>
+<p>Se algo correr mal, não há drama. O erro costuma estar nas permissões, nos campos vazios ou num dado escrito de forma diferente. A ferramenta diz-nos onde está o problema e nós arranjamo-lo. Cada erro que corrigimos ensina-nos uma lição que não esquecemos.</p>
+<p>Ao terminar este nível terás a tua primeira automatização a funcionar: duas aplicações unidas, a trabalhar juntas. É a base de tudo o que vem. Se hoje ligaste uma folha a uma mensagem, amanhã ligarás coisas maiores.</p>
+<h3>💡 Exemplos práticos</h3>
+<ol><li><strong>A lista do clube.</strong> Cada compra nova que se aponta na folha do clube envia uma mensagem ao grupo da associação com o valor e o artigo.</li><li><strong>O formulário de contacto.</strong> Quando alguém preenche o formulário da associação na internet, os seus dados guardam-se sozinhos na folha e avisa-se a coordenadora.</li><li><strong>O aviso de pagamento.</strong> Quando o tesoureiro marca uma quota como paga na folha, o sócio recebe automaticamente um correio de agradecimento.</li></ol>
+<h3>🛠️ Atividade guiada</h3>
+<p>Passo 1: Abre o Make (ou o Zapier) no navegador e entra na tua conta. Passo 2: Carrega no botão &quot;Criar cenário&quot; (Make) ou &quot;Create from scratch&quot; (Zapier). Passo 3: Acrescenta o disparador: procura a aplicação &quot;Google Sheets&quot; e escolhe o evento &quot;Observar linhas&quot; ou &quot;New spreadsheet row&quot;. Passo 4: Carrega em &quot;Ligar&quot; e autoriza a tua conta Google: vai aparecer a janela do Google, carrega em &quot;Permitir&quot; ou &quot;Continuar&quot;. Passo 5: Escolhe a folha de cálculo e o separador que usarás (podes criar uma folha de teste com uma linha: nome, artigo, valor). Passo 6: Acrescenta a ação: procura a aplicação de mensagens que tenhas (por exemplo, &quot;Telegram&quot; ou &quot;WhatsApp Business&quot;) e escolhe &quot;Enviar mensagem&quot;. Passo 7: No campo da mensagem, escreve algo como &quot;Nova compra:&quot; e carrega para acrescentar o dado da folha (o nome da linha). A ferramenta vai inserí-lo. Passo 8: Carrega em &quot;Testar&quot; ou &quot;Run&quot;. Olha o resultado: deveria aparecer uma mensagem com os teus dados de teste. Passo 9: Se correr bem, ativa o cenário com o interruptor. Acrescenta uma linha nova à folha e espera: a mensagem chegará sozinha. Se algo falhar, lê o aviso de erro e corrige os campos.</p>
+<h3>✍️ Exercícios de autoavaliação</h3>
+<ol><li>O que é ligar uma conta? a) Dar permissão à ferramenta para usar uma aplicação tua. b) Comprar outra conta. c) Apagar a aplicação.</li><li>Qual é a ordem do fluxo? a) Ação e depois disparador. b) Disparador e depois ação. c) Não importa.</li><li>Por que se testa antes de ativar? a) Porque é obrigatório por lei. b) Para ver se funciona sem incomodar ninguém. c) Para gastar dados.</li><li>Uma automatização envia a mensagem na hora? a) Sim, sempre. b) Não, pode demorar uns minutos, como o correio. c) Só à noite.</li><li>Se uma automatização falhar, o que faço? a) Deito o computador fora. b) Leio o aviso de erro, corrijo os campos e testo outra vez. c) Ignoro-a.</li></ol>
+<p>Respostas: 1-a, 2-b, 3-b, 4-b, 5-b.</p>
+<h3>⚖️ Dimensão ética</h3>
+<ul><li>Revê sempre que permissões dás e a que contas. Tira o acesso quando deixares de usar uma automatização.</li><li>Não ligues contas que guardam dados pessoais de outras pessoas (saúde, dinheiro) sem um motivo claro.</li><li>Se a tua automatização envia mensagens para um grupo, avisa antes o grupo e verifica o conteúdo.</li><li>Não testes automatizações que enviem correios ou mensagens reais a desconhecidos: usa endereços ou conversas de teste.</li><li>As automatizações que crias são tuas: sê responsável pelo que fazem e pelos dados que movem.</li></ul>
+<h3>🔓 Ferramentas abertas</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Ferramenta</th><th scope="col">Para que serve</th><th scope="col">Onde conseguir</th></tr></thead><tbody><tr><td>Google Sheets</td><td>A folha de cálculo onde porás os teus dados</td><td>sheets.google.com (grátis)</td></tr><tr><td>Make</td><td>Criar e testar os teus cenários</td><td>make.com</td></tr><tr><td>Zapier</td><td>Alternativa com muitas plantillas</td><td>zapier.com</td></tr><tr><td>Telegram</td><td>Aplicação de mensagens para receber avisos</td><td>telegram.org (grátis)</td></tr></tbody></table></div>
+<h3>🧠 Resumo e ponte</h3>
+<p>Construímos a nossa primeira automatização real: um disparador numa folha que desencadeia uma ação noutra aplicação. Ligámos contas, escolhemos eventos, testámos e ativámos. Esse é o método que usaremos sempre. No próximo nível vamos aprender a criar notificações automáticas, avisos que chegam sozinhos quando algo importante acontece.</p></div>
+      <nav class="lesson-pagination" aria-label="Níveis do módulo"><a rel="prev" href="../nivel-05/nivel-05-PT.html">Nível anterior</a><span>Nível 06</span><a rel="next" href="../nivel-07/nivel-07-PT.html">Próximo nível</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Material educativo aberto. Não constitui certificação.</span><a href="nivel-06-PT.html" download>Nível 06 · HTML</a></footer>
+
+</body>
+</html>

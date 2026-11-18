@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="In the previous level we created our account and understood the two pieces of every automation: the trigger and the action. Today we are going to build our first real automation, from start to finish. We will join two ap">
+  <meta name="color-scheme" content="light">
+  <title>Module 5: Automation and Integration — Level 06 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m05-automatizacion">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 5: Automation and Integration</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html" aria-current="page">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 5: Automation and Integration</p>
+        <h1>Module 5: Automation and Integration</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-06-ES.html" lang="es">Español</a><a href="nivel-06-PT.html" lang="pt">Português</a><a href="nivel-06-CA.html" lang="ca">Català</a><a href="nivel-06-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Root</h3>
+<h3>Estimated time: 3 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Build a first real automation between two apps.</li><li>Connect your account in an app to the integration tool.</li><li>Choose a real trigger and action.</li><li>Test the automation with real data.</li><li>Understand what &quot;testing&quot; means in automation and why it is done.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple explanation</th></tr></thead><tbody><tr><td>Connecting an account</td><td>Authorizing the tool to use an app of yours.</td></tr><tr><td>Authorization</td><td>The permission you give for two programmes to talk to each other.</td></tr><tr><td>To test</td><td>Doing a real trial to see if the automation works.</td></tr><tr><td>Scenario</td><td>The complete automation: trigger, steps and action.</td></tr><tr><td>Connector</td><td>The piece that joins the tool to an app.</td></tr><tr><td>Data</td><td>The information that travels: a name, a date, a message.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>In the previous level we created our account and understood the two pieces of every automation: the trigger and the action. Today we are going to build our first real automation, from start to finish. We will join two apps and watch them work together. It is a nice moment, like seeing the first plant we sowed.</p>
+<p>We will choose a simple and useful example: a spreadsheet where we jot something down (for example, the club&#39;s shopping list) and, every time we add a row, the tool sends a message to another app (for example, the association&#39;s messaging group). That is connecting two apps: the sheet and the messages.</p>
+<p>The first step is choosing the two apps. One will be the trigger, the one that &quot;wakes up&quot; the automation; the other will be the action, the one that does something. In our example: the spreadsheet triggers and the message acts. There are no fixed rules: either one can be either part.</p>
+<p>Before starting, the tool needs to &quot;know&quot; our apps. That is called connecting an account or authorizing. It is like giving the waiter the key to a specific room: only that room, not the whole house. It is done by pressing &quot;Connect account&quot; and logging into the app when it asks.</p>
+<p>It&#39;s normal to feel a bit wary about giving permissions. Don&#39;t worry: in these tools you can remove the connection whenever you want, from the settings. And you can review what permissions you&#39;ve given. Giving permission is not giving power forever; it is opening a door you can close.</p>
+<p>Once the accounts are connected, we choose the trigger. The tool shows us a list of events for each app. We look for ours: &quot;new row&quot;, &quot;new message&quot;, &quot;new email&quot;. We press and the tool asks us to confirm with which of our accounts and on which sheet or folder to work.</p>
+<p>Then comes the action. We choose the second app and the event: &quot;send message&quot;, &quot;send email&quot;, &quot;create file&quot;. The tool shows us the fields we can fill in and, most wonderfully, offers us the chance to insert data that comes from the trigger. So the message can say &quot;New purchase: [row name]&quot; without us writing anything.</p>
+<p>That possibility of &quot;taking data from one side and putting it in the other&quot; is what makes integration magical. The tool lets us choose, with a click, the data that comes from the sheet and put it inside the message. It is like the waiter who brings the cook&#39;s note and copies it into the customer&#39;s bill.</p>
+<p>Before activating, you test. Testing is doing a simulation: the tool runs the flow with sample data and shows us what came out. If something fails, we see it and fix it without bothering anyone. Testing is free and avoids real errors. Nobody sends a message to the group without testing it first.</p>
+<p>When the test goes well, you activate the automation. From then on, whenever we add a new row to the sheet, the message will be sent automatically. Without pressing anything. It is exciting to see it for the first time: the machine works while we watch.</p>
+<p>It&#39;s worth being clear that these tools&#39; automations check changes with some frequency: it&#39;s not instant like lightning, but like the post, which arrives in minutes. If the test takes a little while to show up, that&#39;s normal. Patience is part of the craft.</p>
+<p>If something goes wrong, no drama. The error is usually in the permissions, in empty fields or in data written differently. The tool tells us where the problem is and we fix it. Every error we fix teaches us a lesson we don&#39;t forget.</p>
+<p>When you finish this level you will have your first automation working: two apps joined, working together. It is the foundation of everything to come. If today you connected a sheet with a message, tomorrow you will connect bigger things.</p>
+<h3>💡 Practical examples</h3>
+<ol><li><strong>The club list.</strong> Each new purchase noted in the club sheet sends a message to the association group with the amount and the item.</li><li><strong>The contact form.</strong> When someone fills in the association&#39;s online form, their data saves itself in the sheet and the coordinator is notified.</li><li><strong>The payment notice.</strong> When the treasurer marks a fee as paid in the sheet, the member automatically receives a thank-you email.</li></ol>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1: Open Make (or Zapier) in the browser and log into your account. Step 2: Press the &quot;Create scenario&quot; button (Make) or &quot;Create from scratch&quot; (Zapier). Step 3: Add the trigger: look for the &quot;Google Sheets&quot; app and choose the &quot;Watch rows&quot; or &quot;New spreadsheet row&quot; event. Step 4: Press &quot;Connect&quot; and authorize your Google account: the Google window will appear, press &quot;Allow&quot; or &quot;Continue&quot;. Step 5: Choose the spreadsheet and the tab you will use (you can create a test sheet with one row: name, item, amount). Step 6: Add the action: look for the messaging app you have (for example, &quot;Telegram&quot; or &quot;WhatsApp Business&quot;) and choose &quot;Send message&quot;. Step 7: In the message field, write something like &quot;New purchase:&quot; and press to add the data from the sheet (the row name). The tool will insert it. Step 8: Press &quot;Test&quot; or &quot;Run&quot;. Look at the result: a message with your test data should appear. Step 9: If it works, activate the scenario with the switch. Add a new row to the sheet and wait: the message will arrive on its own. If something fails, read the error notice and fix the fields.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>What is connecting an account? a) Giving the tool permission to use an app of yours. b) Buying another account. c) Deleting the app.</li><li>What is the order of the flow? a) Action and then trigger. b) Trigger and then action. c) It doesn&#39;t matter.</li><li>Why do you test before activating? a) Because it&#39;s required by law. b) To see if it works without bothering anyone. c) To use up data.</li><li>Does an automation send the message instantly? a) Yes, always. b) No, it can take a few minutes, like the post. c) Only at night.</li><li>If an automation fails, what do I do? a) Throw the computer away. b) Read the error notice, fix the fields and test again. c) Ignore it.</li></ol>
+<p>Answers: 1-a, 2-b, 3-b, 4-b, 5-b.</p>
+<h3>⚖️ Ethical dimension</h3>
+<ul><li>Always review what permissions you give and to which accounts. Remove access when you stop using an automation.</li><li>Don&#39;t connect accounts that hold other people&#39;s personal data (health, money) without a clear reason.</li><li>If your automation sends messages to a group, warn the group first and check the content.</li><li>Don&#39;t test automations that send real emails or messages to strangers: use test addresses or chats.</li><li>The automations you create are yours: be responsible for what they do and the data they move.</li></ul>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it&#39;s for</th><th scope="col">Where to get it</th></tr></thead><tbody><tr><td>Google Sheets</td><td>The spreadsheet where you&#39;ll put your data</td><td>sheets.google.com (free)</td></tr><tr><td>Make</td><td>Creating and testing your scenarios</td><td>make.com</td></tr><tr><td>Zapier</td><td>Alternative with many templates</td><td>zapier.com</td></tr><tr><td>Telegram</td><td>Messaging app for receiving notices</td><td>telegram.org (free)</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<p>We built our first real automation: a trigger in a sheet that triggers an action in another app. We connected accounts, chose events, tested and activated. That is the method we will always use. In the next level we will learn to create automatic notifications, notices that arrive on their own when something important happens.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-05/nivel-05-EN.html">Previous level</a><span>Level 06</span><a rel="next" href="../nivel-07/nivel-07-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Open educational material. It is not a certification.</span><a href="nivel-06-EN.html" download>Level 06 · HTML</a></footer>
+
+</body>
+</html>

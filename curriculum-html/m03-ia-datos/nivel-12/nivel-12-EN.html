@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="In the two previous levels we learned to distrust false relationships and to clean data so conclusions are honest. Now for the pretty part: putting several charts on one page that tells the whole story at a glance. That ">
+  <meta name="color-scheme" content="light">
+  <title>Module 3: AI Applied to Data — Level 12 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m03-ia-datos">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 3: AI Applied to Data</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html" aria-current="page">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 3: AI Applied to Data</p>
+        <h1>Module 3: AI Applied to Data</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-12-ES.html" lang="es">Español</a><a href="nivel-12-PT.html" lang="pt">Português</a><a href="nivel-12-CA.html" lang="ca">Català</a><a href="nivel-12-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Stem</h3>
+<h3>Estimated time: 3 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand what a control panel or &quot;dashboard&quot; is and what it is for.</li><li>Get to know two free tools: Looker Studio (by Google) and Power BI (by Microsoft).</li><li>Connect clean data to a dashboard and choose the right chart for each question.</li><li>Build a first simple dashboard with three charts and a title.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Plain-language explanation</th></tr></thead><tbody><tr><td>Dashboard</td><td>A page with several charts that answers questions at a glance.</td></tr><tr><td>Data source</td><td>The sheet or file the dashboard takes its numbers from.</td></tr><tr><td>Control panel</td><td>Another name for dashboard, used in business.</td></tr><tr><td>Panel</td><td>Each chart or card inside the dashboard.</td></tr><tr><td>Refresh</td><td>Update the data so the dashboard shows the latest figures.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>In the two previous levels we learned to distrust false relationships and to clean data so conclusions are honest. Now for the pretty part: putting several charts on one page that tells the whole story at a glance. That is a dashboard, also called a &quot;control panel&quot; in business.</p>
+<p>What does a dashboard do? Imagine you are the chair of a small shopkeepers&#39; association in your neighbourhood. You have data for 12 shops: monthly sales, expenses, days open and new customers. If someone shows you a 500-row sheet, what do you take away? Very little. If someone shows you a dashboard with three charts — sales by month, expenses by shop, and new customers by quarter — in ten seconds you know how the neighbourhood is doing. The dashboard turns data into understanding.</p>
+<p>The two most used free tools are Looker Studio (by Google, runs in the browser) and Power BI (by Microsoft, installed on your computer, with a free version). Looker Studio is ideal for starting out because it connects directly to Google Sheets, which we already know. Power BI is more powerful and widely used in companies. This week we will learn with Looker Studio, and the concept applies to both.</p>
+<p>A dashboard is built in three steps. First, the data source: you connect the clean Google Sheets sheet we already have. Second, the canvas: a blank page where you place the elements. Third, the panels: you add each chart by choosing its type. The important thing is not the click, but deciding well: what question do I want each chart to answer?</p>
+<p>Each chart type answers a different question, and this is the design part to take care of. Bar charts compare categories: &quot;which shop sells the most?&quot;. Line charts show change over time: &quot;are sales rising from March to September?&quot;. Pie charts (the &quot;pie&quot;) divide up a total: &quot;what percentage of spending goes to each item?&quot;. The big-number card answers &quot;how much?&quot; with a single figure: 12,450 euros. If you use the wrong chart, the question goes unanswered.</p>
+<p>The golden rule of dashboards: less is more. A dashboard with ten charts cannot be read; a dashboard with three or four well-chosen ones can be understood. The designer&#39;s discipline is to ask, before adding each chart: &quot;does this picture answer a question someone has asked?&quot;. If not, it does not go on the dashboard. The absence of noise is design.</p>
+<p>Another important decision: order. A dashboard is read like a newspaper: top to bottom, left to right. At the top, the title and the most important number, the overall summary. In the centre, the two or three charts that tell the main story. At the bottom, the details for those who want to dig deeper. A good dashboard tells a story with a beginning (the summary), a middle (the charts) and an end (the conclusion or detail).</p>
+<p>And a technical warning: dashboard data does not update itself. If next week you add data to the sheet, the Looker Studio dashboard still shows the old figures until you press the refresh button. That button is like watering a plant: if you don&#39;t water it, the plant (and the dashboard) dries up and stops being useful. Get into the habit of refreshing.</p>
+<p>One dashboard capability worth its weight in gold is the filter. In Looker Studio you can add a &quot;date control&quot; or a dropdown list of shops: with one click, the whole dashboard shows only one quarter or only one shop. Filters let you ask many questions with a single dashboard, without drawing anything new. That is what professionals call &quot;exploring the data&quot;.</p>
+<p>In the next level we enter the AI part proper: we begin with predictive analysis, which uses past data to guess the future. The dashboard you learn to build today will be where that prediction is shown. The dashboard does not predict, but it teaches; AI predicts, but it needs someone (you) to check that its predictions are honest. The two need each other.</p>
+<h3>💡 Practical examples</h3>
+<h4>Example 1: The neighbourhood of 12 shops</h4>
+<p>With the monthly sales sheet of 12 shops, a dashboard with three panels answers: card (year total), bars (shop by shop), lines (monthly trend). In ten seconds you know how the neighbourhood is doing.</p>
+<h4>Example 2: The gym</h4>
+<p>A gym records new members and cancellations every month. A dashboard with lines shows both curves: if cancellations outnumber new members, the business is shrinking. The dashboard does not judge, it only shows.</p>
+<h4>Example 3: The community garden</h4>
+<p>A garden logs kilos of tomatoes by plot. The pie chart divides the total: &quot;plot 3 produces 40% of everything&quot;. That fact invites the question of why that plot works better.</p>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1. Open the clean sheet from the previous level (or create one with 12 months of sales and expenses for one shop). Step 2. Go to https://lookerstudio.google.com and press &quot;Create report&quot;. Step 3. Connect the source: &quot;Google Sheets&quot;, select the sheet and &quot;Add&quot;. Step 4. Put a title at the top: &quot;Shop dashboard — 2026&quot;. Step 5. Add a number card: menu &quot;Add a chart&quot;, &quot;Scorecard&quot;, choose the sales column and the SUM function. Step 6. Add a bar chart with sales by month: the dimension is the month, the metric the sum of sales. Step 7. Add a line chart with expenses by month. Step 8. Add a filter control: &quot;Add a control&quot;, &quot;Dropdown list&quot;, and choose the &quot;month&quot; field. Try selecting only one month and watch the panels change. Step 9. Arrange it: number at the top, bars and lines in the centre, control at the bottom. Step 10. Share the report with the &quot;Share&quot; button (view only) and save the link. Congratulations: you have your first dashboard.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>What is a dashboard?</li><li>Name two free tools for building dashboards.</li><li>What question does each type answer: bars, lines, pie, number card?</li><li>What is the golden rule of dashboards?</li><li>What must you do with new data so the dashboard shows it?</li></ol>
+<p>Answers: 1. A page with several charts that answers questions at a glance. 2. Looker Studio (by Google) and Power BI (by Microsoft). 3. Bars: compare categories. Lines: change over time. Pie: divide a total. Card: answer &quot;how much?&quot; with one figure. 4. Less is more: only the chart that answers a real question goes in. 5. Press the refresh button.</p>
+<h3>⚖️ Ethical dimension</h3>
+<p>A dashboard can be honest or manipulative. It is easy to choose a chart that exaggerates: starting the axis at 100,000 instead of 0 makes a small rise look enormous. You can also hide inconvenient data by leaving it out. The honest dashboard shows the full scale, does not deceive with axes and does not hide what is inconvenient. When you build dashboards, remember that someone will make decisions based on them: that deserves drawing them truthfully.</p>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it is and what it is for</th><th scope="col">Where to find it</th></tr></thead><tbody><tr><td>Looker Studio</td><td>Free dashboards connected to Google Sheets</td><td>https://lookerstudio.google.com</td></tr><tr><td>Power BI</td><td>Powerful dashboards with a free version</td><td>https://powerbi.microsoft.com</td></tr><tr><td>Google Sheets</td><td>Your data source: the clean sheet</td><td>https://sheets.google.com</td></tr><tr><td>Rawgraphs</td><td>Unusual and curious charts without coding</td><td>https://rawgraphs.io</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<ul><li>A dashboard brings together several charts that answer questions at a glance.</li><li>Looker Studio and Power BI are the most used free tools.</li><li>Each chart type answers a question: bars, lines, pie, card.</li><li>Less is more, and data must be refreshed.</li></ul>
+<p>In the next level we enter real AI: predictive analysis, which uses the past to anticipate the future.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-11/nivel-11-EN.html">Previous level</a><span>Level 12</span><a rel="next" href="../nivel-13/nivel-13-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m03-ia-datos</span><span>Open educational material. It is not a certification.</span><a href="nivel-12-EN.html" download>Level 12 · HTML</a></footer>
+
+</body>
+</html>

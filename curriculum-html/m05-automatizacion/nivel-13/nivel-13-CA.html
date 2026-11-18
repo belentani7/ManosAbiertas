@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="Avui parlarem d&#39;una cosa que ningú no menciona al principi i que tothom troba el primer dia: els errors. Les automatitzacions fallen. S&#39;equivoquen, es trenquen, s&#39;aturen. I això no és un problema nostre: és part de la vi">
+  <meta name="color-scheme" content="light">
+  <title>Mòdul 5: Automatització i Integració — Nivell 13 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ves al contingut</a>
+<header class="site-header">
+  <a class="brand" href="/ca">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="Tots els mòduls"><a href="../../index-CA.html">Tots els mòduls</a><a href="../index-CA.html">Nivells del mòdul</a><a href="/ca/curriculum/m05-automatizacion">Obrir el visor d’aprenentatge</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Mòdul 5: Automatització i Integració</p>
+    <details open>
+      <summary>Nivells del mòdul</summary>
+      <nav aria-label="Nivells del mòdul"><ol class="level-list"><li><a href="../nivel-00/nivel-00-CA.html">Nivell 00</a></li><li><a href="../nivel-01/nivel-01-CA.html">Nivell 01</a></li><li><a href="../nivel-02/nivel-02-CA.html">Nivell 02</a></li><li><a href="../nivel-03/nivel-03-CA.html">Nivell 03</a></li><li><a href="../nivel-04/nivel-04-CA.html">Nivell 04</a></li><li><a href="../nivel-05/nivel-05-CA.html">Nivell 05</a></li><li><a href="../nivel-06/nivel-06-CA.html">Nivell 06</a></li><li><a href="../nivel-07/nivel-07-CA.html">Nivell 07</a></li><li><a href="../nivel-08/nivel-08-CA.html">Nivell 08</a></li><li><a href="../nivel-09/nivel-09-CA.html">Nivell 09</a></li><li><a href="../nivel-10/nivel-10-CA.html">Nivell 10</a></li><li><a href="../nivel-11/nivel-11-CA.html">Nivell 11</a></li><li><a href="../nivel-12/nivel-12-CA.html">Nivell 12</a></li><li><a href="../nivel-13/nivel-13-CA.html" aria-current="page">Nivell 13</a></li><li><a href="../nivel-14/nivel-14-CA.html">Nivell 14</a></li><li><a href="../nivel-15/nivel-15-CA.html">Nivell 15</a></li><li><a href="../nivel-16/nivel-16-CA.html">Nivell 16</a></li><li><a href="../nivel-17/nivel-17-CA.html">Nivell 17</a></li><li><a href="../nivel-18/nivel-18-CA.html">Nivell 18</a></li><li><a href="../nivel-19/nivel-19-CA.html">Nivell 19</a></li><li><a href="../nivel-20/nivel-20-CA.html">Nivell 20</a></li><li><a href="../nivel-21/nivel-21-CA.html">Nivell 21</a></li><li><a href="../nivel-22/nivel-22-CA.html">Nivell 22</a></li><li><a href="../nivel-23/nivel-23-CA.html">Nivell 23</a></li><li><a href="../nivel-24/nivel-24-CA.html">Nivell 24</a></li><li><a href="../nivel-25/nivel-25-CA.html">Nivell 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Mòdul 5: Automatització i Integració</p>
+        <h1>Mòdul 5: Automatització i Integració</h1>
+        <div class="metadata">
+          <span>Català (CA)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Idioma del material"><span>Idioma del material:</span><a href="nivel-13-ES.html" lang="es">Español</a><a href="nivel-13-PT.html" lang="pt">Português</a><a href="nivel-13-CA.html" aria-current="page" lang="ca">Català</a><a href="nivel-13-EN.html" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Idioma: CA · Dificultat: Tija</h3>
+<h3>Temps estimat: 2 hores</h3>
+<h3>🎯 Objectiu del nivell</h3>
+<ul><li>Entendre que les automatitzacions poden fallar i que això és normal.</li><li>Conèixer els tipus d&#39;errors més habituals en un flux.</li><li>Aprendre a llegir un missatge d&#39;error sense espantar-se.</li><li>Afegir passos que avisin quan alguna cosa falla.</li><li>Muntar un flux que continuï o s&#39;aturi segons l&#39;error.</li></ul>
+<h3>📖 Vocabulari essencial</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Terme</th><th scope="col">Explicació en paraules senzilles</th></tr></thead><tbody><tr><td>Error</td><td>Una fallada: alguna cosa no ha sortit com esperàvem.</td></tr><tr><td>Missatge d&#39;error</td><td>L&#39;avís que l&#39;eina mostra per explicar la fallada.</td></tr><tr><td>Tornar a provar</td><td>Executar de nou el pas que ha fallat.</td></tr><tr><td>Excepció</td><td>El cas especial que no compleix l&#39;habitual i fa fallar el flux.</td></tr><tr><td>Registre</td><td>L&#39;historial on queden anotats els passos i els errors.</td></tr><tr><td>Avís de fallada</td><td>Una notificació que s&#39;envia quan alguna cosa es trenca.</td></tr></tbody></table></div>
+<h3>📚 Lliçó principal</h3>
+<p>Avui parlarem d&#39;una cosa que ningú no menciona al principi i que tothom troba el primer dia: els errors. Les automatitzacions fallen. S&#39;equivoquen, es trenquen, s&#39;aturen. I això no és un problema nostre: és part de la vida de tota màquina. L&#39;important no és que no falli, sinó saber què fer quan falla.</p>
+<p>Pensem en la cuina. Encara que seguim la recepta al peu de la lletra, de vegades el flam es talla, el forn s&#39;apaga o falta un ingredient. Un bon cuiner no llença els plats: sap per què ha passat i ho arregla. Amb les automatitzacions és igual. L&#39;error és informació, no un càstig.</p>
+<p>La primera habilitat és llegir el missatge d&#39;error. Les eines d&#39;integració guarden un historial o registre de cada execució: qui ha disparat el flux, quins passos s&#39;han fet i on s&#39;ha aturat. Quan alguna cosa falla, el missatge d&#39;error sol dir la causa: &quot;camp buit&quot;, &quot;aplicació no connectada&quot;, &quot;dada incorrecta&quot;. És com el diagnòstic del metge: per curar, primer cal saber què fa mal.</p>
+<p>Els errors més habituals són pocs i s&#39;aprenen de pressa. Un: els camps buits, quan arriba una dada sense omplir. Dos: els comptes desconnectats, quan l&#39;autorització ha caducat o s&#39;ha retirat. Tres: les dades amb format diferent, quan esperàvem un nombre i arriba un text. Quatre: els límits d&#39;ús, quan el pla gratuït s&#39;esgota.</p>
+<p>Per a cada error hi ha una solució. Si el camp és buit, fem servir una condició (nivell 10) per no continuar quan falta la dada. Si el compte s&#39;ha desconnectat, el tornem a connectar. Si el format és diferent, revisem el full o l&#39;aplicació d&#39;origen. Si s&#39;ha esgotat el límit, esperem al mes següent o fem servir menys el flux.</p>
+<p>Però la veritable mestria és en una altra cosa: que el flux sàpiga avisar quan falla. En lloc de fallar en silenci, la nostra automatització ens pot enviar un missatge: &quot;el pas d&#39;enviar correu ha fallat&quot;. Així, encara que es trenqui, nosaltres ho sabem i ho arreglem. Una fallada que avisa és una fallada a mitges.</p>
+<p>Les eines permeten afegir un pas especial, de vegades anomenat &quot;control d&#39;errors&quot; o &quot;gestió d&#39;errors&quot;, que s&#39;executa només quan alguna cosa falla. En aquest pas podem enviar l&#39;avís, guardar la dada que ha fallat o aturar el flux amb calma. És com tenir un detector de fum: no apaga el foc, però avisa a temps.</p>
+<p>També podem decidir si una fallada ho atura tot o ho salta. De vegades el millor és aturar: si el pagament no es processa, que no continuï. Altres vegades el millor és continuar: si l&#39;enviament del missatge falla, que la resta segueixi i després ho revisem. Cada flux tria la seva actitud segons la importància de cada pas.</p>
+<p>Convé revisar el registre de tant en tant, com qui mira les factures del mes. El registre ens explica què ha passat a la nostra automatització: quantes vegades s&#39;ha executat, quan ha fallat i per què. Llegir el registre és la manera de tenir cura de l&#39;automatització, de mantenir-la sana. És la higiene de l&#39;ofici.</p>
+<p>Un error que es repeteix molt és senyal que el flux està mal dissenyat o que l&#39;origen de les dades ha canviat. No ho tapem amb pedaços: mirem la causa i arreglem-ho d&#39;arrel. És com la gotera: s&#39;arregla la teulada, no es posa una galleda cada vegada.</p>
+<p>Quan proves una automatització i falla, respira: és el millor moment per aprendre. Cada fallada que trobes i entens et fa més amo del teu sistema. La por als errors desapareix quan els coneixem. I conèixer-los és justament el que estem fent avui.</p>
+<p>En acabar aquest nivell sabràs llegir un missatge d&#39;error, saber què fer amb les fallades típiques i muntar avisos que et diguin quan alguna cosa es trenca. La teva automatització ja no és fràgil: està vigilada i cuidada.</p>
+<h3>💡 Exemples pràctics</h3>
+<ol><li><strong>El compte desconnectat.</strong> El flux del club va deixar de funcionar perquè Google va fer caducar l&#39;autorització. L&#39;avís de fallada va arribar a la coordinadora, que el va tornar a connectar en un minut.</li><li><strong>La fila buida.</strong> Va arribar un soci sense correu. La condició del flux (nivell 10) el va aturar abans d&#39;enviar, i el registre va guardar el cas per revisar-lo a mà.</li><li><strong>El límit d&#39;IA.</strong> El pla gratuït de la IA es va esgotar un mes. El flux va avisar i va continuar treballant amb el resum manual fins al mes següent.</li></ol>
+<h3>🛠️ Activitat guiada</h3>
+<p>Pas 1: Obre la teva eina d&#39;integració i tria un escenari que ja tinguis creat (per exemple, el d&#39;incidències o el de resums). Pas 2: Entra al registre o historial de l&#39;escenari (sol ser la pestanya &quot;Historial&quot;, &quot;History&quot; o &quot;Execucions&quot;). Mira les últimes execucions. Pas 3: Busca una execució que hagi fallat o fes fallar-ne una a propòsit: desconnecta el compte de Telegram o deixa un camp buit al full. Pas 4: Llegeix el missatge d&#39;error. Escriu-lo al teu paper i apunta què creus que vol dir. Comprova amb la guia d&#39;aquest nivell quin és l&#39;error típic. Pas 5: Corregeix l&#39;error: torna a connectar el compte o completa el camp. Pas 6: Afegeix el control d&#39;errors: busca a la configuració de l&#39;escenari l&#39;opció &quot;Control d&#39;errors&quot;, &quot;Error handling&quot; o &quot;Gestió d&#39;errors&quot;. Pas 7: Configura l&#39;avís: quan falli, envia un missatge a Telegram amb el text &quot;Ha fallat l&#39;escenari [nom]: [missatge d&#39;error]&quot;. Pas 8: Prova de fallar una altra vegada i comprova que arriba l&#39;avís. Pas 9: Activa l&#39;escenari i acostuma&#39;t a revisar el registre un cop per setmana.</p>
+<h3>✍️ Exercicis d&#39;autoavaluació</h3>
+<ol><li>És normal que una automatització falli? a) No, si està ben feta mai no falla. b) Sí, fallar és part de la vida de tota màquina. c) Només les barates.</li><li>Què és el primer que fem davant d&#39;un error? a) Esborrar l&#39;escenari. b) Llegir el missatge d&#39;error i mirar el registre. c) Comprar un altre ordinador.</li><li>Quin és un error típic? a) Un camp buit. b) Un canvi de lletra. c) L&#39;hora de l&#39;esmorzar.</li><li>Què fa el control d&#39;errors? a) Evita que falli tot. b) S&#39;executa quan alguna cosa falla, per avisar o aturar-se amb calma. c) Esborra els errors del passat.</li><li>Per a què serveix revisar el registre? a) Per tenir cura de l&#39;automatització i saber què ha passat. b) Per omplir el temps. c) Perquè quedi bonic.</li></ol>
+<p>Respostes: 1-b, 2-b, 3-a, 4-b, 5-a.</p>
+<h3>⚖️ Dimensió ètica</h3>
+<ul><li>Una fallada silenciosa és perillosa: si una automatització que processa dades de persones falla sense avisar, es perd informació. L&#39;avís és responsabilitat.</li><li>Si el flux falla en tractar dades personals, avisa de seguida i no ho amaguis: la transparència protegeix les persones.</li><li>No facis servir el control d&#39;errors per &quot;tapar&quot; un disseny mal fet: arregla la causa, no només l&#39;alerta.</li><li>Els avisos de fallada han d&#39;arribar a la persona adequada, no al correu de tothom.</li><li>Davant d&#39;un error que afecta diners o salut, atura l&#39;automatització i revisa a mà abans de continuar.</li></ul>
+<h3>🔓 Eines obertes</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Eina</th><th scope="col">Per a què serveix</th><th scope="col">On aconseguir-la</th></tr></thead><tbody><tr><td>Make (control d&#39;errors)</td><td>Avisar quan falla un pas</td><td>make.com</td></tr><tr><td>Zapier (filtres i retry)</td><td>Configurar reintents i continuacions</td><td>zapier.com</td></tr><tr><td>UptimeRobot</td><td>Vigilar que les teves automatitzacions web responguin</td><td>uptimerobot.com (gratuït)</td></tr><tr><td>Logseq o notes</td><td>Portar un diari d&#39;errors i arranjaments</td><td>logseq.com (gratuït)</td></tr></tbody></table></div>
+<h3>🧠 Resum i pont</h3>
+<p>Els errors són part de l&#39;ofici: es llegeixen, s&#39;entenen i s&#39;arreglen. El control d&#39;errors avisa quan alguna cosa falla i el registre explica la història del flux. La teva automatització ja està vigilada. Al següent nivell tanquem la banda Tija: muntarem una automatització completa que faci servir condicions, variables, IA i control d&#39;errors junts.</p></div>
+      <nav class="lesson-pagination" aria-label="Nivells del mòdul"><a rel="prev" href="../nivel-12/nivel-12-CA.html">Nivell anterior</a><span>Nivell 13</span><a rel="next" href="../nivel-14/nivel-14-CA.html">Nivell següent</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Material educatiu obert. No constitueix una certificació.</span><a href="nivel-13-CA.html" download>Nivell 13 · HTML</a></footer>
+
+</body>
+</html>

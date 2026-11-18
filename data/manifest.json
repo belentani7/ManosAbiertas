@@ -1,0 +1,24 @@
+﻿{
+  "projectName": "Manos Abiertas // Plataforma Educativa y Social",
+  "bioSource": "README.md",
+  "sections": [
+    {
+      "id": "cursos",
+      "title": "Catálogo de Cursos & Programas",
+      "description": "Formación integral, talleres de IA, desarrollo web, y recursos de aprendizaje de alto impacto.",
+      "buttons": [
+        { "label": "Ver Plan de Estudios", "target": "#plan-estudios", "type": "anchor" },
+        { "label": "Acceder a Guías PDF", "target": "docs/guias.md", "type": "file" }
+      ]
+    },
+    {
+      "id": "herramientas",
+      "title": "Laboratorio de Herramientas & AI Tutor",
+      "description": "Interactúa con nuestro tutor de IA y herramientas de voz integradas.",
+      "buttons": [
+        { "label": "Abrir AI Tutor", "target": "#tutor", "type": "anchor" },
+        { "label": "Terminal de Prácticas", "target": "#terminal", "type": "anchor" }
+      ]
+    }
+  ]
+}

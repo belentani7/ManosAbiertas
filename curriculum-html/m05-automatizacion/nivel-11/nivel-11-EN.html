@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f35">
+  <meta name="description" content="In the previous level we learned if-then logic. Today we add another fundamental piece: variables. The word sounds technical, but variables are something we use our whole lives. A variable is a box with a name that store">
+  <meta name="color-scheme" content="light">
+  <title>Module 5: Automation and Integration — Level 11 | Manos Abiertas</title>
+  <link rel="stylesheet" href="../../curriculum-pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="/en">Manos Abiertas <span>Currículo abierto</span></a>
+  <nav aria-label="All modules"><a href="../../index-EN.html">All modules</a><a href="../index-EN.html">Module levels</a><a href="/en/curriculum/m05-automatizacion">Open learning viewer</a></nav>
+</header>
+<div class="page-grid">
+  <aside class="lesson-aside">
+    <p class="eyebrow">Module 5: Automation and Integration</p>
+    <details open>
+      <summary>Module levels</summary>
+      <nav aria-label="Module levels"><ol class="level-list"><li><a href="../nivel-00/nivel-00-EN.html">Level 00</a></li><li><a href="../nivel-01/nivel-01-EN.html">Level 01</a></li><li><a href="../nivel-02/nivel-02-EN.html">Level 02</a></li><li><a href="../nivel-03/nivel-03-EN.html">Level 03</a></li><li><a href="../nivel-04/nivel-04-EN.html">Level 04</a></li><li><a href="../nivel-05/nivel-05-EN.html">Level 05</a></li><li><a href="../nivel-06/nivel-06-EN.html">Level 06</a></li><li><a href="../nivel-07/nivel-07-EN.html">Level 07</a></li><li><a href="../nivel-08/nivel-08-EN.html">Level 08</a></li><li><a href="../nivel-09/nivel-09-EN.html">Level 09</a></li><li><a href="../nivel-10/nivel-10-EN.html">Level 10</a></li><li><a href="../nivel-11/nivel-11-EN.html" aria-current="page">Level 11</a></li><li><a href="../nivel-12/nivel-12-EN.html">Level 12</a></li><li><a href="../nivel-13/nivel-13-EN.html">Level 13</a></li><li><a href="../nivel-14/nivel-14-EN.html">Level 14</a></li><li><a href="../nivel-15/nivel-15-EN.html">Level 15</a></li><li><a href="../nivel-16/nivel-16-EN.html">Level 16</a></li><li><a href="../nivel-17/nivel-17-EN.html">Level 17</a></li><li><a href="../nivel-18/nivel-18-EN.html">Level 18</a></li><li><a href="../nivel-19/nivel-19-EN.html">Level 19</a></li><li><a href="../nivel-20/nivel-20-EN.html">Level 20</a></li><li><a href="../nivel-21/nivel-21-EN.html">Level 21</a></li><li><a href="../nivel-22/nivel-22-EN.html">Level 22</a></li><li><a href="../nivel-23/nivel-23-EN.html">Level 23</a></li><li><a href="../nivel-24/nivel-24-EN.html">Level 24</a></li><li><a href="../nivel-25/nivel-25-EN.html">Level 25</a></li></ol></nav>
+    </details>
+  </aside>
+  <main id="contenido" class="lesson-main">
+    <article>
+      <header class="lesson-heading">
+        <p class="eyebrow">Module 5: Automation and Integration</p>
+        <h1>Module 5: Automation and Integration</h1>
+        <div class="metadata">
+          <span>English (EN)</span>
+          
+          
+          <span>Manos Abiertas</span>
+        </div>
+      </header>
+      <nav class="language-picker" aria-label="Content language"><span>Content language:</span><a href="nivel-11-ES.html" lang="es">Español</a><a href="nivel-11-PT.html" lang="pt">Português</a><a href="nivel-11-CA.html" lang="ca">Català</a><a href="nivel-11-EN.html" aria-current="page" lang="en">English</a></nav>
+      <div class="lesson-content"><h3>Language: EN · Difficulty: Stem</h3>
+<h3>Estimated time: 2 hours</h3>
+<h3>🎯 Level objective</h3>
+<ul><li>Understand what a variable is using metaphors from the physical world.</li><li>Recognise the data that changes inside a flow.</li><li>Store and reuse a piece of data throughout the automation.</li><li>Use text and number variables in an automation.</li><li>Put together a flow that combines conditions and variables.</li></ul>
+<h3>📖 Essential vocabulary</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Term</th><th scope="col">Simple explanation</th></tr></thead><tbody><tr><td>Variable</td><td>A &quot;box&quot; with a name where a changing piece of data is stored.</td></tr><tr><td>Value</td><td>The data inside the box at that moment.</td></tr><tr><td>Variable name</td><td>The box&#39;s label, so we know what it contains.</td></tr><tr><td>Text</td><td>A value made of letters, numbers and symbols, like a name.</td></tr><tr><td>Number</td><td>A value that can be added, subtracted or compared.</td></tr><tr><td>Store</td><td>Leave a value in the variable to use it later.</td></tr></tbody></table></div>
+<h3>📚 Main lesson</h3>
+<p>In the previous level we learned if-then logic. Today we add another fundamental piece: variables. The word sounds technical, but variables are something we use our whole lives. A variable is a box with a name that stores a piece of data, and that data can change. It&#39;s that simple.</p>
+<p>Let&#39;s think of the pantry at home. The sugar box has a label that says &quot;sugar&quot;. What&#39;s inside changes: today it&#39;s full, tomorrow half, the day after empty. But the label stays the same. It&#39;s the same with variables: the name doesn&#39;t change, the value does. The variable &quot;sugar&quot; can hold 2 kilos today and 1 tomorrow.</p>
+<p>In an automation, data travels through the flow like ingredients through the kitchen. When a new row from the sheet arrives, it brings data: the member&#39;s name, the amount, the date. That data can be stored in variables with clear names: &quot;name&quot;, &quot;amount&quot;, &quot;date&quot;. From then on, the flow can use them in any step.</p>
+<p>Why are variables so useful? Because they allow reuse. Without variables, each step would have to look the data up again. With variables, we store the data once and use it in the email, the message and the condition. It&#39;s like writing the phone number once in the address book and always calling from there.</p>
+<p>In integration tools, variables appear almost on their own. When we choose a field from the sheet to put in a message, we&#39;re using a variable, even if the tool doesn&#39;t use that word. The variable&#39;s name is the column&#39;s name: &quot;Name&quot;, &quot;Amount&quot;. The box is the column; the value is what&#39;s in that row.</p>
+<p>Variables can be of different types, just as the pantry has boxes of different things. Two types matter to us a lot: text and number. Text is letters and words: a name, a message, an address. Number is quantities: amounts, counts, temperatures. Numbers can be added; text cannot.</p>
+<p>That difference is important. We can do &quot;the total is the price plus shipping&quot; if both are numbers. We can&#39;t add two names. Knowing each variable&#39;s type avoids strange errors. It&#39;s like not putting salt in the coffee: each thing goes with its type.</p>
+<p>Variables also let us build long messages. Instead of writing the whole message by hand, we assemble it from pieces: &quot;Hello [name], your order of [item] for [amount] euros is ready&quot;. Each square bracket is a variable filled with the value of each row. The same message works for a hundred different orders.</p>
+<p>The combination of variables and conditions is very powerful. The condition can ask about a variable&#39;s value: &quot;if the amount is greater than 50&quot;. And the condition&#39;s result can lead to actions that use that same variable: &quot;the email says: you&#39;ve exceeded 50 euros&quot;. The variable is the information; the condition, the question; the actions, the answer.</p>
+<p>A pro tip: give clear names to your variables. &quot;Amount&quot; is clear; &quot;x&quot; or &quot;data3&quot; isn&#39;t. When we review the automation in a month&#39;s time, we&#39;ll be grateful to read &quot;amount&quot; and not have to decode &quot;data3&quot;. Good names are the order of the digital kitchen.</p>
+<p>Another tip: don&#39;t store data in variables you won&#39;t use. Every variable we add is one more piece to maintain. We store what&#39;s necessary and little more. Less is more in variables too.</p>
+<p>When you finish this level you&#39;ll understand that variables are the boxes that carry data through the flow, that they have a name and a value, and that they can be text or number. With conditions and variables, the automation can already read, decide and build messages. In the next level we&#39;ll make it even smarter: we&#39;ll teach it to think with artificial intelligence.</p>
+<h3>💡 Practical examples</h3>
+<ol><li><strong>The order message.</strong> The flow stores the name, item and amount of each row, and assembles the message: &quot;Hello Marta, your order of 3 kilos of tomatoes for 9 euros is ready&quot;.</li><li><strong>The expense notice.</strong> If the &quot;amount&quot; variable is greater than 50, the flow sends the approval notice to the treasurer with the value included.</li><li><strong>The birthday list.</strong> The flow stores names and birthdays, and every month builds a message with those who have birthdays that month.</li></ol>
+<h3>🛠️ Guided activity</h3>
+<p>Step 1: Open your integration tool and create a new scenario called &quot;Club orders&quot; (or your topic). Step 2: Create a sheet in Google Sheets with the columns: Name, Item, Amount. Fill in two test rows. Step 3: Add the trigger: the &quot;Watch rows&quot; event from Google Sheets with your sheet. Step 4: Add a message action (Telegram). In the text, type &quot;Hello &quot; and press to insert the &quot;Name&quot; variable; type &quot; your &quot; and insert &quot;Item&quot;; type &quot; for &quot; and insert &quot;Amount&quot;; finish with &quot; euros&quot;. Look at how the text is assembled. Step 5: Add a condition step: if &quot;Amount&quot; is greater than 50, then send a notice to the treasurer (another action); if not, do nothing extra. Step 6: In the treasurer notice, use the Name and Amount variables again so the message says &quot;Approval: [name], [amount] euros&quot;. Step 7: Test the flow with your two rows: one with an amount below 50 and one above. Notice that the first message always arrives and the treasurer&#39;s only when it should. Step 8: Write on your paper a list of your flow&#39;s variables, with their name, type (text or number) and what they&#39;re for. Step 9: Activate the scenario and delete the test rows.</p>
+<h3>✍️ Self-assessment exercises</h3>
+<ol><li>What is a variable? a) A box with a name that stores a changing piece of data. b) A phone button. c) A type of spreadsheet.</li><li>What does every variable have? a) Only a value. b) Only a name. c) A name and a value.</li><li>Which type of variable can be added? a) Text. b) Number. c) Both.</li><li>What are good variable names for? a) So the automation looks nice. b) To know what each box contains when reviewing it. c) To save space.</li><li>Can the same variable be used in several steps? a) No, once used it&#39;s deleted. b) Yes, it&#39;s stored and reused. c) Only twice.</li></ol>
+<p>Answers: 1-a, 2-c, 3-b, 4-b, 5-b.</p>
+<h3>⚖️ Ethical dimension</h3>
+<ul><li>Variables can contain personal data: treat the value as you would treat the original paper, with respect and care.</li><li>Don&#39;t put passwords, account numbers or medical data in variables that travel to messages or emails.</li><li>Name variables honestly: a misleading name can lead to using data with bad judgement.</li><li>If the variable comes from data provided by people, check that it&#39;s true before using it to decide.</li><li>Review from time to time which variables you store: delete the ones you no longer use and the data you don&#39;t need.</li></ul>
+<h3>🔓 Open tools</h3>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Tabla de contenido"><table><thead><tr><th scope="col">Tool</th><th scope="col">What it&#39;s for</th><th scope="col">Where to get it</th></tr></thead><tbody><tr><td>Make (variables and modules)</td><td>Storing and reusing data</td><td>make.com</td></tr><tr><td>Zapier (data tokens)</td><td>Inserting variables in actions</td><td>zapier.com</td></tr><tr><td>Google Sheets</td><td>Practising with columns as variables</td><td>sheets.google.com</td></tr><tr><td>LibreOffice Calc</td><td>Free spreadsheets</td><td>libreoffice.org (free)</td></tr></tbody></table></div>
+<h3>🧠 Summary and bridge</h3>
+<p>Variables are boxes with a name and a value that carry data through the flow. They can be text or number, they&#39;re stored once and reused in conditions, messages and emails. With conditions and variables, the automation reads and decides. In the next level we&#39;ll integrate artificial intelligence into the flows: the machine will read, summarise and generate texts.</p></div>
+      <nav class="lesson-pagination" aria-label="Module levels"><a rel="prev" href="../nivel-10/nivel-10-EN.html">Previous level</a><span>Level 11</span><a rel="next" href="../nivel-12/nivel-12-EN.html">Next level</a></nav>
+    </article>
+  </main>
+</div>
+<footer class="site-footer"><span>Manos Abiertas · m05-automatizacion</span><span>Open educational material. It is not a certification.</span><a href="nivel-11-EN.html" download>Level 11 · HTML</a></footer>
+
+</body>
+</html>
