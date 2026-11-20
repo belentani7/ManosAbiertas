@@ -61,3 +61,15 @@
 .area-check summary{cursor:pointer;color:var(--forest);font-weight:750;min-height:44px;display:flex;align-items:center}.area-check details p{padding-top:10px}
 @media(max-width:960px){.area-units{grid-template-columns:1fr 1fr}.area-unit:last-child{grid-column:1/-1}.area-practice-layout{grid-template-columns:1fr}}
 @media(max-width:630px){.area-units{grid-template-columns:1fr}.area-unit:last-child{grid-column:auto}.area-unit{padding:26px}.area-check{padding:24px}}
+
+
+/* 2026 visual polish: human-centered, accessible progressive enhancement */
+body{background:radial-gradient(ellipse 65% 26% at 95% 0%,rgba(223,235,226,.8),transparent 75%),var(--paper);text-rendering:optimizeLegibility}
+.site-header{background:rgba(250,247,241,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+:where(.header-cta,.nav-toggle){transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+.header-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(13,48,42,.18)}
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid var(--clay);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}:where(.header-cta,.nav-toggle){transition:none}.header-cta:hover{transform:none}}
+@media(hover:none){.header-cta:hover{transform:none}}
