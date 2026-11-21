@@ -136,6 +136,6 @@
   },
   "homepage": "https://manos-abiertas-rho.vercel.app",
   "engines": {
-    "node": ">=18"
+    "node": ">=20.9.0"
   }
 }

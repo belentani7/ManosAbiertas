@@ -32,7 +32,7 @@ y distintas lenguas. **PT > ES > EN > CA.**
 
 ## Puesta en marcha
 
-Requisitos: Node 18+ y pnpm 10.
+Requisitos: Node.js 20.9+ (recomendado Node 22) y pnpm 10. Next.js 16 no admite Node 18.
 
 ```bash
 pnpm install
