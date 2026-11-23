@@ -1,0 +1,2524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08241d">
+<meta name="description" content="832 páginas HTML del currículo de Manos Abiertas: 208 unidades por idioma en ocho módulos, español, portugués, catalán e inglés.">
+<title>Explorar 832 lecciones | Manos Abiertas</title>
+<style>
+:root{color-scheme:dark;--bg:#08241d;--panel:#133b30;--line:#537b6b;--text:#f7f0df;--muted:#c5ddce;--gold:#eccb96}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:#e1ffe3}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.skip{position:absolute;top:-100px;left:15px;background:#fff;color:#123;padding:12px 18px;z-index:100}
+.skip:focus{top:10px}
+.wrap{width:min(1160px,calc(100% - 34px));margin:auto}
+.top{background:#11372c;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;min-height:85px}
+.brand{text-decoration:none;font-weight:900;letter-spacing:.1em;font-size:22px}
+.top nav{display:flex;gap:17px;flex-wrap:wrap}
+.top nav a{font-size:13px;text-decoration:none}
+.eyebrow{font:12px ui-monospace,monospace;letter-spacing:.14em;color:var(--gold)}
+.hero{padding:clamp(65px,9vw,126px) 0 75px;background:radial-gradient(circle at 75% 20%,#336d523e,transparent 62%),var(--bg)}
+.hero h1{font-size:clamp(44px,8vw,95px);line-height:.98;letter-spacing:-.06em;margin:20px 0;max-width:950px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--muted);font-size:clamp(17px,2vw,23px);max-width:720px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.action{background:var(--gold);color:#10261c;font-weight:800;padding:13px 21px;text-decoration:none}
+.action.secondary{background:transparent;color:#fff;border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:26px 0}
+.stats div{background:var(--panel);border:1px solid var(--line);padding:18px}
+.stats strong{display:block;color:var(--gold);font-size:clamp(25px,3vw,43px)}
+.stats span{font:11px ui-monospace,monospace;color:var(--muted)}
+.section{padding:67px 0;border-top:1px solid var(--line)}
+.section h2{font-size:clamp(31px,5vw,61px);line-height:1.12;letter-spacing:-.04em}
+.description{color:var(--muted);max-width:780px}
+.modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+.module{background:var(--panel);border:1px solid var(--line);padding:23px}
+.module h3{font-size:22px;margin:9px 0}
+.module p{color:var(--muted)}
+.filters{display:grid;grid-template-columns:1fr 220px 190px auto;gap:10px;align-items:end;background:var(--panel);padding:20px;margin:25px 0;border:1px solid var(--line)}
+.filter{display:flex;gap:7px;flex-direction:column}
+.filter label{font-size:12px;font-weight:700}
+.filter input,.filter select{width:100%;min-width:0;padding:13px;color:#fff;border:1px solid var(--line);background:#09251e}
+.filters button{padding:13px;background:var(--gold);border:0;color:#152619;font-weight:700}
+.section-title{font-size:clamp(24px,3.3vw,38px);margin:25px 0}
+.level-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.level{padding:19px;border:1px solid var(--line);background:var(--panel)}
+.level:hover{border-color:var(--gold)}
+.level h4{font-size:18px;margin:12px 0}
+.level p{font-size:13px;color:var(--muted)}
+.meta{font:11px ui-monospace,monospace;color:var(--gold)}
+.language-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.language-links a{padding:9px 12px;border:1px solid var(--line);text-decoration:none;font-size:13px}
+.language-links a:hover{background:#2d5a46}
+.level[hidden],.module-block[hidden],.language-links a[hidden]{display:none!important}
+.module-block{margin:45px 0 75px}
+.module-block>p{color:var(--muted)}
+.empty{padding:18px;background:var(--panel);border:1px solid var(--line)}
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.method article{background:var(--panel);border:1px solid var(--line);padding:23px}
+.method p{color:var(--muted)}
+footer{padding:35px 0 65px;border-top:1px solid var(--line);color:var(--muted)}
+footer a{margin-right:20px}
+@media(max-width:900px){.filters{grid-template-columns:1fr 1fr}.modules,.level-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.stats{grid-template-columns:1fr 1fr}.filters,.method{grid-template-columns:1fr}.section{padding:44px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="top"><div class="wrap"><a class="brand" href="/">MANOS ABIERTAS</a><nav aria-label="Navegación principal"><a href="#modulos">Módulos</a><a href="#biblioteca">Biblioteca</a><a href="#metodo">Método</a><a href="/campus/index.html">Campus</a></nav></div></header>
+<main id="contenido">
+<section class="hero"><div class="wrap">
+<span class="eyebrow">BELENTANI / FREE SCHOOL / ACCESS FOR EVERYONE</span>
+<h1>Aprender abre <em>caminos.</em></h1>
+<p>Accede a 832 páginas HTML ya existentes: 208 unidades curriculares en cuatro idiomas. Elige el contenido útil para ti, sin registro y sin certificados ficticios.</p>
+<div class="actions"><a class="action" href="#biblioteca">Explorar 832 páginas</a><a class="action secondary" href="/programas.html">Ver programas</a></div>
+</div></section>
+<section class="wrap stats" aria-label="Tamaño del currículo">
+<div><strong>832</strong><span>Páginas HTML</span></div>
+<div><strong>208</strong><span>Unidades formativas</span></div>
+<div><strong>08</strong><span>Módulos</span></div>
+<div><strong>04</strong><span>Idiomas</span></div>
+</section>
+<section class="section" id="modulos"><div class="wrap"><span class="eyebrow">COURSE MAP</span><h2>Ocho módulos, un currículo.</h2><p class="description">Cada bloque enlaza a 26 niveles. Las ediciones lingüísticas comparten estructura, pero sus materiales se conservan en sus propios HTML.</p><div class="modules">
+<article class="module">
+<span class="eyebrow">MODULE 01</span>
+<h3>Fundamentos de inteligencia artificial</h3>
+<p>Qué es, para qué sirve y dónde verificar sus resultados.</p>
+<a href="#m01-introduccion-ia">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 02</span>
+<h3>Herramientas sin programación</h3>
+<p>Aplicaciones de productividad y aprendizaje para principiantes.</p>
+<a href="#m02-herramientas-sin-codigo">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 03</span>
+<h3>IA y datos</h3>
+<p>Calidad de información, organización y lectura crítica.</p>
+<a href="#m03-ia-datos">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 04</span>
+<h3>Generación de contenidos</h3>
+<p>Redacción, revisión y creación de materiales con criterio.</p>
+<a href="#m04-generacion-contenido">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 05</span>
+<h3>Automatización</h3>
+<p>Procesos útiles, controles y revisión de resultados.</p>
+<a href="#m05-automatizacion">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 06</span>
+<h3>Educación e IA</h3>
+<p>Métodos para practicar y evaluar lo que se aprende.</p>
+<a href="#m06-educacion-ia">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 07</span>
+<h3>Proyectos comunitarios</h3>
+<p>Aplicación práctica de habilidades a necesidades reales.</p>
+<a href="#m07-proyectos-comunitarios">Explorar los 26 niveles →</a>
+</article>
+<article class="module">
+<span class="eyebrow">MODULE 08</span>
+<h3>Ética y futuro</h3>
+<p>Derechos, responsabilidad y límites del uso tecnológico.</p>
+<a href="#m08-etica-futuro">Explorar los 26 niveles →</a>
+</article>
+</div></div></section>
+<section class="section" id="biblioteca"><div class="wrap">
+<span class="eyebrow">CONTENT INDEX / 832 REAL LINKS</span>
+<h2>Tu biblioteca, sin puertas cerradas.</h2>
+<p class="description">Busca un módulo, selecciona idioma y abre directamente la página HTML del nivel. No hay contenido inventado: todas estas rutas corresponden a la estructura existente del currículo.</p>
+<form id="filters" class="filters" role="search">
+<div class="filter"><label for="q">Buscar tema o nivel</label><input id="q" type="search" placeholder="IA, nivel 12, automatización…"></div>
+<div class="filter"><label for="module">Módulo</label><select id="module"><option value="">Todos</option>
+<option value="m01-introduccion-ia">Fundamentos de inteligencia artificial</option>
+<option value="m02-herramientas-sin-codigo">Herramientas sin programación</option>
+<option value="m03-ia-datos">IA y datos</option>
+<option value="m04-generacion-contenido">Generación de contenidos</option>
+<option value="m05-automatizacion">Automatización</option>
+<option value="m06-educacion-ia">Educación e IA</option>
+<option value="m07-proyectos-comunitarios">Proyectos comunitarios</option>
+<option value="m08-etica-futuro">Ética y futuro</option>
+</select></div>
+<div class="filter"><label for="lang">Idioma</label><select id="lang"><option value="">Los cuatro</option>
+<option value="ES">Español</option>
+<option value="PT">Português</option>
+<option value="CA">Català</option>
+<option value="EN">English</option>
+</select></div>
+<button id="reset" type="reset">Restablecer</button></form>
+<p id="counter" class="eyebrow" aria-live="polite">208 niveles visibles</p>
+<p id="empty" class="empty" hidden>No hay coincidencias. Modifica los filtros.</p>
+<div class="module-block" id="m01-introduccion-ia">
+<h3 class="section-title">Fundamentos de inteligencia artificial</h3>
+<p>Qué es, para qué sirve y dónde verificar sus resultados.</p>
+<div class="level-grid">
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 00 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 00</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 01 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 01</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 02 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 02</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 03 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 03</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 04 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 04</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 05 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 05</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 06 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 06</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 07 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 07</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 08 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 08</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 09 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 09</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 10 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 10</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 11 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 11</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 12 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 12</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 13 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 13</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 14 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 14</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 15 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 15</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 16 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 16</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 17 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 17</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 18 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 18</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 19 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 19</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 20 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 20</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 21 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 21</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 22 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 22</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 23 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 23</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 24 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 24</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m01-introduccion-ia" data-search="fundamentos de inteligencia artificial nivel 25 m01-introduccion-ia">
+<span class="meta">MODULE 01 / LEVEL 25</span>
+<h4>Fundamentos de inteligencia artificial · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m01-introduccion-ia/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m01-introduccion-ia/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m01-introduccion-ia/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m01-introduccion-ia/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m02-herramientas-sin-codigo">
+<h3 class="section-title">Herramientas sin programación</h3>
+<p>Aplicaciones de productividad y aprendizaje para principiantes.</p>
+<div class="level-grid">
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 00 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 00</span>
+<h4>Herramientas sin programación · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 01 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 01</span>
+<h4>Herramientas sin programación · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 02 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 02</span>
+<h4>Herramientas sin programación · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 03 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 03</span>
+<h4>Herramientas sin programación · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 04 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 04</span>
+<h4>Herramientas sin programación · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 05 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 05</span>
+<h4>Herramientas sin programación · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 06 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 06</span>
+<h4>Herramientas sin programación · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 07 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 07</span>
+<h4>Herramientas sin programación · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 08 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 08</span>
+<h4>Herramientas sin programación · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 09 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 09</span>
+<h4>Herramientas sin programación · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 10 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 10</span>
+<h4>Herramientas sin programación · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 11 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 11</span>
+<h4>Herramientas sin programación · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 12 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 12</span>
+<h4>Herramientas sin programación · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 13 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 13</span>
+<h4>Herramientas sin programación · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 14 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 14</span>
+<h4>Herramientas sin programación · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 15 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 15</span>
+<h4>Herramientas sin programación · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 16 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 16</span>
+<h4>Herramientas sin programación · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 17 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 17</span>
+<h4>Herramientas sin programación · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 18 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 18</span>
+<h4>Herramientas sin programación · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 19 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 19</span>
+<h4>Herramientas sin programación · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 20 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 20</span>
+<h4>Herramientas sin programación · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 21 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 21</span>
+<h4>Herramientas sin programación · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 22 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 22</span>
+<h4>Herramientas sin programación · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 23 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 23</span>
+<h4>Herramientas sin programación · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 24 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 24</span>
+<h4>Herramientas sin programación · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m02-herramientas-sin-codigo" data-search="herramientas sin programación nivel 25 m02-herramientas-sin-codigo">
+<span class="meta">MODULE 02 / LEVEL 25</span>
+<h4>Herramientas sin programación · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m02-herramientas-sin-codigo/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m03-ia-datos">
+<h3 class="section-title">IA y datos</h3>
+<p>Calidad de información, organización y lectura crítica.</p>
+<div class="level-grid">
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 00 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 00</span>
+<h4>IA y datos · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 01 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 01</span>
+<h4>IA y datos · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 02 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 02</span>
+<h4>IA y datos · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 03 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 03</span>
+<h4>IA y datos · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 04 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 04</span>
+<h4>IA y datos · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 05 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 05</span>
+<h4>IA y datos · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 06 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 06</span>
+<h4>IA y datos · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 07 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 07</span>
+<h4>IA y datos · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 08 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 08</span>
+<h4>IA y datos · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 09 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 09</span>
+<h4>IA y datos · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 10 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 10</span>
+<h4>IA y datos · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 11 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 11</span>
+<h4>IA y datos · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 12 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 12</span>
+<h4>IA y datos · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 13 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 13</span>
+<h4>IA y datos · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 14 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 14</span>
+<h4>IA y datos · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 15 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 15</span>
+<h4>IA y datos · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 16 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 16</span>
+<h4>IA y datos · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 17 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 17</span>
+<h4>IA y datos · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 18 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 18</span>
+<h4>IA y datos · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 19 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 19</span>
+<h4>IA y datos · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 20 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 20</span>
+<h4>IA y datos · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 21 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 21</span>
+<h4>IA y datos · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 22 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 22</span>
+<h4>IA y datos · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 23 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 23</span>
+<h4>IA y datos · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 24 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 24</span>
+<h4>IA y datos · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m03-ia-datos" data-search="ia y datos nivel 25 m03-ia-datos">
+<span class="meta">MODULE 03 / LEVEL 25</span>
+<h4>IA y datos · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m03-ia-datos/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m03-ia-datos/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m03-ia-datos/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m03-ia-datos/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m04-generacion-contenido">
+<h3 class="section-title">Generación de contenidos</h3>
+<p>Redacción, revisión y creación de materiales con criterio.</p>
+<div class="level-grid">
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 00 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 00</span>
+<h4>Generación de contenidos · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 01 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 01</span>
+<h4>Generación de contenidos · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 02 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 02</span>
+<h4>Generación de contenidos · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 03 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 03</span>
+<h4>Generación de contenidos · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 04 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 04</span>
+<h4>Generación de contenidos · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 05 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 05</span>
+<h4>Generación de contenidos · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 06 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 06</span>
+<h4>Generación de contenidos · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 07 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 07</span>
+<h4>Generación de contenidos · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 08 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 08</span>
+<h4>Generación de contenidos · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 09 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 09</span>
+<h4>Generación de contenidos · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 10 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 10</span>
+<h4>Generación de contenidos · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 11 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 11</span>
+<h4>Generación de contenidos · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 12 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 12</span>
+<h4>Generación de contenidos · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 13 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 13</span>
+<h4>Generación de contenidos · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 14 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 14</span>
+<h4>Generación de contenidos · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 15 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 15</span>
+<h4>Generación de contenidos · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 16 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 16</span>
+<h4>Generación de contenidos · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 17 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 17</span>
+<h4>Generación de contenidos · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 18 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 18</span>
+<h4>Generación de contenidos · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 19 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 19</span>
+<h4>Generación de contenidos · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 20 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 20</span>
+<h4>Generación de contenidos · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 21 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 21</span>
+<h4>Generación de contenidos · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 22 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 22</span>
+<h4>Generación de contenidos · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 23 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 23</span>
+<h4>Generación de contenidos · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 24 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 24</span>
+<h4>Generación de contenidos · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m04-generacion-contenido" data-search="generación de contenidos nivel 25 m04-generacion-contenido">
+<span class="meta">MODULE 04 / LEVEL 25</span>
+<h4>Generación de contenidos · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m04-generacion-contenido/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m04-generacion-contenido/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m04-generacion-contenido/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m04-generacion-contenido/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m05-automatizacion">
+<h3 class="section-title">Automatización</h3>
+<p>Procesos útiles, controles y revisión de resultados.</p>
+<div class="level-grid">
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 00 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 00</span>
+<h4>Automatización · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 01 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 01</span>
+<h4>Automatización · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 02 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 02</span>
+<h4>Automatización · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 03 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 03</span>
+<h4>Automatización · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 04 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 04</span>
+<h4>Automatización · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 05 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 05</span>
+<h4>Automatización · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 06 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 06</span>
+<h4>Automatización · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 07 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 07</span>
+<h4>Automatización · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 08 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 08</span>
+<h4>Automatización · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 09 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 09</span>
+<h4>Automatización · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 10 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 10</span>
+<h4>Automatización · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 11 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 11</span>
+<h4>Automatización · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 12 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 12</span>
+<h4>Automatización · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 13 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 13</span>
+<h4>Automatización · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 14 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 14</span>
+<h4>Automatización · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 15 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 15</span>
+<h4>Automatización · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 16 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 16</span>
+<h4>Automatización · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 17 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 17</span>
+<h4>Automatización · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 18 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 18</span>
+<h4>Automatización · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 19 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 19</span>
+<h4>Automatización · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 20 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 20</span>
+<h4>Automatización · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 21 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 21</span>
+<h4>Automatización · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 22 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 22</span>
+<h4>Automatización · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 23 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 23</span>
+<h4>Automatización · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 24 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 24</span>
+<h4>Automatización · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m05-automatizacion" data-search="automatización nivel 25 m05-automatizacion">
+<span class="meta">MODULE 05 / LEVEL 25</span>
+<h4>Automatización · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m05-automatizacion/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m05-automatizacion/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m05-automatizacion/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m05-automatizacion/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m06-educacion-ia">
+<h3 class="section-title">Educación e IA</h3>
+<p>Métodos para practicar y evaluar lo que se aprende.</p>
+<div class="level-grid">
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 00 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 00</span>
+<h4>Educación e IA · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 01 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 01</span>
+<h4>Educación e IA · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 02 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 02</span>
+<h4>Educación e IA · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 03 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 03</span>
+<h4>Educación e IA · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 04 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 04</span>
+<h4>Educación e IA · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 05 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 05</span>
+<h4>Educación e IA · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 06 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 06</span>
+<h4>Educación e IA · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 07 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 07</span>
+<h4>Educación e IA · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 08 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 08</span>
+<h4>Educación e IA · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 09 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 09</span>
+<h4>Educación e IA · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 10 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 10</span>
+<h4>Educación e IA · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 11 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 11</span>
+<h4>Educación e IA · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 12 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 12</span>
+<h4>Educación e IA · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 13 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 13</span>
+<h4>Educación e IA · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 14 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 14</span>
+<h4>Educación e IA · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 15 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 15</span>
+<h4>Educación e IA · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 16 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 16</span>
+<h4>Educación e IA · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 17 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 17</span>
+<h4>Educación e IA · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 18 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 18</span>
+<h4>Educación e IA · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 19 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 19</span>
+<h4>Educación e IA · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 20 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 20</span>
+<h4>Educación e IA · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 21 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 21</span>
+<h4>Educación e IA · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 22 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 22</span>
+<h4>Educación e IA · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 23 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 23</span>
+<h4>Educación e IA · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 24 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 24</span>
+<h4>Educación e IA · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m06-educacion-ia" data-search="educación e ia nivel 25 m06-educacion-ia">
+<span class="meta">MODULE 06 / LEVEL 25</span>
+<h4>Educación e IA · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m06-educacion-ia/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m06-educacion-ia/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m06-educacion-ia/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m06-educacion-ia/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m07-proyectos-comunitarios">
+<h3 class="section-title">Proyectos comunitarios</h3>
+<p>Aplicación práctica de habilidades a necesidades reales.</p>
+<div class="level-grid">
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 00 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 00</span>
+<h4>Proyectos comunitarios · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 01 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 01</span>
+<h4>Proyectos comunitarios · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 02 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 02</span>
+<h4>Proyectos comunitarios · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 03 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 03</span>
+<h4>Proyectos comunitarios · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 04 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 04</span>
+<h4>Proyectos comunitarios · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 05 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 05</span>
+<h4>Proyectos comunitarios · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 06 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 06</span>
+<h4>Proyectos comunitarios · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 07 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 07</span>
+<h4>Proyectos comunitarios · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 08 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 08</span>
+<h4>Proyectos comunitarios · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 09 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 09</span>
+<h4>Proyectos comunitarios · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 10 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 10</span>
+<h4>Proyectos comunitarios · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 11 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 11</span>
+<h4>Proyectos comunitarios · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 12 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 12</span>
+<h4>Proyectos comunitarios · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 13 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 13</span>
+<h4>Proyectos comunitarios · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 14 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 14</span>
+<h4>Proyectos comunitarios · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 15 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 15</span>
+<h4>Proyectos comunitarios · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 16 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 16</span>
+<h4>Proyectos comunitarios · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 17 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 17</span>
+<h4>Proyectos comunitarios · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 18 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 18</span>
+<h4>Proyectos comunitarios · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 19 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 19</span>
+<h4>Proyectos comunitarios · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 20 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 20</span>
+<h4>Proyectos comunitarios · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 21 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 21</span>
+<h4>Proyectos comunitarios · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 22 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 22</span>
+<h4>Proyectos comunitarios · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 23 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 23</span>
+<h4>Proyectos comunitarios · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 24 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 24</span>
+<h4>Proyectos comunitarios · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m07-proyectos-comunitarios" data-search="proyectos comunitarios nivel 25 m07-proyectos-comunitarios">
+<span class="meta">MODULE 07 / LEVEL 25</span>
+<h4>Proyectos comunitarios · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m07-proyectos-comunitarios/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m07-proyectos-comunitarios/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m07-proyectos-comunitarios/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m07-proyectos-comunitarios/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+<div class="module-block" id="m08-etica-futuro">
+<h3 class="section-title">Ética y futuro</h3>
+<p>Derechos, responsabilidad y límites del uso tecnológico.</p>
+<div class="level-grid">
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 00 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 00</span>
+<h4>Ética y futuro · Nivel 00</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-00/nivel-00-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-00/nivel-00-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-00/nivel-00-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-00/nivel-00-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 01 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 01</span>
+<h4>Ética y futuro · Nivel 01</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-01/nivel-01-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-01/nivel-01-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-01/nivel-01-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-01/nivel-01-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 02 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 02</span>
+<h4>Ética y futuro · Nivel 02</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-02/nivel-02-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-02/nivel-02-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-02/nivel-02-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-02/nivel-02-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 03 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 03</span>
+<h4>Ética y futuro · Nivel 03</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-03/nivel-03-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-03/nivel-03-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-03/nivel-03-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-03/nivel-03-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 04 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 04</span>
+<h4>Ética y futuro · Nivel 04</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-04/nivel-04-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-04/nivel-04-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-04/nivel-04-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-04/nivel-04-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 05 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 05</span>
+<h4>Ética y futuro · Nivel 05</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-05/nivel-05-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-05/nivel-05-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-05/nivel-05-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-05/nivel-05-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 06 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 06</span>
+<h4>Ética y futuro · Nivel 06</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-06/nivel-06-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-06/nivel-06-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-06/nivel-06-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-06/nivel-06-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 07 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 07</span>
+<h4>Ética y futuro · Nivel 07</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-07/nivel-07-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-07/nivel-07-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-07/nivel-07-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-07/nivel-07-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 08 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 08</span>
+<h4>Ética y futuro · Nivel 08</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-08/nivel-08-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-08/nivel-08-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-08/nivel-08-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-08/nivel-08-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 09 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 09</span>
+<h4>Ética y futuro · Nivel 09</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-09/nivel-09-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-09/nivel-09-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-09/nivel-09-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-09/nivel-09-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 10 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 10</span>
+<h4>Ética y futuro · Nivel 10</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-10/nivel-10-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-10/nivel-10-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-10/nivel-10-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-10/nivel-10-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 11 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 11</span>
+<h4>Ética y futuro · Nivel 11</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-11/nivel-11-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-11/nivel-11-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-11/nivel-11-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-11/nivel-11-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 12 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 12</span>
+<h4>Ética y futuro · Nivel 12</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-12/nivel-12-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-12/nivel-12-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-12/nivel-12-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-12/nivel-12-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 13 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 13</span>
+<h4>Ética y futuro · Nivel 13</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-13/nivel-13-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-13/nivel-13-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-13/nivel-13-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-13/nivel-13-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 14 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 14</span>
+<h4>Ética y futuro · Nivel 14</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-14/nivel-14-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-14/nivel-14-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-14/nivel-14-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-14/nivel-14-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 15 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 15</span>
+<h4>Ética y futuro · Nivel 15</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-15/nivel-15-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-15/nivel-15-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-15/nivel-15-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-15/nivel-15-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 16 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 16</span>
+<h4>Ética y futuro · Nivel 16</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-16/nivel-16-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-16/nivel-16-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-16/nivel-16-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-16/nivel-16-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 17 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 17</span>
+<h4>Ética y futuro · Nivel 17</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-17/nivel-17-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-17/nivel-17-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-17/nivel-17-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-17/nivel-17-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 18 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 18</span>
+<h4>Ética y futuro · Nivel 18</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-18/nivel-18-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-18/nivel-18-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-18/nivel-18-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-18/nivel-18-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 19 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 19</span>
+<h4>Ética y futuro · Nivel 19</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-19/nivel-19-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-19/nivel-19-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-19/nivel-19-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-19/nivel-19-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 20 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 20</span>
+<h4>Ética y futuro · Nivel 20</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-20/nivel-20-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-20/nivel-20-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-20/nivel-20-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-20/nivel-20-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 21 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 21</span>
+<h4>Ética y futuro · Nivel 21</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-21/nivel-21-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-21/nivel-21-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-21/nivel-21-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-21/nivel-21-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 22 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 22</span>
+<h4>Ética y futuro · Nivel 22</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-22/nivel-22-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-22/nivel-22-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-22/nivel-22-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-22/nivel-22-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 23 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 23</span>
+<h4>Ética y futuro · Nivel 23</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-23/nivel-23-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-23/nivel-23-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-23/nivel-23-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-23/nivel-23-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 24 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 24</span>
+<h4>Ética y futuro · Nivel 24</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-24/nivel-24-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-24/nivel-24-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-24/nivel-24-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-24/nivel-24-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+<article class="level" data-module="m08-etica-futuro" data-search="ética y futuro nivel 25 m08-etica-futuro">
+<span class="meta">MODULE 08 / LEVEL 25</span>
+<h4>Ética y futuro · Nivel 25</h4>
+<p>Selecciona una edición para acceder al documento completo.</p>
+<nav class="language-links" aria-label="Abrir nivel por idioma">
+<a data-lang="ES" href="/curriculum-html/m08-etica-futuro/nivel-25/nivel-25-ES.html" lang="es" hreflang="es">Español</a>
+<a data-lang="PT" href="/curriculum-html/m08-etica-futuro/nivel-25/nivel-25-PT.html" lang="pt" hreflang="pt">Português</a>
+<a data-lang="CA" href="/curriculum-html/m08-etica-futuro/nivel-25/nivel-25-CA.html" lang="ca" hreflang="ca">Català</a>
+<a data-lang="EN" href="/curriculum-html/m08-etica-futuro/nivel-25/nivel-25-EN.html" lang="en" hreflang="en">English</a>
+</nav>
+</article>
+</div></div>
+</div></section>
+<section class="section" id="metodo"><div class="wrap"><span class="eyebrow">STUDY IN THREE STEPS</span><h2>Elige, abre, aprende.</h2><div class="method">
+<article><h3>01 · Elige</h3><p>Selecciona uno de los ocho módulos y el nivel adecuado a tu práctica.</p></article>
+<article><h3>02 · Lee</h3><p>Abre el HTML en tu idioma, directamente en el navegador.</p></article>
+<article><h3>03 · Practica</h3><p>Utiliza los recursos del campus para ejercicios, orientación y ayuda.</p></article>
+</div><p class="description">Se contabilizan 832 páginas lingüísticas, no 832 temas distintos. Las 208 unidades curriculares son el contenido base.</p>
+<div class="actions"><a class="action" href="/campus/index.html">Entrar al campus</a><a class="action secondary" href="/orientacion.html">Orientación</a></div>
+</div></section>
+</main>
+<footer><div class="wrap"><p>© 2026 MANOS ABIERTAS · Formación gratuita sin barreras.</p><a href="#contenido">Volver arriba</a><a href="/curriculum-html/index.html">Currículo anterior</a></div></footer>
+<script>
+(()=>{
+ "use strict";
+ const form=document.getElementById("filters"),q=document.getElementById("q"),module=document.getElementById("module"),lang=document.getElementById("lang");
+ const cards=[...document.querySelectorAll(".level")],blocks=[...document.querySelectorAll(".module-block")];
+ const counter=document.getElementById("counter"),empty=document.getElementById("empty");
+ const norm=s=>String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+ function update(){
+  const terms=norm(q.value).split(/\s+/).filter(Boolean);let count=0;
+  cards.forEach(card=>{
+   const show=(!module.value||card.dataset.module===module.value)&&terms.every(t=>norm(card.dataset.search).includes(t));
+   card.hidden=!show;if(show)count++;
+   card.querySelectorAll("[data-lang]").forEach(link=>{link.hidden=!!lang.value&&link.dataset.lang!==lang.value;});
+  });
+  blocks.forEach(block=>{block.hidden=![...block.querySelectorAll(".level")].some(card=>!card.hidden);});
+  counter.textContent=count+" niveles visibles · "+(lang.value?"1 idioma":"4 idiomas");empty.hidden=count!==0;
+ }
+ form.addEventListener("input",update);form.addEventListener("change",update);
+ form.addEventListener("reset",()=>setTimeout(update,0));update();
+})();
+</script>
+</body></html>

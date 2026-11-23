@@ -36,6 +36,7 @@ function localTarget(value) {
     ['/recursos.html', resolve(root, 'recursos.html')],
     ['/proyecto.html', resolve(root, 'proyecto.html')],
     ['/curriculum-html/index.html', resolve(root, 'public', 'curriculum-html', 'index.html')],
+    ['/descubre.html', resolve(root, 'public', 'descubre.html')],
   ]);
   if (institutionalPages.has(path)) return institutionalPages.get(path);
   assert.ok(path.startsWith('/campus/'), 'Local link escapes published campus: ' + value);
