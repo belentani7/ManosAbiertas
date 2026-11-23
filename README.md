@@ -10,6 +10,16 @@ coste, sin barreras innecesarias.
 
 Publicación: pendiente. El despliegue en <https://manos-abiertas-psi.vercel.app> no está disponible en este momento; para usar la plataforma en local, consulta «Puesta en marcha» más abajo.
 
+## Acceso web-first en Vercel (guía nueva)
+
+La interfaz está preparada para que el alumno **lea los materiales directamente desde una URL HTTPS**, sin abrir archivos locales. `guia-web.html` permite elegir idioma y entrar en **208 niveles × 4 idiomas** mediante los HTML generados en `/curriculum-html/` por el proceso de compilación.
+
+La página se publica automáticamente en `public/guia-web.html` mediante `scripts/publish-campus.mjs`, junto a sus estilos y JavaScript. La portada enlaza a esa guía, que a su vez enlaza a las 832 páginas reales. No se ha creado un sistema de descarga ni un modo sin conexión específico para la guía.
+
+**Vercel:** este cambio no implica que exista ya un despliegue activo; la URL pública solo debe anunciarse después de una compilación y prueba de acceso correctas.
+
+**Licencia:** el software existente conserva su licencia MIT (incluido el derecho a redistribuir y forkear conforme a dicha licencia). Los derechos sobre marcas y sobre contenidos de terceros se evalúan por separado; no se afirma que esta rama revoque derechos MIT concedidos.
+
 ## Qué incluye
 
 - Cursos de IA y Office
