@@ -15,11 +15,11 @@ export const CAMPUS_FILES = Object.freeze([
 export const CAMPUS_DIRECTORIES = Object.freeze(['cursos', 'voces']);
 
 export const INSTITUTIONAL_FILES = Object.freeze([
-  'index.html', 'orientacion.html', 'programas.html',
+  'index.html', 'orientacion.html', 'programas.html', 'guia-web.html',
   'taller-documentos.html', 'taller-criterio-ia.html', 'taller-puente-pt-es.html',
   'empleo.html', 'recursos.html', 'proyecto.html',
   'assets/brand.css', 'assets/workshops.css', 'assets/workshops.js',
-  'assets/site.js', 'assets/manos-symbol.svg', 'assets/plantilla-cv.txt',
+  'assets/site.js', 'assets/online-guide.css', 'assets/online-guide.js', 'assets/manos-symbol.svg', 'assets/plantilla-cv.txt',
   'assets/a11y.css', 'assets/favicon.svg', 'brand/og-image.svg',
 ]);
 
